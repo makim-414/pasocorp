@@ -374,6 +374,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 .clients-logos img {
   height: 28px;
+  width: auto;
+  max-width: 100px;
   opacity: 0.3;
   filter: grayscale(1) brightness(2);
   transition: opacity 0.3s;
