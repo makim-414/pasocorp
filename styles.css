@@ -323,46 +323,87 @@ body::before {
 }
 
 /* ===== BRAND CARDS ===== */
-.brands-grid {
-  display: grid; gap: 16px;
+/* ===== BRANDS ORBIT ===== */
+.brands-orbit {
+  display: grid; gap: 20px;
   grid-template-columns: repeat(3, 1fr);
 }
-.brands-grid-bottom {
-  display: grid; gap: 16px;
-  grid-template-columns: repeat(2, 1fr);
-  margin-top: 16px;
-}
-.brand-card {
-  padding: 48px 32px; text-align: center;
+.brand-sphere {
+  position: relative; padding: 48px 32px; text-align: center;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  min-height: 220px; position: relative;
-  overflow: hidden;
+  min-height: 240px; overflow: hidden;
+  border-radius: 50%; aspect-ratio: 1;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.04) 0%, rgba(5,5,8,0.9) 70%);
+  border: 1px solid var(--border);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.brand-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(124,106,255,0.04) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.35s;
+.brand-sphere:hover {
+  border-color: var(--border-hover);
+  transform: scale(1.04);
+  box-shadow: 0 0 60px rgba(124,106,255,0.08);
 }
-.brand-card:hover::before { opacity: 1; }
-.brand-card .brand-name {
+
+/* Sphere glow — inner light */
+.sphere-glow {
+  position: absolute; top: -20%; left: -20%; width: 140%; height: 140%;
+  background: radial-gradient(circle at 35% 30%, rgba(124,106,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Sphere ring — orbiting line */
+.sphere-ring {
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(124,106,255,0.15);
+  opacity: 0;
+  animation: none;
+  pointer-events: none;
+}
+
+/* Active projects — spinning ring */
+.brand-sphere.active .sphere-ring {
+  opacity: 1;
+  animation: orbit-spin 8s linear infinite;
+}
+.brand-sphere.active {
+  border-color: rgba(124,106,255,0.15);
+  background: radial-gradient(circle at 30% 30%, rgba(124,106,255,0.04) 0%, rgba(5,5,8,0.95) 70%);
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sphere-content { position: relative; z-index: 1; }
+
+.brand-sphere .brand-name {
   font-family: var(--font-dutch);
-  font-size: 26px; font-weight: 500;
-  margin-bottom: 16px; position: relative;
+  font-size: 22px; font-weight: 500;
+  margin-bottom: 8px; position: relative;
 }
-.brand-card .brand-sub {
-  font-size: 11px; color: var(--text-tertiary);
-  letter-spacing: 1px; margin-top: -12px; margin-bottom: 16px;
+.brand-sphere .brand-type {
+  font-size: 11px; color: var(--text-secondary);
+  letter-spacing: 1px; margin-bottom: 16px;
+}
+.brand-sphere .brand-sub {
+  font-size: 10px; color: var(--text-tertiary);
+  letter-spacing: 1px; margin-top: -4px; margin-bottom: 8px;
 }
 .brand-card-meta {
   display: flex; align-items: center; gap: 8px;
-  font-size: 12px; color: var(--text-tertiary);
-  position: relative;
+  font-size: 11px; color: var(--text-tertiary);
+  position: relative; z-index: 1;
 }
 .brand-card-meta .dot {
   width: 3px; height: 3px; border-radius: 50%;
   background: var(--text-tertiary);
 }
+.status-active { color: var(--green); }
+.status-prep { color: var(--accent); }
+.status-plan { color: var(--text-tertiary); }
 
 /* ===== CLIENTS ===== */
 .clients {
@@ -665,7 +706,7 @@ body::before {
 @media (max-width: 1024px) {
   .nav-links { display: none; }
   .hamburger { display: block; }
-  .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .brands-orbit { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .atv-card { flex-direction: column; }
   .atv-card-img { width: 100%; min-height: 200px; }
@@ -678,12 +719,12 @@ body::before {
   .hero { padding: 100px 20px 60px; min-height: auto; }
   .hero-slide .brand-logo { font-size: 38px; }
   .hero-slide .tagline { font-size: 18px; }
-  .brands-grid, .brands-grid-bottom { grid-template-columns: 1fr; }
+  .brands-orbit { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .section-title { font-size: 26px; }
   .contact-form .form-row { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .about-hero-content h1 { font-size: 48px; }
   .brand-page h1 { font-size: 38px; }
-  .brand-card { min-height: 160px; padding: 32px 24px; }
+  .brand-sphere { min-height: 200px; padding: 32px 24px; }
 }
