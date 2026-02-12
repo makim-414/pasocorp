@@ -369,18 +369,18 @@ button { font-family: inherit; cursor: pointer; }
 .clients-logos {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 40px;
   flex-wrap: wrap;
 }
-.clients-logos img {
-  height: 28px;
-  width: auto;
-  max-width: 100px;
-  opacity: 0.3;
-  filter: grayscale(1) brightness(2);
-  transition: opacity 0.3s;
+.clients-logos span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: color 0.3s;
 }
-.clients-logos img:hover { opacity: 0.6; }
+.clients-logos span:hover { color: var(--text-dim); }
 
 /* ===== SERVICES ===== */
 .services {
