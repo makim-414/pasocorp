@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
+@font-face {
+  font-family: 'Dutch801';
+  src: url('fonts/dutch801bt_roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-dutch: 'Dutch801', 'Playfair Display', Georgia, serif;
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
   --bg: #050508;
@@ -73,11 +82,13 @@ body::before {
   display: flex; align-items: baseline; gap: 6px;
 }
 .nav-logo .paso {
+  font-family: var(--font-dutch);
   font-size: 20px; font-weight: 700; letter-spacing: -0.3px;
   background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .nav-logo .corp {
+  font-family: var(--font-dutch);
   font-size: 11px; font-weight: 500; letter-spacing: 3px;
   color: var(--text-tertiary);
 }
@@ -211,7 +222,7 @@ body::before {
 }
 .hero-slide.active { display: flex; }
 .hero-slide .brand-logo {
-  font-family: var(--font-serif);
+  font-family: var(--font-dutch);
   font-size: 56px; font-weight: 600;
   margin-bottom: 20px; letter-spacing: -1px;
   background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%);
@@ -331,7 +342,7 @@ body::before {
 }
 .brand-card:hover::before { opacity: 1; }
 .brand-card .brand-name {
-  font-family: var(--font-serif);
+  font-family: var(--font-dutch);
   font-size: 26px; font-weight: 500;
   margin-bottom: 16px; position: relative;
 }
@@ -450,7 +461,7 @@ body::before {
   width: 45%; min-height: 280px; flex-shrink: 0;
   background: linear-gradient(135deg, #0c0c14 0%, #1a1a2a 50%, #060610 100%);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-serif); font-size: 24px;
+  font-family: var(--font-dutch); font-size: 24px;
   color: var(--text-tertiary); position: relative;
   overflow: hidden;
 }
@@ -627,7 +638,7 @@ body::before {
 }
 .brand-page-content { position: relative; z-index: 1; }
 .brand-page h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font-dutch);
   font-size: 56px; font-weight: 600; margin-bottom: 16px;
   background: linear-gradient(135deg, #fff, rgba(255,255,255,0.6));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
