@@ -372,6 +372,14 @@ button { font-family: inherit; cursor: pointer; }
   gap: 40px;
   flex-wrap: wrap;
 }
+.clients-logos img {
+  height: 28px;
+  width: auto;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  filter: grayscale(100%);
+}
+.clients-logos img:hover { opacity: 0.8; }
 .clients-logos span {
   font-size: 14px;
   font-weight: 600;
