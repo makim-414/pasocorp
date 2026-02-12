@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark ↔ Mark2 — Work Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#000; color:#e0e0e0; padding:32px; min-height:100vh; }
+  
+  .header { margin-bottom:40px; text-align:center; }
+  .header h1 { font-size:36px; font-weight:700; color:#fff; margin-bottom:8px; }
+  .header h1 .arrow { color:#7c6aff; margin:0 12px; }
+  .header .sub { font-size:16px; color:#666; }
+  .header .status { font-size:13px; color:#34d399; margin-top:8px; }
+  
+  .container { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; max-width:1800px; margin:0 auto; }
+  
+  .column { display:flex; flex-direction:column; gap:20px; }
+  
+  .card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:20px; padding:32px; transition:all 0.3s; }
+  .card:hover { border-color:rgba(255,255,255,0.12); background:rgba(255,255,255,0.05); }
+  
+  .card-title { font-size:20px; font-weight:600; color:#fff; margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+  .card-title .emoji { font-size:24px; }
+  
+  .task { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+  .task:last-child { border:none; }
+  .task-status { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+  .status-done { background:#34d399; }
+  .status-progress { background:#7c6aff; }
+  .status-waiting { background:#fbbf24; }
+  .status-blocked { background:#ff6b6b; }
+  
+  .task-text { flex:1; font-size:14px; line-height:1.5; }
+  .task-time { font-size:11px; color:#666; }
+  
+  .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:20px 0; }
+  .stat { text-align:center; padding:16px; background:rgba(255,255,255,0.02); border-radius:12px; }
+  .stat-number { font-size:24px; font-weight:700; color:#fff; }
+  .stat-label { font-size:11px; color:#666; margin-top:4px; }
+  
+  .recent-activity { max-height:300px; overflow-y:auto; }
+  .recent-activity::-webkit-scrollbar { width:4px; }
+  .recent-activity::-webkit-scrollbar-track { background:rgba(255,255,255,0.05); }
+  .recent-activity::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.2); border-radius:2px; }
+  
+  .activity-item { display:flex; align-items:flex-start; gap:12px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+  .activity-time { font-size:11px; color:#666; min-width:60px; }
+  .activity-user { font-weight:600; min-width:50px; font-size:13px; }
+  .user-mark { color:#fbbf24; }
+  .user-mark2 { color:#7c6aff; }
+  .activity-text { font-size:13px; line-height:1.4; }
+  
+  .tools-used { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .tool-tag { font-size:10px; background:rgba(124,106,255,0.2); color:#a78bfa; padding:2px 8px; border-radius:10px; }
+  
+  .progress-ring { position:relative; width:100px; height:100px; margin:0 auto; }
+  .progress-circle { transform:rotate(-90deg); }
+  .progress-track { fill:none; stroke:rgba(255,255,255,0.1); stroke-width:8; }
+  .progress-bar { fill:none; stroke:#34d399; stroke-width:8; stroke-linecap:round; 
+    stroke-dasharray:251.2; stroke-dashoffset:75.36; /* 70% complete */
+    transition:stroke-dashoffset 1s ease; }
+  .progress-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; color:#fff; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Mark <span class="arrow">↔</span> Mark2</h1>
+  <div class="sub">Real-time Work Dashboard</div>
+  <div class="status">● CONNECTED</div>
+</div>
+
+<div class="container">
+  
+  <!-- Left Column: Current Work -->
+  <div class="column">
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">📝</span> NordVPN 블로그</div>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">107</div>
+          <div class="stat-label">총 발행</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">10</div>
+          <div class="stat-label">진행 중</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">251</div>
+          <div class="stat-label">7일 클릭</div>
+        </div>
+      </div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-status status-progress"></div>
+          <div class="task-text">posts 51-60 이메일 발행 중</div>
+          <div class="task-time">21:40</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">키워드 리서치 완료 (유튜브 프리미엄 등)</div>
+          <div class="task-time">18:59</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">네이버 Search Advisor 등록</div>
+          <div class="task-time">pending</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">🏢</span> PASO Corp 웹사이트</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">Dutch801 폰트 적용 + 구체 대시보드</div>
+          <div class="task-time">20:28</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">클라이언트 로고 SVG화</div>
+          <div class="task-time">21:34</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">Framer 이미지 41개 확보</div>
+          <div class="task-time">21:26</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">AI 티 제거 리디자인</div>
+          <div class="task-time">21:35</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">🎨</span> 파소아트센터</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">Gagosian 스타일 사이트 완성</div>
+          <div class="task-time">21:38</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">폰트 위계 + 프레스 이미지 적용</div>
+          <div class="task-time">21:42</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">Space by PASO 이미지 40개 확보</div>
+          <div class="task-time">21:26</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">히어로 이미지 교체 (갈대밭→갤러리)</div>
+          <div class="task-time">now</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Middle Column: Events & Strategies -->
+  <div class="column">
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">🥃</span> 아트센터 이벤트</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">날짜 확정: 2/20(금) vs 2/21(토)?</div>
+          <div class="task-time">21:32</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">초대장 3버전 작성</div>
+          <div class="task-time">완료</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">Google Form RSVP 생성</div>
+          <div class="task-time">완료</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-done"></div>
+          <div class="task-text">병원 41곳 조사 + 인스타 10곳 확인</div>
+          <div class="task-time">21:19</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">📢</span> 초대 전략</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-status status-blocked"></div>
+          <div class="task-text">물리적 방문 (로비 초대장) - 0% 응답률</div>
+          <div class="task-time">실패</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-blocked"></div>
+          <div class="task-text">강서구의사회 공식 제안 - 무응답</div>
+          <div class="task-time">실패</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">인스타그램 DM (병원 10곳)</div>
+          <div class="task-time">대기</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">마곡 오피스 워커 타겟 확장</div>
+          <div class="task-time">검토</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-progress"></div>
+          <div class="task-text">아트 렌탈 + 절세 비즈니스 각도</div>
+          <div class="task-time">기획</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">🚀</span> 프로모션</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">공격적 다채널 전략 연구</div>
+          <div class="task-time">18:30</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">X 유령계정 + 네이버 쪽지</div>
+          <div class="task-time">기획</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">커뮤니티 정보글 (디시/뽐뿌/클리앙)</div>
+          <div class="task-time">준비</div>
+        </div>
+        <div class="task">
+          <div class="task-status status-waiting"></div>
+          <div class="task-text">네이버 검색광고 테스트</div>
+          <div class="task-time">예산</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Right Column: System & Analytics -->
+  <div class="column">
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">🤖</span> Claude 사용량</div>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">200k</div>
+          <div class="stat-label">Context (100%)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">Opus</div>
+          <div class="stat-label">Current Model</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">722</div>
+          <div class="stat-label">Tokens Out</div>
+        </div>
+      </div>
+      <div style="margin-top:16px; font-size:12px; color:#666; line-height:1.6;">
+        <div>• 자동 모델 전환: Sonnet ↔ Opus</div>
+        <div>• 복잡한 작업시 Opus 사용</div>
+        <div>• 컨텍스트 관리: 200k/200k</div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">⚡</span> Today's Progress</div>
+      <div class="progress-ring">
+        <svg width="100" height="100" class="progress-circle">
+          <circle cx="50" cy="50" r="40" class="progress-track"/>
+          <circle cx="50" cy="50" r="40" class="progress-bar"/>
+        </svg>
+        <div class="progress-text">85%</div>
+      </div>
+      <div class="stats-grid" style="margin-top:24px;">
+        <div class="stat">
+          <div class="stat-number">67</div>
+          <div class="stat-label">Commands</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">124</div>
+          <div class="stat-label">Files</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">💬</span> Recent Activity</div>
+      <div class="recent-activity">
+        <div class="activity-item">
+          <div class="activity-time">21:44</div>
+          <div class="activity-user user-mark">Mark</div>
+          <div class="activity-text">대시보드 웹 배포 + 갈대밭 사진 교체 요청</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">21:41</div>
+          <div class="activity-user user-mark">Mark</div>
+          <div class="activity-text">모든 프로젝트 대시보드에 표시 요청</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">21:40</div>
+          <div class="activity-user user-mark">Mark</div>
+          <div class="activity-text">NordVPN 블로그 51-60 발행 승인</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">21:38</div>
+          <div class="activity-user user-mark2">Mark2</div>
+          <div class="activity-text">Gagosian 스타일 파소아트센터 완성</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">21:35</div>
+          <div class="activity-user user-mark">Mark</div>
+          <div class="activity-text">PASO Corp "AI 티" 제거 필요 지적</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">21:34</div>
+          <div class="activity-user user-mark2">Mark2</div>
+          <div class="activity-text">클라이언트 로고 SVG화 완료</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">21:26</div>
+          <div class="activity-user user-mark2">Mark2</div>
+          <div class="activity-text">Framer 이미지 82개 확보 (Corp + Art Center)</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">21:19</div>
+          <div class="activity-user user-mark2">Mark2</div>
+          <div class="activity-text">병원 인스타그램 10곳 조사 완료</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-time">19:05</div>
+          <div class="activity-user user-mark2">Mark2</div>
+          <div class="activity-text">블로그 posts 51-60 완성 (sub-agents)</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title"><span class="emoji">🛠️</span> Tools Used Today</div>
+      <div class="tools-used">
+        <div class="tool-tag">exec</div>
+        <div class="tool-tag">web_search</div>
+        <div class="tool-tag">write</div>
+        <div class="tool-tag">edit</div>
+        <div class="tool-tag">browser</div>
+        <div class="tool-tag">sessions_spawn</div>
+        <div class="tool-tag">web_fetch</div>
+        <div class="tool-tag">image</div>
+        <div class="tool-tag">message</div>
+        <div class="tool-tag">read</div>
+      </div>
+      <div style="margin-top:20px; font-size:12px; color:#666; line-height:1.6;">
+        <div>• Git commits: 8</div>
+        <div>• Images processed: 84</div>
+        <div>• Sub-agents spawned: 3</div>
+        <div>• Web searches: 12</div>
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
+
+<script>
+  // Auto-refresh timestamps and live data
+  setInterval(() => {
+    document.querySelectorAll('[data-time="now"]').forEach(el => {
+      el.textContent = new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+    });
+    // Update header timestamp
+    document.querySelector('.time').textContent = 'Last updated: ' + new Date().toLocaleString('ko-KR', {timeZone:'Asia/Seoul'});
+  }, 30000); // Update every 30 seconds
+  
+  // Responsive layout handling
+  const checkResponsive = () => {
+    const container = document.querySelector('.container');
+    if (window.innerWidth <= 1200) {
+      container.style.gridTemplateColumns = '1fr 1fr';
+    } else if (window.innerWidth <= 768) {
+      container.style.gridTemplateColumns = '1fr';
+    } else {
+      container.style.gridTemplateColumns = '1fr 1fr 1fr';
+    }
+  };
+  
+  window.addEventListener('resize', checkResponsive);
+  checkResponsive();
+</script>
+
+</body>
+</html>
