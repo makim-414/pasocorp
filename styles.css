@@ -99,6 +99,10 @@ body::before {
 }
 .nav-links a:hover { color: var(--white); }
 .nav-links .dropdown { position: relative; cursor: pointer; }
+.nav-links .dropdown::after {
+  content: ''; position: absolute; top: 100%; left: -20px;
+  width: calc(100% + 40px); height: 16px;
+}
 .nav-links .dropdown-menu {
   display: none; position: absolute; top: calc(100% + 12px); left: -20px;
   background: rgba(12,12,18,0.9);
