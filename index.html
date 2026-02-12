@@ -3,23 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PASO Corporation — Art to Value</title>
-  <meta name="description" content="PASO Corporation: Precision-based Art Strategy & Operation. Data-driven art business innovation.">
+  <title>PASO Corporation</title>
+  <meta name="description" content="PASO Corporation — Art Strategy & Operations. Data-driven art business.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="nav">
-    <div class="container">
-      <div class="nav-logo">
-        <a href="index.html"><span class="paso">PASO</span><span class="corp">CORP</span></a>
-      </div>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">PASO <span>CORP</span></a>
       <div class="nav-links">
         <a href="about.html">About</a>
-        <div class="dropdown">
-          <a href="#">Brands ▾</a>
-          <div class="dropdown-menu">
+        <div class="nav-dropdown">
+          <a href="#brands">Brands</a>
+          <div class="nav-dropdown-menu">
             <a href="pasogallery.html">Paso Gallery</a>
             <a href="paso-agency.html">Paso Agency</a>
             <a href="artrader.html">Artrader</a>
@@ -30,134 +28,162 @@
         </div>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+          <path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </button>
     </div>
   </nav>
-  <div class="mobile-menu">
-    <a href="about.html">About</a>
-    <a href="pasogallery.html">Paso Gallery</a>
-    <a href="paso-agency.html">Paso Agency</a>
-            <a href="artrader.html">Artrader</a>
-            <a href="artledger.html">Artledger Consulting</a>
-    <a href="pasoartcenter.html">Paso Art Center</a>
-    <a href="apolaris.html">Apolaris</a>
-    <a href="contact.html">Contact</a>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-overlay">
+    <div class="mobile-nav">
+      <a href="about.html">About</a>
+      <a href="pasogallery.html">Paso Gallery</a>
+      <a href="paso-agency.html">Paso Agency</a>
+      <a href="artrader.html">Artrader</a>
+      <a href="artledger.html">Artledger Consulting</a>
+      <a href="pasoartcenter.html">Paso Art Center</a>
+      <a href="apolaris.html">Apolaris</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="glow-orb orb-1"></div>
-      <div class="glow-orb orb-2"></div>
-      <div class="glow-orb orb-3"></div>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Precision-based Art Strategy & Operation</p>
+      <h1 class="hero-title">Art<br>to Value</h1>
+      <p class="hero-desc">데이터 기반 예술 전략으로<br>미술 시장의 전 영역을 혁신합니다.</p>
     </div>
-    <div class="hero-grid-lines"></div>
-
-    <div class="hero-slider">
-      <div class="hero-slide active">
-        <div class="brand-logo">Artrader</div>
-        <p class="tagline">미술품의 가치를 평가하고<br>쉽게 거래하세요.</p>
-        <p class="subtitle-text">검증된 컬렉터들과 함께하는 안전한 미술품 거래 플랫폼</p>
-        <div class="hero-btns">
-          <button class="btn-primary">베타서비스 가입하기</button>
-          <button class="btn-ghost">상세 보기</button>
-        </div>
-      </div>
-      <div class="hero-slide">
-        <div class="brand-logo">Paso Gallery</div>
-        <p class="tagline">현대 미술의 새로운 가치를<br>발견하세요.</p>
-        <p class="subtitle-text">신진 작가 발굴부터 기업 문화 살롱까지</p>
-        <div class="hero-btns">
-          <button class="btn-primary" onclick="window.open('https://pasogallery.com')">갤러리 방문하기</button>
-          <button class="btn-ghost">상세 보기</button>
-        </div>
-      </div>
-      <div class="hero-slide">
-        <div class="brand-logo">Artledger</div>
-        <p class="tagline">데이터 기반<br>아트 컬렉션 컨설팅</p>
-        <p class="subtitle-text">법인 및 개인을 위한 전략적 미술품 투자 자문</p>
-        <div class="hero-btns">
-          <button class="btn-primary">상담 신청하기</button>
-          <button class="btn-ghost">상세 보기</button>
-        </div>
-      </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
+  </header>
 
-    <div class="hero-nav">
-      <button class="hero-arrow prev">‹</button>
-      <div class="hero-dots">
-        <button class="hero-dot active"></button>
-        <button class="hero-dot"></button>
-        <button class="hero-dot"></button>
-      </div>
-      <button class="hero-arrow next">›</button>
+  <!-- Featured Brand Marquee -->
+  <section class="marquee-section">
+    <div class="marquee-track">
+      <span>Paso Gallery</span>
+      <span class="marquee-dot">·</span>
+      <span>Paso Agency</span>
+      <span class="marquee-dot">·</span>
+      <span>Artrader</span>
+      <span class="marquee-dot">·</span>
+      <span>Artledger Consulting</span>
+      <span class="marquee-dot">·</span>
+      <span>Paso Art Center</span>
+      <span class="marquee-dot">·</span>
+      <span>Apolaris</span>
+      <span class="marquee-dot">·</span>
+      <span>Paso Gallery</span>
+      <span class="marquee-dot">·</span>
+      <span>Paso Agency</span>
+      <span class="marquee-dot">·</span>
+      <span>Artrader</span>
+      <span class="marquee-dot">·</span>
+      <span>Artledger Consulting</span>
+      <span class="marquee-dot">·</span>
+      <span>Paso Art Center</span>
+      <span class="marquee-dot">·</span>
+      <span>Apolaris</span>
+      <span class="marquee-dot">·</span>
     </div>
   </section>
 
   <!-- Brands -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header-center animate-on-scroll">
-        <p class="section-eyebrow">What we do</p>
-        <h2 class="section-title">Brands of PASO Corporation</h2>
-        <p class="section-subtitle">데이터 기반 예술 전략으로 미술 시장의 전 영역을 혁신합니다.</p>
+  <section class="brands" id="brands">
+    <div class="wrap">
+      <div class="brands-header">
+        <span class="label">Our Brands</span>
+        <h2>6개의 브랜드가<br>하나의 생태계를 만듭니다.</h2>
       </div>
 
-      <div class="brands-orbit">
-        <a href="pasogallery.html" class="brand-sphere active animate-on-scroll delay-1">
-          <div class="sphere-glow"></div>
-          <div class="sphere-ring"></div>
-          <div class="sphere-content">
-            <div class="brand-name">Paso Gallery</div>
-            <div class="brand-type">갤러리 운영</div>
+      <div class="brands-list">
+        <a href="pasogallery.html" class="brand-row" data-status="live">
+          <div class="brand-row-left">
+            <span class="brand-num">01</span>
+            <div>
+              <h3>Paso Gallery</h3>
+              <p>갤러리 운영 · 신진 작가 발굴 · 기업 문화 살롱</p>
+            </div>
           </div>
-          <div class="brand-card-meta"><span>Est. 2021</span><span class="dot"></span><span class="status-active">● 운영 중</span></div>
+          <div class="brand-row-right">
+            <span class="brand-year">2021</span>
+            <span class="brand-status live">운영 중</span>
+          </div>
         </a>
-        <a href="paso-agency.html" class="brand-sphere active animate-on-scroll delay-2">
-          <div class="sphere-glow"></div>
-          <div class="sphere-ring"></div>
-          <div class="sphere-content">
-            <div class="brand-name">Paso Agency</div>
-            <div class="brand-type">아트 에이전시</div>
+
+        <a href="paso-agency.html" class="brand-row" data-status="live">
+          <div class="brand-row-left">
+            <span class="brand-num">02</span>
+            <div>
+              <h3>Paso Agency</h3>
+              <p>아트 에이전시 · 캐릭터 IP · 아티스트 콜라보레이션</p>
+            </div>
           </div>
-          <div class="brand-card-meta"><span>Est. 2023</span><span class="dot"></span><span class="status-active">● 운영 중</span></div>
+          <div class="brand-row-right">
+            <span class="brand-year">2023</span>
+            <span class="brand-status live">운영 중</span>
+          </div>
         </a>
-        <a href="#" class="brand-sphere animate-on-scroll delay-3">
-          <div class="sphere-glow"></div>
-          <div class="sphere-ring"></div>
-          <div class="sphere-content">
-            <div class="brand-name">Artrader</div>
-            <div class="brand-type">미술품 트레이딩</div>
+
+        <a href="artrader.html" class="brand-row" data-status="prep">
+          <div class="brand-row-left">
+            <span class="brand-num">03</span>
+            <div>
+              <h3>Artrader</h3>
+              <p>미술품 트레이딩 플랫폼 · 옥션 데이터 분석</p>
+            </div>
           </div>
-          <div class="brand-card-meta"><span>Est. 2025</span><span class="dot"></span><span class="status-prep">◎ 준비 중</span></div>
+          <div class="brand-row-right">
+            <span class="brand-year">2025</span>
+            <span class="brand-status prep">준비 중</span>
+          </div>
         </a>
-        <a href="#" class="brand-sphere animate-on-scroll delay-1">
-          <div class="sphere-glow"></div>
-          <div class="sphere-ring"></div>
-          <div class="sphere-content">
-            <div class="brand-name"><em>Artledger</em> Consulting</div>
-            <div class="brand-type">미술 자문 · 절세</div>
+
+        <a href="artledger.html" class="brand-row" data-status="prep">
+          <div class="brand-row-left">
+            <span class="brand-num">04</span>
+            <div>
+              <h3>Artledger Consulting</h3>
+              <p>미술 자문 · 절세 전략 · 법인 컬렉션 설계</p>
+            </div>
           </div>
-          <div class="brand-card-meta"><span>Est. 2025</span><span class="dot"></span><span class="status-prep">◎ 준비 중</span></div>
+          <div class="brand-row-right">
+            <span class="brand-year">2025</span>
+            <span class="brand-status prep">준비 중</span>
+          </div>
         </a>
-        <a href="pasoartcenter.html" class="brand-sphere active animate-on-scroll delay-2">
-          <div class="sphere-glow"></div>
-          <div class="sphere-ring"></div>
-          <div class="sphere-content">
-            <div class="brand-name">Paso Art Center</div>
-            <div class="brand-sub">with Mass C&amp;G</div>
-            <div class="brand-type">복합 문화 공간</div>
+
+        <a href="pasoartcenter.html" class="brand-row" data-status="live">
+          <div class="brand-row-left">
+            <span class="brand-num">05</span>
+            <div>
+              <h3>Paso Art Center</h3>
+              <p>복합 문화 공간 · 마곡 · with Mass C&amp;G</p>
+            </div>
           </div>
-          <div class="brand-card-meta"><span>Est. 2025</span><span class="dot"></span><span class="status-active">● 운영 중</span></div>
+          <div class="brand-row-right">
+            <span class="brand-year">2025</span>
+            <span class="brand-status live">운영 중</span>
+          </div>
         </a>
-        <a href="#" class="brand-sphere animate-on-scroll delay-3">
-          <div class="sphere-glow"></div>
-          <div class="sphere-ring"></div>
-          <div class="sphere-content">
-            <div class="brand-name">Apolaris</div>
-            <div class="brand-type">아트테크 플랫폼</div>
+
+        <a href="apolaris.html" class="brand-row" data-status="plan">
+          <div class="brand-row-left">
+            <span class="brand-num">06</span>
+            <div>
+              <h3>Apolaris</h3>
+              <p>아트테크 플랫폼 · Coming Soon</p>
+            </div>
           </div>
-          <div class="brand-card-meta"><span>Coming</span><span class="dot"></span><span class="status-plan">○ 기획 중</span></div>
+          <div class="brand-row-right">
+            <span class="brand-year">—</span>
+            <span class="brand-status plan">기획 중</span>
+          </div>
         </a>
       </div>
     </div>
@@ -165,198 +191,128 @@
 
   <!-- Clients -->
   <section class="clients">
-    <div class="container">
-      <p class="clients-label animate-on-scroll">Already chosen by the leaders</p>
-      <div class="clients-row animate-on-scroll">
-        <img src="images/logos/bcg.svg" alt="BCG" class="client-logo">
-        <img src="images/logos/bgf.svg" alt="BGF retail" class="client-logo">
-        <img src="images/logos/kb.svg" alt="KB" class="client-logo">
-        <img src="images/logos/atw.svg" alt="ATW" class="client-logo">
-        <img src="images/logos/makers-mark.svg" alt="Maker's Mark" class="client-logo">
-        <img src="images/logos/pfizer.svg" alt="Pfizer" class="client-logo">
-        <img src="images/logos/cube.svg" alt="CUBE" class="client-logo">
-        <img src="images/logos/kica.svg" alt="KICA" class="client-logo">
+    <div class="wrap">
+      <span class="label">Trusted by</span>
+      <div class="clients-logos">
+        <img src="images/logos/bcg.svg" alt="BCG">
+        <img src="images/logos/bgf.svg" alt="BGF retail">
+        <img src="images/logos/kb.svg" alt="KB">
+        <img src="images/logos/atw.svg" alt="ATW">
+        <img src="images/logos/makers-mark.svg" alt="Maker's Mark">
+        <img src="images/logos/pfizer.svg" alt="Pfizer">
+        <img src="images/logos/cube.svg" alt="CUBE">
+        <img src="images/logos/kica.svg" alt="KICA">
       </div>
     </div>
   </section>
 
   <!-- Services -->
   <section class="services">
-    <div class="container">
-      <div class="section-header-center animate-on-scroll">
-        <p class="section-eyebrow">Capabilities</p>
-        <h2 class="section-title">Our Services</h2>
+    <div class="wrap">
+      <div class="services-header">
+        <span class="label">What We Do</span>
+        <h2>Capabilities</h2>
       </div>
       <div class="services-grid">
-        <div class="service-card animate-on-scroll delay-1">
-          <div class="service-card-img">Gallery Space</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Paso Gallery</div>
-            <span class="service-card-tag">B2C</span>
-            <p class="service-card-desc">컬렉션을 시작하고 작가를 발굴합니다</p>
+        <div class="svc-col">
+          <div class="svc-item">
+            <span class="svc-brand">Paso Gallery</span>
+            <h3>Gallery Space</h3>
+            <p>컬렉션을 시작하고 작가를 발굴합니다. 신진 작가부터 블루칩까지, 큐레이션된 전시 프로그램을 운영합니다.</p>
+          </div>
+          <div class="svc-item">
+            <span class="svc-brand">Paso Agency</span>
+            <h3>Character IP & Artist Collab</h3>
+            <p>브랜드와 아티스트의 만남. 캐릭터 IP 개발, 플래그십 스토어 콜라보, 제품 가치 극대화.</p>
           </div>
         </div>
-        <div class="service-card animate-on-scroll delay-2">
-          <div class="service-card-img">Corporate Salon</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Paso Gallery</div>
-            <span class="service-card-tag">B2B</span>
-            <p class="service-card-desc">기업을 위한 문화살롱과 포럼을 개최합니다</p>
+        <div class="svc-col">
+          <div class="svc-item">
+            <span class="svc-brand">Artrader</span>
+            <h3>Trading & Data Analytics</h3>
+            <p>검증된 컬렉터들과의 안전한 거래. 옥션 데이터 기반 시장 분석으로 컬렉션의 진짜 가치를 봅니다.</p>
           </div>
-        </div>
-        <div class="service-card animate-on-scroll delay-3">
-          <div class="service-card-img">Character IP</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Paso Agency</div>
-            <span class="service-card-tag">B2B</span>
-            <p class="service-card-desc">협업 캐릭터 IP 가치 창출</p>
-          </div>
-        </div>
-        <div class="service-card animate-on-scroll delay-4">
-          <div class="service-card-img">Artist Collab</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Paso Agency</div>
-            <span class="service-card-tag">B2B</span>
-            <p class="service-card-desc">아티스트 콜라보로 제품 가치 극대화</p>
-          </div>
-        </div>
-        <div class="service-card animate-on-scroll delay-1">
-          <div class="service-card-img">Trading Platform</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Artrader</div>
-            <span class="service-card-tag">C2C</span>
-            <p class="service-card-desc">검증된 컬렉터들과 안전한 거래</p>
-          </div>
-        </div>
-        <div class="service-card animate-on-scroll delay-2">
-          <div class="service-card-img">Data Analytics</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Artrader</div>
-            <span class="service-card-tag">B2B</span>
-            <p class="service-card-desc">시장 데이터로 진단하는 내 컬렉션의 가치</p>
-          </div>
-        </div>
-        <div class="service-card animate-on-scroll delay-3">
-          <div class="service-card-img">Tax Strategy</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Artledger Consulting</div>
-            <span class="service-card-tag">B2B</span>
-            <p class="service-card-desc">법인 전략적 매입으로 절세와 투자를 동시에</p>
-          </div>
-        </div>
-        <div class="service-card animate-on-scroll delay-4">
-          <div class="service-card-img">Investment Advisory</div>
-          <div class="service-card-body">
-            <div class="service-card-brand">Artledger Consulting</div>
-            <span class="service-card-tag">B2C</span>
-            <p class="service-card-desc">업계 전문가들의 가격 구간별 투자 자문</p>
+          <div class="svc-item">
+            <span class="svc-brand">Artledger Consulting</span>
+            <h3>Tax Strategy & Advisory</h3>
+            <p>법인 전략적 매입으로 절세와 투자를 동시에. 업계 전문가들의 가격 구간별 맞춤 자문.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Art to Value -->
-  <section class="atv section">
-    <div class="container">
-      <div class="section-header-center animate-on-scroll">
-        <p class="section-eyebrow">Case Studies</p>
-        <h2 class="section-title">Art to Value</h2>
-      </div>
-      <p class="atv-subtitle animate-on-scroll">예술을 단순한 감상의 대상이 아니라,<br>실질적인 비즈니스 가치로 전환합니다.</p>
+  <!-- Case Study -->
+  <section class="cases">
+    <div class="wrap">
+      <span class="label">Case Studies</span>
+      <h2>Art to Value</h2>
+      <p class="cases-desc">예술을 단순한 감상의 대상이 아니라,<br>실질적인 비즈니스 가치로 전환합니다.</p>
 
-      <div class="atv-card animate-on-scroll">
-        <div class="atv-card-img">Artrader</div>
-        <div class="atv-card-body">
+      <div class="case-card">
+        <div class="case-visual">
+          <span>Artrader</span>
+        </div>
+        <div class="case-body">
           <h3>기업 컬렉션 정량 평가 및<br>신규 컬렉션 매입 자문</h3>
           <p>데이터 기반의 정밀한 분석을 통해 기업이 보유한 미술품 컬렉션의 가치를 정량적으로 평가하고, 전략적 매입을 위한 맞춤형 자문을 제공합니다.</p>
-          <div class="atv-btns">
-            <button class="btn-accent">Artrader 바로가기</button>
-            <button class="btn-ghost-sm">상세 보기</button>
-          </div>
+          <a href="artrader.html" class="case-link">자세히 보기 →</a>
         </div>
       </div>
 
-      <div class="atv-card animate-on-scroll">
-        <div class="atv-card-img" style="background: linear-gradient(135deg, #1a0c08 0%, #2a1810 50%, #0a0604 100%);">A TWOSOME PLACE</div>
-        <div class="atv-card-body">
+      <div class="case-card">
+        <div class="case-visual" style="background: linear-gradient(135deg, #1a0c08, #2a1810);">
+          <span>A TWOSOME PLACE</span>
+        </div>
+        <div class="case-body">
           <h3>플래그십 스토어 +<br>캐릭터 IP 출원</h3>
-          <p>브랜드의 플래그십 스토어에 아티스트 콜라보레이션을 통한 <strong>캐릭터 IP</strong> 개발 및 출원을 지원합니다. 예술적 가치와 브랜드 가치의 시너지를 창출합니다.</p>
-          <div class="atv-btns">
-            <button class="btn-accent">Paso Agency 바로가기</button>
-            <button class="btn-ghost-sm">상세 보기</button>
-          </div>
+          <p>브랜드의 플래그십 스토어에 아티스트 콜라보레이션을 통한 캐릭터 IP 개발 및 출원. 예술적 가치와 브랜드 가치의 시너지를 창출합니다.</p>
+          <a href="paso-agency.html" class="case-link">자세히 보기 →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-header-center animate-on-scroll">
-        <p class="section-eyebrow">Get in touch</p>
-        <h2 class="section-title">Contact</h2>
-      </div>
-      <form class="contact-form animate-on-scroll">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Inquiry Type</label>
-          <select required>
-            <option value="" disabled selected>Select inquiry type</option>
-            <option>일반 문의</option>
-            <option>갤러리 대관</option>
-            <option>아트 컨설팅</option>
-            <option>브랜드 콜라보</option>
-            <option>기타</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell us about your inquiry..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Submit</button>
-      </form>
+  <!-- Contact CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>Let's talk.</h2>
+      <p>프로젝트 문의, 갤러리 대관, 아트 컨설팅</p>
+      <a href="contact.html" class="cta-btn">Contact Us</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand">PASO Corporation</div>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="footer-logo">PASO Corporation</div>
           <div class="footer-info">
             <p>CEO. Min Sung Kim</p>
-            <p>Business License. 274-01-02305</p>
-            <p>E-MAIL. makim@pasogallery.com</p>
-            <p style="margin-top: 12px; opacity: 0.5;">Corporation 2025. 3Q</p>
+            <p>Biz. 274-01-02305</p>
+            <p>makim@pasogallery.com</p>
           </div>
         </div>
-        <div class="footer-location">
+        <div class="footer-col">
           <h4>Office</h4>
-          <p>72, Samseongyo-ro 23ga-gil,<br>Seongbuk-gu, Seoul<br>Interblue Building 1-3F</p>
+          <p>72, Samseongyo-ro 23ga-gil,<br>Seongbuk-gu, Seoul</p>
         </div>
-        <div class="footer-location">
+        <div class="footer-col">
           <h4>Gallery</h4>
           <p>92, Seonggyungwan-ro,<br>Jongno-gu, Seoul</p>
         </div>
+        <div class="footer-col">
+          <h4>Art Center</h4>
+          <p>66, Magokjungang 4-ro,<br>Gangseo-gu, Seoul 2F</p>
+        </div>
       </div>
       <div class="footer-bottom">
-        <p>Copyright © PASO Inc. 2025</p>
-        <div style="display: flex; gap: 24px;">
-          <a href="https://pasogallery.com">Paso Gallery</a>
-          <a href="#">Artrader</a>
-          <a href="#">Artledger</a>
+        <span>© PASO Inc. 2025</span>
+        <div class="footer-links">
+          <a href="https://pasogallery.com">Gallery</a>
+          <a href="artrader.html">Artrader</a>
+          <a href="artledger.html">Artledger</a>
         </div>
       </div>
     </div>
