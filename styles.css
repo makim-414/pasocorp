@@ -47,9 +47,9 @@ button { font-family: inherit; cursor: pointer; }
 
 .label {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 24px;
@@ -373,13 +373,14 @@ button { font-family: inherit; cursor: pointer; }
   flex-wrap: wrap;
 }
 .clients-logos img {
-  height: 28px;
+  height: 24px;
+  max-width: 140px;
   width: auto;
-  opacity: 0.5;
+  object-fit: contain;
+  opacity: 0.45;
   transition: opacity 0.3s;
-  filter: grayscale(100%);
 }
-.clients-logos img:hover { opacity: 0.8; }
+.clients-logos img:hover { opacity: 0.7; }
 .clients-logos span {
   font-size: 14px;
   font-weight: 600;
