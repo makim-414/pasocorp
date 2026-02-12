@@ -56,6 +56,14 @@
   .tools-used { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
   .tool-tag { font-size:10px; background:rgba(124,106,255,0.2); color:#a78bfa; padding:2px 8px; border-radius:10px; }
   
+  .url-buttons { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .url-btn { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:500; color:#a78bfa; background:rgba(124,106,255,0.12); border:1px solid rgba(124,106,255,0.25); padding:6px 14px; border-radius:8px; text-decoration:none; transition:all 0.2s; cursor:pointer; }
+  .url-btn:hover { background:rgba(124,106,255,0.25); color:#c4b5fd; }
+  .url-btn.green { color:#34d399; background:rgba(52,211,153,0.12); border-color:rgba(52,211,153,0.25); }
+  .url-btn.green:hover { background:rgba(52,211,153,0.25); color:#6ee7b7; }
+  .url-btn.yellow { color:#fbbf24; background:rgba(251,191,36,0.12); border-color:rgba(251,191,36,0.25); }
+  .url-btn.yellow:hover { background:rgba(251,191,36,0.25); color:#fcd34d; }
+  
   .progress-ring { position:relative; width:100px; height:100px; margin:0 auto; }
   .progress-circle { transform:rotate(-90deg); }
   .progress-track { fill:none; stroke:rgba(255,255,255,0.1); stroke-width:8; }
@@ -80,6 +88,11 @@
     
     <div class="card">
       <div class="card-title"><span class="emoji">📝</span> NordVPN 블로그</div>
+      <div class="url-buttons">
+        <a href="https://imsight3.wordpress.com" target="_blank" class="url-btn green">🌐 블로그</a>
+        <a href="https://affiliates.nordvpn.com/publisher/#!/dashboard" target="_blank" class="url-btn">📊 어필리에이트</a>
+        <a href="https://search.google.com/search-console" target="_blank" class="url-btn yellow">🔍 Search Console</a>
+      </div>
       <div class="stats-grid">
         <div class="stat">
           <div class="stat-number">107</div>
@@ -115,6 +128,11 @@
     
     <div class="card">
       <div class="card-title"><span class="emoji">🏢</span> PASO Corp 웹사이트</div>
+      <div class="url-buttons">
+        <a href="https://makim-414.github.io/pasocorp/" target="_blank" class="url-btn green">🌐 GitHub Pages</a>
+        <a href="https://github.com/makim-414/pasocorp" target="_blank" class="url-btn">📦 GitHub Repo</a>
+        <a href="https://satisfied-channels-140578.framer.app" target="_blank" class="url-btn yellow">🎨 Framer 원본</a>
+      </div>
       <div class="tasks">
         <div class="task">
           <div class="task-status status-done"></div>
@@ -141,6 +159,10 @@
     
     <div class="card">
       <div class="card-title"><span class="emoji">🎨</span> 파소아트센터</div>
+      <div class="url-buttons">
+        <a href="https://amazing-ones-964758.framer.app" target="_blank" class="url-btn green">🌐 Framer 원본</a>
+        <a href="https://www.instagram.com/pasoartcenter/" target="_blank" class="url-btn">📸 Instagram</a>
+      </div>
       <div class="tasks">
         <div class="task">
           <div class="task-status status-done"></div>
@@ -172,6 +194,10 @@
     
     <div class="card">
       <div class="card-title"><span class="emoji">🥃</span> 아트센터 이벤트</div>
+      <div class="url-buttons">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTuubQ5X46ygO7gqpi8W7d2R145wbQnya3GW7UtYGD9mad_A/viewform" target="_blank" class="url-btn green">📋 RSVP 폼</a>
+        <a href="https://docs.google.com/forms/d/1FxceH_IcvoLi_NV2bf62vFquTrpky93ekfBXSlt7GOw/edit" target="_blank" class="url-btn">✏️ 폼 편집</a>
+      </div>
       <div class="tasks">
         <div class="task">
           <div class="task-status status-waiting"></div>
@@ -198,6 +224,9 @@
     
     <div class="card">
       <div class="card-title"><span class="emoji">📢</span> 초대 전략</div>
+      <div class="url-buttons">
+        <a href="https://www.instagram.com/pasoartcenter/" target="_blank" class="url-btn">📸 아트센터 IG</a>
+      </div>
       <div class="tasks">
         <div class="task">
           <div class="task-status status-blocked"></div>
