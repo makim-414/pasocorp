@@ -305,10 +305,176 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
   .header { padding: 32px 24px 24px; }
   .stat-card { grid-column: span 6; }
 }
+
 @media (max-width: 768px) {
-  .stat-card { grid-column: span 12; }
-  .orb-section { justify-content: flex-start; }
-  .header-left .title { font-size: 28px; }
+  /* Header Mobile Optimization */
+  .header { 
+    padding: 20px 16px 16px;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .header-left .title { 
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+  .header-left h1 {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .header-right {
+    align-self: flex-end;
+    gap: 12px;
+  }
+  .header-time {
+    font-size: 11px;
+  }
+  
+  /* Grid Mobile Optimization */
+  .grid { 
+    padding: 0 16px 24px;
+    gap: 12px;
+  }
+  
+  /* All Cards to Single Column */
+  .stat-card,
+  .panel { 
+    grid-column: span 12 !important;
+  }
+  
+  /* Stat Cards Mobile */
+  .stat-card {
+    padding: 20px;
+  }
+  .stat-label {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+  .stat-sub {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+  
+  /* Panel Mobile */
+  .panel {
+    padding: 20px;
+  }
+  .panel-title {
+    font-size: 14px;
+  }
+  
+  /* Orb Section Mobile */
+  .orb-section { 
+    justify-content: flex-start;
+    padding: 20px 0;
+    gap: 16px;
+  }
+  .orb-card {
+    min-width: 120px;
+  }
+  .orb-ring {
+    width: 80px;
+    height: 80px;
+  }
+  .orb-inner {
+    font-size: 24px;
+    inset: 12px;
+  }
+  .orb-name {
+    font-size: 12px;
+  }
+  .orb-status {
+    font-size: 10px;
+  }
+  
+  /* Task Rows Mobile */
+  .task-row {
+    padding: 8px 0;
+    font-size: 12px;
+    gap: 10px;
+  }
+  .task-meta {
+    font-size: 10px;
+  }
+  
+  /* Account Grid Mobile */
+  .acct-grid {
+    grid-template-columns: 1fr;
+  }
+  .acct-item {
+    padding: 10px;
+    font-size: 11px;
+  }
+  .acct-name {
+    font-size: 11px;
+  }
+  .acct-handle {
+    font-size: 10px;
+  }
+  
+  /* Feed Mobile */
+  .feed-item {
+    font-size: 11px;
+    grid-template-columns: 40px 40px 1fr;
+    gap: 6px;
+  }
+  
+  /* Links Mobile */
+  .link-row {
+    font-size: 10px;
+    padding: 4px 8px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  
+  /* Panel Header Mobile */
+  .panel-header {
+    margin-bottom: 16px;
+  }
+  .panel-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
+
+/* Extra Small Mobile (375px and below) */
+@media (max-width: 375px) {
+  .header {
+    padding: 16px 12px 12px;
+  }
+  .header-left .title {
+    font-size: 24px;
+  }
+  .grid {
+    padding: 0 12px 20px;
+    gap: 10px;
+  }
+  .stat-card,
+  .panel {
+    padding: 16px;
+  }
+  .stat-value {
+    font-size: 24px;
+  }
+  .orb-section {
+    gap: 12px;
+    padding: 16px 0;
+  }
+  .orb-card {
+    min-width: 100px;
+  }
+  .orb-ring {
+    width: 70px;
+    height: 70px;
+  }
+  .orb-inner {
+    font-size: 20px;
+    inset: 10px;
+  }
 }
 </style>
 </head>
