@@ -7,14 +7,16 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <nav class="nav">
-    <div class="container">
-      <div class="nav-logo"><a href="index.html"><span class="paso">PASO</span><span class="corp">CORP</span></a></div>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">PASO <span>CORP</span></a>
       <div class="nav-links">
         <a href="about.html">About</a>
-        <div class="dropdown"><a href="#">Brands ▾</a>
-          <div class="dropdown-menu">
-            <a href="pasogallery.html">Paso Gallery</a>
+        <div class="nav-dropdown">
+          <a href="#">Brands</a>
+          <div class="nav-dropdown-menu">
+            <a href="pasogallery.html" style="color:var(--text);">Paso Gallery</a>
             <a href="paso-agency.html">Paso Agency</a>
             <a href="artrader.html">Artrader</a>
             <a href="artledger.html">Artledger Consulting</a>
@@ -23,29 +25,75 @@
         </div>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
     </div>
   </nav>
-  <div class="mobile-menu">
-    <a href="about.html">About</a><a href="pasogallery.html">Paso Gallery</a>
-    <a href="paso-agency.html">Paso Agency</a>
-            <a href="artrader.html">Artrader</a>
-            <a href="artledger.html">Artledger Consulting</a><a href="pasoartcenter.html">Paso Art Center</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <section class="brand-page" style="background: radial-gradient(circle at 50% 40%, rgba(124,106,255,0.08) 0%, transparent 60%);">
-    <div class="brand-page-content" style="animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1);">
-      <h1>Paso Gallery</h1>
-      <p>현대 미술의 새로운 가치를 발견하는 공간. 신진 작가 발굴부터 기업 문화 살롱까지.</p>
-      <a href="index.html" class="btn-back">← Back to PASO Corp</a>
+  <div class="mobile-overlay"><div class="mobile-nav">
+    <a href="about.html">About</a><a href="pasogallery.html">Paso Gallery</a><a href="paso-agency.html">Paso Agency</a>
+    <a href="artrader.html">Artrader</a><a href="artledger.html">Artledger Consulting</a><a href="pasoartcenter.html">Paso Art Center</a><a href="contact.html">Contact</a>
+  </div></div>
+
+  <header class="page-hero">
+    <div class="wrap">
+      <span class="label">Brand — 01</span>
+      <h1 class="page-hero-title">Paso<br>Gallery</h1>
+      <p class="page-hero-desc">현대 미술의 새로운 가치를 발견하는 공간.<br>신진 작가 발굴부터 기업 문화 살롱까지.</p>
+    </div>
+  </header>
+
+  <section class="brand-detail">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-sidebar">
+          <div class="detail-meta">
+            <div class="detail-meta-item"><span class="detail-label">설립</span><span>2021</span></div>
+            <div class="detail-meta-item"><span class="detail-label">위치</span><span>종로, 서울</span></div>
+            <div class="detail-meta-item"><span class="detail-label">웹사이트</span><a href="https://pasogallery.com" class="detail-link">pasogallery.com ↗</a></div>
+          </div>
+        </div>
+        <div class="detail-content">
+          <h2>예술의 가치를 재발견합니다</h2>
+          <p>Paso Gallery는 서울 종로에 위치한 현대 미술 갤러리입니다. 잠재력 있는 신진 작가를 발굴하고, 컬렉터와 작가 사이의 의미 있는 연결을 만들어갑니다.</p>
+          <p>기업 문화 살롱을 통해 비즈니스와 예술이 만나는 접점을 설계하고, 프라이빗 뷰잉부터 대규모 기획전까지 — 큐레이션된 경험을 제공합니다.</p>
+          
+          <div class="detail-features">
+            <div class="detail-feature">
+              <h4>기획전시</h4>
+              <p>테마별 큐레이션 전시 기획 및 운영. 신진 작가와 블루칩 작가의 균형 잡힌 프로그래밍.</p>
+            </div>
+            <div class="detail-feature">
+              <h4>기업 문화 살롱</h4>
+              <p>CEO/임원 대상 프라이빗 아트 다이닝. 컬렉션 시작을 위한 큐레이터 가이드 제공.</p>
+            </div>
+            <div class="detail-feature">
+              <h4>작가 매니지먼트</h4>
+              <p>신진 작가 발굴 및 성장 지원. 전시 기회, 컬렉터 네트워크, 해외 아트페어 참여.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>갤러리 대관 · 전시 문의</h2>
+      <p>기획전, 프라이빗 뷰잉, 기업 문화 살롱</p>
+      <a href="contact.html" class="cta-btn">문의하기</a>
+    </div>
+  </section>
+
   <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom" style="border: none; padding: 0;">
-        <p>Copyright © PASO Inc. 2025</p>
-        <div style="display: flex; gap: 24px;"><a href="index.html">Home</a><a href="contact.html">Contact</a></div>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-col"><div class="footer-logo">PASO Corporation</div><div class="footer-info"><p>CEO. Min Sung Kim</p><p>Biz. 274-01-02305</p><p>makim@pasogallery.com</p></div></div>
+        <div class="footer-col"><h4>Office</h4><p>72, Samseongyo-ro 23ga-gil,<br>Seongbuk-gu, Seoul</p></div>
+        <div class="footer-col"><h4>Gallery</h4><p>92, Seonggyungwan-ro,<br>Jongno-gu, Seoul</p></div>
+        <div class="footer-col"><h4>Art Center</h4><p>66, Magokjungang 4-ro,<br>Gangseo-gu, Seoul 2F</p></div>
       </div>
+      <div class="footer-bottom"><span>© PASO Inc. 2025</span><div class="footer-links"><a href="https://pasogallery.com">Gallery</a><a href="artrader.html">Artrader</a><a href="artledger.html">Artledger</a></div></div>
     </div>
   </footer>
   <script src="script.js"></script>

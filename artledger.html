@@ -7,45 +7,93 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <nav class="nav">
-    <div class="container">
-      <div class="nav-logo"><a href="index.html"><span class="paso">PASO</span><span class="corp">CORP</span></a></div>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">PASO <span>CORP</span></a>
       <div class="nav-links">
         <a href="about.html">About</a>
-        <div class="dropdown"><a href="#">Brands ▾</a>
-          <div class="dropdown-menu">
+        <div class="nav-dropdown">
+          <a href="#">Brands</a>
+          <div class="nav-dropdown-menu">
             <a href="pasogallery.html">Paso Gallery</a>
             <a href="paso-agency.html">Paso Agency</a>
             <a href="artrader.html">Artrader</a>
-            <a href="artledger.html">Artledger Consulting</a>
+            <a href="artledger.html" style="color:var(--text);">Artledger Consulting</a>
             <a href="pasoartcenter.html">Paso Art Center</a>
           </div>
         </div>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
     </div>
   </nav>
-  <div class="mobile-menu">
-    <a href="about.html">About</a><a href="artledger.html">Artledger Consulting</a>
-    <a href="paso-agency.html">Paso Agency</a>
-            <a href="artrader.html">Artrader</a>
-            <a href="artledger.html">Artledger Consulting</a><a href="pasoartcenter.html">Paso Art Center</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <section class="brand-page" style="background: radial-gradient(circle at 50% 40%, rgba(59,130,246,0.08) 0%, transparent 60%);">
-    <div class="brand-page-content" style="animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1);">
-      <h1>Artledger Consulting</h1>
-      <p>법인 미술품 매입, 절세, 투자 자문을 전문으로 하는 아트 컨설팅 브랜드.</p>
-      <a href="index.html" class="btn-back">← Back to PASO Corp</a>
+  <div class="mobile-overlay"><div class="mobile-nav">
+    <a href="about.html">About</a><a href="pasogallery.html">Paso Gallery</a><a href="paso-agency.html">Paso Agency</a>
+    <a href="artrader.html">Artrader</a><a href="artledger.html">Artledger Consulting</a><a href="pasoartcenter.html">Paso Art Center</a><a href="contact.html">Contact</a>
+  </div></div>
+
+  <header class="page-hero">
+    <div class="wrap">
+      <span class="label">Brand — 04</span>
+      <h1 class="page-hero-title">Artledger<br>Consulting</h1>
+      <p class="page-hero-desc">미술품 자문 · 절세 전략 · 법인 컬렉션 설계.<br>예술을 자산으로.</p>
+    </div>
+  </header>
+
+  <section class="brand-detail">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-sidebar">
+          <div class="detail-meta">
+            <div class="detail-meta-item"><span class="detail-label">설립</span><span>2023</span></div>
+            <div class="detail-meta-item"><span class="detail-label">분야</span><span>Art Advisory</span></div>
+            <div class="detail-meta-item"><span class="detail-label">주요 서비스</span><span>법인 컨설팅</span></div>
+          </div>
+        </div>
+        <div class="detail-content">
+          <h2>예술 자산의 전략적 설계</h2>
+          <p>Artledger Consulting은 미술품을 단순한 장식이 아닌, 전략적 자산으로 활용하기 위한 전문 자문 서비스입니다. 법인의 미술품 매입을 통한 절세 효과, 자산 가치 상승, 기업 이미지 제고까지 — 원스톱으로 자문합니다.</p>
+          <p>세무·법률 전문가와 미술 시장 분석가의 협업을 통해, 각 법인의 상황에 최적화된 컬렉션 전략을 수립합니다.</p>
+
+          <div class="detail-features">
+            <div class="detail-feature">
+              <h4>법인 미술품 절세 자문</h4>
+              <p>법인세법상 미술품 손금산입 요건 분석. 가격 구간별(1천만 원 이하/이상) 세무 전략 설계.</p>
+            </div>
+            <div class="detail-feature">
+              <h4>컬렉션 포트폴리오 설계</h4>
+              <p>기업 규모, 업종, 공간에 맞춘 맞춤형 컬렉션 설계. 자산 가치 상승과 인테리어 효과를 동시에.</p>
+            </div>
+            <div class="detail-feature">
+              <h4>기업 문화 프로그램</h4>
+              <p>임직원 대상 아트 교육, VIP 고객 초청 문화 살롱, 사내 갤러리 운영 자문.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>아트 투자 · 절세 상담</h2>
+      <p>법인 컬렉션, 미술품 자문, 기업 문화 프로그램</p>
+      <a href="contact.html" class="cta-btn">문의하기</a>
+    </div>
+  </section>
+
   <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom" style="border: none; padding: 0;">
-        <p>Copyright © PASO Inc. 2025</p>
-        <div style="display: flex; gap: 24px;"><a href="index.html">Home</a><a href="contact.html">Contact</a></div>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-col"><div class="footer-logo">PASO Corporation</div><div class="footer-info"><p>CEO. Min Sung Kim</p><p>Biz. 274-01-02305</p><p>makim@pasogallery.com</p></div></div>
+        <div class="footer-col"><h4>Office</h4><p>72, Samseongyo-ro 23ga-gil,<br>Seongbuk-gu, Seoul</p></div>
+        <div class="footer-col"><h4>Gallery</h4><p>92, Seonggyungwan-ro,<br>Jongno-gu, Seoul</p></div>
+        <div class="footer-col"><h4>Art Center</h4><p>66, Magokjungang 4-ro,<br>Gangseo-gu, Seoul 2F</p></div>
       </div>
+      <div class="footer-bottom"><span>© PASO Inc. 2025</span><div class="footer-links"><a href="https://pasogallery.com">Gallery</a><a href="artrader.html">Artrader</a><a href="artledger.html">Artledger</a></div></div>
     </div>
   </footer>
   <script src="script.js"></script>

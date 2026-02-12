@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <nav class="nav">
-    <div class="container">
-      <div class="nav-logo"><a href="index.html"><span class="paso">PASO</span><span class="corp">CORP</span></a></div>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">PASO <span>CORP</span></a>
       <div class="nav-links">
-        <a href="about.html" style="color: var(--white);">About</a>
-        <div class="dropdown"><a href="#">Brands ▾</a>
-          <div class="dropdown-menu">
+        <a href="about.html" style="color:var(--text);">About</a>
+        <div class="nav-dropdown">
+          <a href="#brands">Brands</a>
+          <div class="nav-dropdown-menu">
             <a href="pasogallery.html">Paso Gallery</a>
             <a href="paso-agency.html">Paso Agency</a>
             <a href="artrader.html">Artrader</a>
@@ -23,48 +25,136 @@
         </div>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
     </div>
   </nav>
-  <div class="mobile-menu">
-    <a href="about.html">About</a><a href="pasogallery.html">Paso Gallery</a>
-    <a href="paso-agency.html">Paso Agency</a>
-            <a href="artrader.html">Artrader</a>
-            <a href="artledger.html">Artledger Consulting</a><a href="pasoartcenter.html">Paso Art Center</a>
-    <a href="contact.html">Contact</a>
+
+  <div class="mobile-overlay">
+    <div class="mobile-nav">
+      <a href="about.html">About</a>
+      <a href="pasogallery.html">Paso Gallery</a>
+      <a href="paso-agency.html">Paso Agency</a>
+      <a href="artrader.html">Artrader</a>
+      <a href="artledger.html">Artledger Consulting</a>
+      <a href="pasoartcenter.html">Paso Art Center</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
 
-  <section class="about-hero">
-    <div class="about-hero-bg"></div>
-    <div class="about-hero-content">
-      <h1>PASO</h1>
-      <p>Precision-based Art Strategy & Operation</p>
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="hero-eyebrow">About PASO</p>
+      <h1 class="page-hero-title">Precision-based<br>Art Strategy &<br>Operation</h1>
+    </div>
+  </header>
+
+  <!-- About Content -->
+  <section class="about-section">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-col-label">
+          <span class="label">Who We Are</span>
+        </div>
+        <div class="about-col-text">
+          <p class="about-lead">예술의 감성적 가치와 비즈니스의 합리적 판단을 결합하여, 새로운 아트 비즈니스 모델을 만듭니다.</p>
+          <p>PASO Corporation은 2021년 Paso Gallery를 시작으로, 미술품 거래 플랫폼(Artrader), 아티스트 콜라보레이션(Paso Agency), 아트 투자 자문(Artledger Consulting), 복합 문화 공간(Paso Art Center)을 런칭하며 미술 시장의 전 영역을 아우르는 종합 아트 비즈니스 기업으로 성장하고 있습니다.</p>
+          <p>신진 작가 발굴, 컬렉터 육성, 기업 문화 살롱, 미술품 가치 평가 및 거래, 법인 컬렉션 컨설팅을 통해 — 예술을 단순한 감상의 대상이 아닌, 실질적인 비즈니스 가치로 전환하는 <em>"Art to Value"</em>를 실현합니다.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="about-content">
-    <p class="animate-on-scroll">PASO Corporation은 데이터 기반의 정밀한 예술 전략과 운영을 통해 미술 시장의 혁신을 추구하는 기업입니다. "Precision-based Art Strategy & Operation"이라는 이름이 상징하듯, 예술의 감성적 가치와 비즈니스의 합리적 판단을 결합하여 새로운 아트 비즈니스 모델을 제시합니다.</p>
-    <p class="animate-on-scroll">2021년 Paso Gallery를 시작으로, Artrader(미술품 거래 플랫폼), Paso Agency(아티스트 콜라보레이션), ArtLedger Consulting(아트 투자 자문) 등 다양한 브랜드를 런칭하며 미술 시장의 전 영역을 아우르는 종합 아트 비즈니스 기업으로 성장하고 있습니다.</p>
-    <p class="animate-on-scroll">파소는 신진 작가 발굴과 컬렉터 육성, 기업 문화 살롱 개최, 미술품 가치 평가 및 거래 플랫폼 운영, 법인 컬렉션 컨설팅 등을 통해 예술을 단순한 감상의 대상이 아닌, 실질적인 비즈니스 가치로 전환하는 "Art to Value"를 실현합니다.</p>
-    <p class="animate-on-scroll">서울 성북동에 위치한 Space by PASO와 강서구의 Paso Art Center를 거점으로, 온·오프라인을 아우르는 통합 아트 서비스를 제공합니다.</p>
-  </div>
+  <!-- Locations -->
+  <section class="locations-section">
+    <div class="wrap">
+      <span class="label">Our Spaces</span>
+      <div class="locations-grid">
+        <div class="location-card">
+          <h3>Space by PASO</h3>
+          <p class="location-area">성북동, 서울</p>
+          <p>72, Samseongyo-ro 23ga-gil, Seongbuk-gu<br>Interblue Building 1–3F</p>
+        </div>
+        <div class="location-card">
+          <h3>Paso Gallery</h3>
+          <p class="location-area">종로, 서울</p>
+          <p>92, Seonggyungwan-ro, Jongno-gu</p>
+        </div>
+        <div class="location-card">
+          <h3>Paso Art Center</h3>
+          <p class="location-area">마곡, 서울</p>
+          <p>66, Magokjungang 4-ro, Gangseo-gu 2F<br>with Mass C&G</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline-section">
+    <div class="wrap">
+      <span class="label">History</span>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">2021</span>
+          <div>
+            <h4>Paso Gallery 설립</h4>
+            <p>성북동에 첫 갤러리 오픈. 신진 작가 발굴 시작.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2022</span>
+          <div>
+            <h4>Paso Agency 런칭</h4>
+            <p>브랜드 × 아티스트 콜라보레이션, 캐릭터 IP 사업 시작.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2023</span>
+          <div>
+            <h4>Artrader · Artledger Consulting</h4>
+            <p>미술품 트레이딩 플랫폼 및 아트 투자 자문 서비스 출시.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2025</span>
+          <div>
+            <h4>Paso Art Center 오픈</h4>
+            <p>마곡에 복합 문화 공간 개관. 상설전시 및 프라이빗 이벤트 운영.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>Let's talk.</h2>
+      <p>프로젝트 문의, 갤러리 대관, 아트 컨설팅</p>
+      <a href="contact.html" class="cta-btn">Contact Us</a>
+    </div>
+  </section>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand">PASO Corporation</div>
-          <div class="footer-info"><p>CEO. Min Sung Kim</p><p>Business License. 274-01-02305</p><p>E-MAIL. makim@pasogallery.com</p></div>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="footer-logo">PASO Corporation</div>
+          <div class="footer-info"><p>CEO. Min Sung Kim</p><p>Biz. 274-01-02305</p><p>makim@pasogallery.com</p></div>
         </div>
-        <div class="footer-location"><h4>Office</h4><p>72, Samseongyo-ro 23ga-gil,<br>Seongbuk-gu, Seoul<br>Interblue Building 1-3F</p></div>
-        <div class="footer-location"><h4>Gallery</h4><p>92, Seonggyungwan-ro,<br>Jongno-gu, Seoul</p></div>
+        <div class="footer-col"><h4>Office</h4><p>72, Samseongyo-ro 23ga-gil,<br>Seongbuk-gu, Seoul</p></div>
+        <div class="footer-col"><h4>Gallery</h4><p>92, Seonggyungwan-ro,<br>Jongno-gu, Seoul</p></div>
+        <div class="footer-col"><h4>Art Center</h4><p>66, Magokjungang 4-ro,<br>Gangseo-gu, Seoul 2F</p></div>
       </div>
       <div class="footer-bottom">
-        <p>Copyright © PASO Inc. 2025</p>
-        <div style="display: flex; gap: 24px;"><a href="https://pasogallery.com">Paso Gallery</a><a href="#">Artrader</a></div>
+        <span>© PASO Inc. 2025</span>
+        <div class="footer-links"><a href="https://pasogallery.com">Gallery</a><a href="artrader.html">Artrader</a><a href="artledger.html">Artledger</a></div>
       </div>
     </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
