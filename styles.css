@@ -422,11 +422,14 @@ body::before {
   gap: 56px; flex-wrap: wrap;
 }
 .client-logo {
-  font-size: 14px; font-weight: 700;
-  color: var(--text-tertiary); letter-spacing: 1.5px;
-  transition: color 0.3s;
+  height: 32px; width: auto;
+  opacity: 0.4; filter: brightness(1);
+  transition: opacity 0.3s, filter 0.3s;
 }
-.client-logo:hover { color: var(--text-secondary); }
+.client-logo:hover { 
+  opacity: 0.7; 
+  filter: brightness(1.2);
+}
 
 /* ===== SERVICES ===== */
 .services {
