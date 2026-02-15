@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-02-15T13:34:00+09:00",
+  "timestamp": "2026-02-15T14:05:00+09:00",
   "currentSession": {
-    "used": 4,
-    "reset": "4시간 25분 후 재설정"
+    "used": 6,
+    "reset": "3시간 55분 후 재설정"
   },
   "weekly": {
     "used": 48,
-    "reset": "(수) 오후 2:59에 재설정"
+    "reset": "(수) 오후 3:00에 재설정"
   },
   "sonnet": {
     "used": 12,
