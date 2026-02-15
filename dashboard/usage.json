@@ -1,15 +1,18 @@
 {
-  "timestamp": "2026-02-15T16:35:00+09:00",
+  "timestamp": "2026-02-15T17:05:00+09:00",
+  "plan": "Max",
   "currentSession": {
-    "used": 19,
-    "reset": "1시간 24분 후 재설정"
+    "used": 24,
+    "reset": "54분 후 재설정"
   },
   "weekly": {
-    "used": 50,
-    "reset": "(수) 오후 3:00에 재설정"
-  },
-  "sonnet": {
-    "used": 14,
-    "reset": "(목) 오후 9:00에 재설정"
+    "allModels": {
+      "used": 51,
+      "reset": "(수) 오후 3:00에 재설정"
+    },
+    "sonnetOnly": {
+      "used": 14,
+      "reset": "(목) 오후 8:59에 재설정"
+    }
   }
 }
