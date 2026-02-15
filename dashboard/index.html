@@ -25,456 +25,134 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; }
 
-/* ===== HEADER ===== */
-.header {
-  padding: 48px 48px 32px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-.header-left h1 {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 8px;
-}
-.header-left .title {
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  background: linear-gradient(135deg, #fff 0%, #818cf8 50%, #22d3ee 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.header-right {
-  display: flex; align-items: center; gap: 16px;
-}
-.pulse-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--green);
-  animation: pulse 2s ease-in-out infinite;
-  box-shadow: 0 0 12px var(--green);
-}
+.header { padding: 48px 48px 32px; display: flex; align-items: flex-end; justify-content: space-between; }
+.header-left h1 { font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+.header-left .title { font-size: 42px; font-weight: 800; letter-spacing: -1.5px; background: linear-gradient(135deg, #fff 0%, #818cf8 50%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+.pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; box-shadow: 0 0 12px var(--green); }
 @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
 .header-status { font-size: 13px; color: var(--green); font-weight: 500; }
 .header-time { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
 
-/* ===== GRID ===== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
-  padding: 0 48px 48px;
-}
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; padding: 0 48px 48px; }
 
-/* ===== PROJECT ORBS ===== */
-.orb-section {
-  grid-column: span 12;
-  display: flex;
-  gap: 24px;
-  padding: 32px 0;
-  overflow-x: auto;
-  justify-content: center;
-}
-
-.orb-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  min-width: 160px;
-  cursor: default;
-}
-
-.orb-ring {
-  position: relative;
-  width: 100px;
-  height: 100px;
-}
-
-.orb-ring svg {
-  width: 100%; height: 100%;
-  transform: rotate(-90deg);
-}
-
+.orb-section { grid-column: span 12; display: flex; gap: 24px; padding: 32px 0; overflow-x: auto; justify-content: center; }
+.orb-card { display: flex; flex-direction: column; align-items: center; gap: 16px; min-width: 160px; cursor: default; }
+.orb-ring { position: relative; width: 100px; height: 100px; }
+.orb-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .orb-track { fill: none; stroke: var(--border); stroke-width: 3; }
 .orb-progress { fill: none; stroke-width: 3; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
-
-/* Active orb glow + spin */
-.orb-card.active .orb-inner {
-  animation: orb-glow 3s ease-in-out infinite;
-}
-.orb-card.active .orb-spinner {
-  animation: orb-spin 8s linear infinite;
-}
-
-/* Paused orb — static, dimmed */
+.orb-card.active .orb-inner { animation: orb-glow 3s ease-in-out infinite; }
+.orb-card.active .orb-spinner { animation: orb-spin 8s linear infinite; }
 .orb-card.paused .orb-inner { opacity: 0.4; }
 .orb-card.paused .orb-progress { opacity: 0.3; }
-
-.orb-inner {
-  position: absolute;
-  inset: 16px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  background: var(--card);
-  border: 1px solid var(--border);
-}
-
-.orb-spinner {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  border-top-color: var(--accent);
-}
-
-@keyframes orb-glow {
-  0%,100% { box-shadow: 0 0 20px rgba(129,140,248,0.15); }
-  50% { box-shadow: 0 0 40px rgba(129,140,248,0.3); }
-}
-@keyframes orb-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.orb-label {
-  text-align: center;
-}
-.orb-name {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-.orb-status {
-  font-size: 11px;
-  font-weight: 500;
-  font-family: 'JetBrains Mono', monospace;
-}
+.orb-inner { position: absolute; inset: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; background: var(--card); border: 1px solid var(--border); }
+.orb-spinner { position: absolute; inset: 0; border-radius: 50%; border: 1px solid transparent; border-top-color: var(--accent); }
+@keyframes orb-glow { 0%,100% { box-shadow: 0 0 20px rgba(129,140,248,0.15); } 50% { box-shadow: 0 0 40px rgba(129,140,248,0.3); } }
+@keyframes orb-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.orb-label { text-align: center; }
+.orb-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.orb-status { font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', monospace; }
 .orb-status.live { color: var(--green); }
 .orb-status.progress { color: var(--accent); }
 .orb-status.waiting { color: var(--amber); }
 .orb-status.paused { color: var(--muted); }
 
-/* ===== STAT CARDS ===== */
-.stat-card {
-  grid-column: span 3;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  position: relative;
-  overflow: hidden;
-}
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-}
+.stat-card { grid-column: span 3; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
 .stat-card.accent::before { background: linear-gradient(90deg, var(--accent), transparent); }
 .stat-card.green::before { background: linear-gradient(90deg, var(--green), transparent); }
 .stat-card.amber::before { background: linear-gradient(90deg, var(--amber), transparent); }
 .stat-card.cyan::before { background: linear-gradient(90deg, var(--cyan), transparent); }
-
 .stat-label { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 12px; }
 .stat-value { font-size: 36px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
 .stat-sub { font-size: 12px; color: var(--dim); margin-top: 8px; }
 .stat-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 12px; overflow: hidden; }
 .stat-bar-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
 
-/* ===== DETAIL PANELS ===== */
-.panel {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  overflow: hidden;
-}
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.panel-title {
-  font-size: 15px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.panel-badge {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+.panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; overflow: hidden; }
+.panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.panel-title { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.panel-badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
 .badge-live { background: rgba(52,211,153,0.12); color: var(--green); }
 .badge-wip { background: rgba(129,140,248,0.12); color: var(--accent); }
 .badge-wait { background: rgba(251,191,36,0.12); color: var(--amber); }
+.badge-done { background: rgba(52,211,153,0.12); color: var(--green); }
 
-/* Task rows */
-.task-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-  font-size: 13px;
-}
+.task-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 13px; }
 .task-row:last-child { border: none; }
-
-.task-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+.task-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .dot-done { background: var(--green); }
 .dot-wip { background: var(--accent); animation: pulse 2s infinite; }
 .dot-wait { background: var(--amber); }
 .dot-block { background: var(--red); }
-
 .task-label { flex: 1; color: var(--text); line-height: 1.4; }
 .task-meta { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
 
-/* Links */
-.link-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--accent);
-  background: rgba(129,140,248,0.08);
-  border: 1px solid rgba(129,140,248,0.15);
-  padding: 5px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.2s;
-  margin-right: 6px;
-  margin-bottom: 6px;
-}
+.link-row { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--accent); background: rgba(129,140,248,0.08); border: 1px solid rgba(129,140,248,0.15); padding: 5px 12px; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-right: 6px; margin-bottom: 6px; }
 .link-row:hover { background: rgba(129,140,248,0.16); }
 .link-row.green { color: var(--green); background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.15); }
 
-/* Activity feed */
-.feed-item {
-  display: grid;
-  grid-template-columns: 48px 48px 1fr;
-  gap: 8px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-  font-size: 12px;
-  align-items: start;
-}
+.feed-item { display: grid; grid-template-columns: 48px 48px 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 12px; align-items: start; }
 .feed-time { color: var(--muted); font-family: 'JetBrains Mono', monospace; }
 .feed-user { font-weight: 600; }
 .feed-user.mark { color: var(--amber); }
 .feed-user.m2 { color: var(--accent); }
 .feed-text { color: var(--dim); line-height: 1.4; }
 
-/* Accounts */
-.acct-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.acct-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: rgba(255,255,255,0.02);
-  border-radius: 8px;
-  font-size: 12px;
-}
+.acct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.acct-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px; font-size: 12px; }
 .acct-icon { font-size: 16px; }
 .acct-name { font-weight: 600; font-size: 12px; }
 .acct-handle { color: var(--dim); font-size: 11px; }
 .acct-status { margin-left: auto; width: 6px; height: 6px; border-radius: 50%; }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 1200px) {
   .grid { padding: 0 24px 24px; }
   .header { padding: 32px 24px 24px; }
   .stat-card { grid-column: span 6; }
 }
-
 @media (max-width: 768px) {
-  /* Header Mobile Optimization */
-  .header { 
-    padding: 20px 16px 16px;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .header-left .title { 
-    font-size: 28px;
-    letter-spacing: -1px;
-  }
-  .header-left h1 {
-    font-size: 12px;
-    margin-bottom: 4px;
-  }
-  .header-right {
-    align-self: flex-end;
-    gap: 12px;
-  }
-  .header-time {
-    font-size: 11px;
-  }
-  
-  /* Grid Mobile Optimization */
-  .grid { 
-    padding: 0 16px 24px;
-    gap: 12px;
-  }
-  
-  /* All Cards to Single Column */
-  .stat-card,
-  .panel { 
-    grid-column: span 12 !important;
-  }
-  
-  /* Stat Cards Mobile */
-  .stat-card {
-    padding: 20px;
-  }
-  .stat-label {
-    font-size: 10px;
-    margin-bottom: 8px;
-  }
-  .stat-value {
-    font-size: 28px;
-    letter-spacing: -0.5px;
-  }
-  .stat-sub {
-    font-size: 11px;
-    margin-top: 6px;
-  }
-  
-  /* Panel Mobile */
-  .panel {
-    padding: 20px;
-  }
-  .panel-title {
-    font-size: 14px;
-  }
-  
-  /* Orb Section Mobile */
-  .orb-section { 
-    justify-content: flex-start;
-    padding: 20px 0;
-    gap: 16px;
-  }
-  .orb-card {
-    min-width: 120px;
-  }
-  .orb-ring {
-    width: 80px;
-    height: 80px;
-  }
-  .orb-inner {
-    font-size: 24px;
-    inset: 12px;
-  }
-  .orb-name {
-    font-size: 12px;
-  }
-  .orb-status {
-    font-size: 10px;
-  }
-  
-  /* Task Rows Mobile */
-  .task-row {
-    padding: 8px 0;
-    font-size: 12px;
-    gap: 10px;
-  }
-  .task-meta {
-    font-size: 10px;
-  }
-  
-  /* Account Grid Mobile */
-  .acct-grid {
-    grid-template-columns: 1fr;
-  }
-  .acct-item {
-    padding: 10px;
-    font-size: 11px;
-  }
-  .acct-name {
-    font-size: 11px;
-  }
-  .acct-handle {
-    font-size: 10px;
-  }
-  
-  /* Feed Mobile */
-  .feed-item {
-    font-size: 11px;
-    grid-template-columns: 40px 40px 1fr;
-    gap: 6px;
-  }
-  
-  /* Links Mobile */
-  .link-row {
-    font-size: 10px;
-    padding: 4px 8px;
-    margin-right: 4px;
-    margin-bottom: 4px;
-  }
-  
-  /* Panel Header Mobile */
-  .panel-header {
-    margin-bottom: 16px;
-  }
-  .panel-badge {
-    font-size: 9px;
-    padding: 2px 6px;
-  }
+  .header { padding: 20px 16px 16px; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .header-left .title { font-size: 28px; letter-spacing: -1px; }
+  .header-left h1 { font-size: 12px; margin-bottom: 4px; }
+  .header-right { align-self: flex-end; gap: 12px; }
+  .header-time { font-size: 11px; }
+  .grid { padding: 0 16px 24px; gap: 12px; }
+  .stat-card, .panel { grid-column: span 12 !important; }
+  .stat-card { padding: 20px; }
+  .stat-label { font-size: 10px; margin-bottom: 8px; }
+  .stat-value { font-size: 28px; letter-spacing: -0.5px; }
+  .stat-sub { font-size: 11px; margin-top: 6px; }
+  .panel { padding: 20px; }
+  .panel-title { font-size: 14px; }
+  .orb-section { justify-content: flex-start; padding: 20px 0; gap: 16px; }
+  .orb-card { min-width: 120px; }
+  .orb-ring { width: 80px; height: 80px; }
+  .orb-inner { font-size: 24px; inset: 12px; }
+  .orb-name { font-size: 12px; }
+  .orb-status { font-size: 10px; }
+  .task-row { padding: 8px 0; font-size: 12px; gap: 10px; }
+  .task-meta { font-size: 10px; }
+  .acct-grid { grid-template-columns: 1fr; }
+  .acct-item { padding: 10px; font-size: 11px; }
+  .acct-name { font-size: 11px; }
+  .acct-handle { font-size: 10px; }
+  .feed-item { font-size: 11px; grid-template-columns: 40px 40px 1fr; gap: 6px; }
+  .link-row { font-size: 10px; padding: 4px 8px; margin-right: 4px; margin-bottom: 4px; }
+  .panel-header { margin-bottom: 16px; }
+  .panel-badge { font-size: 9px; padding: 2px 6px; }
 }
-
-/* Extra Small Mobile (375px and below) */
 @media (max-width: 375px) {
-  .header {
-    padding: 16px 12px 12px;
-  }
-  .header-left .title {
-    font-size: 24px;
-  }
-  .grid {
-    padding: 0 12px 20px;
-    gap: 10px;
-  }
-  .stat-card,
-  .panel {
-    padding: 16px;
-  }
-  .stat-value {
-    font-size: 24px;
-  }
-  .orb-section {
-    gap: 12px;
-    padding: 16px 0;
-  }
-  .orb-card {
-    min-width: 100px;
-  }
-  .orb-ring {
-    width: 70px;
-    height: 70px;
-  }
-  .orb-inner {
-    font-size: 20px;
-    inset: 10px;
-  }
+  .header { padding: 16px 12px 12px; }
+  .header-left .title { font-size: 24px; }
+  .grid { padding: 0 12px 20px; gap: 10px; }
+  .stat-card, .panel { padding: 16px; }
+  .stat-value { font-size: 24px; }
+  .orb-section { gap: 12px; padding: 16px 0; }
+  .orb-card { min-width: 100px; }
+  .orb-ring { width: 70px; height: 70px; }
+  .orb-inner { font-size: 20px; inset: 10px; }
 }
 </style>
 </head>
@@ -492,22 +170,21 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
   </div>
 </div>
 
-<!-- PROJECT ORBS -->
 <div class="grid">
   <div class="orb-section">
-    
+
     <div class="orb-card active">
       <div class="orb-ring">
         <svg viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="44" class="orb-track"/>
-          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--green)" stroke-dasharray="276.5" stroke-dashoffset="55"/>
+          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--green)" stroke-dasharray="276.5" stroke-dashoffset="0"/>
         </svg>
         <div class="orb-spinner"></div>
         <div class="orb-inner">📝</div>
       </div>
       <div class="orb-label">
         <div class="orb-name">NordVPN 블로그</div>
-        <div class="orb-status live">86 PUBLISHED</div>
+        <div class="orb-status live">107+ PUBLISHED</div>
       </div>
     </div>
 
@@ -530,14 +207,43 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
       <div class="orb-ring">
         <svg viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="44" class="orb-track"/>
-          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--amber)" stroke-dasharray="276.5" stroke-dashoffset="138"/>
+          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--amber)" stroke-dasharray="276.5" stroke-dashoffset="83"/>
         </svg>
         <div class="orb-spinner"></div>
         <div class="orb-inner">🥃</div>
       </div>
       <div class="orb-label">
         <div class="orb-name">아트센터 이벤트</div>
-        <div class="orb-status waiting">D-7 · D-15</div>
+        <div class="orb-status waiting" id="dday">D-5 · D-13</div>
+      </div>
+    </div>
+
+    <div class="orb-card active">
+      <div class="orb-ring">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="44" class="orb-track"/>
+          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--green)" stroke-dasharray="276.5" stroke-dashoffset="0"/>
+        </svg>
+        <div class="orb-spinner" style="border-top-color:var(--green);"></div>
+        <div class="orb-inner">📢</div>
+      </div>
+      <div class="orb-label">
+        <div class="orb-name">DM 캠페인</div>
+        <div class="orb-status live">COMPLETE ✓</div>
+      </div>
+    </div>
+
+    <div class="orb-card paused">
+      <div class="orb-ring">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="44" class="orb-track"/>
+          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--red)" stroke-dasharray="276.5" stroke-dashoffset="207"/>
+        </svg>
+        <div class="orb-inner">🔑</div>
+      </div>
+      <div class="orb-label">
+        <div class="orb-name">Nick 계정</div>
+        <div class="orb-status" style="color:var(--red);">DELETE 2/16</div>
       </div>
     </div>
 
@@ -548,39 +254,11 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
           <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--cyan)" stroke-dasharray="276.5" stroke-dashoffset="138"/>
         </svg>
         <div class="orb-spinner" style="border-top-color:var(--cyan);"></div>
-        <div class="orb-inner">📢</div>
+        <div class="orb-inner">🖥️</div>
       </div>
       <div class="orb-label">
-        <div class="orb-name">DM 캠페인</div>
-        <div class="orb-status live">21/21 COMPLETE</div>
-      </div>
-    </div>
-
-    <div class="orb-card paused">
-      <div class="orb-ring">
-        <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="44" class="orb-track"/>
-          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--dim)" stroke-dasharray="276.5" stroke-dashoffset="207"/>
-        </svg>
-        <div class="orb-inner">🔑</div>
-      </div>
-      <div class="orb-label">
-        <div class="orb-name">Nick 계정</div>
-        <div class="orb-status paused">PENDING</div>
-      </div>
-    </div>
-
-    <div class="orb-card paused">
-      <div class="orb-ring">
-        <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="44" class="orb-track"/>
-          <circle cx="50" cy="50" r="44" class="orb-progress" stroke="var(--dim)" stroke-dasharray="276.5" stroke-dashoffset="248"/>
-        </svg>
-        <div class="orb-inner">🚀</div>
-      </div>
-      <div class="orb-label">
-        <div class="orb-name">프로모션</div>
-        <div class="orb-status paused">PLANNED</div>
+        <div class="orb-name">Samsung 제안</div>
+        <div class="orb-status progress">DRAFT READY</div>
       </div>
     </div>
 
@@ -589,9 +267,9 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
   <!-- STAT CARDS -->
   <div class="stat-card accent">
     <div class="stat-label">Blog Posts</div>
-    <div class="stat-value">86</div>
-    <div class="stat-sub">+10 ready · 24 dupes removed</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:86%; background:var(--accent);"></div></div>
+    <div class="stat-value">107+</div>
+    <div class="stat-sub">Posts 61-70 완료 · HTML 템플릿 적용</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:100%; background:var(--accent);"></div></div>
   </div>
   <div class="stat-card green">
     <div class="stat-label">Affiliate Clicks (7d)</div>
@@ -599,17 +277,17 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
     <div class="stat-sub">0 conversions · aff_id 140135</div>
     <div class="stat-bar"><div class="stat-bar-fill" style="width:25%; background:var(--green);"></div></div>
   </div>
-  <div class="stat-card green">
-    <div class="stat-label">DM Campaign</div>
-    <div class="stat-value">21<span style="font-size:18px;color:var(--dim);">/21</span></div>
-    <div class="stat-sub">캠페인 완료</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:100%; background:var(--green);"></div></div>
-  </div>
-  <div class="stat-card cyan">
-    <div class="stat-label">Events</div>
+  <div class="stat-card amber">
+    <div class="stat-label">이벤트 RSVP</div>
     <div class="stat-value" style="font-size:24px;">2/20 · 2/28</div>
     <div class="stat-sub">프리뷰 7:30PM · 인사이트 3PM</div>
-    <div class="stat-bar"><div class="stat-bar-fill" style="width:50%; background:var(--cyan);"></div></div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:50%; background:var(--amber);"></div></div>
+  </div>
+  <div class="stat-card cyan">
+    <div class="stat-label">로컬 홍보</div>
+    <div class="stat-value" style="font-size:20px;">당근 ✓ 카톡 ⏳</div>
+    <div class="stat-sub">동네소식 + 모임 완료 · 오픈채팅 진행중</div>
+    <div class="stat-bar"><div class="stat-bar-fill" style="width:60%; background:var(--cyan);"></div></div>
   </div>
 
   <!-- Day to Day Tasks -->
@@ -617,10 +295,18 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
     <div class="panel-header">
       <div class="panel-title">📋 Day to Day Tasks</div>
     </div>
+    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">인스타 DM 리마인드 — RSVP 링크 재발송 (15곳)</div><div class="task-meta">today</div></div>
+    <div class="task-row"><div class="task-dot dot-block"></div><div class="task-label">nick.oh@ironact.net 삭제 전 X/Medium 이메일 변경</div><div class="task-meta">⚠️ 2/16</div></div>
+    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">카카오 오픈채팅 마곡 주민방 찾기 + 홍보</div><div class="task-meta">—</div></div>
+    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">2/28 연사 확정</div><div class="task-meta">—</div></div>
+    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">Samsung Spatial Signage 제안서 리뷰 → B2B 컨택</div><div class="task-meta">—</div></div>
+    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">네이버 플레이스 장소 등록 (사업자 없이 가능)</div><div class="task-meta">—</div></div>
     <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">모다피닐 구매</div><div class="task-meta">—</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">도메인 1년 연장 비용</div><div class="task-meta">done</div></div>
-    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">GEO Report Ready</div><div class="task-meta">—</div></div>
-    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">캐리어 뜯어서 에어팟 세팅</div><div class="task-meta">—</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">당근마켓 동네소식 게시</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">당근 모임 "마곡 아트살롱" 개설</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Google Form RSVP 생성</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">도메인 1년 연장</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">캐리어 뜯어서 에어팟 세팅</div><div class="task-meta">done</div></div>
   </div>
 
   <!-- LEFT: Blog + PASO Corp -->
@@ -634,11 +320,12 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
       <a href="https://affiliates.nordvpn.com" target="_blank" class="link-row">📊 어필리에이트</a>
       <a href="https://search.google.com/search-console" target="_blank" class="link-row">🔍 GSC</a>
     </div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">"Blog Post" prefix 13개 수정</div><div class="task-meta">02:05</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">YAML frontmatter 8개 제거</div><div class="task-meta">02:10</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">중복 글 24개 정리 (110→86)</div><div class="task-meta">02:10</div></div>
-    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">posts 51-60 발행 대기</div><div class="task-meta">ready</div></div>
-    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">네이버 Search Advisor 등록</div><div class="task-meta">—</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">사이트 라이브 전환 (Coming Soon 해제)</div><div class="task-meta">2/14</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">HTML 템플릿 적용 — 품질 업그레이드</div><div class="task-meta">2/14</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Posts 51-60 이메일 발행</div><div class="task-meta">2/14</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Posts 61-70 완료</div><div class="task-meta">2/15</div></div>
+    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">나머지 포스트 HTML 변환 계속</div><div class="task-meta">진행중</div></div>
+    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">키워드 리서치 확장</div><div class="task-meta">—</div></div>
   </div>
 
   <div class="panel" style="grid-column: span 4;">
@@ -650,112 +337,54 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
       <a href="https://makim-414.github.io/pasocorp/" target="_blank" class="link-row green">🌐 GitHub Pages</a>
       <a href="https://github.com/makim-414/pasocorp" target="_blank" class="link-row">📦 Repo</a>
     </div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">에디토리얼 리디자인 완료</div><div class="task-meta">01:00</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">클라이언트 로고 9개 적용</div><div class="task-meta">01:10</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">서브페이지 7개 전면 리디자인</div><div class="task-meta">02:15</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Artrader → artrader.io 외부 링크</div><div class="task-meta">02:00</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Apolaris 삭제 완료</div><div class="task-meta">01:50</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">에디토리얼 리디자인 완료</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">클라이언트 로고 9개 적용</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">서브페이지 7개 전면 리디자인</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Apolaris 삭제 완료</div><div class="task-meta">done</div></div>
     <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">pasocorp.com DNS 연결</div><div class="task-meta">—</div></div>
   </div>
 
   <div class="panel" style="grid-column: span 4;">
     <div class="panel-header">
-      <div class="panel-title">📢 DM 캠페인</div>
-      <span class="panel-badge badge-wip">In Progress</span>
+      <div class="panel-title">🥃 이벤트 & 홍보</div>
+      <span class="panel-badge badge-wip">D-5</span>
     </div>
     <div style="margin-bottom:16px;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTuubQ5X46ygO7gqpi8W7d2R145wbQnya3GW7UtYGD9mad_A/viewform" target="_blank" class="link-row green">📋 RSVP 폼</a>
       <a href="https://www.instagram.com/pasoartcenter/" target="_blank" class="link-row">📸 @pasoartcenter</a>
     </div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Mark 직접 5곳 DM</div><div class="task-meta">2/12</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Mark2 1차 3곳</div><div class="task-meta">2/12</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Mark2 2차 6곳</div><div class="task-meta">2/13 00h</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">3차 5곳 발송 완료</div><div class="task-meta">2/13 07h</div></div>
-    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">@easydentalclinic_hwagok 1곳 남음</div><div class="task-meta">진행중</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label"><b>2/20(금)</b> 7:30PM 프리뷰</div><div class="task-meta">확정</div></div>
+    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label"><b>2/28(토)</b> 3PM 인사이트 — 연사 미정</div><div class="task-meta">⚠️</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">인스타 DM 15곳 완료</div><div class="task-meta">2/12-13</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">당근마켓 동네소식 게시</div><div class="task-meta">2/15</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">당근 모임 "마곡 아트살롱" 개설</div><div class="task-meta">2/15</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Google Form RSVP 생성</div><div class="task-meta">2/15</div></div>
+    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">인스타 리마인드 DM (RSVP 링크)</div><div class="task-meta">진행중</div></div>
+    <div class="task-row"><div class="task-dot dot-wip"></div><div class="task-label">카카오 오픈채팅 홍보</div><div class="task-meta">진행중</div></div>
   </div>
 
   <!-- BOTTOM ROW -->
   <div class="panel" style="grid-column: span 4;">
     <div class="panel-header">
-      <div class="panel-title">🥃 이벤트</div>
-      <span class="panel-badge badge-live">확정</span>
+      <div class="panel-title">🔑 Nick 계정</div>
+      <span class="panel-badge" style="background:rgba(248,113,113,0.12);color:var(--red);">⚠️ 2/16 삭제</span>
     </div>
-    <div style="margin-bottom:16px;">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTuubQ5X46ygO7gqpi8W7d2R145wbQnya3GW7UtYGD9mad_A/viewform" target="_blank" class="link-row green">📋 RSVP</a>
-    </div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label"><b>2/20(금)</b> 7:30PM 프리뷰</div><div class="task-meta">D-7</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label"><b>2/28(토)</b> 3PM 인사이트</div><div class="task-meta">D-15</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">병원 41곳 조사 완료</div><div class="task-meta">done</div></div>
-    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">초대장 3버전 + Google Form</div><div class="task-meta">done</div></div>
-    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">관리사무소 이메일 발송</div><div class="task-meta">대기</div></div>
-    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">네이버 카페 포스팅</div><div class="task-meta">대기</div></div>
+    <div class="task-row"><div class="task-dot dot-block"></div><div class="task-label"><b>X (Twitter)</b> — 구글 로그인 의존, 비번 불확실</div><div class="task-meta">⚠️ 이메일 변경</div></div>
+    <div class="task-row"><div class="task-dot dot-block"></div><div class="task-label"><b>Medium</b> — magic link only, 비번 없음</div><div class="task-meta">⚠️ 비번 설정</div></div>
+    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label"><b>Reddit</b> — 비번 있음, 이메일 변경 필요</div><div class="task-meta">OK</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">Quora, Pinterest, TikTok — 미가입</div><div class="task-meta">영향 없음</div></div>
   </div>
 
   <div class="panel" style="grid-column: span 4;">
     <div class="panel-header">
-      <div class="panel-title">🔑 소유 계정</div>
+      <div class="panel-title">🖥️ Samsung Spatial Signage</div>
+      <span class="panel-badge badge-wip">Draft</span>
     </div>
-    <div class="acct-grid">
-      <div class="acct-item">
-        <span class="acct-icon">📸</span>
-        <div><div class="acct-name">Instagram</div><div class="acct-handle">@pasoartcenter</div></div>
-        <div class="acct-status" style="background:var(--green);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">📧</span>
-        <div><div class="acct-name">Google (Nick)</div><div class="acct-handle">nick.oh@ironact.net</div></div>
-        <div class="acct-status" style="background:var(--green);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">🐦</span>
-        <div><div class="acct-name">X (Twitter)</div><div class="acct-handle">이미 가입됨</div></div>
-        <div class="acct-status" style="background:var(--green);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">📝</span>
-        <div><div class="acct-name">Medium</div><div class="acct-handle">인증 코드 대기</div></div>
-        <div class="acct-status" style="background:var(--amber);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">🤖</span>
-        <div><div class="acct-name">Reddit</div><div class="acct-handle">CAPTCHA 필요</div></div>
-        <div class="acct-status" style="background:var(--red);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">❓</span>
-        <div><div class="acct-name">Quora</div><div class="acct-handle">가입 예정</div></div>
-        <div class="acct-status" style="background:var(--muted);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">📌</span>
-        <div><div class="acct-name">Pinterest</div><div class="acct-handle">가입 예정</div></div>
-        <div class="acct-status" style="background:var(--muted);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">🎵</span>
-        <div><div class="acct-name">TikTok</div><div class="acct-handle">가입 예정</div></div>
-        <div class="acct-status" style="background:var(--muted);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">💻</span>
-        <div><div class="acct-name">GitHub</div><div class="acct-handle">makim-414</div></div>
-        <div class="acct-status" style="background:var(--green);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">📰</span>
-        <div><div class="acct-name">WordPress</div><div class="acct-handle">imsight3</div></div>
-        <div class="acct-status" style="background:var(--green);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">🛡️</span>
-        <div><div class="acct-name">NordVPN Aff</div><div class="acct-handle">aff_id 140135</div></div>
-        <div class="acct-status" style="background:var(--green);"></div>
-      </div>
-      <div class="acct-item">
-        <span class="acct-icon">📧</span>
-        <div><div class="acct-name">Google (Main)</div><div class="acct-handle">makim@ironact.net</div></div>
-        <div class="acct-status" style="background:var(--green);"></div>
-      </div>
-    </div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">CES 2026 리서치 완료</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-done"></div><div class="task-label">협찬 제안서 초안 작성</div><div class="task-meta">done</div></div>
+    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">Mark 리뷰 & 수정</div><div class="task-meta">대기</div></div>
+    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">삼성 B2B 컨택처 확인</div><div class="task-meta">—</div></div>
+    <div class="task-row"><div class="task-dot dot-wait"></div><div class="task-label">제안서 발송</div><div class="task-meta">—</div></div>
   </div>
 
   <div class="panel" style="grid-column: span 4;">
@@ -763,22 +392,20 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
       <div class="panel-title">💬 Activity</div>
     </div>
     <div style="max-height:360px; overflow-y:auto;">
-      <div class="feed-item"><div class="feed-time">07:37</div><div class="feed-user m2">M2</div><div class="feed-text">DM 3차 5곳 발송 (총 20/21)</div></div>
-      <div class="feed-item"><div class="feed-time">07:36</div><div class="feed-user mark">Mark</div><div class="feed-text">추가 DM 다 쏴</div></div>
-      <div class="feed-item"><div class="feed-time">02:15</div><div class="feed-user m2">M2</div><div class="feed-text">서브페이지 7개 에디토리얼 리디자인 + push</div></div>
-      <div class="feed-item"><div class="feed-time">02:10</div><div class="feed-user m2">M2</div><div class="feed-text">WordPress 중복 24개 정리, YAML 8개 수정</div></div>
-      <div class="feed-item"><div class="feed-time">02:05</div><div class="feed-user m2">M2</div><div class="feed-text">"Blog Post" prefix 13개 일괄 제거</div></div>
-      <div class="feed-item"><div class="feed-time">02:00</div><div class="feed-user mark">Mark</div><div class="feed-text">Artrader는 artrader.io로 외부 링크</div></div>
-      <div class="feed-item"><div class="feed-time">01:50</div><div class="feed-user m2">M2</div><div class="feed-text">Apolaris 삭제 + nav 중복 수정</div></div>
-      <div class="feed-item"><div class="feed-time">00:30</div><div class="feed-user m2">M2</div><div class="feed-text">PASO Corp 에디토리얼 리디자인</div></div>
-      <div class="feed-item"><div class="feed-time">00:15</div><div class="feed-user m2">M2</div><div class="feed-text">Instagram DM 2차 6곳 발송 (총 15)</div></div>
+      <div class="feed-item"><div class="feed-time">18:50</div><div class="feed-user mark">Mark</div><div class="feed-text">맘카페 드랍, 카카오 오픈채팅으로 전환</div></div>
+      <div class="feed-item"><div class="feed-time">18:44</div><div class="feed-user mark">Mark</div><div class="feed-text">로컬 홍보 플랫폼 추가 리서치 요청</div></div>
+      <div class="feed-item"><div class="feed-time">17:52</div><div class="feed-user mark">Mark</div><div class="feed-text">RSVP 폼 관심분야 문구 수정 (학습→컬렉팅, 데이터분석→인사이트)</div></div>
+      <div class="feed-item"><div class="feed-time">17:46</div><div class="feed-user mark">Mark</div><div class="feed-text">Google Form RSVP 생성 완료 + 권한 수정</div></div>
+      <div class="feed-item"><div class="feed-time">17:07</div><div class="feed-user m2">M2</div><div class="feed-text">NordVPN Posts 61-70 완료</div></div>
+      <div class="feed-item"><div class="feed-time">16:56</div><div class="feed-user mark">Mark</div><div class="feed-text">당근 동네소식 + 당근 모임 완료</div></div>
+      <div class="feed-item"><div class="feed-time">—</div><div class="feed-user m2">M2</div><div class="feed-text">Claude Usage 위젯 + cron 설정</div></div>
+      <div class="feed-item"><div class="feed-time">—</div><div class="feed-user m2">M2</div><div class="feed-text">Samsung Spatial Signage 제안서 초안</div></div>
     </div>
   </div>
 
 </div>
 
 <script>
-// Clock
 function updateClock() {
   const now = new Date();
   document.getElementById('clock').textContent = now.toLocaleString('ko-KR', {timeZone:'Asia/Seoul', hour:'2-digit', minute:'2-digit', second:'2-digit'});
@@ -786,8 +413,19 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// D-day counter update
-const events = [{date:'2026-02-20', label:'D'}, {date:'2026-02-28', label:'D'}];
+// D-day auto-update
+function updateDday() {
+  const now = new Date();
+  const kst = new Date(now.toLocaleString('en-US', {timeZone:'Asia/Seoul'}));
+  const today = new Date(kst.getFullYear(), kst.getMonth(), kst.getDate());
+  const e1 = new Date(2026, 1, 20);
+  const e2 = new Date(2026, 1, 28);
+  const d1 = Math.ceil((e1 - today) / 86400000);
+  const d2 = Math.ceil((e2 - today) / 86400000);
+  const el = document.getElementById('dday');
+  if (el) el.textContent = 'D-' + d1 + ' · D-' + d2;
+}
+updateDday();
 </script>
 
 </body>
