@@ -1,0 +1,165 @@
+import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import BrandLanding from "./BrandLanding";
+
+const brandsData: Record<string, {
+  name: string; slug: string; year: number; desc: string; longDesc: string;
+  color: string; image: string; gallery: string[];
+  features: { title: string; desc: string }[];
+}> = {
+  artrader: {
+    name: "Artrader",
+    slug: "artrader",
+    year: 2024,
+    desc: "글로벌 미술 거래 데이터베이스·시장 분석 플랫폼",
+    longDesc: "Artrader는 국내외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 보유한 글로벌 미술 시장 분석 플랫폼입니다. Artist Index와 종목분석서 스타일의 정량 리포트를 제공하여, 미술 시장을 데이터로 읽을 수 있게 합니다.",
+    color: "#b8960b",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    ],
+    features: [
+      { title: "Artist Index", desc: "작가별 시장 가치 변동, 거래 빈도, 낙찰가 추이를 한눈에. 종목분석서 스타일의 정량 리포트." },
+      { title: "Market Analytics", desc: "글로벌 경매 데이터 실시간 수집·분석. 트렌드 예측과 시장 인사이트." },
+      { title: "Portfolio Tracker", desc: "보유 작품의 시장 가치를 실시간 모니터링. 매도 타이밍 시그널 제공." },
+    ],
+  },
+  "paso-art-center": {
+    name: "PASO Art Center",
+    slug: "paso-art-center",
+    year: 2025,
+    desc: "적정가 2차 시장 전시, 글로벌 이머징 작가 전시",
+    longDesc: "PASO Art Center는 적정가 2차 시장 Top 30 작품 전시와 글로벌 이머징 작가 전시를 기획합니다. Mass C&G와의 협력을 통해 새로운 전시 공간의 패러다임을 제시합니다.",
+    color: "#a0522d",
+    image: "https://images.unsplash.com/photo-1577720643272-265f09367456?w=1600&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1600&q=80",
+      "https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?w=1600&q=80",
+      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1600&q=80",
+    ],
+    features: [
+      { title: "Exhibition Space", desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화." },
+      { title: "Emerging Artists", desc: "글로벌 이머징 작가를 소개하는 기획전. 신선한 시각과 실험적 표현." },
+      { title: "Secondary Market", desc: "적정가 2차 시장 Top 30 작품을 큐레이션하여 전시·판매." },
+    ],
+  },
+  "paso-gallery": {
+    name: "Paso Gallery",
+    slug: "paso-gallery",
+    year: 2021,
+    desc: "국내 신진작가 공모전·수상작 전시, 아트 기반 MD 브랜드",
+    longDesc: "Paso Gallery는 국내 신진작가를 발굴하고 공모전을 통해 수상작을 선보이는 전시 공간입니다. 아트 기반 MD 브랜드를 운영하며, 젊은 예술가들의 창작 활동을 적극 지원합니다.",
+    color: "#1e3a5f",
+    image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=1600&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80",
+      "https://images.unsplash.com/photo-1531913764164-f85c3e01b2aa?w=800&q=80",
+      "https://images.unsplash.com/photo-1549887534-1541e9326642?w=800&q=80",
+      "https://images.unsplash.com/photo-1578301978693-85fa9fd0c6c9?w=800&q=80",
+      "https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=800&q=80",
+      "https://images.unsplash.com/photo-1482160549825-59d1b23cb208?w=800&q=80",
+    ],
+    features: [
+      { title: "2025 공모전 수상작전", desc: "제4회 신진작가 공모전 수상작 12점 전시" },
+      { title: "아트 MD 컬렉션", desc: "수상작 기반 아트 굿즈·프린트 에디션" },
+      { title: "작가 레지던시", desc: "선발 작가 대상 3개월 창작 레지던시 프로그램" },
+    ],
+  },
+  "paso-agency": {
+    name: "Paso Agency",
+    slug: "paso-agency",
+    year: 2023,
+    desc: "캐릭터 IP 라이센싱, B2B 아트 프로젝트",
+    longDesc: "Paso Agency는 캐릭터 IP 라이선싱과 B2B 아트 프로젝트를 전문으로 합니다. 프랜차이즈 브랜드와의 아트 콜라보레이션, 아트토이·스트릿 아트 매입 등 다양한 영역에서 활동하며 예술과 상업의 접점을 만들어갑니다.",
+    color: "#d4a574",
+    image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=1600&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
+      "https://images.unsplash.com/photo-1608889175123-8ee362201f81?w=800&q=80",
+      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80",
+      "https://images.unsplash.com/photo-1563822249510-04678c3aae38?w=800&q=80",
+      "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&q=80",
+      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&q=80",
+    ],
+    features: [
+      { title: "캐릭터 IP", desc: "오리지널 캐릭터 IP 개발 및 라이선싱" },
+      { title: "브랜드 콜라보", desc: "F&B·리테일 브랜드와의 아트 프로젝트" },
+      { title: "아트토이", desc: "한정판 아트토이 기획·제작·유통" },
+      { title: "공간 아트", desc: "매장·오피스 공간 아트 큐레이션" },
+      { title: "팝업 전시", desc: "브랜드 팝업 스토어 아트 디렉팅" },
+      { title: "스트릿 아트", desc: "뮤럴·그래피티 아트 매입·기획" },
+    ],
+  },
+  "artledger-consulting": {
+    name: "Artledger Consulting",
+    slug: "artledger-consulting",
+    year: 2025,
+    desc: "미술품 절세 자문, 자산관리·평가, 컬렉팅 자문",
+    longDesc: "Artledger Consulting은 미술품 관련 증여·상속·법인 비용처리 등 절세 자문, 미술품 자산관리 및 가치 평가, 그리고 체계적 컬렉팅 자문을 제공합니다. 컬렉터, 갤러리·기관, 기업·금융기관을 대상으로 미술 자산의 가치를 극대화합니다.",
+    color: "#9ca3af",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&q=80",
+      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=80",
+      "https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=1200&q=80",
+    ],
+    features: [
+      { title: "미술품 절세 자문", desc: "증여·상속세 절세 전략, 법인 비용처리·감가상각 최적화, 세무 리스크 관리." },
+      { title: "자산관리 & 평가", desc: "미술품 포트폴리오 구축, 시장가 기반 가치 평가, Private-Sale 거래 중개." },
+      { title: "컬렉팅 자문", desc: "체계적 컬렉션 전략 수립, 작품 선별·매입 자문, 장기 자산 관리." },
+      { title: "세금 & 법률 세미나", desc: "미술품 관련 세무·법률 이슈를 다루는 정기 세미나 프로그램." },
+      { title: "컬렉팅 강의", desc: "입문자부터 전문 컬렉터까지, 단계별 컬렉팅 교육 과정." },
+      { title: "전문가 네트워킹", desc: "세무사·변호사·큐레이터 등 전문가 초청 강연 및 네트워킹 이벤트." },
+    ],
+  },
+};
+
+export function generateStaticParams() {
+  return Object.keys(brandsData).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const brand = brandsData[slug];
+  if (!brand) return { title: "Brand Not Found — PASO" };
+  const seoOverrides: Record<string, { title: string; description: string }> = {
+    artrader: { title: "Artrader | 미술품 데이터 분석 플랫폼", description: "국내외 경매 1,500만 건 데이터. Artist Index와 종목분석서로 미술 투자 의사결정." },
+    "paso-art-center": { title: "PASO Art Center | 마곡 전시·대관·커뮤니티", description: "서울 마곡 아트센터. 전시, 대관, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간." },
+    "artledger-consulting": { title: "Artledger | 미술 자산 자문·절세 전략", description: "미술품 증여·상속, 법인 감가, 컬렉션 리밸런싱. 미술 자산 전 생애 관리." },
+    "paso-agency": { title: "PASO Agency | IP·브랜드 아트 콜라보", description: "캐릭터 IP 라이선싱, 아트토이, 기업 아트 프로젝트 기획·운영." },
+  };
+  const seo = seoOverrides[slug];
+  return {
+    title: seo?.title ?? `${brand.name} — PASO`,
+    description: seo?.description ?? brand.longDesc,
+    openGraph: {
+      title: seo?.title ?? `${brand.name} — PASO`,
+      description: seo?.description ?? brand.desc,
+      images: [{ url: brand.image, width: 1600, height: 900 }],
+    },
+  };
+}
+
+export default async function BrandPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const brand = brandsData[slug];
+
+  if (!brand) {
+    return (
+      <div className="bg-black min-h-screen flex items-center justify-center">
+        <p className="text-[#888]">Brand not found</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-black min-h-screen">
+      <Navbar />
+      <BrandLanding brand={brand} />
+      <Footer />
+    </div>
+  );
+}

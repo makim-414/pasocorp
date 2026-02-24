@@ -1,0 +1,130 @@
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
+const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
+
+const timeline = [
+  { year: "2020", event: "PASO Inc. 설립" },
+  { year: "2021", event: "Paso Gallery 오픈 (종로구)" },
+  { year: "2023", event: "Paso Agency 론칭 — 캐릭터 IP·B2B 프로젝트" },
+  { year: "2024", event: "Artrader 플랫폼 런칭 — 1,500만+ 거래 데이터" },
+  { year: "2025", event: "PASO Art Center 오픈 (with Mass C&G)\nArtledger Consulting 런칭" },
+];
+
+const team = [
+  { name: "김민성", role: "CEO & Founder", desc: "미술 시장 데이터 분석 전문가. 금융·테크 배경으로 미술 자산화 전략을 설계합니다." },
+  { name: "Advisory Board", role: "세무·법률·큐레이션", desc: "세무사, 변호사, 큐레이터로 구성된 자문단이 전문 서비스를 지원합니다." },
+];
+
+const values = [
+  { title: "Data-First", desc: "감이 아닌 데이터로. 1,500만 건 거래 데이터에 기반한 의사결정." },
+  { title: "Full Ecosystem", desc: "분석-자문-전시-유통-IP를 잇는 완결형 미술 생태계." },
+  { title: "Accessibility", desc: "미술을 소수의 전유물이 아닌, 모두가 접근 가능한 자산 클래스로." },
+];
+
+export default function AboutContent() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative h-[60vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1577720643272-265f09367456?w=1600&q=80"
+            alt="PASO"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-7xl font-light text-white"
+            style={{ fontFamily: "var(--font-dutch)" }}
+          >
+            About PASO
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-4 text-lg text-[#888] font-light max-w-xl"
+          >
+            Precision-based Art Strategy & Operation
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-24 md:py-32 bg-black">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-6">Mission</p>
+            <p className="text-lg md:text-2xl text-[#ccc] font-light leading-relaxed" style={{ fontFamily: "var(--font-dutch)" }}>
+              PASO는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술품 거래 자문부터 갤러리·미술관 운영, 기업 컬렉션 자문과 미술 프로젝트 운용까지, 미술 생태계의 모든 것을 연결합니다.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Values</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>What Drives Us</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {values.map((v, i) => (
+              <motion.div key={v.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors">
+                <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{v.title}</h3>
+                <p className="text-sm text-[#888] font-light leading-relaxed">{v.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="py-24 md:py-32 bg-black">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">History</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Our Journey</motion.h2>
+          <div className="space-y-0">
+            {timeline.map((item, i) => (
+              <motion.div key={item.year} {...stagger(i)} className="flex gap-8 items-start py-6 border-b border-[#1a1a1a] last:border-0">
+                <span className="text-2xl font-light text-[#b8960b] shrink-0 w-16" style={{ fontFamily: "var(--font-dutch)" }}>{item.year}</span>
+                <p className="text-sm text-[#888] font-light leading-relaxed whitespace-pre-line">{item.event}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Team</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Leadership</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {team.map((t, i) => (
+              <motion.div key={t.name} {...stagger(i)} className="p-8 border border-[#1a1a1a]">
+                <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-2">{t.role}</p>
+                <h3 className="text-xl text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{t.name}</h3>
+                <p className="text-sm text-[#888] font-light leading-relaxed">{t.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
