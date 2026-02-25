@@ -319,7 +319,12 @@ export default function Feed() {
         </div>
       </div>
 
-      {/* Section 3: Service — image left, text right (reversed) */}
+      {/* Section 3: Triple feature (staggered) — Now & Upcoming */}
+      <div className="border-t border-[var(--color-border)]">
+        <TripleFeature />
+      </div>
+
+      {/* Section 4: Service — image left, text right (reversed) */}
       <div className="py-8 md:py-12" />
       <SplitSection
         tag="Artrader"
@@ -346,11 +351,6 @@ export default function Feed() {
         cta="EXPLORE ADVISORY"
         image="/brands/artledger-consulting.jpg"
       />
-
-      {/* Section 6: Triple feature (staggered) */}
-      <div className="border-t border-[var(--color-border)]">
-        <TripleFeature />
-      </div>
 
       {/* Section 7: Service — reversed */}
       <SplitSection
