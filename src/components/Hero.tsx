@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import BackgroundBeams from "./BackgroundBeams";
 import TextGenerateEffect from "./TextGenerateEffect";
 
@@ -49,9 +50,13 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="absolute inset-0 z-0"
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${brands[hoveredBrand].image})` }}
+            <Image
+              src={brands[hoveredBrand].image}
+              alt={brands[hoveredBrand].name}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={false}
             />
             <div className="absolute inset-0 bg-black/40" />
           </motion.div>

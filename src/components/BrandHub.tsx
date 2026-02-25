@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const mainBrands = [
@@ -94,9 +95,12 @@ export default function BrandHub() {
             >
               <Link href={`/brands/${brand.slug}`} className="group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden hover:border-white/[0.08] transition-all duration-700 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
                 <div className="relative h-64 md:h-72 overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-[1.2s] ease-out group-hover:scale-[1.08]"
-                    style={{ backgroundImage: `url(${brand.image})` }}
+                  <Image
+                    src={brand.image}
+                    alt={brand.name}
+                    fill
+                    className="object-cover transition-all duration-[1.2s] ease-out group-hover:scale-[1.08]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/25 transition-colors duration-700" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700" style={{ background: `linear-gradient(135deg, ${brand.color}40, transparent)` }} />
@@ -127,9 +131,12 @@ export default function BrandHub() {
               <Link href={`/brands/${brand.slug}`} className="group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden hover:border-[#333] transition-colors duration-500">
                 <div className="flex flex-col sm:flex-row">
                   <div className="relative h-48 sm:h-auto sm:w-2/5 overflow-hidden shrink-0">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                      style={{ backgroundImage: `url(${brand.image})` }}
+                    <Image
+                      src={brand.image}
+                      alt={brand.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, 40vw"
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
                   </div>

@@ -20,7 +20,7 @@ export default function Sidebar() {
         </div>
 
         {/* Menu items — always expanded, no dropdown */}
-        <nav className="flex flex-col">
+        <nav aria-label="사이드바 메뉴" className="flex flex-col">
           {menuItems.map((item) => (
             <div key={item.label} className="mb-1">
               <Link

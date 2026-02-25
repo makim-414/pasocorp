@@ -9,11 +9,13 @@ export default function Home() {
   return (
     <div className="bg-black">
       <Navbar />
-      <Hero />
-      <DynamicTop />
-      <BrandHub />
-      <DynamicBottom />
-      <Services />
+      <main>
+        <Hero />
+        <DynamicTop />
+        <BrandHub />
+        <DynamicBottom />
+        <Services />
+      </main>
       <Footer />
     </div>
   );

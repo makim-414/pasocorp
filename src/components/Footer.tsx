@@ -9,7 +9,7 @@ const brandLinks = [
 ];
 
 const locations = [
-  { name: "Office", address: "72, Samseongyo-ro 23ga-gil, Seongbuk-gu, Seoul", detail: "Interblue Building 1F-3F" },
+  { name: "Office", address: "서울 성북구 삼선교로23가길 72", detail: "인터블루 1층" },
   { name: "Gallery", address: "92, Seonggyungwan-ro, Jongno-gu, Seoul", detail: "Hanok Building" },
   { name: "Art Center", address: "Opening 2025", detail: "with Mass C&G" },
 ];
@@ -45,7 +45,7 @@ export default function Footer() {
       {/* Contact + copyright */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-xs text-[#555] font-light">
-          <span>contact@artrader.io</span>
+          <a href="mailto:makim@ironact.net" className="hover:text-[#888] transition-colors">makim@ironact.net</a>
           <span>CEO Min Sung Kim</span>
           <span>+82 10-6432-4471</span>
         </div>

@@ -24,6 +24,7 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="메인 내비게이션"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
           ? "bg-black/60 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_30px_rgba(0,0,0,0.5)]"
@@ -72,6 +73,8 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
+          aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+          aria-expanded={menuOpen}
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setMenuOpen(!menuOpen)}
         >

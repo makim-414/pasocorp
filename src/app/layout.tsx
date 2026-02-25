@@ -38,7 +38,7 @@ const organizationJsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "hello@pasocorp.com",
+    email: "makim@ironact.net",
   },
   description: "데이터 기반 미술 자산 전략. 미술품 투자 자문, 갤러리 운영, 아트 컨설팅.",
 };
@@ -65,9 +65,9 @@ const localBusinessJsonLd = {
   image: "https://pasocorp.com/logo.png",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "마곡중앙로",
+    streetAddress: "삼선교로23가길 72 인터블루 1층",
     addressLocality: "서울특별시",
-    addressRegion: "강서구",
+    addressRegion: "성북구",
     addressCountry: "KR",
   },
   geo: {

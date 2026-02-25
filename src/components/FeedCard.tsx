@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CardItem } from "@/lib/data";
 
+const BLUR_DATA_URL =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMWExYTFhIi8+PC9zdmc+";
+
 export default function FeedCard({ card, index }: { card: CardItem; index: number }) {
   const isFeatured = card.featured;
 
@@ -29,6 +32,8 @@ export default function FeedCard({ card, index }: { card: CardItem; index: numbe
             fill
             className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]"
             sizes={isFeatured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
           />
         </div>
 
