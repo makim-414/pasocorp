@@ -33,10 +33,10 @@ export default function FlywheelVisual() {
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const [active, setActive] = useState<string | null>(null);
 
-  const R = 130;
-  const CX = 180;
-  const CY = 180;
-  const SIZE = 360;
+  const R = 170;
+  const CX = 230;
+  const CY = 230;
+  const SIZE = 460;
 
   const brandMap = Object.fromEntries(brands.map((b) => [b.id, b]));
   const activeConns = active
@@ -44,8 +44,8 @@ export default function FlywheelVisual() {
     : [];
 
   return (
-    <div ref={ref} className="bg-black p-4 md:p-8 min-h-[350px] md:min-h-[420px] flex flex-col items-center justify-center">
-      <div className="relative w-full max-w-[360px] mx-auto" style={{ aspectRatio: "1/1" }}>
+    <div ref={ref} className="bg-black p-4 md:p-8 min-h-[420px] md:min-h-[520px] flex flex-col items-center justify-center">
+      <div className="relative w-full max-w-[460px] mx-auto" style={{ aspectRatio: "1/1" }}>
         <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${SIZE} ${SIZE}`}>
           {/* Orbit ring */}
           <motion.circle
@@ -105,10 +105,10 @@ export default function FlywheelVisual() {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="absolute"
-          style={{ left: CX - 32, top: CY - 32, width: 64, height: 64 }}
+          style={{ left: CX - 40, top: CY - 40, width: 80, height: 80 }}
         >
           <div className="w-full h-full rounded-full border border-[#b8960b]/20 bg-[#b8960b]/5 flex items-center justify-center">
-            <span className="text-[11px] tracking-[0.25em] text-[#b8960b]/80 font-light">PASO</span>
+            <span className="text-sm tracking-[0.25em] text-[#b8960b]/80 font-light">PASO</span>
           </div>
         </motion.div>
 
@@ -128,7 +128,7 @@ export default function FlywheelVisual() {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 + 0.5 }}
               className="absolute cursor-pointer"
-              style={{ left: pos.x - 42, top: pos.y - 42, width: 84, height: 84 }}
+              style={{ left: pos.x - 52, top: pos.y - 52, width: 104, height: 104 }}
               onMouseEnter={() => setActive(brand.id)}
               onMouseLeave={() => setActive(null)}
             >
@@ -146,8 +146,8 @@ export default function FlywheelVisual() {
                   animate={{ backgroundColor: isActive || isConnected ? brand.accent : "rgba(255,255,255,0.15)" }}
                   className="w-1.5 h-1.5 rounded-full mb-1"
                 />
-                <span className="text-[9px] text-white/70 text-center leading-tight font-light">{brand.name}</span>
-                <span className="text-[7px] text-white/30 text-center mt-0.5">{brand.short}</span>
+                <span className="text-[11px] text-white/70 text-center leading-tight font-light">{brand.name}</span>
+                <span className="text-[9px] text-white/30 text-center mt-0.5">{brand.short}</span>
               </motion.div>
             </motion.div>
           );
