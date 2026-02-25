@@ -325,7 +325,7 @@ export default function Feed() {
         title="Data-Driven Art Trading Platform"
         desc="국내외 경매·Private Sales 등 1,500만 건 이상 거래 데이터. Artist Index, 종목분석서 스타일 정량 리포트로 미술품 투자의 새로운 기준을 제시합니다."
         cta="EXPLORE ARTRADER"
-        image="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80"
+        image="/brands/artrader-platform.jpg"
         reverse
       />
 

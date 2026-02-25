@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const BRANDS = [
-  { title: "Artrader", subtitle: "Data-Driven Art Trading", content: "글로벌 미술 거래 데이터베이스 1,580만+ 건. Artist Index, 종목분석서 스타일 정량 리포트.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80", color: "#b8960b", cta: "EXPLORE" },
+  { title: "Artrader", subtitle: "Data-Driven Art Trading", content: "글로벌 미술 거래 데이터베이스 1,580만+ 건. Artist Index, 종목분석서 스타일 정량 리포트.", image: "/brands/artrader-platform.jpg", color: "#b8960b", cta: "EXPLORE" },
   { title: "Artledger", subtitle: "Advisory & Tax Strategy", content: "증여·상속, 법인 비용·감가, 컬렉션 관리. 미술 자산의 전 생애를 함께합니다.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80", color: "#9ca3af", cta: "EXPLORE" },
   { title: "Gallery", subtitle: "Primary Art Market", content: "국내 신진작가 공모전, 글로벌 이머징 작가 전시. 예술의 최전선.", image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=1200&q=80", color: "#1e3a5f", cta: "EXPLORE" },
   { title: "Agency", subtitle: "IP & Brand Collaboration", content: "브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이.", image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=1200&q=80", color: "#d4a574", cta: "EXPLORE" },
