@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "PASO",
     type: "website",
     url: "https://pasocorp.com",
-    images: [{ url: "https://pasocorp.com/paso-logo.svg", width: 1200, height: 630, alt: "PASO Corp" }],
+    images: [{ url: "https://pasocorp.com/og-image.jpg", width: 1200, height: 630, alt: "PASO — Art as an Asset Class" }],
   },
   twitter: {
     card: "summary_large_image",
