@@ -331,7 +331,7 @@ export default function Feed() {
 
       {/* Section 4: Cinematic */}
       <CinematicBlock
-        image="https://images.unsplash.com/photo-1577720643272-265f09367456?w=1600&q=80"
+        image="/brands/paso-artcenter-building.jpg"
         title="PASO Art Center"
         subtitle="마곡의 새로운 문화 거점. 전시, 세미나, 커뮤니티."
       />
