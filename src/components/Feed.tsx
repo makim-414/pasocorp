@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FlywheelVisual from "./FlywheelVisual";
 import BrandTabs from "./BrandTabs";
+import ProjectCases from "./ProjectCases";
 
 /* ───── Animated counter ───── */
 function Counter({ value, label }: { value: string; label: string }) {
@@ -363,6 +364,9 @@ export default function Feed() {
       />
 
       {/* Section 8: Dark categories */}
+      {/* Project Cases Carousel */}
+      <ProjectCases />
+
       <DarkCategories />
 
       {/* Section 9: Footer */}
