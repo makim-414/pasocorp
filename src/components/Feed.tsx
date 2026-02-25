@@ -61,7 +61,7 @@ function SplitSection({
   return (
     <div ref={ref} className={`grid grid-cols-1 md:grid-cols-2 gap-0`}>
       {/* Image side */}
-      <div className={`${reverse ? "md:order-2" : ""}`}>
+      <div className={`${reverse ? "md:order-2" : ""} bg-black py-8 md:py-12 flex items-center`}>
         <ParallaxImg src={image} alt={title} className="aspect-[4/3] md:aspect-auto md:h-full min-h-[250px] md:min-h-[350px]" />
       </div>
       {/* Text side */}
