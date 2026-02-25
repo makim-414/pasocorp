@@ -199,7 +199,7 @@ export function DynamicBottom() {
         tag="Advisory"
         title="Art Consulting & Tax Strategy"
         desc="증여·상속, 법인 비용·감가, 컬렉션 관리. Review → Valuation → Strategy → Execute. 미술 자산의 전 생애를 함께합니다."
-        image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
+        image="/brands/artledger-consulting.jpg"
       />
 
       {/* Staggered triple feature */}
@@ -212,7 +212,7 @@ export function DynamicBottom() {
         tag="Agency"
         title="IP & Brand Collaboration"
         desc="프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입. 브랜드와 예술의 접점을 설계합니다."
-        image="https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=900&q=80"
+        image="/brands/paso-agency.jpg"
         reverse
       />
     </div>

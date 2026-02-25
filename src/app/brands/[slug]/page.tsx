@@ -15,7 +15,7 @@ const brandsData: Record<string, {
     desc: "글로벌 미술 거래 데이터베이스·시장 분석 플랫폼",
     longDesc: "Artrader는 국내외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 보유한 글로벌 미술 시장 분석 플랫폼입니다. Artist Index와 종목분석서 스타일의 정량 리포트를 제공하여, 미술 시장을 데이터로 읽을 수 있게 합니다.",
     color: "#b8960b",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80",
+    image: "/brands/artrader-platform.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
@@ -34,7 +34,7 @@ const brandsData: Record<string, {
     desc: "적정가 2차 시장 전시, 글로벌 이머징 작가 전시",
     longDesc: "PASO Art Center는 적정가 2차 시장 Top 30 작품 전시와 글로벌 이머징 작가 전시를 기획합니다. Mass C&G와의 협력을 통해 새로운 전시 공간의 패러다임을 제시합니다.",
     color: "#a0522d",
-    image: "https://images.unsplash.com/photo-1577720643272-265f09367456?w=1600&q=80",
+    image: "/brands/paso-artcenter-building.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1600&q=80",
       "https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?w=1600&q=80",
@@ -53,7 +53,7 @@ const brandsData: Record<string, {
     desc: "국내 신진작가 공모전·수상작 전시, 아트 기반 MD 브랜드",
     longDesc: "Paso Gallery는 국내 신진작가를 발굴하고 공모전을 통해 수상작을 선보이는 전시 공간입니다. 아트 기반 MD 브랜드를 운영하며, 젊은 예술가들의 창작 활동을 적극 지원합니다.",
     color: "#1e3a5f",
-    image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=1600&q=80",
+    image: "/brands/paso-gallery.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80",
       "https://images.unsplash.com/photo-1531913764164-f85c3e01b2aa?w=800&q=80",
@@ -75,7 +75,7 @@ const brandsData: Record<string, {
     desc: "캐릭터 IP 라이센싱, B2B 아트 프로젝트",
     longDesc: "Paso Agency는 캐릭터 IP 라이선싱과 B2B 아트 프로젝트를 전문으로 합니다. 프랜차이즈 브랜드와의 아트 콜라보레이션, 아트토이·스트릿 아트 매입 등 다양한 영역에서 활동하며 예술과 상업의 접점을 만들어갑니다.",
     color: "#d4a574",
-    image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=1600&q=80",
+    image: "/brands/paso-agency.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
       "https://images.unsplash.com/photo-1608889175123-8ee362201f81?w=800&q=80",
@@ -100,7 +100,7 @@ const brandsData: Record<string, {
     desc: "미술품 절세 자문, 자산관리·평가, 컬렉팅 자문",
     longDesc: "Artledger Consulting은 미술품 관련 증여·상속·법인 비용처리 등 절세 자문, 미술품 자산관리 및 가치 평가, 그리고 체계적 컬렉팅 자문을 제공합니다. 컬렉터, 갤러리·기관, 기업·금융기관을 대상으로 미술 자산의 가치를 극대화합니다.",
     color: "#9ca3af",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80",
+    image: "/brands/artledger-consulting.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&q=80",
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=80",
