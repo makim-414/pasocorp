@@ -7,11 +7,11 @@ import BackgroundBeams from "./BackgroundBeams";
 import TextGenerateEffect from "./TextGenerateEffect";
 
 const brands = [
-  { name: "Artrader.io", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80", color: "#b8960b" },
-  { name: "Paso Gallery", image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=1600&q=80", color: "#1e3a5f" },
-  { name: "Paso Agency", image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=1600&q=80", color: "#d4a574" },
-  { name: "Artledger", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80", color: "#9ca3af" },
-  { name: "Art Center", image: "https://images.unsplash.com/photo-1577720643272-265f09367456?w=1600&q=80", color: "#a0522d" },
+  { name: "Artrader.io", image: "/brands/artrader-platform.jpg", color: "#b8960b" },
+  { name: "Paso Gallery", image: "/brands/paso-gallery.jpg", color: "#1e3a5f" },
+  { name: "Paso Agency", image: "/brands/paso-agency.jpg", color: "#d4a574" },
+  { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af" },
+  { name: "Art Center", image: "/brands/paso-artcenter-building.jpg", color: "#a0522d" },
 ];
 
 export default function Hero() {
