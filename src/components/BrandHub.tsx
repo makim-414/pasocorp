@@ -9,7 +9,7 @@ const mainBrands = [
     year: 2021,
     desc: "국내 신진작가 공모전·수상작 전시, 아트 기반 MD 브랜드",
     activity: "현재 전시: 2025 신진작가 공모전 수상작전",
-    image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=800&q=80",
+    image: "/brands/paso-gallery.jpg",
     color: "#1e3a5f",
   },
   {
@@ -18,7 +18,7 @@ const mainBrands = [
     year: 2025,
     desc: "적정가 2차 시장 전시, 글로벌 이머징 작가 전시",
     activity: "2025 오픈 예정 (with Mass C&G)",
-    image: "https://images.unsplash.com/photo-1577720643272-265f09367456?w=800&q=80",
+    image: "/brands/paso-artcenter.jpg",
     color: "#a0522d",
   },
   {
@@ -27,7 +27,7 @@ const mainBrands = [
     year: 2024,
     desc: "글로벌 미술 거래 데이터베이스·시장 분석 플랫폼",
     activity: "1,500만+ 거래 데이터 실시간 분석",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    image: "/brands/artrader.jpg",
     color: "#b8960b",
   },
 ];
@@ -39,7 +39,7 @@ const subBrands = [
     year: 2023,
     desc: "캐릭터 IP 라이센싱, B2B 아트 프로젝트",
     activity: "신규: 프랜차이즈 아트 콜라보 프로젝트",
-    image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=800&q=80",
+    image: "/brands/paso-agency.jpg",
     color: "#d4a574",
   },
   {
