@@ -320,6 +320,7 @@ export default function Feed() {
       </div>
 
       {/* Section 3: Service — image left, text right (reversed) */}
+      <div className="py-8 md:py-12" />
       <SplitSection
         tag="Artrader"
         title="Data-Driven Art Trading Platform"
@@ -330,6 +331,7 @@ export default function Feed() {
       />
 
       {/* Section 4: Cinematic */}
+      <div className="py-8 md:py-12" />
       <CinematicBlock
         image="/brands/paso-artcenter-building.jpg"
         title="PASO Art Center"
