@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import BackgroundBeams from "./BackgroundBeams";
 import TextGenerateEffect from "./TextGenerateEffect";
-import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 
 const brands = [
   { name: "Artrader.io", image: "/brands/artrader-platform.jpg", color: "#b8960b" },
@@ -64,7 +63,6 @@ export default function Hero() {
         )}
       </AnimatePresence>
 
-      <BackgroundRippleEffect rows={10} cols={30} cellSize={64} />
       <BackgroundBeams />
       <Spotlight springX={springX} springY={springY} />
 
