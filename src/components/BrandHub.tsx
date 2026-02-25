@@ -48,7 +48,7 @@ const subBrands = [
     year: 2025,
     desc: "미술품 절세 자문, Private-Sale 거래",
     activity: "신규 런칭: 법인 미술품 절세 패키지",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    image: "/brands/artledger-consulting.jpg",
     color: "#9ca3af",
   },
 ];
