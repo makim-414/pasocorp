@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const mainBrands = [
   {
@@ -57,6 +58,7 @@ const subBrands = [
 const titleWords = "Five Brands, One Vision".split(" ");
 
 export default function BrandHub() {
+  const [hovered, setHovered] = useState<number | null>(null);
   return (
     <section id="brands" className="py-32 md:py-40 bg-black">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -93,7 +95,12 @@ export default function BrandHub() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <Link href={`/brands/${brand.slug}`} className="group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden hover:border-white/[0.08] transition-all duration-700 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
+              <Link
+                href={`/brands/${brand.slug}`}
+                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-white/[0.08] hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] ${hovered !== null && hovered !== i ? "blur-[2px] scale-[0.97] opacity-60" : ""}`}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+              >
                 <div className="relative h-64 md:h-72 overflow-hidden">
                   <Image
                     src={brand.image}
@@ -128,7 +135,12 @@ export default function BrandHub() {
               viewport={{ once: true }}
               transition={{ delay: (i + 3) * 0.1, duration: 0.5 }}
             >
-              <Link href={`/brands/${brand.slug}`} className="group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden hover:border-[#333] transition-colors duration-500">
+              <Link
+                href={`/brands/${brand.slug}`}
+                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-[#333] ${hovered !== null && hovered !== i + 3 ? "blur-[2px] scale-[0.97] opacity-60" : ""}`}
+                onMouseEnter={() => setHovered(i + 3)}
+                onMouseLeave={() => setHovered(null)}
+              >
                 <div className="flex flex-col sm:flex-row">
                   <div className="relative h-48 sm:h-auto sm:w-2/5 overflow-hidden shrink-0">
                     <Image
