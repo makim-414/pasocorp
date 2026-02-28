@@ -183,29 +183,7 @@ export function DynamicBottom() {
         <TripleFeature />
       </section>
 
-      {/* Split: Artrader */}
-      <SplitSection
-        tag="Artrader"
-        title="Data-Driven Art Trading Platform"
-        desc="국내외 경매·Private Sales 등 1,500만 건 이상 거래 데이터. Artist Index, 종목분석서 스타일 정량 리포트로 미술품 투자의 새로운 기준을 제시합니다."
-        image="/brands/artrader-platform.jpg"
-        reverse
-      />
-
-      {/* Cinematic: Art Center */}
-      <CinematicBlock
-        image="/brands/paso-artcenter-building.jpg"
-        title="PASO Art Center"
-        subtitle="마곡의 새로운 문화 거점. 전시, 세미나, 커뮤니티."
-      />
-
-      {/* Split: Advisory */}
-      <SplitSection
-        tag="Advisory"
-        title="Art Consulting & Tax Strategy"
-        desc="증여·상속, 법인 비용·감가, 컬렉션 관리. Review → Valuation → Strategy → Execute. 미술 자산의 전 생애를 함께합니다."
-        image="/brands/artledger-consulting.jpg"
-      />
+      {/* Artrader, Art Center cinematic, and Advisory sections removed */}
 
       {/* Agency section removed */}
     </div>
