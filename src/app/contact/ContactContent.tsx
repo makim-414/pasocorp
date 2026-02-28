@@ -18,8 +18,6 @@ const locations = [
 
 const contacts = [
   { label: "Email", value: "contact@artrader.io", href: "mailto:contact@artrader.io" },
-  { label: "CEO", value: "김민성 Min Sung Kim", href: undefined },
-  { label: "Phone", value: "+82 10-6432-4471", href: "tel:+821064324471" },
 ];
 
 const inquiries = [

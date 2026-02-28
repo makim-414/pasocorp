@@ -178,6 +178,11 @@ export function DynamicBottom() {
         </div>
       </section>
 
+      {/* Staggered triple feature — moved right after stats */}
+      <section className="border-t border-[#1a1a1a]">
+        <TripleFeature />
+      </section>
+
       {/* Split: Artrader */}
       <SplitSection
         tag="Artrader"
@@ -202,19 +207,7 @@ export function DynamicBottom() {
         image="/brands/artledger-consulting.jpg"
       />
 
-      {/* Staggered triple feature */}
-      <section className="border-t border-[#1a1a1a]">
-        <TripleFeature />
-      </section>
-
-      {/* Split: Agency */}
-      <SplitSection
-        tag="Agency"
-        title="IP & Brand Collaboration"
-        desc="프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입. 브랜드와 예술의 접점을 설계합니다."
-        image="/brands/paso-agency.jpg"
-        reverse
-      />
+      {/* Agency section removed */}
     </div>
   );
 }

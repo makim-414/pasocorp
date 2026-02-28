@@ -93,7 +93,7 @@ export default function Hero() {
           className="mt-5 md:mt-8 text-base md:text-xl font-light text-[#e8e8e8] tracking-normal"
           style={{ fontFamily: "var(--font-dutch)" }}
         >
-          <TextGenerateEffect words="Art as an Asset Class" />
+          <TextGenerateEffect words="Art · Advisory & Data · IP · Space" />
         </motion.div>
 
         {/* Brand links */}
