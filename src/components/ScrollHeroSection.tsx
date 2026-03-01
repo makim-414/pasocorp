@@ -164,7 +164,7 @@ export default function ScrollHeroSection({
           width: 100%;
           height: 100vh;
           position: relative;
-          z-index: 1;
+          z-index: 2;
           color: black;
         }
 
@@ -249,7 +249,6 @@ export default function ScrollHeroSection({
 
         .scroll-hero-wrapper {
           position: relative;
-          isolation: isolate;
         }
       `}</style>
     </div>
