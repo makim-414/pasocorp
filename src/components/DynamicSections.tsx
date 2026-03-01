@@ -154,12 +154,18 @@ export function DynamicTop() {
               <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
                 {"Art as an Asset Class.\nStrategy as a Service."}
               </h2>
-              <p className="text-sm text-[#888] leading-relaxed max-w-md mb-0">
+              <p className="text-sm text-[#888] leading-relaxed max-w-md">
                 PASO는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술품 거래 자문부터 갤러리 / 미술관 운영, 기업 컬렉션 자문과 미술 프로젝트 운용까지, 미술 생태계의 모든 것을 연결합니다.
               </p>
-              <HoverPreviewProcess />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Hover Preview Process — full width, below About */}
+      <section className="border-t border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-20 md:py-28 flex items-center justify-center">
+          <HoverPreviewProcess />
         </div>
       </section>
     </div>
