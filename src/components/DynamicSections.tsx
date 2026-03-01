@@ -138,7 +138,7 @@ function TripleFeature() {
 /* ═══════════════ TOP SECTION (Above BrandHub) ═══════════════ */
 export function DynamicTop() {
   return (
-    <div className="bg-black">
+    <div className="bg-black relative z-10">
       {/* Flywheel + About intro */}
       <section id="about" className="border-t border-[#1a1a1a]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">

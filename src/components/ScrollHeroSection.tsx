@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 type ScrollHeroProps = {
   items?: string[];
@@ -28,27 +28,26 @@ export default function ScrollHeroSection({
   startVh = 50,
   spaceVh = 50,
 }: ScrollHeroProps) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const root = document.documentElement;
-    root.dataset.theme = 'dark';
-    root.dataset.animate = 'true';
-    root.style.setProperty('--scroll-hue', String(hue));
-    root.style.setProperty('--scroll-start', `${startVh}vh`);
-    root.style.setProperty('--scroll-space', `${spaceVh}vh`);
-    return () => {
-      delete root.dataset.theme;
-      delete root.dataset.animate;
-    };
+    const el = wrapperRef.current;
+    if (!el) return;
+    el.style.setProperty('--scroll-hue', String(hue));
+    el.style.setProperty('--scroll-start', `${startVh}vh`);
+    el.style.setProperty('--scroll-space', `${spaceVh}vh`);
   }, [hue, startVh, spaceVh]);
 
   return (
     <div
+      ref={wrapperRef}
       className="scroll-hero-wrapper"
+      data-animate="true"
       style={{ '--scroll-count': items.length } as React.CSSProperties}
     >
       <header className="scroll-hero-header scroll-fluid">
         <section className="scroll-hero-header-inner">
-          <h2 className="scroll-hero-sr-only sm:not-sr-only">
+          <h2 className="scroll-hero-h2">
             <span aria-hidden="true">we&nbsp;</span>
             <span className="scroll-hero-sr-only">we help you grow.</span>
           </h2>
@@ -62,18 +61,16 @@ export default function ScrollHeroSection({
         </section>
       </header>
 
-      <main className="scroll-hero-main">
-        <section>
+      <div className="scroll-hero-main">
+        <div className="scroll-hero-main-content">
           <p className="scroll-fluid">
             Art meets strategy.<br />
-            <a href="#services">Discover PASO →</a>
+            <a href="#about">Discover PASO →</a>
           </p>
-        </section>
-      </main>
+        </div>
+      </div>
 
       <style jsx global>{`
-        /* ===== Scroll Hero Section (scoped via .scroll-hero-wrapper) ===== */
-
         .scroll-hero-wrapper {
           --scroll-start: 50vh;
           --scroll-space: 50vh;
@@ -85,8 +82,10 @@ export default function ScrollHeroSection({
           --scroll-font-ratio-max: 1.33;
           --scroll-font-width-min: 375;
           --scroll-font-width-max: 1500;
+          position: relative;
           width: 100%;
           background: black;
+          z-index: 0;
         }
 
         .scroll-fluid {
@@ -108,7 +107,6 @@ export default function ScrollHeroSection({
           overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
         }
 
-        /* Sticky header */
         .scroll-hero-header {
           --scroll-font-level: 4;
           --scroll-font-size-min: 24;
@@ -129,7 +127,7 @@ export default function ScrollHeroSection({
           padding-top: calc(var(--scroll-start) - 0.5lh);
         }
 
-        .scroll-hero-header-inner h2 {
+        .scroll-hero-h2 {
           position: sticky;
           top: calc(var(--scroll-start) - 0.5lh);
           margin: 0;
@@ -159,12 +157,11 @@ export default function ScrollHeroSection({
           background-clip: text;
         }
 
-        /* Bottom section */
+        /* Bottom gold section — contained within wrapper */
         .scroll-hero-main {
           width: 100%;
           height: 100vh;
           position: relative;
-          z-index: 2;
           color: black;
         }
 
@@ -177,17 +174,17 @@ export default function ScrollHeroSection({
           border-radius: 1rem 1rem 0 0;
         }
 
-        .scroll-hero-main section {
+        .scroll-hero-main-content {
           --scroll-font-level: 4;
           --scroll-font-size-min: 20;
           height: 100%;
           width: 100%;
           display: flex;
-          place-items: center;
+          align-items: center;
           justify-content: center;
         }
 
-        .scroll-hero-main section p {
+        .scroll-hero-main-content p {
           margin: 0;
           font-weight: 600;
           white-space: nowrap;
@@ -195,33 +192,34 @@ export default function ScrollHeroSection({
           text-align: center;
         }
 
-        .scroll-hero-main section a {
+        .scroll-hero-main-content a {
           color: black;
           text-decoration: none;
           text-underline-offset: 0.1lh;
         }
 
-        .scroll-hero-main section a:is(:hover, :focus-visible) {
+        .scroll-hero-main-content a:is(:hover, :focus-visible) {
           text-decoration: underline;
         }
 
-        /* View-timeline animation */
+        /* View-timeline animation — scoped to wrapper */
         @supports (animation-timeline: view()) {
-          [data-animate='true'] .scroll-hero-main {
+          .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main {
             view-timeline: --scroll-section;
           }
-          [data-animate='true'] .scroll-hero-main::before {
+          .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main::before {
             transform-origin: 50% 100%;
             scale: 0.9;
             animation: scrollHeroGrow both ease-in-out;
             animation-timeline: --scroll-section;
             animation-range: entry 50%;
           }
-          [data-animate='true'] .scroll-hero-main section p {
+          .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main-content p {
             position: fixed;
             top: 50%;
             left: 50%;
             translate: -50% -50%;
+            z-index: 5;
             animation: scrollHeroReveal both ease-in-out;
             animation-timeline: --scroll-section;
             animation-range: entry 50%;
@@ -230,7 +228,7 @@ export default function ScrollHeroSection({
           @keyframes scrollHeroGrow { to { scale: 1; border-radius: 0; } }
         }
 
-        /* Grid background for this section */
+        /* Grid background */
         .scroll-hero-wrapper::before {
           --size: 45px;
           --line: color-mix(in hsl, white, transparent 85%);
@@ -245,10 +243,6 @@ export default function ScrollHeroSection({
             linear-gradient(var(--line) 1px, transparent 1px var(--size))
               0% calc(var(--size) * 0.32) / var(--size) var(--size);
           mask: linear-gradient(-20deg, transparent 50%, white);
-        }
-
-        .scroll-hero-wrapper {
-          position: relative;
         }
       `}</style>
     </div>
