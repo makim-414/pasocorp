@@ -13,10 +13,12 @@ export default function Home() {
       <main>
         <Hero />
         <ScrollHeroSection />
+        <div className="relative z-10">
         <DynamicTop />
         <BrandHub />
         <DynamicBottom />
         <Services />
+        </div>
       </main>
       <Footer />
     </div>

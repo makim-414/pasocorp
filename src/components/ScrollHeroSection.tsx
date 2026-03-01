@@ -249,8 +249,7 @@ export default function ScrollHeroSection({
 
         .scroll-hero-wrapper {
           position: relative;
-          z-index: 0;
-          overflow: hidden;
+          isolation: isolate;
         }
       `}</style>
     </div>
