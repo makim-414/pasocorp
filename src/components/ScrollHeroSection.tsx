@@ -63,10 +63,6 @@ export default function ScrollHeroSection({
 
       <div className="scroll-hero-main">
         <div className="scroll-hero-main-content">
-          <p className="scroll-fluid">
-            Art meets strategy.<br />
-            <a href="#about">Discover PASO →</a>
-          </p>
         </div>
       </div>
 
