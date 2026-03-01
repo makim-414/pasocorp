@@ -135,11 +135,14 @@ export default function FlywheelVisual() {
               <motion.div
                 animate={{
                   scale: isActive ? 1.18 : 1,
-                  borderColor: isActive ? `${brand.accent}50` : dimmed ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.07)",
+                  borderColor: isActive ? `${brand.accent}40` : dimmed ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.07)",
                   backgroundColor: isActive ? `${brand.accent}0D` : "rgba(0,0,0,0.6)",
                   opacity: dimmed ? 0.3 : 1,
+                  boxShadow: isActive
+                    ? `0 0 20px ${brand.accent}30, 0 0 40px ${brand.accent}15, inset 0 0 15px ${brand.accent}10`
+                    : "0 0 0px transparent",
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.4 }}
                 className="w-full h-full rounded-full border flex flex-col items-center justify-center backdrop-blur-sm"
               >
                 <motion.div
