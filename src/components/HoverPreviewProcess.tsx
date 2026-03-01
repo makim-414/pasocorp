@@ -141,7 +141,7 @@ export default function HoverPreviewProcess() {
           color: #888;
           font-weight: 300;
           letter-spacing: -0.01em;
-          max-width: 520px;
+          max-width: 900px;
         }
         .hp-text-block p {
           margin-bottom: 1.2em;
