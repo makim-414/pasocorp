@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import FlywheelVisual from "./FlywheelVisual";
+import HoverPreviewProcess from "./HoverPreviewProcess";
 
 /* ───── Animated counter ───── */
 function Counter({ value, label }: { value: string; label: string }) {
@@ -153,9 +154,10 @@ export function DynamicTop() {
               <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
                 {"Art as an Asset Class.\nStrategy as a Service."}
               </h2>
-              <p className="text-sm text-[#888] leading-relaxed max-w-md">
+              <p className="text-sm text-[#888] leading-relaxed max-w-md mb-0">
                 PASO는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술품 거래 자문부터 갤러리 / 미술관 운영, 기업 컬렉션 자문과 미술 프로젝트 운용까지, 미술 생태계의 모든 것을 연결합니다.
               </p>
+              <HoverPreviewProcess />
             </motion.div>
           </div>
         </div>
