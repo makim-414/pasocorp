@@ -1,55 +1,168 @@
 "use client";
 
-const brandLinks = [
-  { name: "Paso Gallery", href: "/brands/paso-gallery" },
-  { name: "Paso Agency", href: "/brands/paso-agency" },
-  { name: "Artrader", href: "/brands/artrader" },
-  { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
-  { name: "PASO Art Center", href: "/brands/paso-art-center" },
+import Link from "next/link";
+import { ExternalLink, Instagram, Mail } from "lucide-react";
+
+const linksBrands = [
+  {
+    group: "Brands",
+    items: [
+      { title: "Paso Gallery", href: "/brands/paso-gallery" },
+      { title: "Paso Agency", href: "/brands/paso-agency" },
+      { title: "Artrader", href: "/brands/artrader" },
+      { title: "Artledger Consulting", href: "/brands/artledger-consulting" },
+      { title: "PASO Art Center", href: "/brands/paso-art-center" },
+    ],
+  },
+];
+
+const linksServices = [
+  {
+    group: "Services",
+    items: [
+      { title: "Art Advisory", href: "/solutions" },
+      { title: "Collection Management", href: "/solutions" },
+      { title: "Exhibition Curation", href: "/solutions" },
+      { title: "Market Analysis", href: "/solutions" },
+      { title: "Art Investment", href: "/solutions" },
+      { title: "Space Rental", href: "/contact" },
+    ],
+  },
+];
+
+const linksCompany = [
+  {
+    group: "Company",
+    items: [
+      { title: "About", href: "/about" },
+      { title: "Contact", href: "/contact" },
+      { title: "Careers", href: "/contact" },
+      { title: "Privacy Policy", href: "#" },
+    ],
+  },
 ];
 
 const locations = [
-  { name: "Office", address: "서울 성북구 삼선교로23가길 72", detail: "인터블루 1층" },
-  { name: "Gallery", address: "92, Seonggyungwan-ro, Jongno-gu, Seoul", detail: "Hanok Building" },
-  { name: "Art Center", address: "Opening 2025", detail: "with Mass C&G" },
+  {
+    name: "Office",
+    address: "서울 성북구 삼선교로23가길 72",
+    detail: "인터블루 1층",
+  },
+  {
+    name: "Gallery",
+    address: "92, Seonggyungwan-ro, Jongno-gu",
+    detail: "Seoul, Hanok Building",
+  },
+  {
+    name: "Art Center",
+    address: "마곡중앙4로 66, 2층",
+    detail: "Seoul, Magok",
+  },
 ];
 
 export default function Footer() {
   return (
-    <footer id="contact" className="border-t border-[#1a1a1a] bg-[#0a0a0a]">
-      {/* Brand nav */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 flex flex-wrap gap-x-2 gap-y-2 text-[10px] tracking-[0.15em] uppercase text-[#555]">
-        {brandLinks.map((b, i) => (
-          <span key={b.name} className="flex items-center gap-2">
-            <a href={b.href} className="hover:text-[#888] transition-colors">{b.name}</a>
-            {i < brandLinks.length - 1 && <span className="text-[#2a2a2a]">|</span>}
-          </span>
-        ))}
-      </div>
-
-      <div className="border-t border-[#1a1a1a]" />
-
-      {/* Locations */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {locations.map((loc) => (
-          <div key={loc.name}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{loc.name}</p>
-            <p className="text-sm text-[#888] font-light">{loc.address}</p>
-            <p className="text-sm text-[#555] font-light">{loc.detail}</p>
+    <footer className="border-t border-[#1a1a1a] bg-[#0a0a0a] py-16">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+        {/* Links Grid */}
+        <div className="grid gap-14 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          {/* Brands */}
+          <div className="space-y-3 text-sm">
+            <span className="block font-medium text-white">{linksBrands[0].group}</span>
+            {linksBrands[0].items.map((item, i) => (
+              <Link
+                key={i}
+                href={item.href}
+                className="text-[#666] hover:text-[#999] block duration-150"
+              >
+                {item.title}
+              </Link>
+            ))}
+            <Link
+              href="https://artrader.io"
+              target="_blank"
+              className="text-[#666] hover:text-[#999] flex gap-1 items-center text-sm duration-150"
+            >
+              Artrader.io
+              <ExternalLink size={14} />
+            </Link>
           </div>
-        ))}
-      </div>
 
-      <div className="border-t border-[#1a1a1a]" />
+          {/* Services */}
+          <div className="space-y-3 text-sm">
+            <span className="block font-medium text-white">{linksServices[0].group}</span>
+            {linksServices[0].items.map((item, i) => (
+              <Link
+                key={i}
+                href={item.href}
+                className="text-[#666] hover:text-[#999] block duration-150"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
 
-      {/* Contact + copyright */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-xs text-[#555] font-light">
-          <a href="mailto:makim@ironact.net" className="hover:text-[#888] transition-colors">makim@ironact.net</a>
-          <span>CEO Min Sung Kim</span>
-          <span>+82 10-6432-4471</span>
+          {/* Company */}
+          <div className="space-y-3 text-sm">
+            <span className="block font-medium text-white">{linksCompany[0].group}</span>
+            {linksCompany[0].items.map((item, i) => (
+              <Link
+                key={i}
+                href={item.href}
+                className="text-[#666] hover:text-[#999] block duration-150"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+
+          {/* Locations */}
+          <div className="space-y-3 text-sm">
+            <span className="block font-medium text-white">Locations</span>
+            {locations.map((loc, i) => (
+              <div key={i} className="space-y-0.5">
+                <span className="text-[#666] block text-xs uppercase tracking-wider">{loc.name}</span>
+                <span className="text-[#555] block text-xs">{loc.address}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Social + Logo */}
+          <div className="space-y-3 text-sm">
+            <span className="block font-medium text-white">Social</span>
+            <Link
+              href="https://www.instagram.com/pasoartcenter"
+              target="_blank"
+              className="text-[#666] hover:text-[#999] flex gap-2 items-center duration-150"
+            >
+              <Instagram size={14} />
+              Instagram
+            </Link>
+            <Link
+              href="mailto:makim@ironact.net"
+              className="text-[#666] hover:text-[#999] flex gap-2 items-center duration-150"
+            >
+              <Mail size={14} />
+              Email
+            </Link>
+            <div className="pt-4">
+              <span className="text-white font-semibold tracking-tight text-lg">PASO</span>
+            </div>
+          </div>
         </div>
-        <p className="text-xs text-[#555] font-light">© PASO Inc. 2026</p>
+
+        {/* Bottom bar */}
+        <div className="mt-14 border-t border-[#1a1a1a] pt-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-xs text-[#555]">
+            <span className="block size-2 rounded-full bg-emerald-500" />
+            All systems normal.
+          </div>
+          <div className="flex items-center gap-6 text-xs text-[#555]">
+            <span>CEO Min Sung Kim</span>
+            <span>+82 10-6432-4471</span>
+            <span>© PASO {new Date().getFullYear()}</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
