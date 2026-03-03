@@ -10,16 +10,16 @@ type ScrollHeroProps = {
 };
 
 const PASO_WORDS = [
-  'Find.',
-  'Analyze.',
-  'Curate.',
-  'Exhibit.',
-  'Evaluate.',
-  'Trade.',
-  'Consult.',
-  'Connect.',
-  'Invest.',
-  'Grow.',
+  'Find Art.',
+  'Analyze Art.',
+  'Curate Art.',
+  'Exhibit Art.',
+  'Evaluate Art.',
+  'Trade Art.',
+  'Consult Art.',
+  'Connect Art.',
+  'Invest Art.',
+  'Grow Art.',
 ];
 
 export default function ScrollHeroSection({
