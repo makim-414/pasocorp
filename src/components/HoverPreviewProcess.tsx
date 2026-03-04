@@ -212,10 +212,10 @@ export default function HoverPreviewProcess() {
       <div className="hp-process-section mt-8">
         <div className="hp-text-block">
           <p>
-            어떤 작품이 좋을까? <HoverLink {...linkProps("gallery")}>파소 갤러리</HoverLink>에서 검증된 신진작가의 작품을 직접 만나보세요. 더 넓은 시야가 필요하다면, <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>의 상설전에서 국내외 이머징 작가들의 흐름을 한눈에 읽을 수 있습니다.
+            국내외 신진·라이징 작가를 엄선하여 소개하는 <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink>는, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다. 해외 이머징 작가부터 국내 유망 작가까지, <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>는 전시와 아트토이 발행 등 IP 확장 프로젝트를 전개하며, 상설전에서는 Artrader 데이터로 엄선한 블루칩·옥션 상위권 작품 70여 점을 상시 만날 수 있습니다.
           </p>
           <p>
-            마음에 드는 작품을 찾았다면, <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>에서 1,500만 건의 거래 데이터로 실거래가와 적정 매입가를 확인하세요. 매입 후 세금 처리와 절세 전략은 <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink>이 설계합니다. 법인 컬렉션 구축부터 Private Sale까지, 미술 자산의 모든 여정을 PASO가 함께합니다.
+            기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—<HoverLink {...linkProps("agency")}>PASO Agency</HoverLink>가 양측 모두에게 지속 가능한 구조를 설계합니다. 해외 1,500만 건·국내 9만여 건의 정제된 옥션 데이터로 실거래가와 적정 매입가를 산출하는 <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>는, 미술품 2차 거래(Private Sales) 플랫폼이자 법인 컬렉션의 구축과 리밸런싱에 특화된 데이터베이스입니다. 매입 이후의 세금 처리, 절세 전략, 법인 컬렉션 운용 전반은 <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink>이 설계하고 자문합니다. 개인과 법인 모두, 거래의 전 과정을 전문적으로 지원합니다.
           </p>
         </div>
       </div>
