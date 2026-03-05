@@ -89,9 +89,10 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-5 md:mt-8"
+          className="mt-5 md:mt-8 text-base md:text-xl font-light text-[#e8e8e8] tracking-normal"
+          style={{ fontFamily: "var(--font-dutch)" }}
         >
-          <WeArtHero />
+          <TextGenerateEffect words="Art · Advisory & Data · IP · Space" />
         </motion.div>
 
         {/* Brand links */}
