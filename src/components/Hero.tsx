@@ -6,6 +6,7 @@ import Image from "next/image";
 import BackgroundBeams from "./BackgroundBeams";
 import TextGenerateEffect from "./TextGenerateEffect";
 import BlurInText from "./ui/blur-in-text";
+import WeArtHero from "./WeArtHero";
 
 const brands = [
   { name: "Artrader.io", image: "/brands/artrader-platform.jpg", color: "#b8960b" },
@@ -88,10 +89,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-5 md:mt-8 text-base md:text-xl font-light text-[#e8e8e8] tracking-normal"
-          style={{ fontFamily: "var(--font-dutch)" }}
+          className="mt-5 md:mt-8"
         >
-          <TextGenerateEffect words="Art · Advisory & Data · IP · Space" />
+          <WeArtHero />
         </motion.div>
 
         {/* Brand links */}
