@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import BackgroundBeams from "./BackgroundBeams";
 import TextGenerateEffect from "./TextGenerateEffect";
+import BlurInText from "./ui/blur-in-text";
 
 const brands = [
   { name: "Artrader.io", image: "/brands/artrader-platform.jpg", color: "#b8960b" },
@@ -67,15 +68,12 @@ export default function Hero() {
       <Spotlight springX={springX} springY={springY} />
 
       <div className="relative z-10 text-center px-4 w-full max-w-screen-lg mx-auto">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+        <h1
           className="text-[clamp(3rem,10vw,10rem)] font-normal tracking-normal text-white leading-none"
           style={{ fontFamily: "var(--font-dutch)" }}
         >
-          PASO
-        </motion.h1>
+          <BlurInText text="PASO" duration={1} characterDelay={0.08} />
+        </h1>
 
         <motion.p
           initial={{ opacity: 0 }}
