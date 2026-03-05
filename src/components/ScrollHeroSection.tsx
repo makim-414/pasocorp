@@ -68,11 +68,11 @@ export default function ScrollHeroSection({
 
       <style jsx global>{`
         .scroll-hero-wrapper {
-          --scroll-start: 50vh;
-          --scroll-space: 50vh;
+          --scroll-start: 30vh;
+          --scroll-space: 40vh;
           --scroll-hue: 45;
           --scroll-accent: hsl(var(--scroll-hue) 80% 55%);
-          --scroll-font-size-min: 14;
+          --scroll-font-size-min: 16;
           --scroll-font-size-max: 20;
           --scroll-font-ratio-min: 1.1;
           --scroll-font-ratio-max: 1.33;
@@ -82,6 +82,13 @@ export default function ScrollHeroSection({
           width: 100%;
           background: black;
           z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+          .scroll-hero-wrapper {
+            --scroll-start: 50vh;
+            --scroll-space: 50vh;
+          }
         }
 
         .scroll-fluid {
@@ -105,14 +112,23 @@ export default function ScrollHeroSection({
 
         .scroll-hero-header {
           --scroll-font-level: 4;
-          --scroll-font-size-min: 24;
+          --scroll-font-size-min: 20;
           position: sticky;
           top: calc((var(--scroll-count) - 1) * -1lh);
-          line-height: 1.2;
+          line-height: 1.3;
           display: flex;
           align-items: start;
           width: 100%;
           margin-bottom: var(--scroll-space);
+          padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .scroll-hero-header {
+            --scroll-font-size-min: 24;
+            line-height: 1.2;
+            padding: 0;
+          }
         }
 
         .scroll-hero-header-inner {
@@ -140,25 +156,39 @@ export default function ScrollHeroSection({
 
         .scroll-hero-wrapper li {
           --dimmed: color-mix(in oklch, white, transparent 80%);
-          background:
-            linear-gradient(
-              180deg,
-              var(--dimmed) 0 calc(var(--scroll-start) - 0.5lh),
-              var(--scroll-accent) calc(var(--scroll-start) - 0.55lh) calc(var(--scroll-start) + 0.55lh),
-              var(--dimmed) calc(var(--scroll-start) + 0.5lh)
-            );
-          background-attachment: fixed;
-          color: transparent;
+          color: var(--dimmed);
           -webkit-background-clip: text;
           background-clip: text;
+        }
+
+        @media (min-width: 768px) {
+          .scroll-hero-wrapper li {
+            background:
+              linear-gradient(
+                180deg,
+                var(--dimmed) 0 calc(var(--scroll-start) - 0.5lh),
+                var(--scroll-accent) calc(var(--scroll-start) - 0.55lh) calc(var(--scroll-start) + 0.55lh),
+                var(--dimmed) calc(var(--scroll-start) + 0.5lh)
+              );
+            background-attachment: fixed;
+            color: transparent;
+          }
         }
 
         /* Bottom gold section — contained within wrapper */
         .scroll-hero-main {
           width: 100%;
-          height: 100vh;
+          height: 60vh;
+          min-height: 400px;
           position: relative;
           color: black;
+        }
+
+        @media (min-width: 768px) {
+          .scroll-hero-main {
+            height: 100vh;
+            min-height: 500px;
+          }
         }
 
         .scroll-hero-main::before {
@@ -198,27 +228,29 @@ export default function ScrollHeroSection({
           text-decoration: underline;
         }
 
-        /* View-timeline animation — scoped to wrapper */
+        /* View-timeline animation — scoped to wrapper - disabled on mobile for stability */
         @supports (animation-timeline: view()) {
-          .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main {
-            view-timeline: --scroll-section;
-          }
-          .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main::before {
-            transform-origin: 50% 100%;
-            scale: 0.9;
-            animation: scrollHeroGrow both ease-in-out;
-            animation-timeline: --scroll-section;
-            animation-range: entry 50%;
-          }
-          .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main-content p {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            z-index: 5;
-            animation: scrollHeroReveal both ease-in-out;
-            animation-timeline: --scroll-section;
-            animation-range: entry 50%;
+          @media (min-width: 768px) {
+            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main {
+              view-timeline: --scroll-section;
+            }
+            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main::before {
+              transform-origin: 50% 100%;
+              scale: 0.9;
+              animation: scrollHeroGrow both ease-in-out;
+              animation-timeline: --scroll-section;
+              animation-range: entry 50%;
+            }
+            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main-content p {
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              translate: -50% -50%;
+              z-index: 5;
+              animation: scrollHeroReveal both ease-in-out;
+              animation-timeline: --scroll-section;
+              animation-range: entry 50%;
+            }
           }
           @keyframes scrollHeroReveal { from { opacity: 0; } to { opacity: 1; } }
           @keyframes scrollHeroGrow { to { scale: 1; border-radius: 0; } }

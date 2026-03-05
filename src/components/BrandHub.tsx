@@ -60,17 +60,17 @@ const titleWords = "Five Brands, One Vision".split(" ");
 export default function BrandHub() {
   const [hovered, setHovered] = useState<number | null>(null);
   return (
-    <section id="brands" className="py-32 md:py-40 bg-black">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+    <section id="brands" className="py-16 sm:py-24 md:py-32 lg:py-40 bg-black">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4"
+          className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3 sm:mb-4"
         >
           Our Brands
         </motion.p>
-        <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-8 sm:mb-12 md:mb-16 leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
           {titleWords.map((word, i) => (
             <motion.span
               key={i}
@@ -86,7 +86,7 @@ export default function BrandHub() {
         </h2>
 
         {/* Bento: top row 3 large */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-6">
           {mainBrands.map((brand, i) => (
             <motion.div
               key={brand.slug}
@@ -97,28 +97,28 @@ export default function BrandHub() {
             >
               <Link
                 href={`/brands/${brand.slug}`}
-                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-white/[0.08] hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] ${hovered !== null && hovered !== i ? "blur-[2px] scale-[0.97] opacity-60" : ""}`}
+                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-white/[0.08] hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] ${hovered !== null && hovered !== i ? "md:blur-[2px] md:scale-[0.97] md:opacity-60" : ""}`}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
               >
-                <div className="relative h-64 md:h-72 overflow-hidden">
+                <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden">
                   <Image
                     src={brand.image}
                     alt={brand.name}
                     fill
                     className="object-cover transition-all duration-[1.2s] ease-out group-hover:scale-[1.08]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/25 transition-colors duration-700" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700" style={{ background: `linear-gradient(135deg, ${brand.color}40, transparent)` }} />
-                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 md:h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
                 </div>
-                <div className="p-6 md:p-8">
-                  <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-3">{brand.year}</p>
-                  <h3 className="text-xl md:text-2xl font-light text-white mb-2 group-hover:text-[#e8e8e8] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
-                  <p className="text-sm text-[#888] font-light leading-relaxed mb-4">{brand.desc}</p>
-                  <p className="text-xs text-[#555] font-light tracking-wide">{brand.activity}</p>
-                  <div className="mt-4 w-0 group-hover:w-12 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
+                <div className="p-4 sm:p-6 md:p-8">
+                  <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2 sm:mb-3">{brand.year}</p>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-2 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
+                  <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-3 sm:mb-4 line-clamp-3">{brand.desc}</p>
+                  <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>
+                  <div className="mt-3 sm:mt-4 w-0 group-hover:w-8 sm:group-hover:w-12 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
                 </div>
               </Link>
             </motion.div>
@@ -126,7 +126,7 @@ export default function BrandHub() {
         </div>
 
         {/* Bento: bottom row 2 compact */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {subBrands.map((brand, i) => (
             <motion.div
               key={brand.slug}
@@ -137,27 +137,27 @@ export default function BrandHub() {
             >
               <Link
                 href={`/brands/${brand.slug}`}
-                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-[#333] ${hovered !== null && hovered !== i + 3 ? "blur-[2px] scale-[0.97] opacity-60" : ""}`}
+                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-[#333] ${hovered !== null && hovered !== i + 3 ? "md:blur-[2px] md:scale-[0.97] md:opacity-60" : ""}`}
                 onMouseEnter={() => setHovered(i + 3)}
                 onMouseLeave={() => setHovered(null)}
               >
-                <div className="flex flex-col sm:flex-row">
-                  <div className="relative h-48 sm:h-auto sm:w-2/5 overflow-hidden shrink-0">
+                <div className="flex flex-col md:flex-row">
+                  <div className="relative h-40 sm:h-48 md:h-auto md:w-2/5 overflow-hidden shrink-0">
                     <Image
                       src={brand.image}
                       alt={brand.name}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, 40vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 40vw"
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
                   </div>
-                  <div className="p-6 flex flex-col justify-center">
+                  <div className="p-4 sm:p-6 flex flex-col justify-center">
                     <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2">{brand.year}</p>
-                    <h3 className="text-lg font-light text-white mb-2 group-hover:text-[#e8e8e8] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
-                    <p className="text-sm text-[#888] font-light leading-relaxed mb-2">{brand.desc}</p>
-                    <p className="text-xs text-[#555] font-light tracking-wide">{brand.activity}</p>
-                    <div className="mt-3 w-0 group-hover:w-10 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
+                    <h3 className="text-base sm:text-lg font-light text-white mb-2 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
+                    <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-2 line-clamp-3">{brand.desc}</p>
+                    <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>
+                    <div className="mt-3 w-0 group-hover:w-8 sm:group-hover:w-10 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
                   </div>
                 </div>
               </Link>

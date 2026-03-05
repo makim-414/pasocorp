@@ -18,10 +18,10 @@ function Counter({ value, label }: { value: string; label: string }) {
       transition={{ duration: 0.6 }}
       className="text-center"
     >
-      <p className="text-3xl md:text-5xl font-light tracking-tight text-[#b8960b]" style={{ fontFamily: "var(--font-dutch)" }}>
+      <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight text-[#b8960b] leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
         {value}
       </p>
-      <p className="text-[10px] tracking-[0.12em] uppercase text-[#555] mt-3 whitespace-pre-line leading-relaxed">{label}</p>
+      <p className="text-[9px] sm:text-[10px] tracking-[0.12em] uppercase text-[#555] mt-2 sm:mt-3 whitespace-pre-line leading-relaxed">{label}</p>
     </motion.div>
   );
 }
@@ -49,20 +49,20 @@ function SplitSection({
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-0">
-      <div className={reverse ? "md:order-2" : ""}>
-        <ParallaxImg src={image} alt={title} className="aspect-[4/3] md:aspect-auto md:h-full min-h-[250px] md:min-h-[400px]" />
+    <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+      <div className={reverse ? "lg:order-2" : ""}>
+        <ParallaxImg src={image} alt={title} className="aspect-[4/3] lg:aspect-auto lg:h-full min-h-[200px] sm:min-h-[250px] lg:min-h-[400px]" />
       </div>
-      <div className={`flex flex-col justify-center px-6 md:px-14 py-12 md:py-16 ${reverse ? "md:order-1" : ""}`}>
+      <div className={`flex flex-col justify-center px-4 sm:px-6 lg:px-12 xl:px-14 py-8 sm:py-12 lg:py-16 ${reverse ? "lg:order-1" : ""}`}>
         <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}>
           <div className="flex items-center gap-3 mb-5">
             <div className="w-8 h-px bg-[#555]" />
             <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b]">{tag}</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-light leading-tight mb-4 sm:mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
             {title}
           </h2>
-          <p className="text-sm text-[#888] leading-relaxed max-w-md">{desc}</p>
+          <p className="text-xs sm:text-sm text-[#888] leading-relaxed max-w-md">{desc}</p>
         </motion.div>
       </div>
     </div>
@@ -103,20 +103,20 @@ function TripleFeature() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <div ref={ref} className="max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-32">
-      <div className="text-center mb-14">
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Now & Upcoming</motion.p>
-        <h2 className="text-3xl md:text-4xl font-light text-white mb-3" style={{ fontFamily: "var(--font-dutch)" }}>What&apos;s Happening</h2>
-        <p className="text-sm text-[#888]">Exhibitions, events, and community programmes</p>
+    <div ref={ref} className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
+      <div className="text-center mb-10 sm:mb-12 md:mb-14">
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3 sm:mb-4">Now & Upcoming</motion.p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-2 sm:mb-3 leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>What&apos;s Happening</h2>
+        <p className="text-xs sm:text-sm text-[#888]">Exhibitions, events, and community programmes</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {cards.map((card, i) => (
           <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: i * 0.12 }}
-            className={i === 1 ? "md:-mt-8" : "md:mt-8"}
+            className={i === 1 ? "lg:-mt-8" : "lg:mt-8"}
           >
             <div className={`relative overflow-hidden group/card ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
               <Image src={card.image} alt={card.title} fill className="object-cover transition-all duration-[1.2s] ease-out group-hover/card:scale-[1.06]" sizes="33vw" />
@@ -178,7 +178,7 @@ export function DynamicBottom() {
     <div className="bg-black">
       {/* Stats bar */}
       <section className="border-y border-[#1a1a1a] bg-[#0a0a0a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           <Counter value="1,580만+" label={"보유 옥션 데이터"} />
           <Counter value="90,000+" label={"국내 미술시장\n분석 데이터"} />
           <Counter value="₩13.2B" label={"위탁 리밸런싱\n컬렉션 AUM"} />
