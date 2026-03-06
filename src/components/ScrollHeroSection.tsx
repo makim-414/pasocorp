@@ -156,7 +156,7 @@ export default function ScrollHeroSection({
 
         .scroll-hero-wrapper li {
           --dimmed: color-mix(in oklch, white, transparent 80%);
-          color: var(--dimmed);
+          color: color-mix(in oklch, white, transparent 40%);
           -webkit-background-clip: text;
           background-clip: text;
         }
