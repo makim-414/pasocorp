@@ -1,25 +1,65 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import FlywheelVisual from "./FlywheelVisual";
 import HoverPreviewProcess from "./HoverPreviewProcess";
 
-/* ───── Animated counter ───── */
+/* ───── Animated counter with count-up ───── */
+function parseCounterValue(value: string): { prefix: string; number: number; suffix: string; decimals: number } {
+  const match = value.match(/^([^\d]*?)([\d,.]+)(.*)$/);
+  if (!match) return { prefix: "", number: 0, suffix: value, decimals: 0 };
+  const prefix = match[1];
+  const numStr = match[2].replace(/,/g, "");
+  const number = parseFloat(numStr);
+  const decimalPart = numStr.split(".")[1];
+  const decimals = decimalPart ? decimalPart.length : 0;
+  const suffix = match[3];
+  return { prefix, number, suffix, decimals };
+}
+
+function formatNumber(n: number, decimals: number, useCommas: boolean): string {
+  const fixed = n.toFixed(decimals);
+  if (!useCommas) return fixed;
+  const [intPart, decPart] = fixed.split(".");
+  const withCommas = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return decPart ? `${withCommas}.${decPart}` : withCommas;
+}
+
 function Counter({ value, label }: { value: string; label: string }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const { prefix, number, suffix, decimals } = parseCounterValue(value);
+  const hasCommas = value.includes(",");
+  const [displayNum, setDisplayNum] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const duration = 1800;
+    const startTime = performance.now();
+    let raf: number;
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayNum(eased * number);
+      if (progress < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, number]);
+
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.7 }}
       className="text-center"
     >
-      <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight text-[#b8960b] leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
-        {value}
+      <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight text-white leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
+        {prefix}{formatNumber(displayNum, decimals, hasCommas)}{suffix}
       </p>
       <p className="text-[9px] sm:text-[10px] tracking-[0.12em] uppercase text-[#555] mt-2 sm:mt-3 whitespace-pre-line leading-relaxed">{label}</p>
     </motion.div>
