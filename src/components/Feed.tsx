@@ -118,11 +118,11 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 function TripleFeature() {
   const cards = [
     {
-      image: "https://images.unsplash.com/photo-1594794312433-05a69139b4b4?w=600&q=80",
-      title: "2026 미술시장 인사이트",
-      desc: "국내외 시장 동향과 전망",
+      image: "https://pasogallery.com/images/heritage/heritage-interior.jpg",
+      title: "Paso Private Sales",
+      desc: "Paso Gallery의 프라이빗 세일",
       tall: false,
-      href: "#",
+      href: "/brands/paso-gallery",
     },
     {
       image: "https://drive.google.com/thumbnail?id=1paMxCxAhSsNRMRFoCeZl8APlMijfVdGw&sz=w1200",

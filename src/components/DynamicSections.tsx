@@ -135,7 +135,7 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 /* ───── Staggered triple feature ───── */
 function TripleFeature() {
   const cards = [
-    { image: "https://images.unsplash.com/photo-1594794312433-05a69139b4b4?w=600&q=80", title: "2026 미술시장 인사이트", desc: "국내외 시장 동향과 전망", tall: false, href: "#" },
+    { image: "https://pasogallery.com/images/heritage/heritage-interior.jpg", title: "Paso Private Sales", desc: "Paso Gallery의 프라이빗 세일", tall: false, href: "/brands/paso-gallery" },
     { image: "https://drive.google.com/thumbnail?id=1paMxCxAhSsNRMRFoCeZl8APlMijfVdGw&sz=w1200", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "https://www.joongang.co.kr/article/25312608" },
     { image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "#" },
   ];

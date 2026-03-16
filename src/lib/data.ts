@@ -76,13 +76,13 @@ export const menuItems: MenuItem[] = [
 export const feedCards: CardItem[] = [
   {
     id: "1",
-    title: "2026 미술시장 인사이트",
+    title: "Paso Private Sales",
     description:
-      "국내외 미술시장 동향과 2026년 전망. 갤러리스트, 컬렉터, 아트 어드바이저가 함께하는 인사이트 세미나.",
-    date: "28 Feb 2026",
-    tags: ["Event", "Talk"],
-    image: "https://images.unsplash.com/photo-1594794312433-05a69139b4b4?w=900&q=80",
-    href: "#",
+      "Paso Gallery에서 진행하는 프라이빗 세일. 엄선된 작품을 프라이빗하게 만나보세요.",
+    date: "Now Available",
+    tags: ["Sales", "Gallery"],
+    image: "https://pasogallery.com/images/heritage/heritage-interior.jpg",
+    href: "/brands/paso-gallery",
     featured: true,
   },
   {
