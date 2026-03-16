@@ -122,18 +122,21 @@ function TripleFeature() {
       title: "2026 미술시장 인사이트",
       desc: "국내외 시장 동향과 전망",
       tall: false,
+      href: "#",
     },
     {
-      image: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&q=80",
+      image: "https://drive.google.com/thumbnail?id=1paMxCxAhSsNRMRFoCeZl8APlMijfVdGw&sz=w1200",
       title: "프리오프닝 상설전",
       desc: "PASO Art Center의 첫 전시",
       tall: true,
+      href: "https://www.joongang.co.kr/article/25312608",
     },
     {
       image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
       title: "마곡 아트 살롱",
       desc: "월간 커뮤니티 아트 토크",
       tall: false,
+      href: "#",
     },
   ];
   const ref = useRef(null);
@@ -162,14 +165,16 @@ function TripleFeature() {
             transition={{ duration: 0.6, delay: i * 0.12 }}
             className={i === 1 ? "md:-mt-8" : "md:mt-8"}
           >
-            <div className={`relative overflow-hidden ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
-              <Image src={card.image} alt={card.title} fill className="object-cover hover:scale-105 transition-transform duration-700" sizes="33vw" />
-            </div>
-            <div className="mt-4 text-center">
-              <div className="w-px h-5 bg-[var(--color-border)] mx-auto mb-3" />
-              <h3 className="text-lg font-light" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
-              <p className="text-xs text-[var(--color-muted)] mt-1">{card.desc}</p>
-            </div>
+            <a href={card.href} target={card.href !== "#" ? "_blank" : undefined} rel={card.href !== "#" ? "noopener noreferrer" : undefined} className="block cursor-pointer group/card">
+              <div className={`relative overflow-hidden ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
+                <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-700" sizes="33vw" />
+              </div>
+              <div className="mt-4 text-center">
+                <div className="w-px h-5 bg-[var(--color-border)] mx-auto mb-3" />
+                <h3 className="text-lg font-light" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                <p className="text-xs text-[var(--color-muted)] mt-1">{card.desc}</p>
+              </div>
+            </a>
           </motion.div>
         ))}
       </div>
