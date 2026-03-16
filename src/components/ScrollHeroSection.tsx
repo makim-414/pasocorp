@@ -121,6 +121,7 @@ export default function ScrollHeroSection({
           width: 100%;
           margin-bottom: var(--scroll-space);
           padding: 0 1rem;
+          z-index: 1;
         }
 
         @media (min-width: 768px) {
@@ -157,8 +158,6 @@ export default function ScrollHeroSection({
         .scroll-hero-wrapper li {
           --dimmed: color-mix(in oklch, white, transparent 80%);
           color: color-mix(in oklch, white, transparent 40%);
-          -webkit-background-clip: text;
-          background-clip: text;
         }
 
         @media (min-width: 768px) {
@@ -171,6 +170,8 @@ export default function ScrollHeroSection({
                 var(--dimmed) calc(var(--scroll-start) + 0.5lh)
               );
             background-attachment: fixed;
+            -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
           }
         }
