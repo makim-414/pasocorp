@@ -81,7 +81,7 @@ export const feedCards: CardItem[] = [
       "Paso Gallery에서 진행하는 프라이빗 세일. 엄선된 작품을 프라이빗하게 만나보세요.",
     date: "Now Available",
     tags: ["Sales", "Gallery"],
-    image: "https://pasogallery.com/images/heritage/heritage-interior.jpg",
+    image: "/brands/paso-gallery-heritage.jpg",
     href: "/brands/paso-gallery",
     featured: true,
   },
