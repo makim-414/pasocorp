@@ -92,7 +92,7 @@ export const feedCards: CardItem[] = [
       "PASO Art Center의 첫 전시. 동시대 미술의 새로운 시선을 마곡에서 만나보세요.",
     date: "Now Showing",
     tags: ["Exhibition"],
-    image: "https://drive.google.com/thumbnail?id=1paMxCxAhSsNRMRFoCeZl8APlMijfVdGw&sz=w1200",
+    image: "/brands/paso-gallery-reborn.jpg",
     href: "https://www.joongang.co.kr/article/25312608",
     featured: true,
   },

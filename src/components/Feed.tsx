@@ -125,7 +125,7 @@ function TripleFeature() {
       href: "/brands/paso-gallery",
     },
     {
-      image: "https://drive.google.com/thumbnail?id=1paMxCxAhSsNRMRFoCeZl8APlMijfVdGw&sz=w1200",
+      image: "/brands/paso-gallery-reborn.jpg",
       title: "프리오프닝 상설전",
       desc: "PASO Art Center의 첫 전시",
       tall: true,
