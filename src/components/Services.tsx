@@ -1,71 +1,109 @@
 "use client";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+
+import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
-import {
-  BarChart3,
-  FileText,
-  Landmark,
-  Palette,
-  ArrowUpRight,
-} from "lucide-react";
+import { BarChart3, FileText, Landmark, Palette } from "lucide-react";
 
 /* ───── data ───── */
-const services = [
+const FEATURES = [
   {
+    id: "artrader",
     tag: "ARTRADER",
-    title: "Data & Intelligence",
+    label: "Data & Intelligence",
+    Icon: BarChart3,
+    image: "/brands/artrader-platform.jpg",
     desc: "국내외 경매·Private Sales 등 1,500만 건 이상 거래 데이터. Artist Index, 종목분석서 스타일 정량 리포트.",
     color: "#b8960b",
-    Icon: BarChart3,
-    span: "md:col-span-2 md:row-span-2",
   },
   {
+    id: "artledger",
     tag: "ARTLEDGER",
-    title: "Advisory & Tax",
+    label: "Advisory & Tax",
+    Icon: FileText,
+    image: "/brands/artledger-consulting.jpg",
     desc: "증여·상속, 법인 비용·감가, 컬렉션 관리. Review → Valuation → Strategy → Execute.",
     color: "#9ca3af",
-    Icon: FileText,
-    span: "md:col-span-1 md:row-span-1",
   },
   {
+    id: "gallery",
     tag: "PASO GALLERY · ART CENTER",
-    title: "Exhibition & Primary Market",
+    label: "Exhibition & Primary Market",
+    Icon: Landmark,
+    image: "/brands/paso-private-sales.png",
     desc: "국내 신진작가 공모전, 글로벌 이머징 작가 전시, 적정가 2차 시장 Top 30 작품 전시.",
     color: "#1e3a5f",
-    Icon: Landmark,
-    span: "md:col-span-1 md:row-span-1",
   },
   {
+    id: "agency",
     tag: "PASO AGENCY",
-    title: "IP & Brand Collaboration",
+    label: "IP & Brand Collaboration",
+    Icon: Palette,
+    image: "/brands/paso-agency.jpg",
     desc: "프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입.",
     color: "#d4a574",
-    Icon: Palette,
-    span: "md:col-span-1 md:row-span-1",
   },
 ];
 
-/* ───── component ───── */
+const AUTO_PLAY_INTERVAL = 4000;
+const ITEM_HEIGHT = 70;
+
+const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
+
 export default function Services() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [step, setStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const currentIndex =
+    ((step % FEATURES.length) + FEATURES.length) % FEATURES.length;
+
+  const nextStep = useCallback(() => {
+    setStep((prev) => prev + 1);
+  }, []);
+
+  const handleChipClick = (index: number) => {
+    const diff = (index - currentIndex + FEATURES.length) % FEATURES.length;
+    if (diff > 0) setStep((s) => s + diff);
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(nextStep, AUTO_PLAY_INTERVAL);
+    return () => clearInterval(interval);
+  }, [nextStep, isPaused]);
+
+  const getCardStatus = (index: number) => {
+    const diff = index - currentIndex;
+    const len = FEATURES.length;
+    let normalizedDiff = diff;
+    if (diff > len / 2) normalizedDiff -= len;
+    if (diff < -len / 2) normalizedDiff += len;
+    if (normalizedDiff === 0) return "active";
+    if (normalizedDiff === -1) return "prev";
+    if (normalizedDiff === 1) return "next";
+    return "hidden";
+  };
 
   return (
     <section id="services" className="py-32 md:py-40 bg-black">
-      <div ref={ref} className="max-w-[1400px] mx-auto px-6 md:px-12">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* header */}
         <motion.p
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-4"
         >
           Capabilities
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-3xl md:text-5xl font-light text-white mb-16"
           style={{ fontFamily: "var(--font-dutch)" }}
@@ -73,111 +111,149 @@ export default function Services() {
           What We Do
         </motion.h2>
 
-        {/* bento grid — desktop */}
-        <div className="hidden md:grid md:grid-cols-3 md:auto-rows-[220px] gap-3">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.tag}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
-              className={cn(
-                "group relative flex flex-col justify-between overflow-hidden rounded-2xl p-8",
-                "bg-[#0a0a0a] border border-white/[0.06]",
-                "transition-all duration-500 hover:border-white/[0.12]",
-                s.span,
-              )}
-            >
-              {/* top-line accent on hover */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"
-                style={{ backgroundColor: s.color }}
-              />
+        {/* carousel container */}
+        <div className="relative overflow-hidden rounded-2xl md:rounded-3xl flex flex-col lg:flex-row min-h-[550px] lg:min-h-[500px] border border-white/[0.06]">
+          {/* left panel — labels */}
+          <div className="w-full lg:w-[40%] min-h-[300px] lg:h-auto relative z-30 flex flex-col items-start justify-center overflow-hidden px-8 md:px-16 lg:pl-16 bg-[#0a0a0a]">
+            {/* fade edges */}
+            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-40 pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-40 pointer-events-none" />
 
-              {/* ambient glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                style={{
-                  background: `radial-gradient(ellipse at 30% 100%, ${s.color}12 0%, transparent 70%)`,
-                }}
-              />
+            <div className="relative w-full h-full flex items-center justify-center lg:justify-start z-20">
+              {FEATURES.map((feature, index) => {
+                const isActive = index === currentIndex;
+                const distance = index - currentIndex;
+                const wrappedDistance = wrap(
+                  -(FEATURES.length / 2),
+                  FEATURES.length / 2,
+                  distance
+                );
 
-              {/* icon */}
-              <div className="relative z-10">
-                <s.Icon
-                  className="w-8 h-8 mb-4 transition-all duration-500 group-hover:scale-90"
-                  style={{ color: s.color }}
-                  strokeWidth={1.2}
-                />
-              </div>
+                return (
+                  <motion.div
+                    key={feature.id}
+                    style={{ height: ITEM_HEIGHT, width: "fit-content" }}
+                    animate={{
+                      y: wrappedDistance * ITEM_HEIGHT,
+                      opacity: 1 - Math.abs(wrappedDistance) * 0.3,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 90,
+                      damping: 22,
+                      mass: 1,
+                    }}
+                    className="absolute flex items-center justify-start"
+                  >
+                    <button
+                      onClick={() => handleChipClick(index)}
+                      onMouseEnter={() => setIsPaused(true)}
+                      onMouseLeave={() => setIsPaused(false)}
+                      className={cn(
+                        "relative flex items-center gap-4 px-6 md:px-8 py-3.5 rounded-full transition-all duration-700 text-left group border",
+                        isActive
+                          ? "bg-[#b8960b]/10 border-[#b8960b]/40 text-white z-10"
+                          : "bg-transparent text-white/40 border-white/[0.06] hover:border-white/20 hover:text-white/70"
+                      )}
+                    >
+                      <feature.Icon
+                        className={cn(
+                          "w-4 h-4 transition-colors duration-500 flex-shrink-0",
+                          isActive ? "text-[#b8960b]" : "text-white/30"
+                        )}
+                        strokeWidth={1.5}
+                      />
+                      <span className="font-light text-sm md:text-[15px] tracking-wide whitespace-nowrap">
+                        {feature.label}
+                      </span>
+                    </button>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
 
-              {/* text */}
-              <div className="relative z-10 flex flex-col gap-2">
-                <p
-                  className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-500"
-                  style={{ color: s.color }}
-                >
-                  {s.tag}
-                </p>
-                <h3
-                  className="text-xl md:text-2xl font-light text-white"
-                  style={{ fontFamily: "var(--font-dutch)" }}
-                >
-                  {s.title}
-                </h3>
-                <p className="text-sm text-[#666] font-light leading-relaxed max-w-md group-hover:text-[#999] transition-colors duration-500">
-                  {s.desc}
-                </p>
-              </div>
+          {/* right panel — image cards */}
+          <div className="flex-1 min-h-[400px] md:min-h-[500px] lg:h-auto relative bg-[#111] flex items-center justify-center py-16 md:py-20 lg:py-16 px-6 md:px-12 overflow-hidden border-t lg:border-t-0 lg:border-l border-white/[0.06]">
+            <div className="relative w-full max-w-[380px] aspect-[4/5] flex items-center justify-center">
+              {FEATURES.map((feature, index) => {
+                const status = getCardStatus(index);
+                const isActive = status === "active";
+                const isPrev = status === "prev";
+                const isNext = status === "next";
 
-              {/* CTA arrow */}
-              <div className="absolute top-6 right-6 z-10 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <ArrowUpRight className="w-5 h-5 text-white/40" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                return (
+                  <motion.div
+                    key={feature.id}
+                    initial={false}
+                    animate={{
+                      x: isActive ? 0 : isPrev ? -80 : isNext ? 80 : 0,
+                      scale: isActive ? 1 : isPrev || isNext ? 0.88 : 0.75,
+                      opacity: isActive ? 1 : isPrev || isNext ? 0.35 : 0,
+                      rotate: isPrev ? -2 : isNext ? 2 : 0,
+                      zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 25,
+                      mass: 0.8,
+                    }}
+                    className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden border border-white/[0.08] bg-[#0a0a0a] origin-center"
+                    style={{
+                      pointerEvents: isActive ? "auto" : "none",
+                    }}
+                  >
+                    <Image
+                      src={feature.image}
+                      alt={feature.label}
+                      fill
+                      className={cn(
+                        "object-cover transition-all duration-700",
+                        isActive
+                          ? "grayscale-0 blur-0"
+                          : "grayscale blur-[2px] brightness-75"
+                      )}
+                    />
 
-        {/* mobile: stacked */}
-        <div className="md:hidden grid grid-cols-1 gap-3">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.tag}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0a0a0a] p-8"
-            >
-              <s.Icon
-                className="w-7 h-7 mb-4"
-                style={{ color: s.color }}
-                strokeWidth={1.2}
-              />
-              <p
-                className="text-[10px] tracking-[0.2em] uppercase mb-2"
-                style={{ color: s.color }}
-              >
-                {s.tag}
-              </p>
-              <h3
-                className="text-xl font-light text-white mb-2"
-                style={{ fontFamily: "var(--font-dutch)" }}
-              >
-                {s.title}
-              </h3>
-              <p className="text-sm text-[#666] font-light leading-relaxed">
-                {s.desc}
-              </p>
-            </motion.div>
-          ))}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute inset-x-0 bottom-0 p-8 pt-28 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end pointer-events-none"
+                        >
+                          <p
+                            className="text-[10px] tracking-[0.2em] uppercase mb-2"
+                            style={{ color: feature.color }}
+                          >
+                            {feature.tag}
+                          </p>
+                          <p
+                            className="text-white font-light text-xl md:text-2xl leading-tight tracking-tight mb-2"
+                            style={{ fontFamily: "var(--font-dutch)" }}
+                          >
+                            {feature.label}
+                          </p>
+                          <p className="text-white/60 text-sm font-light leading-relaxed">
+                            {feature.desc}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* footer note */}
         <motion.p
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8, duration: 0.6 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           className="mt-16 text-center text-xs tracking-[0.15em] uppercase text-[#444]"
         >
           Available for private events & exhibitions
