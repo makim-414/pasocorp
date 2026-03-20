@@ -3,31 +3,36 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import type React from "react";
 
-const previewData: Record<string, { image: string; title: string; subtitle: string }> = {
+const previewData: Record<string, { image: string; title: string; subtitle: string; href: string }> = {
   gallery: {
     image: "/brands/paso-gallery.jpg",
     title: "Paso Gallery",
     subtitle: "신진작가 발굴 · 전시 · 아트 MD",
+    href: "https://pasogallery.com",
   },
   artcenter: {
     image: "/brands/paso-artcenter-building.jpg",
     title: "PASO Art Center",
     subtitle: "상설전시 · 아트 살롱 · 커뮤니티",
+    href: "/brands/paso-art-center",
   },
   artrader: {
     image: "/brands/artrader-platform.jpg",
     title: "Artrader",
     subtitle: "1,500만+ 거래 데이터 기반 시세 분석",
+    href: "https://artrader.io",
   },
   artledger: {
     image: "/brands/artledger-consulting.jpg",
     title: "Artledger Consulting",
     subtitle: "미술품 절세 · 법인 자문 · Private Sale",
+    href: "/brands/artledger-consulting",
   },
   agency: {
     image: "/brands/paso-agency.jpg",
     title: "Paso Agency",
     subtitle: "캐릭터 IP · B2B 아트 프로젝트",
+    href: "/brands/paso-agency",
   },
 };
 
@@ -44,15 +49,20 @@ function HoverLink({
   onHoverMove: (e: React.MouseEvent) => void;
   onHoverEnd: () => void;
 }) {
+  const data = previewData[previewKey];
+  const isExternal = data?.href?.startsWith("http");
   return (
-    <span
+    <a
+      href={data?.href || "#"}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className="hp-hover-link"
       onMouseEnter={(e) => onHoverStart(previewKey, e)}
       onMouseMove={onHoverMove}
       onMouseLeave={onHoverEnd}
     >
       {children}
-    </span>
+    </a>
   );
 }
 
