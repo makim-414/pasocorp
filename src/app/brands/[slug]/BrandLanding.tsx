@@ -343,6 +343,37 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
       </section>
 
+      {/* ── we — Art. MOTION SECTION ── */}
+      <section className="py-32 md:py-48 bg-black flex items-center justify-center">
+        <div className="flex items-center gap-3 md:gap-5">
+          <motion.span
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white"
+          >
+            we
+          </motion.span>
+          <motion.span
+            initial={{ width: 0, opacity: 0 }}
+            whileInView={{ width: "2.5rem", opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="h-[3px] md:h-[4px] bg-[#b8960b] inline-block"
+          />
+          <motion.span
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-semibold text-[#b8960b]"
+          >
+            Art.
+          </motion.span>
+        </div>
+      </section>
+
       {/* ── EXHIBITIONS: Selected Works ── */}
       <section id="exhibitions" className="py-24 md:py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
