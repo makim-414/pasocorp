@@ -13,6 +13,10 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
     title: "공간 아트 — A Twosome Place",
     images: Array.from({ length: 8 }, (_, i) => `/images/projects/twosome/twosome-${i + 1}.jpg`),
   },
+  4: {
+    title: "팝업 전시 — 홍대 플래그쉽",
+    images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.png`),
+  },
 };
 
 function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[] }; onClose: () => void }) {
