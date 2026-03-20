@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -13,7 +14,7 @@ const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay:
 const locations = [
   { name: "Office", address: "서울특별시 성북구 삼선교로23가길 72", detail: "인터블루 빌딩 1F-3F", mapQuery: "서울특별시 성북구 삼선교로23가길 72" },
   { name: "Gallery", address: "서울특별시 종로구 성균관로 92", detail: "한옥 빌딩", mapQuery: "서울특별시 종로구 성균관로 92" },
-  { name: "Art Center", address: "마곡 (2025 오픈 예정)", detail: "with Mass C&G", mapQuery: "" },
+  { name: "Art Center", address: "서울특별시 강서구 마곡중앙4로 66, 2층", detail: "with Mass C&G", mapQuery: "서울특별시 강서구 마곡중앙4로 66" },
 ];
 
 const contacts = [
@@ -30,6 +31,8 @@ const inquiries = [
 ];
 
 export default function ContactContent() {
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+
   return (
     <>
       {/* Hero */}
@@ -95,13 +98,43 @@ export default function ContactContent() {
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Find Us</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {locations.map((loc, i) => (
-              <motion.div key={loc.name} {...stagger(i)} className="border border-[#1a1a1a] p-8">
+              <motion.div
+                key={loc.name}
+                {...stagger(i)}
+                onClick={() => setSelectedLocation(selectedLocation === loc.name ? null : loc.name)}
+                className={`border p-8 cursor-pointer transition-colors duration-300 ${selectedLocation === loc.name ? "border-[#b8960b]/50 bg-[#b8960b]/5" : "border-[#1a1a1a] hover:border-[#333]"}`}
+              >
                 <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">{loc.name}</p>
                 <p className="text-sm text-white font-light mb-1">{loc.address}</p>
                 <p className="text-sm text-[#555] font-light">{loc.detail}</p>
               </motion.div>
             ))}
           </div>
+
+          <AnimatePresence>
+            {selectedLocation && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden mt-8"
+              >
+                <div className="border border-[#1a1a1a] rounded-lg overflow-hidden">
+                  <iframe
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(locations.find((l) => l.name === selectedLocation)?.mapQuery || "")}&output=embed&hl=ko`}
+                    width="100%"
+                    height="400"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${selectedLocation} 지도`}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
     </>
