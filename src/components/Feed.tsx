@@ -129,7 +129,7 @@ function TripleFeature() {
       title: "프리오프닝 상설전",
       desc: "PASO Art Center의 첫 전시",
       tall: true,
-      href: "/brands/paso-art-center",
+      href: "https://v.daum.net/v/20251103174751777",
     },
     {
       image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
@@ -165,16 +165,29 @@ function TripleFeature() {
             transition={{ duration: 0.6, delay: i * 0.12 }}
             className={i === 1 ? "md:-mt-8" : "md:mt-8"}
           >
-            <Link href={card.href} className="block cursor-pointer group/card">
-              <div className={`relative overflow-hidden ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
-                <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-700" sizes="33vw" />
-              </div>
-              <div className="mt-4 text-center">
-                <div className="w-px h-5 bg-[var(--color-border)] mx-auto mb-3" />
-                <h3 className="text-lg font-light" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
-                <p className="text-xs text-[var(--color-muted)] mt-1">{card.desc}</p>
-              </div>
-            </Link>
+            {card.href.startsWith("http") ? (
+              <a href={card.href} target="_blank" rel="noopener noreferrer" className="block cursor-pointer group/card">
+                <div className={`relative overflow-hidden ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
+                  <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-700" sizes="33vw" />
+                </div>
+                <div className="mt-4 text-center">
+                  <div className="w-px h-5 bg-[var(--color-border)] mx-auto mb-3" />
+                  <h3 className="text-lg font-light" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                  <p className="text-xs text-[var(--color-muted)] mt-1">{card.desc}</p>
+                </div>
+              </a>
+            ) : (
+              <Link href={card.href} className="block cursor-pointer group/card">
+                <div className={`relative overflow-hidden ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
+                  <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-700" sizes="33vw" />
+                </div>
+                <div className="mt-4 text-center">
+                  <div className="w-px h-5 bg-[var(--color-border)] mx-auto mb-3" />
+                  <h3 className="text-lg font-light" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                  <p className="text-xs text-[var(--color-muted)] mt-1">{card.desc}</p>
+                </div>
+              </Link>
+            )}
           </motion.div>
         ))}
       </div>

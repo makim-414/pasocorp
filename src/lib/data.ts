@@ -93,7 +93,7 @@ export const feedCards: CardItem[] = [
     date: "Now Showing",
     tags: ["Exhibition"],
     image: "/brands/paso-gallery-reborn.jpg",
-    href: "/brands/paso-art-center",
+    href: "https://v.daum.net/v/20251103174751777",
     featured: true,
   },
   {
