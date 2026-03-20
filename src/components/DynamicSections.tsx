@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import FlywheelVisual from "./FlywheelVisual";
 import HoverPreviewProcess from "./HoverPreviewProcess";
 
@@ -136,8 +137,8 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 function TripleFeature() {
   const cards = [
     { image: "/brands/paso-gallery-heritage.jpg", title: "Paso Private Sales", desc: "Paso Gallery의 프라이빗 세일", tall: false, href: "/brands/paso-gallery" },
-    { image: "/brands/paso-gallery-reborn.jpg", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "https://www.joongang.co.kr/article/25312608" },
-    { image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "#" },
+    { image: "/brands/paso-gallery-reborn.jpg", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "/brands/paso-art-center" },
+    { image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "/brands/paso-art-center" },
   ];
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -158,7 +159,7 @@ function TripleFeature() {
             transition={{ duration: 0.6, delay: i * 0.12 }}
             className={i === 1 ? "lg:-mt-8" : "lg:mt-8"}
           >
-            <a href={card.href} target={card.href !== "#" ? "_blank" : undefined} rel={card.href !== "#" ? "noopener noreferrer" : undefined} className="block cursor-pointer">
+            <Link href={card.href} className="block cursor-pointer">
               <div className={`relative overflow-hidden group/card ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
                 <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-[1.2s] ease-out group-hover/card:scale-100" sizes="33vw" />
                 <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/5 transition-colors duration-700" />
@@ -169,7 +170,7 @@ function TripleFeature() {
                 <h3 className="text-lg font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
                 <p className="text-xs text-[#888] mt-1">{card.desc}</p>
               </div>
-            </a>
+            </Link>
           </motion.div>
         ))}
       </div>
