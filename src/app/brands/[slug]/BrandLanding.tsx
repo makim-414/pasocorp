@@ -728,6 +728,172 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
   );
 }
 
+/* ═══════════════════════════════════════════════════
+   6. IRONX — AI Agency / Tech-forward
+   ═══════════════════════════════════════════════════ */
+function IronXLayout({ brand }: { brand: BrandData }) {
+  const painPoints = [
+    { icon: "?", title: "AI 도입, 어디서부터?", desc: "AI를 도입하고 싶지만 어디서부터 시작해야 할지 막막합니다." },
+    { icon: "⚙", title: "도구 선택의 어려움", desc: "수많은 AI 도구 중 우리 회사에 맞는 것을 찾기 어렵습니다." },
+    { icon: "$", title: "비용 대비 효과", desc: "AI 투자가 실제로 ROI를 만들어낼 수 있을까 걱정됩니다." },
+  ];
+
+  const process = [
+    { step: "01", title: "상담", desc: "현재 업무 프로세스와 AI 도입 목표를 함께 파악합니다." },
+    { step: "02", title: "진단", desc: "AI 적용 가능 영역을 분석하고 최적 솔루션을 설계합니다." },
+    { step: "03", title: "구축", desc: "2주 내 PoC를 제작하고 실전에서 검증합니다." },
+    { step: "04", title: "운영", desc: "안정적 운영과 지속적 개선을 지원합니다." },
+  ];
+
+  const whyUs = [
+    { value: "10+", label: "프로젝트", desc: "실전 경험 기반의 노하우" },
+    { value: "E2E", label: "풀스택", desc: "설계부터 운영까지 직접 구축" },
+    { value: "KR", label: "로컬 최적화", desc: "한국 시장·한국어 특화" },
+    { value: "2주", label: "PoC", desc: "빠른 실행과 검증" },
+  ];
+
+  return (
+    <>
+      {/* ── HERO ── */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a1a] via-black to-[#0a0a1a]" />
+          <div className="absolute inset-0 opacity-20" style={{ background: "radial-gradient(circle at 70% 30%, #6366f140, transparent 60%), radial-gradient(circle at 30% 70%, #818cf820, transparent 50%)" }} />
+          {/* Grid pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+        </div>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 py-32 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/5 mb-8"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#6366f1] animate-pulse" />
+            <span className="text-xs text-[#6366f1] tracking-wide">AI Agent Agency</span>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-[1.1] mb-6"
+            style={{ fontFamily: "var(--font-dutch)" }}
+          >
+            AI 에이전트로<br />비즈니스를<br />재설계합니다
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg text-[#888] font-light max-w-xl mb-10"
+          >
+            기업 맞춤 AI 에이전트 구축부터 업무 자동화까지, IronX가 함께합니다
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <a href="#contact" className="inline-flex items-center justify-center px-8 py-3.5 bg-[#6366f1] text-white text-sm tracking-wide hover:bg-[#5558e6] transition-colors duration-300 rounded-lg">
+              무료 상담 신청
+            </a>
+            <a href="#services" className="inline-flex items-center justify-center px-8 py-3.5 border border-[#333] text-[#aaa] text-sm tracking-wide hover:border-[#555] hover:text-white transition-all duration-300 rounded-lg">
+              서비스 알아보기
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── PAIN POINTS ── */}
+      <section className="py-24 md:py-32 bg-[#050510] border-t border-[#1a1a2e]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#6366f1] mb-4">Pain Points</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>이런 고민, 하고 계신가요?</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {painPoints.map((p, i) => (
+              <motion.div key={p.title} {...stagger(i)} className="group p-8 border border-[#1a1a2e] rounded-xl bg-[#0a0a1a] hover:border-[#6366f1]/30 transition-all duration-500">
+                <span className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#6366f1]/10 text-[#6366f1] text-lg mb-6 group-hover:bg-[#6366f1]/20 transition-colors">{p.icon}</span>
+                <h3 className="text-lg text-white font-light mb-3">{p.title}</h3>
+                <p className="text-sm text-[#888] font-light leading-relaxed">{p.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SERVICES ── */}
+      <section id="services" className="py-24 md:py-32 bg-black">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#6366f1] mb-4">What We Do</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>서비스</motion.h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {brand.features.map((f, i) => (
+              <motion.div key={f.title} {...stagger(i)} className="group relative overflow-hidden rounded-xl border border-[#1a1a2e] bg-[#0a0a1a] hover:border-[#6366f1]/30 transition-all duration-500">
+                <div className="h-48 overflow-hidden">
+                  <img src={brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+                </div>
+                <div className="p-8">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[#6366f1] block mb-3">0{i + 1}</span>
+                  <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
+                  <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROCESS ── */}
+      <section className="py-24 md:py-32 bg-[#050510] border-y border-[#1a1a2e]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#6366f1] mb-4">How We Work</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>진행 프로세스</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {process.map((p, i) => (
+              <motion.div key={p.step} {...stagger(i)} className="relative p-8 rounded-xl border border-[#1a1a2e] bg-[#0a0a1a]">
+                <p className="text-4xl font-light text-[#6366f1]/20 mb-4" style={{ fontFamily: "var(--font-dutch)" }}>{p.step}</p>
+                <h3 className="text-lg text-white font-light mb-2">{p.title}</h3>
+                <p className="text-sm text-[#888] font-light leading-relaxed">{p.desc}</p>
+                {i < 3 && <div className="hidden md:block absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-px bg-[#6366f1]/30 z-10" />}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY IRONX ── */}
+      <section className="py-24 md:py-32 bg-black">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#6366f1] mb-4">Why IronX</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>왜 IronX인가</motion.h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {whyUs.map((w, i) => (
+              <motion.div key={w.label} {...stagger(i)} className="text-center p-8 rounded-xl border border-[#1a1a2e] bg-[#0a0a1a]">
+                <p className="text-3xl md:text-4xl font-light text-[#6366f1] mb-2" style={{ fontFamily: "var(--font-dutch)" }}>{w.value}</p>
+                <p className="text-sm text-white font-light mb-1">{w.label}</p>
+                <p className="text-xs text-[#888] font-light">{w.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTACT CTA ── */}
+      <section id="contact" className="py-24 md:py-32 bg-[#050510] border-t border-[#1a1a2e]">
+        <div className="max-w-[800px] mx-auto px-6 md:px-12 text-center">
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>AI 도입, 지금 시작하세요</motion.h2>
+          <motion.p {...fadeUp} className="text-[#888] font-light mb-10 max-w-md mx-auto">무료 상담을 신청하시면 24시간 내에 연락드립니다.</motion.p>
+          <motion.div {...fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="mailto:contact@ironact.net" className="inline-block px-8 py-3.5 bg-[#6366f1] text-white text-sm tracking-wide hover:bg-[#5558e6] transition-colors duration-300 rounded-lg">상담 신청하기</a>
+            <Link href="/#brands" className="inline-block px-8 py-3.5 border border-[#333] text-[#888] text-sm tracking-wide hover:border-[#555] hover:text-white transition-all duration-300 rounded-lg">← All Brands</Link>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 /* ─── Router ─── */
 export default function BrandLanding({ brand }: { brand: BrandData }) {
   switch (brand.slug) {
@@ -736,6 +902,7 @@ export default function BrandLanding({ brand }: { brand: BrandData }) {
     case "paso-gallery": return <GalleryLayout brand={brand} />;
     case "paso-agency": return <AgencyLayout brand={brand} />;
     case "artledger-consulting": return <ConsultingLayout brand={brand} />;
+    case "ironx": return <IronXLayout brand={brand} />;
     default: return <ArtraderLayout brand={brand} />;
   }
 }

@@ -94,6 +94,25 @@ const brandsData: Record<string, {
       { title: "스트릿 아트", desc: "뮤럴·그래피티 아트 매입·기획" },
     ],
   },
+  ironx: {
+    name: "IronX",
+    slug: "ironx",
+    year: 2026,
+    desc: "기업 맞춤 AI 에이전트 구축부터 업무 자동화까지. AI로 일하는 방식을 바꿉니다.",
+    longDesc: "IronX는 기업 맞춤 AI 에이전트 구축부터 업무 프로세스 자동화까지, AI 전환의 모든 과정을 함께하는 에이전시입니다. 맞춤 프롬프트 엔지니어링, RAG 기반 지식 통합, 멀티 에이전트 시스템으로 비즈니스를 재설계합니다.",
+    color: "#6366f1",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80",
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80",
+      "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=1200&q=80",
+    ],
+    features: [
+      { title: "AI 에이전트 구축", desc: "맞춤 프롬프트 엔지니어링, RAG 기반 지식 통합, 멀티 에이전트 시스템 설계·구축." },
+      { title: "업무 프로세스 자동화", desc: "워크플로우 자동화, 문서 처리 자동화, 데이터 파이프라인 구축." },
+      { title: "AI 전환 컨설팅", desc: "AI 도입 로드맵 수립, ROI 분석, 팀 역량 강화 프로그램." },
+    ],
+  },
   "artledger-consulting": {
     name: "Artledger Consulting",
     slug: "artledger-consulting",
@@ -131,6 +150,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "paso-art-center": { title: "PASO Art Center | 마곡 전시·대관·커뮤니티", description: "서울 마곡 아트센터. 전시, 대관, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간." },
     "artledger-consulting": { title: "Artledger | 미술 자산 자문·절세 전략", description: "미술품 증여·상속, 법인 감가, 컬렉션 리밸런싱. 미술 자산 전 생애 관리." },
     "paso-agency": { title: "PASO Agency | IP·브랜드 아트 콜라보", description: "캐릭터 IP 라이선싱, 아트토이, 기업 아트 프로젝트 기획·운영." },
+    ironx: { title: "IronX | AI 에이전트 구축 & 업무 자동화", description: "기업 맞춤 AI 에이전트 구축부터 업무 자동화까지. IronX가 AI로 일하는 방식을 바꿉니다." },
   };
   const seo = seoOverrides[slug];
   return {

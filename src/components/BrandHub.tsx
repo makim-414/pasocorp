@@ -53,9 +53,18 @@ const subBrands = [
     image: "/brands/artledger-consulting.jpg",
     color: "#9ca3af",
   },
+  {
+    name: "IronX",
+    slug: "ironx",
+    year: 2026,
+    desc: "기업 맞춤 AI 에이전트 구축부터 업무 자동화까지. AI로 일하는 방식을 바꿉니다.",
+    activity: "AI 에이전트 구축 & 업무 자동화 에이전시",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    color: "#6366f1",
+  },
 ];
 
-const titleWords = "Five Brands, One Vision".split(" ");
+const titleWords = "Six Brands, One Vision".split(" ");
 
 export default function BrandHub() {
   const [hovered, setHovered] = useState<number | null>(null);
