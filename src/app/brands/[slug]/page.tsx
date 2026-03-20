@@ -55,11 +55,11 @@ const brandsData: Record<string, {
     color: "#1e3a5f",
     image: "/brands/paso-gallery.jpg",
     gallery: [
-      "/images/gallery/gallery-01.jpg",
-      "/images/gallery/gallery-02.jpg",
-      "/images/gallery/gallery-03.jpg",
-      "/images/gallery/gallery-04.jpg",
-      "/images/gallery/gallery-05.jpg",
+      "/images/gallery/gallery-01.png",
+      "/images/gallery/gallery-02.png",
+      "/images/gallery/gallery-03.png",
+      "/images/gallery/gallery-04.png",
+      "/images/gallery/gallery-05.png",
     ],
     features: [
       { title: "2025 공모전 수상작전", desc: "제4회 신진작가 공모전 수상작 12점 전시" },
