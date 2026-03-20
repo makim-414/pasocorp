@@ -8,7 +8,7 @@ const previewData: Record<string, { image: string; title: string; subtitle: stri
     image: "/brands/paso-gallery.jpg",
     title: "Paso Gallery",
     subtitle: "신진작가 발굴 · 전시 · 아트 MD",
-    href: "https://pasogallery.com",
+    href: "/brands/paso-gallery",
   },
   artcenter: {
     image: "/brands/paso-artcenter-building.jpg",

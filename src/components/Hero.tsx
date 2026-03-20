@@ -10,7 +10,7 @@ import WeArtHero from "./WeArtHero";
 
 const brands = [
   { name: "Artrader.io", image: "/brands/artrader-platform.jpg", color: "#b8960b", href: "https://artrader.io" },
-  { name: "Paso Gallery", image: "/brands/paso-gallery.jpg", color: "#1e3a5f", href: "https://pasogallery.com" },
+  { name: "Paso Gallery", image: "/brands/paso-gallery.jpg", color: "#1e3a5f", href: "/brands/paso-gallery" },
   { name: "Paso Agency", image: "/brands/paso-agency.jpg", color: "#d4a574", href: "/brands/paso-agency" },
   { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af", href: "/brands/artledger-consulting" },
   { name: "Art Center", image: "/brands/paso-artcenter-building.jpg", color: "#a0522d", href: "/brands/paso-art-center" },
