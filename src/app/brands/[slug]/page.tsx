@@ -50,8 +50,8 @@ const brandsData: Record<string, {
     name: "Paso Gallery",
     slug: "paso-gallery",
     year: 2021,
-    desc: "국내외 신진·라이징 작가를 엄선하여 소개하며, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다.",
-    longDesc: "국내외 신진·라이징 작가를 엄선하여 소개하는 PASO Gallery는, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다.",
+    desc: "Art Meets Space — 한옥의 고유한 공간미와 동시대 미술이 만나는 곳. 브랜드 팝업, 프라이빗 이벤트, 아트 어드바이저리까지.",
+    longDesc: "서울 종로구 한옥 건축물에 자리한 PASO Gallery는, 전통 공간의 아름다움과 동시대 미술의 실험이 공존하는 독립 갤러리입니다. 브랜드 팝업, VIP 이벤트, 아트 어드바이저리 등 예술과 비즈니스를 잇는 프로그램을 운영합니다.",
     color: "#1e3a5f",
     image: "/brands/paso-gallery.jpg",
     gallery: [
@@ -62,9 +62,10 @@ const brandsData: Record<string, {
       "/images/gallery/gallery-05.png",
     ],
     features: [
-      { title: "2025 공모전 수상작전", desc: "제4회 신진작가 공모전 수상작 12점 전시" },
-      { title: "아트 MD 컬렉션", desc: "수상작 기반 아트 굿즈·프린트 에디션" },
-      { title: "작가 레지던시", desc: "선발 작가 대상 3개월 창작 레지던시 프로그램" },
+      { title: "Brand Pop-up", desc: "갤러리 공간을 활용한 브랜드 팝업 전시 기획·운영" },
+      { title: "Private Events", desc: "VIP 디너, 프라이빗 뷰잉, 기업 이벤트 호스팅" },
+      { title: "Art Advisory", desc: "컬렉션 구축부터 공간 큐레이션까지 맞춤 자문" },
+      { title: "Global Network", desc: "해외 갤러리·작가·컬렉터 네트워크 연결" },
     ],
   },
   "paso-agency": {
