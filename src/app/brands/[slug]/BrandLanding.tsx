@@ -396,7 +396,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 {...stagger(i)}
                 className="group relative overflow-hidden cursor-pointer"
               >
-                <div className={`relative ${i === 0 || i === 3 ? "aspect-[4/5]" : "aspect-[3/4]"} overflow-hidden`}>
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={ex.image}
                     alt={ex.title}
