@@ -18,6 +18,8 @@ const locations = [
 
 const contacts = [
   { label: "Email", value: "contact@artrader.io", href: "mailto:contact@artrader.io" },
+  { label: "Instagram", value: "@pasoartcenter", href: "https://www.instagram.com/pasoartcenter" },
+  { label: "Phone", value: "+82 10-6432-4471", href: "tel:+821064324471" },
 ];
 
 const inquiries = [
