@@ -1,6 +1,51 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
+
+/* ── Project detail gallery data ── */
+const projectGalleries: Record<number, { title: string; images: string[] }> = {
+  1: {
+    title: "브랜드 콜라보 — CU × 장띵",
+    images: Array.from({ length: 8 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
+  },
+  3: {
+    title: "공간 아트 — A Twosome Place",
+    images: Array.from({ length: 8 }, (_, i) => `/images/projects/twosome/twosome-${i + 1}.jpg`),
+  },
+};
+
+function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[] }; onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
+      onClick={onClose}
+    >
+      <div className="w-full max-w-[1200px] px-6 py-16" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="text-xl md:text-3xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
+          <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {gallery.images.map((src, i) => (
+            <motion.div
+              key={src}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05 }}
+              className="overflow-hidden rounded-xl"
+            >
+              <img src={src} alt={`${gallery.title} ${i + 1}`} className="w-full h-auto object-cover" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 interface BrandData {
   name: string;
@@ -271,6 +316,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
    ═══════════════════════════════════════════════════ */
 function AgencyLayout({ brand }: { brand: BrandData }) {
   const cardColors = ["#d4a574", "#e8b4b8", "#a8c5da", "#c4b896", "#b8a9c9", "#98c9a3"];
+  const [openGallery, setOpenGallery] = useState<{ title: string; images: string[] } | null>(null);
   return (
     <>
       <BrandHero brand={brand} />
@@ -288,8 +334,16 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Projects</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>Creative Collaborations</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {brand.gallery.map((img, i) => (
-              <motion.div key={i} {...stagger(i)} className="group relative overflow-hidden rounded-xl" style={{ backgroundColor: `${cardColors[i % cardColors.length]}15` }}>
+            {brand.gallery.map((img, i) => {
+              const hasGallery = i in projectGalleries;
+              return (
+              <motion.div
+                key={i}
+                {...stagger(i)}
+                className={`group relative overflow-hidden rounded-xl${hasGallery ? " cursor-pointer" : ""}`}
+                style={{ backgroundColor: `${cardColors[i % cardColors.length]}15` }}
+                onClick={hasGallery ? () => setOpenGallery(projectGalleries[i]) : undefined}
+              >
                 <div className="aspect-[4/3] overflow-hidden rounded-t-xl">
                   <img src={img} alt={`Project ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1" />
                 </div>
@@ -302,10 +356,16 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
                   )}
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* Project gallery modal */}
+      <AnimatePresence>
+        {openGallery && <ProjectGalleryModal gallery={openGallery} onClose={() => setOpenGallery(null)} />}
+      </AnimatePresence>
 
       {/* Services row */}
       <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">

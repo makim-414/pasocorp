@@ -79,9 +79,9 @@ const brandsData: Record<string, {
     image: "/brands/paso-agency.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
-      "https://images.unsplash.com/photo-1608889175123-8ee362201f81?w=800&q=80",
+      "/images/projects/cu-dding-collab.jpg",
       "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80",
-      "https://images.unsplash.com/photo-1563822249510-04678c3aae38?w=800&q=80",
+      "/images/projects/twosome-interior.jpg",
       "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&q=80",
       "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&q=80",
     ],
