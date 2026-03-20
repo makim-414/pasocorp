@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -94,7 +95,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
       </head>
-      <body className="font-sans bg-black text-[#e8e8e8]">{children}</body>
+      <body className="font-sans bg-black text-[#e8e8e8]">
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

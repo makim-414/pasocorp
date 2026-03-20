@@ -37,7 +37,8 @@ const linksCompany = [
       { title: "About", href: "/about" },
       { title: "Contact", href: "/contact" },
       { title: "Careers", href: "/contact" },
-      { title: "Privacy Policy", href: "#" },
+      { title: "이용약관", href: "/terms" },
+      { title: "개인정보처리방침", href: "/privacy" },
     ],
   },
 ];
@@ -157,8 +158,9 @@ export default function Footer() {
             <span className="block size-2 rounded-full bg-emerald-500" />
             All systems normal.
           </div>
-          <div className="flex items-center gap-6 text-xs text-[#555]">
-            <span>CEO Min Sung Kim</span>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-[#555]">
+            <span>CEO 김민성</span>
+            <span>사업자등록번호: 877-25-00849</span>
             <span>+82 10-6432-4471</span>
             <span>© PASO {new Date().getFullYear()}</span>
           </div>
