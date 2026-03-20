@@ -186,9 +186,41 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
    ═══════════════════════════════════════════════════ */
 function GalleryLayout({ brand }: { brand: BrandData }) {
   const heights = ["h-64", "h-80", "h-56", "h-72", "h-60", "h-96"];
+  const clients = [
+    { name: "BCG", logo: "/logos/bcg.svg" },
+    { name: "KB", logo: "/logos/kb.svg" },
+    { name: "Twosome", logo: "/logos/twosome.svg" },
+    { name: "Tequila Patrón", logo: "/logos/patron-clean.png" },
+    { name: "Bang & Olufsen", logo: "/logos/bo-clean.png" },
+    { name: "Maker's Mark", logo: "/logos/makers-mark-clean.png" },
+    { name: "Pfizer", logo: "/logos/pfizer-clean.png" },
+    { name: "CUBE Entertainment", logo: "/logos/cube-clean.png" },
+    { name: "Don Julio", logo: "/logos/don-julio-clean.png" },
+    { name: "Glengrant", logo: "/logos/glengrant-clean.png" },
+    { name: "Seoul Foundation", logo: "/logos/seoul-foundation-clean.png" },
+    { name: "KICA", logo: "/logos/kica-clean.png" },
+    { name: "Timothy Oulton", logo: "/logos/timothy-oulton-clean.png" },
+  ];
   return (
     <>
       <BrandHero brand={brand} />
+
+      {/* ── CLIENT LOGOS MARQUEE ── */}
+      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-6 overflow-hidden">
+        <div className="flex items-center animate-[marquee_30s_linear_infinite]" style={{ width: "max-content" }}>
+          {[...clients, ...clients].map((client, i) => (
+            <div key={i} className="mx-8 md:mx-12 flex-shrink-0">
+              <img
+                src={client.logo}
+                alt={client.name}
+                className="h-8 md:h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+            </div>
+          ))}
+        </div>
+        <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+      </section>
 
       {/* Intro */}
       <section className="py-24 md:py-32 bg-black">
