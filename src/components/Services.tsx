@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { BarChart3, FileText, Landmark, Palette } from "lucide-react";
 
@@ -16,6 +17,7 @@ const FEATURES = [
     image: "/brands/artrader-platform.jpg",
     desc: "국내외 경매·Private Sales 등 1,500만 건 이상 거래 데이터. Artist Index, 종목분석서 스타일 정량 리포트.",
     color: "#b8960b",
+    href: "/brands/artrader",
   },
   {
     id: "artledger",
@@ -25,6 +27,7 @@ const FEATURES = [
     image: "/brands/artledger-consulting.jpg",
     desc: "증여·상속, 법인 비용·감가, 컬렉션 관리. Review → Valuation → Strategy → Execute.",
     color: "#9ca3af",
+    href: "/brands/artledger",
   },
   {
     id: "gallery",
@@ -34,6 +37,7 @@ const FEATURES = [
     image: "/brands/paso-private-sales.png",
     desc: "국내 신진작가 공모전, 글로벌 이머징 작가 전시, 적정가 2차 시장 Top 30 작품 전시.",
     color: "#1e3a5f",
+    href: "/brands/gallery",
   },
   {
     id: "agency",
@@ -43,6 +47,7 @@ const FEATURES = [
     image: "/brands/paso-agency.jpg",
     desc: "프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입.",
     color: "#d4a574",
+    href: "/brands/agency",
   },
 ];
 
@@ -204,6 +209,9 @@ export default function Services() {
                       pointerEvents: isActive ? "auto" : "none",
                     }}
                   >
+                    <Link href={feature.href} className="absolute inset-0 z-30">
+                      <span className="sr-only">{feature.label}</span>
+                    </Link>
                     <Image
                       src={feature.image}
                       alt={feature.label}
