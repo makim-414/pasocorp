@@ -129,7 +129,7 @@ function TripleFeature() {
       title: "프리오프닝 상설전",
       desc: "PASO Art Center의 첫 전시",
       tall: true,
-      href: "https://www.joongang.co.kr/article/25312608",
+      href: "https://v.daum.net/v/20251103174751777",
     },
     {
       image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",

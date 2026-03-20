@@ -93,7 +93,7 @@ export const feedCards: CardItem[] = [
     date: "Now Showing",
     tags: ["Exhibition"],
     image: "/brands/paso-gallery-reborn.jpg",
-    href: "https://www.joongang.co.kr/article/25312608",
+    href: "https://v.daum.net/v/20251103174751777",
     featured: true,
   },
   {
