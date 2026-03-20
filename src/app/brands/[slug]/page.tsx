@@ -78,7 +78,7 @@ const brandsData: Record<string, {
     color: "#d4a574",
     image: "/brands/paso-agency.jpg",
     gallery: [
-      "/images/projects/hongdae-flagship/1.png",
+      "/images/projects/cu-dding/cu-2.jpg",
       "/images/projects/cu-dding-collab.jpg",
       "/images/projects/hongdae-flagship/2.png",
       "/images/projects/twosome-interior.jpg",
