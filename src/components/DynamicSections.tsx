@@ -137,7 +137,7 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 function TripleFeature() {
   const cards = [
     { image: "/brands/paso-gallery-heritage.jpg", title: "Paso Private Sales", desc: "Paso Gallery의 프라이빗 세일", tall: false, href: "/brands/paso-gallery" },
-    { image: "/brands/paso-gallery-reborn.jpg", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "/brands/paso-art-center" },
+    { image: "/brands/paso-gallery-reborn.jpg", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "https://www.joongang.co.kr/article/25312608" },
     { image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "/brands/paso-art-center" },
   ];
   const ref = useRef(null);
@@ -159,18 +159,27 @@ function TripleFeature() {
             transition={{ duration: 0.6, delay: i * 0.12 }}
             className={i === 1 ? "lg:-mt-8" : "lg:mt-8"}
           >
-            <Link href={card.href} className="block cursor-pointer">
-              <div className={`relative overflow-hidden group/card ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
-                <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-[1.2s] ease-out group-hover/card:scale-100" sizes="33vw" />
-                <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/5 transition-colors duration-700" />
-                <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
-              <div className="mt-4 text-center">
-                <div className="w-px h-5 bg-[#333] mx-auto mb-3" />
-                <h3 className="text-lg font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
-                <p className="text-xs text-[#888] mt-1">{card.desc}</p>
-              </div>
-            </Link>
+            {(() => {
+              const content = (
+                <>
+                  <div className={`relative overflow-hidden group/card ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
+                    <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-[1.2s] ease-out group-hover/card:scale-100" sizes="33vw" />
+                    <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/5 transition-colors duration-700" />
+                    <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 bg-gradient-to-t from-black/40 to-transparent" />
+                  </div>
+                  <div className="mt-4 text-center">
+                    <div className="w-px h-5 bg-[#333] mx-auto mb-3" />
+                    <h3 className="text-lg font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                    <p className="text-xs text-[#888] mt-1">{card.desc}</p>
+                  </div>
+                </>
+              );
+              return card.href.startsWith("http") ? (
+                <a href={card.href} target="_blank" rel="noopener noreferrer" className="block cursor-pointer">{content}</a>
+              ) : (
+                <Link href={card.href} className="block cursor-pointer">{content}</Link>
+              );
+            })()}
           </motion.div>
         ))}
       </div>
