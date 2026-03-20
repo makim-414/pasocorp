@@ -78,7 +78,7 @@ const brandsData: Record<string, {
     color: "#d4a574",
     image: "/brands/paso-agency.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
+      "/images/projects/cu-dding/cu-2.jpg",
       "/images/projects/cu-dding-collab.jpg",
       "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80",
       "/images/projects/twosome-interior.jpg",
