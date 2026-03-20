@@ -11,11 +11,7 @@ export default function Home() {
   return (
     <div className="bg-black">
       <Navbar />
-      {/* Maintenance Banner */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#b8960b] text-black text-center py-2 text-xs md:text-sm tracking-[0.05em] font-medium">
-        🚧 Our website is currently under renovation. 🚧
-      </div>
-      <main className="pt-10 sm:pt-12 md:pt-14">
+      <main>
         <Hero />
         <ScrollHeroSection />
         <DynamicTop />
