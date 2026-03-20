@@ -55,12 +55,11 @@ const brandsData: Record<string, {
     color: "#1e3a5f",
     image: "/brands/paso-gallery.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80",
-      "https://images.unsplash.com/photo-1531913764164-f85c3e01b2aa?w=800&q=80",
-      "https://images.unsplash.com/photo-1549887534-1541e9326642?w=800&q=80",
-      "https://images.unsplash.com/photo-1578301978693-85fa9fd0c6c9?w=800&q=80",
-      "https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=800&q=80",
-      "https://images.unsplash.com/photo-1482160549825-59d1b23cb208?w=800&q=80",
+      "/images/gallery/gallery-01.jpg",
+      "/images/gallery/gallery-02.jpg",
+      "/images/gallery/gallery-03.jpg",
+      "/images/gallery/gallery-04.jpg",
+      "/images/gallery/gallery-05.jpg",
     ],
     features: [
       { title: "2025 공모전 수상작전", desc: "제4회 신진작가 공모전 수상작 12점 전시" },
