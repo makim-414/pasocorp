@@ -80,10 +80,10 @@ const brandsData: Record<string, {
     gallery: [
       "/images/projects/cu-dding/cu-2.jpg",
       "/images/projects/cu-dding-collab.jpg",
-      "/images/projects/hongdae-flagship/2.png",
+      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80",
       "/images/projects/twosome-interior.jpg",
-      "/images/projects/hongdae-flagship/3.png",
-      "/images/projects/hongdae-flagship/4.png",
+      "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&q=80",
+      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&q=80",
     ],
     features: [
       { title: "캐릭터 IP", desc: "오리지널 캐릭터 IP 개발 및 라이선싱" },
