@@ -78,12 +78,12 @@ const brandsData: Record<string, {
     color: "#d4a574",
     image: "/brands/paso-agency.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
+      "/images/projects/hongdae-flagship/1.png",
       "/images/projects/cu-dding-collab.jpg",
-      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80",
+      "/images/projects/hongdae-flagship/2.png",
       "/images/projects/twosome-interior.jpg",
-      "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&q=80",
-      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&q=80",
+      "/images/projects/hongdae-flagship/3.png",
+      "/images/projects/hongdae-flagship/4.png",
     ],
     features: [
       { title: "캐릭터 IP", desc: "오리지널 캐릭터 IP 개발 및 라이선싱" },
