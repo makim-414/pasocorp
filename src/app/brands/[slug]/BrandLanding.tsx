@@ -60,7 +60,7 @@ interface BrandData {
   color: string;
   image: string;
   gallery: string[];
-  features: { title: string; desc: string }[];
+  features: { title: string; desc: string; image?: string }[];
 }
 
 const fadeUp = {
@@ -669,7 +669,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
             {brand.features.slice(0, 3).map((f, i) => (
               <motion.div key={f.title} {...stagger(i)} className="bg-[#0a0a0a] p-8 md:p-10 group">
                 <div className="overflow-hidden mb-6">
-                  <img src={brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                  <img src={f.image || brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
                 <p className="text-sm tracking-[0.08em] uppercase text-white mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</p>
                 <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
