@@ -213,7 +213,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               <img
                 src={client.logo}
                 alt={client.name}
-                className="h-8 md:h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                className="h-8 md:h-10 max-w-[120px] md:max-w-[150px] w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
             </div>
