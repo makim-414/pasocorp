@@ -464,20 +464,13 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               <motion.div
                 key={p.client}
                 {...stagger(i)}
-                className="group grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-6 items-center py-8 border-b border-[#1a1a1a] hover:border-[#333] transition-colors cursor-pointer"
+                className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 items-center py-8 border-b border-[#1a1a1a] hover:border-[#333] transition-colors"
               >
                 <div className="flex items-center gap-4">
                   <span className="text-xs text-[#555] font-light">{p.year}</span>
-                  <h3 className="text-lg md:text-xl text-white font-light group-hover:text-[#b8960b] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>
+                  <h3 className="text-lg md:text-xl text-white font-light hover:text-[#b8960b] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>
                     {p.client}
                   </h3>
-                </div>
-                <div className="hidden md:block overflow-hidden h-16 rounded">
-                  <img
-                    src={p.image}
-                    alt={p.client}
-                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
                 </div>
                 <p className="text-xs tracking-[0.1em] uppercase text-[#555] md:text-right">{p.type}</p>
               </motion.div>
