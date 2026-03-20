@@ -181,275 +181,50 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 }
 
 /* ═══════════════════════════════════════════════════
-   3. PASO GALLERY — Premium gallery with 한옥 heritage
+   3. PASO GALLERY — White cube / Masonry grid
    ═══════════════════════════════════════════════════ */
 function GalleryLayout({ brand }: { brand: BrandData }) {
-  const exhibitions = [
-    { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: brand.gallery[0] },
-    { title: "Golden Reeds", artist: "Minjae Park", date: "2025.01 — 02", image: brand.gallery[1] },
-    { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: brand.gallery[2] },
-    { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: brand.gallery[3] },
-  ];
-
-  const clients = ["BCG", "Porsche", "Pfizer", "Bang & Olufsen", "Tequila Patrón", "Samsung", "Hyundai", "LG"];
-
-  const projects = [
-    { client: "Tequila Patrón", type: "VIP Event", year: "2024", image: brand.gallery[4] },
-    { client: "Bang & Olufsen", type: "Product Showroom", year: "2024", image: brand.gallery[5] },
-    { client: "BCG", type: "Corporate Exhibition", year: "2023", image: brand.gallery[0] },
-  ];
-
+  const heights = ["h-64", "h-80", "h-56", "h-72", "h-60", "h-96"];
   return (
     <>
-      {/* ── HERO: Full-screen cinematic ── */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={brand.image} alt="PASO Gallery" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="relative z-10 text-center px-6">
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-6"
-          >
-            Est. {brand.year}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-8xl lg:text-9xl font-light text-white tracking-tight"
-            style={{ fontFamily: "var(--font-dutch)" }}
-          >
-            Art Meets Space
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-6 text-sm md:text-base text-[#aaa] font-light max-w-lg mx-auto"
-          >
-            {brand.desc}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="mt-10 flex gap-4 justify-center"
-          >
-            <a href="#exhibitions" className="px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
-              Exhibitions
-            </a>
-            <a href="#space" className="px-8 py-3 border border-[#333] text-[#888] text-xs tracking-[0.15em] uppercase hover:border-[#555] hover:text-white transition-all duration-300">
-              Space
-            </a>
-          </motion.div>
-        </div>
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-10 bg-gradient-to-b from-[#b8960b] to-transparent"
-          />
-        </motion.div>
-      </section>
+      <BrandHero brand={brand} />
 
-      {/* ── CLIENT LOGOS MARQUEE ── */}
-      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-6 overflow-hidden">
-        <div className="flex animate-[marquee_20s_linear_infinite]" style={{ width: "max-content" }}>
-          {[...clients, ...clients].map((client, i) => (
-            <span key={i} className="mx-8 md:mx-12 text-xs tracking-[0.2em] uppercase text-[#444] whitespace-nowrap font-light">
-              {client}
-            </span>
-          ))}
-        </div>
-        <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
-      </section>
-
-      {/* ── EXHIBITIONS: Selected Works ── */}
-      <section id="exhibitions" className="py-24 md:py-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="flex items-end justify-between mb-14">
-            <div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Selected</p>
-              <h2 className="text-3xl md:text-5xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>
-                we Find Art
-              </h2>
-            </div>
-            <a href="#" className="hidden md:block text-xs tracking-[0.1em] uppercase text-[#555] hover:text-[#b8960b] transition-colors border-b border-[#333] pb-1">
-              View All →
-            </a>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {exhibitions.map((ex, i) => (
-              <motion.div
-                key={ex.title}
-                {...stagger(i)}
-                className="group relative overflow-hidden cursor-pointer"
-              >
-                <div className={`relative ${i === 0 || i === 3 ? "aspect-[4/5]" : "aspect-[3/4]"} overflow-hidden`}>
-                  <img
-                    src={ex.image}
-                    alt={ex.title}
-                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/70 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-[10px] tracking-[0.15em] uppercase text-[#b8960b] mb-2">{ex.date}</p>
-                    <h3 className="text-xl md:text-2xl text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
-                    <p className="text-xs text-[#aaa] font-light mt-1">{ex.artist}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── PROGRAMS: What We Do ── */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Programs</p>
-            <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
-              What We Do
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
-            {brand.features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                {...stagger(i)}
-                className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500"
-              >
-                <div className="mb-6 overflow-hidden">
-                  <img
-                    src={brand.gallery[i % brand.gallery.length]}
-                    alt={f.title}
-                    className="w-full h-40 object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  />
-                </div>
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] block mb-3">0{i + 1}</span>
-                <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
-                <div className="mt-4 w-0 group-hover:w-8 h-px bg-[#b8960b] transition-all duration-500" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── RECENT PROJECTS ── */}
+      {/* Intro */}
       <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Portfolio</p>
-            <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
-              Recent Projects
-            </h2>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <motion.div {...fadeUp} className="lg:col-span-2">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">About</p>
+            <h2 className="text-2xl md:text-3xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>신진작가와 함께</h2>
+            <p className="text-[#888] font-light leading-relaxed">{brand.longDesc}</p>
           </motion.div>
+          <div className="lg:col-span-3">
+            {/* Masonry grid */}
+            <div className="columns-2 md:columns-3 gap-3 space-y-3">
+              {brand.gallery.map((img, i) => (
+                <motion.div key={i} {...stagger(i)} className="break-inside-avoid overflow-hidden group">
+                  <div className={`relative ${heights[i % heights.length]} overflow-hidden`}>
+                    <img src={img} alt={`Work ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="space-y-px">
-            {projects.map((p, i) => (
-              <motion.div
-                key={p.client}
-                {...stagger(i)}
-                className="group grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-6 items-center py-8 border-b border-[#1a1a1a] hover:border-[#333] transition-colors cursor-pointer"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-xs text-[#555] font-light">{p.year}</span>
-                  <h3 className="text-lg md:text-xl text-white font-light group-hover:text-[#b8960b] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>
-                    {p.client}
-                  </h3>
-                </div>
-                <div className="hidden md:block overflow-hidden h-16 rounded">
-                  <img
-                    src={p.image}
-                    alt={p.client}
-                    className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
-                </div>
-                <p className="text-xs tracking-[0.1em] uppercase text-[#555] md:text-right">{p.type}</p>
+      {/* Current exhibition */}
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Current Exhibition</motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {brand.features.map((f, i) => (
+              <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-6 hover:border-[#333] transition-colors">
+                <h3 className="text-lg text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
+                <p className="text-sm text-[#888] font-light">{f.desc}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── SPACE: 한옥 Gallery ── */}
-      <section id="space" className="py-24 md:py-32 bg-[#0a0a0a] border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div {...fadeUp}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Venue</p>
-              <h2 className="text-3xl md:text-5xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
-                Space by PASO
-              </h2>
-              <p className="text-[#888] font-light leading-relaxed mb-8">
-                서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다. Light Room과 Dark Room, 두 개의 전시실이 서로 다른 분위기를 연출합니다.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="border border-[#1a1a1a] p-6 hover:border-[#333] transition-colors">
-                  <h4 className="text-sm text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Light Room</h4>
-                  <p className="text-xs text-[#666] font-light">자연광이 스며드는 한옥 마루 공간. 회화, 설치, 사진 전시에 적합.</p>
-                </div>
-                <div className="border border-[#1a1a1a] p-6 hover:border-[#333] transition-colors">
-                  <h4 className="text-sm text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Dark Room</h4>
-                  <p className="text-xs text-[#666] font-light">조명 연출이 자유로운 밀폐 공간. 미디어아트, 영상, 몰입형 전시에 적합.</p>
-                </div>
-              </div>
-              <a href="mailto:makim@ironact.net" className="inline-block mt-8 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
-                공간 대관 문의
-              </a>
-            </motion.div>
-            <motion.div {...fadeUp} className="relative">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-3">
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src={brand.gallery[0]} alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="aspect-square overflow-hidden">
-                    <img src={brand.gallery[2]} alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                </div>
-                <div className="space-y-3 pt-8">
-                  <div className="aspect-square overflow-hidden">
-                    <img src={brand.gallery[1]} alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src={brand.gallery[3]} alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── LOCATION INFO ── */}
-      <section className="bg-black border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
-          {[
-            { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
-            { label: "Hours", value: "Tue — Sat\n11:00 — 19:00" },
-            { label: "Contact", value: "makim@ironact.net\n+82 10-6432-4471" },
-            { label: "Instagram", value: "@pasogallery" },
-          ].map((info, i) => (
-            <motion.div key={info.label} {...stagger(i)}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{info.label}</p>
-              <p className="text-sm text-[#aaa] font-light whitespace-pre-line">{info.value}</p>
-            </motion.div>
-          ))}
         </div>
       </section>
 
