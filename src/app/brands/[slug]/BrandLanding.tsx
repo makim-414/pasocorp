@@ -697,7 +697,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
             {brand.features.slice(3, 6).map((f, i) => (
               <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors duration-500">
                 <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">0{i + 1}</p>
-                <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
+                <h3 className="text-lg text-white font-light mb-3">{f.title}</h3>
                 <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
