@@ -60,6 +60,7 @@ const brandsData: Record<string, {
       "/images/gallery/gallery-03.png",
       "/images/gallery/gallery-04.png",
       "/images/gallery/gallery-05.png",
+      "/images/gallery/gallery-06.png",
     ],
     features: [
       { title: "Brand Pop-up", desc: "갤러리 공간을 활용한 브랜드 팝업 전시 기획·운영" },
