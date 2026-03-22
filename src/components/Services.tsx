@@ -27,7 +27,7 @@ const FEATURES = [
     image: "/brands/artledger-consulting.jpg",
     desc: "증여·상속, 법인 비용·감가, 컬렉션 관리. Review → Valuation → Strategy → Execute.",
     color: "#9ca3af",
-    href: "/brands/artledger",
+    href: "/brands/artledger-consulting",
   },
   {
     id: "gallery",
@@ -47,7 +47,7 @@ const FEATURES = [
     image: "/brands/paso-agency.jpg",
     desc: "프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입.",
     color: "#d4a574",
-    href: "/brands/agency",
+    href: "/brands/paso-agency",
   },
 ];
 
