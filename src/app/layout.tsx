@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: { default: "파소(PASO) | 데이터 기반 미술 자산 전략", template: "%s — 파소(PASO)" },
   description: "파소(PASO)는 미술품 투자 자문, 갤러리 운영, 아트 컨설팅을 제공합니다. 1,580만 건 데이터 기반 미술 자산 관리.",
-  keywords: ["파소", "PASO", "미술품 투자", "아트 컨설팅", "갤러리", "미술 자산", "파소 아트센터", "파소 갤러리"],
+  keywords: ["파소", "PASO", "pasocorp", "파소코프", "파소갤러리", "파소아트센터", "파소에이전시", "파소 갤러리", "파소 아트센터", "파소 에이전시", "미술품 투자", "아트 컨설팅", "갤러리", "미술 자산"],
   openGraph: {
     title: "파소(PASO) — Art as an Asset Class",
     description: "파소(PASO) — 데이터 기반 미술품 거래 자문, 갤러리·미술관 운영, 기업 컬렉션 자문. 미술 생태계의 모든 것을 연결합니다.",
