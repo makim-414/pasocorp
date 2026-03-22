@@ -27,7 +27,7 @@ const FEATURES = [
     image: "/brands/artledger-consulting.jpg",
     desc: "증여·상속, 법인 비용·감가, 컬렉션 관리. Review → Valuation → Strategy → Execute.",
     color: "#9ca3af",
-    href: "/brands/artledger",
+    href: "/brands/artledger-consulting",
   },
   {
     id: "gallery",
