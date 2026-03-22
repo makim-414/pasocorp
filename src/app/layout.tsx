@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://pasocorp.com" },
   verification: {
     google: "e2KKY1zNTP2oZ3Uy7fNojeDjV4Yydl3gmYc_L4_ilj4",
+    other: {
+      "naver-site-verification": ["c65e2062c99a313fa38b3b497b4da61d86817df3"],
+    },
   },
 };
 
