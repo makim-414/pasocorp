@@ -786,7 +786,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-px">
             {["Review", "Valuation", "Strategy", "Execute"].map((step, i) => (
               <motion.div key={step} {...stagger(i)} className="p-8 text-center relative">
-                <p className="text-5xl font-light text-[#1a1a1a] mb-4" style={{ fontFamily: "var(--font-dutch)" }}>0{i + 1}</p>
+                <p className="text-5xl font-light text-[#444] mb-4" style={{ fontFamily: "var(--font-dutch)" }}>0{i + 1}</p>
                 <p className="text-sm tracking-[0.1em] uppercase text-white">{step}</p>
                 {i < 3 && <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-8 h-px bg-[#333]" />}
               </motion.div>

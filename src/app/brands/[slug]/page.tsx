@@ -18,7 +18,7 @@ const brandsData: Record<string, {
     image: "/brands/artrader-platform.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=90",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1920&q=90",
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&q=90",
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=90",
     ],
     features: [
@@ -36,9 +36,9 @@ const brandsData: Record<string, {
     color: "#a0522d",
     image: "/brands/paso-artcenter-building.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1920&q=90",
-      "https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?w=1920&q=90",
-      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1920&q=90",
+      "/images/paso-art-center-exhibition.png",
+      "/images/paso-art-center-emerging.png",
+      "/images/paso-art-center-secondary.png",
     ],
     features: [
       { title: "Exhibition Space", desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화." },
@@ -108,9 +108,9 @@ const brandsData: Record<string, {
       "https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=1920&q=90",
     ],
     features: [
-      { title: "미술품 절세 자문", desc: "증여·상속세 절세 전략, 법인 비용처리·감가상각 최적화, 세무 리스크 관리." },
+      { title: "미술품 절세 자문", desc: "증여·상속세 절세 전략, 법인 비용처리·감가상각 최적화, 세무 리스크 관리.", image: "/images/services/tax-advisory.jpg" },
       { title: "자산관리 & 평가", desc: "미술품 포트폴리오 구축, 시장가 기반 가치 평가, Private-Sale 거래 중개.", image: "/brands/artledger-consulting.jpg" },
-      { title: "컬렉팅 자문", desc: "체계적 컬렉션 전략 수립, 작품 선별·매입 자문, 장기 자산 관리.", image: "/images/services/collecting-advisory.svg" },
+      { title: "컬렉팅 자문", desc: "체계적 컬렉션 전략 수립, 작품 선별·매입 자문, 장기 자산 관리.", image: "/images/services/collecting-advisory.jpg" },
       { title: "세금 & 법률 세미나", desc: "미술품 관련 세무·법률 이슈를 다루는 정기 세미나 프로그램." },
       { title: "컬렉팅 강의", desc: "입문자부터 전문 컬렉터까지, 단계별 컬렉팅 교육 과정." },
       { title: "전문가 네트워킹", desc: "세무사·변호사·큐레이터 등 전문가 초청 강연 및 네트워킹 이벤트." },
