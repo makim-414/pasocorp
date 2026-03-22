@@ -237,8 +237,8 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 /* ── Exhibition gallery data ── */
 const exhibitionGalleries: Record<string, string[]> = {
   "REBORN": Array.from({ length: 7 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 2}.jpg`),
-  "Golden Reeds": Array.from({ length: 6 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
-  "The Sculpture Garden": Array.from({ length: 5 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
+  "Golden Reeds": Array.from({ length: 7 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
+  "The Sculpture Garden": Array.from({ length: 8 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
   "Traces of Light": Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
 };
 
