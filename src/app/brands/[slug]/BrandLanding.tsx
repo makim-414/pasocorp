@@ -18,6 +18,10 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
     title: "팝업 전시 — 홍대 플래그쉽",
     images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.png`),
   },
+  2: {
+    title: "아트토이 — Paso Gallery",
+    images: Array.from({ length: 7 }, (_, i) => `/images/projects/arttoy/${i + 1}.jpg`),
+  },
   5: {
     title: "스트릿 아트 — 도산공원 팝업",
     images: [
