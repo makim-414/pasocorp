@@ -46,7 +46,7 @@ const solutions = [
     desc: "국내 신진작가 공모전·수상작 전시, 아트 기반 MD 브랜드 운영.",
     color: "#1e3a5f",
     features: ["신진작가 공모전", "수상작 전시", "아트 MD 컬렉션", "작가 레지던시"],
-    image: "/brands/paso-gallery.jpg",
+    image: "/brands/paso-gallery.png",
   },
   {
     brand: "Paso Agency",

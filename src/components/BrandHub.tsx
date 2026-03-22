@@ -11,7 +11,7 @@ const mainBrands = [
     year: 2021,
     desc: "국내외 신진·라이징 작가를 엄선하여 소개하며, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다.",
     activity: "현재 전시: 2025 신진작가 공모전 수상작전",
-    image: "/brands/paso-gallery.jpg",
+    image: "/brands/paso-gallery.png",
     color: "#1e3a5f",
   },
   {

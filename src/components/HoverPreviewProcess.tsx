@@ -5,7 +5,7 @@ import type React from "react";
 
 const previewData: Record<string, { image: string; title: string; subtitle: string; href: string }> = {
   gallery: {
-    image: "/brands/paso-gallery.jpg",
+    image: "/brands/paso-gallery.png",
     title: "Paso Gallery",
     subtitle: "신진작가 발굴 · 전시 · 아트 MD",
     href: "https://pasogallery.com",
