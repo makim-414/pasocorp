@@ -388,8 +388,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 we Find Art
               </h2>
             </div>
-            <a href="#" className="hidden md:block text-xs tracking-[0.1em] uppercase text-[#555] hover:text-[#b8960b] transition-colors border-b border-[#333] pb-1">
-              View All →
+            <a href="#programs" className="hidden md:block text-xs tracking-[0.1em] uppercase text-[#555] hover:text-[#b8960b] transition-colors border-b border-[#333] pb-1">
+              View All Programs →
             </a>
           </motion.div>
 
@@ -420,7 +420,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── PROGRAMS: What We Do ── */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Programs</p>
