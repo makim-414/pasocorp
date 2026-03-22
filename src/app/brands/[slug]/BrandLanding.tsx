@@ -18,6 +18,26 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
     title: "팝업 전시 — 홍대 플래그쉽",
     images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.png`),
   },
+  5: {
+    title: "스트릿 아트 — 도산공원 팝업",
+    images: [
+      "/images/projects/dosan-popup/1.png",
+      "/images/projects/dosan-popup/02.png",
+      "/images/projects/dosan-popup/03.png",
+      "/images/projects/dosan-popup/4.png",
+      "/images/projects/dosan-popup/5.png",
+      "/images/projects/dosan-popup/8.png",
+      "/images/projects/dosan-popup/9.png",
+      "/images/projects/dosan-popup/10.png",
+      "/images/projects/dosan-popup/13.png",
+      "/images/projects/dosan-popup/14.png",
+      "/images/projects/dosan-popup/15.png",
+      "/images/projects/dosan-popup/16.png",
+      "/images/projects/dosan-popup/17.png",
+      "/images/projects/dosan-popup/18.png",
+      "/images/projects/dosan-popup/19.png",
+    ],
+  },
 };
 
 function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string }; onClose: () => void }) {
