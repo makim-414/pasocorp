@@ -28,10 +28,11 @@ function getPos(angle: number, r: number, cx: number, cy: number) {
   return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
 }
 
-export default function FlywheelVisual() {
+export default function FlywheelVisual({ defaultActive }: { defaultActive?: string } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const [active, setActive] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const active = hovered ?? defaultActive ?? null;
 
   const R = 170;
   const CX = 230;
@@ -132,8 +133,8 @@ export default function FlywheelVisual() {
               transition={{ duration: 0.4, delay: i * 0.08 + 0.5 }}
               className="absolute cursor-pointer"
               style={{ left: pos.x - 52, top: pos.y - 52, width: 104, height: 104 }}
-              onMouseEnter={() => setActive(brand.id)}
-              onMouseLeave={() => setActive(null)}
+              onMouseEnter={() => setHovered(brand.id)}
+              onMouseLeave={() => setHovered(null)}
             >
               <motion.div
                 animate={{
