@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://pasocorp.com"),
   alternates: { canonical: "https://pasocorp.com" },
+  verification: {
+    google: "e2KKY1zNTP2oZ3Uy7fNojeDjV4Yydl3gmYc_L4_ilj4",
+  },
 };
 
 const organizationJsonLd = {
