@@ -234,7 +234,31 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    3. PASO GALLERY — Cinematic / Full-screen hero
    ═══════════════════════════════════════════════════ */
+/* ── Exhibition gallery data ── */
+const exhibitionGalleries: Record<string, string[]> = {
+  "REBORN": [
+    "/images/gallery/gallery-01.png",
+    "/images/gallery/gallery-02.png",
+    "/images/gallery/gallery-03.png",
+    "/brands/paso-gallery-reborn.jpg",
+  ],
+  "Golden Reeds": [
+    "/images/gallery/gallery-04.png",
+    "/images/gallery/gallery-05.png",
+  ],
+  "The Sculpture Garden": [
+    "/images/gallery/gallery-06.png",
+    "/images/gallery/gallery-03.png",
+  ],
+  "Traces of Light": [
+    "/images/gallery/gallery-01.png",
+    "/images/gallery/gallery-05.png",
+  ],
+};
+
 function GalleryLayout({ brand }: { brand: BrandData }) {
+  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[] } | null>(null);
+
   const exhibitions = [
     { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: brand.gallery[0] },
     { title: "Golden Reeds", artist: "Minjae Park", date: "2025.01 — 02", image: brand.gallery[1] },
@@ -399,6 +423,10 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 key={ex.title}
                 {...stagger(i)}
                 className="group relative overflow-hidden cursor-pointer"
+                onClick={() => {
+                  const images = exhibitionGalleries[ex.title];
+                  if (images) setOpenExhibition({ title: ex.title, images });
+                }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -418,6 +446,11 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           </div>
         </div>
       </section>
+
+      {/* Exhibition gallery modal */}
+      <AnimatePresence>
+        {openExhibition && <ProjectGalleryModal gallery={openExhibition} onClose={() => setOpenExhibition(null)} />}
+      </AnimatePresence>
 
       {/* ── PROGRAMS: What We Do ── */}
       <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
