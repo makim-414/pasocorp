@@ -236,7 +236,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
    ═══════════════════════════════════════════════════ */
 /* ── Exhibition gallery data ── */
 const exhibitionGalleries: Record<string, string[]> = {
-  "REBORN": Array.from({ length: 7 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 2}.jpg`),
+  "REBORN": Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`),
   "Golden Reeds": Array.from({ length: 7 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
   "The Sculpture Garden": Array.from({ length: 8 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
   "Traces of Light": Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
@@ -246,10 +246,10 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[] } | null>(null);
 
   const exhibitions = [
-    { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: brand.gallery[0] },
-    { title: "Golden Reeds", artist: "Minjae Park", date: "2025.01 — 02", image: brand.gallery[1] },
-    { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: brand.gallery[2] },
-    { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: brand.gallery[3] },
+    { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: "/images/exhibitions/reborn/reborn-1.jpg" },
+    { title: "Golden Reeds", artist: "Minjae Park", date: "2025.01 — 02", image: "/images/exhibitions/golden-reeds/golden-reeds-1.jpg" },
+    { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
+    { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: "/images/exhibitions/traces-of-light/traces-of-light-1.jpg" },
   ];
 
   const clients = [
