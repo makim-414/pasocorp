@@ -160,9 +160,9 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
           );
         })}
 
-        {/* Connection labels tooltip */}
+        {/* Connection labels tooltip — only on hover */}
         <AnimatePresence>
-          {active && activeConns.length > 0 && (
+          {hovered && activeConns.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
