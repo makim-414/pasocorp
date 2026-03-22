@@ -80,7 +80,7 @@ const brandsData: Record<string, {
     gallery: [
       "/images/projects/cu-dding/cu-2.jpg",
       "/images/projects/cu-dding-collab.jpg",
-      "/images/projects/arttoy/1.jpg",
+      "/brands/paso-agency-phee.jpg",
       "/images/projects/twosome-interior.jpg",
       "/images/projects/hongdae-plusship/1.png",
       "/images/projects/dosan-popup/03.jpg",
