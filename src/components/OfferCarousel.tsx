@@ -114,12 +114,12 @@ OfferCarousel.displayName = "OfferCarousel";
 const pasoOffers: Offer[] = [
   {
     id: 1,
-    imageSrc: "/brands/paso-gallery.jpg",
+    imageSrc: "/brands/paso-gallery.png",
     imageAlt: "Paso Gallery",
     tag: "전시 · 갤러리",
     title: "2025 신진작가 공모전",
     description: "검증된 신진작가의 작품을 직접 만나보세요. 매년 엄선된 수상작을 전시합니다.",
-    brandLogoSrc: "/brands/paso-gallery.jpg",
+    brandLogoSrc: "/brands/paso-gallery.png",
     brandName: "Paso Gallery",
     href: "/brands/paso-gallery",
   },

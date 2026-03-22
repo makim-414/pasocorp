@@ -53,7 +53,7 @@ const brandsData: Record<string, {
     desc: "Art Meets Space — 한옥의 고유한 공간미와 동시대 미술이 만나는 곳. 브랜드 팝업, 프라이빗 이벤트, 아트 어드바이저리까지.",
     longDesc: "서울 종로구 한옥 건축물에 자리한 PASO Gallery는, 전통 공간의 아름다움과 동시대 미술의 실험이 공존하는 독립 갤러리입니다. 브랜드 팝업, VIP 이벤트, 아트 어드바이저리 등 예술과 비즈니스를 잇는 프로그램을 운영합니다.",
     color: "#1e3a5f",
-    image: "/brands/paso-gallery.jpg",
+    image: "/brands/paso-gallery.png",
     gallery: [
       "/images/gallery/gallery-01.png",
       "/images/gallery/gallery-02.png",
