@@ -37,7 +37,7 @@ const FEATURES = [
     image: "/brands/paso-private-sales.png",
     desc: "국내 신진작가 공모전, 글로벌 이머징 작가 전시, 적정가 2차 시장 Top 30 작품 전시.",
     color: "#1e3a5f",
-    href: "/brands/gallery",
+    href: "https://pasogallery.com",
   },
   {
     id: "agency",
@@ -47,7 +47,7 @@ const FEATURES = [
     image: "/brands/paso-agency.jpg",
     desc: "프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입.",
     color: "#d4a574",
-    href: "https://pasogallery.com",
+    href: "/brands/agency",
   },
 ];
 
