@@ -236,24 +236,10 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
    ═══════════════════════════════════════════════════ */
 /* ── Exhibition gallery data ── */
 const exhibitionGalleries: Record<string, string[]> = {
-  "REBORN": [
-    "/images/gallery/gallery-01.png",
-    "/images/gallery/gallery-02.png",
-    "/images/gallery/gallery-03.png",
-    "/brands/paso-gallery-reborn.jpg",
-  ],
-  "Golden Reeds": [
-    "/images/gallery/gallery-04.png",
-    "/images/gallery/gallery-05.png",
-  ],
-  "The Sculpture Garden": [
-    "/images/gallery/gallery-06.png",
-    "/images/gallery/gallery-03.png",
-  ],
-  "Traces of Light": [
-    "/images/gallery/gallery-01.png",
-    "/images/gallery/gallery-05.png",
-  ],
+  "REBORN": Array.from({ length: 7 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 2}.jpg`),
+  "Golden Reeds": Array.from({ length: 6 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
+  "The Sculpture Garden": Array.from({ length: 5 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
+  "Traces of Light": Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
