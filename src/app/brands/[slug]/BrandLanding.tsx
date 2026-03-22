@@ -350,7 +350,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <motion.span
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white"
           >
@@ -359,14 +359,14 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <motion.span
             initial={{ width: 0, opacity: 0 }}
             whileInView={{ width: "2.5rem", opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="h-[3px] md:h-[4px] bg-[#b8960b] inline-block"
           />
           <motion.span
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-4xl md:text-6xl lg:text-7xl font-semibold text-[#b8960b]"
           >
