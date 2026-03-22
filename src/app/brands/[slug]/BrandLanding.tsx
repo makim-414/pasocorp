@@ -207,7 +207,11 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    2. PASO ART CENTER — Museum / Full-bleed imagery
    ═══════════════════════════════════════════════════ */
+const artCenterGalleryImages = Array.from({ length: 19 }, (_, i) => `/images/paso-art-center-gallery/${i + 4}.png`);
+
 function ArtCenterLayout({ brand }: { brand: BrandData }) {
+  const [openGallery, setOpenGallery] = useState<{ title: string; images: string[]; desc?: string } | null>(null);
+
   return (
     <>
       <BrandHero brand={brand} />
@@ -221,7 +225,12 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 
       {/* Full-bleed images — cinematic */}
       {brand.gallery.map((img, i) => (
-        <motion.section key={i} {...stagger(0)} className="relative">
+        <motion.section
+          key={i}
+          {...stagger(0)}
+          className={`relative${i === 0 ? " cursor-pointer" : ""}`}
+          onClick={i === 0 ? () => setOpenGallery({ title: "Exhibition Space", images: artCenterGalleryImages, desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화." }) : undefined}
+        >
           <div className="relative h-[60vh] md:h-[80vh] overflow-hidden">
             <img src={img} alt={`Space ${i + 1}`} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/20" />
@@ -236,6 +245,11 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
           )}
         </motion.section>
       ))}
+
+      {/* Exhibition Space gallery modal */}
+      <AnimatePresence>
+        {openGallery && <ProjectGalleryModal gallery={openGallery} onClose={() => setOpenGallery(null)} />}
+      </AnimatePresence>
 
       {/* Venue info */}
       <section className="py-24 md:py-32 bg-[#0a0a0a]">
