@@ -37,8 +37,8 @@ const brandsData: Record<string, {
     image: "/brands/paso-artcenter-building.jpg",
     gallery: [
       "/images/paso-art-center-exhibition.png",
-      "https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?w=1600&q=80",
-      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1600&q=80",
+      "/images/paso-art-center-emerging.png",
+      "/images/paso-art-center-secondary.png",
     ],
     features: [
       { title: "Exhibition Space", desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화." },
