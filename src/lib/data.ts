@@ -103,7 +103,7 @@ export const feedCards: CardItem[] = [
       "미술품 거래의 새로운 표준. 투명한 가격, 안전한 거래, 전문가 큐레이션.",
     date: "Coming 2026",
     tags: ["Platform", "Artrader"],
-    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1920&q=90",
     href: "#",
   },
   {
@@ -113,7 +113,7 @@ export const feedCards: CardItem[] = [
       "마곡 주민과 함께하는 월간 아트 토크. 와인 한 잔과 미술 이야기.",
     date: "Monthly",
     tags: ["Community"],
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=90",
     href: "#",
   },
   {
@@ -123,7 +123,7 @@ export const feedCards: CardItem[] = [
       "기업 공간을 위한 아트 컨설팅. 오피스, 로비, 공용공간에 예술적 가치를.",
     date: "Service",
     tags: ["Advisory"],
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=90",
     href: "#",
   },
   {
@@ -133,7 +133,7 @@ export const feedCards: CardItem[] = [
       "처음 미술품을 구매하려는 분들을 위한 실전 워크숍. 감상에서 소장까지.",
     date: "Mar 2026",
     tags: ["Workshop", "Community"],
-    image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=1920&q=90",
     href: "#",
   },
   {
@@ -143,7 +143,7 @@ export const feedCards: CardItem[] = [
       "전시, 팝업, 프라이빗 이벤트를 위한 갤러리 대관. 마곡의 문화 거점.",
     date: "Available",
     tags: ["Space"],
-    image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=1920&q=90",
     href: "#",
   },
   {
@@ -153,7 +153,7 @@ export const feedCards: CardItem[] = [
       "신진 작가 공모. PASO Art Center에서 첫 개인전의 기회를.",
     date: "Applications Open",
     tags: ["Exhibition", "Open Call"],
-    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1920&q=90",
     href: "#",
   },
   {
@@ -163,7 +163,7 @@ export const feedCards: CardItem[] = [
       "동시대 미술 다큐멘터리 상영 시리즈. 매월 셋째 주 토요일.",
     date: "Coming Soon",
     tags: ["Film", "Event"],
-    image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1920&q=90",
     href: "#",
   },
   {
@@ -173,7 +173,7 @@ export const feedCards: CardItem[] = [
       "포르쉐 프런티어 파트너십. 자동차와 예술이 만나는 특별한 경험.",
     date: "2026",
     tags: ["Partnership"],
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=90",
     href: "#",
   },
 ];

@@ -16,7 +16,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
   4: {
     title: "팝업 전시 — 홍대 플래그쉽",
-    images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.png`),
+    images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.jpg`),
   },
   2: {
     title: "아트토이 — Paso Gallery",
@@ -25,18 +25,18 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   5: {
     title: "스트릿 아트 — 도산공원 팝업",
     images: [
-      "/images/projects/dosan-popup/1.png",
-      "/images/projects/dosan-popup/02.png",
-      "/images/projects/dosan-popup/03.png",
-      "/images/projects/dosan-popup/4.png",
-      "/images/projects/dosan-popup/5.png",
-      "/images/projects/dosan-popup/8.png",
-      "/images/projects/dosan-popup/9.png",
-      "/images/projects/dosan-popup/10.png",
-      "/images/projects/dosan-popup/13.png",
-      "/images/projects/dosan-popup/14.png",
-      "/images/projects/dosan-popup/15.png",
-      "/images/projects/dosan-popup/16.png",
+      "/images/projects/dosan-popup/1.jpg",
+      "/images/projects/dosan-popup/02.jpg",
+      "/images/projects/dosan-popup/03.jpg",
+      "/images/projects/dosan-popup/4.jpg",
+      "/images/projects/dosan-popup/5.jpg",
+      "/images/projects/dosan-popup/8.jpg",
+      "/images/projects/dosan-popup/9.jpg",
+      "/images/projects/dosan-popup/10.jpg",
+      "/images/projects/dosan-popup/13.jpg",
+      "/images/projects/dosan-popup/14.jpg",
+      "/images/projects/dosan-popup/15.jpg",
+      "/images/projects/dosan-popup/16.jpg",
       "/images/projects/dosan-popup/17.png",
       "/images/projects/dosan-popup/18.png",
       "/images/projects/dosan-popup/19.png",
@@ -268,7 +268,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
   },
   "Golden Reeds": {
-    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
     desc: "박민재 작가의 대규모 설치 작품. 수천 개의 금빛 갈대가 갤러리 내부를 가득 채우며, 관람객은 갈대 사이를 거닐며 자연과 인공의 경계를 체험합니다. 조명에 따라 시시각각 변하는 금빛 풍경은 도시 속 자연에 대한 향수를 불러일으킵니다.",
   },
   "The Sculpture Garden": {

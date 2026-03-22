@@ -132,7 +132,7 @@ function TripleFeature() {
       href: "https://v.daum.net/v/20251103174751777",
     },
     {
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
+      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=90",
       title: "마곡 아트 살롱",
       desc: "월간 커뮤니티 아트 토크",
       tall: false,
