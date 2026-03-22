@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 import ContactContent from "./ContactContent";
 
 export const metadata: Metadata = {
-  title: "Contact — PASO",
-  description: "프로젝트 문의, 협업 제안, 전시 대관. PASO에 연락하세요.",
+  title: "Contact — 파소(PASO)",
+  description: "프로젝트 문의, 협업 제안, 전시 대관. 파소(PASO)에 연락하세요.",
   openGraph: {
-    title: "Contact — PASO",
-    description: "프로젝트 문의, 협업 제안, 전시 대관. PASO에 연락하세요.",
+    title: "Contact — 파소(PASO)",
+    description: "프로젝트 문의, 협업 제안, 전시 대관. 파소(PASO)에 연락하세요.",
   },
 };
 

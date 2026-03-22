@@ -3,20 +3,21 @@ import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "PASO Corp | 데이터 기반 미술 자산 전략", template: "%s — PASO" },
-  description: "미술품 투자 자문, 갤러리 운영, 아트 컨설팅. 1,580만 건 데이터 기반 미술 자산 관리.",
+  title: { default: "파소(PASO) | 데이터 기반 미술 자산 전략", template: "%s — 파소(PASO)" },
+  description: "파소(PASO)는 미술품 투자 자문, 갤러리 운영, 아트 컨설팅을 제공합니다. 1,580만 건 데이터 기반 미술 자산 관리.",
+  keywords: ["파소", "PASO", "pasocorp", "파소코프", "파소갤러리", "파소아트센터", "파소에이전시", "파소 갤러리", "파소 아트센터", "파소 에이전시", "미술품 투자", "아트 컨설팅", "갤러리", "미술 자산"],
   openGraph: {
-    title: "PASO — Art as an Asset Class",
-    description: "데이터 기반 미술품 거래 자문, 갤러리·미술관 운영, 기업 컬렉션 자문. 미술 생태계의 모든 것을 연결합니다.",
-    siteName: "PASO",
+    title: "파소(PASO) — Art as an Asset Class",
+    description: "파소(PASO) — 데이터 기반 미술품 거래 자문, 갤러리·미술관 운영, 기업 컬렉션 자문. 미술 생태계의 모든 것을 연결합니다.",
+    siteName: "파소(PASO)",
     type: "website",
     url: "https://pasocorp.com",
     images: [{ url: "https://pasocorp.com/og-image.jpg", width: 1200, height: 630, alt: "PASO — Art as an Asset Class" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PASO Corp | 데이터 기반 미술 자산 전략",
-    description: "미술품 투자 자문, 갤러리 운영, 아트 컨설팅. 1,580만 건 데이터 기반 미술 자산 관리.",
+    title: "파소(PASO) | 데이터 기반 미술 자산 전략",
+    description: "파소(PASO)는 미술품 투자 자문, 갤러리 운영, 아트 컨설팅을 제공합니다. 1,580만 건 데이터 기반 미술 자산 관리.",
   },
   metadataBase: new URL("https://pasocorp.com"),
   alternates: { canonical: "https://pasocorp.com" },
@@ -31,7 +32,8 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "PASO Corp",
+  name: "파소(PASO Corp)",
+  alternateName: "파소",
   url: "https://pasocorp.com",
   logo: "https://pasocorp.com/logo.png",
   sameAs: ["https://www.instagram.com/pasoartcenter"],
@@ -40,7 +42,7 @@ const organizationJsonLd = {
     contactType: "customer service",
     email: "makim@ironact.net",
   },
-  description: "데이터 기반 미술 자산 전략. 미술품 투자 자문, 갤러리 운영, 아트 컨설팅.",
+  description: "파소(PASO) — 데이터 기반 미술 자산 전략. 미술품 투자 자문, 갤러리 운영, 아트 컨설팅.",
 };
 
 const webSiteJsonLd = {
@@ -59,8 +61,9 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://pasocorp.com/#artcenter",
-  name: "PASO Art Center",
-  description: "서울 마곡 아트센터. 전시, 대관, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간.",
+  name: "파소 아트센터(PASO Art Center)",
+  alternateName: "파소 아트센터",
+  description: "파소 아트센터 — 서울 성북구. 전시, 대관, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간.",
   url: "https://pasocorp.com",
   image: "https://pasocorp.com/logo.png",
   address: {
