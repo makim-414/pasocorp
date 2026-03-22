@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import EcosystemSection from "@/components/EcosystemSection";
 
 /* ── Project detail gallery data ── */
@@ -275,16 +275,43 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
     desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다.",
   },
+  "Silent Dialogue": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/silent-dialogue/silent-dialogue-${i + 1}.jpg`),
+    desc: "침묵 속에서 나누는 대화. 도자, 섬유, 금속 등 다양한 매체를 다루는 세 작가가 한옥의 고요한 공간에서 각자의 언어로 소통합니다. 작품과 공간, 관람객 사이에 흐르는 비언어적 교감을 경험하는 전시입니다.",
+  },
+  "Urban Canvas": {
+    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/urban-canvas/urban-canvas-${i + 1}.jpg`),
+    desc: "도시의 벽면과 거리를 캔버스로 활용한 스트리트 아트 기획전. 그래피티, 벽화, 설치 등 도시 환경과 상호작용하는 다양한 작품들이 갤러리 안팎을 넘나들며 전시됩니다. 예술과 일상의 경계를 허무는 실험적인 전시입니다.",
+  },
+  "Between the Lines": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/between-lines/between-lines-${i + 1}.jpg`),
+    desc: "드로잉과 판화를 중심으로 '선(線)'이라는 근본적인 조형 요소를 탐구하는 전시. 연필, 붓, 조각도가 만들어내는 다양한 선의 표현을 통해 작가들의 내면 세계를 들여다봅니다.",
+  },
+  "Color Spectrum": {
+    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/color-spectrum/color-spectrum-${i + 1}.jpg`),
+    desc: "색채의 무한한 스펙트럼을 탐험하는 그룹전. 회화, 염색, 유리 공예 등 다양한 매체에서 색이 지닌 감정적, 상징적 힘을 조명합니다. 관람객은 색의 바다를 거닐며 시각적 명상을 경험합니다.",
+  },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
   const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string } | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollExhibitions = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = scrollRef.current.offsetWidth * 0.6;
+    scrollRef.current.scrollBy({ left: direction === "right" ? scrollAmount : -scrollAmount, behavior: "smooth" });
+  };
 
   const exhibitions = [
     { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: "/images/exhibitions/reborn/reborn-1.jpg" },
     { title: "Golden Reeds", artist: "Minjae Park", date: "2025.01 — 02", image: "/images/exhibitions/golden-reeds/golden-reeds-1.jpg" },
     { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
     { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: "/images/exhibitions/traces-of-light/traces-of-light-1.jpg" },
+    { title: "Silent Dialogue", artist: "Group Exhibition", date: "2024.07 — 08", image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg" },
+    { title: "Urban Canvas", artist: "Jihoon Choi", date: "2024.05 — 06", image: "/images/exhibitions/urban-canvas/urban-canvas-1.jpg" },
+    { title: "Between the Lines", artist: "Eunji Kang", date: "2024.03 — 04", image: "/images/exhibitions/between-lines/between-lines-1.jpg" },
+    { title: "Color Spectrum", artist: "Group Exhibition", date: "2024.01 — 02", image: "/images/exhibitions/color-spectrum/color-spectrum-1.jpg" },
   ];
 
   const clients = [
@@ -433,41 +460,56 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 we Find Art
               </h2>
             </div>
-            <button
-              onClick={() => document.getElementById("programs")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-              className="hidden md:block text-xs tracking-[0.1em] uppercase text-[#555] hover:text-[#b8960b] transition-colors border-b border-[#333] pb-1 cursor-pointer"
-            >
-              View All Programs →
-            </button>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {exhibitions.map((ex, i) => (
-              <motion.div
-                key={ex.title}
-                {...stagger(i)}
-                className="group relative overflow-hidden cursor-pointer"
-                onClick={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc });
-                }}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => scrollExhibitions("left")}
+                className="w-10 h-10 border border-[#333] text-[#888] hover:border-[#b8960b] hover:text-[#b8960b] transition-all duration-300 flex items-center justify-center text-lg"
+                aria-label="Previous exhibitions"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={ex.image}
-                    alt={ex.title}
-                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/70 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-[10px] tracking-[0.15em] uppercase text-[#b8960b] mb-2">{ex.date}</p>
-                    <h3 className="text-xl md:text-2xl text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
-                    <p className="text-xs text-[#aaa] font-light mt-1">{ex.artist}</p>
-                  </div>
+                ←
+              </button>
+              <button
+                onClick={() => scrollExhibitions("right")}
+                className="w-10 h-10 border border-[#333] text-[#888] hover:border-[#b8960b] hover:text-[#b8960b] transition-all duration-300 flex items-center justify-center text-lg"
+                aria-label="Next exhibitions"
+              >
+                →
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pl-6 md:pl-[max(1.5rem,calc((100vw-1400px)/2+3rem))] pr-6 pb-4"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <style>{`[data-exhibition-scroll]::-webkit-scrollbar { display: none; }`}</style>
+          {exhibitions.map((ex, i) => (
+            <motion.div
+              key={ex.title}
+              {...stagger(i)}
+              className="group relative overflow-hidden cursor-pointer flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[42vw] lg:w-[30vw] snap-start"
+              onClick={() => {
+                const gallery = exhibitionGalleries[ex.title];
+                if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc });
+              }}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={ex.image}
+                  alt={ex.title}
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/70 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="text-[10px] tracking-[0.15em] uppercase text-[#b8960b] mb-2">{ex.date}</p>
+                  <h3 className="text-xl md:text-2xl text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
+                  <p className="text-xs text-[#aaa] font-light mt-1">{ex.artist}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
