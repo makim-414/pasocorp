@@ -119,8 +119,8 @@ export default function AboutContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
             {/* Abel Ko */}
             <motion.div {...stagger(0)}>
-              <div className="relative aspect-[3/4] max-w-[360px] mb-6 border-2 border-[#2a6fff] overflow-hidden">
-                <Image src="/team/abel-ko.png" alt="Abel Ko" fill className="object-cover" />
+              <div className="max-w-[360px] mb-6 border-2 border-[#2a6fff] overflow-hidden">
+                <img src="/team/abel-ko.png" alt="Abel Ko" className="w-full object-cover" />
               </div>
               <h3 className="text-2xl text-white font-light mb-1" style={{ fontFamily: "var(--font-dutch)" }}>Abel Ko</h3>
               <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-5">CO-FOUNDER &nbsp;|&nbsp; PRODUCT & ENGINEERING</p>
@@ -135,8 +135,8 @@ export default function AboutContent() {
 
             {/* Mark Kim */}
             <motion.div {...stagger(1)}>
-              <div className="relative aspect-[3/4] max-w-[360px] mb-6 overflow-hidden">
-                <Image src="/team/mark-kim.png" alt="Mark Kim" fill className="object-cover" />
+              <div className="max-w-[360px] mb-6 overflow-hidden">
+                <img src="/team/mark-kim.png" alt="Mark Kim" className="w-full object-cover" />
               </div>
               <h3 className="text-2xl text-white font-light mb-1" style={{ fontFamily: "var(--font-dutch)" }}>Mark Kim</h3>
               <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-5">CO-FOUNDER &nbsp;|&nbsp; BUSINESS, STRATEGY & DATA</p>
