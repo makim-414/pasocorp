@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import EcosystemSection from "@/components/EcosystemSection";
 
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[] }> = {
@@ -373,6 +374,9 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           </motion.span>
         </div>
       </section>
+
+      {/* ── PASO Integrated Ecosystem ── */}
+      <EcosystemSection />
 
       {/* ── EXHIBITIONS: Selected Works ── */}
       <section id="exhibitions" className="py-24 md:py-32 bg-black">
