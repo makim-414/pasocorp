@@ -79,7 +79,7 @@ export default function FlywheelVisual() {
                   transition={{ duration: 0.3 }}
                 />
                 {/* Animated flow dot */}
-                {isHighlighted && isFromActive && (
+                {isHighlighted && (
                   <motion.circle
                     r="3"
                     fill={conn.color}
@@ -90,7 +90,10 @@ export default function FlywheelVisual() {
                     <animateMotion
                       dur="2s"
                       repeatCount="indefinite"
-                      path={`M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`}
+                      path={isFromActive
+                        ? `M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`
+                        : `M ${to.x} ${to.y} Q ${mx} ${my} ${from.x} ${from.y}`
+                      }
                     />
                   </motion.circle>
                 )}
