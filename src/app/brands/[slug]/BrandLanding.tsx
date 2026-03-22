@@ -20,7 +20,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
 };
 
-function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[] }; onClose: () => void }) {
+function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string }; onClose: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -30,10 +30,13 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
       onClick={onClose}
     >
       <div className="w-full max-w-[1200px] px-6 py-16" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl md:text-3xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
           <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
         </div>
+        {gallery.desc && (
+          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10">{gallery.desc}</p>
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {gallery.images.map((src, i) => (
             <motion.div
@@ -235,15 +238,27 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
    3. PASO GALLERY — Cinematic / Full-screen hero
    ═══════════════════════════════════════════════════ */
 /* ── Exhibition gallery data ── */
-const exhibitionGalleries: Record<string, string[]> = {
-  "REBORN": Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`),
-  "Golden Reeds": Array.from({ length: 7 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
-  "The Sculpture Garden": Array.from({ length: 8 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
-  "Traces of Light": Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
+const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = {
+  "REBORN": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`),
+    desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
+  },
+  "Golden Reeds": {
+    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
+    desc: "박민재 작가의 대규모 설치 작품. 수천 개의 금빛 갈대가 갤러리 내부를 가득 채우며, 관람객은 갈대 사이를 거닐며 자연과 인공의 경계를 체험합니다. 조명에 따라 시시각각 변하는 금빛 풍경은 도시 속 자연에 대한 향수를 불러일으킵니다.",
+  },
+  "The Sculpture Garden": {
+    images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
+    desc: "김소연 작가가 자연에서 수집한 나뭇가지와 유기적 소재로 구성한 조각 정원. 한옥의 마당과 실내를 잇는 공간 설치를 통해 자연의 순환과 생명력을 표현합니다. 소재 본연의 질감과 형태가 만들어내는 조형적 긴장감이 돋보이는 전시입니다.",
+  },
+  "Traces of Light": {
+    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
+    desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다.",
+  },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
-  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[] } | null>(null);
+  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string } | null>(null);
 
   const exhibitions = [
     { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: "/images/exhibitions/reborn/reborn-1.jpg" },
@@ -410,8 +425,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 {...stagger(i)}
                 className="group relative overflow-hidden cursor-pointer"
                 onClick={() => {
-                  const images = exhibitionGalleries[ex.title];
-                  if (images) setOpenExhibition({ title: ex.title, images });
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc });
                 }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
