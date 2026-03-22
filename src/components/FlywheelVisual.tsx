@@ -172,13 +172,13 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
               style={{ bottom: -16 }}
             >
               <div className="bg-white/[0.03] border border-white/[0.08] backdrop-blur-md rounded-md px-4 py-2.5 min-w-[240px]">
-                <p className="text-[10px] tracking-[0.15em] uppercase mb-2 text-center" style={{ color: brandMap[active]?.accent }}>
-                  {brandMap[active]?.name} 시너지
+                <p className="text-[10px] tracking-[0.15em] uppercase mb-2 text-center" style={{ color: brandMap[hovered!]?.accent }}>
+                  {brandMap[hovered!]?.name} 시너지
                 </p>
                 <div className="space-y-1">
                   {activeConns.map((conn, i) => {
-                    const target = conn.from === active ? conn.to : conn.from;
-                    const direction = conn.from === active ? "→" : "←";
+                    const target = conn.from === hovered ? conn.to : conn.from;
+                    const direction = conn.from === hovered ? "→" : "←";
                     return (
                       <p key={i} className="text-[10px] text-white/50 font-light">
                         <span className="text-white/30">{direction}</span>{" "}
