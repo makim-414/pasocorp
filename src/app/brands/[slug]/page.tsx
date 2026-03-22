@@ -18,7 +18,7 @@ const brandsData: Record<string, {
     image: "/brands/artrader-platform.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     ],
     features: [
