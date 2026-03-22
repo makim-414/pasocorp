@@ -413,9 +413,12 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 we Find Art
               </h2>
             </div>
-            <a href="#programs" className="hidden md:block text-xs tracking-[0.1em] uppercase text-[#555] hover:text-[#b8960b] transition-colors border-b border-[#333] pb-1">
+            <button
+              onClick={() => document.getElementById("programs")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+              className="hidden md:block text-xs tracking-[0.1em] uppercase text-[#555] hover:text-[#b8960b] transition-colors border-b border-[#333] pb-1 cursor-pointer"
+            >
               View All Programs →
-            </a>
+            </button>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
