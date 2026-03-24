@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ScrollHeroSection from "@/components/ScrollHeroSection";
+
 import { DynamicTop, DynamicBottom } from "@/components/DynamicSections";
 import BrandHub from "@/components/BrandHub";
 import EcosystemSection from "@/components/EcosystemSection";
@@ -14,7 +14,6 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <ScrollHeroSection />
         <DynamicTop />
         <BrandHub />
         <EcosystemSection />
