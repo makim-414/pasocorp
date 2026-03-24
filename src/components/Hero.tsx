@@ -9,11 +9,11 @@ import BlurInText from "./ui/blur-in-text";
 import WeArtHero from "./WeArtHero";
 
 const brands = [
-  { name: "Artrader.io", image: "/brands/artrader-platform.jpg", color: "#b8960b", href: "https://artrader.io" },
-  { name: "Paso Gallery", image: "/brands/paso-gallery.png", color: "#1e3a5f", href: "https://pasogallery.com" },
-  { name: "Paso Agency", image: "/brands/paso-agency.jpg", color: "#d4a574", href: "/brands/paso-agency" },
-  { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af", href: "/brands/artledger-consulting" },
-  { name: "Art Center", image: "/brands/paso-artcenter-building.jpg", color: "#a0522d", href: "/brands/paso-art-center" },
+  { name: "Artrader.io", image: "/brands/artrader-platform.jpg", color: "#b8960b", href: "https://artrader.io", enabled: true },
+  { name: "Paso Gallery", image: "/brands/paso-gallery.png", color: "#1e3a5f", href: "https://pasogallery.com", enabled: true },
+  { name: "Paso Agency", image: "/brands/paso-agency.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: false },
+  { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af", href: "/brands/artledger-consulting", enabled: false },
+  { name: "Art Center", image: "/brands/paso-artcenter-building.jpg", color: "#a0522d", href: "/brands/paso-art-center", enabled: false },
 ];
 
 export default function Hero() {
@@ -104,28 +104,38 @@ export default function Hero() {
         >
           {brands.map((b, i, arr) => (
             <span key={b.name} className="flex items-center gap-1.5 md:gap-2">
-              <a
-                href={b.href}
-                target={b.href.startsWith("http") ? "_blank" : undefined}
-                rel={b.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                onMouseEnter={() => setHoveredBrand(i)}
-                onMouseLeave={() => setHoveredBrand(null)}
-              >
-                <motion.span
-                  className="cursor-pointer transition-colors duration-300 relative py-1 px-0.5 inline-block"
-                  style={{ color: hoveredBrand === i ? b.color : "#555" }}
-                  whileHover={{ y: -2 }}
+              {b.enabled ? (
+                <a
+                  href={b.href}
+                  target={b.href.startsWith("http") ? "_blank" : undefined}
+                  rel={b.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  onMouseEnter={() => setHoveredBrand(i)}
+                  onMouseLeave={() => setHoveredBrand(null)}
+                >
+                  <motion.span
+                    className="cursor-pointer transition-colors duration-300 relative py-1 px-0.5 inline-block"
+                    style={{ color: hoveredBrand === i ? b.color : "#555" }}
+                    whileHover={{ y: -2 }}
+                  >
+                    {b.name}
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-px"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: hoveredBrand === i ? 1 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ backgroundColor: b.color, transformOrigin: "left" }}
+                    />
+                  </motion.span>
+                </a>
+              ) : (
+                <span
+                  className="py-1 px-0.5 inline-block text-[#333] cursor-default"
+                  onMouseEnter={() => setHoveredBrand(i)}
+                  onMouseLeave={() => setHoveredBrand(null)}
                 >
                   {b.name}
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-px"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: hoveredBrand === i ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ backgroundColor: b.color, transformOrigin: "left" }}
-                  />
-                </motion.span>
-              </a>
+                </span>
+              )}
               {i < arr.length - 1 && <span className="text-[#2a2a2a]">|</span>}
             </span>
           ))}
