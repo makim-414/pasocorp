@@ -326,7 +326,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "SS21 'Vacant Fabric' Vip Exhibition", artist: "", date: "2021. 8. 1. - 2021. 8. 15.", image: "/images/exhibitions/art-couture/art-couture-1.png" },
     { title: "Paso Gallery x ARTIVIST.", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
     { title: "The less I know the better, \"모르는 게 약이다\" by Dirty Haerri", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
-    { title: "Exhibition 1.0 2021 S/S Projection(창)", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-1.png" },
+    { title: "Exhibition 1.0 2021 S/S Projection(창)", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-7.png" },
     { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
     { title: "도산공원 팝업", artist: "", date: "", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
   ];
