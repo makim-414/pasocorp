@@ -277,7 +277,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 /* ── Exhibition gallery data ── */
 const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = {
   "REBORN": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`),
+    images: [...Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`), "/images/exhibitions/reborn/reborn-cover.jpg", "/images/exhibitions/reborn/reborn-new-cover.jpg"],
     desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
   },
   "Intermission : 이다희 작가 기획전": {
@@ -321,7 +321,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   };
 
   const exhibitions = [
-    { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
+    { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-main.jpg" },
     { title: "Intermission : 이다희 작가 기획전", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-7.jpg" },
     { title: "SS21 'Vacant Fabric' Vip Exhibition", artist: "", date: "2021. 8. 1. - 2021. 8. 15.", image: "/images/exhibitions/art-couture/art-couture-1.png" },
     { title: "Paso Gallery x ARTIVIST.", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
