@@ -358,7 +358,14 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       {/* ── HERO: Full-screen cinematic ── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={brand.image} alt="PASO Gallery" className="w-full h-full object-cover" />
+          <video
+            src="/trim 2.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative z-10 text-center px-6">
