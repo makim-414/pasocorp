@@ -288,9 +288,9 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/art-couture/art-couture-${i + 1}.png`),
     desc: "",
   },
-  "bno, patron, Timothy Fulton": {
+  "Paso Gallery x ARTIVIST.": {
     images: Array.from({ length: 50 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
-    desc: "",
+    desc: "Private Art Forum : 'PATRONS'\n\n파소 갤러리가 @artiv.ist 와 함께 'Guide to start a contemporary art collection' 을 주제로 영 컬렉터들을 위한 프라이빗 아트 포럼을 개최하였습니다.\n\nGuide to start a contemporary art collection의 주제로, 예술가와 미술 업계 전문가들이 함께 현대미술 컬렉션을 시작하는 방법, 작품 선택에 대한 팁, 그리고 예술 시장의 동향 및 미래 등의 주제를 다루었습니다.\n\nPanel :\n서진석 관장 (현 울산시립미술관 관장, 전 백남준 아트센터 관장) @jinsuksuh\n유진상 교수 (계원조형대 교수, 2012 미디어시티비엔날레 총감독, 광주비엔날레 평가위원)\n\nModerator :\n이정우 에디터 (전 널위한문화예술) @jjjw117\n\nSpecial Guest :\nWhisbe @whisbe",
   },
   "redegallery": {
     images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/redegallery/redegallery-${i + 1}.png`),
@@ -324,7 +324,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
     { title: "Intermission : 이다희 작가 기획전", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-7.jpg" },
     { title: "SS21 'Vacant Fabric' Vip Exhibition", artist: "", date: "2021. 8. 1. - 2021. 8. 15.", image: "/images/exhibitions/art-couture/art-couture-1.png" },
-    { title: "bno, patron, Timothy Fulton", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
+    { title: "Paso Gallery x ARTIVIST.", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
     { title: "redegallery", artist: "", date: "", image: "/images/exhibitions/redegallery/redegallery-1.png" },
     { title: "section 10", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-1.png" },
     { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
