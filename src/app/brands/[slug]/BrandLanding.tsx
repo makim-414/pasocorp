@@ -289,7 +289,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     desc: "김소연 작가가 자연에서 수집한 나뭇가지와 유기적 소재로 구성한 조각 정원. 한옥의 마당과 실내를 잇는 공간 설치를 통해 자연의 순환과 생명력을 표현합니다. 소재 본연의 질감과 형태가 만들어내는 조형적 긴장감이 돋보이는 전시입니다.",
   },
   "Intermission : 이다희 작가 기획전": {
-    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
+    images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
     desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다.",
   },
   "Silent Dialogue": {
