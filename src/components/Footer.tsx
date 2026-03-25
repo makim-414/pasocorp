@@ -7,7 +7,7 @@ const linksBrands = [
   {
     group: "Brands",
     items: [
-      { title: "Paso Gallery", href: "/brands/paso-gallery" },
+      { title: "Paso Gallery", href: "https://pasogallery.com" },
       { title: "Paso Agency", href: "/brands/paso-agency" },
       { title: "Artrader", href: "/brands/artrader" },
       { title: "Artledger Consulting", href: "/brands/artledger-consulting" },
@@ -74,6 +74,7 @@ export default function Footer() {
               <Link
                 key={i}
                 href={item.href}
+                {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="text-[#666] hover:text-[#999] block duration-150"
               >
                 {item.title}

@@ -121,7 +121,7 @@ const pasoOffers: Offer[] = [
     description: "검증된 신진작가의 작품을 직접 만나보세요. 매년 엄선된 수상작을 전시합니다.",
     brandLogoSrc: "/brands/paso-gallery.png",
     brandName: "Paso Gallery",
-    href: "/brands/paso-gallery",
+    href: "https://pasogallery.com",
   },
   {
     id: 2,

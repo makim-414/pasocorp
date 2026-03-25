@@ -21,7 +21,7 @@ const cases = [
     id: "paso-gallery",
     title: "Paso Gallery — 신진작가 플랫폼",
     description: "국내 신진작가 공모전·수상작 전시부터 아트 기반 MD 브랜드까지. 예술의 최전선.",
-    href: "/brands/paso-gallery",
+    href: "https://pasogallery.com",
     image: "/brands/paso-gallery.png",
   },
   {

@@ -122,7 +122,7 @@ function TripleFeature() {
       title: "Paso Private Sales",
       desc: "Paso Gallery의 프라이빗 세일",
       tall: false,
-      href: "/brands/paso-gallery",
+      href: "https://pasogallery.com",
     },
     {
       image: "/brands/paso-gallery-reborn.jpg",
