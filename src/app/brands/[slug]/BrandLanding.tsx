@@ -359,7 +359,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <video
-            src="/trim 2.mp4"
+            src="/trim2.mp4"
             autoPlay
             loop
             muted
