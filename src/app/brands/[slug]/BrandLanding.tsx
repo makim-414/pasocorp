@@ -321,7 +321,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   };
 
   const exhibitions = [
-    { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-1.jpg" },
+    { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
     { title: "Intermission : 이다희 작가 기획전", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-7.jpg" },
     { title: "SS21 'Vacant Fabric' Vip Exhibition", artist: "", date: "2021. 8. 1. - 2021. 8. 15.", image: "/images/exhibitions/art-couture/art-couture-1.png" },
     { title: "bno, patron, Timothy Fulton", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
