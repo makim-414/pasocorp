@@ -296,6 +296,30 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/silent-dialogue/silent-dialogue-${i + 1}.jpg`),
     desc: "침묵 속에서 나누는 대화. 도자, 섬유, 금속 등 다양한 매체를 다루는 세 작가가 한옥의 고요한 공간에서 각자의 언어로 소통합니다. 작품과 공간, 관람객 사이에 흐르는 비언어적 교감을 경험하는 전시입니다.",
   },
+  "art couture": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/art-couture/art-couture-${i + 1}.png`),
+    desc: "",
+  },
+  "bno, patron, Timothy Fulton": {
+    images: Array.from({ length: 50 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
+    desc: "",
+  },
+  "redegallery": {
+    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/redegallery/redegallery-${i + 1}.png`),
+    desc: "",
+  },
+  "section 10": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/section-10/section-10-${i + 1}.png`),
+    desc: "",
+  },
+  "section 8": {
+    images: Array.from({ length: 2 }, (_, i) => `/images/exhibitions/section-8/section-8-${i + 1}.png`),
+    desc: "",
+  },
+  "도산공원 팝업": {
+    images: Array.from({ length: 12 }, (_, i) => `/images/exhibitions/dosan-popup/dosan-popup-${i + 1}.png`),
+    desc: "",
+  },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
@@ -314,6 +338,12 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
     { title: "Intermission : 이다희 작가 기획전", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-7.jpg" },
     { title: "Silent Dialogue", artist: "Group Exhibition", date: "2024.07 — 08", image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg" },
+    { title: "art couture", artist: "", date: "", image: "/images/exhibitions/art-couture/art-couture-1.png" },
+    { title: "bno, patron, Timothy Fulton", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
+    { title: "redegallery", artist: "", date: "", image: "/images/exhibitions/redegallery/redegallery-1.png" },
+    { title: "section 10", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-1.png" },
+    { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
+    { title: "도산공원 팝업", artist: "", date: "", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
   ];
 
   const clients = [
