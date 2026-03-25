@@ -497,11 +497,11 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 {...stagger(i)}
                 className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500"
               >
-                <div className="mb-6 overflow-hidden">
+                <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
                   <img
                     src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.png", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.png", "/images/KakaoTalk_Photo_2026-03-25-17-48-11.png"][i] || brand.gallery[i % brand.gallery.length]}
                     alt={f.title}
-                    className="w-full object-contain transition-all duration-700"
+                    className="w-full h-full object-cover transition-all duration-700"
                   />
                 </div>
                 <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] block mb-3">0{i + 1}</span>
