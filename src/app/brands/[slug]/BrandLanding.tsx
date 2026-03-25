@@ -545,7 +545,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── SPACE: 한옥 Gallery ── */}
-      <section id="space" className="py-24 md:py-32 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+      <section id="about" className="py-24 md:py-32 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
