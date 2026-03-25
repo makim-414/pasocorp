@@ -322,7 +322,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
   const exhibitions = [
     { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-1.jpg" },
-    { title: "Golden Reeds", artist: "Minjae Park", date: "2025.01 — 02", image: "/images/exhibitions/golden-reeds/golden-reeds-1.jpg" },
+    { title: "Golden Reeds", artist: "Minjae Park", date: "2022. 8. 25 - 9. 9", image: "/images/exhibitions/golden-reeds/golden-reeds-1.jpg" },
     { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
     { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: "/images/exhibitions/traces-of-light/traces-of-light-1.jpg" },
     { title: "Silent Dialogue", artist: "Group Exhibition", date: "2024.07 — 08", image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg" },
