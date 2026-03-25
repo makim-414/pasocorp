@@ -426,9 +426,9 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
       {/* ── CLIENT LOGOS MARQUEE ── */}
       <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-6 overflow-hidden">
-        <div className="flex items-center animate-[marquee_30s_linear_infinite]" style={{ width: "max-content" }}>
-          {[...clients, ...clients].map((client, i) => (
-            <div key={i} className="mx-5 md:mx-8 flex-shrink-0">
+        <div className="flex items-center animate-[marquee_40s_linear_infinite]" style={{ width: "max-content" }}>
+          {Array.from({ length: 4 }, () => clients).flat().map((client, i) => (
+            <div key={i} className="mx-6 md:mx-10 flex-shrink-0">
               <img
                 src={client.logo}
                 alt={client.name}
