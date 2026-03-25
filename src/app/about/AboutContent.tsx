@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import EcosystemSection from "@/components/EcosystemSection";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -64,6 +65,9 @@ export default function AboutContent() {
           </motion.p>
         </div>
       </section>
+
+      {/* Ecosystem */}
+      <EcosystemSection />
 
       {/* Mission */}
       <section className="py-24 md:py-32 bg-black">
@@ -176,59 +180,6 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Team</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Leadership</motion.h2>
-
-          {/* Co-Founders */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-            {/* Abel Ko */}
-            <motion.div {...stagger(0)}>
-              <div className="max-w-[360px] mb-6 overflow-hidden">
-                <img src="/team/abel-ko.png" alt="Abel Ko" className="w-full object-cover" />
-              </div>
-              <h3 className="text-2xl text-white font-light mb-1" style={{ fontFamily: "var(--font-dutch)" }}>Abel Ko</h3>
-              <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-5">CO-FOUNDER &nbsp;|&nbsp; PRODUCT & ENGINEERING</p>
-              <p className="text-sm text-[#ccc] font-light italic mb-4">&ldquo;사람을 위한 기술로 위대한 기업을 만들어가는 여정&rdquo;</p>
-              <ul className="space-y-1.5 text-sm text-[#888] font-light leading-relaxed">
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>전 토스(Viva Republica) · 뱅크샐러드 Senior Software Engineer</span></li>
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>8년 이상 대규모 서비스 환경에서의 제품 개발 경험</span></li>
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>초기 단계부터 Series G에 이르기까지, 다양한 스케일과 도메인의 스타트업 환경에서 문제 해결과 제품 개발을 수행해온 경험을 보유하고 있습니다.</span></li>
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>Prompt Architect에서 GEO 엔진·프롬프트 예측·Visibility/SoV 대시보드 영역의 설계를 총괄합니다.</span></li>
-              </ul>
-            </motion.div>
-
-            {/* Mark Kim */}
-            <motion.div {...stagger(1)}>
-              <div className="max-w-[360px] mb-6 overflow-hidden">
-                <img src="/team/mark-kim.png" alt="Mark Kim" className="w-full object-cover" />
-              </div>
-              <h3 className="text-2xl text-white font-light mb-1" style={{ fontFamily: "var(--font-dutch)" }}>Mark Kim</h3>
-              <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-5">CO-FOUNDER &nbsp;|&nbsp; BUSINESS, STRATEGY & DATA</p>
-              <p className="text-sm text-[#ccc] font-light italic mb-4">&ldquo;시장이 이해할 수 있도록 데이터를 설계합니다&rdquo;</p>
-              <ul className="space-y-1.5 text-sm text-[#888] font-light leading-relaxed">
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>5년 이상 데이터 · IP · 대체투자 자산 영역에서 다수의 사업 실행 및 운영</span></li>
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>대형 금융사·투자기관을 대상으로 비정형 데이터와 전략적 데이터를 구매 의사결정과 리밸런싱에 쓰이는 데이터 구조로 전환하여 공급해왔습니다.</span></li>
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>해외 컨설팅펌 벤처 아키텍팅 자문, 국내외 B2B 프로젝트 등의 형태로 데이터 기반 Market Intelligence를 제공해왔습니다.</span></li>
-                <li className="flex gap-2"><span className="text-[#555]">·</span><span>Prompt Architect에서 BIM 등의 Core Intelligence 설계와 GEO 사업개발 영역을 총괄합니다.</span></li>
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Team Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {team.map((t, i) => (
-              <motion.div key={t.name} {...stagger(i + 2)} className="p-8 border border-[#1a1a1a]">
-                <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-2">{t.role}</p>
-                <h3 className="text-xl text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{t.name}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{t.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
