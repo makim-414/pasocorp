@@ -574,18 +574,18 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-3">
                   <div className="aspect-[3/4] overflow-hidden">
-                    <img src={brand.gallery[0]} alt="Gallery space" className="w-full h-full object-cover" />
+                    <img src="/images/exhibitions/dosan-popup/dosan-popup-1.png" alt="Paso Gallery exterior" className="w-full h-full object-cover" />
                   </div>
                   <div className="aspect-square overflow-hidden">
-                    <img src={brand.gallery[2]} alt="Gallery space" className="w-full h-full object-cover" />
+                    <img src="/brands/paso-gallery.jpg" alt="Gallery interior" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <div className="space-y-3 pt-8">
                   <div className="aspect-square overflow-hidden">
-                    <img src={brand.gallery[1]} alt="Gallery space" className="w-full h-full object-cover" />
+                    <img src="/images/exhibitions/dosan-popup/dosan-popup-2.png" alt="Gallery exhibition" className="w-full h-full object-cover" />
                   </div>
                   <div className="aspect-[3/4] overflow-hidden">
-                    <img src={brand.gallery[3]} alt="Gallery space" className="w-full h-full object-cover" />
+                    <img src="/images/exhibitions/dosan-popup/dosan-popup-4.png" alt="Gallery lounge" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
