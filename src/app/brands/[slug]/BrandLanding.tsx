@@ -280,21 +280,33 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`),
     desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
   },
-  "Golden Reeds": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
-    desc: "박민재 작가의 대규모 설치 작품. 수천 개의 금빛 갈대가 갤러리 내부를 가득 채우며, 관람객은 갈대 사이를 거닐며 자연과 인공의 경계를 체험합니다. 조명에 따라 시시각각 변하는 금빛 풍경은 도시 속 자연에 대한 향수를 불러일으킵니다.",
-  },
-  "The Sculpture Garden": {
-    images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
-    desc: "김소연 작가가 자연에서 수집한 나뭇가지와 유기적 소재로 구성한 조각 정원. 한옥의 마당과 실내를 잇는 공간 설치를 통해 자연의 순환과 생명력을 표현합니다. 소재 본연의 질감과 형태가 만들어내는 조형적 긴장감이 돋보이는 전시입니다.",
-  },
   "Intermission : 이다희 작가 기획전": {
     images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
     desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\nDate | 06.02.2023 - 06.15.2023 (월요일/공휴일 휴관)\nTime | 14:00 - 20:00\nLocation | 종로구 성균관로 92 (Paso Bosque Gallery, 현 푸에스토 갤러리)",
   },
-  "Silent Dialogue": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/silent-dialogue/silent-dialogue-${i + 1}.jpg`),
-    desc: "침묵 속에서 나누는 대화. 도자, 섬유, 금속 등 다양한 매체를 다루는 세 작가가 한옥의 고요한 공간에서 각자의 언어로 소통합니다. 작품과 공간, 관람객 사이에 흐르는 비언어적 교감을 경험하는 전시입니다.",
+  "art couture": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/art-couture/art-couture-${i + 1}.png`),
+    desc: "",
+  },
+  "bno, patron, Timothy Fulton": {
+    images: Array.from({ length: 50 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
+    desc: "",
+  },
+  "redegallery": {
+    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/redegallery/redegallery-${i + 1}.png`),
+    desc: "",
+  },
+  "section 10": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/section-10/section-10-${i + 1}.png`),
+    desc: "",
+  },
+  "section 8": {
+    images: Array.from({ length: 2 }, (_, i) => `/images/exhibitions/section-8/section-8-${i + 1}.png`),
+    desc: "",
+  },
+  "도산공원 팝업": {
+    images: Array.from({ length: 12 }, (_, i) => `/images/exhibitions/dosan-popup/dosan-popup-${i + 1}.png`),
+    desc: "",
   },
 };
 
@@ -310,10 +322,13 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
   const exhibitions = [
     { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-1.jpg" },
-    { title: "Golden Reeds", artist: "Minjae Park", date: "2022. 8. 25 - 9. 9", image: "/images/exhibitions/golden-reeds/golden-reeds-1.jpg" },
-    { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
     { title: "Intermission : 이다희 작가 기획전", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-7.jpg" },
-    { title: "Silent Dialogue", artist: "Group Exhibition", date: "2024.07 — 08", image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg" },
+    { title: "art couture", artist: "", date: "", image: "/images/exhibitions/art-couture/art-couture-1.png" },
+    { title: "bno, patron, Timothy Fulton", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
+    { title: "redegallery", artist: "", date: "", image: "/images/exhibitions/redegallery/redegallery-1.png" },
+    { title: "section 10", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-1.png" },
+    { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
+    { title: "도산공원 팝업", artist: "", date: "", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
   ];
 
   const clients = [
