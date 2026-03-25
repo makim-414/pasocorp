@@ -8,6 +8,7 @@ const mainBrands = [
   {
     name: "Paso Gallery",
     slug: "paso-gallery",
+    externalUrl: "https://pasogallery.com",
     year: 2021,
     desc: "국내외 신진·라이징 작가를 엄선하여 소개하며, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다.",
     activity: "현재 전시: 2025 신진작가 공모전 수상작전",
@@ -96,7 +97,8 @@ export default function BrandHub() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
               <Link
-                href={`/brands/${brand.slug}`}
+                href={brand.externalUrl || `/brands/${brand.slug}`}
+                {...(brand.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-white/[0.08] hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] ${hovered !== null && hovered !== i ? "md:blur-[2px] md:scale-[0.97] md:opacity-60" : ""}`}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
