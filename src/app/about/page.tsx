@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import StandaloneNav from "@/components/StandaloneNav";
+import StandaloneFooter from "@/components/StandaloneFooter";
 import AboutContent from "./AboutContent";
+import { getSiteMode } from "@/lib/site-mode";
 
 export const metadata: Metadata = {
   title: "About — 파소(PASO)",
@@ -12,7 +15,35 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const siteMode = await getSiteMode();
+
+  // aboutpaso.com → standalone layout
+  if (siteMode === "aboutpaso") {
+    return (
+      <div className="bg-black min-h-screen">
+        <StandaloneNav
+          siteName="About PASO"
+          homeHref="/"
+          links={[
+            { label: "Our Story", href: "#story" },
+            { label: "Team", href: "#team" },
+            { label: "Contact", href: "/contact" },
+          ]}
+          accentColor="#b8960b"
+        />
+        <AboutContent />
+        <StandaloneFooter
+          siteName="PASO"
+          address="서울 성북구 삼선교로23가길 72"
+          addressDetail="인터블루 1층"
+          instagram="https://www.instagram.com/pasoartcenter"
+        />
+      </div>
+    );
+  }
+
+  // pasocorp.com → full corporate layout
   return (
     <div className="bg-black min-h-screen">
       <Navbar />

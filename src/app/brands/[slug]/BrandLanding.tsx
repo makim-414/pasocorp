@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[] }> = {

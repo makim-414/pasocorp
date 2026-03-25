@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import StandaloneNav from "@/components/StandaloneNav";
+import StandaloneFooter from "@/components/StandaloneFooter";
 import BrandLanding from "./BrandLanding";
+import { getSiteMode } from "@/lib/site-mode";
 
 const brandsData: Record<string, {
   name: string; slug: string; year: number; desc: string; longDesc: string;
@@ -144,9 +147,33 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+// Standalone site configs for brand domains
+const standaloneSiteConfig: Record<string, {
+  siteName: string;
+  navLinks: { label: string; href: string }[];
+  address: string;
+  addressDetail: string;
+  instagram: string;
+  accentColor: string;
+}> = {
+  pasogallery: {
+    siteName: "Paso Gallery",
+    navLinks: [
+      { label: "Exhibitions", href: "#exhibitions" },
+      { label: "Events", href: "#events" },
+      { label: "Contact", href: "/contact" },
+    ],
+    address: "92, Seonggyungwan-ro, Jongno-gu",
+    addressDetail: "Seoul, Hanok Building",
+    instagram: "https://www.instagram.com/pasogallery",
+    accentColor: "#1e3a5f",
+  },
+};
+
 export default async function BrandPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const brand = brandsData[slug];
+  const siteMode = await getSiteMode();
 
   if (!brand) {
     return (
@@ -156,6 +183,30 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
     );
   }
 
+  const standaloneConfig = standaloneSiteConfig[siteMode];
+
+  // Standalone brand site (e.g., pasogallery.com)
+  if (standaloneConfig) {
+    return (
+      <div className="bg-black min-h-screen">
+        <StandaloneNav
+          siteName={standaloneConfig.siteName}
+          homeHref="/"
+          links={standaloneConfig.navLinks}
+          accentColor={standaloneConfig.accentColor}
+        />
+        <BrandLanding brand={brand} />
+        <StandaloneFooter
+          siteName={standaloneConfig.siteName}
+          address={standaloneConfig.address}
+          addressDetail={standaloneConfig.addressDetail}
+          instagram={standaloneConfig.instagram}
+        />
+      </div>
+    );
+  }
+
+  // Default: pasocorp.com layout
   return (
     <div className="bg-black min-h-screen">
       <Navbar />
