@@ -284,7 +284,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
     desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\nDate | 06.02.2023 - 06.15.2023 (월요일/공휴일 휴관)\nTime | 14:00 - 20:00\nLocation | 종로구 성균관로 92 (Paso Bosque Gallery, 현 푸에스토 갤러리)",
   },
-  "art couture": {
+  "SS21 'Vacant Fabric' Vip Exhibition": {
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/art-couture/art-couture-${i + 1}.png`),
     desc: "",
   },
@@ -323,7 +323,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   const exhibitions = [
     { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-1.jpg" },
     { title: "Intermission : 이다희 작가 기획전", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-7.jpg" },
-    { title: "art couture", artist: "", date: "", image: "/images/exhibitions/art-couture/art-couture-1.png" },
+    { title: "SS21 'Vacant Fabric' Vip Exhibition", artist: "", date: "2021. 8. 1. - 2021. 8. 15.", image: "/images/exhibitions/art-couture/art-couture-1.png" },
     { title: "bno, patron, Timothy Fulton", artist: "", date: "", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
     { title: "redegallery", artist: "", date: "", image: "/images/exhibitions/redegallery/redegallery-1.png" },
     { title: "section 10", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-1.png" },
