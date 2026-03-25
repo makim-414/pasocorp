@@ -32,9 +32,9 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <Link href="/" className="text-[#e8e8e8] text-sm tracking-normal font-normal" style={{ fontFamily: "var(--font-dutch)" }}>
+        <a href="https://pasocorp.com" className="text-[#e8e8e8] text-sm tracking-normal font-normal" style={{ fontFamily: "var(--font-dutch)" }}>
           PASO
-        </Link>
+        </a>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-[#888]">
