@@ -288,7 +288,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
     desc: "김소연 작가가 자연에서 수집한 나뭇가지와 유기적 소재로 구성한 조각 정원. 한옥의 마당과 실내를 잇는 공간 설치를 통해 자연의 순환과 생명력을 표현합니다. 소재 본연의 질감과 형태가 만들어내는 조형적 긴장감이 돋보이는 전시입니다.",
   },
-  "Traces of Light": {
+  "Intermission : 이다희 작가 기획전": {
     images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
     desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다.",
   },
@@ -312,7 +312,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-1.jpg" },
     { title: "Golden Reeds", artist: "Minjae Park", date: "2022. 8. 25 - 9. 9", image: "/images/exhibitions/golden-reeds/golden-reeds-1.jpg" },
     { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
-    { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: "/images/exhibitions/traces-of-light/traces-of-light-1.jpg" },
+    { title: "Intermission : 이다희 작가 기획전", artist: "Hyunwoo Lee", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-1.jpg" },
     { title: "Silent Dialogue", artist: "Group Exhibition", date: "2024.07 — 08", image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg" },
   ];
 
