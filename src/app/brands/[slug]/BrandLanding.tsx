@@ -335,7 +335,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { name: "BCG", logo: "/logos/bcg.svg" },
     { name: "KB", logo: "/logos/kb.svg" },
     { name: "Twosome", logo: "/logos/twosome.svg" },
-    { name: "Porsche", logo: "/logos/porsche-clean.svg" },
     { name: "Tequila Patrón", logo: "/logos/patron-clean.png" },
     { name: "Bang & Olufsen", logo: "/logos/bo-clean.png" },
     { name: "Maker's Mark", logo: "/logos/makers-mark-clean.png" },
@@ -344,8 +343,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { name: "Don Julio", logo: "/logos/don-julio-clean.png" },
     { name: "Glengrant", logo: "/logos/glengrant-clean.png" },
     { name: "Seoul Foundation", logo: "/logos/seoul-foundation-clean.png" },
-    { name: "KICA", logo: "/logos/kica-clean.png" },
-    { name: "Timothy Oulton", logo: "/logos/timothy-oulton-clean.png" },
   ];
 
   const projects = [
@@ -425,20 +422,24 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── CLIENT LOGOS MARQUEE ── */}
-      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-6 overflow-hidden">
-        <div className="flex items-center gap-12 md:gap-16 animate-[marquee_60s_linear_infinite] hover:[animation-play-state:paused]" style={{ width: "max-content" }}>
-          {Array.from({ length: 8 }, () => clients).flat().map((client, i) => (
-            <img
-              key={i}
-              src={client.logo}
-              alt={client.name}
-              className="h-6 md:h-8 w-[100px] md:w-[130px] flex-shrink-0 object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-              style={{ filter: "brightness(0) invert(1)" }}
-              onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
-            />
+      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-5 overflow-hidden">
+        <div className="flex animate-[marquee_80s_linear_infinite] hover:[animation-play-state:paused]">
+          {[0, 1].map((setIdx) => (
+            <div key={setIdx} className="flex items-center shrink-0">
+              {clients.map((client, i) => (
+                <div key={i} className="mx-8 md:mx-12 shrink-0">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="h-8 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    style={{ maxHeight: "40px" }}
+                  />
+                </div>
+              ))}
+            </div>
           ))}
         </div>
-        <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+        <style>{`@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
       </section>
 
       {/* ── EXHIBITIONS: Selected Works ── */}
