@@ -308,6 +308,38 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 12 }, (_, i) => `/images/exhibitions/dosan-popup/dosan-popup-${i + 1}.png`),
     desc: "",
   },
+  "소호 홍콩": {
+    images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.png`),
+    desc: "",
+  },
+  "빠끼": {
+    images: Array.from({ length: 11 }, (_, i) => `/images/exhibitions/bbakki/bbakki-${i + 1}.png`),
+    desc: "",
+  },
+  "이다희 프리뷰": {
+    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/dahee-preview/dahee-preview-${i + 1}.png`),
+    desc: "",
+  },
+  "정은혜": {
+    images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/jungeunhye/jungeunhye-${i + 1}.png`),
+    desc: "",
+  },
+  "포레스트오브피니티": {
+    images: Array.from({ length: 19 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 1}.png`),
+    desc: "",
+  },
+  "화이자": {
+    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/hwaija/hwaija-${i + 1}.png`),
+    desc: "",
+  },
+  "히노살롱": {
+    images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
+    desc: "",
+  },
+  "메이커스마크": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.png`),
+    desc: "",
+  },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
@@ -329,6 +361,14 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "Exhibition 1.0 2021 S/S Projection(창)", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-7.png" },
     { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
     { title: "도산공원 팝업", artist: "", date: "", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
+    { title: "소호 홍콩", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
+    { title: "빠끼", artist: "", date: "", image: "/images/exhibitions/bbakki/bbakki-1.png" },
+    { title: "이다희 프리뷰", artist: "", date: "", image: "/images/exhibitions/dahee-preview/dahee-preview-1.png" },
+    { title: "정은혜", artist: "", date: "", image: "/images/exhibitions/jungeunhye/jungeunhye-1.png" },
+    { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
+    { title: "화이자", artist: "", date: "", image: "/images/exhibitions/hwaija/hwaija-1.png" },
+    { title: "히노살롱", artist: "", date: "", image: "/images/exhibitions/hino-salon/hino-salon-1.png" },
+    { title: "메이커스마크", artist: "", date: "", image: "/images/exhibitions/makers-mark/makers-mark-1.png" },
   ];
 
   const clients = [
