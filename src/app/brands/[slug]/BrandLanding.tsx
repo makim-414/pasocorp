@@ -296,18 +296,6 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/silent-dialogue/silent-dialogue-${i + 1}.jpg`),
     desc: "침묵 속에서 나누는 대화. 도자, 섬유, 금속 등 다양한 매체를 다루는 세 작가가 한옥의 고요한 공간에서 각자의 언어로 소통합니다. 작품과 공간, 관람객 사이에 흐르는 비언어적 교감을 경험하는 전시입니다.",
   },
-  "Urban Canvas": {
-    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/urban-canvas/urban-canvas-${i + 1}.jpg`),
-    desc: "도시의 벽면과 거리를 캔버스로 활용한 스트리트 아트 기획전. 그래피티, 벽화, 설치 등 도시 환경과 상호작용하는 다양한 작품들이 갤러리 안팎을 넘나들며 전시됩니다. 예술과 일상의 경계를 허무는 실험적인 전시입니다.",
-  },
-  "Between the Lines": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/between-lines/between-lines-${i + 1}.jpg`),
-    desc: "드로잉과 판화를 중심으로 '선(線)'이라는 근본적인 조형 요소를 탐구하는 전시. 연필, 붓, 조각도가 만들어내는 다양한 선의 표현을 통해 작가들의 내면 세계를 들여다봅니다.",
-  },
-  "Color Spectrum": {
-    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/color-spectrum/color-spectrum-${i + 1}.jpg`),
-    desc: "색채의 무한한 스펙트럼을 탐험하는 그룹전. 회화, 염색, 유리 공예 등 다양한 매체에서 색이 지닌 감정적, 상징적 힘을 조명합니다. 관람객은 색의 바다를 거닐며 시각적 명상을 경험합니다.",
-  },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
@@ -326,9 +314,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
     { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: "/images/exhibitions/traces-of-light/traces-of-light-1.jpg" },
     { title: "Silent Dialogue", artist: "Group Exhibition", date: "2024.07 — 08", image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg" },
-    { title: "Urban Canvas", artist: "Jihoon Choi", date: "2024.05 — 06", image: "/images/exhibitions/urban-canvas/urban-canvas-1.jpg" },
-    { title: "Between the Lines", artist: "Eunji Kang", date: "2024.03 — 04", image: "/images/exhibitions/between-lines/between-lines-1.jpg" },
-    { title: "Color Spectrum", artist: "Group Exhibition", date: "2024.01 — 02", image: "/images/exhibitions/color-spectrum/color-spectrum-1.jpg" },
   ];
 
   const clients = [
