@@ -160,7 +160,7 @@ const standaloneSiteConfig: Record<string, {
     siteName: "Paso Gallery",
     navLinks: [
       { label: "Exhibitions", href: "#exhibitions" },
-      { label: "Spaces", href: "#space" },
+      { label: "Spaces", href: "#about" },
       { label: "About", href: "#about" },
       { label: "Request", href: "/contact", isButton: true },
     ],
