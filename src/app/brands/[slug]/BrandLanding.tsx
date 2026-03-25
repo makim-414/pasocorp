@@ -335,6 +335,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { name: "BCG", logo: "/logos/bcg.svg" },
     { name: "KB", logo: "/logos/kb.svg" },
     { name: "Twosome", logo: "/logos/twosome.svg" },
+    { name: "Porsche", logo: "/logos/porsche-clean.svg" },
     { name: "Tequila Patrón", logo: "/logos/patron-clean.png" },
     { name: "Bang & Olufsen", logo: "/logos/bo-clean.png" },
     { name: "Maker's Mark", logo: "/logos/makers-mark-clean.png" },
@@ -427,7 +428,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-6 overflow-hidden">
         <div className="flex items-center animate-[marquee_30s_linear_infinite]" style={{ width: "max-content" }}>
           {[...clients, ...clients].map((client, i) => (
-            <div key={i} className="mx-8 md:mx-12 flex-shrink-0">
+            <div key={i} className="mx-5 md:mx-8 flex-shrink-0">
               <img
                 src={client.logo}
                 alt={client.name}
