@@ -379,8 +379,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight"
-            style={{ fontFamily: "var(--font-dutch)", fontWeight: 100, WebkitTextStroke: "0.3px rgba(255,255,255,0.8)" }}
+            className="text-5xl md:text-8xl lg:text-9xl font-light text-white tracking-tight"
+            style={{ fontFamily: "var(--font-dutch)" }}
           >
             Space by PASO
           </motion.h1>
