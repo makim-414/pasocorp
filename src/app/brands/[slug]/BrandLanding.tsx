@@ -426,17 +426,16 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
       {/* ── CLIENT LOGOS MARQUEE ── */}
       <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-6 overflow-hidden">
-        <div className="flex items-center animate-[marquee_40s_linear_infinite]" style={{ width: "max-content" }}>
-          {Array.from({ length: 4 }, () => clients).flat().map((client, i) => (
-            <div key={i} className="mx-6 md:mx-10 flex-shrink-0">
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="h-8 md:h-10 max-w-[120px] md:max-w-[150px] w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-                style={{ filter: "brightness(0) invert(1)" }}
-                onError={(e) => { const parent = (e.target as HTMLElement).parentElement; if (parent) parent.style.display = 'none'; }}
-              />
-            </div>
+        <div className="flex items-center gap-12 md:gap-16 animate-[marquee_60s_linear_infinite] hover:[animation-play-state:paused]" style={{ width: "max-content" }}>
+          {Array.from({ length: 8 }, () => clients).flat().map((client, i) => (
+            <img
+              key={i}
+              src={client.logo}
+              alt={client.name}
+              className="h-6 md:h-8 w-[100px] md:w-[130px] flex-shrink-0 object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+              style={{ filter: "brightness(0) invert(1)" }}
+              onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
+            />
           ))}
         </div>
         <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
