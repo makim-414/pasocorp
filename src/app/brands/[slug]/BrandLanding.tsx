@@ -516,12 +516,12 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Programs</p>
             <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
-              What We Do
+              Curated Programs
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
-            {brand.features.map((f, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
+            {brand.features.slice(0, 3).map((f, i) => (
               <motion.div
                 key={f.title}
                 {...stagger(i)}
