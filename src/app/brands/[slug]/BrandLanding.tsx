@@ -289,7 +289,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     desc: "",
   },
   "Paso Gallery x ARTIVIST.": {
-    images: Array.from({ length: 50 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
+    images: Array.from({ length: 53 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
     desc: "Private Art Forum : 'PATRONS'\n\n파소 갤러리가 @artiv.ist 와 함께 'Guide to start a contemporary art collection' 을 주제로 영 컬렉터들을 위한 프라이빗 아트 포럼을 개최하였습니다.\n\nGuide to start a contemporary art collection의 주제로, 예술가와 미술 업계 전문가들이 함께 현대미술 컬렉션을 시작하는 방법, 작품 선택에 대한 팁, 그리고 예술 시장의 동향 및 미래 등의 주제를 다루었습니다.\n\nPanel :\n서진석 관장 (현 울산시립미술관 관장, 전 백남준 아트센터 관장) @jinsuksuh\n유진상 교수 (계원조형대 교수, 2012 미디어시티비엔날레 총감독, 광주비엔날레 평가위원)\n\nModerator :\n이정우 에디터 (전 널위한문화예술) @jjjw117\n\nSpecial Guest :\nWhisbe @whisbe",
   },
   "redegallery": {
