@@ -150,7 +150,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // Standalone site configs for brand domains
 const standaloneSiteConfig: Record<string, {
   siteName: string;
-  navLinks: { label: string; href: string }[];
+  navLinks: { label: string; href: string; isButton?: boolean }[];
   address: string;
   addressDetail: string;
   instagram: string;
