@@ -423,15 +423,16 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
       {/* ── CLIENT LOGOS MARQUEE ── */}
       <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-5 overflow-hidden">
-        <div className="flex animate-[marquee_45s_linear_infinite] hover:[animation-play-state:paused]">
+        <div className="flex animate-[marquee_50s_linear_infinite] hover:[animation-play-state:paused]">
           {[0, 1].map((setIdx) => (
             <div key={setIdx} className="flex items-center shrink-0">
               {clients.map((client, i) => (
-                <div key={i} className="mx-6 md:mx-10 shrink-0">
+                <div key={i} className="w-[140px] md:w-[170px] mx-4 md:mx-6 shrink-0 flex items-center justify-center">
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="h-7 md:h-9 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    className="max-h-10 md:max-h-12 max-w-full w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    style={{ filter: "brightness(0) invert(1)" }}
                   />
                 </div>
               ))}
