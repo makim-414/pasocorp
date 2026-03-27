@@ -66,9 +66,9 @@ const brandsData: Record<string, {
       "/images/gallery/gallery-06.jpg",
     ],
     features: [
-      { title: "HINO salon", desc: "갤러리 공간을 활용한 브랜드 팝업 전시 기획·운영" },
-      { title: "VAKKI private viewing", desc: "VIP 디너, 프라이빗 뷰잉, 기업 이벤트 호스팅" },
-      { title: "SOHO preview", desc: "컬렉션 구축부터 공간 큐레이션까지 맞춤 자문" },
+      { title: "HINO salon", desc: "" },
+      { title: "VAKKI private viewing", desc: "" },
+      { title: "SOHO preview", desc: "" },
       { title: "Global Network", desc: "해외 갤러리·작가·컬렉터 네트워크 연결" },
     ],
   },
