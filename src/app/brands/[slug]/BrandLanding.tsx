@@ -743,7 +743,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
             ].map((s, i) => (
               <motion.div key={s.title} {...stagger(i)} className="text-center p-8">
                 <span className="mb-5 block flex justify-center">{s.icon}</span>
-                <h3 className="text-sm tracking-[0.08em] uppercase text-white font-medium">{s.title}</h3>
+                <h3 className="text-base md:text-lg tracking-[0.08em] uppercase text-white font-medium">{s.title}</h3>
               </motion.div>
             ))}
           </div>
