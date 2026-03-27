@@ -229,7 +229,7 @@ export function DynamicBottom() {
   return (
     <div className="bg-black">
       {/* Stats bar */}
-      <section className="border-y border-[#1a1a1a] bg-[#0a0a0a]">
+      <section className="border-y border-[#1a1a1a] bg-black">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           <Counter value="1,580만+" label={"보유 옥션 데이터"} />
           <Counter value="90,000+" label={"국내 미술시장\n분석 데이터"} />
