@@ -556,8 +556,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
             {[
-              { title: "화이자", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
-              { title: "메이커스마크", image: "/images/exhibitions/makers-mark/makers-mark-1.png", galleryKey: "메이커스마크" },
+              { title: "Superbugs Campaign", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
+              { title: "Maker's Mark Private Selection", image: "/images/exhibitions/makers-mark/makers-mark-1.png", galleryKey: "메이커스마크" },
               { title: "Paso Gallery x ARTIVIST.", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST." },
             ].map((card, i) => {
               const galleryData = exhibitionGalleries[card.galleryKey];
