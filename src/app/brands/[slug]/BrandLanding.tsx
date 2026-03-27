@@ -137,17 +137,15 @@ function BrandHero({ brand }: { brand: BrandData }) {
 
   return (
     <section className="relative h-[75vh] flex items-end overflow-hidden">
-      <AnimatePresence mode="popLayout">
+      {images.map((src, i) => (
         <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
+          key={src}
+          animate={{ opacity: i === currentIndex ? 1 : 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${images[currentIndex]})` }}
+          style={{ backgroundImage: `url(${src})` }}
         />
-      </AnimatePresence>
+      ))}
       <div className="absolute inset-0 bg-black/60" />
       <div className="absolute inset-0" style={{ background: `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />
       <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />
