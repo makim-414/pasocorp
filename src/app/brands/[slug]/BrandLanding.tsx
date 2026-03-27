@@ -349,9 +349,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   const exhibitions = [
     { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
     { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-cover.jpg" },
-    { title: "Paso Gallery x ARTIVIST.", artist: "", date: "2023.05.30", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
     { title: "The less I know the better, \"모르는 게 약이다\" by Dirty Haerri", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
-    { title: "소호", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
     { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
   ];
 
