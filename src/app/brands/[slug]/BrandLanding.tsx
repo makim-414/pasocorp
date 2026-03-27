@@ -355,7 +355,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "히노살롱": {
     images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
-    desc: "",
+    desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
   },
   "메이커스마크": {
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.png`),
