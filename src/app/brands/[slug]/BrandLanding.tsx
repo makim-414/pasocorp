@@ -5,41 +5,21 @@ import { useState, useRef, useEffect } from "react";
 
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[] }> = {
-  1: {
-    title: "브랜드 콜라보 — CU × 장띵",
+  0: {
+    title: "장띵 — 델라페 18종",
     images: Array.from({ length: 8 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
-  3: {
-    title: "공간 아트 — A Twosome Place",
-    images: Array.from({ length: 8 }, (_, i) => `/images/projects/twosome/twosome-${i + 1}.jpg`),
-  },
-  4: {
-    title: "팝업 전시 — 홍대 플래그쉽",
-    images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.jpg`),
+  1: {
+    title: "CU X PASO — 와인",
+    images: Array.from({ length: 8 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
   2: {
-    title: "아트토이 — Paso Gallery",
-    images: Array.from({ length: 7 }, (_, i) => `/images/projects/arttoy/${i + 1}.jpg`),
+    title: "투썸 — A Twosome Place",
+    images: Array.from({ length: 8 }, (_, i) => `/images/projects/twosome/twosome-${i + 1}.jpg`),
   },
-  5: {
-    title: "스트릿 아트 — 도산공원 팝업",
-    images: [
-      "/images/projects/dosan-popup/1.jpg",
-      "/images/projects/dosan-popup/02.jpg",
-      "/images/projects/dosan-popup/03.jpg",
-      "/images/projects/dosan-popup/4.jpg",
-      "/images/projects/dosan-popup/5.jpg",
-      "/images/projects/dosan-popup/8.jpg",
-      "/images/projects/dosan-popup/9.jpg",
-      "/images/projects/dosan-popup/10.jpg",
-      "/images/projects/dosan-popup/13.jpg",
-      "/images/projects/dosan-popup/14.jpg",
-      "/images/projects/dosan-popup/15.jpg",
-      "/images/projects/dosan-popup/16.jpg",
-      "/images/projects/dosan-popup/17.png",
-      "/images/projects/dosan-popup/18.png",
-      "/images/projects/dosan-popup/19.png",
-    ],
+  3: {
+    title: "KUHO — 홍대 플래그쉽",
+    images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.jpg`),
   },
 };
 
@@ -703,7 +683,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Projects</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>Creative Collaborations</motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {brand.gallery.map((img, i) => {
               const hasGallery = i in projectGalleries;
               return (
