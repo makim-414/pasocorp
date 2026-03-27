@@ -550,15 +550,15 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Brand Collaborations</p>
             <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
-              Brand Pop-up
+              Brand Projects
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
             {[
-              { title: "화이자", image: "/images/exhibitions/hwaija/hwaija-1.png", galleryKey: "화이자" },
+              { title: "화이자", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
               { title: "메이커스마크", image: "/images/exhibitions/makers-mark/makers-mark-1.png", galleryKey: "메이커스마크" },
-              { title: "Paso Gallery x ARTIVIST.", image: "/images/exhibitions/bno-patron/bno-patron-1.png", galleryKey: "Paso Gallery x ARTIVIST." },
+              { title: "Paso Gallery x ARTIVIST.", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST." },
             ].map((card, i) => {
               const galleryData = exhibitionGalleries[card.galleryKey];
               return (
