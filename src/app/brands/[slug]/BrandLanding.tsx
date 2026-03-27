@@ -295,7 +295,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 /* ── Exhibition gallery data ── */
 const exhibitionGalleries: Record<string, { images: string[]; desc: string; sections?: { title: string; images: string[] }[] }> = {
   "REBORN": {
-    images: ["/images/exhibitions/reborn/reborn-2.jpg", "/images/exhibitions/reborn/reborn-3.jpg", "/images/exhibitions/reborn/reborn-4.jpg", "/images/exhibitions/reborn/reborn-cover.jpg"],
+    images: ["/images/exhibitions/reborn/reborn-2.jpg", "/images/exhibitions/reborn/reborn-3.jpg", "/images/exhibitions/reborn/reborn-4.jpg", "/images/exhibitions/reborn/reborn-new.jpg"],
     desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
   },
   "Intermission : 이다희 (Rising Artist Contest)": {
