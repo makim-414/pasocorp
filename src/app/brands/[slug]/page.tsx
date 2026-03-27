@@ -81,7 +81,7 @@ const brandsData: Record<string, {
     color: "#d4a574",
     image: "/images/projects/hongdae-flagship/2.jpg",
     gallery: [
-      "/images/projects/cu-dding/cu-2.jpg",
+      "/images/projects/cu-dding/cu-3.jpg",
       "/images/projects/cu-dding-collab.jpg",
       "/images/projects/arttoy/1.jpg",
       "/images/projects/twosome-interior.jpg",
