@@ -719,35 +719,28 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "캐릭터 IP", icon: (
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M2 12c0-3.5 4.5-8 10-8s10 4.5 10 8-4.5 5-10 5S2 15.5 2 12z" />
-                  <circle cx="9" cy="11" r="1.2" fill="#b8960b" stroke="none" />
-                  <circle cx="15" cy="11" r="1.2" fill="#b8960b" stroke="none" />
-                  <path d="M9.5 14.5c1 1 4 1 5 0" />
-                  <path d="M7 5l-1.5-2.5" />
-                  <path d="M17 5l1.5-2.5" />
-                  <path d="M12 17v3" />
-                  <path d="M9 20h6" />
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
                 </svg>
               )},
               { title: "B2B 콜라보", icon: (
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 11L3.5 7.5c-.7-.7-.7-1.8 0-2.5l1-1c.7-.7 1.8-.7 2.5 0L11 8" />
-                  <path d="M17 11l3.5-3.5c.7-.7.7-1.8 0-2.5l-1-1c-.7-.7-1.8-.7-2.5 0L13 8" />
-                  <path d="M8 14l-2.5 2.5c-.6.6-.6 1.5 0 2.1l.4.4c.6.6 1.5.6 2.1 0L10.5 16.5" />
-                  <path d="M16 14l2.5 2.5c.6.6.6 1.5 0 2.1l-.4.4c-.6.6-1.5.6-2.1 0L13.5 16.5" />
-                  <rect x="8" y="8" width="8" height="8" rx="1" />
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M7 21v-2a4 4 0 0 1 3-3.87" />
+                  <circle cx="12" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  <path d="M1 21v-2a4 4 0 0 1 3-3.87" />
+                  <path d="M8 3.13a4 4 0 0 0 0 7.75" />
                 </svg>
               )},
               { title: "아트토이", icon: (
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="6" y="3" width="12" height="12" rx="3" />
-                  <circle cx="10" cy="9" r="1" fill="#b8960b" stroke="none" />
-                  <circle cx="14" cy="9" r="1" fill="#b8960b" stroke="none" />
-                  <path d="M10 11.5h4" />
-                  <path d="M8 15v4c0 1 .8 2 2 2h4c1.2 0 2-1 2-2v-4" />
-                  <path d="M10 21v-2" />
-                  <path d="M14 21v-2" />
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <path d="M3.27 6.96L12 12.01l8.73-5.05" />
+                  <path d="M12 22.08V12" />
                 </svg>
               )},
             ].map((s, i) => (
