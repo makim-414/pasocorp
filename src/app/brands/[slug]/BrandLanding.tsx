@@ -281,7 +281,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
     desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
   },
   "Intermission : 이다희 작가 기획전": {
-    images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
+    images: [...Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`), ...Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 9}.png`)],
     desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\nDate | 06.02.2023 - 06.15.2023 (월요일/공휴일 휴관)\nTime | 14:00 - 20:00\nLocation | 종로구 성균관로 92 (Paso Bosque Gallery, 현 푸에스토 갤러리)",
   },
   "SS21 'Vacant Fabric' Vip Exhibition": {
@@ -314,10 +314,6 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
   },
   "빠끼": {
     images: Array.from({ length: 11 }, (_, i) => `/images/exhibitions/bbakki/bbakki-${i + 1}.png`),
-    desc: "",
-  },
-  "이다희 프리뷰": {
-    images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/dahee-preview/dahee-preview-${i + 1}.png`),
     desc: "",
   },
   "정은혜": {
@@ -363,7 +359,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "도산공원 팝업", artist: "", date: "2021.10.02 - 2021.10.17", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
     { title: "소호 홍콩", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
     { title: "빠끼", artist: "", date: "", image: "/images/exhibitions/bbakki/bbakki-1.png" },
-    { title: "이다희 프리뷰", artist: "", date: "", image: "/images/exhibitions/dahee-preview/dahee-preview-1.png" },
     { title: "정은혜", artist: "", date: "", image: "/images/exhibitions/jungeunhye/jungeunhye-1.png" },
     { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
     { title: "화이자", artist: "", date: "", image: "/images/exhibitions/hwaija/hwaija-1.png" },
