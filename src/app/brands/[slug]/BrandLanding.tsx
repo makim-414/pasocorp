@@ -43,7 +43,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
 };
 
-function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string }; onClose: () => void }) {
+function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -73,6 +73,24 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
             </motion.div>
           ))}
         </div>
+        {gallery.sections?.map((section) => (
+          <div key={section.title} className="mt-16">
+            <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {section.images.map((src, i) => (
+                <motion.div
+                  key={src}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="overflow-hidden rounded-xl"
+                >
+                  <img src={src} alt={`${section.title} ${i + 1}`} className="w-full h-auto object-cover" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </motion.div>
   );
@@ -275,13 +293,16 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
    3. PASO GALLERY — Cinematic / Full-screen hero
    ═══════════════════════════════════════════════════ */
 /* ── Exhibition gallery data ── */
-const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = {
+const exhibitionGalleries: Record<string, { images: string[]; desc: string; sections?: { title: string; images: string[] }[] }> = {
   "REBORN": {
     images: [...Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`), "/images/exhibitions/reborn/reborn-cover.jpg", "/images/exhibitions/reborn/reborn-new-cover.jpg"],
     desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
   },
   "Intermission : 이다희 작가 기획전": {
-    images: [...Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`), ...Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 9}.png`)],
+    images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
+    sections: [
+      { title: "프리뷰", images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 9}.png`) },
+    ],
     desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\nDate | 06.02.2023 - 06.15.2023 (월요일/공휴일 휴관)\nTime | 14:00 - 20:00\nLocation | 종로구 성균관로 92 (Paso Bosque Gallery, 현 푸에스토 갤러리)",
   },
   "SS21 'Vacant Fabric' Vip Exhibition": {
@@ -339,7 +360,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
-  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string } | null>(null);
+  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; sections?: { title: string; images: string[] }[] } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollExhibitions = (direction: "left" | "right") => {
@@ -488,7 +509,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 className="group relative overflow-hidden cursor-pointer"
                 onClick={() => {
                   const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc });
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, sections: gallery.sections });
                 }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
