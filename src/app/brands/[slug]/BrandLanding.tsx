@@ -60,7 +60,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
         {gallery.desc && (
           <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10">{gallery.desc}</p>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {gallery.images.map((src, i) => (
             <motion.div
               key={src}
@@ -76,7 +76,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
         {gallery.sections?.map((section) => (
           <div key={section.title} className="mt-16">
             <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               {section.images.map((src, i) => (
                 <motion.div
                   key={src}
@@ -299,15 +299,12 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
   },
   "Intermission : 이다희 작가 기획전": {
-    images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`),
-    sections: [
-      { title: "프리뷰", images: Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 9}.png`) },
-    ],
+    images: [...Array.from({ length: 8 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 1}.jpg`), ...Array.from({ length: 6 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 9}.png`)],
     desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\nDate | 06.02.2023 - 06.15.2023 (월요일/공휴일 휴관)\nTime | 14:00 - 20:00\nLocation | 종로구 성균관로 92 (Paso Bosque Gallery, 현 푸에스토 갤러리)",
   },
   "SS21 'Vacant Fabric' Vip Exhibition": {
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/art-couture/art-couture-${i + 1}.png`),
-    desc: "",
+    desc: "참여작가 : 아트테리언 작가 / 피정원 작가 / 고요손 작가 / 송효익 작가 / JOPH 작가 / 이완 작가 / 레오다브 작가 / 이효선 작가",
   },
   "Paso Gallery x ARTIVIST.": {
     images: Array.from({ length: 53 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
@@ -315,11 +312,11 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "The less I know the better, \"모르는 게 약이다\" by Dirty Haerri": {
     images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/redegallery/redegallery-${i + 1}.png`),
-    desc: "작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다. 하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다.\n\n작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다. 따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다.",
+    desc: "참여작가 : Dirty Haerri 작가\n\n작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다. 하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다.\n\n작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다. 따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다.",
   },
   "Exhibition 1.0 2021 S/S Projection(창)": {
     images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/section-10/section-10-${i + 1}.png`),
-    desc: "사람들은 창에 투영된 무언가를 관찰한다.\n\n파소 갤러리의 '파소'는 '걸음'이라는 의미의 스페인어를 차용하여, 패션 시장과 미술 시장의 접점이 되어 작품을 옷에 녹여 걸어다니는 갤러리를 실현 시킨다.\n\n이를 입는 고객들은 작품의 매체가 되고, 그들을 지나치는 무작위한 관중들에게 작품을 무의식 중에 노출시키는 '창' 역할을 한다.\n\n이로써, 파소 갤러리는 무작위한 관중들에게 미적 영감을 전달하여 무의식 속 그들의 시각적 감수를 깨우고, 작가들에게는 패션 시장과의 접점에 머물며 새로운 무대와 시장을 창출하는 대에 비전이 있다.\n\nOnes observe something that is projected through the frame.\n\nPaso Gallery is derived from the Spanish term 'Paso', which means 'Step'. Paso Gallery aims to be the point of intersection between fashion and art industries, and become the 'Walking Gallery.\n\nIndividuals who wear the Paso Gallery are the medium (media) of the artwork. They act as a 'Frame' that expose and deliver the artwork to the subconscious minds of the random observers.\n\nHereby, Paso Gallery awakens the artistic inspiration of random observers to activates their visual receptivity in an unconscious state, and we vision to create a new market for artists by positioning our brand in to the intersection between fashion industry and art industry.",
+    desc: "참여작가 : 피정원 작가 / 고요손 작가 / 송효익 작가 / JOPH 작가 / 이효선 작가\n\n사람들은 창에 투영된 무언가를 관찰한다.\n\n파소 갤러리의 '파소'는 '걸음'이라는 의미의 스페인어를 차용하여, 패션 시장과 미술 시장의 접점이 되어 작품을 옷에 녹여 걸어다니는 갤러리를 실현 시킨다.\n\n이를 입는 고객들은 작품의 매체가 되고, 그들을 지나치는 무작위한 관중들에게 작품을 무의식 중에 노출시키는 '창' 역할을 한다.\n\n이로써, 파소 갤러리는 무작위한 관중들에게 미적 영감을 전달하여 무의식 속 그들의 시각적 감수를 깨우고, 작가들에게는 패션 시장과의 접점에 머물며 새로운 무대와 시장을 창출하는 대에 비전이 있다.\n\nOnes observe something that is projected through the frame.\n\nPaso Gallery is derived from the Spanish term 'Paso', which means 'Step'. Paso Gallery aims to be the point of intersection between fashion and art industries, and become the 'Walking Gallery.\n\nIndividuals who wear the Paso Gallery are the medium (media) of the artwork. They act as a 'Frame' that expose and deliver the artwork to the subconscious minds of the random observers.\n\nHereby, Paso Gallery awakens the artistic inspiration of random observers to activates their visual receptivity in an unconscious state, and we vision to create a new market for artists by positioning our brand in to the intersection between fashion industry and art industry.",
   },
   "section 8": {
     images: Array.from({ length: 2 }, (_, i) => `/images/exhibitions/section-8/section-8-${i + 1}.png`),
