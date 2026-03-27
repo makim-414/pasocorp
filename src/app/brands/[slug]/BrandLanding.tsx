@@ -348,6 +348,13 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     scrollRef.current.scrollBy({ left: direction === "right" ? scrollAmount : -scrollAmount, behavior: "smooth" });
   };
 
+  const preloadImages = (images: string[]) => {
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  };
+
   const exhibitions = [
     { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
     { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-cover.jpg" },
@@ -470,6 +477,10 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 key={ex.title}
                 {...stagger(i)}
                 className="group relative overflow-hidden cursor-pointer"
+                onMouseEnter={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) preloadImages(gallery.images);
+                }}
                 onClick={() => {
                   const gallery = exhibitionGalleries[ex.title];
                   if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, sections: gallery.sections });
@@ -518,6 +529,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 key={f.title}
                 {...stagger(i)}
                 className={`bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer" : ""}`}
+                onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                 onClick={galleryData ? () => setOpenExhibition({ title: f.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
               >
                 <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
@@ -560,6 +572,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                   key={card.title}
                   {...stagger(i)}
                   className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer"
+                  onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                   onClick={galleryData ? () => setOpenExhibition({ title: card.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
                 >
                   <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
