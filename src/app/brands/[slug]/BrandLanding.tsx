@@ -387,7 +387,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "정은혜", artist: "", date: "", image: "/images/exhibitions/jungeunhye/jungeunhye-6.png" },
     { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
     { title: "화이자", artist: "", date: "", image: "/images/exhibitions/hwaija/hwaija-1.png" },
-    { title: "히노살롱", artist: "", date: "", image: "/images/exhibitions/hino-salon/hino-salon-1.png" },
+    { title: "히노살롱", artist: "", date: "", image: "/images/exhibitions/hino-salon/hino-salon-cover.jpg" },
     { title: "메이커스마크", artist: "", date: "", image: "/images/exhibitions/makers-mark/makers-mark-1.png" },
   ];
 
