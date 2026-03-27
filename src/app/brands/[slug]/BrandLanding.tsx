@@ -318,8 +318,8 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
       { title: "소호프리뷰", images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/soho-preview/soho-preview-${i + 1}.png`) },
     ],
   },
-  "포레스트오브피니티": {
-    images: Array.from({ length: 19 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 1}.png`),
+  "Forest of Finity": {
+    images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 4}.png`),
     desc: "",
   },
   "히노살롱": {
@@ -350,7 +350,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
     { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-cover.jpg" },
     { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
-    { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
+    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07.", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
   ];
 
   const clients = [
