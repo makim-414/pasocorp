@@ -19,7 +19,6 @@ const locations = [
 
 const contacts = [
   { label: "Email", value: "info@pasogallery.com", href: "mailto:info@pasogallery.com" },
-  { label: "Instagram", value: "@pasoartcenter", href: "https://www.instagram.com/pasoartcenter" },
   { label: "Phone", value: "+82 10-6432-4471", href: "tel:+821064324471" },
 ];
 
