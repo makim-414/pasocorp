@@ -9,10 +9,6 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
     title: "장띵 — 델라페 18종",
     images: Array.from({ length: 8 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
-  1: {
-    title: "CU X PASO — 와인",
-    images: Array.from({ length: 8 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
-  },
   2: {
     title: "투썸 — A Twosome Place",
     images: Array.from({ length: 8 }, (_, i) => `/images/projects/twosome/twosome-${i + 1}.jpg`),
