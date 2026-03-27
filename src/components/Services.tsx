@@ -257,15 +257,6 @@ export default function Services() {
           </div>
         </div>
 
-        {/* footer note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center text-xs tracking-[0.15em] uppercase text-[#444]"
-        >
-          Available for private events & exhibitions
-        </motion.p>
       </div>
     </section>
   );
