@@ -405,7 +405,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight"
-            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 200, letterSpacing: "0.02em" }}
           >
             Space by PASO
           </motion.h1>
