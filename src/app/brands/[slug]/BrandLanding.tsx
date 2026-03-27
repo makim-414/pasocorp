@@ -719,28 +719,25 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "캐릭터 IP", icon: (
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 20h16" />
+                  <path d="M12 4v12" />
+                  <path d="M12 4c-2 0-4 1.5-4 4s2 3.5 4 4c2 .5 4 1.5 4 4s-2 4-4 4" />
                 </svg>
               )},
               { title: "B2B 콜라보", icon: (
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M7 21v-2a4 4 0 0 1 3-3.87" />
-                  <circle cx="12" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  <path d="M1 21v-2a4 4 0 0 1 3-3.87" />
-                  <path d="M8 3.13a4 4 0 0 0 0 7.75" />
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="5" cy="12" r="2" />
+                  <circle cx="19" cy="12" r="2" />
+                  <path d="M7 12h10" />
+                  <path d="M12 7v10" />
+                  <circle cx="12" cy="5" r="2" />
+                  <circle cx="12" cy="19" r="2" />
                 </svg>
               )},
               { title: "아트토이", icon: (
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                  <path d="M3.27 6.96L12 12.01l8.73-5.05" />
-                  <path d="M12 22.08V12" />
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                 </svg>
               )},
             ].map((s, i) => (
