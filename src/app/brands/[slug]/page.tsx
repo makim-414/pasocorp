@@ -82,7 +82,7 @@ const brandsData: Record<string, {
     image: "/images/projects/hongdae-flagship/2.jpg",
     gallery: [
       "/images/projects/cu-dding/cu-3.jpg",
-      "/images/projects/cu-dding-collab.jpg",
+      "/images/projects/cu-dding/cu-5.jpg",
       "/images/projects/arttoy/1.jpg",
       "/images/projects/twosome-interior.jpg",
       "/images/projects/hongdae-plusship/1.png",
