@@ -319,7 +319,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     ],
   },
   "Forest of Finity": {
-    images: Array.from({ length: 19 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 1}.png`),
+    images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 4}.png`),
     desc: "",
   },
   "히노살롱": {
