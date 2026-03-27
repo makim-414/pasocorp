@@ -322,6 +322,14 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     images: Array.from({ length: 19 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 1}.png`),
     desc: "",
   },
+  "히노살롱": {
+    images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
+    desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
+  },
+  "빠끼": {
+    images: Array.from({ length: 11 }, (_, i) => `/images/exhibitions/bbakki/bbakki-${i + 1}.png`),
+    desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다.",
+  },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
@@ -498,11 +506,15 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
-            {brand.features.slice(0, 3).map((f, i) => (
+            {brand.features.slice(0, 3).map((f, i) => {
+              const programGalleryKey = ["히노살롱", "빠끼"][i] as string | undefined;
+              const galleryData = programGalleryKey ? exhibitionGalleries[programGalleryKey] : undefined;
+              return (
               <motion.div
                 key={f.title}
                 {...stagger(i)}
-                className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500"
+                className={`bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer" : ""}`}
+                onClick={galleryData ? () => setOpenExhibition({ title: f.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
               >
                 <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
                   <img
@@ -516,7 +528,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
                 <div className="mt-4 w-0 group-hover:w-8 h-px bg-[#b8960b] transition-all duration-500" />
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
