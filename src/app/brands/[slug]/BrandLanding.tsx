@@ -307,7 +307,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "SS21 'Vacant Fabric' Vip Exhibition": {
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/art-couture/art-couture-${i + 1}.png`),
-    desc: "",
+    desc: "참여작가 : 아트테리언 작가 / 피정원 작가 / 고요손 작가 / 송효익 작가 / JOPH 작가 / 이완 작가 / 레오다브 작가 / 이효선 작가",
   },
   "Paso Gallery x ARTIVIST.": {
     images: Array.from({ length: 53 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
