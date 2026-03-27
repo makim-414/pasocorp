@@ -404,8 +404,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-8xl lg:text-9xl text-white font-thin tracking-tight"
-            style={{ fontFamily: "var(--font-dutch)", fontWeight: 100 }}
+            className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight"
+            style={{ fontFamily: "var(--font-dutch)", fontWeight: 100, letterSpacing: "0.02em" }}
           >
             Space by PASO
           </motion.h1>
@@ -415,7 +415,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mt-6 text-sm md:text-base text-[#aaa] font-light max-w-lg mx-auto"
           >
-            Art Meets Space
+            Private Art Space for Thought Leaders
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
