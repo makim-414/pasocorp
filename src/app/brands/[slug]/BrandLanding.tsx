@@ -334,6 +334,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
     sections: [
       { title: "홍콩", images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.png`) },
+      { title: "소호프리뷰", images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/soho-preview/soho-preview-${i + 1}.png`) },
     ],
   },
   "빠끼": {
