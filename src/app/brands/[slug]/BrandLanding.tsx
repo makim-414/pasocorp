@@ -306,7 +306,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = 
   },
   "도산공원 팝업": {
     images: Array.from({ length: 12 }, (_, i) => `/images/exhibitions/dosan-popup/dosan-popup-${i + 1}.png`),
-    desc: "",
+    desc: "Backing Your Inspiration\n\n파소 갤러리는 '걸어다니는 갤러리'를 의미한다.\n파소는 아티스트들의 작품을 2차원적인 섬유인 캔버스에서 꺼내 3차원적인 섬유인 패션에 담아 그것을 걷게 한다.\n우리는 모든 영감을 지지하며 그것을 등에 업혀 누군가의 일상 속에 노출시킨다.\n\nwith Art Blending / Ccollab Haus Dosan",
   },
   "소호 홍콩": {
     images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.png`),
@@ -360,7 +360,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "The less I know the better, \"모르는 게 약이다\" by Dirty Haerri", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
     { title: "Exhibition 1.0 2021 S/S Projection(창)", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-7.png" },
     { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
-    { title: "도산공원 팝업", artist: "", date: "", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
+    { title: "도산공원 팝업", artist: "", date: "2021.10.02 - 2021.10.17", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
     { title: "소호 홍콩", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
     { title: "빠끼", artist: "", date: "", image: "/images/exhibitions/bbakki/bbakki-1.png" },
     { title: "이다희 프리뷰", artist: "", date: "", image: "/images/exhibitions/dahee-preview/dahee-preview-1.png" },
