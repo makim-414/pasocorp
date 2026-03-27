@@ -355,7 +355,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "히노살롱": {
     images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
-    desc: "",
+    desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
   },
   "메이커스마크": {
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.png`),
@@ -379,7 +379,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "SS21 'Vacant Fabric' Vip Exhibition", artist: "", date: "2021. 8. 1. - 2021. 8. 15.", image: "/images/exhibitions/art-couture/art-couture-1.png" },
     { title: "Paso Gallery x ARTIVIST.", artist: "", date: "2023.05.30", image: "/images/exhibitions/bno-patron/bno-patron-1.png" },
     { title: "The less I know the better, \"모르는 게 약이다\" by Dirty Haerri", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
-    { title: "Exhibition 1.0 2021 S/S Projection(창)", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-7.png" },
+    { title: "Exhibition 1.0 2021 S/S Projection(창)", artist: "", date: "2021. 4. 2 - 4. 18", image: "/images/exhibitions/section-10/section-10-7.png" },
     { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
     { title: "도산공원 팝업", artist: "", date: "2021.10.02 - 2021.10.17", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
     { title: "소호", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
@@ -387,7 +387,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "정은혜", artist: "", date: "", image: "/images/exhibitions/jungeunhye/jungeunhye-6.png" },
     { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
     { title: "화이자", artist: "", date: "", image: "/images/exhibitions/hwaija/hwaija-1.png" },
-    { title: "히노살롱", artist: "", date: "", image: "/images/exhibitions/hino-salon/hino-salon-1.png" },
+    { title: "히노살롱", artist: "", date: "", image: "/images/exhibitions/hino-salon/hino-salon-cover.jpg" },
     { title: "메이커스마크", artist: "", date: "", image: "/images/exhibitions/makers-mark/makers-mark-1.png" },
   ];
 
