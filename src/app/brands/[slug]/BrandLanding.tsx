@@ -79,15 +79,12 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
             <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               {section.images.map((src, i) => (
-                <motion.div
+                <div
                   key={src}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
                   className="overflow-hidden rounded-xl"
                 >
-                  <img src={src} alt={`${section.title} ${i + 1}`} className="w-full h-auto object-cover" />
-                </motion.div>
+                  <img src={src} alt={`${section.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover" />
+                </div>
               ))}
             </div>
           </div>
