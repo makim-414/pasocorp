@@ -300,7 +300,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "Intermission : 이다희 (Rising Artist Contest)": {
     images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 4}.jpg`),
-    desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\nDate | 06.02.2023 - 06.15.2023 (월요일/공휴일 휴관)\nTime | 14:00 - 20:00\nLocation | 종로구 성균관로 92 (Paso Bosque Gallery, 현 푸에스토 갤러리)",
+    desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중",
   },
   "Paso Gallery x ARTIVIST.": {
     images: Array.from({ length: 53 }, (_, i) => `/images/exhibitions/bno-patron/bno-patron-${i + 1}.png`),
@@ -308,7 +308,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "Project ReDE Gallery": {
     images: [1,2,3,4,7].map(n => `/images/exhibitions/redegallery/redegallery-${n}.png`),
-    desc: "Starch Haus x Paso Gallery : Project ReDE Gallery\n\n참여작가 : Dirty Haerri 작가\n\n작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다. 하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다.\n\n작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다. 따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다.",
+    desc: "Starch Haus x Paso Gallery : Project ReDE Gallery\n\n참여작가 : Dirty Haerri 작가\n\n작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다.\n\n하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다. 작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다.\n\n따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다.",
   },
   "소호": {
     images: [],
@@ -350,7 +350,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
     { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-cover.jpg" },
     { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
-    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07.", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
+    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07.", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
   ];
 
   const clients = [
