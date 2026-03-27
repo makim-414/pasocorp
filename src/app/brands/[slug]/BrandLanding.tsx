@@ -335,7 +335,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "빠끼": {
     images: Array.from({ length: 11 }, (_, i) => `/images/exhibitions/bbakki/bbakki-${i + 1}.png`),
-    desc: "",
+    desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다.",
   },
   "정은혜": {
     images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/jungeunhye/jungeunhye-${i + 1}.png`),
