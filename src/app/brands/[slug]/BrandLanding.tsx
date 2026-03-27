@@ -387,6 +387,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             loop
             muted
             playsInline
+            poster={brand.gallery[0]}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
