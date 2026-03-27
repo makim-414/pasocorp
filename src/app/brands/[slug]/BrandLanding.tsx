@@ -334,6 +334,14 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     images: [12,13,14,15,2,3,4,5,6,7,8,11].map(n => `/images/exhibitions/soho-preview/soho-preview-${n}.png`),
     desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
   },
+  "화이자": {
+    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/hwaija/hwaija-${i + 1}.png`),
+    desc: "",
+  },
+  "메이커스마크": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.png`),
+    desc: "",
+  },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
@@ -536,6 +544,46 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
+      {/* ── BRAND PROGRAMS: Collaborations ── */}
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp}>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Brand Collaborations</p>
+            <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
+              Brand Pop-up
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
+            {[
+              { title: "화이자", image: "/images/exhibitions/hwaija/hwaija-1.png", galleryKey: "화이자" },
+              { title: "메이커스마크", image: "/images/exhibitions/makers-mark/makers-mark-1.png", galleryKey: "메이커스마크" },
+              { title: "Paso Gallery x ARTIVIST.", image: "/images/exhibitions/bno-patron/bno-patron-1.png", galleryKey: "Paso Gallery x ARTIVIST." },
+            ].map((card, i) => {
+              const galleryData = exhibitionGalleries[card.galleryKey];
+              return (
+                <motion.div
+                  key={card.title}
+                  {...stagger(i)}
+                  className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer"
+                  onClick={galleryData ? () => setOpenExhibition({ title: card.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
+                >
+                  <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover transition-all duration-700"
+                    />
+                  </div>
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] block mb-3">0{i + 4}</span>
+                  <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                  <div className="mt-4 w-0 group-hover:w-8 h-px bg-[#b8960b] transition-all duration-500" />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* ── SPACE: 한옥 Gallery ── */}
       <section id="space" className="py-24 md:py-32 bg-[#0a0a0a] border-t border-[#1a1a1a]">
