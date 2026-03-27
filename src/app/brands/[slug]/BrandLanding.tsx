@@ -718,14 +718,13 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "🎨", title: "캐릭터 IP", desc: "라이선싱 및 제품 개발" },
-              { icon: "🤝", title: "B2B 콜라보", desc: "브랜드 × 아트 프로젝트" },
-              { icon: "🎭", title: "아트토이", desc: "스트릿 아트 매입·기획" },
+              { icon: "🎨", title: "캐릭터 IP" },
+              { icon: "🤝", title: "B2B 콜라보" },
+              { icon: "🎭", title: "아트토이" },
             ].map((s, i) => (
               <motion.div key={s.title} {...stagger(i)} className="text-center p-8">
                 <span className="text-4xl mb-4 block">{s.icon}</span>
-                <h3 className="text-lg text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>{s.title}</h3>
-                <p className="text-sm text-[#888] font-light">{s.desc}</p>
+                <h3 className="text-lg text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{s.title}</h3>
               </motion.div>
             ))}
           </div>
