@@ -331,7 +331,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다.",
   },
   "소호프리뷰": {
-    images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/soho-preview/soho-preview-${i + 1}.png`),
+    images: [12,13,14,15,2,3,4,5,6,7,8,11].map(n => `/images/exhibitions/soho-preview/soho-preview-${n}.png`),
     desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
   },
 };
