@@ -719,40 +719,41 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "캐릭터 IP", icon: (
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 19l7-7 3 3-7 7-3-3z" />
-                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-                  <path d="M2 2l7.586 7.586" />
-                  <circle cx="11" cy="11" r="2" />
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 12c0-3.5 4.5-8 10-8s10 4.5 10 8-4.5 5-10 5S2 15.5 2 12z" />
+                  <circle cx="9" cy="11" r="1.2" fill="#b8960b" stroke="none" />
+                  <circle cx="15" cy="11" r="1.2" fill="#b8960b" stroke="none" />
+                  <path d="M9.5 14.5c1 1 4 1 5 0" />
+                  <path d="M7 5l-1.5-2.5" />
+                  <path d="M17 5l1.5-2.5" />
+                  <path d="M12 17v3" />
+                  <path d="M9 20h6" />
                 </svg>
               )},
               { title: "B2B 콜라보", icon: (
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20.5 11.5L17 8l-4 1-3-3-6.5 6.5c-.7.7-.7 1.8 0 2.5l5 5c.7.7 1.8.7 2.5 0L17 14" />
-                  <path d="M14 9l3.5 3.5" />
-                  <path d="M3.5 15.5L8 20" />
-                  <path d="M16 3l4 4" />
-                  <path d="M18 7l2.5-2.5" />
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 11L3.5 7.5c-.7-.7-.7-1.8 0-2.5l1-1c.7-.7 1.8-.7 2.5 0L11 8" />
+                  <path d="M17 11l3.5-3.5c.7-.7.7-1.8 0-2.5l-1-1c-.7-.7-1.8-.7-2.5 0L13 8" />
+                  <path d="M8 14l-2.5 2.5c-.6.6-.6 1.5 0 2.1l.4.4c.6.6 1.5.6 2.1 0L10.5 16.5" />
+                  <path d="M16 14l2.5 2.5c.6.6.6 1.5 0 2.1l-.4.4c-.6.6-1.5.6-2.1 0L13.5 16.5" />
+                  <rect x="8" y="8" width="8" height="8" rx="1" />
                 </svg>
               )},
               { title: "아트토이", icon: (
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="8" r="5" />
-                  <circle cx="10.5" cy="7" r="0.8" fill="#b8960b" stroke="none" />
-                  <circle cx="13.5" cy="7" r="0.8" fill="#b8960b" stroke="none" />
-                  <path d="M10 9.5c.8.6 2.2.6 3 0" />
-                  <path d="M8.5 4.5L7 2" />
-                  <path d="M15.5 4.5L17 2" />
-                  <path d="M9.5 13v5.5c0 .8.7 1.5 1.5 1.5h0c.8 0 1.5-.7 1.5-1.5V17" />
-                  <path d="M14.5 13v5.5c0 .8-.7 1.5-1.5 1.5" />
-                  <path d="M7.5 10l-1 4.5" />
-                  <path d="M16.5 10l1 4.5" />
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="6" y="3" width="12" height="12" rx="3" />
+                  <circle cx="10" cy="9" r="1" fill="#b8960b" stroke="none" />
+                  <circle cx="14" cy="9" r="1" fill="#b8960b" stroke="none" />
+                  <path d="M10 11.5h4" />
+                  <path d="M8 15v4c0 1 .8 2 2 2h4c1.2 0 2-1 2-2v-4" />
+                  <path d="M10 21v-2" />
+                  <path d="M14 21v-2" />
                 </svg>
               )},
             ].map((s, i) => (
               <motion.div key={s.title} {...stagger(i)} className="text-center p-8">
-                <span className="mb-4 block flex justify-center">{s.icon}</span>
-                <h3 className="text-lg text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{s.title}</h3>
+                <span className="mb-5 block flex justify-center">{s.icon}</span>
+                <h3 className="text-sm tracking-[0.08em] uppercase text-white font-medium">{s.title}</h3>
               </motion.div>
             ))}
           </div>
