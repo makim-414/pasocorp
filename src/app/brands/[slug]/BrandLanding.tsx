@@ -58,7 +58,11 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
           <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
         </div>
         {gallery.desc && (
-          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">{gallery.desc}</p>
+          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
+            {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+              part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
+            )}
+          </p>
         )}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {gallery.images.map((src, i) => (
@@ -296,7 +300,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 const exhibitionGalleries: Record<string, { images: string[]; desc: string; sections?: { title: string; images: string[] }[] }> = {
   "REBORN": {
     images: ["/images/exhibitions/reborn/reborn-2.jpg", "/images/exhibitions/reborn/reborn-3.jpg", "/images/exhibitions/reborn/reborn-4.jpg", "/images/exhibitions/reborn/reborn-new.jpg"],
-    desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
+    desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.\n\n관련기사 : https://www.newsfinder.co.kr/news/articleView.html?idxno=200520",
   },
   "Intermission : 이다희 (Rising Artist Contest)": {
     images: [...Array.from({ length: 5 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 4}.jpg`), "/images/exhibitions/traces-of-light/intermission-new1.jpg", "/images/exhibitions/traces-of-light/intermission-new2.jpg"],
