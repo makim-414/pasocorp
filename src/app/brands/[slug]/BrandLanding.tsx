@@ -379,7 +379,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
     { title: "도산공원 팝업", artist: "", date: "2021.10.02 - 2021.10.17", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
     { title: "소호 홍콩", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
-    { title: "빠끼", artist: "", date: "", image: "/images/exhibitions/bbakki/bbakki-1.png" },
+    { title: "빠끼", artist: "", date: "", image: "/images/exhibitions/bbakki/bbakki-cover.jpg" },
     { title: "정은혜", artist: "", date: "", image: "/images/exhibitions/jungeunhye/jungeunhye-6.png" },
     { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
     { title: "화이자", artist: "", date: "", image: "/images/exhibitions/hwaija/hwaija-1.png" },
