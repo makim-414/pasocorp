@@ -18,7 +18,7 @@ const locations = [
 ];
 
 const contacts = [
-  { label: "Email", value: "contact@artrader.io", href: "mailto:contact@artrader.io" },
+  { label: "Email", value: "info@pasogallery.com", href: "mailto:info@pasogallery.com" },
   { label: "Instagram", value: "@pasoartcenter", href: "https://www.instagram.com/pasoartcenter" },
   { label: "Phone", value: "+82 10-6432-4471", href: "tel:+821064324471" },
 ];
@@ -78,7 +78,7 @@ export default function ContactContent() {
             {inquiries.map((item, i) => (
               <motion.a
                 key={item.title}
-                href="mailto:contact@artrader.io"
+                href="mailto:info@pasogallery.com"
                 {...stagger(i)}
                 className="block border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group"
               >
