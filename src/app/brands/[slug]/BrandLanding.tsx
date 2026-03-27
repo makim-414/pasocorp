@@ -718,12 +718,40 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "🎨", title: "캐릭터 IP" },
-              { icon: "🤝", title: "B2B 콜라보" },
-              { icon: "🎭", title: "아트토이" },
+              { title: "캐릭터 IP", icon: (
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                  <path d="M2 2l7.586 7.586" />
+                  <circle cx="11" cy="11" r="2" />
+                </svg>
+              )},
+              { title: "B2B 콜라보", icon: (
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20.5 11.5L17 8l-4 1-3-3-6.5 6.5c-.7.7-.7 1.8 0 2.5l5 5c.7.7 1.8.7 2.5 0L17 14" />
+                  <path d="M14 9l3.5 3.5" />
+                  <path d="M3.5 15.5L8 20" />
+                  <path d="M16 3l4 4" />
+                  <path d="M18 7l2.5-2.5" />
+                </svg>
+              )},
+              { title: "아트토이", icon: (
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="5" />
+                  <circle cx="10.5" cy="7" r="0.8" fill="#b8960b" stroke="none" />
+                  <circle cx="13.5" cy="7" r="0.8" fill="#b8960b" stroke="none" />
+                  <path d="M10 9.5c.8.6 2.2.6 3 0" />
+                  <path d="M8.5 4.5L7 2" />
+                  <path d="M15.5 4.5L17 2" />
+                  <path d="M9.5 13v5.5c0 .8.7 1.5 1.5 1.5h0c.8 0 1.5-.7 1.5-1.5V17" />
+                  <path d="M14.5 13v5.5c0 .8-.7 1.5-1.5 1.5" />
+                  <path d="M7.5 10l-1 4.5" />
+                  <path d="M16.5 10l1 4.5" />
+                </svg>
+              )},
             ].map((s, i) => (
               <motion.div key={s.title} {...stagger(i)} className="text-center p-8">
-                <span className="text-4xl mb-4 block">{s.icon}</span>
+                <span className="mb-4 block flex justify-center">{s.icon}</span>
                 <h3 className="text-lg text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{s.title}</h3>
               </motion.div>
             ))}
