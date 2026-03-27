@@ -329,9 +329,12 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     images: Array.from({ length: 12 }, (_, i) => `/images/exhibitions/dosan-popup/dosan-popup-${i + 1}.png`),
     desc: "Backing Your Inspiration\n\n파소 갤러리는 '걸어다니는 갤러리'를 의미한다.\n파소는 아티스트들의 작품을 2차원적인 섬유인 캔버스에서 꺼내 3차원적인 섬유인 패션에 담아 그것을 걷게 한다.\n우리는 모든 영감을 지지하며 그것을 등에 업혀 누군가의 일상 속에 노출시킨다.\n\nwith Art Blending / Ccollab Haus Dosan",
   },
-  "소호 홍콩": {
-    images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.png`),
+  "소호": {
+    images: [],
     desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
+    sections: [
+      { title: "홍콩", images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.png`) },
+    ],
   },
   "빠끼": {
     images: Array.from({ length: 11 }, (_, i) => `/images/exhibitions/bbakki/bbakki-${i + 1}.png`),
@@ -378,7 +381,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { title: "Exhibition 1.0 2021 S/S Projection(창)", artist: "", date: "", image: "/images/exhibitions/section-10/section-10-7.png" },
     { title: "section 8", artist: "", date: "", image: "/images/exhibitions/section-8/section-8-1.png" },
     { title: "도산공원 팝업", artist: "", date: "2021.10.02 - 2021.10.17", image: "/images/exhibitions/dosan-popup/dosan-popup-1.png" },
-    { title: "소호 홍콩", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
+    { title: "소호", artist: "", date: "", image: "/images/exhibitions/soho-hongkong/soho-hongkong-1.png" },
     { title: "빠끼", artist: "", date: "", image: "/images/exhibitions/bbakki/bbakki-cover.jpg" },
     { title: "정은혜", artist: "", date: "", image: "/images/exhibitions/jungeunhye/jungeunhye-6.png" },
     { title: "포레스트오브피니티", artist: "", date: "", image: "/images/exhibitions/forest-of-finity/forest-of-finity-1.png" },
