@@ -19,7 +19,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
   3: {
     title: "KUHO — 홍대 플래그쉽",
-    images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.jpg`),
+    images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg", "/images/projects/hongdae-flagship/4.jpg"],
   },
 };
 
@@ -38,7 +38,11 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
           <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
         </div>
         {gallery.desc && (
-          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10">{gallery.desc}</p>
+          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
+            {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+              part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
+            )}
+          </p>
         )}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {gallery.images.map((src, i) => (
@@ -295,15 +299,15 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 /* ── Exhibition gallery data ── */
 const exhibitionGalleries: Record<string, { images: string[]; desc: string; sections?: { title: string; images: string[] }[] }> = {
   "REBORN": {
-    images: ["/images/exhibitions/reborn/reborn-2.jpg", "/images/exhibitions/reborn/reborn-3.jpg", "/images/exhibitions/reborn/reborn-4.jpg", "/images/exhibitions/reborn/reborn-cover.jpg"],
-    desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
+    images: ["/images/exhibitions/reborn/reborn-2.jpg", "/images/exhibitions/reborn/reborn-3.jpg", "/images/exhibitions/reborn/reborn-4.jpg", "/images/exhibitions/reborn/reborn-new.jpg"],
+    desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.\n\n관련기사 : https://www.newsfinder.co.kr/news/articleView.html?idxno=200520",
   },
   "Intermission : 이다희 (Rising Artist Contest)": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 4}.jpg`),
+    images: [...Array.from({ length: 5 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 4}.jpg`), "/images/exhibitions/traces-of-light/intermission-new1.jpg", "/images/exhibitions/traces-of-light/intermission-new2.jpg"],
     desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중",
   },
   "Paso Gallery x ARTIVIST.": {
-    images: [1,2,3,4,5,6,7,9,10,11,12,13,14,17,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,42,43,44,48,50,51,52,53].map(n => `/images/exhibitions/bno-patron/bno-patron-${n}.png`),
+    images: [1,2,3,4,6,9,10,11,13,14,17,19,20,21,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,43,44,48,50,51,52,53].map(n => `/images/exhibitions/bno-patron/bno-patron-${n}.png`),
     desc: "Private Art Forum : 'PATRONS'\n\n파소 갤러리가 @artiv.ist 와 함께 'Guide to start a contemporary art collection' 을 주제로 영 컬렉터들을 위한 프라이빗 아트 포럼을 개최하였습니다.\n\nGuide to start a contemporary art collection의 주제로, 예술가와 미술 업계 전문가들이 함께 현대미술 컬렉션을 시작하는 방법, 작품 선택에 대한 팁, 그리고 예술 시장의 동향 및 미래 등의 주제를 다루었습니다.\n\nPanel :\n서진석 관장 (현 울산시립미술관 관장, 전 백남준 아트센터 관장) @jinsuksuh\n유진상 교수 (계원조형대 교수, 2012 미디어시티비엔날레 총감독, 광주비엔날레 평가위원)\n\nModerator :\n이정우 에디터 (전 널위한문화예술) @jjjw117\n\nSpecial Guest :\nWhisbe @whisbe",
   },
   "Project ReDE Gallery": {
@@ -320,7 +324,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "Forest of Finity": {
     images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 4}.png`),
-    desc: "",
+    desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다!\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.",
   },
   "히노살롱": {
     images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
@@ -405,7 +409,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight"
-            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 200, letterSpacing: "0.02em" }}
           >
             Space by PASO
           </motion.h1>

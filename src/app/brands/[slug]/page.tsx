@@ -86,8 +86,8 @@ const brandsData: Record<string, {
       "/images/agency/agency-bg-4.png",
     ],
     gallery: [
-      "/images/projects/cu-dding/cu-3.jpg",
-      "/images/projects/cu-dding/cu-5.jpg",
+      "/images/projects/cu2.png",
+      "/images/projects/cu1.png",
       "/images/projects/twosome/twosome-2.jpg",
       "/images/projects/hongdae-plusship/1.png",
     ],
