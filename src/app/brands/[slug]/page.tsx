@@ -8,7 +8,7 @@ import { getSiteMode } from "@/lib/site-mode";
 
 const brandsData: Record<string, {
   name: string; slug: string; year: number; desc: string; longDesc: string;
-  color: string; image: string; gallery: string[];
+  color: string; image: string; heroImages?: string[]; gallery: string[];
   features: { title: string; desc: string; image?: string }[];
 }> = {
   artrader: {
@@ -79,7 +79,13 @@ const brandsData: Record<string, {
     desc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—양측 모두에게 지속 가능한 구조를 설계합니다.",
     longDesc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—PASO Agency가 양측 모두에게 지속 가능한 구조를 설계합니다.",
     color: "#d4a574",
-    image: "/images/projects/hongdae-flagship/2.jpg",
+    image: "/images/agency/agency-bg-1.png",
+    heroImages: [
+      "/images/agency/agency-bg-1.png",
+      "/images/agency/agency-bg-2.png",
+      "/images/agency/agency-bg-3.png",
+      "/images/agency/agency-bg-4.png",
+    ],
     gallery: [
       "/images/projects/cu-dding/cu-3.jpg",
       "/images/projects/cu1.png",
