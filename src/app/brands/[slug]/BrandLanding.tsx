@@ -60,7 +60,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
         {gallery.desc && (
           <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10">{gallery.desc}</p>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {gallery.images.map((src, i) => (
             <motion.div
               key={src}
@@ -76,7 +76,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
         {gallery.sections?.map((section) => (
           <div key={section.title} className="mt-16">
             <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               {section.images.map((src, i) => (
                 <motion.div
                   key={src}
