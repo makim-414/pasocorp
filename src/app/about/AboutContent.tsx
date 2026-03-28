@@ -133,50 +133,6 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* Vision */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Vision</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Walking Gallery</motion.h2>
-
-          {/* Korean */}
-          <motion.div {...fadeUp} className="mb-16">
-            <div className="border-l-2 border-[#b8960b] pl-8 md:pl-12 space-y-6">
-              <p className="text-lg md:text-xl text-white font-light leading-relaxed" style={{ fontFamily: "var(--font-dutch)" }}>
-                사람들은 창에 투영된 무언가를 관찰한다.
-              </p>
-              <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-                파소 갤러리의 &lsquo;파소&rsquo;는 &lsquo;걸음&rsquo;이라는 의미의 스페인어를 차용하여, 패션 시장과 미술 시장의 접점이 되어 작품을 옷에 녹여 걸어다니는 갤러리를 실현시킨다.
-              </p>
-              <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-                이를 입는 고객들은 작품의 매체가 되고, 그들을 지나치는 무작위한 관중들에게 작품을 무의식 중에 노출시키는 &lsquo;창&rsquo; 역할을 한다.
-              </p>
-              <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-                이로써, 파소 갤러리는 무작위한 관중들에게 미적 영감을 전달하여 무의식 속 그들의 시각적 감수를 깨우고, 작가들에게는 패션 시장과의 접점에 머물며 새로운 무대와 시장을 창출하는 데에 비전이 있다.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* English */}
-          <motion.div {...fadeUp}>
-            <div className="border-l-2 border-[#333] pl-8 md:pl-12 space-y-6">
-              <p className="text-lg md:text-xl text-[#888] font-light leading-relaxed italic" style={{ fontFamily: "var(--font-dutch)" }}>
-                Ones observe something that is projected through the frame.
-              </p>
-              <p className="text-sm md:text-base text-[#666] font-light leading-relaxed">
-                Paso Gallery is derived from the Spanish term &lsquo;Paso&rsquo;, which means &lsquo;Step&rsquo;. Paso Gallery aims to be the point of intersection between fashion and art industries, and become the &lsquo;Walking Gallery&rsquo;.
-              </p>
-              <p className="text-sm md:text-base text-[#666] font-light leading-relaxed">
-                Individuals who wear the Paso Gallery are the medium of the artwork. They act as a &lsquo;Frame&rsquo; that expose and deliver the artwork to the subconscious minds of the random observers.
-              </p>
-              <p className="text-sm md:text-base text-[#666] font-light leading-relaxed">
-                Hereby, Paso Gallery awakens the artistic inspiration of random observers to activate their visual receptivity in an unconscious state, and we vision to create a new market for artists by positioning our brand into the intersection between fashion industry and art industry.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
     </>
   );
 }
