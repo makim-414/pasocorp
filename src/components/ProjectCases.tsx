@@ -8,7 +8,7 @@ const cases = [
     title: "Artrader — 미술품 거래 플랫폼",
     description: "1,500만+ 경매 데이터 기반, Artist Index와 정량 리포트로 미술품 투자의 새로운 기준을 제시합니다.",
     href: "/brands/artrader",
-    image: "/brands/artrader-platform.jpg",
+    image: "/brands/artrader-platform-hd.png",
   },
   {
     id: "paso-art-center",
