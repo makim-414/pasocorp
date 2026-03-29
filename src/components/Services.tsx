@@ -34,7 +34,7 @@ const FEATURES = [
     tag: "PASO GALLERY · ART CENTER",
     label: "Exhibition & Primary Market",
     Icon: Landmark,
-    image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg",
+    image: "/brands/paso-gallery.jpg",
     desc: "국내 신진작가 공모전, 글로벌 이머징 작가 전시, 적정가 2차 시장 Top 30 작품 전시.",
     color: "#1e3a5f",
     href: "https://pasogallery.com",
