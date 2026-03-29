@@ -340,7 +340,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "",
   },
   "메이커스마크": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.png`),
+    images: [1, 2, 5].map(i => `/images/exhibitions/makers-mark/makers-mark-${i}.png`),
     desc: "",
   },
 };
