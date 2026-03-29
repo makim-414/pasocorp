@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[] }> = {
@@ -19,57 +19,183 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
 };
 
-function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; artist?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
+/* ── Photo Detail Lightbox with swipe ── */
+function PhotoDetailLightbox({ images, initialIndex, onClose }: { images: string[]; initialIndex: number; onClose: () => void }) {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchDelta, setTouchDelta] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const goTo = useCallback((newIndex: number, dir: number) => {
+    if (newIndex >= 0 && newIndex < images.length) {
+      setDirection(dir);
+      setCurrentIndex(newIndex);
+    }
+  }, [images.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") goTo(currentIndex - 1, -1);
+      else if (e.key === "ArrowRight") goTo(currentIndex + 1, 1);
+      else if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentIndex, goTo, onClose]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+    setTouchDelta(0);
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart !== null) setTouchDelta(e.touches[0].clientX - touchStart);
+  };
+  const handleTouchEnd = () => {
+    if (Math.abs(touchDelta) > 50) {
+      if (touchDelta > 0) goTo(currentIndex - 1, -1);
+      else goTo(currentIndex + 1, 1);
+    }
+    setTouchStart(null);
+    setTouchDelta(0);
+  };
+
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? 300 : -300, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -300 : 300, opacity: 0 }),
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
+      className="fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center"
       onClick={onClose}
     >
-      <div className="w-full max-w-[1200px] px-6 py-16" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl md:text-3xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
-          <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
-        </div>
-        {gallery.artist && (
-          <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">참여작가 : {gallery.artist}</p>
-        )}
-        {gallery.desc && (
-          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
-            {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
-              part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
-            )}
-          </p>
-        )}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-          {gallery.images.map((src, i) => (
-            <div
-              key={src}
-              className="overflow-hidden rounded-xl"
+      <button onClick={onClose} className="absolute top-6 right-6 z-10 text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
+      <div className="absolute top-6 left-6 z-10 text-sm text-[#888] font-light">{currentIndex + 1} / {images.length}</div>
+
+      {currentIndex > 0 && (
+        <button onClick={(e) => { e.stopPropagation(); goTo(currentIndex - 1, -1); }} className="absolute left-4 md:left-8 z-10 w-10 h-10 flex items-center justify-center text-[#888] hover:text-white transition-colors text-2xl">‹</button>
+      )}
+      {currentIndex < images.length - 1 && (
+        <button onClick={(e) => { e.stopPropagation(); goTo(currentIndex + 1, 1); }} className="absolute right-4 md:right-8 z-10 w-10 h-10 flex items-center justify-center text-[#888] hover:text-white transition-colors text-2xl">›</button>
+      )}
+
+      <div
+        className="relative w-full h-full flex items-center justify-center px-16 py-20"
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.img
+            key={currentIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            src={images[currentIndex]}
+            alt={`Photo ${currentIndex + 1}`}
+            className="max-w-full max-h-full object-contain rounded-lg select-none"
+            draggable={false}
+          />
+        </AnimatePresence>
+      </div>
+
+      {images.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10 max-w-[90vw] overflow-x-auto">
+          {images.map((src, i) => (
+            <button
+              key={i}
+              onClick={(e) => { e.stopPropagation(); goTo(i, i > currentIndex ? 1 : -1); }}
+              className={`w-12 h-12 md:w-14 md:h-14 rounded-md overflow-hidden border-2 flex-shrink-0 transition-all duration-200 ${
+                i === currentIndex ? "border-[#b8960b] opacity-100" : "border-transparent opacity-40 hover:opacity-70"
+              }`}
             >
-              <img src={src} alt={`${gallery.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover" />
-            </div>
+              <img src={src} alt="" className="w-full h-full object-cover" draggable={false} />
+            </button>
           ))}
         </div>
-        {gallery.sections?.map((section) => (
-          <div key={section.title} className="mt-16">
-            <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-              {section.images.map((src, i) => (
-                <div
-                  key={src}
-                  className="overflow-hidden rounded-xl"
-                >
-                  <img src={src} alt={`${section.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      )}
     </motion.div>
+  );
+}
+
+function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; artist?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const allImages = [...gallery.images, ...(gallery.sections?.flatMap(s => s.images) ?? [])];
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
+        onClick={onClose}
+      >
+        <div className="w-full max-w-[1200px] px-6 py-16" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl md:text-3xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
+            <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
+          </div>
+          {gallery.artist && (
+            <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">참여작가 : {gallery.artist}</p>
+          )}
+          {gallery.desc && (
+            <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
+              {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+                part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
+              )}
+            </p>
+          )}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {gallery.images.map((src, i) => (
+              <div
+                key={src}
+                className="overflow-hidden rounded-xl cursor-pointer"
+                onClick={() => setLightboxIndex(i)}
+              >
+                <img src={src} alt={`${gallery.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+            ))}
+          </div>
+          {gallery.sections?.map((section, sIdx) => {
+            const offset = gallery.images.length + (gallery.sections?.slice(0, sIdx).reduce((sum, s) => sum + s.images.length, 0) ?? 0);
+            return (
+              <div key={section.title} className="mt-16">
+                <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {section.images.map((src, i) => (
+                    <div
+                      key={src}
+                      className="overflow-hidden rounded-xl cursor-pointer"
+                      onClick={() => setLightboxIndex(offset + i)}
+                    >
+                      <img src={src} alt={`${section.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </motion.div>
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <PhotoDetailLightbox
+            images={allImages}
+            initialIndex={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
