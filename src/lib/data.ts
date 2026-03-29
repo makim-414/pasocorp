@@ -92,7 +92,7 @@ export const feedCards: CardItem[] = [
       "PASO Art Center의 첫 전시. 동시대 미술의 새로운 시선을 마곡에서 만나보세요.",
     date: "Now Showing",
     tags: ["Exhibition"],
-    image: "/brands/paso-gallery-reborn.jpg",
+    image: "/images/exhibitions/reborn/reborn-1.jpg",
     href: "https://v.daum.net/v/20251103174751777",
     featured: true,
   },
@@ -113,7 +113,7 @@ export const feedCards: CardItem[] = [
       "마곡 주민과 함께하는 월간 아트 토크. 와인 한 잔과 미술 이야기.",
     date: "Monthly",
     tags: ["Community"],
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=90",
+    image: "/images/exhibitions/hino-salon/hino-salon-1.png",
     href: "#",
   },
   {
