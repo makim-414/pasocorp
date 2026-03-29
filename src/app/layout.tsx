@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond } from "next/font/google";
 import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  display: "swap",
+  variable: "--font-cormorant",
+});
 
 export const metadata: Metadata = {
   title: { default: "파소(PASO) | 데이터 기반 미술 자산 전략", template: "%s — 파소(PASO)" },
@@ -89,7 +97,7 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={cormorantGaramond.variable}>
       <head>
         <script
           type="application/ld+json"
