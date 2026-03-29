@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import EcosystemSection from "@/components/EcosystemSection";
 
 
 const fadeUp = {
@@ -69,6 +70,9 @@ export default function AboutContent() {
           </motion.div>
         </div>
       </section>
+
+      {/* Ecosystem */}
+      <EcosystemSection />
 
       {/* About Paso */}
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
