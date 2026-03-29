@@ -618,10 +618,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-[#b8960b] mt-0.5">—</span>
-                  <p>Light Room · Dark Room 두 개의 전시실 운영</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
                   <p>전시 기획 및 설치 지원 서비스 제공</p>
                 </div>
               </div>
