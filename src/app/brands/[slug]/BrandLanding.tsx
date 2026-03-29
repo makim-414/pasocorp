@@ -364,7 +364,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-8xl lg:text-9xl text-white font-extralight tracking-tight"
+            className="text-5xl md:text-8xl lg:text-9xl text-white font-extralight tracking-tight text-thin-cross"
             style={{ fontFamily: "var(--font-dutch)" }}
           >
             Space by PASO
@@ -535,7 +535,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Venue</p>
-              <h2 className="text-3xl md:text-5xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
+              <h2 className="text-3xl md:text-5xl font-light text-white mb-6 text-thin-cross" style={{ fontFamily: "var(--font-dutch)" }}>
                 Space by PASO
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">
