@@ -404,7 +404,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-6"
+            className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-10"
           >
             Since {brand.year}
           </motion.p>
@@ -421,7 +421,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-6 text-sm md:text-base text-[#aaa] font-light max-w-lg mx-auto"
+            className="mt-10 text-sm md:text-base text-[#aaa] font-light max-w-lg mx-auto"
           >
             Private Art Space for Thought Leaders
           </motion.p>
@@ -429,7 +429,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="mt-10 flex gap-4 justify-center"
+            className="mt-14 flex gap-4 justify-center"
           >
             <a href="#exhibitions" className="px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
               Exhibitions
