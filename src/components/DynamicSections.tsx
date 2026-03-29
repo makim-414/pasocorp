@@ -138,7 +138,7 @@ function TripleFeature() {
   const cards = [
     { image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg", title: "Paso Private Sales", desc: "Paso Gallery의 프라이빗 세일", tall: false, href: "https://pasogallery.com" },
     { image: "/images/whats-happening/preopening.png", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "https://v.daum.net/v/20251103174751777" },
-    { image: "/images/exhibitions/hino-salon/hino-salon-1.png", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "/brands/paso-art-center" },
+    { image: "/images/whats-happening/magok-salon.png", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "/brands/paso-art-center" },
   ];
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
