@@ -61,53 +61,6 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
-      {/* Space */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div {...fadeUp}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Venue</p>
-              <h2 className="text-3xl md:text-5xl text-white mb-6 font-light" style={{ fontFamily: "var(--font-dutch)" }}>
-                Space by PASO
-              </h2>
-              <p className="text-[#888] font-light leading-relaxed mb-8">
-                서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다. Light Room과 Dark Room, 두 개의 전시실이 서로 다른 분위기를 연출합니다.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="border border-[#1a1a1a] p-6 hover:border-[#333] transition-colors">
-                  <h4 className="text-sm text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Light Room</h4>
-                  <p className="text-xs text-[#666] font-light">자연광이 스며드는 한옥 마루 공간. 회화, 설치, 사진 전시에 적합.</p>
-                </div>
-                <div className="border border-[#1a1a1a] p-6 hover:border-[#333] transition-colors">
-                  <h4 className="text-sm text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Dark Room</h4>
-                  <p className="text-xs text-[#666] font-light">조명 연출이 자유로운 밀폐 공간. 미디어아트, 영상, 몰입형 전시에 적합.</p>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div {...fadeUp} className="relative">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-3">
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src="/images/gallery/gallery-01.jpg" alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="aspect-square overflow-hidden">
-                    <img src="/images/gallery/gallery-03.jpg" alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                </div>
-                <div className="space-y-3 pt-8">
-                  <div className="aspect-square overflow-hidden">
-                    <img src="/images/gallery/gallery-02.jpg" alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src="/images/gallery/gallery-04.jpg" alt="Gallery space" className="w-full h-full object-cover" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Location Info */}
       <section className="bg-black border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
