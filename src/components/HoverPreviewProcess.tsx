@@ -29,7 +29,7 @@ const previewData: Record<string, { image: string; title: string; subtitle: stri
     href: "/brands/artledger-consulting",
   },
   agency: {
-    image: "/brands/paso-agency.jpg",
+    image: "/images/projects/cu-dding-collab.jpg",
     title: "Paso Agency",
     subtitle: "캐릭터 IP · B2B 아트 프로젝트",
     href: "/brands/paso-agency",

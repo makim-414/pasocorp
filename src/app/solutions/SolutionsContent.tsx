@@ -55,7 +55,7 @@ const solutions = [
     desc: "캐릭터 IP 라이선싱, 프랜차이즈 아트 콜라보, 아트토이·스트릿 아트.",
     color: "#d4a574",
     features: ["캐릭터 IP 개발", "브랜드 콜라보레이션", "아트토이 제작", "공간 아트 큐레이션"],
-    image: "/brands/paso-agency.jpg",
+    image: "/images/projects/cu-dding-collab.jpg",
   },
 ];
 
