@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
+import StandaloneNav from "@/components/StandaloneNav";
 import Footer from "@/components/Footer";
 import ContactContent from "./ContactContent";
 
@@ -15,7 +15,17 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="bg-black min-h-screen">
-      <Navbar />
+      <StandaloneNav
+        siteName="Paso Gallery"
+        homeHref="/brands/paso-gallery"
+        links={[
+          { label: "Exhibitions", href: "/brands/paso-gallery#exhibitions" },
+          { label: "Spaces", href: "/brands/paso-gallery#space" },
+          { label: "About", href: "/about" },
+          { label: "Request", href: "/contact", isButton: true },
+        ]}
+        accentColor="#b8960b"
+      />
       <ContactContent />
       <Footer />
     </div>
