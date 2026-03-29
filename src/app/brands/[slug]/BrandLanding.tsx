@@ -848,6 +848,20 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
+      {/* ── 본사 바로가기 ── */}
+      <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-6">PASO Corporation</motion.p>
+          <motion.h2 {...fadeUp} className="text-3xl md:text-5xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>본사 바로가기</motion.h2>
+          <motion.p {...fadeUp} className="text-sm md:text-base text-[#888] font-light mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
+          <motion.div {...fadeUp}>
+            <Link href="/" className="inline-block px-12 py-4 border border-[#b8960b] text-[#b8960b] text-sm tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+              PASO Corp
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       <BrandCTA brand={brand} />
     </>
   );
