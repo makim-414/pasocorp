@@ -4,7 +4,6 @@ import ScrollHeroSection from "@/components/ScrollHeroSection";
 import { DynamicTop, DynamicBottom } from "@/components/DynamicSections";
 import BrandHub from "@/components/BrandHub";
 import Services from "@/components/Services";
-import PasoOfferCarousel from "@/components/OfferCarousel";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
         <DynamicTop />
         <BrandHub />
         <DynamicBottom />
-        <PasoOfferCarousel />
         <Services />
       </main>
       <Footer />

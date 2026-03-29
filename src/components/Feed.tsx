@@ -118,21 +118,21 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 function TripleFeature() {
   const cards = [
     {
-      image: "/brands/paso-private-sales.png",
+      image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg",
       title: "Paso Private Sales",
       desc: "Paso Gallery의 프라이빗 세일",
       tall: false,
-      href: "/brands/paso-gallery",
+      href: "https://pasogallery.com",
     },
     {
-      image: "/brands/paso-gallery-reborn.jpg",
+      image: "/images/exhibitions/reborn/reborn-1.jpg",
       title: "프리오프닝 상설전",
       desc: "PASO Art Center의 첫 전시",
       tall: true,
       href: "https://v.daum.net/v/20251103174751777",
     },
     {
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
+      image: "/images/exhibitions/hino-salon/hino-salon-1.png",
       title: "마곡 아트 살롱",
       desc: "월간 커뮤니티 아트 토크",
       tall: false,
@@ -350,7 +350,7 @@ export default function Feed() {
         title="Data-Driven Art Trading Platform"
         desc="국내외 경매·Private Sales 등 1,500만 건 이상 거래 데이터. Artist Index, 종목분석서 스타일 정량 리포트로 미술품 투자의 새로운 기준을 제시합니다."
         cta="EXPLORE ARTRADER"
-        image="/brands/artrader-platform.jpg"
+        image="/brands/artrader-platform-hd.png"
         reverse
       />
 

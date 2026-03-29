@@ -114,14 +114,14 @@ OfferCarousel.displayName = "OfferCarousel";
 const pasoOffers: Offer[] = [
   {
     id: 1,
-    imageSrc: "/brands/paso-gallery.jpg",
+    imageSrc: "/brands/paso-gallery.png",
     imageAlt: "Paso Gallery",
     tag: "전시 · 갤러리",
     title: "2025 신진작가 공모전",
     description: "검증된 신진작가의 작품을 직접 만나보세요. 매년 엄선된 수상작을 전시합니다.",
-    brandLogoSrc: "/brands/paso-gallery.jpg",
+    brandLogoSrc: "/brands/paso-gallery.png",
     brandName: "Paso Gallery",
-    href: "/brands/paso-gallery",
+    href: "https://pasogallery.com",
   },
   {
     id: 2,
@@ -136,12 +136,12 @@ const pasoOffers: Offer[] = [
   },
   {
     id: 3,
-    imageSrc: "/brands/artrader-platform.jpg",
+    imageSrc: "/brands/artrader-platform-hd.png",
     imageAlt: "Artrader",
     tag: "데이터 · 거래",
     title: "1,500만 건 실거래가 분석",
     description: "글로벌 옥션 데이터 기반, 적정 매입가와 시세를 실시간으로 확인하세요.",
-    brandLogoSrc: "/brands/artrader-platform.jpg",
+    brandLogoSrc: "/brands/artrader-platform-hd.png",
     brandName: "Artrader",
     href: "/brands/artrader",
   },

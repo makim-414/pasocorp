@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import EcosystemSection from "@/components/EcosystemSection";
+
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -10,14 +12,6 @@ const fadeUp = {
 };
 
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
-
-const timeline = [
-  { year: "2020", event: "PASO Inc. 설립" },
-  { year: "2021", event: "Paso Gallery 오픈 (종로구)" },
-  { year: "2023", event: "Paso Agency 론칭 — 캐릭터 IP·B2B 프로젝트" },
-  { year: "2024", event: "Artrader 플랫폼 런칭 — 1,500만+ 거래 데이터" },
-  { year: "2025", event: "PASO Art Center 오픈 (with Mass C&G)\nArtledger Consulting 런칭" },
-];
 
 const team = [
   { name: "Leadership", role: "CEO & Founder", desc: "미술 시장 데이터 분석 전문가. 금융·테크 배경으로 미술 자산화 전략을 설계합니다." },
@@ -37,7 +31,7 @@ export default function AboutContent() {
       <section className="relative h-[60vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/brands/paso-artcenter-building.jpg"
+            src="/brands/paso-gallery-about.jpg"
             alt="PASO"
             fill
             className="object-cover"
@@ -77,6 +71,32 @@ export default function AboutContent() {
         </div>
       </section>
 
+      {/* Ecosystem */}
+      <EcosystemSection />
+
+      {/* About Paso */}
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">About</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>About Paso</motion.h2>
+
+          <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12 space-y-8">
+            <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
+              2013년 &lsquo;푸에스토 (Puesto) 갤러리&rsquo;라는 이름으로 시작된 &lsquo;파소 (Paso) 갤러리&rsquo;는 한국의 신진작가들을 발굴하고 지원하는 것에 주력하였습니다. 현재 10년간 개최하고 있는 &lsquo;신진 아티스트 공모전&rsquo;을 한국의 신진 작가들에게 개인전과 단체전 등 다양한 전시 기회를 지원하고, 작가들과 기업간의 협력 기회를 창출함으로써 유망 작가들의 시장 진출을 다방면으로 확장하는 것을 목표로 합니다.
+            </p>
+            <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
+              파소의 활동 범위는 B2C(기업과 개인)를 넘어 B2B(기업과 기업)과 B2G(기업과 정부) 분야로 확장하고 있습니다. 파소는 정부 기관과 협력하여 다양한 문화 활동이 집적된 지역을 미술과 문화 컨텐츠로 재생시켜, 생동감 넘치는 예술 공간으로 재단장하는 프로젝트들을 기획합니다.
+            </p>
+            <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
+              또한, 미술, 패션, 광고 등 문화계의 다양한 주요 협업사들과의 프로젝트를 조성하며, 기업의 ESG시급 운용 효율성을 높일 수 있는 영향력 있는 프로젝트들을 설계하는 것을 목표로 합니다.
+            </p>
+            <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
+              현재 파소는 신진 작가를 지원하는 것을 넘어 문화 예술계와 기업 / 정부간 협력에서 중추적 역할을 하는 조직으로 성장하고 있습니다. 특히 문화 유산의 글로벌화 및 활성화와 예술계에서 지속 가능한 파트너십 구축에 주요 초점을 맞추어 문화 조직 발전에 앞장서고 있습니다.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -93,38 +113,24 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* PASO Corp */}
       <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">History</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Our Journey</motion.h2>
-          <div className="space-y-0">
-            {timeline.map((item, i) => (
-              <motion.div key={item.year} {...stagger(i)} className="flex gap-8 items-start py-6 border-b border-[#1a1a1a] last:border-0">
-                <span className="text-2xl font-light text-[#b8960b] shrink-0 w-16" style={{ fontFamily: "var(--font-dutch)" }}>{item.year}</span>
-                <p className="text-sm text-[#888] font-light leading-relaxed whitespace-pre-line">{item.event}</p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-6">PASO Corporation</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>본사 바로가기</motion.h2>
+          <motion.p {...fadeUp} className="text-sm text-[#888] font-light mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
+          <motion.a
+            {...fadeUp}
+            href="https://pasocorp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block border border-[#b8960b] text-[#b8960b] px-10 py-4 text-sm tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-colors duration-300"
+          >
+            PASO Corp
+          </motion.a>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Team</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Leadership</motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {team.map((t, i) => (
-              <motion.div key={t.name} {...stagger(i)} className="p-8 border border-[#1a1a1a]">
-                <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-2">{t.role}</p>
-                <h3 className="text-xl text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{t.name}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{t.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

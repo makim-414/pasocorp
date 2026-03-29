@@ -68,8 +68,8 @@ export default function ScrollHeroSection({
 
       <style jsx global>{`
         .scroll-hero-wrapper {
-          --scroll-start: 30vh;
-          --scroll-space: 40vh;
+          --scroll-start: 45vh;
+          --scroll-space: 55vh;
           --scroll-hue: 45;
           --scroll-accent: hsl(var(--scroll-hue) 80% 55%);
           --scroll-font-size-min: 16;
@@ -86,8 +86,8 @@ export default function ScrollHeroSection({
 
         @media (min-width: 768px) {
           .scroll-hero-wrapper {
-            --scroll-start: 50vh;
-            --scroll-space: 50vh;
+            --scroll-start: 55vh;
+            --scroll-space: 65vh;
           }
         }
 
@@ -179,16 +179,16 @@ export default function ScrollHeroSection({
         /* Bottom gold section — contained within wrapper */
         .scroll-hero-main {
           width: 100%;
-          height: 60vh;
-          min-height: 400px;
+          height: 80vh;
+          min-height: 500px;
           position: relative;
           color: black;
         }
 
         @media (min-width: 768px) {
           .scroll-hero-main {
-            height: 100vh;
-            min-height: 500px;
+            height: 120vh;
+            min-height: 600px;
           }
         }
 

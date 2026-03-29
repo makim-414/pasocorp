@@ -5,7 +5,7 @@ import type React from "react";
 
 const previewData: Record<string, { image: string; title: string; subtitle: string; href: string }> = {
   gallery: {
-    image: "/brands/paso-gallery.jpg",
+    image: "/brands/paso-gallery.png",
     title: "Paso Gallery",
     subtitle: "신진작가 발굴 · 전시 · 아트 MD",
     href: "https://pasogallery.com",
@@ -17,7 +17,7 @@ const previewData: Record<string, { image: string; title: string; subtitle: stri
     href: "/brands/paso-art-center",
   },
   artrader: {
-    image: "/brands/artrader-platform.jpg",
+    image: "/brands/artrader-platform-hd.png",
     title: "Artrader",
     subtitle: "1,500만+ 거래 데이터 기반 시세 분석",
     href: "https://artrader.io",

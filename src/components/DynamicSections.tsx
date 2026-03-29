@@ -136,9 +136,9 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 /* ───── Staggered triple feature ───── */
 function TripleFeature() {
   const cards = [
-    { image: "/brands/paso-gallery-heritage.jpg", title: "Paso Private Sales", desc: "Paso Gallery의 프라이빗 세일", tall: false, href: "/brands/paso-gallery" },
-    { image: "/brands/paso-gallery-reborn.jpg", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "https://v.daum.net/v/20251103174751777" },
-    { image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "/brands/paso-art-center" },
+    { image: "/images/whats-happening/private-sales.png", title: "Paso Private Sales", desc: "Paso Gallery의 프라이빗 세일", tall: false, href: "https://pasogallery.com" },
+    { image: "/images/whats-happening/preopening.png", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "https://v.daum.net/v/20251103174751777" },
+    { image: "/images/whats-happening/magok-salon.png", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "/brands/paso-art-center" },
   ];
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -229,7 +229,7 @@ export function DynamicBottom() {
   return (
     <div className="bg-black">
       {/* Stats bar */}
-      <section className="border-y border-[#1a1a1a] bg-[#0a0a0a]">
+      <section className="border-y border-[#1a1a1a] bg-black">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           <Counter value="1,580만+" label={"보유 옥션 데이터"} />
           <Counter value="90,000+" label={"국내 미술시장\n분석 데이터"} />
