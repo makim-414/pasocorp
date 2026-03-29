@@ -320,7 +320,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     ],
   },
   "Forest of Finity": {
-    images: [4,5,6,7,8,9,10,13,15,16,17,18].map(n => `/images/exhibitions/forest-of-finity/forest-of-finity-${n}.jpg`),
+    images: [6,8,9,10,13,15,16,17,18].map(n => `/images/exhibitions/forest-of-finity/forest-of-finity-${n}.jpg`),
     desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다'\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.\n\n이지은 작가는 극과 극의 대비를 통해 가시적인 형상을 가로질러서 그 속의 숨은 뜻, 즉 외적인 형상만이 아닌 내면의 본질을 향한 깨달음을 드러내려고 합니다. 또한 본질적인 의미를 담아내기 위해 조각가로서 다양한 조형미를 통해 이를 전달하고 있지만, 이조차 역설적이며, 이런 상충한 면모들이 이지은 작가의 작업 전반에 중요한 요소들입니다.",
   },
   "히노살롱": {
@@ -599,51 +599,86 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* ── SPACE: 한옥 Gallery ── */}
+      {/* ── SPACE RENTAL INQUIRY ── */}
       <section id="space" className="py-24 md:py-32 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Venue</p>
-              <h2 className="text-3xl md:text-5xl text-white mb-6 text-thin-cross" style={{ fontFamily: "var(--font-cormorant), var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}>
-                Space by PASO
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
+              <h2 className="text-3xl md:text-5xl text-white mb-6" style={{ fontFamily: "var(--font-cormorant), var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}>
+                공간 대관 문의
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">
-                서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다. Light Room과 Dark Room, 두 개의 전시실이 서로 다른 분위기를 연출합니다.
+                서울 종로구에 위치한 한옥 갤러리에서 전시, 팝업, 프라이빗 이벤트를 진행해 보세요. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
               </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="border border-[#1a1a1a] p-6 hover:border-[#333] transition-colors">
-                  <h4 className="text-sm text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Light Room</h4>
-                  <p className="text-xs text-[#666] font-light">자연광이 스며드는 한옥 마루 공간. 회화, 설치, 사진 전시에 적합.</p>
+              <div className="space-y-4 text-sm text-[#666] font-light">
+                <div className="flex items-start gap-3">
+                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <p>전시, 팝업, 프라이빗 이벤트, 촬영 등 다양한 목적의 대관 가능</p>
                 </div>
-                <div className="border border-[#1a1a1a] p-6 hover:border-[#333] transition-colors">
-                  <h4 className="text-sm text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Dark Room</h4>
-                  <p className="text-xs text-[#666] font-light">조명 연출이 자유로운 밀폐 공간. 미디어아트, 영상, 몰입형 전시에 적합.</p>
+                <div className="flex items-start gap-3">
+                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <p>Light Room · Dark Room 두 개의 전시실 운영</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <p>전시 기획 및 설치 지원 서비스 제공</p>
                 </div>
               </div>
-              <a href="mailto:makim@ironact.net" className="inline-block mt-8 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
-                공간 대관 문의
-              </a>
             </motion.div>
-            <motion.div {...fadeUp} className="relative">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-3">
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src={brand.gallery[0]} alt="Gallery space" className="w-full h-full object-cover" />
+
+            <motion.div {...fadeUp}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const subject = encodeURIComponent("공간 대관 문의");
+                  const body = encodeURIComponent(
+                    `이름: ${formData.get("name")}\n연락처: ${formData.get("phone")}\n대관 희망일: ${formData.get("date")}\n행사 유형: ${formData.get("eventType")}\n\n${formData.get("message")}`
+                  );
+                  window.open(`mailto:makim@ironact.net?subject=${subject}&body=${body}`);
+                }}
+                className="space-y-6"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
+                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
-                  <div className="aspect-square overflow-hidden">
-                    <img src={brand.gallery[2]} alt="Gallery space" className="w-full h-full object-cover" />
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
+                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                 </div>
-                <div className="space-y-3 pt-8">
-                  <div className="aspect-square overflow-hidden">
-                    <img src={brand.gallery[1]} alt="Gallery space" className="w-full h-full object-cover" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
+                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src={brand.gallery[3]} alt="Gallery space" className="w-full h-full object-cover" />
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">대관 희망일</label>
+                    <input name="date" type="date" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [color-scheme:dark]" />
                   </div>
                 </div>
-              </div>
+                <div>
+                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">행사 유형</label>
+                  <select name="eventType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
+                    <option value="">선택해주세요</option>
+                    <option value="전시">전시</option>
+                    <option value="팝업">팝업</option>
+                    <option value="프라이빗 이벤트">프라이빗 이벤트</option>
+                    <option value="촬영">촬영</option>
+                    <option value="기타">기타</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">메시지</label>
+                  <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+                </div>
+                <button type="submit" className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+                  문의하기
+                </button>
+              </form>
             </motion.div>
           </div>
         </div>
