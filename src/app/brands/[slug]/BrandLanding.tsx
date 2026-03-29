@@ -634,7 +634,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                   const formData = new FormData(e.currentTarget);
                   const subject = encodeURIComponent("공간 대관 문의");
                   const body = encodeURIComponent(
-                    `이름: ${formData.get("name")}\n연락처: ${formData.get("phone")}\n대관 희망일: ${formData.get("date")}\n행사 유형: ${formData.get("eventType")}\n\n${formData.get("message")}`
+                    `이름: ${formData.get("name")}\n연락처: ${formData.get("phone")}\n대관 요청 희망일: ${formData.get("date")}\n행사 유형: ${formData.get("eventType")}\n\n${formData.get("message")}`
                   );
                   window.open(`mailto:makim@ironact.net?subject=${subject}&body=${body}`);
                 }}
@@ -656,7 +656,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                     <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">대관 희망일</label>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">대관 요청 희망일</label>
                     <input name="date" type="date" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [color-scheme:dark]" />
                   </div>
                 </div>
