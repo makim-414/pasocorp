@@ -297,7 +297,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "Intermission : 이다희 (Rising Artist Contest)": {
     images: [...Array.from({ length: 5 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 4}.jpg`), "/images/exhibitions/traces-of-light/intermission-new1.jpg", "/images/exhibitions/traces-of-light/intermission-new2.jpg", "/images/exhibitions/traces-of-light/intermission-add1.jpg", "/images/exhibitions/traces-of-light/intermission-add2.jpg"],
-    desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중",
+    desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\n참고기사 : https://www.opengallery.co.kr/exhibition/3998/",
   },
   "Paso Gallery x ARTIVIST.": {
     images: [1,2,6,9,11,14,17,19,23,24,31,32,33,34,39,43,44,52,53].map(n => `/images/exhibitions/bno-patron/bno-patron-${n}.jpg`),
