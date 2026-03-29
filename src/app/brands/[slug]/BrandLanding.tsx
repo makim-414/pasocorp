@@ -324,7 +324,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다'\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.\n\n이지은 작가는 극과 극의 대비를 통해 가시적인 형상을 가로질러서 그 속의 숨은 뜻, 즉 외적인 형상만이 아닌 내면의 본질을 향한 깨달음을 드러내려고 합니다. 또한 본질적인 의미를 담아내기 위해 조각가로서 다양한 조형미를 통해 이를 전달하고 있지만, 이조차 역설적이며, 이런 상충한 면모들이 이지은 작가의 작업 전반에 중요한 요소들입니다.",
   },
   "히노살롱": {
-    images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.jpg`),
+    images: [2,3,6,7,9,10,12,13,16,17,18,19,22,23,26,28,30,34].map(n => `/images/exhibitions/hino-salon/hino-salon-${n}.jpg`),
     desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
   },
   "빠끼": {
@@ -340,7 +340,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "",
   },
   "메이커스마크": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.jpg`),
+    images: [1, 2, 5].map(i => `/images/exhibitions/makers-mark/makers-mark-${i}.jpg`),
     desc: "",
   },
 };

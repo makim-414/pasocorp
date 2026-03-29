@@ -109,7 +109,7 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="absolute"
-          style={{ left: CX - 40, top: CY - 40, width: 80, height: 80 }}
+          style={{ left: `${((CX - 40) / SIZE) * 100}%`, top: `${((CY - 40) / SIZE) * 100}%`, width: `${(80 / SIZE) * 100}%`, height: `${(80 / SIZE) * 100}%` }}
         >
           <div className="w-full h-full rounded-full border border-[#b8960b]/20 bg-[#b8960b]/5 flex items-center justify-center">
             <span className="text-sm tracking-[0.25em] text-[#b8960b]/80 font-light">PASO</span>
@@ -132,7 +132,7 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 + 0.5 }}
               className="absolute cursor-pointer"
-              style={{ left: pos.x - 52, top: pos.y - 52, width: 104, height: 104 }}
+              style={{ left: `${((pos.x - 52) / SIZE) * 100}%`, top: `${((pos.y - 52) / SIZE) * 100}%`, width: `${(104 / SIZE) * 100}%`, height: `${(104 / SIZE) * 100}%` }}
               onMouseEnter={() => setHovered(brand.id)}
               onMouseLeave={() => setHovered(null)}
             >
