@@ -233,6 +233,141 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    3. PASO GALLERY — Cinematic / Full-screen hero
    ═══════════════════════════════════════════════════ */
+function getTodayString() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function RentalInquirySection() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [eventType, setEventType] = useState("");
+  const [message, setMessage] = useState("");
+  const today = getTodayString();
+
+  return (
+    <section id="rental" className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <motion.div {...fadeUp}>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
+            <h2 className="text-3xl md:text-5xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
+              공간 대관 문의
+            </h2>
+            <p className="text-[#888] font-light leading-relaxed mb-10">
+              서울 종로구에 위치한 한옥 갤러리에서 전시, 팝업, 프라이빗 이벤트를 진행해 보세요. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
+            </p>
+            <div className="space-y-4 text-sm text-[#888] font-light">
+              <p className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-1">—</span>
+                전시, 팝업, 프라이빗 이벤트, 촬영 등 다양한 목적의 대관 가능
+              </p>
+              <p className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-1">—</span>
+                전시 기획 및 설치 지원 서비스 제공
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div {...fadeUp}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                window.location.href = `mailto:makim@ironact.net?subject=${encodeURIComponent(`공간 대관 문의 — ${date}`)}&body=${encodeURIComponent(`이름: ${name}\n이메일: ${email}\n연락처: ${phone}\n대관 희망일: ${date}\n행사 유형: ${eventType}\n\n${message}`)}`;
+              }}
+              className="space-y-6"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[10px] tracking-[0.15em] uppercase text-[#555] mb-2">이름</label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    placeholder="홍길동"
+                    className="w-full bg-transparent border-b border-[#333] px-0 py-3 text-sm text-white font-light placeholder:text-[#555] focus:border-[#b8960b] focus:outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] tracking-[0.15em] uppercase text-[#555] mb-2">이메일</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="email@example.com"
+                    className="w-full bg-transparent border-b border-[#333] px-0 py-3 text-sm text-white font-light placeholder:text-[#555] focus:border-[#b8960b] focus:outline-none transition-colors"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[10px] tracking-[0.15em] uppercase text-[#555] mb-2">연락처</label>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="010-0000-0000"
+                    className="w-full bg-transparent border-b border-[#333] px-0 py-3 text-sm text-white font-light placeholder:text-[#555] focus:border-[#b8960b] focus:outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] tracking-[0.15em] uppercase text-[#555] mb-2">대관 요청 희망일</label>
+                  <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    min={today}
+                    required
+                    className="w-full bg-transparent border-b border-[#333] px-0 py-3 text-sm text-white font-light placeholder:text-[#555] focus:border-[#b8960b] focus:outline-none transition-colors [color-scheme:dark]"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-[10px] tracking-[0.15em] uppercase text-[#555] mb-2">행사 유형</label>
+                <select
+                  value={eventType}
+                  onChange={(e) => setEventType(e.target.value)}
+                  required
+                  className="w-full bg-transparent border-b border-[#333] px-0 py-3 text-sm text-white font-light focus:border-[#b8960b] focus:outline-none transition-colors [color-scheme:dark] appearance-none"
+                >
+                  <option value="" disabled className="bg-black">선택해주세요</option>
+                  <option value="전시" className="bg-black">전시</option>
+                  <option value="팝업" className="bg-black">팝업</option>
+                  <option value="프라이빗 이벤트" className="bg-black">프라이빗 이벤트</option>
+                  <option value="촬영" className="bg-black">촬영</option>
+                  <option value="기타" className="bg-black">기타</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-[10px] tracking-[0.15em] uppercase text-[#555] mb-2">메시지</label>
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  rows={4}
+                  placeholder="문의 내용을 입력해주세요"
+                  className="w-full bg-transparent border-b border-[#333] px-0 py-3 text-sm text-white font-light placeholder:text-[#555] focus:border-[#b8960b] focus:outline-none transition-colors resize-none"
+                />
+              </div>
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  className="px-10 py-4 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300"
+                >
+                  문의하기
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function GalleryLayout({ brand }: { brand: BrandData }) {
   const exhibitions = [
     { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: brand.gallery[0] },
@@ -528,6 +663,9 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           </div>
         </div>
       </section>
+
+      {/* ── SPACE RENTAL INQUIRY ── */}
+      <RentalInquirySection />
 
       {/* ── LOCATION INFO ── */}
       <section className="bg-black border-t border-[#1a1a1a]">
