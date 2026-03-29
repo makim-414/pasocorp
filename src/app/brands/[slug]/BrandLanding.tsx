@@ -234,11 +234,45 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
    3. PASO GALLERY — Cinematic / Full-screen hero
    ═══════════════════════════════════════════════════ */
 function GalleryLayout({ brand }: { brand: BrandData }) {
+  const [selectedExhibition, setSelectedExhibition] = useState<number | null>(null);
+
   const exhibitions = [
-    { title: "REBORN", artist: "Group Exhibition", date: "2025.03 — 04", image: brand.gallery[0] },
-    { title: "Golden Reeds", artist: "Minjae Park", date: "2025.01 — 02", image: brand.gallery[1] },
-    { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: brand.gallery[2] },
-    { title: "Traces of Light", artist: "Hyunwoo Lee", date: "2024.09 — 10", image: brand.gallery[3] },
+    {
+      title: "REBORN",
+      artist: "Rom Sangkavatana",
+      date: "2025.03 — 04",
+      image: brand.gallery[0],
+      description: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
+      pressLinks: [
+        { label: "관련기사", href: "https://www.newsfinder.co.kr/news/articleView.html?idxno=200520" },
+      ],
+    },
+    {
+      title: "Intermission",
+      artist: "이다희 (Rising Artist Contest)",
+      date: "2023.06",
+      image: brand.gallery[1],
+      description: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.",
+      pressLinks: [
+        { label: "참고기사", href: "https://www.opengallery.co.kr/exhibition/3998/" },
+      ],
+    },
+    {
+      title: "The Sculpture Garden",
+      artist: "Soyeon Kim",
+      date: "2024.11 — 12",
+      image: brand.gallery[2],
+      description: "",
+      pressLinks: [],
+    },
+    {
+      title: "Traces of Light",
+      artist: "Hyunwoo Lee",
+      date: "2024.09 — 10",
+      image: brand.gallery[3],
+      description: "",
+      pressLinks: [],
+    },
   ];
 
   const clients = [
@@ -395,6 +429,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 key={ex.title}
                 {...stagger(i)}
                 className="group relative overflow-hidden cursor-pointer"
+                onClick={() => setSelectedExhibition(i)}
               >
                 <div className={`relative ${i === 0 || i === 3 ? "aspect-[4/5]" : "aspect-[3/4]"} overflow-hidden`}>
                   <img
@@ -412,6 +447,86 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               </motion.div>
             ))}
           </div>
+
+          {/* ── Exhibition Detail Modal ── */}
+          <AnimatePresence>
+            {selectedExhibition !== null && (() => {
+              const ex = exhibitions[selectedExhibition];
+              return (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/90 backdrop-blur-sm"
+                  onClick={() => setSelectedExhibition(null)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 40 }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="relative w-full max-w-[900px] mx-4 my-16 bg-[#111] border border-[#222]"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Close button */}
+                    <button
+                      onClick={() => setSelectedExhibition(null)}
+                      className="absolute top-6 right-6 z-10 text-[#555] hover:text-white transition-colors text-2xl"
+                    >
+                      ✕
+                    </button>
+
+                    <div className="p-8 md:p-12">
+                      {/* Title */}
+                      <h2 className="text-3xl md:text-5xl font-light text-white mb-4" style={{ fontFamily: "var(--font-dutch)" }}>
+                        {ex.title}
+                      </h2>
+
+                      {/* Artist */}
+                      <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-6">
+                        참여작가 : {ex.artist}
+                      </p>
+
+                      {/* Description */}
+                      {ex.description && (
+                        <p className="text-sm md:text-base text-[#aaa] font-light leading-relaxed mb-6">
+                          {ex.description}
+                        </p>
+                      )}
+
+                      {/* Press links */}
+                      {ex.pressLinks.length > 0 && (
+                        <div className="mb-8">
+                          {ex.pressLinks.map((link) => (
+                            <p key={link.href} className="text-sm">
+                              <span className="text-[#aaa]">{link.label} : </span>
+                              <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[#b8960b] underline hover:text-[#d4b830] transition-colors break-all"
+                              >
+                                {link.href}
+                              </a>
+                            </p>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Exhibition image */}
+                      <div className="aspect-video overflow-hidden">
+                        <img
+                          src={ex.image}
+                          alt={ex.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              );
+            })()}
+          </AnimatePresence>
         </div>
       </section>
 
