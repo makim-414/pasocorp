@@ -413,7 +413,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight text-thin-cross"
-            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 200, letterSpacing: "0.02em" }}
+            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
             Space by PASO
           </motion.h1>
@@ -605,7 +605,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Venue</p>
-              <h2 className="text-3xl md:text-5xl text-white mb-6 text-thin-cross" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 200, letterSpacing: "0.02em" }}>
+              <h2 className="text-3xl md:text-5xl text-white mb-6 text-thin-cross" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}>
                 Space by PASO
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">
