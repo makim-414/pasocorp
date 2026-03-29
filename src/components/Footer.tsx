@@ -51,8 +51,8 @@ const locations = [
   },
   {
     name: "Gallery",
-    address: "92, Seonggyungwan-ro, Jongno-gu",
-    detail: "Seoul, Hanok Building",
+    address: "서울 종로구 성균관로 92",
+    detail: "한옥 빌딩",
   },
   {
     name: "Art Center",

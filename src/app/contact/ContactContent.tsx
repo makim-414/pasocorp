@@ -18,9 +18,8 @@ const locations = [
 ];
 
 const contacts = [
-  { label: "Email", value: "contact@artrader.io", href: "mailto:contact@artrader.io" },
-  { label: "Instagram", value: "@pasoartcenter", href: "https://www.instagram.com/pasoartcenter" },
-  { label: "Phone", value: "+82 10-6432-4471", href: "tel:+821064324471" },
+  { label: "Email", value: "info@pasogallery.com", href: "mailto:info@pasogallery.com" },
+  { label: "Phone", value: "+82 2-925-3631", href: "tel:+8229253631" },
 ];
 
 const inquiries = [
@@ -55,7 +54,7 @@ export default function ContactContent() {
 
       {/* Contact info */}
       <section className="py-16 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-[800px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {contacts.map((c, i) => (
             <motion.div key={c.label} {...stagger(i)} className="text-center py-4">
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{c.label}</p>
@@ -78,7 +77,7 @@ export default function ContactContent() {
             {inquiries.map((item, i) => (
               <motion.a
                 key={item.title}
-                href="mailto:contact@artrader.io"
+                href="mailto:info@pasogallery.com"
                 {...stagger(i)}
                 className="block border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group"
               >

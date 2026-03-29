@@ -1,49 +1,25 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[] }> = {
-  1: {
-    title: "브랜드 콜라보 — CU × 장띵",
+  0: {
+    title: "장띵 — 델라페 18종",
     images: Array.from({ length: 8 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
-  3: {
-    title: "공간 아트 — A Twosome Place",
+  2: {
+    title: "투썸 — A Twosome Place",
     images: Array.from({ length: 8 }, (_, i) => `/images/projects/twosome/twosome-${i + 1}.jpg`),
   },
-  4: {
-    title: "팝업 전시 — 홍대 플래그쉽",
-    images: Array.from({ length: 4 }, (_, i) => `/images/projects/hongdae-flagship/${i + 1}.jpg`),
-  },
-  2: {
-    title: "아트토이 — Paso Gallery",
-    images: Array.from({ length: 7 }, (_, i) => `/images/projects/arttoy/${i + 1}.jpg`),
-  },
-  5: {
-    title: "스트릿 아트 — 도산공원 팝업",
-    images: [
-      "/images/projects/dosan-popup/1.jpg",
-      "/images/projects/dosan-popup/02.jpg",
-      "/images/projects/dosan-popup/03.jpg",
-      "/images/projects/dosan-popup/4.jpg",
-      "/images/projects/dosan-popup/5.jpg",
-      "/images/projects/dosan-popup/8.jpg",
-      "/images/projects/dosan-popup/9.jpg",
-      "/images/projects/dosan-popup/10.jpg",
-      "/images/projects/dosan-popup/13.jpg",
-      "/images/projects/dosan-popup/14.jpg",
-      "/images/projects/dosan-popup/15.jpg",
-      "/images/projects/dosan-popup/16.jpg",
-      "/images/projects/dosan-popup/17.png",
-      "/images/projects/dosan-popup/18.png",
-      "/images/projects/dosan-popup/19.png",
-    ],
+  3: {
+    title: "KUHO — 홍대 플래그쉽",
+    images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg", "/images/projects/hongdae-flagship/4.jpg"],
   },
 };
 
-function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string }; onClose: () => void }) {
+function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -58,21 +34,37 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
           <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
         </div>
         {gallery.desc && (
-          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10">{gallery.desc}</p>
+          <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
+            {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+              part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
+            )}
+          </p>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {gallery.images.map((src, i) => (
-            <motion.div
+            <div
               key={src}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
               className="overflow-hidden rounded-xl"
             >
-              <img src={src} alt={`${gallery.title} ${i + 1}`} className="w-full h-auto object-cover" />
-            </motion.div>
+              <img src={src} alt={`${gallery.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover" />
+            </div>
           ))}
         </div>
+        {gallery.sections?.map((section) => (
+          <div key={section.title} className="mt-16">
+            <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              {section.images.map((src, i) => (
+                <div
+                  key={src}
+                  className="overflow-hidden rounded-xl"
+                >
+                  <img src={src} alt={`${section.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </motion.div>
   );
@@ -86,6 +78,7 @@ interface BrandData {
   longDesc: string;
   color: string;
   image: string;
+  heroImages?: string[];
   gallery: string[];
   features: { title: string; desc: string; image?: string }[];
 }
@@ -101,9 +94,28 @@ const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay:
 
 /* ─── HERO (shared) ─── */
 function BrandHero({ brand }: { brand: BrandData }) {
+  const images = brand.heroImages ?? [brand.image];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
   return (
     <section className="relative h-[75vh] flex items-end overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${brand.image})` }} />
+      {images.map((src, i) => (
+        <motion.div
+          key={src}
+          animate={{ opacity: i === currentIndex ? 1 : 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${src})` }}
+        />
+      ))}
       <div className="absolute inset-0 bg-black/60" />
       <div className="absolute inset-0" style={{ background: `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />
       <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />
@@ -275,31 +287,63 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
    3. PASO GALLERY — Cinematic / Full-screen hero
    ═══════════════════════════════════════════════════ */
 /* ── Exhibition gallery data ── */
-const exhibitionGalleries: Record<string, { images: string[]; desc: string }> = {
+const exhibitionGalleries: Record<string, { images: string[]; desc: string; sections?: { title: string; images: string[] }[] }> = {
   "REBORN": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/reborn/reborn-${i + 1}.jpg`),
-    desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.",
+    images: ["/images/exhibitions/reborn/reborn-2.jpg", "/images/exhibitions/reborn/reborn-3.jpg", "/images/exhibitions/reborn/reborn-4.jpg", "/images/exhibitions/reborn/reborn-new.jpg"],
+    desc: "전통 한옥 공간에 현대 섬유 예술을 결합한 그룹전. 한지와 실크 소재의 대형 설치 작품이 고건축의 목구조와 어우러지며, 전통과 현대, 소멸과 재생이라는 주제를 탐구합니다. 빛에 의해 투영되는 직물의 그림자가 공간 전체를 하나의 작품으로 변모시킵니다.\n\n관련기사 : https://www.newsfinder.co.kr/news/articleView.html?idxno=200520",
   },
-  "Golden Reeds": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/golden-reeds/golden-reeds-${i + 1}.jpg`),
-    desc: "박민재 작가의 대규모 설치 작품. 수천 개의 금빛 갈대가 갤러리 내부를 가득 채우며, 관람객은 갈대 사이를 거닐며 자연과 인공의 경계를 체험합니다. 조명에 따라 시시각각 변하는 금빛 풍경은 도시 속 자연에 대한 향수를 불러일으킵니다.",
+  "Intermission : 이다희 (Rising Artist Contest)": {
+    images: [...Array.from({ length: 5 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 4}.jpg`), "/images/exhibitions/traces-of-light/intermission-new1.jpg", "/images/exhibitions/traces-of-light/intermission-new2.jpg"],
+    desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중",
   },
-  "The Sculpture Garden": {
-    images: Array.from({ length: 8 }, (_, i) => `/images/exhibitions/sculpture-garden/sculpture-garden-${i + 1}.jpg`),
-    desc: "김소연 작가가 자연에서 수집한 나뭇가지와 유기적 소재로 구성한 조각 정원. 한옥의 마당과 실내를 잇는 공간 설치를 통해 자연의 순환과 생명력을 표현합니다. 소재 본연의 질감과 형태가 만들어내는 조형적 긴장감이 돋보이는 전시입니다.",
+  "Paso Gallery x ARTIVIST.": {
+    images: [1,2,3,4,6,9,10,11,13,14,17,19,20,21,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,43,44,48,50,51,52,53].map(n => `/images/exhibitions/bno-patron/bno-patron-${n}.png`),
+    desc: "Private Art Forum : 'PATRONS'\n\n파소 갤러리가 @artiv.ist 와 함께 'Guide to start a contemporary art collection' 을 주제로 영 컬렉터들을 위한 프라이빗 아트 포럼을 개최하였습니다.\n\nGuide to start a contemporary art collection의 주제로, 예술가와 미술 업계 전문가들이 함께 현대미술 컬렉션을 시작하는 방법, 작품 선택에 대한 팁, 그리고 예술 시장의 동향 및 미래 등의 주제를 다루었습니다.\n\nPanel :\n서진석 관장 (현 울산시립미술관 관장, 전 백남준 아트센터 관장) @jinsuksuh\n유진상 교수 (계원조형대 교수, 2012 미디어시티비엔날레 총감독, 광주비엔날레 평가위원)\n\nModerator :\n이정우 에디터 (전 널위한문화예술) @jjjw117\n\nSpecial Guest :\nWhisbe @whisbe",
   },
   "Intermission : 이다희 작가 기획전": {
     images: [1, 3, 4, 5, 6, 7, 8].map(i => `/images/exhibitions/traces-of-light/traces-of-light-${i}.jpg`),
     desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다.",
   },
-  "Silent Dialogue": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/silent-dialogue/silent-dialogue-${i + 1}.jpg`),
-    desc: "침묵 속에서 나누는 대화. 도자, 섬유, 금속 등 다양한 매체를 다루는 세 작가가 한옥의 고요한 공간에서 각자의 언어로 소통합니다. 작품과 공간, 관람객 사이에 흐르는 비언어적 교감을 경험하는 전시입니다.",
+  "Project ReDE Gallery": {
+    images: [1,2,3,4,7].map(n => `/images/exhibitions/redegallery/redegallery-${n}.png`),
+    desc: "Starch Haus x Paso Gallery : Project ReDE Gallery\n\n참여작가 : Dirty Haerri 작가\n\n작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다.\n\n하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다. 작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다.\n\n따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다.",
+  },
+  "소호": {
+    images: [],
+    desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
+    sections: [
+      { title: "홍콩", images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.png`) },
+      { title: "소호프리뷰", images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/soho-preview/soho-preview-${i + 1}.png`) },
+    ],
+  },
+  "Forest of Finity": {
+    images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 4}.png`),
+    desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다!\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.",
+  },
+  "히노살롱": {
+    images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
+    desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
+  },
+  "빠끼": {
+    images: [1,2,3,4,5,8,9,10,11].map(n => `/images/exhibitions/bbakki/bbakki-${n}.png`),
+    desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다.",
+  },
+  "소호프리뷰": {
+    images: [12,13,14,15,2,3,4,5,6,7,8,11].map(n => `/images/exhibitions/soho-preview/soho-preview-${n}.png`),
+    desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
+  },
+  "화이자": {
+    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/hwaija/hwaija-${i + 1}.png`),
+    desc: "",
+  },
+  "메이커스마크": {
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.png`),
+    desc: "",
   },
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
-  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string } | null>(null);
+  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; sections?: { title: string; images: string[] }[] } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollExhibitions = (direction: "left" | "right") => {
@@ -308,12 +352,18 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     scrollRef.current.scrollBy({ left: direction === "right" ? scrollAmount : -scrollAmount, behavior: "smooth" });
   };
 
+  const preloadImages = (images: string[]) => {
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  };
+
   const exhibitions = [
-    { title: "REBORN", artist: "Group Exhibition", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-1.jpg" },
-    { title: "Golden Reeds", artist: "Minjae Park", date: "2022. 8. 25 - 9. 9", image: "/images/exhibitions/golden-reeds/golden-reeds-1.jpg" },
-    { title: "The Sculpture Garden", artist: "Soyeon Kim", date: "2024.11 — 12", image: "/images/exhibitions/sculpture-garden/sculpture-garden-1.jpg" },
-    { title: "Intermission : 이다희 작가 기획전", artist: "Hyunwoo Lee", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/traces-of-light-1.jpg" },
-    { title: "Silent Dialogue", artist: "Group Exhibition", date: "2024.07 — 08", image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg" },
+    { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
+    { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-cover.jpg" },
+    { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
+    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07.", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
   ];
 
   const clients = [
@@ -330,11 +380,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
     { name: "Seoul Foundation", logo: "data:image/png;base64,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" },
   ];
 
-  const projects = [
-    { client: "Tequila Patrón", type: "VIP Event", year: "2024", image: brand.gallery[4] },
-    { client: "Bang & Olufsen", type: "Product Showroom", year: "2024", image: brand.gallery[5] },
-    { client: "BCG", type: "Corporate Exhibition", year: "2023", image: brand.gallery[0] },
-  ];
 
   return (
     <>
@@ -364,8 +409,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-8xl lg:text-9xl text-white font-extralight tracking-tight"
-            style={{ fontFamily: "var(--font-dutch)" }}
+            className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight text-thin-cross"
+            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 200, letterSpacing: "0.02em" }}
           >
             Space by PASO
           </motion.h1>
@@ -375,7 +420,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mt-6 text-sm md:text-base text-[#aaa] font-light max-w-lg mx-auto"
           >
-            Art Meets Space
+            Private Art Space for Thought Leaders
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -436,9 +481,13 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 key={ex.title}
                 {...stagger(i)}
                 className="group relative overflow-hidden cursor-pointer"
+                onMouseEnter={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) preloadImages(gallery.images);
+                }}
                 onClick={() => {
                   const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc });
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, sections: gallery.sections });
                 }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -476,11 +525,16 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
-            {brand.features.slice(0, 3).map((f, i) => (
+            {brand.features.slice(0, 3).map((f, i) => {
+              const programGalleryKey = ["히노살롱", "빠끼", "소호프리뷰"][i] as string | undefined;
+              const galleryData = programGalleryKey ? exhibitionGalleries[programGalleryKey] : undefined;
+              return (
               <motion.div
                 key={f.title}
                 {...stagger(i)}
-                className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500"
+                className={`bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer" : ""}`}
+                onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
+                onClick={galleryData ? () => setOpenExhibition({ title: f.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
               >
                 <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
                   <img
@@ -494,37 +548,50 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
                 <div className="mt-4 w-0 group-hover:w-8 h-px bg-[#b8960b] transition-all duration-500" />
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── RECENT PROJECTS ── */}
-      <section className="py-24 md:py-32 bg-black">
+      {/* ── BRAND PROGRAMS: Collaborations ── */}
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Portfolio</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Brand Collaborations</p>
             <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
-              Recent Projects
+              Brand Projects
             </h2>
           </motion.div>
 
-          <div className="space-y-px">
-            {projects.map((p, i) => (
-              <motion.div
-                key={p.client}
-                {...stagger(i)}
-                className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 items-center py-8 border-b border-[#1a1a1a] hover:border-[#333] transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-xs text-[#555] font-light">{p.year}</span>
-                  <h3 className="text-lg md:text-xl text-white font-light hover:text-[#b8960b] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>
-                    {p.client}
-                  </h3>
-                </div>
-                <p className="text-xs tracking-[0.1em] uppercase text-[#555] md:text-right">{p.type}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
+            {[
+              { title: "Superbugs Campaign", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
+              { title: "Maker's Mark Private Selection", image: "/images/exhibitions/makers-mark/makers-mark-1.png", galleryKey: "메이커스마크" },
+              { title: "Paso Gallery x ARTIVIST.", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST." },
+            ].map((card, i) => {
+              const galleryData = exhibitionGalleries[card.galleryKey];
+              return (
+                <motion.div
+                  key={card.title}
+                  {...stagger(i)}
+                  className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer"
+                  onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
+                  onClick={galleryData ? () => setOpenExhibition({ title: card.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
+                >
+                  <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover transition-all duration-700"
+                    />
+                  </div>
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] block mb-3">0{i + 4}</span>
+                  <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                  <div className="mt-4 w-0 group-hover:w-8 h-px bg-[#b8960b] transition-all duration-500" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -535,7 +602,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Venue</p>
-              <h2 className="text-3xl md:text-5xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
+              <h2 className="text-3xl md:text-5xl text-white mb-6 text-thin-cross" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 200, letterSpacing: "0.02em" }}>
                 Space by PASO
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">
@@ -623,7 +690,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Projects</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>Creative Collaborations</motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {brand.gallery.map((img, i) => {
               const hasGallery = i in projectGalleries;
               return (
@@ -662,14 +729,32 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "🎨", title: "캐릭터 IP", desc: "라이선싱 및 제품 개발" },
-              { icon: "🤝", title: "B2B 콜라보", desc: "브랜드 × 아트 프로젝트" },
-              { icon: "🎭", title: "아트토이", desc: "스트릿 아트 매입·기획" },
+              { title: "캐릭터 IP", icon: (
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 20h16" />
+                  <path d="M12 4v12" />
+                  <path d="M12 4c-2 0-4 1.5-4 4s2 3.5 4 4c2 .5 4 1.5 4 4s-2 4-4 4" />
+                </svg>
+              )},
+              { title: "B2B 콜라보", icon: (
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="5" cy="12" r="2" />
+                  <circle cx="19" cy="12" r="2" />
+                  <path d="M7 12h10" />
+                  <path d="M12 7v10" />
+                  <circle cx="12" cy="5" r="2" />
+                  <circle cx="12" cy="19" r="2" />
+                </svg>
+              )},
+              { title: "아트토이", icon: (
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b8960b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              )},
             ].map((s, i) => (
               <motion.div key={s.title} {...stagger(i)} className="text-center p-8">
-                <span className="text-4xl mb-4 block">{s.icon}</span>
-                <h3 className="text-lg text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>{s.title}</h3>
-                <p className="text-sm text-[#888] font-light">{s.desc}</p>
+                <span className="mb-5 block flex justify-center">{s.icon}</span>
+                <h3 className="text-base md:text-lg tracking-[0.08em] uppercase text-white font-medium">{s.title}</h3>
               </motion.div>
             ))}
           </div>
