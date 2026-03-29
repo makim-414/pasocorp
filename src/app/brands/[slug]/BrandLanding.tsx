@@ -186,7 +186,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               <div className="h-8 bg-[#111] flex items-center px-4 gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#333]" /><span className="w-2.5 h-2.5 rounded-full bg-[#333]" /><span className="w-2.5 h-2.5 rounded-full bg-[#333]" />
               </div>
-              <img src="/brands/artrader-platform.jpg" alt="Dashboard" className="w-full" />
+              <img src="/brands/artrader-platform-hd.png" alt="Dashboard" className="w-full" />
             </div>
           </motion.div>
         </div>

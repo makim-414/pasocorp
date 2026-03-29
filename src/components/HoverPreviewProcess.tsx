@@ -17,7 +17,7 @@ const previewData: Record<string, { image: string; title: string; subtitle: stri
     href: "/brands/paso-art-center",
   },
   artrader: {
-    image: "/brands/artrader-platform.jpg",
+    image: "/brands/artrader-platform-hd.png",
     title: "Artrader",
     subtitle: "1,500만+ 거래 데이터 기반 시세 분석",
     href: "https://artrader.io",

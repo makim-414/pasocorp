@@ -18,7 +18,7 @@ const brandsData: Record<string, {
     desc: "해외 1,500만 건·국내 9만여 건의 정제된 옥션 데이터로 실거래가와 적정 매입가를 산출하는 미술품 2차 거래(Private Sales) 플랫폼이자 법인 컬렉션의 구축과 리밸런싱에 특화된 데이터베이스입니다.",
     longDesc: "해외 1,500만 건·국내 9만여 건의 정제된 옥션 데이터로 실거래가와 적정 매입가를 산출하는 Artrader는, 미술품 2차 거래(Private Sales) 플랫폼이자 법인 컬렉션의 구축과 리밸런싱에 특화된 데이터베이스입니다.",
     color: "#b8960b",
-    image: "/brands/artrader-platform.jpg",
+    image: "/brands/artrader-platform-hd.png",
     gallery: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=90",
       "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&q=90",

@@ -19,7 +19,7 @@ const solutions = [
     desc: "글로벌 경매·Private Sales 1,500만+ 거래 데이터. Artist Index, 시장 분석 리포트, 포트폴리오 트래커.",
     color: "#b8960b",
     features: ["Artist Index 정량 리포트", "실시간 경매 데이터", "포트폴리오 가치 모니터링", "트렌드 예측 시그널"],
-    image: "/brands/artrader-platform.jpg",
+    image: "/brands/artrader-platform-hd.png",
   },
   {
     brand: "Artledger Consulting",
