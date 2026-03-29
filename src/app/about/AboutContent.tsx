@@ -38,7 +38,7 @@ export default function AboutContent() {
       <section className="relative h-[60vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/brands/paso-artcenter-building.jpg"
+            src="/brands/paso-gallery-about.jpg"
             alt="PASO"
             fill
             className="object-cover"
