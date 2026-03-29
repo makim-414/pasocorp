@@ -12,14 +12,6 @@ const fadeUp = {
 
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
 
-const timeline = [
-  { year: "2020", event: "PASO Inc. 설립" },
-  { year: "2021", event: "Paso Gallery 오픈 (종로구)" },
-  { year: "2023", event: "Paso Agency 론칭 — 캐릭터 IP·B2B 프로젝트" },
-  { year: "2024", event: "Artrader 플랫폼 런칭 — 1,500만+ 거래 데이터" },
-  { year: "2025", event: "PASO Art Center 오픈 (with Mass C&G)\nArtledger Consulting 런칭" },
-];
-
 const team = [
   { name: "Leadership", role: "CEO & Founder", desc: "미술 시장 데이터 분석 전문가. 금융·테크 배경으로 미술 자산화 전략을 설계합니다." },
   { name: "Advisory Board", role: "세무·법률·큐레이션", desc: "세무사, 변호사, 큐레이터로 구성된 자문단이 전문 서비스를 지원합니다." },
@@ -111,22 +103,6 @@ export default function AboutContent() {
               <motion.div key={v.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors">
                 <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{v.title}</h3>
                 <p className="text-sm text-[#888] font-light leading-relaxed">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">History</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Our Journey</motion.h2>
-          <div className="space-y-0">
-            {timeline.map((item, i) => (
-              <motion.div key={item.year} {...stagger(i)} className="flex gap-8 items-start py-6 border-b border-[#1a1a1a] last:border-0">
-                <span className="text-2xl font-light text-[#b8960b] shrink-0 w-16" style={{ fontFamily: "var(--font-dutch)" }}>{item.year}</span>
-                <p className="text-sm text-[#888] font-light leading-relaxed whitespace-pre-line">{item.event}</p>
               </motion.div>
             ))}
           </div>
