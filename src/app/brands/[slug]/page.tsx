@@ -87,13 +87,13 @@ const brandsData: Record<string, {
     ],
     gallery: [
       "/images/projects/cu2.jpg",
-      "/images/202309131536597165206.jpg",
+      "/images/projects/cu-wine.jpg",
       "/Group 13499.png",
       "/images/projects/hongdae-plusship/1.jpg",
     ],
     features: [
       { title: "장띵", desc: "델라페 18종" },
-      { title: "CU X PASO", desc: "와인" },
+      { title: "CU X PASO", desc: "와인 라벨 패키지 공모전" },
       { title: "투썸", desc: "투썸 브랜드" },
       { title: "KUHO", desc: "KUHO 브랜드" },
     ],

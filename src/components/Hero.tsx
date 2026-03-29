@@ -9,9 +9,9 @@ import BlurInText from "./ui/blur-in-text";
 import WeArtHero from "./WeArtHero";
 
 const brands = [
-  { name: "Artrader.io", image: "/brands/artrader-new.png", color: "#b8960b", href: "https://artrader.io", enabled: true },
-  { name: "Paso Gallery", image: "/brands/paso-gallery.png", color: "#1e3a5f", href: "https://pasogallery.com", enabled: true },
-  { name: "Paso Agency", image: "/images/projects/dosan-popup/14.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: true },
+  { name: "Artrader.io", image: "/brands/artrader-new.png", gradient: "linear-gradient(135deg, #2ecc71 0%, #27ae60 30%, #5bbf9e 70%, #7ecfb3 100%)", color: "#2ecc71", href: "https://artrader.io", enabled: true },
+  { name: "Paso Gallery", image: "/images/gallery/gallery-06.jpg", color: "#1e3a5f", href: "https://pasogallery.com", enabled: true },
+  { name: "Paso Agency", image: "/images/projects/twosome/twosome-5.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: true },
   { name: "Artledger", image: "/images/exhibitions/golden-reeds/golden-reeds-3.jpg", color: "#9ca3af", href: "/brands/artledger-consulting", enabled: true },
   { name: "Art Center", image: "/images/gallery/gallery-06.jpg", color: "#a0522d", href: "/brands/paso-art-center", enabled: true },
 ];
@@ -52,14 +52,18 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="absolute inset-0 z-0"
           >
-            <Image
-              src={brands[hoveredBrand].image}
-              alt={brands[hoveredBrand].name}
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority={false}
-            />
+            {brands[hoveredBrand].gradient ? (
+              <div className="absolute inset-0" style={{ background: brands[hoveredBrand].gradient }} />
+            ) : (
+              <Image
+                src={brands[hoveredBrand].image}
+                alt={brands[hoveredBrand].name}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={false}
+              />
+            )}
             <div className="absolute inset-0 bg-black/40" />
           </motion.div>
         )}
