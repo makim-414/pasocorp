@@ -9,7 +9,7 @@ import BlurInText from "./ui/blur-in-text";
 import WeArtHero from "./WeArtHero";
 
 const brands = [
-  { name: "Artrader.io", image: "/images/gallery/gallery-01.jpg", color: "#b8960b", href: "https://artrader.io", enabled: true },
+  { name: "Artrader.io", image: "/brands/artrader-new.png", color: "#b8960b", href: "https://artrader.io", enabled: true },
   { name: "Paso Gallery", image: "/brands/paso-gallery.png", color: "#1e3a5f", href: "https://pasogallery.com", enabled: true },
   { name: "Paso Agency", image: "/images/projects/dosan-popup/14.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: true },
   { name: "Artledger", image: "/images/exhibitions/golden-reeds/golden-reeds-3.jpg", color: "#9ca3af", href: "/brands/artledger-consulting", enabled: true },
