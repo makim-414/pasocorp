@@ -44,7 +44,7 @@ const FEATURES = [
     tag: "PASO AGENCY",
     label: "IP & Brand Collaboration",
     Icon: Palette,
-    image: "/images/projects/cu-dding-collab.jpg",
+    image: "/images/projects/cu-dding/cu-3.jpg",
     desc: "프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입.",
     color: "#d4a574",
     href: "/brands/paso-agency",
