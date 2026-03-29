@@ -8,7 +8,7 @@ import { getSiteMode } from "@/lib/site-mode";
 
 const brandsData: Record<string, {
   name: string; slug: string; year: number; desc: string; longDesc: string;
-  color: string; image: string; gallery: string[];
+  color: string; image: string; heroImages?: string[]; gallery: string[];
   features: { title: string; desc: string; image?: string }[];
 }> = {
   artrader: {
@@ -66,9 +66,9 @@ const brandsData: Record<string, {
       "/images/gallery/gallery-06.jpg",
     ],
     features: [
-      { title: "Brand Pop-up", desc: "갤러리 공간을 활용한 브랜드 팝업 전시 기획·운영" },
-      { title: "Private Events", desc: "VIP 디너, 프라이빗 뷰잉, 기업 이벤트 호스팅" },
-      { title: "Art Advisory", desc: "컬렉션 구축부터 공간 큐레이션까지 맞춤 자문" },
+      { title: "HINO salon", desc: "" },
+      { title: "VAKKI private viewing", desc: "" },
+      { title: "SOHO preview", desc: "" },
       { title: "Global Network", desc: "해외 갤러리·작가·컬렉터 네트워크 연결" },
     ],
   },
@@ -79,22 +79,23 @@ const brandsData: Record<string, {
     desc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—양측 모두에게 지속 가능한 구조를 설계합니다.",
     longDesc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—PASO Agency가 양측 모두에게 지속 가능한 구조를 설계합니다.",
     color: "#d4a574",
-    image: "/brands/paso-agency.jpg",
+    image: "/images/agency/agency-bg-2.png",
+    heroImages: [
+      "/images/agency/agency-bg-2.png",
+      "/images/agency/agency-bg-3.png",
+      "/images/agency/agency-bg-4.png",
+    ],
     gallery: [
-      "/images/projects/cu-dding/cu-2.jpg",
-      "/images/projects/cu-dding-collab.jpg",
-      "/brands/paso-agency-phee.jpg",
-      "/images/projects/twosome-interior.jpg",
+      "/images/projects/cu2.png",
+      "/images/202309131536597165206.jpg",
+      "/Group 13499.png",
       "/images/projects/hongdae-plusship/1.png",
-      "/images/projects/dosan-popup/03.jpg",
     ],
     features: [
-      { title: "캐릭터 IP", desc: "오리지널 캐릭터 IP 개발 및 라이선싱" },
-      { title: "브랜드 콜라보", desc: "F&B·리테일 브랜드와의 아트 프로젝트" },
-      { title: "아트토이", desc: "한정판 아트토이 기획·제작·유통" },
-      { title: "공간 아트", desc: "매장·오피스 공간 아트 큐레이션" },
-      { title: "팝업 전시", desc: "브랜드 팝업 스토어 아트 디렉팅" },
-      { title: "스트릿 아트", desc: "뮤럴·그래피티 아트 매입·기획" },
+      { title: "장띵", desc: "델라페 18종" },
+      { title: "CU X PASO", desc: "와인" },
+      { title: "투썸", desc: "투썸 브랜드" },
+      { title: "KUHO", desc: "KUHO 브랜드" },
     ],
   },
   "artledger-consulting": {
