@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
 import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
-
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400"],
-  display: "swap",
-  variable: "--font-cormorant",
-});
 
 export const metadata: Metadata = {
   title: { default: "파소(PASO) | 데이터 기반 미술 자산 전략", template: "%s — 파소(PASO)" },
@@ -97,8 +89,11 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={cormorantGaramond.variable}>
+    <html lang="ko">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
