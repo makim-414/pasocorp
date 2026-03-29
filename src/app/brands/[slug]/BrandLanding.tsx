@@ -413,7 +413,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight text-thin-cross"
-            style={{ fontFamily: "var(--font-cormorant), var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
             Space by PASO
           </motion.h1>
@@ -605,7 +605,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
-              <h2 className="text-3xl md:text-5xl text-white mb-6" style={{ fontFamily: "var(--font-cormorant), var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}>
+              <h2 className="text-3xl md:text-5xl text-white mb-6" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}>
                 공간 대관 문의
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">
@@ -615,10 +615,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 <div className="flex items-start gap-3">
                   <span className="text-[#b8960b] mt-0.5">—</span>
                   <p>전시, 팝업, 프라이빗 이벤트, 촬영 등 다양한 목적의 대관 가능</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
-                  <p>Light Room · Dark Room 두 개의 전시실 운영</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-[#b8960b] mt-0.5">—</span>
