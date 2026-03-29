@@ -168,7 +168,7 @@ const standaloneSiteConfig: Record<string, {
     address: "92, Seonggyungwan-ro, Jongno-gu",
     addressDetail: "Seoul, Hanok Building",
     instagram: "https://www.instagram.com/pasogallery",
-    accentColor: "#1e3a5f",
+    accentColor: "#b8960b",
   },
 };
 
