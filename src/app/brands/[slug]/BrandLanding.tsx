@@ -19,7 +19,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
 };
 
-function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
+function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; artist?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -33,6 +33,9 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
           <h2 className="text-xl md:text-3xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
           <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
         </div>
+        {gallery.artist && (
+          <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">참여작가 : {gallery.artist}</p>
+        )}
         {gallery.desc && (
           <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
             {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
@@ -339,7 +342,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
-  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; sections?: { title: string; images: string[] }[] } | null>(null);
+  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; artist?: string; sections?: { title: string; images: string[] }[] } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollExhibitions = (direction: "left" | "right") => {
@@ -483,7 +486,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 }}
                 onClick={() => {
                   const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, sections: gallery.sections });
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
                 }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
