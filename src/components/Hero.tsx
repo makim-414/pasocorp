@@ -13,7 +13,7 @@ const brands = [
   { name: "Paso Gallery", image: "/images/gallery/gallery-06.jpg", color: "#1e3a5f", href: "https://pasogallery.com", enabled: true },
   { name: "Paso Agency", image: "/images/projects/twosome/twosome-5.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: true },
   { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af", href: "/brands/artledger-consulting", enabled: true },
-  { name: "Art Center", image: "/images/gallery/gallery-06.jpg", color: "#a0522d", href: "/brands/paso-art-center", enabled: true },
+  { name: "Art Center", image: "/images/whats-happening/preopening.png", color: "#a0522d", href: "/brands/paso-art-center", enabled: true },
 ];
 
 export default function Hero() {
