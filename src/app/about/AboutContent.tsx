@@ -113,23 +113,6 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* PASO Corp */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-6">PASO Corporation</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>본사 바로가기</motion.h2>
-          <motion.p {...fadeUp} className="text-sm text-[#888] font-light mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
-          <motion.a
-            {...fadeUp}
-            href="https://pasocorp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block border border-[#b8960b] text-[#b8960b] px-10 py-4 text-sm tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-colors duration-300"
-          >
-            PASO Corp
-          </motion.a>
-        </div>
-      </section>
 
     </>
   );
