@@ -377,7 +377,7 @@ export default function Feed() {
         title="IP & Brand Collaboration"
         desc="프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입. 브랜드와 예술의 접점을 설계합니다."
         cta="EXPLORE AGENCY"
-        image="/images/projects/cu-dding-collab.jpg"
+        image="/brands/paso-agency.jpg"
         reverse
       />
 
