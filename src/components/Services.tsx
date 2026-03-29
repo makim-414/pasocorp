@@ -14,7 +14,7 @@ const FEATURES = [
     tag: "ARTRADER",
     label: "Data & Intelligence",
     Icon: BarChart3,
-    image: "/brands/artrader-platform-hd.png",
+    image: "/brands/artrader-new.png",
     desc: "국내외 경매·Private Sales 등 1,500만 건 이상 거래 데이터. Artist Index, 종목분석서 스타일 정량 리포트.",
     color: "#b8960b",
     href: "/brands/artrader",
