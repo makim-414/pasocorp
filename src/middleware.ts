@@ -5,6 +5,11 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
   const pathname = request.nextUrl.pathname;
 
+  // Skip static files (images, etc.)
+  if (/\.(png|jpg|jpeg|gif|svg|webp|ico|css|js)$/i.test(pathname)) {
+    return NextResponse.next();
+  }
+
   // pasogallery.com → standalone brand site
   if (hostname.includes("pasogallery.com")) {
     const url = request.nextUrl.clone();
