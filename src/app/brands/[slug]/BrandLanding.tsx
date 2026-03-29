@@ -705,9 +705,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* ── SPACE RENTAL INQUIRY ── */}
-      <RentalInquirySection />
-
       {/* ── LOCATION INFO ── */}
       <section className="bg-black border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
