@@ -3,16 +3,40 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
+  const pathname = request.nextUrl.pathname;
 
-  // pasogallery.com 루트 접속 시 /brands/paso-gallery 로 rewrite
-  if (
-    hostname.includes("pasogallery.com") &&
-    request.nextUrl.pathname === "/"
-  ) {
-    return NextResponse.rewrite(new URL("/brands/paso-gallery", request.url));
+  // Skip static files (images, etc.)
+  if (/\.(png|jpg|jpeg|gif|svg|webp|ico|css|js)$/i.test(pathname)) {
+    return NextResponse.next();
   }
+
+  // pasogallery.com → standalone brand site
+  if (hostname.includes("pasogallery.com")) {
+    const url = request.nextUrl.clone();
+    // Rewrite all paths to /brands/paso-gallery (single-brand site)
+    if (pathname === "/") {
+      url.pathname = "/brands/paso-gallery";
+    }
+    const response = NextResponse.rewrite(url);
+    response.headers.set("x-site-mode", "pasogallery");
+    return response;
+  }
+
+  // aboutpaso.com → standalone about site
+  if (hostname.includes("aboutpaso.com")) {
+    const url = request.nextUrl.clone();
+    if (pathname === "/") {
+      url.pathname = "/about";
+    }
+    const response = NextResponse.rewrite(url);
+    response.headers.set("x-site-mode", "aboutpaso");
+    return response;
+  }
+
+  // pasocorp.com → default corporate site
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/"],
+  matcher: ["/", "/brands/:path*", "/about/:path*", "/contact", "/solutions"],
 };

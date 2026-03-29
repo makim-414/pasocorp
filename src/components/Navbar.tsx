@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const brands = [
-  { name: "Paso Gallery", href: "/brands/paso-gallery" },
+  { name: "Paso Gallery", href: "https://pasogallery.com" },
   { name: "Paso Agency", href: "/brands/paso-agency" },
   { name: "Artrader", href: "/brands/artrader" },
   { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
@@ -32,9 +32,9 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <Link href="/" className="text-[#e8e8e8] text-sm tracking-normal font-normal" style={{ fontFamily: "var(--font-dutch)" }}>
+        <a href="https://pasocorp.com" className="text-[#e8e8e8] text-sm tracking-normal font-normal" style={{ fontFamily: "var(--font-dutch)" }}>
           PASO
-        </Link>
+        </a>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-[#888]">
@@ -59,6 +59,7 @@ export default function Navbar() {
                     <Link
                       key={b.name}
                       href={b.href}
+                      {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className="block px-5 py-2 text-xs tracking-[0.1em] text-[#888] hover:text-[#e8e8e8] hover:bg-[#111] transition-colors uppercase"
                     >
                       {b.name}
@@ -97,7 +98,7 @@ export default function Navbar() {
               <Link href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">About</Link>
               <Link href="/solutions" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">Solutions</Link>
               {brands.map((b) => (
-                <Link key={b.name} href={b.href} onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8] pl-4 uppercase">{b.name}</Link>
+                <Link key={b.name} href={b.href} {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8] pl-4 uppercase">{b.name}</Link>
               ))}
               <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">Contact</Link>
             </div>

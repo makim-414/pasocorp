@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -13,13 +14,12 @@ const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay:
 const locations = [
   { name: "Office", address: "서울특별시 성북구 삼선교로23가길 72", detail: "인터블루 빌딩 1F-3F", mapQuery: "서울특별시 성북구 삼선교로23가길 72" },
   { name: "Gallery", address: "서울특별시 종로구 성균관로 92", detail: "한옥 빌딩", mapQuery: "서울특별시 종로구 성균관로 92" },
-  { name: "Art Center", address: "마곡 (2025 오픈 예정)", detail: "with Mass C&G", mapQuery: "" },
+  { name: "Art Center", address: "서울특별시 강서구 마곡중앙4로 66, 2층", detail: "with Mass C&G", mapQuery: "서울특별시 강서구 마곡중앙4로 66" },
 ];
 
 const contacts = [
-  { label: "Email", value: "contact@artrader.io", href: "mailto:contact@artrader.io" },
-  { label: "Instagram", value: "@pasoartcenter", href: "https://www.instagram.com/pasoartcenter" },
-  { label: "Phone", value: "+82 10-6432-4471", href: "tel:+821064324471" },
+  { label: "Email", value: "info@pasogallery.com", href: "mailto:info@pasogallery.com" },
+  { label: "Phone", value: "+82 2-925-3631", href: "tel:+8229253631" },
 ];
 
 const inquiries = [
@@ -30,6 +30,8 @@ const inquiries = [
 ];
 
 export default function ContactContent() {
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+
   return (
     <>
       {/* Hero */}
@@ -52,7 +54,7 @@ export default function ContactContent() {
 
       {/* Contact info */}
       <section className="py-16 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-[800px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {contacts.map((c, i) => (
             <motion.div key={c.label} {...stagger(i)} className="text-center py-4">
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{c.label}</p>
@@ -75,7 +77,7 @@ export default function ContactContent() {
             {inquiries.map((item, i) => (
               <motion.a
                 key={item.title}
-                href="mailto:contact@artrader.io"
+                href="mailto:info@pasogallery.com"
                 {...stagger(i)}
                 className="block border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group"
               >
@@ -95,13 +97,43 @@ export default function ContactContent() {
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Find Us</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {locations.map((loc, i) => (
-              <motion.div key={loc.name} {...stagger(i)} className="border border-[#1a1a1a] p-8">
+              <motion.div
+                key={loc.name}
+                {...stagger(i)}
+                onClick={() => setSelectedLocation(selectedLocation === loc.name ? null : loc.name)}
+                className={`border p-8 cursor-pointer transition-colors duration-300 ${selectedLocation === loc.name ? "border-[#b8960b]/50 bg-[#b8960b]/5" : "border-[#1a1a1a] hover:border-[#333]"}`}
+              >
                 <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">{loc.name}</p>
                 <p className="text-sm text-white font-light mb-1">{loc.address}</p>
                 <p className="text-sm text-[#555] font-light">{loc.detail}</p>
               </motion.div>
             ))}
           </div>
+
+          <AnimatePresence>
+            {selectedLocation && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden mt-8"
+              >
+                <div className="border border-[#1a1a1a] rounded-lg overflow-hidden">
+                  <iframe
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(locations.find((l) => l.name === selectedLocation)?.mapQuery || "")}&output=embed&hl=ko`}
+                    width="100%"
+                    height="400"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${selectedLocation} 지도`}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
     </>

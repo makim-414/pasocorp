@@ -7,7 +7,7 @@ const linksBrands = [
   {
     group: "Brands",
     items: [
-      { title: "Paso Gallery", href: "/brands/paso-gallery" },
+      { title: "Paso Gallery", href: "https://pasogallery.com" },
       { title: "Paso Agency", href: "/brands/paso-agency" },
       { title: "Artrader", href: "/brands/artrader" },
       { title: "Artledger Consulting", href: "/brands/artledger-consulting" },
@@ -51,8 +51,8 @@ const locations = [
   },
   {
     name: "Gallery",
-    address: "92, Seonggyungwan-ro, Jongno-gu",
-    detail: "Seoul, Hanok Building",
+    address: "서울 종로구 성균관로 92",
+    detail: "한옥 빌딩",
   },
   {
     name: "Art Center",
@@ -74,6 +74,7 @@ export default function Footer() {
               <Link
                 key={i}
                 href={item.href}
+                {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="text-[#666] hover:text-[#999] block duration-150"
               >
                 {item.title}
@@ -147,7 +148,7 @@ export default function Footer() {
               Email
             </Link>
             <div className="pt-4">
-              <span className="text-white font-semibold tracking-tight text-lg">PASO</span>
+              <Link href="https://pasocorp.com" target="_blank" className="text-white font-semibold tracking-tight text-lg hover:text-[#b8960b] transition-colors duration-300">PASO</Link>
             </div>
           </div>
         </div>

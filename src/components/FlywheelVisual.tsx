@@ -28,10 +28,11 @@ function getPos(angle: number, r: number, cx: number, cy: number) {
   return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
 }
 
-export default function FlywheelVisual() {
+export default function FlywheelVisual({ defaultActive }: { defaultActive?: string } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const [active, setActive] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const active = hovered ?? defaultActive ?? null;
 
   const R = 170;
   const CX = 230;
@@ -79,7 +80,7 @@ export default function FlywheelVisual() {
                   transition={{ duration: 0.3 }}
                 />
                 {/* Animated flow dot */}
-                {isHighlighted && isFromActive && (
+                {isHighlighted && (
                   <motion.circle
                     r="3"
                     fill={conn.color}
@@ -90,7 +91,10 @@ export default function FlywheelVisual() {
                     <animateMotion
                       dur="2s"
                       repeatCount="indefinite"
-                      path={`M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`}
+                      path={isFromActive
+                        ? `M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`
+                        : `M ${to.x} ${to.y} Q ${mx} ${my} ${from.x} ${from.y}`
+                      }
                     />
                   </motion.circle>
                 )}
@@ -105,7 +109,7 @@ export default function FlywheelVisual() {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="absolute"
-          style={{ left: CX - 40, top: CY - 40, width: 80, height: 80 }}
+          style={{ left: `${((CX - 40) / SIZE) * 100}%`, top: `${((CY - 40) / SIZE) * 100}%`, width: `${(80 / SIZE) * 100}%`, height: `${(80 / SIZE) * 100}%` }}
         >
           <div className="w-full h-full rounded-full border border-[#b8960b]/20 bg-[#b8960b]/5 flex items-center justify-center">
             <span className="text-sm tracking-[0.25em] text-[#b8960b]/80 font-light">PASO</span>
@@ -128,9 +132,9 @@ export default function FlywheelVisual() {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 + 0.5 }}
               className="absolute cursor-pointer"
-              style={{ left: pos.x - 52, top: pos.y - 52, width: 104, height: 104 }}
-              onMouseEnter={() => setActive(brand.id)}
-              onMouseLeave={() => setActive(null)}
+              style={{ left: `${((pos.x - 52) / SIZE) * 100}%`, top: `${((pos.y - 52) / SIZE) * 100}%`, width: `${(104 / SIZE) * 100}%`, height: `${(104 / SIZE) * 100}%` }}
+              onMouseEnter={() => setHovered(brand.id)}
+              onMouseLeave={() => setHovered(null)}
             >
               <motion.div
                 animate={{
@@ -156,9 +160,9 @@ export default function FlywheelVisual() {
           );
         })}
 
-        {/* Connection labels tooltip */}
+        {/* Connection labels tooltip — only on hover */}
         <AnimatePresence>
-          {active && activeConns.length > 0 && (
+          {hovered && activeConns.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
@@ -168,13 +172,13 @@ export default function FlywheelVisual() {
               style={{ bottom: -16 }}
             >
               <div className="bg-white/[0.03] border border-white/[0.08] backdrop-blur-md rounded-md px-4 py-2.5 min-w-[240px]">
-                <p className="text-[10px] tracking-[0.15em] uppercase mb-2 text-center" style={{ color: brandMap[active]?.accent }}>
-                  {brandMap[active]?.name} 시너지
+                <p className="text-[10px] tracking-[0.15em] uppercase mb-2 text-center" style={{ color: brandMap[hovered!]?.accent }}>
+                  {brandMap[hovered!]?.name} 시너지
                 </p>
                 <div className="space-y-1">
                   {activeConns.map((conn, i) => {
-                    const target = conn.from === active ? conn.to : conn.from;
-                    const direction = conn.from === active ? "→" : "←";
+                    const target = conn.from === hovered ? conn.to : conn.from;
+                    const direction = conn.from === hovered ? "→" : "←";
                     return (
                       <p key={i} className="text-[10px] text-white/50 font-light">
                         <span className="text-white/30">{direction}</span>{" "}
