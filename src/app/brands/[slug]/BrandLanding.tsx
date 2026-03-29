@@ -19,7 +19,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
 };
 
-function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
+function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; artist?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -33,6 +33,9 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
           <h2 className="text-xl md:text-3xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
           <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
         </div>
+        {gallery.artist && (
+          <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">참여작가 : {gallery.artist}</p>
+        )}
         {gallery.desc && (
           <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
             {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
@@ -318,7 +321,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "Forest of Finity": {
     images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 4}.png`),
-    desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다!\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.",
+    desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다'\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.\n\n이지은 작가는 극과 극의 대비를 통해 가시적인 형상을 가로질러서 그 속의 숨은 뜻, 즉 외적인 형상만이 아닌 내면의 본질을 향한 깨달음을 드러내려고 합니다. 또한 본질적인 의미를 담아내기 위해 조각가로서 다양한 조형미를 통해 이를 전달하고 있지만, 이조차 역설적이며, 이런 상충한 면모들이 이지은 작가의 작업 전반에 중요한 요소들입니다.",
   },
   "히노살롱": {
     images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
@@ -343,7 +346,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
 };
 
 function GalleryLayout({ brand }: { brand: BrandData }) {
-  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; sections?: { title: string; images: string[] }[] } | null>(null);
+  const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; artist?: string; sections?: { title: string; images: string[] }[] } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollExhibitions = (direction: "left" | "right") => {
@@ -487,7 +490,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 }}
                 onClick={() => {
                   const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, sections: gallery.sections });
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
                 }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
