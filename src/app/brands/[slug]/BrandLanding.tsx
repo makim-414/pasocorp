@@ -221,7 +221,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    2. PASO ART CENTER — Museum / Full-bleed imagery
    ═══════════════════════════════════════════════════ */
-const artCenterGalleryImages = Array.from({ length: 19 }, (_, i) => `/images/paso-art-center-gallery/${i + 4}.png`);
+const artCenterGalleryImages = Array.from({ length: 19 }, (_, i) => `/images/paso-art-center-gallery/${i + 4}.jpg`);
 
 function ArtCenterLayout({ brand }: { brand: BrandData }) {
   const [openGallery, setOpenGallery] = useState<{ title: string; images: string[]; desc?: string } | null>(null);
@@ -300,7 +300,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중",
   },
   "Paso Gallery x ARTIVIST.": {
-    images: [1,2,3,4,6,9,10,11,13,14,17,19,20,21,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,43,44,48,50,51,52,53].map(n => `/images/exhibitions/bno-patron/bno-patron-${n}.png`),
+    images: [1,2,3,4,6,9,10,11,13,14,17,19,20,21,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,43,44,48,50,51,52,53].map(n => `/images/exhibitions/bno-patron/bno-patron-${n}.jpg`),
     desc: "Private Art Forum : 'PATRONS'\n\n파소 갤러리가 @artiv.ist 와 함께 'Guide to start a contemporary art collection' 을 주제로 영 컬렉터들을 위한 프라이빗 아트 포럼을 개최하였습니다.\n\nGuide to start a contemporary art collection의 주제로, 예술가와 미술 업계 전문가들이 함께 현대미술 컬렉션을 시작하는 방법, 작품 선택에 대한 팁, 그리고 예술 시장의 동향 및 미래 등의 주제를 다루었습니다.\n\nPanel :\n서진석 관장 (현 울산시립미술관 관장, 전 백남준 아트센터 관장) @jinsuksuh\n유진상 교수 (계원조형대 교수, 2012 미디어시티비엔날레 총감독, 광주비엔날레 평가위원)\n\nModerator :\n이정우 에디터 (전 널위한문화예술) @jjjw117\n\nSpecial Guest :\nWhisbe @whisbe",
   },
   "Intermission : 이다희 작가 기획전": {
@@ -308,39 +308,39 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다.",
   },
   "Project ReDE Gallery": {
-    images: [1,2,3,4,7].map(n => `/images/exhibitions/redegallery/redegallery-${n}.png`),
+    images: [1,2,3,4,7].map(n => `/images/exhibitions/redegallery/redegallery-${n}.jpg`),
     desc: "Starch Haus x Paso Gallery : Project ReDE Gallery\n\n작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다.\n\n하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다. 작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다.\n\n따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다.",
   },
   "소호": {
     images: [],
     desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
     sections: [
-      { title: "홍콩", images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.png`) },
-      { title: "소호프리뷰", images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/soho-preview/soho-preview-${i + 1}.png`) },
+      { title: "홍콩", images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.jpg`) },
+      { title: "소호프리뷰", images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/soho-preview/soho-preview-${i + 1}.jpg`) },
     ],
   },
   "Forest of Finity": {
-    images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 4}.png`),
+    images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/forest-of-finity/forest-of-finity-${i + 4}.jpg`),
     desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다'\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.\n\n이지은 작가는 극과 극의 대비를 통해 가시적인 형상을 가로질러서 그 속의 숨은 뜻, 즉 외적인 형상만이 아닌 내면의 본질을 향한 깨달음을 드러내려고 합니다. 또한 본질적인 의미를 담아내기 위해 조각가로서 다양한 조형미를 통해 이를 전달하고 있지만, 이조차 역설적이며, 이런 상충한 면모들이 이지은 작가의 작업 전반에 중요한 요소들입니다.",
   },
   "히노살롱": {
-    images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.png`),
+    images: Array.from({ length: 34 }, (_, i) => `/images/exhibitions/hino-salon/hino-salon-${i + 1}.jpg`),
     desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
   },
   "빠끼": {
-    images: [1,2,3,4,5,8,9,10,11].map(n => `/images/exhibitions/bbakki/bbakki-${n}.png`),
+    images: [1,2,3,4,5,8,9,10,11].map(n => `/images/exhibitions/bbakki/bbakki-${n}.jpg`),
     desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다.",
   },
   "소호프리뷰": {
-    images: [12,13,14,15,2,3,4,5,6,7,8,11].map(n => `/images/exhibitions/soho-preview/soho-preview-${n}.png`),
+    images: [12,13,14,15,2,3,4,5,6,7,8,11].map(n => `/images/exhibitions/soho-preview/soho-preview-${n}.jpg`),
     desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
   },
   "화이자": {
-    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/hwaija/hwaija-${i + 1}.png`),
+    images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/hwaija/hwaija-${i + 1}.jpg`),
     desc: "",
   },
   "메이커스마크": {
-    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.png`),
+    images: Array.from({ length: 5 }, (_, i) => `/images/exhibitions/makers-mark/makers-mark-${i + 1}.jpg`),
     desc: "",
   },
 };
@@ -365,7 +365,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   const exhibitions = [
     { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
     { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-cover.jpg" },
-    { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.png" },
+    { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.jpg" },
     { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07.", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
   ];
 
@@ -541,7 +541,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               >
                 <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
                   <img
-                    src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.png", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.png", "/images/KakaoTalk_Photo_2026-03-25-17-48-11.png"][i] || brand.gallery[i % brand.gallery.length]}
+                    src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.jpg", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.jpg", "/images/KakaoTalk_Photo_2026-03-25-17-48-11.png"][i] || brand.gallery[i % brand.gallery.length]}
                     alt={f.title}
                     className="w-full h-full object-cover transition-all duration-700"
                   />
@@ -570,7 +570,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
             {[
               { title: "Superbugs Campaign", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
-              { title: "Maker's Mark Private Selection", image: "/images/exhibitions/makers-mark/makers-mark-1.png", galleryKey: "메이커스마크" },
+              { title: "Maker's Mark Private Selection", image: "/images/exhibitions/makers-mark/makers-mark-1.jpg", galleryKey: "메이커스마크" },
               { title: "Paso Gallery x ARTIVIST.", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST." },
             ].map((card, i) => {
               const galleryData = exhibitionGalleries[card.galleryKey];
