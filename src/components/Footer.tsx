@@ -148,7 +148,7 @@ export default function Footer() {
               Email
             </Link>
             <div className="pt-4">
-              <span className="text-white font-semibold tracking-tight text-lg">PASO</span>
+              <Link href="https://pasocorp.com" target="_blank" className="text-white font-semibold tracking-tight text-lg hover:text-[#b8960b] transition-colors duration-300">PASO</Link>
             </div>
           </div>
         </div>
