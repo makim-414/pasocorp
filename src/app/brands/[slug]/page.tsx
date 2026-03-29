@@ -39,8 +39,8 @@ const brandsData: Record<string, {
     color: "#a0522d",
     image: "/brands/paso-artcenter-building.jpg",
     gallery: [
-      "/images/paso-art-center-exhibition.png",
-      "/images/paso-art-center-emerging.png",
+      "/images/paso-art-center-exhibition.jpg",
+      "/images/paso-art-center-emerging.jpg",
       "/images/paso-art-center-secondary.png",
     ],
     features: [
@@ -79,17 +79,17 @@ const brandsData: Record<string, {
     desc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—양측 모두에게 지속 가능한 구조를 설계합니다.",
     longDesc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—PASO Agency가 양측 모두에게 지속 가능한 구조를 설계합니다.",
     color: "#d4a574",
-    image: "/images/agency/agency-bg-2.png",
+    image: "/images/agency/agency-bg-2.jpg",
     heroImages: [
-      "/images/agency/agency-bg-2.png",
-      "/images/agency/agency-bg-3.png",
-      "/images/agency/agency-bg-4.png",
+      "/images/agency/agency-bg-2.jpg",
+      "/images/agency/agency-bg-3.jpg",
+      "/images/agency/agency-bg-4.jpg",
     ],
     gallery: [
-      "/images/projects/cu2.png",
+      "/images/projects/cu2.jpg",
       "/images/202309131536597165206.jpg",
       "/Group 13499.png",
-      "/images/projects/hongdae-plusship/1.png",
+      "/images/projects/hongdae-plusship/1.jpg",
     ],
     features: [
       { title: "장띵", desc: "델라페 18종" },
@@ -168,7 +168,7 @@ const standaloneSiteConfig: Record<string, {
     address: "92, Seonggyungwan-ro, Jongno-gu",
     addressDetail: "Seoul, Hanok Building",
     instagram: "https://www.instagram.com/pasogallery",
-    accentColor: "#1e3a5f",
+    accentColor: "#b8960b",
   },
 };
 
