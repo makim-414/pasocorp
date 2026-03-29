@@ -348,6 +348,8 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
 function GalleryLayout({ brand }: { brand: BrandData }) {
   const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; artist?: string; sections?: { title: string; images: string[] }[] } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
 
   const scrollExhibitions = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -625,17 +627,34 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
             <motion.div {...fadeUp}>
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const subject = encodeURIComponent("공간 대관 문의");
-                  const body = encodeURIComponent(
-                    `이름: ${formData.get("name")}\n연락처: ${formData.get("phone")}\n대관 요청 희망일: ${formData.get("date")}\n행사 유형: ${formData.get("eventType")}\n\n${formData.get("message")}`
-                  );
-                  window.open(`mailto:makim@ironact.net?subject=${subject}&body=${body}`);
+                  setSubmitting(true);
+                  setSubmitStatus(null);
+                  const form = e.currentTarget;
+                  const formData = new FormData(form);
+                  formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "");
+                  formData.append("subject", "공간 대관 문의");
+                  formData.append("from_name", formData.get("name") as string);
+                  formData.append("replyto", formData.get("email") as string);
+                  try {
+                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+                    const data = await res.json();
+                    if (data.success) {
+                      setSubmitStatus("success");
+                      form.reset();
+                    } else {
+                      setSubmitStatus("error");
+                    }
+                  } catch {
+                    setSubmitStatus("error");
+                  } finally {
+                    setSubmitting(false);
+                  }
                 }}
                 className="space-y-6"
               >
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
@@ -671,9 +690,15 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                   <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">메시지</label>
                   <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
                 </div>
-                <button type="submit" className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
-                  문의하기
+                <button type="submit" disabled={submitting} className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                  {submitting ? "전송 중..." : "문의하기"}
                 </button>
+                {submitStatus === "success" && (
+                  <p className="mt-4 text-sm text-green-400 font-light">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.</p>
+                )}
+                {submitStatus === "error" && (
+                  <p className="mt-4 text-sm text-red-400 font-light">전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
+                )}
               </form>
             </motion.div>
           </div>
