@@ -29,7 +29,7 @@ const cases = [
     title: "Paso Agency — IP & 브랜드 콜라보",
     description: "프랜차이즈 아트 콜라보, 캐릭터 IP 라이선싱, 아트토이. 브랜드와 예술의 접점을 설계합니다.",
     href: "/brands/paso-agency",
-    image: "/brands/paso-agency.jpg",
+    image: "/images/projects/cu-dding-collab.jpg",
   },
   {
     id: "artledger",
