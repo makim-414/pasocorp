@@ -1113,7 +1113,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               >
                 <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
                   <img
-                    src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.jpg", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.jpg", "/images/soho-rising-artists.jpg"][i] || brand.gallery[i % brand.gallery.length]}
+                    src={brand.gallery[i % brand.gallery.length]}
                     alt={f.title}
                     className="w-full h-full object-cover transition-all duration-700"
                   />
