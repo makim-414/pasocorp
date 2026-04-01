@@ -362,13 +362,6 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
     <>
       <BrandHero brand={brand} />
 
-      {/* Intro */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[800px] mx-auto px-6 md:px-12 text-center">
-          <motion.p {...fadeUp} className="text-base md:text-lg text-[#888] font-light leading-relaxed">{brand.longDesc}</motion.p>
-        </div>
-      </section>
-
       {/* Full-bleed images — cinematic */}
       {brand.gallery.map((img, i) => (
         <motion.section
