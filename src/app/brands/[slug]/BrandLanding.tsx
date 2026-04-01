@@ -284,43 +284,30 @@ function BrandHero({ brand }: { brand: BrandData }) {
       {isArtrader ? (
         <>
           <div className="absolute inset-0 bg-black" />
-          {/* Green ambient glow behind waves */}
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 100% 30% at 35% 62%, rgba(30,130,55,0.18) 0%, transparent 70%), radial-gradient(ellipse 90% 25% at 65% 58%, rgba(40,150,65,0.14) 0%, transparent 70%)" }} />
-          {/* Flowing wave lines - 3 main waves that move together */}
-          <svg className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }} viewBox="0 0 2800 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Green ambient glow */}
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 35% at 30% 62%, rgba(25,120,50,0.12) 0%, transparent 70%), radial-gradient(ellipse 100% 30% at 70% 58%, rgba(30,130,55,0.1) 0%, transparent 65%)" }} />
+          {/* Static SVG wave — matches reference image exactly */}
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <filter id="wGlow">
-                <feGaussianBlur stdDeviation="3" result="b" />
-                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-              <filter id="wGlowWide">
-                <feGaussianBlur stdDeviation="8" result="b" />
-                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
+              <filter id="glo"><feGaussianBlur stdDeviation="2.5" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+              <filter id="gloW"><feGaussianBlur stdDeviation="6" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
             </defs>
-            {/* All waves in a group that scrolls horizontally */}
-            <g filter="url(#wGlow)">
-              <animateTransform attributeName="transform" type="translate" from="0 0" to="-1400 0" dur="20s" repeatCount="indefinite" />
-              {/* Wave 1 - main bright line */}
-              <path d="M0,480 C80,430 160,520 280,440 C400,370 480,530 620,460 C760,390 840,520 980,450 C1120,380 1200,530 1340,460 C1480,390 1560,520 1700,450 C1840,380 1920,530 2060,460 C2200,390 2280,520 2420,450 C2560,380 2640,530 2800,460" fill="none" stroke="#2ecc71" strokeWidth="1.8" opacity="0.8" />
-              {/* Wave 2 - slightly offset, follows wave 1 */}
-              <path d="M0,500 C80,450 160,540 280,460 C400,390 480,550 620,480 C760,410 840,540 980,470 C1120,400 1200,550 1340,480 C1480,410 1560,540 1700,470 C1840,400 1920,550 2060,480 C2200,410 2280,540 2420,470 C2560,400 2640,550 2800,480" fill="none" stroke="#27ae60" strokeWidth="1.2" opacity="0.6" />
-              {/* Wave 3 - bottom line, softer */}
-              <path d="M0,520 C80,470 160,560 280,480 C400,410 480,570 620,500 C760,430 840,560 980,490 C1120,420 1200,570 1340,500 C1480,430 1560,560 1700,490 C1840,420 1920,570 2060,500 C2200,430 2280,560 2420,490 C2560,420 2640,570 2800,500" fill="none" stroke="#1a8a4a" strokeWidth="0.8" opacity="0.5" />
-            </g>
-            {/* Second group - slightly different speed for organic feel */}
-            <g filter="url(#wGlow)">
-              <animateTransform attributeName="transform" type="translate" from="0 0" to="-1400 0" dur="25s" repeatCount="indefinite" />
-              {/* Wave 4 - upper accent */}
-              <path d="M0,460 C100,410 200,510 340,430 C480,360 560,510 700,440 C840,370 940,510 1080,440 C1220,370 1300,510 1440,440 C1580,370 1660,510 1800,440 C1940,370 2040,510 2180,440 C2320,370 2400,510 2540,440 C2680,370 2760,510 2800,440" fill="none" stroke="#2ecc71" strokeWidth="0.6" opacity="0.35" />
-              {/* Wave 5 - lower accent */}
-              <path d="M0,540 C100,490 200,580 340,500 C480,430 560,580 700,510 C840,440 940,580 1080,510 C1220,440 1300,580 1440,510 C1580,440 1660,580 1800,510 C1940,440 2040,580 2180,510 C2320,440 2400,580 2540,510 C2680,440 2760,580 2800,510" fill="none" stroke="#1e8c4a" strokeWidth="0.5" opacity="0.3" />
-            </g>
-            {/* Glow layer - thick blurred wave for ambient green light */}
-            <g filter="url(#wGlowWide)">
-              <animateTransform attributeName="transform" type="translate" from="0 0" to="-1400 0" dur="22s" repeatCount="indefinite" />
-              <path d="M0,490 C80,440 160,530 280,450 C400,380 480,540 620,470 C760,400 840,530 980,460 C1120,390 1200,540 1340,470 C1480,400 1560,530 1700,460 C1840,390 1920,540 2060,470 C2200,400 2280,530 2420,460 C2560,390 2640,540 2800,470" fill="none" stroke="#2ecc71" strokeWidth="6" opacity="0.08" />
-            </g>
+            {/* Thick glow underlayer */}
+            <path d="M0,540 C60,510 120,490 200,520 C280,555 330,490 400,470 C470,450 510,500 580,530 C650,555 700,510 770,485 C840,460 890,500 960,530 C1030,555 1080,490 1150,470 C1220,450 1270,510 1340,530 L1400,520" fill="none" stroke="#1a6b3a" strokeWidth="8" opacity="0.06" filter="url(#gloW)" />
+            <path d="M0,560 C70,530 130,505 210,535 C290,565 340,510 420,490 C500,470 540,515 610,545 C680,570 730,520 800,500 C870,480 920,520 990,545 C1060,565 1110,505 1180,485 C1250,465 1300,520 1370,545 L1400,535" fill="none" stroke="#1a6b3a" strokeWidth="6" opacity="0.05" filter="url(#gloW)" />
+            {/* === Main wave group — left peak === */}
+            <path d="M0,570 C40,560 80,545 130,530 C180,510 210,480 250,450 C290,420 310,395 340,380 C370,370 390,390 420,420 C450,450 470,480 500,505 C530,530 560,545 600,540 C640,535 670,520 710,510 C750,500 790,505 830,520 C870,535 900,530 940,510 C980,490 1010,475 1050,470 C1090,465 1120,480 1160,500 C1200,520 1230,530 1270,520 C1310,510 1350,515 1400,530" fill="none" stroke="#2ecc71" strokeWidth="1.5" opacity="0.7" filter="url(#glo)" />
+            <path d="M0,575 C45,565 85,548 135,532 C185,512 215,478 255,445 C295,415 315,388 345,375 C375,365 398,388 428,418 C458,448 478,482 508,508 C538,532 565,548 605,545 C645,540 675,525 715,515 C755,505 795,510 835,525 C875,540 905,535 945,515 C985,495 1015,478 1055,472 C1095,468 1125,485 1165,505 C1205,525 1235,535 1275,525 C1315,515 1355,518 1400,535" fill="none" stroke="#27ae60" strokeWidth="1" opacity="0.5" filter="url(#glo)" />
+            <path d="M0,580 C50,570 90,552 140,538 C190,518 220,485 260,455 C300,425 320,400 350,388 C380,378 400,395 432,425 C462,455 485,488 515,512 C545,535 570,550 610,548 C650,545 680,530 720,520 C760,510 800,515 840,528 C880,542 908,538 948,518 C988,498 1018,482 1058,475 C1098,470 1128,488 1168,508 C1208,528 1238,538 1278,528 C1318,518 1358,522 1400,538" fill="none" stroke="#1e8c4a" strokeWidth="0.7" opacity="0.4" />
+            {/* === Secondary waves — slightly different shape === */}
+            <path d="M0,565 C35,555 75,540 125,525 C175,505 205,475 245,448 C285,425 308,405 338,395 C368,388 395,405 425,430 C455,458 480,490 510,515 C540,538 568,550 608,548 C648,542 678,528 718,518 C758,508 798,512 838,525 C878,540 905,535 945,518 C985,498 1015,482 1055,475 C1095,470 1125,488 1165,508 C1205,528 1238,538 1278,528 C1318,518 1358,520 1400,535" fill="none" stroke="#2ecc71" strokeWidth="0.6" opacity="0.35" />
+            <path d="M0,585 C55,575 95,558 145,542 C195,522 225,490 265,460 C305,430 325,408 355,398 C385,390 408,408 438,435 C468,462 492,495 522,520 C552,542 578,555 618,552 C658,548 688,535 728,525 C768,515 808,518 848,532 C888,545 915,542 955,522 C995,502 1025,488 1065,482 C1105,478 1135,495 1175,515 C1215,532 1245,542 1285,532 C1325,522 1362,525 1400,542" fill="none" stroke="#1a6b3a" strokeWidth="0.5" opacity="0.3" />
+            {/* === Right side peak group === */}
+            <path d="M0,555 C30,548 70,535 120,522 C170,508 200,485 240,460 C280,438 305,418 335,405 C365,395 388,408 418,432 C448,458 475,488 505,510 C535,532 565,545 605,542 C645,538 675,525 715,515 C755,505 795,510 835,522 C875,535 910,540 950,528 C990,510 1020,488 1060,468 C1100,450 1120,435 1150,425 C1180,418 1210,435 1240,460 C1270,488 1300,510 1340,525 L1400,530" fill="none" stroke="#2ecc71" strokeWidth="1.2" opacity="0.55" filter="url(#glo)" />
+            <path d="M0,560 C32,552 72,538 122,525 C172,510 202,488 242,465 C282,442 307,422 337,410 C367,400 392,415 422,438 C452,462 480,492 510,515 C540,535 568,548 608,546 C648,542 678,530 718,520 C758,510 798,514 838,526 C878,538 912,542 952,532 C992,515 1022,492 1062,472 C1102,455 1125,442 1155,432 C1185,425 1215,442 1245,465 C1275,492 1305,515 1345,528 L1400,535" fill="none" stroke="#27ae60" strokeWidth="0.8" opacity="0.4" />
+            {/* === Ghost/reflection lines below === */}
+            <path d="M0,595 C50,585 100,575 150,568 C200,558 230,545 270,535 C310,525 340,530 380,542 C420,555 460,565 500,558 C540,548 580,540 620,545 C660,550 700,558 740,555 C780,548 820,540 860,545 C900,552 940,560 980,555 C1020,548 1060,540 1100,542 C1140,545 1180,555 1220,558 C1260,560 1300,555 1340,548 L1400,545" fill="none" stroke="#145a30" strokeWidth="0.5" opacity="0.2" />
+            <path d="M0,605 C60,598 120,588 180,580 C240,572 280,565 320,560 C360,555 400,560 440,568 C480,575 520,580 560,575 C600,570 640,565 680,568 C720,572 760,578 800,575 C840,570 880,565 920,568 C960,575 1000,580 1040,575 C1080,570 1120,565 1160,568 C1200,572 1240,578 1280,575 C1320,572 1360,570 1400,568" fill="none" stroke="#0f4a25" strokeWidth="0.4" opacity="0.15" />
           </svg>
         </>
       ) : (
