@@ -95,7 +95,7 @@ const brandsData: Record<string, {
       { title: "장띵", desc: "2024 CU 델라떼 18종 장띵 콜라보" },
       { title: "CU X PASO", desc: "와인 라벨 패키지 공모전" },
       { title: "투썸", desc: "투썸 브랜드" },
-      { title: "KUHO", desc: "KUHO 브랜드" },
+      { title: "KUHO", desc: "KUHO 브랜드 홍대 플래그쉽" },
     ],
   },
   "artledger-consulting": {
