@@ -23,6 +23,14 @@ Artist: @jang_dding
 참고기사: https://www.news1.kr/industry/distribution/5325506`,
     images: Array.from({ length: 6 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
+  1: {
+    title: "와인 라벨 패키지 공모전",
+    images: [
+      "/images/projects/cu-wine/poster-1.jpg",
+      "/images/projects/cu-wine/poster-2.jpg",
+      "/images/projects/cu-wine/poster-3.jpg",
+    ],
+  },
   2: {
     title: "투썸플레이스 홍대서교점 X 강한",
     artist: "강한 (@_kang_han_)",
