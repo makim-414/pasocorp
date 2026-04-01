@@ -33,7 +33,9 @@ Artist: @jang_dding
 
 두번째 파일럿 프로젝트에서는 강한(@_kang_han_) 작가만이 가진 동화적인 색감과 감성으로, 2월 신축된 THE TWOSOME PLACE 홍대서교점 3층 전관을 작가의 세계관을 통해 구축했습니다.
 
-*THE TWOSOME PLACE 강한 작가 콜라보 지점의 아트 설치/구조물은 반영구적이며, 강한 작가가 그려낸 투썸보이, 커피독은 A TWOSOME PLACE의 캐릭터 IP로 출원되었습니다.`,
+*THE TWOSOME PLACE 강한 작가 콜라보 지점의 아트 설치/구조물은 반영구적이며, 강한 작가가 그려낸 투썸보이, 커피독은 A TWOSOME PLACE의 캐릭터 IP로 출원되었습니다.
+
+참고기사: https://www.mk.co.kr/news/economy/10953076`,
     images: [
       "/images/projects/twosome/twosome-1.jpg",
       "/images/projects/twosome/twosome-2.jpg",
