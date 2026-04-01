@@ -374,9 +374,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           className="min-h-screen flex items-center bg-black border-t border-[#1a1a1a]"
         >
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${i % 2 === 1 ? "lg:flex lg:flex-row-reverse" : ""}`}>
+            <div className={`flex flex-col lg:flex-row gap-12 items-center ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+              {/* Phone image */}
+              <div className="flex-shrink-0 flex justify-center lg:w-1/2">
+                <img
+                  src={s.src}
+                  alt={s.tag ?? "Artrader"}
+                  className="w-full max-w-[320px] md:max-w-[400px] object-contain drop-shadow-2xl"
+                />
+              </div>
+
               {/* Text */}
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 lg:w-1/2">
                 {s.tag && (
                   <p className="text-[#4ade80] text-xs tracking-[0.25em] uppercase">{s.tag}</p>
                 )}
@@ -387,15 +396,6 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                   {s.headline}
                 </h2>
                 <p className="text-[#888] font-light leading-relaxed max-w-sm">{s.desc}</p>
-              </div>
-
-              {/* Phone image */}
-              <div className="flex justify-center">
-                <img
-                  src={s.src}
-                  alt={s.tag ?? "Artrader"}
-                  className="w-full max-w-[320px] md:max-w-[400px] object-contain drop-shadow-2xl"
-                />
               </div>
             </div>
           </div>
