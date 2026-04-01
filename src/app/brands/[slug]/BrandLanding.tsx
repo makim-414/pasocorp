@@ -14,6 +14,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
     images: [
       "/images/projects/cu-wine/poster-1.jpg",
       "/images/projects/cu-wine/poster-2.jpg",
+      "/images/projects/cu-wine/poster-3.jpg",
     ],
   },
   2: {
