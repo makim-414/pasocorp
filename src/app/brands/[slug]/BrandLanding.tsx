@@ -877,7 +877,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
       <BrandHero brand={brand} />
 
       {/* Playful project cards */}
-      <section className="py-16 bg-black">
+      <section className="pt-24 pb-16 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Projects</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>Creative Collaborations</motion.h2>
