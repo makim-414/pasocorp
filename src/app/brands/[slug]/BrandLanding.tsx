@@ -394,20 +394,20 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Auction / PS Data ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
+      <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-visible">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 items-center">
+          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Phones */}
-            <div className="flex gap-4 justify-center items-end">
+            <div className="flex gap-6 justify-center items-center overflow-visible">
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 1.png"
                 alt="Artrader App"
-                className="w-28 md:w-40 object-contain drop-shadow-2xl"
+                className="w-36 md:w-48 object-contain drop-shadow-2xl"
               />
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 2.png"
                 alt="Artrader Search"
-                className="w-36 md:w-48 object-contain drop-shadow-2xl"
+                className="w-44 md:w-56 object-contain drop-shadow-2xl"
               />
             </div>
             {/* Text */}
