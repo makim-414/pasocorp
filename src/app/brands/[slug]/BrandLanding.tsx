@@ -978,15 +978,6 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
     <>
       <BrandHero brand={brand} />
 
-      {/* Intro — text-dominant */}
-      <section className="py-32 md:py-40 bg-black">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12">
-            <p className="text-lg md:text-xl text-[#aaa] font-light leading-relaxed" style={{ fontFamily: "var(--font-dutch)" }}>{brand.longDesc}</p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Services — 3 cards with curated images */}
       <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
