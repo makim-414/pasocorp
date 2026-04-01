@@ -9,6 +9,13 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
     title: "CU 델라페 18종 X 장띵",
     images: Array.from({ length: 6 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
+  1: {
+    title: "와인 라벨 패키지 공모전",
+    images: [
+      "/images/projects/cu-wine/poster-1.jpg",
+      "/images/projects/cu-wine/poster-2.jpg",
+    ],
+  },
   2: {
     title: "투썸플레이스 홍대서교점 X 강한",
     images: [
