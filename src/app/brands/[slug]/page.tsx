@@ -93,7 +93,7 @@ const brandsData: Record<string, {
       { title: "장띵", desc: "CU 델라페 18종 X 장띵" },
       { title: "CU X PASO", desc: "와인 라벨 패키지 공모전" },
       { title: "TWOSOME PLACE", desc: "투썸플레이스 홍대서교점 X 강한" },
-      { title: "KUHO", desc: "KUHO 브랜드 홍대 플래그쉽" },
+      { title: "CHOWOO", desc: "CHOWOO 홍대 플래그쉽 스토어" },
     ],
   },
   "artledger-consulting": {

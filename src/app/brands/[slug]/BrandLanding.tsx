@@ -53,7 +53,7 @@ Artist: @jang_dding
     ],
   },
   3: {
-    title: "KUHO 브랜드 홍대 플래그쉽",
+    title: "CHOWOO 홍대 플래그쉽 스토어",
     images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg"],
   },
 };
