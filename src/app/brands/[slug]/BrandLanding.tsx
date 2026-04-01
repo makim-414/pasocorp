@@ -277,24 +277,32 @@ function BrandHero({ brand }: { brand: BrandData }) {
     return () => clearInterval(timer);
   }, [images.length]);
 
+  const isArtrader = brand.slug === "artrader";
+
   return (
     <section className="relative h-[75vh] flex items-end overflow-hidden">
-      {images.map((src, i) => (
-        <motion.div
-          key={src}
-          animate={{ opacity: i === currentIndex ? 1 : 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${src})` }}
-        />
-      ))}
-      <div className="absolute inset-0 bg-black/60" />
-      <div className="absolute inset-0" style={{ background: `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />
-      <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />
+      {isArtrader ? (
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #3dba6e 0%, #6cd99b 40%, #a8e6c3 70%, #c8f5de 100%)" }} />
+      ) : (
+        <>
+          {images.map((src, i) => (
+            <motion.div
+              key={src}
+              animate={{ opacity: i === currentIndex ? 1 : 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${src})` }}
+            />
+          ))}
+        </>
+      )}
+      {!isArtrader && <div className="absolute inset-0 bg-black/60" />}
+      <div className="absolute inset-0" style={{ background: isArtrader ? `linear-gradient(to top, black 0%, black 10%, transparent 50%)` : `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />
+      {!isArtrader && <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full">
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xs tracking-[0.15em] text-[#b8960b] mb-4">{brand.year}</motion.p>
         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-4xl md:text-7xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</motion.h1>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-4 text-lg text-[#ccc] font-light max-w-2xl whitespace-pre-line">{brand.desc}</motion.p>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-4 text-lg text-[#ccc] font-light max-w-4xl whitespace-pre-line">{brand.desc}</motion.p>
       </div>
     </section>
   );
