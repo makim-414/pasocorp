@@ -347,7 +347,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    2. PASO ART CENTER — Museum / Full-bleed imagery
    ═══════════════════════════════════════════════════ */
-const artCenterGalleryImages = Array.from({ length: 19 }, (_, i) => `/images/paso-art-center-gallery/${i + 4}.jpg`);
+const artCenterGalleryImages = Array.from({ length: 18 }, (_, i) => `/images/paso-art-center-gallery/${i + 4}.jpg`);
 
 function ArtCenterLayout({ brand }: { brand: BrandData }) {
   const [openGallery, setOpenGallery] = useState<{ title: string; images: string[]; desc?: string } | null>(null);
