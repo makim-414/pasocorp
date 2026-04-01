@@ -11,7 +11,13 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
   2: {
     title: "투썸 — A Twosome Place",
-    images: Array.from({ length: 8 }, (_, i) => `/images/projects/twosome/twosome-${i + 1}.jpg`),
+    images: [
+      "/images/projects/twosome/twosome-1.jpg",
+      "/images/projects/twosome/twosome-2.jpg",
+      "/images/projects/twosome/twosome-3.jpg",
+      "/images/projects/twosome/twosome-4.jpg",
+      "/images/projects/twosome/twosome-5.jpg",
+    ],
   },
   3: {
     title: "KUHO — 홍대 플래그쉽",
