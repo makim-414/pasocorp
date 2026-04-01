@@ -39,7 +39,7 @@ const brandsData: Record<string, {
     color: "#a0522d",
     image: "/brands/paso-artcenter-building.jpg",
     gallery: [
-      "/images/paso-art-center-exhibition.jpg",
+      "/images/whats-happening/preopening.png",
       "/images/paso-art-center-emerging.jpg",
       "/images/paso-art-center-secondary.png",
     ],
