@@ -316,10 +316,30 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
   ];
 
   const screens = [
-    { src: "/brands/iPhone 14 Pro Max - Screen 1.png", alt: "Artrader 스플래시" },
-    { src: "/brands/iPhone 14 Pro Max - Screen 2.png", alt: "데이터 – 국내 최대 거래 데이터베이스" },
-    { src: "/brands/iPhone 14 Pro Max - Screen 3.png", alt: "가격 – 적정 가격 제시" },
-    { src: "/brands/iPhone 14 Pro Max - Screen 4.png", alt: "검증 – 검증 시스템" },
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 1.png",
+      tag: null,
+      headline: "작품 검색부터\n거래까지\n아트레이더 하나로",
+      desc: "미술품 거래의 모든 것을 한 곳에서. 검색부터 가격 확인, 거래까지 아트레이더로 해결하세요.",
+    },
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 2.png",
+      tag: "데이터",
+      headline: "국내 최대\n거래 데이터베이스",
+      desc: "1,570만 건의 경매 데이터를 기반으로 작품·작가를 검색하고 신뢰할 수 있는 거래 정보를 확인하세요.",
+    },
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 3.png",
+      tag: "가격",
+      headline: "검증된 데이터로\n적정 가격 제시",
+      desc: "경매 낙찰 데이터 기반의 Fair Price로 합리적인 매입가를 파악하고 안전하게 거래하세요.",
+    },
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 4.png",
+      tag: "검증",
+      headline: "믿고 거래할 수\n있는 검증 시스템",
+      desc: "작품 이력과 경매 기록을 투명하게 공개. 검증된 정보로 컬렉션을 구축하세요.",
+    },
   ];
 
   return (
@@ -338,18 +358,41 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* App screens showcase */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-end">
-            {screens.map((s, i) => (
-              <motion.div key={i} {...stagger(i)}>
-                <img src={s.src} alt={s.alt} className="w-full object-contain drop-shadow-2xl" />
-              </motion.div>
-            ))}
+      {/* Full-screen app showcase — scroll through */}
+      {screens.map((s, i) => (
+        <motion.section
+          key={i}
+          {...fadeUp}
+          className="min-h-screen flex items-center bg-black border-t border-[#1a1a1a]"
+        >
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full">
+            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${i % 2 === 1 ? "lg:flex lg:flex-row-reverse" : ""}`}>
+              {/* Text */}
+              <div className="flex flex-col gap-6">
+                {s.tag && (
+                  <p className="text-[#4ade80] text-xs tracking-[0.25em] uppercase">{s.tag}</p>
+                )}
+                <h2
+                  className="text-4xl md:text-6xl font-semibold text-white leading-tight whitespace-pre-line"
+                  style={{ fontFamily: "var(--font-dutch)" }}
+                >
+                  {s.headline}
+                </h2>
+                <p className="text-[#888] font-light leading-relaxed max-w-sm">{s.desc}</p>
+              </div>
+
+              {/* Phone image */}
+              <div className="flex justify-center">
+                <img
+                  src={s.src}
+                  alt={s.tag ?? "Artrader"}
+                  className="w-full max-w-[320px] md:max-w-[400px] object-contain drop-shadow-2xl"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.section>
+      ))}
 
       <BrandCTA brand={brand} />
     </>
