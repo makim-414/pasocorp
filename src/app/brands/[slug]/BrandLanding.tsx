@@ -282,7 +282,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
   return (
     <section className={`relative flex items-end overflow-hidden ${isArtrader ? "h-[65vh]" : "h-[75vh]"}`}>
       {isArtrader ? (
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/brands/artrader-hero-bg.png')" }} />
+        <div className="absolute inset-0" style={{ backgroundImage: "url('/brands/artrader-hero-bg.png')", backgroundSize: "120%", backgroundPosition: "center 70%" }} />
       ) : (
         <>
           {images.map((src, i) => (
@@ -297,7 +297,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
         </>
       )}
       {!isArtrader && <div className="absolute inset-0 bg-black/60" />}
-      <div className="absolute inset-0" style={{ background: isArtrader ? `linear-gradient(to top, black 0%, black 25%, transparent 60%)` : `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />
+      <div className="absolute inset-0" style={{ background: isArtrader ? `linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 15%, transparent 50%)` : `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />
       {!isArtrader && <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full">
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xs tracking-[0.15em] text-[#b8960b] mb-4">{brand.year}</motion.p>
