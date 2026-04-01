@@ -280,7 +280,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
   const isArtrader = brand.slug === "artrader";
 
   return (
-    <section className="relative h-[75vh] flex items-end overflow-hidden">
+    <section className={`relative flex items-end overflow-hidden ${isArtrader ? "h-[45vh]" : "h-[75vh]"}`}>
       {isArtrader ? (
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #3dba6e 0%, #6cd99b 40%, #a8e6c3 70%, #c8f5de 100%)" }} />
       ) : (
