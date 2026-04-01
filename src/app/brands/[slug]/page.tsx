@@ -76,7 +76,7 @@ const brandsData: Record<string, {
     name: "Paso Agency",
     slug: "paso-agency",
     year: 2023,
-    desc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록 양측 모두에게 지속 가능한 구조를 설계합니다.",
+    desc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도\n온전히 보호받을 수 있도록 양측 모두에게 지속 가능한 구조를 설계합니다.",
     longDesc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—PASO Agency가 양측 모두에게 지속 가능한 구조를 설계합니다.",
     color: "#d4a574",
     image: "/images/agency/agency-bg-2.jpg",
