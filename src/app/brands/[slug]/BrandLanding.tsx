@@ -1073,7 +1073,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      <BrandCTA brand={brand} />
     </>
   );
 }
