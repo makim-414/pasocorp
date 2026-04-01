@@ -25,6 +25,7 @@ Artist: @jang_dding
   },
   1: {
     title: "와인 라벨 패키지 공모전",
+    desc: `CU 프리미엄 와인 라벨 패키지 공모전\n\n참고기사: https://www.hankyung.com/article/202309055129i`,
     images: [
       "/images/projects/cu-wine/poster-1.jpg",
       "/images/projects/cu-wine/poster-2.jpg",
@@ -193,7 +194,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
               )}
             </p>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {gallery.images.map((src, i) => (
               <div
                 key={src}
