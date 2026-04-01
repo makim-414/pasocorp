@@ -6,11 +6,11 @@ import { useState, useRef, useEffect, useCallback } from "react";
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[] }> = {
   0: {
-    title: "장띵 — 델라페 18종",
+    title: "CU 델라페 18종 X 장띵",
     images: Array.from({ length: 6 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
   2: {
-    title: "투썸 — A Twosome Place",
+    title: "투썸플레이스 홍대서교점 X 강한",
     images: [
       "/images/projects/twosome/twosome-1.jpg",
       "/images/projects/twosome/twosome-2.jpg",
@@ -20,7 +20,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
     ],
   },
   3: {
-    title: "KUHO — 홍대 플래그쉽",
+    title: "KUHO 브랜드 홍대 플래그쉽",
     images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg"],
   },
 };
@@ -147,7 +147,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
       >
         <div className="w-full max-w-[1200px] px-6 py-16" onClick={(e) => e.stopPropagation()}>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl md:text-3xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
+            <h2 className="text-base md:text-xl font-light text-white tracking-wide">{gallery.title}</h2>
             <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
           </div>
           {gallery.artist && (
