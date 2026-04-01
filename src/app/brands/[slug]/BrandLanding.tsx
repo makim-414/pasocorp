@@ -390,16 +390,16 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Phones */}
-            <div className="flex gap-6 justify-center items-end">
+            <div className="flex gap-6 justify-center items-center">
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 1.png"
                 alt="Artrader App"
-                className="w-36 md:w-48 object-contain drop-shadow-2xl"
+                className="w-32 md:w-44 object-contain drop-shadow-2xl"
               />
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 2.png"
                 alt="Artrader Search"
-                className="w-44 md:w-56 object-contain drop-shadow-2xl"
+                className="w-40 md:w-52 object-contain drop-shadow-2xl"
               />
             </div>
             {/* Text */}
@@ -495,16 +495,16 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               </p>
             </div>
             {/* Phones */}
-            <div className="flex gap-6 justify-center items-start order-1 lg:order-2">
+            <div className="flex gap-6 justify-center items-center order-1 lg:order-2">
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 3.png"
                 alt="Artrader Fair Price"
-                className="w-40 md:w-52 object-contain drop-shadow-2xl"
+                className="w-32 md:w-44 object-contain drop-shadow-2xl"
               />
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 4.png"
                 alt="Artrader Verification"
-                className="w-40 md:w-52 object-contain drop-shadow-2xl"
+                className="w-32 md:w-44 object-contain drop-shadow-2xl"
               />
             </div>
           </motion.div>
