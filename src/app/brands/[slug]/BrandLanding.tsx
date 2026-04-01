@@ -284,58 +284,100 @@ function BrandHero({ brand }: { brand: BrandData }) {
       {isArtrader ? (
         <>
           <div className="absolute inset-0 bg-black" />
+          {/* Green glow behind waves */}
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 40% at 30% 65%, rgba(30,120,60,0.15) 0%, transparent 70%), radial-gradient(ellipse 100% 35% at 70% 60%, rgba(40,140,70,0.12) 0%, transparent 70%)" }} />
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#1a8a4a" stopOpacity="0.6" />
-                <stop offset="50%" stopColor="#3dba6e" stopOpacity="0.8" />
+              <filter id="waveGlow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="waveGlowSoft">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="wg1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#1a8a4a" stopOpacity="0.5" />
+                <stop offset="30%" stopColor="#2ecc71" stopOpacity="0.9" />
+                <stop offset="60%" stopColor="#27ae60" stopOpacity="0.7" />
                 <stop offset="100%" stopColor="#1a8a4a" stopOpacity="0.4" />
               </linearGradient>
-              <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#2ecc71" stopOpacity="0.3" />
-                <stop offset="50%" stopColor="#27ae60" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#2ecc71" stopOpacity="0.2" />
+              <linearGradient id="wg2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#27ae60" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#2ecc71" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#1e8c4a" stopOpacity="0.3" />
               </linearGradient>
-              <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#b8960b" stopOpacity="0.15" />
-                <stop offset="50%" stopColor="#d4a90e" stopOpacity="0.25" />
-                <stop offset="100%" stopColor="#b8960b" stopOpacity="0.1" />
+              <linearGradient id="wg3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#145a30" stopOpacity="0.4" />
+                <stop offset="50%" stopColor="#1a8a4a" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#145a30" stopOpacity="0.3" />
               </linearGradient>
             </defs>
-            {/* Wave layer 1 */}
-            <path fill="none" stroke="url(#waveGrad1)" strokeWidth="1.5" opacity="0.7">
-              <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
-                M0,520 C100,480 200,540 350,500 C500,460 600,530 750,510 C900,490 1050,540 1200,500 C1300,475 1350,510 1400,490;
-                M0,510 C100,540 200,480 350,520 C500,540 600,470 750,500 C900,530 1050,480 1200,520 C1300,540 1350,490 1400,510;
-                M0,520 C100,480 200,540 350,500 C500,460 600,530 750,510 C900,490 1050,540 1200,500 C1300,475 1350,510 1400,490" />
+            {/* Main bold wave - large amplitude */}
+            <path fill="none" stroke="url(#wg1)" strokeWidth="2" opacity="0.9" filter="url(#waveGlow)">
+              <animate attributeName="d" dur="7s" repeatCount="indefinite" values="
+                M0,520 C80,440 160,560 280,470 C400,380 480,550 600,480 C720,410 800,540 920,460 C1040,380 1120,530 1240,470 C1320,430 1360,490 1400,460;
+                M0,480 C80,550 160,420 280,510 C400,570 480,400 600,490 C720,560 800,420 920,500 C1040,570 1120,430 1240,500 C1320,540 1360,470 1400,510;
+                M0,520 C80,440 160,560 280,470 C400,380 480,550 600,480 C720,410 800,540 920,460 C1040,380 1120,530 1240,470 C1320,430 1360,490 1400,460" />
             </path>
-            {/* Wave layer 2 */}
-            <path fill="none" stroke="url(#waveGrad1)" strokeWidth="1" opacity="0.5">
-              <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
-                M0,540 C120,510 240,560 400,530 C560,500 680,550 850,535 C1020,520 1140,560 1300,530 L1400,520;
-                M0,530 C120,560 240,510 400,545 C560,560 680,500 850,525 C1020,550 1140,510 1300,540 L1400,535;
-                M0,540 C120,510 240,560 400,530 C560,500 680,550 850,535 C1020,520 1140,560 1300,530 L1400,520" />
-            </path>
-            {/* Wave layer 3 */}
-            <path fill="none" stroke="url(#waveGrad2)" strokeWidth="1.2" opacity="0.6">
-              <animate attributeName="d" dur="12s" repeatCount="indefinite" values="
-                M0,560 C150,530 300,580 450,550 C600,520 750,570 900,555 C1050,540 1200,575 1400,550;
-                M0,550 C150,575 300,530 450,560 C600,580 750,530 900,545 C1050,570 1200,535 1400,555;
-                M0,560 C150,530 300,580 450,550 C600,520 750,570 900,555 C1050,540 1200,575 1400,550" />
-            </path>
-            {/* Wave layer 4 - subtle gold accent */}
-            <path fill="none" stroke="url(#waveGrad3)" strokeWidth="0.8" opacity="0.4">
-              <animate attributeName="d" dur="14s" repeatCount="indefinite" values="
-                M0,500 C180,470 360,520 540,490 C720,460 900,510 1080,485 C1200,470 1300,500 1400,480;
-                M0,490 C180,515 360,470 540,505 C720,520 900,470 1080,495 C1200,515 1300,480 1400,500;
-                M0,500 C180,470 360,520 540,490 C720,460 900,510 1080,485 C1200,470 1300,500 1400,480" />
-            </path>
-            {/* Wave layer 5 */}
-            <path fill="none" stroke="url(#waveGrad2)" strokeWidth="0.6" opacity="0.3">
+            {/* Secondary wave - offset */}
+            <path fill="none" stroke="url(#wg1)" strokeWidth="1.5" opacity="0.7" filter="url(#waveGlow)">
               <animate attributeName="d" dur="9s" repeatCount="indefinite" values="
-                M0,580 C200,560 400,600 600,570 C800,545 1000,590 1200,565 L1400,575;
-                M0,570 C200,595 400,555 600,585 C800,600 1000,555 1200,580 L1400,565;
-                M0,580 C200,560 400,600 600,570 C800,545 1000,590 1200,565 L1400,575" />
+                M0,540 C100,470 200,580 340,490 C480,400 560,560 700,500 C840,440 960,570 1100,490 C1200,440 1300,520 1400,480;
+                M0,500 C100,560 200,440 340,530 C480,590 560,430 700,510 C840,570 960,440 1100,520 C1200,560 1300,470 1400,520;
+                M0,540 C100,470 200,580 340,490 C480,400 560,560 700,500 C840,440 960,570 1100,490 C1200,440 1300,520 1400,480" />
+            </path>
+            {/* Third wave - different phase */}
+            <path fill="none" stroke="url(#wg2)" strokeWidth="1.2" opacity="0.6" filter="url(#waveGlow)">
+              <animate attributeName="d" dur="11s" repeatCount="indefinite" values="
+                M0,500 C120,420 240,560 380,450 C520,360 640,540 780,470 C920,400 1040,550 1180,460 C1280,410 1340,500 1400,450;
+                M0,470 C120,540 240,400 380,500 C520,580 640,420 780,490 C920,560 1040,410 1180,500 C1280,550 1340,460 1400,510;
+                M0,500 C120,420 240,560 380,450 C520,360 640,540 780,470 C920,400 1040,550 1180,460 C1280,410 1340,500 1400,450" />
+            </path>
+            {/* Soft glow wave - wide blur */}
+            <path fill="none" stroke="url(#wg2)" strokeWidth="3" opacity="0.25" filter="url(#waveGlowSoft)">
+              <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
+                M0,510 C90,430 180,570 310,480 C440,390 530,550 660,490 C790,430 880,550 1010,470 C1140,390 1230,530 1400,470;
+                M0,490 C90,560 180,430 310,520 C440,580 530,420 660,500 C790,560 880,430 1010,510 C1140,570 1230,440 1400,500;
+                M0,510 C90,430 180,570 310,480 C440,390 530,550 660,490 C790,430 880,550 1010,470 C1140,390 1230,530 1400,470" />
+            </path>
+            {/* Fine detail waves - many thin lines */}
+            <path fill="none" stroke="url(#wg3)" strokeWidth="0.8" opacity="0.5">
+              <animate attributeName="d" dur="6s" repeatCount="indefinite" values="
+                M0,530 C70,460 140,570 260,480 C380,390 460,560 580,490 C700,420 780,550 900,470 C1020,390 1100,540 1220,480 C1300,440 1350,500 1400,470;
+                M0,490 C70,550 140,430 260,520 C380,580 460,420 580,500 C700,570 780,430 900,510 C1020,580 1100,440 1220,510 C1300,550 1350,480 1400,520;
+                M0,530 C70,460 140,570 260,480 C380,390 460,560 580,490 C700,420 780,550 900,470 C1020,390 1100,540 1220,480 C1300,440 1350,500 1400,470" />
+            </path>
+            <path fill="none" stroke="url(#wg3)" strokeWidth="0.6" opacity="0.4">
+              <animate attributeName="d" dur="13s" repeatCount="indefinite" values="
+                M0,555 C110,490 220,590 370,510 C520,430 620,570 770,505 C920,440 1020,570 1170,500 C1270,460 1340,520 1400,495;
+                M0,505 C110,570 220,450 370,530 C520,590 620,440 770,515 C920,570 1020,450 1170,520 C1270,560 1340,480 1400,525;
+                M0,555 C110,490 220,590 370,510 C520,430 620,570 770,505 C920,440 1020,570 1170,500 C1270,460 1340,520 1400,495" />
+            </path>
+            <path fill="none" stroke="url(#wg2)" strokeWidth="0.5" opacity="0.35">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
+                M0,565 C130,500 260,600 400,520 C540,440 660,580 800,510 C940,445 1060,575 1200,505 C1300,470 1350,530 1400,500;
+                M0,515 C130,580 260,460 400,540 C540,600 660,450 800,520 C940,580 1060,460 1200,530 C1300,570 1350,490 1400,530;
+                M0,565 C130,500 260,600 400,520 C540,440 660,580 800,510 C940,445 1060,575 1200,505 C1300,470 1350,530 1400,500" />
+            </path>
+            {/* Extra fine ghost waves for depth */}
+            <path fill="none" stroke="url(#wg3)" strokeWidth="0.4" opacity="0.25">
+              <animate attributeName="d" dur="15s" repeatCount="indefinite" values="
+                M0,580 C150,510 300,620 450,530 C600,450 750,590 900,520 C1050,455 1200,580 1400,510;
+                M0,530 C150,590 300,470 450,550 C600,610 750,460 900,530 C1050,590 1200,470 1400,540;
+                M0,580 C150,510 300,620 450,530 C600,450 750,590 900,520 C1050,455 1200,580 1400,510" />
+            </path>
+            <path fill="none" stroke="url(#wg3)" strokeWidth="0.4" opacity="0.2">
+              <animate attributeName="d" dur="16s" repeatCount="indefinite" values="
+                M0,595 C170,540 340,630 510,550 C680,470 850,600 1020,540 C1190,480 1300,570 1400,530;
+                M0,545 C170,600 340,490 510,570 C680,620 850,480 1020,550 C1190,600 1300,500 1400,560;
+                M0,595 C170,540 340,630 510,550 C680,470 850,600 1020,540 C1190,480 1300,570 1400,530" />
             </path>
           </svg>
         </>
