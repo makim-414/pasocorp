@@ -32,9 +32,9 @@ export default function EcosystemSection() {
           </p>
         </motion.div>
 
-        {/* Flywheel Visual — Gallery active by default */}
+        {/* Flywheel Visual */}
         <div className="max-w-[400px] mx-auto">
-          <FlywheelVisual defaultActive="gallery" />
+          <FlywheelVisual />
         </div>
 
         {/* Bottom description */}
