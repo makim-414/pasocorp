@@ -284,112 +284,43 @@ function BrandHero({ brand }: { brand: BrandData }) {
       {isArtrader ? (
         <>
           <div className="absolute inset-0 bg-black" />
-          {/* Green glow behind waves */}
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 140% 50% at 25% 60%, rgba(30,140,60,0.2) 0%, transparent 60%), radial-gradient(ellipse 120% 45% at 75% 55%, rgba(40,160,70,0.18) 0%, transparent 60%), radial-gradient(ellipse 80% 30% at 50% 65%, rgba(46,204,113,0.1) 0%, transparent 50%)" }} />
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Green ambient glow behind waves */}
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 100% 30% at 35% 62%, rgba(30,130,55,0.18) 0%, transparent 70%), radial-gradient(ellipse 90% 25% at 65% 58%, rgba(40,150,65,0.14) 0%, transparent 70%)" }} />
+          {/* Flowing wave lines - 3 main waves that move together */}
+          <svg className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }} viewBox="0 0 2800 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <filter id="waveGlow">
-                <feGaussianBlur stdDeviation="4" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
+              <filter id="wGlow">
+                <feGaussianBlur stdDeviation="3" result="b" />
+                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
               </filter>
-              <filter id="waveGlowHeavy">
-                <feGaussianBlur stdDeviation="8" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
+              <filter id="wGlowWide">
+                <feGaussianBlur stdDeviation="8" result="b" />
+                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
               </filter>
-              <linearGradient id="wg1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#1a8a4a" stopOpacity="0.6" />
-                <stop offset="30%" stopColor="#2ecc71" stopOpacity="1" />
-                <stop offset="60%" stopColor="#27ae60" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#1a8a4a" stopOpacity="0.5" />
-              </linearGradient>
-              <linearGradient id="wg2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#27ae60" stopOpacity="0.4" />
-                <stop offset="50%" stopColor="#2ecc71" stopOpacity="0.7" />
-                <stop offset="100%" stopColor="#1e8c4a" stopOpacity="0.4" />
-              </linearGradient>
-              <linearGradient id="wg3" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#145a30" stopOpacity="0.5" />
-                <stop offset="50%" stopColor="#1a8a4a" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#145a30" stopOpacity="0.4" />
-              </linearGradient>
             </defs>
-            {/* === PRIMARY BOLD WAVES — big amplitude === */}
-            <path fill="none" stroke="url(#wg1)" strokeWidth="2.5" opacity="0.9" filter="url(#waveGlow)">
-              <animate attributeName="d" dur="6s" repeatCount="indefinite" values="
-                M0,500 C60,350 140,650 250,380 C360,280 440,620 560,400 C680,300 760,600 880,380 C1000,280 1080,620 1200,400 C1300,320 1360,550 1400,420;
-                M0,450 C60,600 140,300 250,570 C360,650 440,320 560,550 C680,640 760,330 880,560 C1000,650 1080,320 1200,540 C1300,620 1360,380 1400,530;
-                M0,500 C60,350 140,650 250,380 C360,280 440,620 560,400 C680,300 760,600 880,380 C1000,280 1080,620 1200,400 C1300,320 1360,550 1400,420" />
-            </path>
-            <path fill="none" stroke="url(#wg1)" strokeWidth="2" opacity="0.8" filter="url(#waveGlow)">
-              <animate attributeName="d" dur="7.5s" repeatCount="indefinite" values="
-                M0,520 C80,370 160,660 300,400 C420,300 500,630 640,420 C760,310 860,610 1000,400 C1120,300 1200,600 1320,420 L1400,450;
-                M0,440 C80,590 160,310 300,560 C420,650 500,330 640,540 C760,630 860,340 1000,550 C1120,640 1200,350 1320,530 L1400,500;
-                M0,520 C80,370 160,660 300,400 C420,300 500,630 640,420 C760,310 860,610 1000,400 C1120,300 1200,600 1320,420 L1400,450" />
-            </path>
-            {/* === SECONDARY WAVES — medium amplitude === */}
-            <path fill="none" stroke="url(#wg2)" strokeWidth="1.5" opacity="0.7" filter="url(#waveGlow)">
-              <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
-                M0,480 C100,340 200,620 340,390 C480,280 580,610 720,410 C860,300 960,600 1100,400 C1200,330 1300,560 1400,430;
-                M0,460 C100,600 200,330 340,560 C480,650 580,340 720,540 C860,630 960,350 1100,540 C1200,610 1300,380 1400,510;
-                M0,480 C100,340 200,620 340,390 C480,280 580,610 720,410 C860,300 960,600 1100,400 C1200,330 1300,560 1400,430" />
-            </path>
-            <path fill="none" stroke="url(#wg1)" strokeWidth="1.2" opacity="0.6" filter="url(#waveGlow)">
-              <animate attributeName="d" dur="9.5s" repeatCount="indefinite" values="
-                M0,540 C120,380 240,650 380,410 C520,300 620,620 780,430 C920,320 1040,610 1180,420 C1280,350 1340,560 1400,440;
-                M0,430 C120,580 240,320 380,550 C520,640 620,340 780,530 C920,620 1040,340 1180,530 C1280,600 1340,390 1400,510;
-                M0,540 C120,380 240,650 380,410 C520,300 620,620 780,430 C920,320 1040,610 1180,420 C1280,350 1340,560 1400,440" />
-            </path>
-            {/* === GLOW WAVES — thick blurred for ambient light === */}
-            <path fill="none" stroke="url(#wg2)" strokeWidth="5" opacity="0.2" filter="url(#waveGlowHeavy)">
-              <animate attributeName="d" dur="7s" repeatCount="indefinite" values="
-                M0,490 C90,350 180,640 310,400 C440,290 540,610 670,420 C800,310 900,600 1030,410 C1160,310 1250,580 1400,430;
-                M0,450 C90,590 180,330 310,550 C440,640 540,340 670,530 C800,630 900,350 1030,540 C1160,630 1250,370 1400,510;
-                M0,490 C90,350 180,640 310,400 C440,290 540,610 670,420 C800,310 900,600 1030,410 C1160,310 1250,580 1400,430" />
-            </path>
-            <path fill="none" stroke="url(#wg1)" strokeWidth="4" opacity="0.15" filter="url(#waveGlowHeavy)">
-              <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
-                M0,510 C110,360 220,650 360,410 C500,290 600,630 750,430 C900,310 1000,610 1150,420 C1260,340 1340,570 1400,440;
-                M0,440 C110,590 220,320 360,550 C500,650 600,330 750,530 C900,630 1000,340 1150,530 C1260,610 1340,380 1400,510;
-                M0,510 C110,360 220,650 360,410 C500,290 600,630 750,430 C900,310 1000,610 1150,420 C1260,340 1340,570 1400,440" />
-            </path>
-            {/* === FINE DETAIL WAVES — many thin overlapping lines === */}
-            <path fill="none" stroke="url(#wg3)" strokeWidth="0.8" opacity="0.6">
-              <animate attributeName="d" dur="5.5s" repeatCount="indefinite" values="
-                M0,510 C70,360 140,640 260,400 C380,290 460,620 580,410 C700,300 780,610 900,400 C1020,290 1100,600 1220,410 C1310,340 1360,550 1400,430;
-                M0,440 C70,580 140,320 260,550 C380,640 460,330 580,540 C700,630 780,340 900,540 C1020,640 1100,350 1220,530 C1310,600 1360,390 1400,510;
-                M0,510 C70,360 140,640 260,400 C380,290 460,620 580,410 C700,300 780,610 900,400 C1020,290 1100,600 1220,410 C1310,340 1360,550 1400,430" />
-            </path>
-            <path fill="none" stroke="url(#wg3)" strokeWidth="0.6" opacity="0.5">
-              <animate attributeName="d" dur="11s" repeatCount="indefinite" values="
-                M0,530 C100,370 200,650 340,420 C480,310 580,630 720,440 C860,330 960,620 1100,430 C1220,350 1320,570 1400,450;
-                M0,430 C100,580 200,330 340,540 C480,630 580,340 720,520 C860,620 960,340 1100,520 C1220,600 1320,380 1400,500;
-                M0,530 C100,370 200,650 340,420 C480,310 580,630 720,440 C860,330 960,620 1100,430 C1220,350 1320,570 1400,450" />
-            </path>
-            <path fill="none" stroke="url(#wg2)" strokeWidth="0.5" opacity="0.4">
-              <animate attributeName="d" dur="12.5s" repeatCount="indefinite" values="
-                M0,550 C130,390 260,660 400,430 C540,310 660,630 800,440 C940,320 1060,620 1200,440 C1300,360 1360,560 1400,460;
-                M0,420 C130,570 260,320 400,530 C540,630 660,330 800,520 C940,620 1060,340 1200,520 C1300,590 1360,390 1400,490;
-                M0,550 C130,390 260,660 400,430 C540,310 660,630 800,440 C940,320 1060,620 1200,440 C1300,360 1360,560 1400,460" />
-            </path>
-            {/* === GHOST WAVES — very faint for depth === */}
-            <path fill="none" stroke="url(#wg3)" strokeWidth="0.4" opacity="0.3">
-              <animate attributeName="d" dur="14s" repeatCount="indefinite" values="
-                M0,570 C150,400 300,670 450,440 C600,300 750,640 900,450 C1050,310 1200,600 1400,460;
-                M0,410 C150,570 300,310 450,530 C600,640 750,320 900,520 C1050,630 1200,360 1400,500;
-                M0,570 C150,400 300,670 450,440 C600,300 750,640 900,450 C1050,310 1200,600 1400,460" />
-            </path>
-            <path fill="none" stroke="url(#wg3)" strokeWidth="0.3" opacity="0.2">
-              <animate attributeName="d" dur="16s" repeatCount="indefinite" values="
-                M0,590 C170,420 340,680 510,450 C680,310 850,650 1020,460 C1190,320 1300,590 1400,470;
-                M0,400 C170,560 340,300 510,520 C680,640 850,310 1020,510 C1190,620 1300,370 1400,490;
-                M0,590 C170,420 340,680 510,450 C680,310 850,650 1020,460 C1190,320 1300,590 1400,470" />
-            </path>
+            {/* All waves in a group that scrolls horizontally */}
+            <g filter="url(#wGlow)">
+              <animateTransform attributeName="transform" type="translate" from="0 0" to="-1400 0" dur="20s" repeatCount="indefinite" />
+              {/* Wave 1 - main bright line */}
+              <path d="M0,480 C80,430 160,520 280,440 C400,370 480,530 620,460 C760,390 840,520 980,450 C1120,380 1200,530 1340,460 C1480,390 1560,520 1700,450 C1840,380 1920,530 2060,460 C2200,390 2280,520 2420,450 C2560,380 2640,530 2800,460" fill="none" stroke="#2ecc71" strokeWidth="1.8" opacity="0.8" />
+              {/* Wave 2 - slightly offset, follows wave 1 */}
+              <path d="M0,500 C80,450 160,540 280,460 C400,390 480,550 620,480 C760,410 840,540 980,470 C1120,400 1200,550 1340,480 C1480,410 1560,540 1700,470 C1840,400 1920,550 2060,480 C2200,410 2280,540 2420,470 C2560,400 2640,550 2800,480" fill="none" stroke="#27ae60" strokeWidth="1.2" opacity="0.6" />
+              {/* Wave 3 - bottom line, softer */}
+              <path d="M0,520 C80,470 160,560 280,480 C400,410 480,570 620,500 C760,430 840,560 980,490 C1120,420 1200,570 1340,500 C1480,430 1560,560 1700,490 C1840,420 1920,570 2060,500 C2200,430 2280,560 2420,490 C2560,420 2640,570 2800,500" fill="none" stroke="#1a8a4a" strokeWidth="0.8" opacity="0.5" />
+            </g>
+            {/* Second group - slightly different speed for organic feel */}
+            <g filter="url(#wGlow)">
+              <animateTransform attributeName="transform" type="translate" from="0 0" to="-1400 0" dur="25s" repeatCount="indefinite" />
+              {/* Wave 4 - upper accent */}
+              <path d="M0,460 C100,410 200,510 340,430 C480,360 560,510 700,440 C840,370 940,510 1080,440 C1220,370 1300,510 1440,440 C1580,370 1660,510 1800,440 C1940,370 2040,510 2180,440 C2320,370 2400,510 2540,440 C2680,370 2760,510 2800,440" fill="none" stroke="#2ecc71" strokeWidth="0.6" opacity="0.35" />
+              {/* Wave 5 - lower accent */}
+              <path d="M0,540 C100,490 200,580 340,500 C480,430 560,580 700,510 C840,440 940,580 1080,510 C1220,440 1300,580 1440,510 C1580,440 1660,580 1800,510 C1940,440 2040,580 2180,510 C2320,440 2400,580 2540,510 C2680,440 2760,580 2800,510" fill="none" stroke="#1e8c4a" strokeWidth="0.5" opacity="0.3" />
+            </g>
+            {/* Glow layer - thick blurred wave for ambient green light */}
+            <g filter="url(#wGlowWide)">
+              <animateTransform attributeName="transform" type="translate" from="0 0" to="-1400 0" dur="22s" repeatCount="indefinite" />
+              <path d="M0,490 C80,440 160,530 280,450 C400,380 480,540 620,470 C760,400 840,530 980,460 C1120,390 1200,540 1340,470 C1480,400 1560,530 1700,460 C1840,390 1920,540 2060,470 C2200,400 2280,530 2420,460 C2560,390 2640,540 2800,470" fill="none" stroke="#2ecc71" strokeWidth="6" opacity="0.08" />
+            </g>
           </svg>
         </>
       ) : (
