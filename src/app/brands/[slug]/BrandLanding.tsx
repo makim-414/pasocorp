@@ -4,13 +4,38 @@ import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
 
 /* ── Project detail gallery data ── */
-const projectGalleries: Record<number, { title: string; images: string[] }> = {
+const projectGalleries: Record<number, { title: string; images: string[]; desc?: string; artist?: string }> = {
   0: {
     title: "CU 델라페 18종 X 장띵",
+    artist: "장띵 (@jang_dding)",
+    desc: `접근성과 혁신성
+파소의 프로젝트는 미술 시장을 넘어 많은 관객들에게 새로운 몰입감을 주어야 합니다.
+아티스트는 그들의 작업을 더 넓은 세상의 사람들에게 보여주고, 기업은 고객들에게 새로운 경험과 에너지를 선사하는 데에 의미를 찾습니다.
+
+2024 Delaffe Collection for @cu_official
+Artist: @jang_dding
+
+이번 파일럿 프로젝트에서는 장띵(@jang_dding) 작가만이 가진 역동성과 경쾌함을 2024년도 CU 델라페 전 품목에 풀어내어 많은 이들의 휴식에 에너지를 주입할 수 있도록 기획되었습니다.
+
+장띵 작가의 작품들로 2024년 델라페 전 품목 19종이 리뉴얼 되었습니다.
+2024 델라페는 전국 CU 17,000여개의 지점과 해외 800여개의 지점에서 만나보실 수 있으며, 3~4월에 걸쳐 순차적으로 교체됩니다.
+
+참고기사: https://www.news1.kr/industry/distribution/5325506`,
     images: Array.from({ length: 6 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
   2: {
     title: "투썸플레이스 홍대서교점 X 강한",
+    artist: "강한 (@_kang_han_)",
+    desc: `세계관과 확장성
+파소의 프로젝트는 창작자의 세계관을 더 넓은 시장에 진출시킵니다.
+기업은 아티스트들의 세계관과 캐릭터 IP의 구축으로 새로운 시장에 발을 내딛으며, 프로젝트에 안정적인 완성도와 PR효과를 발생시킵니다.
+아티스트는 그들의 작업과 세계관을 세상에 보여주고 자신만의 IP로 성장합니다.
+
+두번째 파일럿 프로젝트에서는 강한(@_kang_han_) 작가만이 가진 동화적인 색감과 감성으로, 2월 신축된 THE TWOSOME PLACE 홍대서교점 3층 전관을 작가의 세계관을 통해 구축했습니다.
+
+*THE TWOSOME PLACE 강한 작가 콜라보 지점의 아트 설치/구조물은 반영구적이며, 강한 작가가 그려낸 투썸보이, 커피독은 A TWOSOME PLACE의 캐릭터 IP로 출원되었습니다.
+
+참고기사: https://www.mk.co.kr/news/economy/10953076`,
     images: [
       "/images/projects/twosome/twosome-1.jpg",
       "/images/projects/twosome/twosome-2.jpg",
@@ -871,7 +896,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
    ═══════════════════════════════════════════════════ */
 function AgencyLayout({ brand }: { brand: BrandData }) {
   const cardColors = ["#d4a574", "#e8b4b8", "#a8c5da", "#c4b896", "#b8a9c9", "#98c9a3"];
-  const [openGallery, setOpenGallery] = useState<{ title: string; images: string[] } | null>(null);
+  const [openGallery, setOpenGallery] = useState<{ title: string; images: string[]; desc?: string; artist?: string } | null>(null);
   return (
     <>
       <BrandHero brand={brand} />
