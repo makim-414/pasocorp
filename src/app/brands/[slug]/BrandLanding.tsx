@@ -257,7 +257,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full">
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xs tracking-[0.15em] text-[#b8960b] mb-4">{brand.year}</motion.p>
         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-4xl md:text-7xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</motion.h1>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-4 text-lg text-[#ccc] font-light max-w-xl whitespace-pre-line">{brand.desc}</motion.p>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-4 text-lg text-[#ccc] font-light max-w-2xl whitespace-pre-line">{brand.desc}</motion.p>
       </div>
     </section>
   );
