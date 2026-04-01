@@ -282,7 +282,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
   return (
     <section className={`relative flex items-end overflow-hidden ${isArtrader ? "h-[65vh]" : "h-[75vh]"}`}>
       {isArtrader ? (
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/brands/ChatGPT Image 2025년 5월 4일 오후 08_50_14 1.png')" }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/brands/artrader-hero-bg.png')" }} />
       ) : (
         <>
           {images.map((src, i) => (
