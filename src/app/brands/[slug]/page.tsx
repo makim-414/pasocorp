@@ -34,7 +34,7 @@ const brandsData: Record<string, {
     name: "PASO Art Center",
     slug: "paso-art-center",
     year: 2025,
-    desc: "해외 이머징 작가부터 국내 유망 작가까지, 전시와 아트토이 발행 등 IP 확장 프로젝트를 전개하며, 상설전에서는 Artrader 데이터로 엄선한 블루칩·옥션 상위권 작품 70여 점을 상시 만날 수 있습니다.",
+    desc: "해외 이머징 작가부터 국내 유망 작가까지, 전시와 아트토이 발행 등 IP 확장 프로젝트를 전개하며,\n상설전에서는 Artrader 데이터로 엄선한 블루칩·옥션 상위권 작품 70여 점을 상시 만날 수 있습니다.",
     longDesc: "해외 이머징 작가부터 국내 유망 작가까지, PASO Art Center는 전시와 아트토이 발행 등 IP 확장 프로젝트를 전개하며, 상설전에서는 Artrader 데이터로 엄선한 블루칩·옥션 상위권 작품 70여 점을 상시 만날 수 있습니다.",
     color: "#a0522d",
     image: "/brands/paso-artcenter-building.jpg",
