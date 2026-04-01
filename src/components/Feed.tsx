@@ -118,7 +118,7 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 function TripleFeature() {
   const cards = [
     {
-      image: "/images/exhibitions/silent-dialogue/silent-dialogue-1.jpg",
+      image: "/images/exhibitions/golden-reeds/golden-reeds-6.jpg",
       title: "Paso Private Sales",
       desc: "Paso Gallery의 프라이빗 세일",
       tall: false,

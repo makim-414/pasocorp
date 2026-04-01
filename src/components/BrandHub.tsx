@@ -42,7 +42,7 @@ const subBrands = [
     year: 2023,
     desc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—양측 모두에게 지속 가능한 구조를 설계합니다.",
     activity: "신규: 프랜차이즈 아트 콜라보 프로젝트",
-    image: "/images/projects/hongdae-flagship/2.jpg",
+    image: "/images/projects/twosome/twosome-7.jpg",
     color: "#d4a574",
   },
   {
