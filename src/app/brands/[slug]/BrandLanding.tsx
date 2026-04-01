@@ -876,13 +876,6 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
     <>
       <BrandHero brand={brand} />
 
-      {/* Intro */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[800px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-base md:text-lg text-[#888] font-light leading-relaxed text-center">{brand.longDesc}</motion.p>
-        </div>
-      </section>
-
       {/* Playful project cards */}
       <section className="py-16 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
