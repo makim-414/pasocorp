@@ -23,15 +23,6 @@ Artist: @jang_dding
 참고기사: https://www.news1.kr/industry/distribution/5325506`,
     images: Array.from({ length: 6 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
-  1: {
-    title: "와인 라벨 패키지 공모전",
-    desc: `CU 프리미엄 와인 라벨 패키지 공모전\n\n참고기사: https://www.hankyung.com/article/202309055129i`,
-    images: [
-      "/images/projects/cu-wine/poster-1.jpg",
-      "/images/projects/cu-wine/poster-2.jpg",
-      "/images/projects/cu-wine/poster-3.jpg",
-    ],
-  },
   2: {
     title: "투썸플레이스 홍대서교점 X 강한",
     artist: "강한 (@_kang_han_)",
@@ -54,10 +45,7 @@ Artist: @jang_dding
     ],
   },
   3: {
-    title: "CHOWOO 홍대 플래그쉽 스토어",
-    desc: `패션 브랜드 "CHOWOO"의 런칭을 위한 1년간의 플래그쉽 스토어를 설계하였으며, 인터랙티브 전시로 기획되었습니다. 이 독특한 공간은 오디오 도슨트를 통해 관객과의 소통을 가능하게 하며, 패션과 예술을 잇는 몰입감 있고 역동적인 경험을 제공합니다.
-
-참고기사: https://www.ktnews.com/news/articleView.html?idxno=133188`,
+    title: "KUHO 브랜드 홍대 플래그쉽",
     images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg"],
   },
 };
@@ -197,7 +185,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
               )}
             </p>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {gallery.images.map((src, i) => (
               <div
                 key={src}
@@ -335,14 +323,31 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
     { label: "리포트 발행", value: "5,000+" },
   ];
 
-  const indexStats = [
-    { label: "낙찰률", value: "15.4", up: true, sub: "직전 낙찰률 43.6%" },
-    { label: "연간 거래 수", value: "24.3", up: true, sub: "직전 거래 72건" },
-    { label: "평균 호가 상승률", value: "49.3", up: true, sub: "직전 호가 3,840,000원" },
-    { label: "20호 평균 호당가", value: "7.8", up: false, sub: "직전 평균가 4,180,000원" },
-    { label: "연간 성장률", value: "18.6", up: true, sub: "직전 성장 3.1%" },
-    { label: "최고가 작품", value: "16.4", up: false, sub: "직전 1999, 평면 시리즈 134,760,000원" },
-    { label: "20호 평균 상승률", value: "2.6", up: false, sub: "2023년 20호 시세 64,000,000원" },
+  const screens = [
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 1.png",
+      tag: null,
+      headline: "작품 검색부터\n거래까지\n아트레이더 하나로",
+      desc: "미술품 거래의 모든 것을 한 곳에서. 검색부터 가격 확인, 거래까지 아트레이더로 해결하세요.",
+    },
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 2.png",
+      tag: "데이터",
+      headline: "국내 최대\n거래 데이터베이스",
+      desc: "1,570만 건의 경매 데이터를 기반으로 작품·작가를 검색하고 신뢰할 수 있는 거래 정보를 확인하세요.",
+    },
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 3.png",
+      tag: "가격",
+      headline: "검증된 데이터로\n적정 가격 제시",
+      desc: "경매 낙찰 데이터 기반의 Fair Price로 합리적인 매입가를 파악하고 안전하게 거래하세요.",
+    },
+    {
+      src: "/brands/iPhone 14 Pro Max - Screen 4.png",
+      tag: "검증",
+      headline: "믿고 거래할 수\n있는 검증 시스템",
+      desc: "작품 이력과 경매 기록을 투명하게 공개. 검증된 정보로 컬렉션을 구축하세요.",
+    },
   ];
 
   return (
@@ -361,209 +366,41 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* ── Solution Overview ── */}
-      <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
-            <div>
-              <h2 className="text-5xl md:text-7xl font-light text-white italic" style={{ fontFamily: "var(--font-dutch)" }}>
-                Solution{" "}
-                <span className="not-italic font-semibold text-[#4ade80]">Artrader</span>
-              </h2>
-            </div>
-            {/* 3D Cube */}
-            <motion.div {...fadeUp} className="relative" style={{ perspective: "600px" }}>
-              <div className="relative w-48 h-48 md:w-56 md:h-56" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
-                {/* Cube faces */}
-                <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(48px)" }}>
-                  <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80] tracking-wider leading-relaxed">글로벌 미술 거래<br />데이터베이스</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 border border-[#4ade80]/30 bg-[#4ade80]/5" style={{ transform: "rotateY(90deg) translateZ(48px)" }}>
-                  <div className="flex items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80]/70 tracking-wider leading-relaxed">미술품 시장·가치<br />분석 리서치</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 border border-[#4ade80]/20 bg-[#4ade80]/15" style={{ transform: "rotateX(90deg) translateZ(48px)" }}>
-                </div>
+      {/* Full-screen app showcase — scroll through */}
+      {screens.map((s, i) => (
+        <motion.section
+          key={i}
+          {...fadeUp}
+          className="min-h-screen flex items-center bg-black border-t border-[#1a1a1a]"
+        >
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full">
+            <div className={`flex flex-col lg:flex-row gap-12 items-center ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+              {/* Phone image */}
+              <div className="flex-shrink-0 flex justify-center lg:w-1/2">
+                <img
+                  src={s.src}
+                  alt={s.tag ?? "Artrader"}
+                  className="w-full max-w-[320px] md:max-w-[400px] object-contain drop-shadow-2xl"
+                />
               </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* ── Auction / PS Data ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Phones */}
-            <div className="flex gap-6 justify-center items-end">
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 1.png"
-                alt="Artrader App"
-                className="w-36 md:w-48 object-contain drop-shadow-2xl"
-              />
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 2.png"
-                alt="Artrader Search"
-                className="w-44 md:w-56 object-contain drop-shadow-2xl"
-              />
-            </div>
-            {/* Text */}
-            <div className="flex flex-col gap-5">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Auction/PS Data</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
-                작품 검색부터 거래까지<br />아트레이더 하나로
-              </h3>
-              <p className="text-[#888] font-light leading-relaxed max-w-lg">
-                국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Artrader Artist Index ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>
-              Artrader Artist Index
-            </h3>
-
-            {/* Chart */}
-            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-10">
-              <div className="flex justify-between text-[10px] text-[#555] mb-4">
-                {["'08", "'10", "'12", "'14", "'16", "'18", "'20", "'22", "'24"].map(y => (
-                  <span key={y}>{y}</span>
-                ))}
-              </div>
-              <div className="relative h-48 md:h-64">
-                <svg viewBox="0 0 800 200" className="w-full h-full" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#4ade80" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M0,180 C50,175 100,170 150,160 C200,150 250,140 300,120 C350,100 380,90 400,70 C420,55 450,50 500,45 C550,40 600,60 650,50 C700,35 750,20 800,10"
-                    fill="none"
-                    stroke="#4ade80"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M0,180 C50,175 100,170 150,160 C200,150 250,140 300,120 C350,100 380,90 400,70 C420,55 450,50 500,45 C550,40 600,60 650,50 C700,35 750,20 800,10 L800,200 L0,200 Z"
-                    fill="url(#chartGrad)"
-                  />
-                </svg>
-                {/* Y-axis labels */}
-                <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-[10px] text-[#555] -ml-1">
-                  <span>6,000M</span>
-                  <span>4,000M</span>
-                  <span>2,000M</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {indexStats.map((s, i) => (
-                <motion.div
-                  key={s.label}
-                  {...stagger(i)}
-                  className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-4"
+              {/* Text */}
+              <div className="flex flex-col gap-6 lg:w-1/2">
+                {s.tag && (
+                  <p className="text-[#4ade80] text-xs tracking-[0.25em] uppercase">{s.tag}</p>
+                )}
+                <h2
+                  className="text-4xl md:text-6xl font-semibold text-white leading-tight whitespace-pre-line"
+                  style={{ fontFamily: "var(--font-dutch)" }}
                 >
-                  <p className="text-[10px] tracking-wider text-[#555] uppercase mb-2">{s.label}</p>
-                  <p className={`text-xl md:text-2xl font-semibold ${s.up ? "text-[#4ade80]" : "text-[#ef4444]"}`}>
-                    {s.up ? "▲" : "▼"} {s.value}%
-                  </p>
-                  <p className="text-[9px] text-[#444] mt-1">{s.sub}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Artist Data Analytics ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Text */}
-            <div className="flex flex-col gap-5 order-2 lg:order-1">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Artist data Analytics</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
-                검증된 데이터로<br />적정 가격 제시
-              </h3>
-              <p className="text-[#888] font-light leading-relaxed max-w-lg">
-                기업·개인 맞춤 종목분석서 형식의 작가 / 컬렉션 정량평가서
-                가격·유동성·경쟁작가 지수 비교
-              </p>
-            </div>
-            {/* Phones */}
-            <div className="flex gap-6 justify-center items-start order-1 lg:order-2">
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 3.png"
-                alt="Artrader Fair Price"
-                className="w-40 md:w-52 object-contain drop-shadow-2xl"
-              />
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 4.png"
-                alt="Artrader Verification"
-                className="w-40 md:w-52 object-contain drop-shadow-2xl"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Art Sales Performance ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Mini dashboard */}
-            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
-              <p className="text-xs text-[#555] uppercase tracking-wider mb-6">Sales Dashboard</p>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                {[
-                  { label: "호당가 추이", val: "+12.3%", up: true },
-                  { label: "회전율", val: "68.4%", up: true },
-                  { label: "도상별 거래", val: "1,247건", up: true },
-                  { label: "상승률", val: "+8.7%", up: true },
-                ].map((d) => (
-                  <div key={d.label} className="bg-[#111] rounded p-3">
-                    <p className="text-[9px] text-[#555] uppercase">{d.label}</p>
-                    <p className="text-lg font-semibold text-[#4ade80] mt-1">{d.val}</p>
-                  </div>
-                ))}
-              </div>
-              {/* Mini bar chart */}
-              <div className="flex items-end gap-1.5 h-20">
-                {[40, 55, 35, 70, 60, 80, 45, 90, 65, 75, 50, 85].map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-[#4ade80]/20 rounded-t hover:bg-[#4ade80]/40 transition-colors"
-                    style={{ height: `${h}%` }}
-                  />
-                ))}
+                  {s.headline}
+                </h2>
+                <p className="text-[#888] font-light leading-relaxed max-w-sm">{s.desc}</p>
               </div>
             </div>
-            {/* Text */}
-            <div className="flex flex-col gap-5">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Art Sales Performance</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
-                보조지표 대시보드<br />시각화
-              </h3>
-              <p className="text-[#888] font-light leading-relaxed max-w-lg">
-                호당가·도상별 판매 추이 등 보조지표
-                상승률·회전율 대시보드 시각화
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </motion.section>
+      ))}
 
       <BrandCTA brand={brand} />
     </>
@@ -673,7 +510,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
   },
   "빠끼": {
-    images: [...[1,2,3,9].map(n => `/images/exhibitions/bbakki/bbakki-${n}.jpg`), "/images/exhibitions/bbakki/KakaoTalk_Photo_2024-07-25-17-08-54 024.png", "/images/exhibitions/bbakki/KakaoTalk_Photo_2024-07-25-17-08-55 028 (2).png", "/images/exhibitions/bbakki/KakaoTalk_Photo_2024-07-25-17-08-55 029 (1).png"],
+    images: [1,2,3,9].map(n => `/images/exhibitions/bbakki/bbakki-${n}.jpg`),
     desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다.",
   },
   "소호프리뷰": {
