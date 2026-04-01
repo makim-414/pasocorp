@@ -280,9 +280,65 @@ function BrandHero({ brand }: { brand: BrandData }) {
   const isArtrader = brand.slug === "artrader";
 
   return (
-    <section className={`relative flex items-end overflow-hidden ${isArtrader ? "h-[65vh]" : "h-[75vh]"}`}>
+    <section className={`relative flex items-end overflow-hidden ${isArtrader ? "h-[85vh]" : "h-[75vh]"}`}>
       {isArtrader ? (
-        <div className="absolute inset-0" style={{ backgroundImage: "url('/brands/artrader-hero-bg.png')", backgroundSize: "120%", backgroundPosition: "center 70%" }} />
+        <>
+          <div className="absolute inset-0 bg-black" />
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#1a8a4a" stopOpacity="0.6" />
+                <stop offset="50%" stopColor="#3dba6e" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#1a8a4a" stopOpacity="0.4" />
+              </linearGradient>
+              <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#2ecc71" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#27ae60" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#2ecc71" stopOpacity="0.2" />
+              </linearGradient>
+              <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#b8960b" stopOpacity="0.15" />
+                <stop offset="50%" stopColor="#d4a90e" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="#b8960b" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+            {/* Wave layer 1 */}
+            <path fill="none" stroke="url(#waveGrad1)" strokeWidth="1.5" opacity="0.7">
+              <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
+                M0,520 C100,480 200,540 350,500 C500,460 600,530 750,510 C900,490 1050,540 1200,500 C1300,475 1350,510 1400,490;
+                M0,510 C100,540 200,480 350,520 C500,540 600,470 750,500 C900,530 1050,480 1200,520 C1300,540 1350,490 1400,510;
+                M0,520 C100,480 200,540 350,500 C500,460 600,530 750,510 C900,490 1050,540 1200,500 C1300,475 1350,510 1400,490" />
+            </path>
+            {/* Wave layer 2 */}
+            <path fill="none" stroke="url(#waveGrad1)" strokeWidth="1" opacity="0.5">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
+                M0,540 C120,510 240,560 400,530 C560,500 680,550 850,535 C1020,520 1140,560 1300,530 L1400,520;
+                M0,530 C120,560 240,510 400,545 C560,560 680,500 850,525 C1020,550 1140,510 1300,540 L1400,535;
+                M0,540 C120,510 240,560 400,530 C560,500 680,550 850,535 C1020,520 1140,560 1300,530 L1400,520" />
+            </path>
+            {/* Wave layer 3 */}
+            <path fill="none" stroke="url(#waveGrad2)" strokeWidth="1.2" opacity="0.6">
+              <animate attributeName="d" dur="12s" repeatCount="indefinite" values="
+                M0,560 C150,530 300,580 450,550 C600,520 750,570 900,555 C1050,540 1200,575 1400,550;
+                M0,550 C150,575 300,530 450,560 C600,580 750,530 900,545 C1050,570 1200,535 1400,555;
+                M0,560 C150,530 300,580 450,550 C600,520 750,570 900,555 C1050,540 1200,575 1400,550" />
+            </path>
+            {/* Wave layer 4 - subtle gold accent */}
+            <path fill="none" stroke="url(#waveGrad3)" strokeWidth="0.8" opacity="0.4">
+              <animate attributeName="d" dur="14s" repeatCount="indefinite" values="
+                M0,500 C180,470 360,520 540,490 C720,460 900,510 1080,485 C1200,470 1300,500 1400,480;
+                M0,490 C180,515 360,470 540,505 C720,520 900,470 1080,495 C1200,515 1300,480 1400,500;
+                M0,500 C180,470 360,520 540,490 C720,460 900,510 1080,485 C1200,470 1300,500 1400,480" />
+            </path>
+            {/* Wave layer 5 */}
+            <path fill="none" stroke="url(#waveGrad2)" strokeWidth="0.6" opacity="0.3">
+              <animate attributeName="d" dur="9s" repeatCount="indefinite" values="
+                M0,580 C200,560 400,600 600,570 C800,545 1000,590 1200,565 L1400,575;
+                M0,570 C200,595 400,555 600,585 C800,600 1000,555 1200,580 L1400,565;
+                M0,580 C200,560 400,600 600,570 C800,545 1000,590 1200,565 L1400,575" />
+            </path>
+          </svg>
+        </>
       ) : (
         <>
           {images.map((src, i) => (
@@ -297,7 +353,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
         </>
       )}
       {!isArtrader && <div className="absolute inset-0 bg-black/60" />}
-      <div className="absolute inset-0" style={{ background: isArtrader ? `linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 15%, transparent 50%)` : `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />
+      {!isArtrader && <div className="absolute inset-0" style={{ background: `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />}
       {!isArtrader && <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full">
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xs tracking-[0.15em] text-[#b8960b] mb-4">{brand.year}</motion.p>
