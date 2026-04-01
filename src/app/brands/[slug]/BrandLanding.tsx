@@ -21,7 +21,7 @@ const projectGalleries: Record<number, { title: string; images: string[] }> = {
   },
   3: {
     title: "KUHO — 홍대 플래그쉽",
-    images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg", "/images/projects/hongdae-flagship/4.jpg"],
+    images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg"],
   },
 };
 
