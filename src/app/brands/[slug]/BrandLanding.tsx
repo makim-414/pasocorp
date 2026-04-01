@@ -286,8 +286,9 @@ function BrandHero({ brand }: { brand: BrandData }) {
           <div className="absolute inset-0 bg-black" />
           {/* Green ambient glow */}
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 35% at 30% 62%, rgba(25,120,50,0.12) 0%, transparent 70%), radial-gradient(ellipse 100% 30% at 70% 58%, rgba(30,130,55,0.1) 0%, transparent 65%)" }} />
-          {/* Static SVG wave — matches reference image exactly */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          {/* SVG wave — matches reference image, gentle float */}
+          <style>{`@keyframes waveFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }`}</style>
+          <svg className="absolute inset-0 w-full h-full" style={{ animation: "waveFloat 6s ease-in-out infinite" }} viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id="glo"><feGaussianBlur stdDeviation="2.5" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
               <filter id="gloW"><feGaussianBlur stdDeviation="6" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
