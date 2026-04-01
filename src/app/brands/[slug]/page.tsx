@@ -40,12 +40,10 @@ const brandsData: Record<string, {
     image: "/brands/paso-artcenter-building.jpg",
     gallery: [
       "/images/whats-happening/preopening.png",
-      "/images/paso-art-center-emerging.jpg",
       "/images/paso-art-center-secondary.png",
     ],
     features: [
       { title: "Exhibition Space", desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화." },
-      { title: "Emerging Artists", desc: "글로벌 이머징 작가를 소개하는 기획전. 신선한 시각과 실험적 표현." },
       { title: "Secondary Market", desc: "적정가 2차 시장 Top 30 작품을 큐레이션하여 전시·판매." },
     ],
   },

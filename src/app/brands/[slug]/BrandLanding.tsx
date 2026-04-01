@@ -314,6 +314,14 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
     { label: "커버 경매사", value: "2,800+" },
     { label: "리포트 발행", value: "5,000+" },
   ];
+
+  const screens = [
+    { src: "/brands/iPhone 14 Pro Max - Screen 1.png", alt: "Artrader 스플래시" },
+    { src: "/brands/iPhone 14 Pro Max - Screen 2.png", alt: "데이터 – 국내 최대 거래 데이터베이스" },
+    { src: "/brands/iPhone 14 Pro Max - Screen 3.png", alt: "가격 – 적정 가격 제시" },
+    { src: "/brands/iPhone 14 Pro Max - Screen 4.png", alt: "검증 – 검증 시스템" },
+  ];
+
   return (
     <>
       <BrandHero brand={brand} />
@@ -330,43 +338,16 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* Intro */}
+      {/* App screens showcase */}
       <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Platform</p>
-            <h2 className="text-2xl md:text-4xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>데이터로 보는 미술 시장</h2>
-            <p className="text-[#888] font-light leading-relaxed">{brand.longDesc}</p>
-          </motion.div>
-          <motion.div {...fadeUp} className="relative">
-            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden shadow-2xl">
-              <div className="h-8 bg-[#111] flex items-center px-4 gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#333]" /><span className="w-2.5 h-2.5 rounded-full bg-[#333]" /><span className="w-2.5 h-2.5 rounded-full bg-[#333]" />
-              </div>
-              <img src="/brands/artrader-platform-hd.png" alt="Dashboard" className="w-full" />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Feature screenshots — alternating */}
-      <section className="py-16 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-24">
-          {brand.features.map((f, i) => (
-            <motion.div key={f.title} {...stagger(0)} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${i % 2 ? "lg:direction-rtl" : ""}`}>
-              <div className={i % 2 ? "lg:order-2" : ""}>
-                <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3">Feature 0{i + 1}</p>
-                <h3 className="text-xl md:text-2xl font-light text-white mb-4" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
-              </div>
-              <div className={i % 2 ? "lg:order-1" : ""}>
-                <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden">
-                  <div className="h-6 bg-[#111] flex items-center px-3 gap-1.5"><span className="w-2 h-2 rounded-full bg-[#333]" /><span className="w-2 h-2 rounded-full bg-[#333]" /><span className="w-2 h-2 rounded-full bg-[#333]" /></div>
-                  <img src={brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-end">
+            {screens.map((s, i) => (
+              <motion.div key={i} {...stagger(i)}>
+                <img src={s.src} alt={s.alt} className="w-full object-contain drop-shadow-2xl" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1061,6 +1042,87 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
                 <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Consulting Inquiry Form */}
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <motion.div {...fadeUp}>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Consulting</p>
+              <h2 className="text-3xl md:text-5xl text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
+                컨설팅 문의
+              </h2>
+              <p className="text-[#888] font-light leading-relaxed mb-8">
+                미술품 세무·자산관리 전문 컨설팅을 제공합니다. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
+              </p>
+              <div className="space-y-4 text-sm text-[#666] font-light">
+                <div className="flex items-start gap-3">
+                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <p>증여·상속, 법인 비용·감가, 컬렉션 관리 자문</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <p>맞춤 절세 플랜 및 사후 관리</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div {...fadeUp}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const subject = encodeURIComponent("Artledger Consulting 문의");
+                  const body = encodeURIComponent(
+                    `이름: ${formData.get("name")}\n이메일: ${formData.get("email")}\n연락처: ${formData.get("phone")}\n소속: ${formData.get("company")}\n상담 유형: ${formData.get("consultType")}\n\n${formData.get("message")}`
+                  );
+                  window.open(`mailto:info@pasogallery.com?subject=${subject}&body=${body}`);
+                }}
+                className="space-y-6"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
+                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                  </div>
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
+                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
+                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                  </div>
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">소속</label>
+                    <input name="company" type="text" placeholder="기관명 (개인은 생략 가능)" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">상담 유형</label>
+                  <select name="consultType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
+                    <option value="">선택해주세요</option>
+                    <option value="증여·상속 절세">증여·상속 절세</option>
+                    <option value="법인 미술품 비용처리">법인 미술품 비용처리</option>
+                    <option value="컬렉션 자산관리">컬렉션 자산관리</option>
+                    <option value="강연·교육 프로그램">강연·교육 프로그램</option>
+                    <option value="기타">기타</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">메시지</label>
+                  <textarea name="message" rows={4} placeholder="예: 보유 작품 수, 상담 희망 내용 등을 자유롭게 적어주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+                </div>
+                <button type="submit" className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+                  문의하기
+                </button>
+              </form>
+            </motion.div>
           </div>
         </div>
       </section>
