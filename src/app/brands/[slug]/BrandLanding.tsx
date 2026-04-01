@@ -7,7 +7,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 const projectGalleries: Record<number, { title: string; images: string[] }> = {
   0: {
     title: "장띵 — 델라페 18종",
-    images: Array.from({ length: 8 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
+    images: Array.from({ length: 6 }, (_, i) => `/images/projects/cu-dding/cu-${i + 1}.jpg`),
   },
   2: {
     title: "투썸 — A Twosome Place",
