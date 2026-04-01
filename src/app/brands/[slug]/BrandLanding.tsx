@@ -432,11 +432,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 alt="Artrader App"
                 className="w-36 md:w-48 object-contain drop-shadow-2xl"
               />
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 2.png"
-                alt="Artrader Search"
-                className="w-44 md:w-56 object-contain drop-shadow-2xl"
-              />
+              <div className="w-44 md:w-56 drop-shadow-2xl">
+                <div className="relative rounded-[2.5rem] border-[3px] border-[#e0e0e0]/30 overflow-hidden bg-black">
+                  <div className="flex justify-center pt-3 pb-1">
+                    <div className="w-20 h-5 bg-black rounded-full border border-[#333]" />
+                  </div>
+                  <img
+                    src="/brands/iPhone 14 Pro Max - Screen 2.png"
+                    alt="Artrader Search"
+                    className="w-full object-contain"
+                  />
+                </div>
+              </div>
             </div>
             {/* Text */}
             <div className="flex flex-col gap-5">
