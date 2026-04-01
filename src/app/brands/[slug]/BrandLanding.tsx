@@ -54,6 +54,9 @@ Artist: @jang_dding
   },
   3: {
     title: "CHOWOO 홍대 플래그쉽 스토어",
+    desc: `패션 브랜드 "CHOWOO"의 런칭을 위한 1년간의 플래그쉽 스토어를 설계하였으며, 인터랙티브 전시로 기획되었습니다. 이 독특한 공간은 오디오 도슨트를 통해 관객과의 소통을 가능하게 하며, 패션과 예술을 잇는 몰입감 있고 역동적인 경험을 제공합니다.
+
+참고기사: https://www.ktnews.com/news/articleView.html?idxno=133188`,
     images: ["/images/projects/hongdae-flagship/1.jpg", "/images/projects/hongdae-flagship/2.jpg"],
   },
 };
