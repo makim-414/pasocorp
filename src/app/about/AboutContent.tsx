@@ -64,7 +64,7 @@ export default function AboutContent() {
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12">
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-6">Mission</p>
-            <p className="text-lg md:text-2xl text-[#ccc] font-light leading-relaxed">
+            <p className="text-base md:text-lg text-[#ccc] font-light leading-relaxed">
               PASO는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술품 거래 자문부터 갤러리·미술관 운영, 기업 컬렉션 자문과 미술 프로젝트 운용까지, 미술 생태계의 모든 것을 연결합니다.
             </p>
           </motion.div>
