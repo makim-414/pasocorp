@@ -1,22 +1,35 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense, useEffect } from "react";
 import Link from "next/link";
 import { searchArtists } from "@/lib/artists";
+import SearchInput from "@/components/artrader/SearchInput";
 
 function SearchResults() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const query = searchParams.get("q") || "";
   const results = searchArtists(query);
+
+  // Redirect to artist page if exactly one result
+  useEffect(() => {
+    if (results.length === 1) {
+      router.replace(`/artrader/artist/${results[0].slug}`);
+    }
+  }, [query, results, router]);
 
   return (
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
       <h1 className="text-2xl md:text-3xl font-semibold text-white mb-2">
         &ldquo;{query}&rdquo; 검색 결과
       </h1>
-      <p className="text-sm text-[#555] mb-10">
+      <p className="text-sm text-[#555] mb-6">
         {results.length > 0 ? `${results.length}명의 작가를 찾았습니다` : "검색 결과가 없습니다"}
       </p>
+
+      <div className="mb-10 max-w-lg">
+        <SearchInput variant="nav" initialQuery={query} />
+      </div>
 
       {results.length === 0 && (
         <div className="text-center py-20">
