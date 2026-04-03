@@ -50,12 +50,25 @@ export default function GalleryAboutContent() {
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12 space-y-8">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-6">Our Story</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-6">About Us</p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-              2013년 &lsquo;푸에스토 (Puesto) 갤러리&rsquo;라는 이름으로 시작된 &lsquo;파소 (Paso) 갤러리&rsquo;는 한국의 신진작가들을 발굴하고 지원하는 것에 주력하였습니다. 현재 10년간 개최하고 있는 &lsquo;신진 아티스트 공모전&rsquo;을 한국의 신진 작가들에게 개인전과 단체전 등 다양한 전시 기회를 지원하고, 작가들과 기업간의 협력 기회를 창출함으로써 유망 작가들의 시장 진출을 다방면으로 확장하는 것을 목표로 합니다.
+              <strong className="text-white">Space by PASO</strong>는 파소의 첫 번째 전시 공간으로,<br />
+              성북동 초입의 성균관 유생 종가를 현대적으로 재건축한 전시 공간입니다.
             </p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-              서울 종로구 한옥 건축물에 자리한 Paso Gallery는, 전통 공간의 아름다움과 동시대 미술의 실험이 공존하는 독립 갤러리입니다. 브랜드 팝업, VIP 이벤트, 아트 어드바이저리 등 예술과 비즈니스를 잇는 프로그램을 운영합니다.
+              파소는 지난 10여 년간 꾸준히 이어온 신진 작가 발굴과 지원의 철학을 담아,<br />
+              작가들에게 상업적 가능성을 실험하고 시장과 만날 수 있는 기회를 제공하였습니다.
+            </p>
+            <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
+              현재 Space by PASO는 전시와 더불어 브랜드 협업 및 다양한 문화 행사를 유연하게 수용하는 기획 공간으로 운영됩니다.
+            </p>
+            <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
+              파소는 미술 시장 전반의 다양한 영역에서 비즈니스를 전개하며,<br />
+              예술의 새로운 가능성을 모색하고 있습니다.
+            </p>
+            <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
+              더 많은 정보는 파소의 공식 웹사이트에서 확인하실 수 있습니다.<br />
+              <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="text-[#b8960b] hover:text-white transition-colors">www.pasocorp.com</a>
             </p>
           </motion.div>
         </div>
