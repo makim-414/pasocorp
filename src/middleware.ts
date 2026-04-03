@@ -33,10 +33,23 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
+  // artrader.io → standalone artrader site
+  if (hostname.includes("artrader.io")) {
+    const url = request.nextUrl.clone();
+    if (pathname === "/") {
+      url.pathname = "/artrader";
+    } else if (!pathname.startsWith("/artrader")) {
+      url.pathname = `/artrader${pathname}`;
+    }
+    const response = NextResponse.rewrite(url);
+    response.headers.set("x-site-mode", "artrader");
+    return response;
+  }
+
   // pasocorp.com → default corporate site
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/", "/brands/:path*", "/about/:path*", "/contact", "/solutions", "/spaces"],
+  matcher: ["/", "/brands/:path*", "/about/:path*", "/contact", "/solutions", "/spaces", "/artrader/:path*", "/search/:path*", "/artist/:path*"],
 };
