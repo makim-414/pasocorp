@@ -157,23 +157,17 @@ export default function GalleryAboutContent() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "빔프로젝터 & 오디오", desc: "HDMI 케이블을 통해 개인 노트북 연결 가능. 블루투스 BT-AMP 오디오 및 무선 마이크 2개 구비. 스크린 등 추가 소품 필요 시 별도 문의. 전력 소모 조명·소품 사용 시 추가요금 발생.", image: "/images/about-space/img-050.jpg" },
-              { title: "작품 설치", desc: "벽걸이형 작품은 갤러리 제공 와이어 사용 (부족 시 개인 지참). 부득이한 타공 시 갤러리 도구만 사용 가능하며 원상복구 필요. 벽면 내외부 목재 건축물에 못·테이프·압정 사용 금지.", image: "/images/about-space/img-024.jpg" },
-              { title: "부대시설", desc: "창고, 청소도구함, 남여 화장실 구비. 창고 내부 용품은 사전 협의 품목에 한해 사용 가능.", image: "/images/about-space/img-046.jpg" },
-              { title: "공간 구성", desc: "리셉션, 전시 공간, 무대 공간으로 구성. 가벽을 활용한 자유로운 공간 분리 및 병합 가능. 냉온풍기 5개 설치 (리모컨 1개로 전체 제어).", image: "/images/about-space/img-028.jpg" },
-              { title: "주차 안내", desc: "자체 주차장 미제공. 갤러리 건너편 올림픽 기념회관 유료 주차장 이용 가능." },
-              { title: "반입 & 금지사항", desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 대관 일정 양도·재판매 금지. 대관 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
+              { title: "빔프로젝터 & 오디오", icon: "🎬", desc: "HDMI 케이블을 통해 개인 노트북 연결 가능. 블루투스 BT-AMP 오디오 및 무선 마이크 2개 구비. 스크린 등 추가 소품 필요 시 별도 문의. 전력 소모 조명·소품 사용 시 추가요금 발생." },
+              { title: "작품 설치", icon: "🖼️", desc: "벽걸이형 작품은 갤러리 제공 와이어 사용 (부족 시 개인 지참). 부득이한 타공 시 갤러리 도구만 사용 가능하며 원상복구 필요. 벽면 내외부 목재 건축물에 못·테이프·압정 사용 금지." },
+              { title: "부대시설", icon: "🚻", desc: "창고, 청소도구함, 남여 화장실 구비. 창고 내부 용품은 사전 협의 품목에 한해 사용 가능." },
+              { title: "공간 구성", icon: "🏛️", desc: "리셉션, 전시 공간, 무대 공간으로 구성. 가벽을 활용한 자유로운 공간 분리 및 병합 가능. 냉온풍기 5개 설치 (리모컨 1개로 전체 제어)." },
+              { title: "주차 안내", icon: "🅿️", desc: "자체 주차장 미제공. 갤러리 건너편 올림픽 기념회관 유료 주차장 이용 가능." },
+              { title: "반입 & 금지사항", icon: "🚫", desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 대관 일정 양도·재판매 금지. 대관 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
             ].map((item, i) => (
-              <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] overflow-hidden">
-                {"image" in item && item.image && (
-                  <div className="relative aspect-[16/10]">
-                    <Image src={item.image} alt={item.title} fill className="object-cover" />
-                  </div>
-                )}
-                <div className="p-6">
-                  <h3 className="text-white text-sm font-medium mb-3">{item.title}</h3>
-                  <p className="text-[#888] text-xs font-light leading-relaxed">{item.desc}</p>
-                </div>
+              <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] p-6">
+                <span className="text-2xl mb-4 block">{item.icon}</span>
+                <h3 className="text-white text-sm font-medium mb-3">{item.title}</h3>
+                <p className="text-[#888] text-xs font-light leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
