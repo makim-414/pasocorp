@@ -71,6 +71,34 @@ export default function SpacesContent() {
         </div>
       </section>
 
+      {/* ── Private Programs ── */}
+      <section className="py-32 md:py-44 bg-black border-y border-[#1a1a1a]">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
+          <motion.div {...fadeUp}>
+            <h2
+              className="text-4xl md:text-6xl lg:text-7xl text-white mb-8"
+              style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+            >
+              Private Programs
+            </h2>
+            <div className="w-16 h-[3px] bg-white mx-auto mb-12" />
+            <div className="space-y-8 text-[#aaa] font-light leading-relaxed text-sm md:text-base">
+              <p>
+                PASO의 전시 공간 Paso Gallery Heritage는 성북동 초입에 위치한 현대적으로 개조된 한옥 갤러리로,
+                미술 애호가들에게 특별한 경험을 제공합니다.
+              </p>
+              <p>
+                이 공간은 프라이빗 프로그램을 중심으로 운영되며, 다양한 브랜드와의 협업을 통해
+                아트 살롱, 프라이빗 뷰잉, 컬렉터 대상 아트 포럼 등 차별화된 행사를 기획하고 있습니다.
+              </p>
+              <p>
+                이를 통해 예술과 브랜드가 교류하며 새로운 가치를 창출하고, 미술 애호가들에게 맞춤형 예술 경험을 선사합니다
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Location Info ── */}
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
