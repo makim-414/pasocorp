@@ -184,8 +184,7 @@ export default function SpacesContent() {
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
               <h2
-                className="text-3xl md:text-5xl text-white mb-6"
-                style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+                className="text-3xl md:text-5xl font-medium text-white mb-6"
               >
                 공간 대관 문의
               </h2>
