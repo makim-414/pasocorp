@@ -90,65 +90,6 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
-      {/* Floor Plan */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Floor Plan</p>
-            <h2 className="text-3xl md:text-4xl text-white font-light mb-12" style={{ fontFamily: "var(--font-dutch)" }}>공간 도면</h2>
-            <div className="relative w-full aspect-square max-w-[600px] mx-auto bg-white rounded-sm overflow-hidden">
-              <Image
-                src="/images/about-space/img-012.jpg"
-                alt="Space by PASO 평면도"
-                fill
-                className="object-contain p-4"
-              />
-            </div>
-            <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#888] font-light">
-              <div><span className="text-[#b8960b]">1~5</span> — 조명 ON/OFF</div>
-              <div><span className="text-[#b8960b]">6</span> — 전체 조명 ON/OFF</div>
-              <div><span className="text-[#b8960b]">7-1~7-5, 8</span> — 유리창 (와이어 설치 가능)</div>
-              <div><span className="text-[#b8960b]">9~12</span> — 화장실 구역</div>
-              <div><span className="text-[#b8960b]">13~15</span> — 이동식 칸막이</div>
-              <div><span className="text-[#b8960b]">16~18</span> — 콘센트 위치</div>
-            </div>
-
-            {/* Partition & Window Sizes */}
-            <div className="mt-12 space-y-8">
-              <div>
-                <h3 className="text-white text-sm font-medium mb-4">이동식 칸막이 규격 (가로×세로 cm)</h3>
-                <div className="grid grid-cols-3 gap-3 text-xs text-[#888] font-light">
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">A</span> — 230×210</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">B</span> — 250×200</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">C</span> — 244×180</div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-white text-sm font-medium mb-4">유리창 규격 (가로×세로 cm) — M 제외, 와이어 이용 작품 설치 가능</h3>
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 text-xs text-[#888] font-light">
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">D</span> — 173×155</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">E</span> — 140×155</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">F</span> — 140×155</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">G</span> — 72×130</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">H</span> — 170×150</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">I</span> — 160×150</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">J</span> — 70×150</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">K, L</span> — 110×-</div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-white text-sm font-medium mb-4">벽면별 설치 방법</h3>
-                <div className="space-y-2 text-xs text-[#888] font-light">
-                  <p><span className="text-[#b8960b]">—</span> 와이어 이용 벽 (특수한 경우 실못 이용)</p>
-                  <p><span className="text-[#b8960b]">—</span> 실못 이용 작품 설치 가능 벽</p>
-                  <p className="text-[#666] mt-2">* 벽에 따라 가능한 설치 방법이 상이합니다. 상세 사항은 도면을 참고해주세요.</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Space Features */}
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -224,6 +165,63 @@ export default function GalleryAboutContent() {
               </ul>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Floor Plan */}
+      <section className="py-24 md:py-32 bg-black">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp}>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Floor Plan</p>
+            <h2 className="text-3xl md:text-4xl text-white font-light mb-12" style={{ fontFamily: "var(--font-dutch)" }}>공간 도면</h2>
+            <div className="relative w-full aspect-square max-w-[600px] mx-auto bg-white rounded-sm overflow-hidden">
+              <Image
+                src="/images/about-space/img-012.jpg"
+                alt="Space by PASO 평면도"
+                fill
+                className="object-contain p-4"
+              />
+            </div>
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#888] font-light">
+              <div><span className="text-[#b8960b]">1~5</span> — 조명 ON/OFF</div>
+              <div><span className="text-[#b8960b]">6</span> — 전체 조명 ON/OFF</div>
+              <div><span className="text-[#b8960b]">7-1~7-5, 8</span> — 유리창 (와이어 설치 가능)</div>
+              <div><span className="text-[#b8960b]">9~12</span> — 화장실 구역</div>
+              <div><span className="text-[#b8960b]">13~15</span> — 이동식 칸막이</div>
+              <div><span className="text-[#b8960b]">16~18</span> — 콘센트 위치</div>
+            </div>
+            <div className="mt-12 space-y-8">
+              <div>
+                <h3 className="text-white text-sm font-medium mb-4">이동식 칸막이 규격 (가로×세로 cm)</h3>
+                <div className="grid grid-cols-3 gap-3 text-xs text-[#888] font-light">
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">A</span> — 230×210</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">B</span> — 250×200</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">C</span> — 244×180</div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-medium mb-4">유리창 규격 (가로×세로 cm) — M 제외, 와이어 이용 작품 설치 가능</h3>
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 text-xs text-[#888] font-light">
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">D</span> — 173×155</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">E</span> — 140×155</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">F</span> — 140×155</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">G</span> — 72×130</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">H</span> — 170×150</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">I</span> — 160×150</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">J</span> — 70×150</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">K, L</span> — 110×-</div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-medium mb-4">벽면별 설치 방법</h3>
+                <div className="space-y-2 text-xs text-[#888] font-light">
+                  <p><span className="text-[#b8960b]">—</span> 와이어 이용 벽 (특수한 경우 실못 이용)</p>
+                  <p><span className="text-[#b8960b]">—</span> 실못 이용 작품 설치 가능 벽</p>
+                  <p className="text-[#666] mt-2">* 벽에 따라 가능한 설치 방법이 상이합니다. 상세 사항은 도면을 참고해주세요.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
