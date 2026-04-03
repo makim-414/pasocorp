@@ -392,6 +392,47 @@ function BrandCTA({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    1. ARTRADER — SaaS / Dashboard feel
    ═══════════════════════════════════════════════════ */
+function ChartWithMotion() {
+  const [visible, setVisible] = useState(false);
+  const chartRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = chartRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setVisible(true);
+    }, { threshold: 0.3 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <div ref={chartRef} className="relative h-48 md:h-64">
+      <svg viewBox="0 0 800 200" className="w-full h-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#4ade80" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0,180 C50,175 100,170 150,160 C200,150 250,140 300,120 C350,100 380,90 400,70 C420,55 450,50 500,45 C550,40 600,60 650,50 C700,35 750,20 800,10"
+          fill="none"
+          stroke="#4ade80"
+          strokeWidth="2"
+          strokeDasharray="1200"
+          strokeDashoffset={visible ? "0" : "1200"}
+          style={{ transition: "stroke-dashoffset 2.5s ease-out" }}
+        />
+        <path
+          d="M0,180 C50,175 100,170 150,160 C200,150 250,140 300,120 C350,100 380,90 400,70 C420,55 450,50 500,45 C550,40 600,60 650,50 C700,35 750,20 800,10 L800,200 L0,200 Z"
+          fill="url(#chartGrad)"
+          opacity={visible ? "1" : "0"}
+          style={{ transition: "opacity 1s ease-out 2s" }}
+        />
+      </svg>
+    </div>
+  );
+}
+
 function CountUp({ end, suffix = "", duration = 2000, decimals = 0 }: { end: number; suffix?: string; duration?: number; decimals?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -546,32 +587,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                   <span key={y}>{y}</span>
                 ))}
               </div>
-              <div className="relative h-48 md:h-64">
-                <svg viewBox="0 0 800 200" className="w-full h-full" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#4ade80" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M0,180 C50,175 100,170 150,160 C200,150 250,140 300,120 C350,100 380,90 400,70 C420,55 450,50 500,45 C550,40 600,60 650,50 C700,35 750,20 800,10"
-                    fill="none"
-                    stroke="#4ade80"
-                    strokeWidth="2"
-                    strokeDasharray="1200"
-                    strokeDashoffset="1200"
-                  >
-                    <animate attributeName="stroke-dashoffset" from="1200" to="0" dur="2.5s" fill="freeze" begin="0.3s" />
-                  </path>
-                  <path
-                    d="M0,180 C50,175 100,170 150,160 C200,150 250,140 300,120 C350,100 380,90 400,70 C420,55 450,50 500,45 C550,40 600,60 650,50 C700,35 750,20 800,10 L800,200 L0,200 Z"
-                    fill="url(#chartGrad)"
-                    opacity="0"
-                  >
-                    <animate attributeName="opacity" from="0" to="1" dur="1s" fill="freeze" begin="2s" />
-                  </path>
-                </svg>
+              <ChartWithMotion />
                 {/* Y-axis labels */}
                 <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-[10px] text-[#555] -ml-1">
                   <span>6,000M</span>
