@@ -501,17 +501,31 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       {/* ── Solution Overview ── */}
       <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
-            <div>
-              <h2 className="text-5xl md:text-7xl font-light text-white italic" style={{ fontFamily: "var(--font-dutch)" }}>
-                Solution{" "}
-                <span className="not-italic font-semibold text-[#4ade80]">Artrader</span>
-              </h2>
+          <motion.div {...fadeUp}>
+            <h2 className="text-5xl md:text-7xl font-light text-white italic" style={{ fontFamily: "var(--font-dutch)" }}>
+              Solution{" "}
+              <span className="not-italic font-semibold text-[#4ade80]">Artrader</span>
+            </h2>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Auction / PS Data ── */}
+      <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div className="flex flex-col gap-5">
+              <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
+              <h3 className="text-3xl md:text-5xl font-light text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
+                작품 검색부터 거래까지<br />아트레이더 하나로
+              </h3>
+              <p className="text-[#888] font-light leading-relaxed text-lg max-w-xl">
+                국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
+              </p>
             </div>
             {/* 3D Cube */}
-            <motion.div {...fadeUp} className="relative" style={{ perspective: "600px" }}>
+            <motion.div {...fadeUp} className="relative shrink-0" style={{ perspective: "600px" }}>
               <div className="relative w-48 h-48 md:w-56 md:h-56" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
-                {/* Cube faces */}
                 <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(48px)" }}>
                   <div className="flex flex-col items-center justify-center h-full p-4 text-center">
                     <p className="text-[10px] md:text-xs text-[#4ade80] tracking-wider leading-relaxed">글로벌 미술 거래<br />데이터베이스</p>
@@ -526,21 +540,6 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Auction / PS Data ── */}
-      <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <p className="text-[#4ade80] text-sm tracking-[0.15em] mb-5">Auction/PS Data</p>
-            <h3 className="text-3xl md:text-5xl font-light text-white leading-tight mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>
-              작품 검색부터 거래까지<br />아트레이더 하나로
-            </h3>
-            <p className="text-[#888] font-light leading-relaxed text-lg max-w-2xl">
-              국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
-            </p>
           </motion.div>
         </div>
       </section>
