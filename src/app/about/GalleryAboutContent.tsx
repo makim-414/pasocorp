@@ -158,7 +158,7 @@ export default function GalleryAboutContent() {
               {/* Zone labels */}
               <span className="absolute top-[22%] left-1/2 -translate-x-1/2 text-[10px] md:text-xs text-[#f87171] font-medium tracking-wider">Exhibition space</span>
               <span className="absolute top-[42%] left-[40%] -translate-x-1/2 text-[10px] md:text-xs text-[#fbbf24] font-medium tracking-wider">Stage</span>
-              <span className="absolute top-[73%] left-[30%] -translate-x-1/2 text-[10px] md:text-xs text-[#67e8f9] font-medium tracking-wider">Reception</span>
+              <span className="absolute top-[75%] left-[20%] -translate-x-1/2 text-[10px] md:text-xs text-[#67e8f9] font-medium tracking-wider">Reception</span>
             </div>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#888] font-light">
               <div><span className="text-[#b8960b]">1~5</span> — 조명 ON/OFF</div>
