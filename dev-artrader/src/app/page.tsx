@@ -28,7 +28,7 @@ export default function ArtraderHome() {
         <h1 className="text-4xl md:text-6xl font-light text-white mb-4" style={{ fontFamily: "var(--font-dutch)" }}>
           <span className="text-[#4ade80] font-semibold">Art</span>rader
         </h1>
-        <p className="text-[#888] text-sm md:text-base mb-12">
+        <p className="text-[#777] text-sm md:text-base font-light mb-12">
           글로벌 미술 거래 데이터베이스 &middot; 작가 검색 &middot; 시장 분석
         </p>
 

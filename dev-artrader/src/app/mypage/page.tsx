@@ -75,12 +75,12 @@ export default function MyPage() {
         뒤로가기
       </Link>
 
-      <h1 className="text-3xl font-semibold text-white mb-10">마이페이지</h1>
+      <h1 className="text-3xl font-light text-white/90 mb-10" style={{ fontFamily: "var(--font-noto-serif)" }}>마이페이지</h1>
 
       {/* My Info - Summary */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 mb-10">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-white">내 정보</h2>
+          <h2 className="text-lg font-normal text-white/90">내 정보</h2>
           <div className="flex items-center gap-3">
             <button
               onClick={() => { setEditForm({ ...mockUser }); setShowEditModal(true); }}
@@ -105,7 +105,7 @@ export default function MyPage() {
 
       {/* Purchase History */}
       <div className="mb-10">
-        <h2 className="text-lg font-semibold text-white mb-6">내 컬렉션</h2>
+        <h2 className="text-lg font-normal text-white/90 mb-6">내 컬렉션</h2>
         <div className="space-y-4">
           {mockArtworks.map((art, i) => (
             <div key={i} className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-5 hover:border-[#2a2a2a] transition-colors">
@@ -164,7 +164,7 @@ export default function MyPage() {
               </svg>
             </button>
 
-            <h2 className="text-lg font-semibold text-white mb-6">내 정보 수정</h2>
+            <h2 className="text-lg font-normal text-white/90 mb-6">내 정보 수정</h2>
 
             <div className="space-y-4 mb-6">
               <div>

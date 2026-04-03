@@ -19,10 +19,10 @@ export default function AboutPage() {
           </svg>
           뒤로가기
         </Link>
-        <h1 className="text-3xl md:text-5xl font-light text-white leading-tight mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
+        <h1 className="text-3xl md:text-5xl font-extralight text-white/90 leading-tight mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>
           투명하게 거래하는<br />생태계를 만들어요
         </h1>
-        <p className="text-[#888] text-sm md:text-base font-light leading-relaxed max-w-2xl mx-auto">
+        <p className="text-[#777] text-sm md:text-base font-light leading-relaxed max-w-2xl mx-auto">
           아트레이더는 미술 시장의 흩어진 데이터를 정제해,<br />
           시세 예측과 안전한 거래를 돕는 새로운 미술품 거래 환경을 만들어가고 있어요.
         </p>
@@ -33,7 +33,7 @@ export default function AboutPage() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           {/* Seller side */}
           <div className="flex flex-col gap-4 items-center md:items-end">
-            <p className="text-[#4ade80] font-semibold text-lg mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Seller</p>
+            <p className="text-[#4ade80] font-normal text-lg mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Seller</p>
             {sellerItems.map((item) => (
               <div
                 key={item}
@@ -54,7 +54,7 @@ export default function AboutPage() {
 
           {/* Buyer side */}
           <div className="flex flex-col gap-4 items-center md:items-start">
-            <p className="text-[#4ade80] font-semibold text-lg mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Buyer</p>
+            <p className="text-[#4ade80] font-normal text-lg mb-2" style={{ fontFamily: "var(--font-dutch)" }}>Buyer</p>
             {buyerItems.map((item) => (
               <div
                 key={item}
@@ -77,10 +77,10 @@ export default function AboutPage() {
 
       {/* Trust Features */}
       <section className="pb-20 md:pb-28">
-        <h2 className="text-2xl md:text-3xl font-light text-white text-center mb-4" style={{ fontFamily: "var(--font-dutch)" }}>
+        <h2 className="text-2xl md:text-3xl font-extralight text-white/90 text-center mb-4" style={{ fontFamily: "var(--font-noto-serif)" }}>
           안전한 거래를 보장해요
         </h2>
-        <p className="text-[#888] text-sm text-center mb-12 max-w-xl mx-auto">
+        <p className="text-[#777] text-sm font-light text-center mb-12 max-w-xl mx-auto">
           모든 작품은 자료 기반으로 검수되고, 신뢰할 수 없는 매물은 등록이 제한됩니다.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -94,8 +94,8 @@ export default function AboutPage() {
               key={card.title}
               className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-xl p-8 hover:border-[#4ade80]/30 transition-colors"
             >
-              <h4 className="text-lg font-semibold text-white mb-2">{card.title}</h4>
-              <p className="text-sm text-[#888] font-light leading-relaxed">{card.desc}</p>
+              <h4 className="text-lg font-normal text-white/90 mb-2">{card.title}</h4>
+              <p className="text-sm text-[#777] font-light leading-relaxed">{card.desc}</p>
             </div>
           ))}
         </div>
