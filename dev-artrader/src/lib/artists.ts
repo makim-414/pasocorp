@@ -6,6 +6,14 @@ export interface ArtistAuctionRecord {
   hammer: string;
   auctionHouse: string;
   date: string;
+  provenance?: string;
+  signature?: string;
+  frame?: string;
+  condition?: {
+    status: "양호" | "손상 확인됨";
+    details?: string;
+  };
+  edition?: string;
 }
 
 export interface Artist {
@@ -59,11 +67,11 @@ export const artists: Artist[] = [
       highestPrice: "₩13,476,000,000",
     },
     recentAuctions: [
-      { title: "From Line No. 800152", year: 1980, medium: "Oil and mineral pigment on canvas", size: "218×291cm", hammer: "₩4,200,000,000", auctionHouse: "서울옥션", date: "2024.11" },
-      { title: "Dialogue", year: 2018, medium: "Oil and mineral pigment on canvas", size: "162×130cm", hammer: "₩1,850,000,000", auctionHouse: "케이옥션", date: "2024.09" },
-      { title: "From Point No. 780217", year: 1978, medium: "Oil and mineral pigment on canvas", size: "182×227cm", hammer: "₩3,100,000,000", auctionHouse: "Christie's", date: "2024.05" },
-      { title: "Relatum", year: 2015, medium: "Steel and stone", size: "130×180×45cm", hammer: "₩920,000,000", auctionHouse: "필립스", date: "2024.03" },
-      { title: "Correspondence", year: 2006, medium: "Oil and mineral pigment on canvas", size: "130×162cm", hammer: "₩780,000,000", auctionHouse: "서울옥션", date: "2023.12" },
+      { title: "From Line No. 800152", year: 1980, medium: "Oil and mineral pigment on canvas", size: "218×291cm", hammer: "₩4,200,000,000", auctionHouse: "서울옥션", date: "2024.11", provenance: "확인됨", signature: "확인됨", frame: "프레이밍 완료", condition: { status: "양호" }, edition: "유일작" },
+      { title: "Dialogue", year: 2018, medium: "Oil and mineral pigment on canvas", size: "162×130cm", hammer: "₩1,850,000,000", auctionHouse: "케이옥션", date: "2024.09", provenance: "확인됨", signature: "확인됨", frame: "프레이밍 완료", condition: { status: "손상 확인됨", details: "캔버스 좌측 하단 2cm 미세 찢김 확인. 전문 복원 완료 상태이며, 작품 감상에는 영향 없음. 복원 보고서 첨부." }, edition: "유일작" },
+      { title: "From Point No. 780217", year: 1978, medium: "Oil and mineral pigment on canvas", size: "182×227cm", hammer: "₩3,100,000,000", auctionHouse: "Christie's", date: "2024.05", provenance: "확인됨", signature: "확인됨", frame: "없음", condition: { status: "양호" }, edition: "유일작" },
+      { title: "Relatum", year: 2015, medium: "Steel and stone", size: "130×180×45cm", hammer: "₩920,000,000", auctionHouse: "필립스", date: "2024.03", provenance: "확인됨", signature: "해당없음", frame: "해당없음", condition: { status: "손상 확인됨", details: "철판 표면 산화(녹) 일부 진행. 작가 의도에 의한 자연 변화로, 별도 처리 불필요. 석재 양호." }, edition: "유일작" },
+      { title: "Correspondence", year: 2006, medium: "Oil and mineral pigment on canvas", size: "130×162cm", hammer: "₩780,000,000", auctionHouse: "서울옥션", date: "2023.12", provenance: "확인됨", signature: "확인됨", frame: "프레이밍 완료", condition: { status: "양호" }, edition: "유일작" },
     ],
     tags: ["모노하", "단색화", "현대미술", "추상"],
   },

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { ArtistAuctionRecord } from "@/lib/artists";
 
 interface Props {
@@ -20,6 +20,10 @@ function parseYear(date: string): number {
 }
 
 export default function AuctionModal({ auction, allAuctions, artistName, onClose }: Props) {
+  const [showPurchaseConfirm, setShowPurchaseConfirm] = useState(false);
+  const [purchaseComplete, setPurchaseComplete] = useState(false);
+  const [showConditionDetail, setShowConditionDetail] = useState(false);
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", handleKey);
@@ -30,7 +34,6 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
     };
   }, [onClose]);
 
-  const currentPrice = parsePrice(auction.hammer);
   const prices = allAuctions.map((a) => ({
     price: parsePrice(a.hammer),
     year: parseYear(a.date),
@@ -51,8 +54,10 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
 
   const linePath = points.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
   const areaPath = `${linePath} L${points[points.length - 1].x},190 L${points[0].x},190 Z`;
-
   const currentPoint = points.find((p) => p.isCurrent);
+
+  const conditionStatus = auction.condition?.status || "양호";
+  const hasDamage = conditionStatus === "손상 확인됨";
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
@@ -89,12 +94,40 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
           <h2 className="text-2xl font-semibold text-white mb-1">{auction.title}</h2>
           <p className="text-sm text-[#666] mb-6">{auction.medium} | {auction.year}</p>
 
-          <div className="space-y-3 mb-8">
+          {/* Info rows */}
+          <div className="space-y-3 mb-6">
             {[
+              { label: "프로비넌스", value: auction.provenance || "확인됨" },
+              { label: "작가 서명", value: auction.signature || "확인됨" },
+              { label: "프레임", value: auction.frame || "프레이밍 완료" },
+            ].map((row) => (
+              <div key={row.label} className="flex items-center justify-between py-2 border-b border-[#1a1a1a]">
+                <span className="text-sm font-medium text-[#888]">{row.label}</span>
+                <span className="text-sm text-[#e8e8e8]">{row.value}</span>
+              </div>
+            ))}
+
+            {/* Condition row - clickable if damaged */}
+            <div className="flex items-center justify-between py-2 border-b border-[#1a1a1a]">
+              <span className="text-sm font-medium text-[#888]">작품 손상</span>
+              {hasDamage ? (
+                <button
+                  onClick={() => setShowConditionDetail(true)}
+                  className="text-sm text-[#888] hover:text-[#ef4444] transition-colors underline decoration-dashed underline-offset-2 cursor-pointer"
+                >
+                  손상 확인됨
+                </button>
+              ) : (
+                <span className="text-sm text-[#e8e8e8]">양호</span>
+              )}
+            </div>
+
+            {[
+              { label: "에디션", value: auction.edition || "-" },
               { label: "크기", value: auction.size },
               { label: "경매사", value: auction.auctionHouse },
               { label: "경매일", value: auction.date },
-              { label: "낙찰가", value: auction.hammer, highlight: true },
+              { label: "가격", value: auction.hammer, highlight: true },
             ].map((row) => (
               <div key={row.label} className="flex items-center justify-between py-2 border-b border-[#1a1a1a]">
                 <span className="text-sm font-medium text-[#888]">{row.label}</span>
@@ -104,6 +137,14 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
               </div>
             ))}
           </div>
+
+          {/* Purchase button */}
+          <button
+            onClick={() => setShowPurchaseConfirm(true)}
+            className="w-full py-4 bg-[#4ade80] text-black font-semibold rounded-xl hover:bg-[#22c55e] transition-colors text-base mb-8"
+          >
+            구매 요청하기
+          </button>
 
           {/* Price position chart */}
           <div className="bg-[#111] border border-[#1a1a1a] rounded-lg p-5">
@@ -115,73 +156,122 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
                   <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
                 </linearGradient>
               </defs>
-
-              {/* Grid lines */}
               {[0, 0.25, 0.5, 0.75, 1].map((r) => (
                 <line key={r} x1="60" y1={20 + r * 160} x2="740" y2={20 + r * 160} stroke="#1a1a1a" strokeWidth="1" />
               ))}
-
-              {/* Area + line */}
               <path d={areaPath} fill="url(#modalChartGrad)" />
               <path d={linePath} fill="none" stroke="#4ade80" strokeWidth="2" />
-
-              {/* All points */}
               {points.map((p, i) => (
-                <circle
-                  key={i}
-                  cx={p.x}
-                  cy={p.y}
-                  r={p.isCurrent ? 7 : 4}
-                  fill={p.isCurrent ? "#4ade80" : "#0a0a0a"}
-                  stroke={p.isCurrent ? "#4ade80" : "#4ade80"}
-                  strokeWidth={p.isCurrent ? 3 : 1.5}
-                />
+                <circle key={i} cx={p.x} cy={p.y} r={p.isCurrent ? 7 : 4} fill={p.isCurrent ? "#4ade80" : "#0a0a0a"} stroke="#4ade80" strokeWidth={p.isCurrent ? 3 : 1.5} />
               ))}
-
-              {/* Current point label */}
               {currentPoint && (
                 <>
-                  <line
-                    x1={currentPoint.x}
-                    y1={currentPoint.y + 10}
-                    x2={currentPoint.x}
-                    y2={190}
-                    stroke="#4ade80"
-                    strokeWidth="1"
-                    strokeDasharray="4 3"
-                    opacity="0.5"
-                  />
-                  <rect
-                    x={currentPoint.x - 55}
-                    y={currentPoint.y - 32}
-                    width="110"
-                    height="22"
-                    rx="4"
-                    fill="#4ade80"
-                  />
-                  <text
-                    x={currentPoint.x}
-                    y={currentPoint.y - 17}
-                    textAnchor="middle"
-                    fill="#000"
-                    fontSize="11"
-                    fontWeight="600"
-                  >
-                    {auction.hammer}
-                  </text>
+                  <line x1={currentPoint.x} y1={currentPoint.y + 10} x2={currentPoint.x} y2={190} stroke="#4ade80" strokeWidth="1" strokeDasharray="4 3" opacity="0.5" />
+                  <rect x={currentPoint.x - 55} y={currentPoint.y - 32} width="110" height="22" rx="4" fill="#4ade80" />
+                  <text x={currentPoint.x} y={currentPoint.y - 17} textAnchor="middle" fill="#000" fontSize="11" fontWeight="600">{auction.hammer}</text>
                 </>
               )}
-
-              {/* Year labels */}
               {points.map((p, i) => (
-                <text key={i} x={p.x} y={208} textAnchor="middle" fill="#555" fontSize="10">
-                  {p.year}
-                </text>
+                <text key={i} x={p.x} y={208} textAnchor="middle" fill="#555" fontSize="10">{p.year}</text>
               ))}
             </svg>
           </div>
         </div>
       </div>
+
+      {/* Purchase Confirm Modal */}
+      {showPurchaseConfirm && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-0 bg-black/60" onClick={() => setShowPurchaseConfirm(false)} />
+          <div className="relative bg-[#111] border border-[#2a2a2a] rounded-2xl w-full max-w-sm p-6">
+            {!purchaseComplete ? (
+              <>
+                <h3 className="text-lg font-semibold text-white mb-3">구매 요청 확인</h3>
+                <p className="text-sm text-[#888] mb-2">
+                  아래 작품의 구매를 요청하시겠습니까?
+                </p>
+                <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-4 mb-6">
+                  <p className="text-sm text-[#e8e8e8] font-medium">{auction.title}</p>
+                  <p className="text-xs text-[#666] mt-1">{artistName}</p>
+                  <p className="text-base text-[#4ade80] font-semibold mt-2">{auction.hammer}</p>
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setShowPurchaseConfirm(false)}
+                    className="flex-1 py-3 bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg text-sm text-[#888] hover:text-white transition-colors"
+                  >
+                    취소
+                  </button>
+                  <button
+                    onClick={() => setPurchaseComplete(true)}
+                    className="flex-1 py-3 bg-[#4ade80] text-black font-semibold rounded-lg hover:bg-[#22c55e] transition-colors text-sm"
+                  >
+                    구매 요청
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="text-center py-4">
+                  <div className="w-12 h-12 bg-[#4ade80]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">구매 요청이 완료되었어요</h3>
+                  <p className="text-sm text-[#888]">담당자 확인 후 연락드리겠습니다.</p>
+                </div>
+                <button
+                  onClick={() => { setPurchaseComplete(false); setShowPurchaseConfirm(false); }}
+                  className="w-full py-3 mt-4 bg-[#4ade80] text-black font-semibold rounded-lg hover:bg-[#22c55e] transition-colors text-sm"
+                >
+                  확인
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Condition Detail Modal */}
+      {showConditionDetail && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-0 bg-black/60" onClick={() => setShowConditionDetail(false)} />
+          <div className="relative bg-[#111] border border-[#2a2a2a] rounded-2xl w-full max-w-md p-6">
+            <h3 className="text-lg font-semibold text-white mb-1">작품 손상 정보</h3>
+            <p className="text-xs text-[#ef4444] mb-4">손상이 확인된 작품입니다</p>
+
+            <div className="bg-[#0a0a0a] border border-[#ef4444]/20 rounded-lg p-5 mb-6">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 bg-[#ef4444]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                    <line x1="12" y1="9" x2="12" y2="13" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-[#e8e8e8] font-medium mb-2">손상 상세</p>
+                  <p className="text-sm text-[#999] leading-relaxed">
+                    {auction.condition?.details || "상세 정보가 등록되지 않았습니다."}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-[10px] text-[#555] mb-4">
+              * 손상 정보는 전문가 검수를 기반으로 작성되었으며, 구매 전 추가 확인을 권장합니다.
+            </p>
+
+            <button
+              onClick={() => setShowConditionDetail(false)}
+              className="w-full py-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg text-sm text-[#e8e8e8] hover:bg-[#222] transition-colors"
+            >
+              확인
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
