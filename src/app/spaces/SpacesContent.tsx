@@ -21,7 +21,7 @@ export default function SpacesContent() {
       {/* ── Hero with Background Image ── */}
       <section className="relative h-[70vh] md:h-[80vh] flex items-end overflow-hidden">
         <Image
-          src="/images/gallery/165478704_220661666508377_396910471637338795_n 1.png"
+          src="/images/gallery/Slide 16_9 - 1416.png"
           alt="Paso Gallery Heritage 외관"
           fill
           className="object-cover"
