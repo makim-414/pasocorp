@@ -47,6 +47,26 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
+      {/* Space Gallery */}
+      <section className="py-16 md:py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { src: "/images/about-space/img-024.jpg", alt: "전시실 내부 — 회화 전시" },
+              { src: "/images/about-space/img-008.jpg", alt: "무대 공간 — 세미나 / 포럼" },
+              { src: "/images/about-space/img-010.jpg", alt: "공연 — 하프시코드 리사이틀" },
+              { src: "/images/about-space/img-028.jpg", alt: "아트 포럼 / 토크" },
+              { src: "/images/about-space/img-022.jpg", alt: "리셉션 / VIP 이벤트" },
+              { src: "/images/about-space/img-002.jpg", alt: "갤러리 외부 야경" },
+            ].map((img, i) => (
+              <motion.div key={img.src} {...stagger(i)} className="relative aspect-[4/3] overflow-hidden">
+                <Image src={img.src} alt={img.alt} fill className="object-cover hover:scale-105 transition-transform duration-700" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Gallery Story */}
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
@@ -67,26 +87,6 @@ export default function GalleryAboutContent() {
               현재는 전시와 더불어 브랜드 협업 및 문화 행사를 유연하게 수용하는 기획 공간으로 운영됩니다.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Space Gallery */}
-      <section className="py-16 md:py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { src: "/images/about-space/img-024.jpg", alt: "전시실 내부 — 회화 전시" },
-              { src: "/images/about-space/img-008.jpg", alt: "무대 공간 — 세미나 / 포럼" },
-              { src: "/images/about-space/img-010.jpg", alt: "공연 — 하프시코드 리사이틀" },
-              { src: "/images/about-space/img-028.jpg", alt: "아트 포럼 / 토크" },
-              { src: "/images/about-space/img-022.jpg", alt: "리셉션 / VIP 이벤트" },
-              { src: "/images/about-space/img-002.jpg", alt: "갤러리 외부 야경" },
-            ].map((img, i) => (
-              <motion.div key={img.src} {...stagger(i)} className="relative aspect-[4/3] overflow-hidden">
-                <Image src={img.src} alt={img.alt} fill className="object-cover hover:scale-105 transition-transform duration-700" />
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
