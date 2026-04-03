@@ -1,0 +1,221 @@
+export interface ArtistAuctionRecord {
+  title: string;
+  year: number;
+  medium: string;
+  size: string;
+  hammer: string;
+  auctionHouse: string;
+  date: string;
+}
+
+export interface Artist {
+  slug: string;
+  nameKo: string;
+  nameEn: string;
+  birthYear: number;
+  deathYear?: number;
+  nationality: string;
+  category: string;
+  profileImage?: string;
+  bio: string;
+  stats: {
+    avgPrice: string;
+    totalTransactions: number;
+    hammerRate: string;
+    annualGrowth: string;
+    highestPrice: string;
+  };
+  recentAuctions: ArtistAuctionRecord[];
+  tags: string[];
+}
+
+export const artists: Artist[] = [
+  {
+    slug: "lee-ufan",
+    nameKo: "이우환",
+    nameEn: "Lee Ufan",
+    birthYear: 1936,
+    nationality: "한국",
+    category: "현대미술",
+    bio: "이우환은 한국 출신의 현대미술 작가로, 일본 모노하(Mono-ha) 운동의 핵심 인물입니다. 회화와 조각 작업을 통해 동양 철학과 서양 현대미술을 융합한 독자적 예술 세계를 구축했습니다.",
+    stats: {
+      avgPrice: "₩384,000,000",
+      totalTransactions: 1247,
+      hammerRate: "72.4%",
+      annualGrowth: "+18.6%",
+      highestPrice: "₩13,476,000,000",
+    },
+    recentAuctions: [
+      { title: "From Line No. 800152", year: 1980, medium: "Oil and mineral pigment on canvas", size: "218×291cm", hammer: "₩4,200,000,000", auctionHouse: "서울옥션", date: "2024.11" },
+      { title: "Dialogue", year: 2018, medium: "Oil and mineral pigment on canvas", size: "162×130cm", hammer: "₩1,850,000,000", auctionHouse: "케이옥션", date: "2024.09" },
+      { title: "From Point No. 780217", year: 1978, medium: "Oil and mineral pigment on canvas", size: "182×227cm", hammer: "₩3,100,000,000", auctionHouse: "Christie's", date: "2024.05" },
+      { title: "Relatum", year: 2015, medium: "Steel and stone", size: "130×180×45cm", hammer: "₩920,000,000", auctionHouse: "필립스", date: "2024.03" },
+      { title: "Correspondence", year: 2006, medium: "Oil and mineral pigment on canvas", size: "130×162cm", hammer: "₩780,000,000", auctionHouse: "서울옥션", date: "2023.12" },
+    ],
+    tags: ["모노하", "단색화", "현대미술", "추상"],
+  },
+  {
+    slug: "kim-whanki",
+    nameKo: "김환기",
+    nameEn: "Kim Whanki",
+    birthYear: 1913,
+    deathYear: 1974,
+    nationality: "한국",
+    category: "근현대미술",
+    bio: "김환기는 한국 추상미술의 선구자로, 한국적 서정성과 자연의 아름다움을 추상적 형태로 표현한 작가입니다. 전면점화(全面點畫) 시리즈로 한국 미술 경매 최고가 기록을 보유하고 있습니다.",
+    stats: {
+      avgPrice: "₩1,250,000,000",
+      totalTransactions: 487,
+      hammerRate: "85.2%",
+      annualGrowth: "+12.3%",
+      highestPrice: "₩13,160,000,000",
+    },
+    recentAuctions: [
+      { title: "05-IV-71 #200 (Universe)", year: 1971, medium: "Oil on cotton", size: "254×202cm", hammer: "₩13,160,000,000", auctionHouse: "Christie's", date: "2019.11" },
+      { title: "Untitled 12-V-70 #172", year: 1970, medium: "Oil on cotton", size: "236×173cm", hammer: "₩8,500,000,000", auctionHouse: "서울옥션", date: "2024.06" },
+      { title: "여인들과 항아리", year: 1950, medium: "Oil on canvas", size: "95×72cm", hammer: "₩4,700,000,000", auctionHouse: "케이옥션", date: "2024.03" },
+    ],
+    tags: ["추상미술", "전면점화", "한국미술", "서정추상"],
+  },
+  {
+    slug: "park-seo-bo",
+    nameKo: "박서보",
+    nameEn: "Park Seo-Bo",
+    birthYear: 1931,
+    deathYear: 2023,
+    nationality: "한국",
+    category: "현대미술",
+    bio: "박서보는 한국 단색화(Dansaekhwa) 운동의 선구자이자 대표 작가입니다. '묘법(Ecriture)' 시리즈를 통해 반복적 행위와 명상적 과정을 결합한 독자적 화풍을 확립했습니다.",
+    stats: {
+      avgPrice: "₩520,000,000",
+      totalTransactions: 892,
+      hammerRate: "68.7%",
+      annualGrowth: "+8.4%",
+      highestPrice: "₩5,800,000,000",
+    },
+    recentAuctions: [
+      { title: "Ecriture No. 071220", year: 2007, medium: "Mixed media with Korean hanji paper on canvas", size: "195×130cm", hammer: "₩3,200,000,000", auctionHouse: "Christie's", date: "2024.10" },
+      { title: "Ecriture(描法) No. 990505", year: 1999, medium: "Mixed media on canvas", size: "162×130cm", hammer: "₩1,450,000,000", auctionHouse: "서울옥션", date: "2024.06" },
+    ],
+    tags: ["단색화", "묘법", "현대미술", "추상"],
+  },
+  {
+    slug: "yayoi-kusama",
+    nameKo: "쿠사마 야요이",
+    nameEn: "Yayoi Kusama",
+    birthYear: 1929,
+    nationality: "일본",
+    category: "현대미술",
+    bio: "쿠사마 야요이는 일본 출신의 현대미술 작가로, 물방울 무늬와 무한 반복 패턴을 통해 독자적 예술 세계를 구축했습니다. 회화, 조각, 설치 등 다양한 매체를 활용합니다.",
+    stats: {
+      avgPrice: "₩2,100,000,000",
+      totalTransactions: 3420,
+      hammerRate: "78.1%",
+      annualGrowth: "+15.2%",
+      highestPrice: "₩10,490,000,000",
+    },
+    recentAuctions: [
+      { title: "Infinity Nets (TWOWQ)", year: 2005, medium: "Acrylic on canvas", size: "194×259cm", hammer: "₩7,800,000,000", auctionHouse: "Christie's", date: "2024.11" },
+      { title: "Pumpkin", year: 2010, medium: "Acrylic on canvas", size: "130×130cm", hammer: "₩2,300,000,000", auctionHouse: "Sotheby's", date: "2024.08" },
+    ],
+    tags: ["팝아트", "설치미술", "현대미술", "도트"],
+  },
+  {
+    slug: "chung-sang-hwa",
+    nameKo: "정상화",
+    nameEn: "Chung Sang-Hwa",
+    birthYear: 1932,
+    nationality: "한국",
+    category: "현대미술",
+    bio: "정상화는 한국 단색화의 대표 작가로, 물감을 겹겹이 바르고 뜯어내는 독특한 기법으로 회화의 본질을 탐구해왔습니다.",
+    stats: {
+      avgPrice: "₩290,000,000",
+      totalTransactions: 634,
+      hammerRate: "65.3%",
+      annualGrowth: "+6.8%",
+      highestPrice: "₩3,200,000,000",
+    },
+    recentAuctions: [
+      { title: "Untitled 2015-6-3", year: 2015, medium: "Acrylic on canvas", size: "230×230cm", hammer: "₩1,800,000,000", auctionHouse: "서울옥션", date: "2024.05" },
+    ],
+    tags: ["단색화", "현대미술", "추상"],
+  },
+  {
+    slug: "nam-june-paik",
+    nameKo: "백남준",
+    nameEn: "Nam June Paik",
+    birthYear: 1932,
+    deathYear: 2006,
+    nationality: "한국",
+    category: "미디어아트",
+    bio: "백남준은 '비디오 아트의 아버지'로 불리는 한국 출신의 세계적 미디어 아티스트입니다. TV와 비디오를 예술의 매체로 활용하여 미디어 아트의 새 지평을 열었습니다.",
+    stats: {
+      avgPrice: "₩890,000,000",
+      totalTransactions: 312,
+      hammerRate: "71.6%",
+      annualGrowth: "+22.1%",
+      highestPrice: "₩6,500,000,000",
+    },
+    recentAuctions: [
+      { title: "Wright Brothers", year: 1995, medium: "2 antique TV cabinets, 2 Samsung monitors, 1 laser disc player", size: "153×183×61cm", hammer: "₩2,100,000,000", auctionHouse: "Christie's", date: "2024.09" },
+    ],
+    tags: ["미디어아트", "비디오아트", "설치미술", "플럭서스"],
+  },
+  {
+    slug: "yun-hyong-keun",
+    nameKo: "윤형근",
+    nameEn: "Yun Hyong-keun",
+    birthYear: 1928,
+    deathYear: 2007,
+    nationality: "한국",
+    category: "현대미술",
+    bio: "윤형근은 한국 단색화의 대표 작가로, 엷게 희석된 물감이 캔버스에 스며드는 번짐 기법을 통해 자연과 인간의 본질을 탐구했습니다.",
+    stats: {
+      avgPrice: "₩410,000,000",
+      totalTransactions: 445,
+      hammerRate: "74.2%",
+      annualGrowth: "+14.5%",
+      highestPrice: "₩4,100,000,000",
+    },
+    recentAuctions: [
+      { title: "Burnt Umber & Ultramarine", year: 1993, medium: "Oil on linen", size: "227×181cm", hammer: "₩3,400,000,000", auctionHouse: "서울옥션", date: "2024.06" },
+    ],
+    tags: ["단색화", "현대미술", "추상"],
+  },
+  {
+    slug: "kim-tschang-yeul",
+    nameKo: "김창열",
+    nameEn: "Kim Tschang-Yeul",
+    birthYear: 1929,
+    deathYear: 2021,
+    nationality: "한국",
+    category: "현대미술",
+    bio: "김창열은 '물방울 화가'로 불리는 한국의 대표적 현대미술 작가입니다. 극사실적 물방울 표현을 통해 동양적 무(無)의 철학을 시각화했습니다.",
+    stats: {
+      avgPrice: "₩180,000,000",
+      totalTransactions: 567,
+      hammerRate: "62.8%",
+      annualGrowth: "+5.3%",
+      highestPrice: "₩2,800,000,000",
+    },
+    recentAuctions: [
+      { title: "Waterdrops", year: 1985, medium: "Oil on canvas", size: "162×130cm", hammer: "₩1,200,000,000", auctionHouse: "케이옥션", date: "2024.04" },
+    ],
+    tags: ["극사실주의", "현대미술", "물방울"],
+  },
+];
+
+export function searchArtists(query: string): Artist[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  return artists.filter(
+    (a) =>
+      a.nameKo.toLowerCase().includes(q) ||
+      a.nameEn.toLowerCase().includes(q) ||
+      a.tags.some((t) => t.toLowerCase().includes(q))
+  );
+}
+
+export function getArtistBySlug(slug: string): Artist | undefined {
+  return artists.find((a) => a.slug === slug);
+}
