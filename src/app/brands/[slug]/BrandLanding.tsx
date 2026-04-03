@@ -490,18 +490,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       {/* ── Auction / PS Data ── */}
       <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 items-center">
             {/* Phones */}
-            <div className="flex gap-6 justify-center items-center">
+            <div className="flex gap-4 justify-center items-end">
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 1.png"
                 alt="Artrader App"
-                className="w-32 md:w-44 object-contain drop-shadow-2xl"
+                className="w-24 md:w-32 object-contain drop-shadow-2xl"
               />
-              <div className="w-40 md:w-52 drop-shadow-2xl">
-                <div className="relative rounded-[2.5rem] border-[3px] border-[#e0e0e0]/30 overflow-hidden bg-black">
-                  <div className="flex justify-center pt-3 pb-1">
-                    <div className="w-20 h-5 bg-black rounded-full border border-[#333]" />
+              <div className="w-32 md:w-40 drop-shadow-2xl">
+                <div className="relative rounded-[2rem] border-[2px] border-[#e0e0e0]/30 overflow-hidden bg-black">
+                  <div className="flex justify-center pt-2 pb-0.5">
+                    <div className="w-14 h-3.5 bg-black rounded-full border border-[#333]" />
                   </div>
                   <img
                     src="/brands/iPhone 14 Pro Max - Screen 2.png"
@@ -517,7 +517,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               <h3 className="text-3xl md:text-4xl font-light text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 작품 검색부터 거래까지<br />아트레이더 하나로
               </h3>
-              <p className="text-[#888] font-light leading-relaxed max-w-lg">
+              <p className="text-[#888] font-light leading-relaxed">
                 국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
               </p>
             </div>
