@@ -27,38 +27,28 @@ export default function SpacesContent() {
 
   return (
     <main className="pt-16">
-      {/* ── Hero ── */}
-      <section className="py-24 md:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+      {/* ── Hero with Background Image ── */}
+      <section className="relative h-[70vh] md:h-[80vh] flex items-end overflow-hidden">
+        <Image
+          src="/images/gallery/165478704_220661666508377_396910471637338795_n 1.png"
+          alt="Paso Gallery Heritage 외관"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-12 pb-16 md:pb-24">
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Spaces</p>
             <h1
-              className="text-4xl md:text-6xl text-white mb-6"
+              className="text-4xl md:text-6xl text-white mb-4"
               style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
             >
               Space Introduction
             </h1>
-            <p className="text-[#888] font-light leading-relaxed max-w-2xl text-lg">
+            <p className="text-[#aaa] font-light leading-relaxed max-w-2xl text-lg">
               서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다.
             </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Hero Image ── */}
-      <section className="pb-16 md:pb-24">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div
-            {...fadeUp}
-            className="relative w-full aspect-[16/9] overflow-hidden"
-          >
-            <Image
-              src="/images/gallery/165478704_220661666508377_396910471637338795_n 1.png"
-              alt="Paso Gallery Heritage 외관"
-              fill
-              className="object-cover"
-              priority
-            />
           </motion.div>
         </div>
       </section>
