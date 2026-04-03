@@ -480,10 +480,9 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             </div>
             {/* Artrader logo */}
             <div className="flex flex-col items-center gap-3 my-4 lg:my-0">
-              <div className="w-24 h-24 md:w-28 md:h-28 bg-[#111] border border-[#333] rounded-2xl flex flex-col items-center justify-center shadow-xl">
-                <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-dutch)" }}>A</span>
+              <div className="w-24 h-24 md:w-28 md:h-28 bg-[#111] border border-[#333] rounded-2xl flex items-center justify-center shadow-xl overflow-hidden">
+                <img src="/brands/artrader-new.png" alt="Artrader" className="w-full h-full object-cover" />
               </div>
-              <p className="text-white text-sm font-medium tracking-wide">Artrader</p>
             </div>
             {/* Buyer */}
             <div className="flex flex-col gap-4 items-center">
