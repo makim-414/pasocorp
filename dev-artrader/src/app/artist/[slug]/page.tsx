@@ -105,38 +105,34 @@ export default function ArtistPage() {
         </div>
       </div>
 
-      {/* Recent Auctions */}
-      <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
-        <h2 className="text-lg font-semibold text-white mb-6">
-          최근 경매 기록
-        </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-[10px] uppercase tracking-wider text-[#555] border-b border-[#1a1a1a]">
-                <th className="text-left py-3 pr-4">작품명</th>
-                <th className="text-left py-3 pr-4">제작년도</th>
-                <th className="text-left py-3 pr-4">매체</th>
-                <th className="text-left py-3 pr-4">크기</th>
-                <th className="text-right py-3 pr-4">낙찰가</th>
-                <th className="text-left py-3 pr-4">경매사</th>
-                <th className="text-left py-3">날짜</th>
-              </tr>
-            </thead>
-            <tbody>
-              {artist.recentAuctions.map((auction, i) => (
-                <tr key={i} className="border-b border-[#111] hover:bg-[#111] transition-colors">
-                  <td className="py-3 pr-4 text-[#e8e8e8] font-medium">{auction.title}</td>
-                  <td className="py-3 pr-4 text-[#888]">{auction.year}</td>
-                  <td className="py-3 pr-4 text-[#888] text-xs max-w-[200px] truncate">{auction.medium}</td>
-                  <td className="py-3 pr-4 text-[#888]">{auction.size}</td>
-                  <td className="py-3 pr-4 text-right text-[#4ade80] font-semibold whitespace-nowrap">{auction.hammer}</td>
-                  <td className="py-3 pr-4 text-[#888]">{auction.auctionHouse}</td>
-                  <td className="py-3 text-[#888]">{auction.date}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Recent Auctions - Card Layout */}
+      <div className="mb-8">
+        <div className="border-t border-[#2a2a2a] pt-8 mb-6">
+          <h2 className="text-lg font-semibold text-white">
+            유사 옥션 거래 기록
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {artist.recentAuctions.map((auction, i) => (
+            <div key={i} className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#2a2a2a] transition-colors">
+              <div className="p-5">
+                <h3 className="text-base font-medium text-[#e8e8e8] mb-1">{auction.title}</h3>
+                <p className="text-xs text-[#666] mb-1">
+                  {artist.nameKo} | {auction.size}
+                </p>
+                <p className="text-xs text-[#555] mb-4">{auction.medium}</p>
+                <div className="flex items-end justify-between">
+                  <div>
+                    <p className="text-[10px] text-[#555] mb-0.5">{auction.date}</p>
+                    <p className="text-lg font-semibold text-[#e8e8e8]">{auction.hammer}</p>
+                  </div>
+                  <span className="text-[10px] text-[#4ade80] bg-[#4ade80]/10 px-2 py-1 rounded">
+                    {auction.auctionHouse}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
