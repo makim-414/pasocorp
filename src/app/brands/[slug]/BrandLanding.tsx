@@ -640,10 +640,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       {/* ── Trust & Verification Cards ── */}
       <section className="bg-[#0d1117] py-20 md:py-28 border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-4" style={{ fontFamily: "var(--font-noto-serif)" }}>
+              안전한 거래를 보장해요
+            </h2>
+            <p className="text-[#888] font-light leading-relaxed max-w-xl mx-auto">
+              모든 작품은 자료 기반으로 검수되고, 신뢰할 수 없는 매물은 등록이 제한됩니다.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               {
-                title: "프로비너스",
+                title: "프로비넌스",
                 desc: "소유·전시 이력이 명확한 기록만 수집합니다.",
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
