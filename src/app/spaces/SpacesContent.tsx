@@ -36,11 +36,10 @@ export default function SpacesContent() {
               className="text-4xl md:text-6xl text-white mb-6"
               style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
             >
-              Art Meets Space
+              Space Introduction
             </h1>
             <p className="text-[#888] font-light leading-relaxed max-w-2xl text-lg">
               서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다.
-              Light Room과 Dark Room, 두 개의 전시실이 서로 다른 분위기를 연출합니다.
             </p>
           </motion.div>
         </div>
