@@ -44,6 +44,23 @@ export default function SpacesContent() {
         </div>
       </section>
 
+      {/* ── Space Info ── */}
+      <section className="py-24 md:py-32 bg-[#111] border-b border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp} className="max-w-xl">
+            <div className="w-12 h-[3px] bg-[#888] mb-6" />
+            <h2 className="text-2xl md:text-3xl text-white font-semibold mb-1">Space</h2>
+            <p className="text-[#aaa] text-sm mb-8">공간 소개</p>
+            <div className="space-y-2 text-sm text-[#999] font-light">
+              <p>주소지 : 서울특별시 종로구 성균관로 92</p>
+              <p>면적 : 약 231m², 70평</p>
+              <p>수용 인원 : 최대 50명</p>
+              <p>테이블 / 의자 : 간이 의자 약 20개 구비, 테이블 사용 가능</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Private Programs ── */}
       <section className="py-32 md:py-44 bg-black border-y border-[#1a1a1a]">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
