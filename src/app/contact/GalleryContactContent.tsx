@@ -91,7 +91,7 @@ export default function GalleryContactContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
-              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 공간 대관 문의
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">

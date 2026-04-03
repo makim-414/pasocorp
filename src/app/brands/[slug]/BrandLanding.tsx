@@ -485,7 +485,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Text */}
             <div className="flex flex-col gap-5">
               <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Auction/PS Data</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
+              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 작품 검색부터 거래까지<br />아트레이더 하나로
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
@@ -566,7 +566,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Text */}
             <div className="flex flex-col gap-5 order-2 lg:order-1">
               <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Artist data Analytics</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
+              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 검증된 데이터로<br />적정 가격 제시
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
@@ -625,7 +625,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Text */}
             <div className="flex flex-col gap-5">
               <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Art Sales Performance</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
+              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 보조지표 대시보드<br />시각화
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
@@ -1090,7 +1090,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
-              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 공간 대관 문의
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">
@@ -1209,7 +1209,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-6">PASO Corporation</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-3xl font-normal text-white mb-6">본사 바로가기</motion.h2>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-3xl font-normal text-white mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>본사 바로가기</motion.h2>
           <motion.p {...fadeUp} className="text-sm md:text-base text-[#888] font-light mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
           <motion.div {...fadeUp}>
             <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border border-[#b8960b] text-[#b8960b] text-sm tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
@@ -1331,7 +1331,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Services</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">전문 자문 서비스</motion.h2>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14" style={{ fontFamily: "var(--font-noto-serif)" }}>전문 자문 서비스</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
             {brand.features.slice(0, 3).map((f, i) => (
               <motion.div key={f.title} {...stagger(i)} className="bg-[#0a0a0a] p-8 md:p-10 group">
@@ -1366,7 +1366,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Programs</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">교육 & 네트워킹</motion.h2>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14" style={{ fontFamily: "var(--font-noto-serif)" }}>교육 & 네트워킹</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {brand.features.slice(3, 6).map((f, i) => (
               <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors duration-500">
@@ -1383,7 +1383,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">For</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">누구를 위한 서비스인가</motion.h2>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14" style={{ fontFamily: "var(--font-noto-serif)" }}>누구를 위한 서비스인가</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {targets.map((t, i) => (
               <motion.div key={t.label} {...stagger(i)} className="group">
@@ -1403,7 +1403,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Consulting</p>
-              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 컨설팅 문의
               </h2>
               <p className="text-[#888] font-light leading-relaxed mb-8">
