@@ -1,13 +1,16 @@
 "use client";
+import { useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getArtistBySlug } from "@/lib/artists";
+import { getArtistBySlug, type ArtistAuctionRecord } from "@/lib/artists";
 import RelatedNews from "@/components/RelatedNews";
+import AuctionModal from "@/components/AuctionModal";
 
 export default function ArtistPage() {
   const params = useParams();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
+  const [selectedAuction, setSelectedAuction] = useState<ArtistAuctionRecord | null>(null);
 
   if (!artist) {
     return (
@@ -154,9 +157,21 @@ export default function ArtistPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {artist.recentAuctions.map((auction, i) => (
-            <div key={i} className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#2a2a2a] transition-colors">
+            <button
+              key={i}
+              onClick={() => setSelectedAuction(auction)}
+              className="text-left bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-all cursor-pointer group"
+            >
+              {/* Thumbnail placeholder */}
+              <div className="w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="group-hover:stroke-[#4ade80]/30 transition-colors">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
+              </div>
               <div className="p-5">
-                <h3 className="text-base font-medium text-[#e8e8e8] mb-1">{auction.title}</h3>
+                <h3 className="text-base font-medium text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors mb-1">{auction.title}</h3>
                 <p className="text-xs text-[#666] mb-1">
                   {artist.nameKo} | {auction.size}
                 </p>
@@ -171,7 +186,7 @@ export default function ArtistPage() {
                   </span>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>
@@ -187,6 +202,16 @@ export default function ArtistPage() {
           </span>
         ))}
       </div>
+
+      {/* Auction Detail Modal */}
+      {selectedAuction && (
+        <AuctionModal
+          auction={selectedAuction}
+          allAuctions={artist.recentAuctions}
+          artistName={artist.nameKo}
+          onClose={() => setSelectedAuction(null)}
+        />
+      )}
     </div>
   );
 }
