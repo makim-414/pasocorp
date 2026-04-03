@@ -111,6 +111,39 @@ export default function GalleryAboutContent() {
               <div><span className="text-[#b8960b]">13~15</span> — 이동식 칸막이</div>
               <div><span className="text-[#b8960b]">16~18</span> — 콘센트 위치</div>
             </div>
+
+            {/* Partition & Window Sizes */}
+            <div className="mt-12 space-y-8">
+              <div>
+                <h3 className="text-white text-sm font-medium mb-4">이동식 칸막이 규격 (가로×세로 cm)</h3>
+                <div className="grid grid-cols-3 gap-3 text-xs text-[#888] font-light">
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">A</span> — 230×210</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">B</span> — 250×200</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">C</span> — 244×180</div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-medium mb-4">유리창 규격 (가로×세로 cm) — M 제외, 와이어 이용 작품 설치 가능</h3>
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 text-xs text-[#888] font-light">
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">D</span> — 173×155</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">E</span> — 140×155</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">F</span> — 140×155</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">G</span> — 72×130</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">H</span> — 170×150</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">I</span> — 160×150</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">J</span> — 70×150</div>
+                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#b8960b]">K, L</span> — 110×-</div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-medium mb-4">벽면별 설치 방법</h3>
+                <div className="space-y-2 text-xs text-[#888] font-light">
+                  <p><span className="text-[#b8960b]">—</span> 와이어 이용 벽 (특수한 경우 실못 이용)</p>
+                  <p><span className="text-[#b8960b]">—</span> 실못 이용 작품 설치 가능 벽</p>
+                  <p className="text-[#666] mt-2">* 벽에 따라 가능한 설치 방법이 상이합니다. 상세 사항은 도면을 참고해주세요.</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -124,16 +157,23 @@ export default function GalleryAboutContent() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "빔프로젝터 & 오디오", desc: "HDMI 케이블을 통해 개인 노트북 연결 가능. 블루투스 BT-AMP 오디오 및 무선 마이크 2개 구비." },
-              { title: "작품 설치", desc: "갤러리 제공 와이어를 사용한 벽걸이형 작품 설치 가능. 이동식 칸막이 및 유리창 와이어 설치 지원." },
+              { title: "빔프로젝터 & 오디오", desc: "HDMI 케이블을 통해 개인 노트북 연결 가능. 블루투스 BT-AMP 오디오 및 무선 마이크 2개 구비. 스크린 등 추가 소품 필요 시 별도 문의. 전력 소모 조명·소품 사용 시 추가요금 발생.", image: "/images/about-space/img-050.jpg" },
+              { title: "작품 설치", desc: "벽걸이형 작품은 갤러리 제공 와이어 사용 (부족 시 개인 지참). 부득이한 타공 시 갤러리 도구만 사용 가능하며 원상복구 필요. 벽면 내외부 목재 건축물에 못·테이프·압정 사용 금지." },
               { title: "부대시설", desc: "창고, 청소도구함, 남여 화장실 구비. 창고 내부 용품은 사전 협의 품목에 한해 사용 가능." },
-              { title: "공간 구성", desc: "리셉션, 전시 공간, 무대 공간으로 구성. 가벽을 활용한 자유로운 공간 분리 및 병합 가능." },
+              { title: "공간 구성", desc: "리셉션, 전시 공간, 무대 공간으로 구성. 가벽을 활용한 자유로운 공간 분리 및 병합 가능. 냉온풍기 5개 설치 (리모컨 1개로 전체 제어)." },
               { title: "주차 안내", desc: "자체 주차장 미제공. 갤러리 건너편 올림픽 기념회관 유료 주차장 이용 가능." },
-              { title: "금연 & 금지사항", desc: "모든 실내 공간 금연. 대관 일정의 양도·재판매 금지. 물품 판매 시 사전 협의 필요." },
+              { title: "반입 & 금지사항", desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 대관 일정 양도·재판매 금지. 대관 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
             ].map((item, i) => (
-              <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] p-6">
-                <h3 className="text-white text-sm font-medium mb-3">{item.title}</h3>
-                <p className="text-[#888] text-xs font-light leading-relaxed">{item.desc}</p>
+              <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] overflow-hidden">
+                {"image" in item && item.image && (
+                  <div className="relative aspect-[16/10]">
+                    <Image src={item.image} alt={item.title} fill className="object-cover" />
+                  </div>
+                )}
+                <div className="p-6">
+                  <h3 className="text-white text-sm font-medium mb-3">{item.title}</h3>
+                  <p className="text-[#888] text-xs font-light leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -165,7 +205,23 @@ export default function GalleryAboutContent() {
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>꽃다발·화환 등 반입 가능하나, 대관 이용 직후 수거되어야 합니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>모든 시설 훼손 시 반드시 복구해야 하며, 전시 중 발생하는 폐기물은 모두 직접 처리해주셔야 합니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>일반폐기물은 청소함 비치 종량제 봉투 이용. 재활용폐기물은 분리 후 갤러리 건너편 88회관 지하주차장 입구 오른쪽에 배출.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
                 <p>퇴점 시 모든 냉온풍기 전원 종료 및 날개 닫힘 확인, 모든 조명 소등 부탁드립니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>문의사항이 있을 경우 담당자에게 연락해주시기 바랍니다. (010-6432-4471)</p>
               </div>
             </div>
           </motion.div>
