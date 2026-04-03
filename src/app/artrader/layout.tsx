@@ -24,6 +24,7 @@ function ArtraderNav() {
             </svg>
             관심작품
           </Link>
+          <Link href="/artrader/user" className="hover:text-[#4ade80] transition-colors">마이페이지</Link>
         </div>
       </div>
     </nav>
