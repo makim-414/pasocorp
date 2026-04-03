@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
+import TrendingArtistsMarquee from "@/components/TrendingArtistsMarquee";
 
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[]; desc?: string; artist?: string }> = {
@@ -446,33 +447,8 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             지금 인기 있는 작가
           </motion.p>
         </div>
-        {/* Marquee scrolling artist tags */}
-        <div className="relative overflow-hidden">
-          {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ x: { duration: 25, repeat: Infinity, ease: "linear" } }}
-            className="flex gap-3 w-max"
-          >
-            {[
-              "윤형근", "이우환", "이배", "천경자", "에디 마르티네즈", "우국원", "앤디 워홀",
-              "김환기", "박서보", "이중섭", "쿠사마 야요이", "데이비드 호크니", "게르하르트 리히터",
-              "장 미셸 바스키아", "키스 해링", "무라카미 다카시", "조지 콘도", "KAWS",
-              "윤형근", "이우환", "이배", "천경자", "에디 마르티네즈", "우국원", "앤디 워홀",
-              "김환기", "박서보", "이중섭", "쿠사마 야요이", "데이비드 호크니", "게르하르트 리히터",
-              "장 미셸 바스키아", "키스 해링", "무라카미 다카시", "조지 콘도", "KAWS",
-            ].map((name, i) => (
-              <span
-                key={`${name}-${i}`}
-                className="inline-block px-5 py-2.5 border border-[#333] rounded-full text-sm text-white whitespace-nowrap hover:border-[#4ade80] hover:text-[#4ade80] transition-colors cursor-pointer"
-              >
-                {name}
-              </span>
-            ))}
-          </motion.div>
-        </div>
+        {/* Marquee scrolling artist tags — fetched from API */}
+        <TrendingArtistsMarquee />
       </section>
 
       {/* Stats bar */}
