@@ -90,32 +90,6 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
-      {/* Space Features */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="mb-16">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Facilities</p>
-            <h2 className="text-3xl md:text-4xl text-white font-normal">공간 시설 안내</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "빔프로젝터 & 오디오", icon: Projector, desc: "HDMI 케이블을 통해 개인 노트북 연결 가능. 블루투스 BT-AMP 오디오 및 무선 마이크 2개 구비. 스크린 등 추가 소품 필요 시 별도 문의. 전력 소모 조명·소품 사용 시 추가요금 발생." },
-              { title: "작품 설치", icon: Frame, desc: "벽걸이형 작품은 갤러리 제공 와이어 사용 (부족 시 개인 지참). 부득이한 타공 시 갤러리 도구만 사용 가능하며 원상복구 필요. 벽면 내외부 목재 건축물에 못·테이프·압정 사용 금지." },
-              { title: "부대시설", icon: DoorOpen, desc: "창고, 청소도구함, 남여 화장실 구비. 창고 내부 용품은 사전 협의 품목에 한해 사용 가능." },
-              { title: "공간 구성", icon: LayoutGrid, desc: "리셉션, 전시 공간, 무대 공간으로 구성. 가벽을 활용한 자유로운 공간 분리 및 병합 가능. 냉온풍기 5개 설치 (리모컨 1개로 전체 제어)." },
-              { title: "주차 안내", icon: ParkingCircle, desc: "자체 주차장 미제공. 갤러리 건너편 올림픽 기념회관 유료 주차장 이용 가능." },
-              { title: "반입 & 금지사항", icon: Ban, desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 대관 일정 양도·재판매 금지. 대관 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
-            ].map((item, i) => (
-              <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] p-6">
-                <item.icon size={24} className="text-[#b8960b] mb-4" strokeWidth={1.5} />
-                <h3 className="text-white text-sm font-medium mb-3">{item.title}</h3>
-                <p className="text-[#888] text-xs font-light leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Event Availability */}
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -322,6 +296,32 @@ export default function GalleryAboutContent() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Space Features */}
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp} className="mb-16">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Facilities</p>
+            <h2 className="text-3xl md:text-4xl text-white font-normal">공간 시설 안내</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "빔프로젝터 & 오디오", icon: Projector, desc: "HDMI 케이블을 통해 개인 노트북 연결 가능. 블루투스 BT-AMP 오디오 및 무선 마이크 2개 구비. 스크린 등 추가 소품 필요 시 별도 문의. 전력 소모 조명·소품 사용 시 추가요금 발생." },
+              { title: "작품 설치", icon: Frame, desc: "벽걸이형 작품은 갤러리 제공 와이어 사용 (부족 시 개인 지참). 부득이한 타공 시 갤러리 도구만 사용 가능하며 원상복구 필요. 벽면 내외부 목재 건축물에 못·테이프·압정 사용 금지." },
+              { title: "부대시설", icon: DoorOpen, desc: "창고, 청소도구함, 남여 화장실 구비. 창고 내부 용품은 사전 협의 품목에 한해 사용 가능." },
+              { title: "공간 구성", icon: LayoutGrid, desc: "리셉션, 전시 공간, 무대 공간으로 구성. 가벽을 활용한 자유로운 공간 분리 및 병합 가능. 냉온풍기 5개 설치 (리모컨 1개로 전체 제어)." },
+              { title: "주차 안내", icon: ParkingCircle, desc: "자체 주차장 미제공. 갤러리 건너편 올림픽 기념회관 유료 주차장 이용 가능." },
+              { title: "반입 & 금지사항", icon: Ban, desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 대관 일정 양도·재판매 금지. 대관 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
+            ].map((item, i) => (
+              <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] p-6">
+                <item.icon size={24} className="text-[#b8960b] mb-4" strokeWidth={1.5} />
+                <h3 className="text-white text-sm font-medium mb-3">{item.title}</h3>
+                <p className="text-[#888] text-xs font-light leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
