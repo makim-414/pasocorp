@@ -1,11 +1,12 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getArtistBySlug } from "@/lib/artists";
 import ArtistCharts from "@/components/artrader/ArtistCharts";
 
 export default function ArtistPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
 
@@ -26,9 +27,12 @@ export default function ArtistPage() {
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
       {/* Header */}
       <div className="mb-10">
-        <Link href="/artrader" className="text-xs text-[#555] hover:text-[#4ade80] transition-colors mb-4 inline-block">
-          &larr; 홈으로
-        </Link>
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 text-xs text-[#555] hover:text-[#4ade80] transition-colors mb-4"
+        >
+          &larr; 뒤로가기
+        </button>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="text-4xl md:text-5xl font-semibold text-white" style={{ fontFamily: "var(--font-dutch)" }}>

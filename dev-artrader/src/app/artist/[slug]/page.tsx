@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getArtistBySlug, type ArtistAuctionRecord } from "@/lib/artists";
 import RelatedNews from "@/components/RelatedNews";
@@ -9,6 +9,7 @@ import ArtistCharts from "../../../components/ArtistCharts";
 
 export default function ArtistPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
   const [selectedAuction, setSelectedAuction] = useState<ArtistAuctionRecord | null>(null);
@@ -36,15 +37,15 @@ export default function ArtistPage() {
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
       {/* Header */}
       <div className="mb-10">
-        <Link
-          href="/"
+        <button
+          onClick={() => router.back()}
           className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-[#111] border border-[#2a2a2a] rounded-lg text-sm text-[#888] hover:text-[#4ade80] hover:border-[#4ade80]/30 transition-all"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="m15 18-6-6 6-6" />
           </svg>
           뒤로가기
-        </Link>
+        </button>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="text-4xl md:text-5xl font-semibold text-white" style={{ fontFamily: "var(--font-dutch)" }}>
