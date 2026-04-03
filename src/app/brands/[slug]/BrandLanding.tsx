@@ -392,12 +392,39 @@ function BrandCTA({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    1. ARTRADER — SaaS / Dashboard feel
    ═══════════════════════════════════════════════════ */
+function CountUp({ end, suffix = "", duration = 2000, decimals = 0 }: { end: number; suffix?: string; duration?: number; decimals?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const start = performance.now();
+        const step = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setCount(eased * end);
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+    }, { threshold: 0.3 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [end, duration]);
+  const formatted = decimals > 0 ? count.toFixed(decimals) : Math.floor(count).toLocaleString();
+  return <span ref={ref}>{formatted}{suffix}</span>;
+}
+
 function ArtraderLayout({ brand }: { brand: BrandData }) {
   const stats = [
-    { label: "거래 데이터", value: "15M+" },
-    { label: "분석 작가", value: "120K+" },
-    { label: "커버 경매사", value: "2,800+" },
-    { label: "리포트 발행", value: "5,000+" },
+    { label: "거래 데이터", end: 15, suffix: "M+", decimals: 0 },
+    { label: "분석 작가", end: 120, suffix: "K+", decimals: 0 },
+    { label: "커버 경매사", end: 2800, suffix: "+", decimals: 0 },
+    { label: "리포트 발행", end: 5000, suffix: "+", decimals: 0 },
   ];
 
   const indexStats = [
@@ -419,7 +446,9 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((s, i) => (
             <motion.div key={s.label} {...stagger(i)} className="text-center">
-              <p className="text-3xl md:text-4xl font-light text-[#b8960b]" style={{ fontFamily: "var(--font-dutch)" }}>{s.value}</p>
+              <p className="text-3xl md:text-4xl font-light text-[#b8960b]" style={{ fontFamily: "var(--font-dutch)" }}>
+                <CountUp end={s.end} suffix={s.suffix} decimals={s.decimals} duration={2000} />
+              </p>
               <p className="mt-2 text-[10px] tracking-[0.15em] uppercase text-[#555]">{s.label}</p>
             </motion.div>
           ))}
