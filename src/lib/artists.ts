@@ -319,6 +319,39 @@ export const artists: Artist[] = [
     ],
     tags: ["페미니즘", "현대회화", "팝아트", "구상"],
   },
+  {
+    slug: "lee-bae",
+    nameKo: "이배",
+    nameEn: "Lee Bae",
+    birthYear: 1956,
+    nationality: "한국",
+    category: "현대미술",
+    bio: "이배는 숯을 주요 매체로 사용하는 한국의 대표적 현대미술 작가입니다. 프랑스 파리를 기반으로 활동하며, 숯의 물성과 빛의 반사를 통해 동양 철학적 깊이를 담은 추상 작업을 선보이고 있습니다.",
+    education: [
+      "홍익대학교 미술대학 회화과 졸업 (1981)",
+      "파리 국립고등미술학교 수학 (1990)",
+    ],
+    exhibitions: [
+      "Perrotin 갤러리 개인전, 파리 (2023)",
+      "국립현대미술관 개인전, 서울 (2022)",
+      "Johyun Gallery 개인전, 부산 (2021)",
+      "Leeahn Gallery 개인전, 서울 (2020)",
+      "광주비엔날레, 광주 (2018)",
+    ],
+    stats: {
+      avgPrice: "₩320,000,000",
+      totalTransactions: 412,
+      hammerRate: "74.8%",
+      annualGrowth: "+16.2%",
+      highestPrice: "₩4,200,000,000",
+    },
+    recentAuctions: [
+      { title: "Issu du feu", year: 2021, medium: "Charcoal on canvas", size: "200×300cm", hammer: "₩2,800,000,000", auctionHouse: "서울옥션", date: "2024.11" },
+      { title: "Landscape", year: 2019, medium: "Charcoal on canvas", size: "162×130cm", hammer: "₩1,450,000,000", auctionHouse: "케이옥션", date: "2024.06" },
+      { title: "Untitled", year: 2020, medium: "Charcoal on canvas", size: "130×97cm", hammer: "₩680,000,000", auctionHouse: "Christie's", date: "2024.03" },
+    ],
+    tags: ["숯", "추상", "현대미술", "단색화"],
+  },
 ];
 
 export function searchArtists(query: string): Artist[] {
