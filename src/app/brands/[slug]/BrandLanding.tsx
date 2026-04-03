@@ -490,34 +490,14 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       {/* ── Auction / PS Data ── */}
       <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 items-center">
-            {/* Phones */}
-            <div className="flex gap-3 justify-center items-end">
-              <div className="w-20 md:w-28 rounded-[1.4rem] overflow-hidden drop-shadow-2xl">
-                <img
-                  src="/brands/iPhone 14 Pro Max - Screen 1.png"
-                  alt="Artrader App"
-                  className="w-full object-contain scale-[1.02]"
-                />
-              </div>
-              <div className="w-28 md:w-36 rounded-[1.8rem] overflow-hidden drop-shadow-2xl">
-                <img
-                  src="/brands/iPhone 14 Pro Max - Screen 2.png"
-                  alt="Artrader Search"
-                  className="w-full object-contain scale-[1.02]"
-                />
-              </div>
-            </div>
-            {/* Text */}
-            <div className="flex flex-col gap-5">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
-              <h3 className="text-3xl md:text-4xl font-light text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
-                작품 검색부터 거래까지<br />아트레이더 하나로
-              </h3>
-              <p className="text-[#888] font-light leading-relaxed">
-                국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
-              </p>
-            </div>
+          <motion.div {...fadeUp}>
+            <p className="text-[#4ade80] text-sm tracking-[0.15em] mb-5">Auction/PS Data</p>
+            <h3 className="text-3xl md:text-5xl font-light text-white leading-tight mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>
+              작품 검색부터 거래까지<br />아트레이더 하나로
+            </h3>
+            <p className="text-[#888] font-light leading-relaxed text-lg max-w-2xl">
+              국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
+            </p>
           </motion.div>
         </div>
       </section>

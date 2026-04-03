@@ -1,14 +1,17 @@
 "use client";
 import { useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getArtistBySlug, type ArtistAuctionRecord } from "@/lib/artists";
 import RelatedNews from "@/components/RelatedNews";
 import AuctionModal from "@/components/AuctionModal";
 import { useExchangeRate, convertToKRW } from "@/lib/use-exchange-rate";
+import ArtistCharts from "../../../components/ArtistCharts";
+import HeartButton from "../../../components/HeartButton";
 
 export default function ArtistPage() {
   const params = useParams();
+  const router = useRouter();
   const exchangeRate = useExchangeRate();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
@@ -37,15 +40,15 @@ export default function ArtistPage() {
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
       {/* Header */}
       <div className="mb-10">
-        <Link
-          href="/"
+        <button
+          onClick={() => router.back()}
           className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-[#111] border border-[#2a2a2a] rounded-lg text-sm text-[#888] hover:text-[#4ade80] hover:border-[#4ade80]/30 transition-all"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="m15 18-6-6 6-6" />
           </svg>
           뒤로가기
-        </Link>
+        </button>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="text-4xl md:text-5xl font-semibold text-white" style={{ fontFamily: "var(--font-dutch)" }}>
@@ -70,7 +73,34 @@ export default function ArtistPage() {
 
       {/* Bio */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
+        <h2 className="text-lg font-semibold text-white mb-4">작가 소개</h2>
         <p className="text-[#999] leading-relaxed">{artist.bio}</p>
+      </div>
+
+      {/* Education & Exhibitions */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
+          <h2 className="text-lg font-semibold text-white mb-4">학력</h2>
+          <ul className="space-y-2">
+            {artist.education.map((edu) => (
+              <li key={edu} className="text-sm text-[#999] flex items-start gap-2">
+                <span className="text-[#4ade80] mt-1 shrink-0">•</span>
+                {edu}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
+          <h2 className="text-lg font-semibold text-white mb-4">주요 전시</h2>
+          <ul className="space-y-2">
+            {artist.exhibitions.map((exh) => (
+              <li key={exh} className="text-sm text-[#999] flex items-start gap-2">
+                <span className="text-[#4ade80] mt-1 shrink-0">•</span>
+                {exh}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Stats */}
@@ -91,37 +121,8 @@ export default function ArtistPage() {
         ))}
       </div>
 
-      {/* Price trend chart */}
-      <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
-        <h2 className="text-lg font-semibold text-white mb-6">
-          거래가 추이
-        </h2>
-        <div className="flex justify-between text-[10px] text-[#555] mb-4">
-          {["'16", "'17", "'18", "'19", "'20", "'21", "'22", "'23", "'24"].map((y) => (
-            <span key={y}>{y}</span>
-          ))}
-        </div>
-        <div className="relative h-48 md:h-64">
-          <svg viewBox="0 0 800 200" className="w-full h-full" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="artistChartGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#4ade80" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,170 C50,165 100,150 150,145 C200,140 250,120 300,100 C350,85 400,75 450,60 C500,55 550,65 600,50 C650,40 700,30 750,25 L800,20"
-              fill="none"
-              stroke="#4ade80"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,170 C50,165 100,150 150,145 C200,140 250,120 300,100 C350,85 400,75 450,60 C500,55 550,65 600,50 C650,40 700,30 750,25 L800,20 L800,200 L0,200 Z"
-              fill="url(#artistChartGrad)"
-            />
-          </svg>
-        </div>
-      </div>
+      {/* Price trend & Hammer rate charts */}
+      <ArtistCharts auctions={artist.recentAuctions} hammerRate={artist.stats.hammerRate} />
 
       {/* Recent Auctions - Card Layout */}
       <div className="mb-8">
@@ -137,8 +138,11 @@ export default function ArtistPage() {
               onClick={() => setSelectedAuction(auction)}
               className="text-left bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-all cursor-pointer group"
             >
-              {/* Thumbnail placeholder */}
-              <div className="w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+              {/* Heart + Thumbnail */}
+              <div className="relative w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+                <div className="absolute top-2 right-2 z-10">
+                  <HeartButton artistSlug={slug} auctionIndex={i} size={20} />
+                </div>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="group-hover:stroke-[#4ade80]/30 transition-colors">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" />

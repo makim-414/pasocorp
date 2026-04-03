@@ -1,10 +1,13 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getArtistBySlug } from "@/lib/artists";
+import ArtistCharts from "@/components/artrader/ArtistCharts";
+import HeartButton from "@/components/artrader/HeartButton";
 
 export default function ArtistPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
 
@@ -25,9 +28,12 @@ export default function ArtistPage() {
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
       {/* Header */}
       <div className="mb-10">
-        <Link href="/artrader" className="text-xs text-[#555] hover:text-[#4ade80] transition-colors mb-4 inline-block">
-          &larr; 홈으로
-        </Link>
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 text-xs text-[#555] hover:text-[#4ade80] transition-colors mb-4"
+        >
+          &larr; 뒤로가기
+        </button>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="text-4xl md:text-5xl font-semibold text-white" style={{ fontFamily: "var(--font-dutch)" }}>
@@ -52,7 +58,34 @@ export default function ArtistPage() {
 
       {/* Bio */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
+        <h2 className="text-lg font-semibold text-white mb-4">작가 소개</h2>
         <p className="text-[#999] leading-relaxed">{artist.bio}</p>
+      </div>
+
+      {/* Education & Exhibitions */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
+          <h2 className="text-lg font-semibold text-white mb-4">학력</h2>
+          <ul className="space-y-2">
+            {artist.education.map((edu) => (
+              <li key={edu} className="text-sm text-[#999] flex items-start gap-2">
+                <span className="text-[#4ade80] mt-1 shrink-0">•</span>
+                {edu}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
+          <h2 className="text-lg font-semibold text-white mb-4">주요 전시</h2>
+          <ul className="space-y-2">
+            {artist.exhibitions.map((exh) => (
+              <li key={exh} className="text-sm text-[#999] flex items-start gap-2">
+                <span className="text-[#4ade80] mt-1 shrink-0">•</span>
+                {exh}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Stats */}
@@ -73,37 +106,8 @@ export default function ArtistPage() {
         ))}
       </div>
 
-      {/* Price trend chart (mock) */}
-      <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
-        <h2 className="text-lg font-semibold text-white mb-6">
-          거래가 추이
-        </h2>
-        <div className="flex justify-between text-[10px] text-[#555] mb-4">
-          {["'16", "'17", "'18", "'19", "'20", "'21", "'22", "'23", "'24"].map((y) => (
-            <span key={y}>{y}</span>
-          ))}
-        </div>
-        <div className="relative h-48 md:h-64">
-          <svg viewBox="0 0 800 200" className="w-full h-full" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="artistChartGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#4ade80" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,170 C50,165 100,150 150,145 C200,140 250,120 300,100 C350,85 400,75 450,60 C500,55 550,65 600,50 C650,40 700,30 750,25 L800,20"
-              fill="none"
-              stroke="#4ade80"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,170 C50,165 100,150 150,145 C200,140 250,120 300,100 C350,85 400,75 450,60 C500,55 550,65 600,50 C650,40 700,30 750,25 L800,20 L800,200 L0,200 Z"
-              fill="url(#artistChartGrad)"
-            />
-          </svg>
-        </div>
-      </div>
+      {/* Price trend & Hammer rate charts */}
+      <ArtistCharts auctions={artist.recentAuctions} hammerRate={artist.stats.hammerRate} />
 
       {/* Recent Auctions */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
@@ -120,7 +124,8 @@ export default function ArtistPage() {
                 <th className="text-left py-3 pr-4">크기</th>
                 <th className="text-right py-3 pr-4">낙찰가</th>
                 <th className="text-left py-3 pr-4">경매사</th>
-                <th className="text-left py-3">날짜</th>
+                <th className="text-left py-3 pr-4">날짜</th>
+                <th className="text-center py-3 w-10"></th>
               </tr>
             </thead>
             <tbody>
@@ -132,7 +137,10 @@ export default function ArtistPage() {
                   <td className="py-3 pr-4 text-[#888]">{auction.size}</td>
                   <td className="py-3 pr-4 text-right text-[#4ade80] font-semibold whitespace-nowrap">{auction.hammer}</td>
                   <td className="py-3 pr-4 text-[#888]">{auction.auctionHouse}</td>
-                  <td className="py-3 text-[#888]">{auction.date}</td>
+                  <td className="py-3 pr-4 text-[#888]">{auction.date}</td>
+                  <td className="py-3 text-center">
+                    <HeartButton artistSlug={slug} auctionIndex={i} />
+                  </td>
                 </tr>
               ))}
             </tbody>
