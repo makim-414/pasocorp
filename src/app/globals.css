@@ -18,7 +18,7 @@
 }
 
 @theme {
-  --font-dutch: "Dutch801", Georgia, serif;
+  --font-dutch: "Dutch801", "Noto Serif KR", Georgia, serif;
   --font-noto-serif: "Noto Serif KR", Georgia, serif;
   --color-bg: #000000;
   --color-fg: #e8e8e8;
