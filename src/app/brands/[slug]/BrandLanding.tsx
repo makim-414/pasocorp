@@ -493,11 +493,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 items-center">
             {/* Phones */}
             <div className="flex gap-4 justify-center items-end">
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 1.png"
-                alt="Artrader App"
-                className="w-24 md:w-32 object-contain drop-shadow-2xl"
-              />
+              <div className="w-24 md:w-32 drop-shadow-2xl">
+                <div className="relative rounded-[1.5rem] border-[2px] border-[#e0e0e0]/30 overflow-hidden bg-black">
+                  <div className="flex justify-center pt-2 pb-0.5">
+                    <div className="w-12 h-3 bg-black rounded-full border border-[#333]" />
+                  </div>
+                  <img
+                    src="/brands/iPhone 14 Pro Max - Screen 1.png"
+                    alt="Artrader App"
+                    className="w-full object-contain"
+                  />
+                </div>
+              </div>
               <div className="w-32 md:w-40 drop-shadow-2xl">
                 <div className="relative rounded-[2rem] border-[2px] border-[#e0e0e0]/30 overflow-hidden bg-black">
                   <div className="flex justify-center pt-2 pb-0.5">
