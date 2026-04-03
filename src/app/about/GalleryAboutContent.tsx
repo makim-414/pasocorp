@@ -174,12 +174,12 @@ export default function GalleryAboutContent() {
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Floor Plan</p>
             <h2 className="text-3xl md:text-4xl text-white font-light mb-12" style={{ fontFamily: "var(--font-dutch)" }}>공간 도면</h2>
-            <div className="relative w-full aspect-square max-w-[600px] mx-auto bg-white rounded-sm overflow-hidden">
+            <div className="relative w-full aspect-square max-w-[600px] mx-auto overflow-hidden">
               <Image
                 src="/images/about-space/img-012.jpg"
                 alt="Space by PASO 평면도"
                 fill
-                className="object-contain p-4"
+                className="object-contain p-4 invert mix-blend-screen"
               />
             </div>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#888] font-light">
