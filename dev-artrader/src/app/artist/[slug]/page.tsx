@@ -2,6 +2,7 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { getArtistBySlug } from "@/lib/artists";
+import RelatedNews from "@/components/RelatedNews";
 
 export default function ArtistPage() {
   const params = useParams();
@@ -147,6 +148,9 @@ export default function ArtistPage() {
           ))}
         </div>
       </div>
+
+      {/* Related News */}
+      <RelatedNews artistNameKo={artist.nameKo} artistNameEn={artist.nameEn} />
 
       {/* Tags */}
       <div className="flex flex-wrap gap-2">
