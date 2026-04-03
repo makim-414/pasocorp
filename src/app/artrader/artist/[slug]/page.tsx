@@ -75,7 +75,7 @@ export default function ArtistPage() {
 
       {/* Price trend chart (mock) */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
-        <h2 className="text-lg font-semibold text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
+        <h2 className="text-lg font-semibold text-white mb-6">
           거래가 추이
         </h2>
         <div className="flex justify-between text-[10px] text-[#555] mb-4">
@@ -107,7 +107,7 @@ export default function ArtistPage() {
 
       {/* Recent Auctions */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
-        <h2 className="text-lg font-semibold text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
+        <h2 className="text-lg font-semibold text-white mb-6">
           최근 경매 기록
         </h2>
         <div className="overflow-x-auto">

@@ -11,7 +11,7 @@ function SearchResults() {
 
   return (
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
-      <h1 className="text-2xl md:text-3xl font-semibold text-white mb-2" style={{ fontFamily: "var(--font-dutch)" }}>
+      <h1 className="text-2xl md:text-3xl font-semibold text-white mb-2">
         &ldquo;{query}&rdquo; 검색 결과
       </h1>
       <p className="text-sm text-[#555] mb-10">
