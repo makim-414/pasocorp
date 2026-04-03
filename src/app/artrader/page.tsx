@@ -1,19 +1,10 @@
 "use client";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { artists } from "@/lib/artists";
+import SearchInput from "@/components/artrader/SearchInput";
 
 export default function ArtraderHome() {
-  const [query, setQuery] = useState("");
   const router = useRouter();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const q = query.trim();
-    if (q) {
-      router.push(`/artrader/search?q=${encodeURIComponent(q)}`);
-    }
-  };
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-6">
@@ -25,27 +16,7 @@ export default function ArtraderHome() {
           글로벌 미술 거래 데이터베이스 &middot; 작가 검색 &middot; 시장 분석
         </p>
 
-        <form onSubmit={handleSearch} className="w-full">
-          <div className="relative">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="작가명을 입력하세요 (예: 이우환, 김환기)"
-              className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-6 py-4 text-base text-[#e8e8e8] placeholder-[#555] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
-              autoFocus
-            />
-            <button
-              type="submit"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#555] hover:text-[#4ade80] transition-colors"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
-            </button>
-          </div>
-        </form>
+        <SearchInput variant="hero" />
 
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[

@@ -32,6 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }
 
+import SearchInput from "../components/SearchInput";
+
 function ArtraderNav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-[#1a1a1a]">
@@ -43,6 +45,8 @@ function ArtraderNav() {
         >
           <span className="text-[#4ade80] font-semibold">Art</span>rader
         </a>
+
+        <SearchInput variant="nav" />
 
         <div className="hidden md:flex items-center gap-8 text-xs tracking-[0.08em] uppercase text-[#888] shrink-0">
           <a href="/" className="hover:text-[#4ade80] transition-colors">Home</a>
