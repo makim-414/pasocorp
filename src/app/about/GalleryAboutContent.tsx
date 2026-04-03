@@ -89,6 +89,32 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
+      {/* Floor Plan */}
+      <section className="py-24 md:py-32 bg-black">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp}>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Floor Plan</p>
+            <h2 className="text-3xl md:text-4xl text-white font-light mb-12" style={{ fontFamily: "var(--font-dutch)" }}>공간 도면</h2>
+            <div className="relative w-full aspect-square max-w-[600px] mx-auto bg-white rounded-sm overflow-hidden">
+              <Image
+                src="/images/about-space/img-012.jpg"
+                alt="Space by PASO 평면도"
+                fill
+                className="object-contain p-4"
+              />
+            </div>
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#888] font-light">
+              <div><span className="text-[#b8960b]">1~5</span> — 조명 ON/OFF</div>
+              <div><span className="text-[#b8960b]">6</span> — 전체 조명 ON/OFF</div>
+              <div><span className="text-[#b8960b]">7-1~7-5, 8</span> — 유리창 (와이어 설치 가능)</div>
+              <div><span className="text-[#b8960b]">9~12</span> — 화장실 구역</div>
+              <div><span className="text-[#b8960b]">13~15</span> — 이동식 칸막이</div>
+              <div><span className="text-[#b8960b]">16~18</span> — 콘센트 위치</div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Space Features */}
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
