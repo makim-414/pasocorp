@@ -95,7 +95,7 @@ export default function GalleryAboutContent() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="mb-16">
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Event Types</p>
-            <h2 className="text-3xl md:text-4xl text-white font-normal">행사 유형 안내</h2>
+            <h2 className="text-3xl md:text-4xl text-white font-normal" style={{ fontFamily: "var(--font-noto-serif)" }}>행사 유형 안내</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* 가능 */}
@@ -147,7 +147,7 @@ export default function GalleryAboutContent() {
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Floor Plan</p>
-            <h2 className="text-3xl md:text-4xl text-white font-normal mb-12">공간 도면</h2>
+            <h2 className="text-3xl md:text-4xl text-white font-normal mb-12" style={{ fontFamily: "var(--font-noto-serif)" }}>공간 도면</h2>
             <div className="relative w-full aspect-square max-w-[600px] mx-auto overflow-hidden">
               <Image
                 src="/images/about-space/img-012.jpg"
@@ -208,7 +208,7 @@ export default function GalleryAboutContent() {
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Guidelines</p>
-            <h2 className="text-3xl md:text-4xl text-white font-normal mb-12">이용 안내</h2>
+            <h2 className="text-3xl md:text-4xl text-white font-normal mb-12" style={{ fontFamily: "var(--font-noto-serif)" }}>이용 안내</h2>
             <div className="space-y-6 text-sm text-[#999] font-light leading-relaxed">
               <p className="text-white text-xs tracking-[0.1em] uppercase mb-2">작품 설치</p>
               <div className="flex items-start gap-3">
@@ -308,7 +308,7 @@ export default function GalleryAboutContent() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="mb-16">
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Facilities</p>
-            <h2 className="text-3xl md:text-4xl text-white font-normal">공간 시설 안내</h2>
+            <h2 className="text-3xl md:text-4xl text-white font-normal" style={{ fontFamily: "var(--font-noto-serif)" }}>공간 시설 안내</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[

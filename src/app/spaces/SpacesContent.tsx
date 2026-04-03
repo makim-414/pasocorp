@@ -185,6 +185,7 @@ export default function SpacesContent() {
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
               <h2
                 className="text-3xl md:text-5xl font-medium text-white mb-6"
+                style={{ fontFamily: "var(--font-noto-serif)" }}
               >
                 공간 대관 문의
               </h2>
