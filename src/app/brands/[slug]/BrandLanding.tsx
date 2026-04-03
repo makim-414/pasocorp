@@ -492,11 +492,11 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Screenshot */}
-            <div className="rounded-2xl overflow-hidden border border-[#1a1a1a] shadow-2xl">
+            <div className="rounded-2xl overflow-hidden border border-[#1a1a1a] shadow-2xl" style={{ padding: "0", margin: "0 -4%" }}>
               <img
                 src="/brands/iPhone 14 Pro Max - Screen 2.png"
                 alt="Artrader Search"
-                className="w-full object-cover"
+                className="w-full object-cover scale-[1.15]"
               />
             </div>
             {/* Text */}
