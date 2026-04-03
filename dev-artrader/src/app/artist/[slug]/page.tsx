@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getArtistBySlug, type ArtistAuctionRecord } from "@/lib/artists";
 import RelatedNews from "@/components/RelatedNews";
 import AuctionModal from "@/components/AuctionModal";
+import ArtistCharts from "../../../components/ArtistCharts";
 
 export default function ArtistPage() {
   const params = useParams();
@@ -116,37 +117,8 @@ export default function ArtistPage() {
         ))}
       </div>
 
-      {/* Price trend chart (mock) */}
-      <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
-        <h2 className="text-lg font-semibold text-white mb-6">
-          거래가 추이
-        </h2>
-        <div className="flex justify-between text-[10px] text-[#555] mb-4">
-          {["'16", "'17", "'18", "'19", "'20", "'21", "'22", "'23", "'24"].map((y) => (
-            <span key={y}>{y}</span>
-          ))}
-        </div>
-        <div className="relative h-48 md:h-64">
-          <svg viewBox="0 0 800 200" className="w-full h-full" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="artistChartGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#4ade80" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,170 C50,165 100,150 150,145 C200,140 250,120 300,100 C350,85 400,75 450,60 C500,55 550,65 600,50 C650,40 700,30 750,25 L800,20"
-              fill="none"
-              stroke="#4ade80"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,170 C50,165 100,150 150,145 C200,140 250,120 300,100 C350,85 400,75 450,60 C500,55 550,65 600,50 C650,40 700,30 750,25 L800,20 L800,200 L0,200 Z"
-              fill="url(#artistChartGrad)"
-            />
-          </svg>
-        </div>
-      </div>
+      {/* Price trend & Hammer rate charts */}
+      <ArtistCharts auctions={artist.recentAuctions} hammerRate={artist.stats.hammerRate} />
 
       {/* Recent Auctions - Card Layout */}
       <div className="mb-8">
