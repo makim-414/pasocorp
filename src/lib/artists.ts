@@ -18,6 +18,8 @@ export interface Artist {
   category: string;
   profileImage?: string;
   bio: string;
+  education: string[];
+  exhibitions: string[];
   stats: {
     avgPrice: string;
     totalTransactions: number;
@@ -38,6 +40,17 @@ export const artists: Artist[] = [
     nationality: "한국",
     category: "현대미술",
     bio: "이우환은 한국 출신의 현대미술 작가로, 일본 모노하(Mono-ha) 운동의 핵심 인물입니다. 회화와 조각 작업을 통해 동양 철학과 서양 현대미술을 융합한 독자적 예술 세계를 구축했습니다.",
+    education: [
+      "서울대학교 미술대학 (1956)",
+      "니혼대학교 철학과 졸업 (1961)",
+    ],
+    exhibitions: [
+      "구겐하임 미술관 회고전, 뉴욕 (2011)",
+      "베르사유 궁전 개인전, 프랑스 (2014)",
+      "이우환 미술관 개관, 나오시마 (2010)",
+      "국립현대미술관 회고전, 서울 (2014)",
+      "퐁피두 센터 개인전, 파리 (2023)",
+    ],
     stats: {
       avgPrice: "₩384,000,000",
       totalTransactions: 1247,
@@ -63,6 +76,15 @@ export const artists: Artist[] = [
     nationality: "한국",
     category: "근현대미술",
     bio: "김환기는 한국 추상미술의 선구자로, 한국적 서정성과 자연의 아름다움을 추상적 형태로 표현한 작가입니다. 전면점화(全面點畫) 시리즈로 한국 미술 경매 최고가 기록을 보유하고 있습니다.",
+    education: [
+      "니혼대학교 미술학부 졸업 (1936)",
+    ],
+    exhibitions: [
+      "상파울루 비엔날레, 브라질 (1963)",
+      "환기미술관 상설 전시, 서울",
+      "국립현대미술관 회고전, 서울 (2018)",
+      "갤러리현대 개인전, 서울 (2020)",
+    ],
     stats: {
       avgPrice: "₩1,250,000,000",
       totalTransactions: 487,
@@ -86,6 +108,16 @@ export const artists: Artist[] = [
     nationality: "한국",
     category: "현대미술",
     bio: "박서보는 한국 단색화(Dansaekhwa) 운동의 선구자이자 대표 작가입니다. '묘법(Ecriture)' 시리즈를 통해 반복적 행위와 명상적 과정을 결합한 독자적 화풍을 확립했습니다.",
+    education: [
+      "홍익대학교 미술대학 회화과 졸업 (1954)",
+    ],
+    exhibitions: [
+      "베네치아 비엔날레, 이탈리아 (1988)",
+      "국립현대미술관 회고전, 서울 (2019)",
+      "Kukje Gallery 개인전, 서울 (2022)",
+      "Perrotin 갤러리 개인전, 파리 (2020)",
+      "White Cube 개인전, 런던 (2020)",
+    ],
     stats: {
       avgPrice: "₩520,000,000",
       totalTransactions: 892,
@@ -107,6 +139,16 @@ export const artists: Artist[] = [
     nationality: "일본",
     category: "현대미술",
     bio: "쿠사마 야요이는 일본 출신의 현대미술 작가로, 물방울 무늬와 무한 반복 패턴을 통해 독자적 예술 세계를 구축했습니다. 회화, 조각, 설치 등 다양한 매체를 활용합니다.",
+    education: [
+      "교토시립미술공예학교 일본화과 졸업 (1949)",
+    ],
+    exhibitions: [
+      "Infinity Mirror Rooms, Tate Modern, 런던 (2012)",
+      "뉴욕 MoMA 회고전 (2013)",
+      "Yayoi Kusama Museum 개관, 도쿄 (2017)",
+      "베네치아 비엔날레, 이탈리아 (1993)",
+      "Hirshhorn Museum 회고전, 워싱턴 D.C. (2017)",
+    ],
     stats: {
       avgPrice: "₩2,100,000,000",
       totalTransactions: 3420,
@@ -128,6 +170,15 @@ export const artists: Artist[] = [
     nationality: "한국",
     category: "현대미술",
     bio: "정상화는 한국 단색화의 대표 작가로, 물감을 겹겹이 바르고 뜯어내는 독특한 기법으로 회화의 본질을 탐구해왔습니다.",
+    education: [
+      "서울대학교 미술대학 회화과 졸업 (1956)",
+    ],
+    exhibitions: [
+      "국립현대미술관 개인전, 서울 (2016)",
+      "가나아트센터 개인전, 서울 (2018)",
+      "Dominique Lévy 갤러리 개인전, 뉴욕 (2017)",
+      "Axel Vervoordt Gallery 개인전, 앤트워프 (2019)",
+    ],
     stats: {
       avgPrice: "₩290,000,000",
       totalTransactions: 634,
@@ -149,6 +200,18 @@ export const artists: Artist[] = [
     nationality: "한국",
     category: "미디어아트",
     bio: "백남준은 '비디오 아트의 아버지'로 불리는 한국 출신의 세계적 미디어 아티스트입니다. TV와 비디오를 예술의 매체로 활용하여 미디어 아트의 새 지평을 열었습니다.",
+    education: [
+      "도쿄대학교 미학·미술사학과 졸업 (1956)",
+      "뮌헨 음악학교 수학 (1957)",
+      "프라이부르크 음악학교 수학 (1957–1958)",
+    ],
+    exhibitions: [
+      "구겐하임 미술관 회고전, 뉴욕 (2000)",
+      "스미소니언 미국미술관 회고전, 워싱턴 D.C. (2013)",
+      "백남준아트센터 상설 전시, 용인",
+      "Tate Modern 개인전, 런던 (2019)",
+      "국립현대미술관 회고전, 서울 (2022)",
+    ],
     stats: {
       avgPrice: "₩890,000,000",
       totalTransactions: 312,
@@ -170,6 +233,16 @@ export const artists: Artist[] = [
     nationality: "한국",
     category: "현대미술",
     bio: "윤형근은 한국 단색화의 대표 작가로, 엷게 희석된 물감이 캔버스에 스며드는 번짐 기법을 통해 자연과 인간의 본질을 탐구했습니다.",
+    education: [
+      "서울대학교 미술대학 회화과 졸업 (1957)",
+    ],
+    exhibitions: [
+      "베네치아 비엔날레, 이탈리아 (2019)",
+      "국립현대미술관 회고전, 서울 (2018)",
+      "PKM Gallery 개인전, 서울 (2020)",
+      "Simon Lee Gallery 개인전, 런던 (2019)",
+      "David Zwirner 개인전, 뉴욕 (2020)",
+    ],
     stats: {
       avgPrice: "₩410,000,000",
       totalTransactions: 445,
@@ -191,6 +264,16 @@ export const artists: Artist[] = [
     nationality: "한국",
     category: "현대미술",
     bio: "김창열은 '물방울 화가'로 불리는 한국의 대표적 현대미술 작가입니다. 극사실적 물방울 표현을 통해 동양적 무(無)의 철학을 시각화했습니다.",
+    education: [
+      "서울대학교 미술대학 회화과 졸업 (1957)",
+      "아카데미 드 라 그랑드 쇼미에르, 파리 (1969)",
+    ],
+    exhibitions: [
+      "국립현대미술관 회고전, 서울 (2016)",
+      "제주 김창열미술관 상설 전시, 제주 (2016)",
+      "갤러리현대 개인전, 서울 (2019)",
+      "상파울루 비엔날레, 브라질 (1975)",
+    ],
     stats: {
       avgPrice: "₩180,000,000",
       totalTransactions: 567,
@@ -202,6 +285,39 @@ export const artists: Artist[] = [
       { title: "Waterdrops", year: 1985, medium: "Oil on canvas", size: "162×130cm", hammer: "₩1,200,000,000", auctionHouse: "케이옥션", date: "2024.04" },
     ],
     tags: ["극사실주의", "현대미술", "물방울"],
+  },
+  {
+    slug: "emily-mae-smith",
+    nameKo: "에밀리 매 스미스",
+    nameEn: "Emily Mae Smith",
+    birthYear: 1979,
+    nationality: "미국",
+    category: "현대미술",
+    bio: "에밀리 매 스미스는 미국의 현대미술 작가로, 빗자루 모티프를 중심으로 미술사적 도상과 페미니즘적 시각을 결합한 회화 작업을 선보이고 있습니다. 르네상스부터 팝아트까지 다양한 양식을 차용하며 유머와 비판을 동시에 담아냅니다.",
+    education: [
+      "컬럼비아 대학교 MFA 졸업 (2006)",
+      "텍사스 대학교 오스틴 BFA 졸업 (2001)",
+    ],
+    exhibitions: [
+      "Petzel Gallery 개인전, 뉴욕 (2023)",
+      "Perrotin 갤러리 개인전, 파리 (2022)",
+      "Le Consortium 개인전, 디종 (2022)",
+      "Whitney Museum of American Art, 뉴욕 (2019)",
+      "MoMA PS1, 뉴욕 (2018)",
+    ],
+    stats: {
+      avgPrice: "₩450,000,000",
+      totalTransactions: 186,
+      hammerRate: "82.5%",
+      annualGrowth: "+28.3%",
+      highestPrice: "₩2,400,000,000",
+    },
+    recentAuctions: [
+      { title: "Broom Life", year: 2019, medium: "Oil on linen", size: "172.7×139.7cm", hammer: "₩1,800,000,000", auctionHouse: "Christie's", date: "2024.11" },
+      { title: "A Bit of Fun", year: 2018, medium: "Oil on linen", size: "182.9×152.4cm", hammer: "₩1,200,000,000", auctionHouse: "Sotheby's", date: "2024.05" },
+      { title: "Medusa's Muse", year: 2020, medium: "Oil on linen", size: "152.4×121.9cm", hammer: "₩950,000,000", auctionHouse: "Phillips", date: "2024.03" },
+    ],
+    tags: ["페미니즘", "현대회화", "팝아트", "구상"],
   },
 ];
 

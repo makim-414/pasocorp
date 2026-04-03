@@ -52,7 +52,34 @@ export default function ArtistPage() {
 
       {/* Bio */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
+        <h2 className="text-lg font-semibold text-white mb-4">작가 소개</h2>
         <p className="text-[#999] leading-relaxed">{artist.bio}</p>
+      </div>
+
+      {/* Education & Exhibitions */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
+          <h2 className="text-lg font-semibold text-white mb-4">학력</h2>
+          <ul className="space-y-2">
+            {artist.education.map((edu) => (
+              <li key={edu} className="text-sm text-[#999] flex items-start gap-2">
+                <span className="text-[#4ade80] mt-1 shrink-0">•</span>
+                {edu}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
+          <h2 className="text-lg font-semibold text-white mb-4">주요 전시</h2>
+          <ul className="space-y-2">
+            {artist.exhibitions.map((exh) => (
+              <li key={exh} className="text-sm text-[#999] flex items-start gap-2">
+                <span className="text-[#4ade80] mt-1 shrink-0">•</span>
+                {exh}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Stats */}
@@ -73,7 +100,7 @@ export default function ArtistPage() {
         ))}
       </div>
 
-      {/* Price trend chart */}
+      {/* Price trend chart (mock) */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
         <h2 className="text-lg font-semibold text-white mb-6">
           거래가 추이
