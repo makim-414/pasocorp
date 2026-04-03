@@ -11,15 +11,6 @@ const fadeUp = {
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 };
 
-const galleryImages = [
-  "/images/gallery/gallery-01.jpg",
-  "/images/gallery/gallery-02.jpg",
-  "/images/gallery/gallery-03.jpg",
-  "/images/gallery/gallery-04.jpg",
-  "/images/gallery/gallery-05.jpg",
-  "/images/gallery/gallery-06.jpg",
-];
-
 
 export default function SpacesContent() {
   const [submitting, setSubmitting] = useState(false);
@@ -50,31 +41,6 @@ export default function SpacesContent() {
               서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ── Gallery Images ── */}
-      <section className="pb-24 md:pb-32">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {galleryImages.map((src, i) => (
-              <motion.div
-                key={src}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="relative aspect-[4/3] overflow-hidden"
-              >
-                <Image
-                  src={src}
-                  alt={`Paso Gallery space ${i + 1}`}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
