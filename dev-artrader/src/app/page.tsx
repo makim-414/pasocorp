@@ -1,10 +1,26 @@
 "use client";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { artists } from "@/lib/artists";
+import { getPopularSlugs } from "@/lib/search-counts";
 import SearchInput from "../components/SearchInput";
 
 export default function ArtraderHome() {
+  const [popularArtists, setPopularArtists] = useState(artists.slice(0, 6));
   const router = useRouter();
+
+  useEffect(() => {
+    const slugs = getPopularSlugs();
+    if (slugs.length === 0) {
+      setPopularArtists(artists.slice(0, 6));
+      return;
+    }
+    const sorted = slugs
+      .map((slug) => artists.find((a) => a.slug === slug))
+      .filter(Boolean) as typeof artists;
+    const remaining = artists.filter((a) => !slugs.includes(a.slug));
+    setPopularArtists([...sorted, ...remaining].slice(0, 6));
+  }, []);
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-6">
@@ -33,9 +49,9 @@ export default function ArtraderHome() {
         </div>
 
         <div className="mt-16">
-          <p className="text-xs text-[#555] uppercase tracking-widest mb-6">인기 작가</p>
+          <p className="text-xs text-[#555] uppercase tracking-widest mb-6">지금 인기 있는 작가</p>
           <div className="flex flex-wrap justify-center gap-3">
-            {artists.slice(0, 6).map((artist) => (
+            {popularArtists.map((artist) => (
               <button
                 key={artist.slug}
                 onClick={() => router.push(`/artist/${artist.slug}`)}

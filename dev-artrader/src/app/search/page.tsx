@@ -3,6 +3,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import Link from "next/link";
 import { searchArtists } from "@/lib/artists";
+import { incrementSearchCount } from "@/lib/search-counts";
 import SearchInput from "../../components/SearchInput";
 
 function SearchResults() {
@@ -15,6 +16,7 @@ function SearchResults() {
     if (results.length === 1) {
       router.replace(`/artist/${results[0].slug}`);
     }
+    results.forEach((artist) => incrementSearchCount(artist.slug));
   }, [query, results, router]);
 
   return (
