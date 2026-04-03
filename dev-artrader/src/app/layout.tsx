@@ -12,9 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+KR:wght@200;300;400&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-sans bg-black text-[#e8e8e8]">
+      <body className="font-sans bg-black text-[#d0d0d0]">
         <div className="bg-black min-h-screen">
           <ArtraderNav />
           <main className="pt-16">{children}</main>
