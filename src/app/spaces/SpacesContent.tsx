@@ -46,6 +46,24 @@ export default function SpacesContent() {
         </div>
       </section>
 
+      {/* ── Hero Image ── */}
+      <section className="pb-16 md:pb-24">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div
+            {...fadeUp}
+            className="relative w-full aspect-[16/9] overflow-hidden"
+          >
+            <Image
+              src="/images/gallery/165478704_220661666508377_396910471637338795_n 1.png"
+              alt="Paso Gallery Heritage 외관"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Gallery Images ── */}
       <section className="pb-24 md:pb-32">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
