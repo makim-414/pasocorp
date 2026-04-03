@@ -3,6 +3,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getArtistBySlug } from "@/lib/artists";
 import ArtistCharts from "@/components/artrader/ArtistCharts";
+import HeartButton from "@/components/artrader/HeartButton";
 
 export default function ArtistPage() {
   const params = useParams();
@@ -123,7 +124,8 @@ export default function ArtistPage() {
                 <th className="text-left py-3 pr-4">크기</th>
                 <th className="text-right py-3 pr-4">낙찰가</th>
                 <th className="text-left py-3 pr-4">경매사</th>
-                <th className="text-left py-3">날짜</th>
+                <th className="text-left py-3 pr-4">날짜</th>
+                <th className="text-center py-3 w-10"></th>
               </tr>
             </thead>
             <tbody>
@@ -135,7 +137,10 @@ export default function ArtistPage() {
                   <td className="py-3 pr-4 text-[#888]">{auction.size}</td>
                   <td className="py-3 pr-4 text-right text-[#4ade80] font-semibold whitespace-nowrap">{auction.hammer}</td>
                   <td className="py-3 pr-4 text-[#888]">{auction.auctionHouse}</td>
-                  <td className="py-3 text-[#888]">{auction.date}</td>
+                  <td className="py-3 pr-4 text-[#888]">{auction.date}</td>
+                  <td className="py-3 text-center">
+                    <HeartButton artistSlug={slug} auctionIndex={i} />
+                  </td>
                 </tr>
               ))}
             </tbody>

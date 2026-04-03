@@ -6,6 +6,7 @@ import { getArtistBySlug, type ArtistAuctionRecord } from "@/lib/artists";
 import RelatedNews from "@/components/RelatedNews";
 import AuctionModal from "@/components/AuctionModal";
 import ArtistCharts from "../../../components/ArtistCharts";
+import HeartButton from "../../../components/HeartButton";
 
 export default function ArtistPage() {
   const params = useParams();
@@ -135,8 +136,11 @@ export default function ArtistPage() {
               onClick={() => setSelectedAuction(auction)}
               className="text-left bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-all cursor-pointer group"
             >
-              {/* Thumbnail placeholder */}
-              <div className="w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+              {/* Heart + Thumbnail */}
+              <div className="relative w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+                <div className="absolute top-2 right-2 z-10">
+                  <HeartButton artistSlug={slug} auctionIndex={i} size={20} />
+                </div>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="group-hover:stroke-[#4ade80]/30 transition-colors">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" />
