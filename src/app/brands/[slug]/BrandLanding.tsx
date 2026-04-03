@@ -485,7 +485,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Text */}
             <div className="flex flex-col gap-5">
               <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Auction/PS Data</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
+              <h3 className="text-3xl md:text-4xl font-light text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 작품 검색부터 거래까지<br />아트레이더 하나로
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
@@ -566,7 +566,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Text */}
             <div className="flex flex-col gap-5 order-2 lg:order-1">
               <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Artist data Analytics</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
+              <h3 className="text-3xl md:text-4xl font-light text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 검증된 데이터로<br />적정 가격 제시
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
@@ -625,7 +625,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Text */}
             <div className="flex flex-col gap-5">
               <p className="text-[#4ade80] text-sm tracking-[0.15em] italic" style={{ fontFamily: "var(--font-dutch)" }}>Art Sales Performance</p>
-              <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
+              <h3 className="text-3xl md:text-4xl font-light text-white leading-tight" style={{ fontFamily: "var(--font-noto-serif)" }}>
                 보조지표 대시보드<br />시각화
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
