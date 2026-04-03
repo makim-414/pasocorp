@@ -498,18 +498,6 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* ── Solution Overview ── */}
-      <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <h2 className="text-5xl md:text-7xl font-light text-white italic" style={{ fontFamily: "var(--font-dutch)" }}>
-              Solution{" "}
-              <span className="not-italic font-semibold text-[#4ade80]">Artrader</span>
-            </h2>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── Auction / PS Data ── */}
       <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
