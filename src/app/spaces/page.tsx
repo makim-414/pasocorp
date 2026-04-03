@@ -1,7 +1,6 @@
 import StandaloneNav from "@/components/StandaloneNav";
 import StandaloneFooter from "@/components/StandaloneFooter";
 import SpacesContent from "./SpacesContent";
-import { getSiteMode } from "@/lib/site-mode";
 
 export const metadata = {
   title: "Spaces — Paso Gallery",
@@ -9,8 +8,6 @@ export const metadata = {
 };
 
 export default async function SpacesPage() {
-  const siteMode = await getSiteMode();
-
   const navLinks = [
     { label: "Exhibitions", href: "/#exhibitions" },
     { label: "Spaces", href: "/spaces" },
