@@ -1212,9 +1212,9 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <motion.h2 {...fadeUp} className="text-3xl md:text-5xl font-light text-white mb-6">본사 바로가기</motion.h2>
           <motion.p {...fadeUp} className="text-sm md:text-base text-[#888] font-light mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
           <motion.div {...fadeUp}>
-            <Link href="/" className="inline-block px-12 py-4 border border-[#b8960b] text-[#b8960b] text-sm tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+            <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border border-[#b8960b] text-[#b8960b] text-sm tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
               PASO Corp
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>
