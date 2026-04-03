@@ -20,18 +20,6 @@ const galleryImages = [
   "/images/gallery/gallery-06.jpg",
 ];
 
-const spaces = [
-  {
-    name: "Light Room",
-    desc: "자연광이 풍부하게 들어오는 밝은 전시실. 회화, 드로잉, 사진 작품 전시에 최적화된 공간입니다.",
-    features: ["자연광 채광", "가변형 벽면", "회화 · 사진 전시 최적화"],
-  },
-  {
-    name: "Dark Room",
-    desc: "조도를 자유롭게 조절할 수 있는 어두운 톤의 전시실. 영상, 설치, 조각 작품에 적합합니다.",
-    features: ["조명 컨트롤", "영상 · 설치 전시 최적화", "독립 전원 시스템"],
-  },
-];
 
 export default function SpacesContent() {
   const [submitting, setSubmitting] = useState(false);
@@ -77,49 +65,6 @@ export default function SpacesContent() {
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Space Details ── */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="mb-16">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Exhibition Rooms</p>
-            <h2
-              className="text-3xl md:text-5xl text-white"
-              style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
-            >
-              두 개의 전시실
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {spaces.map((space, i) => (
-              <motion.div
-                key={space.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="border border-[#1a1a1a] p-8 md:p-10"
-              >
-                <h3
-                  className="text-2xl md:text-3xl text-white mb-4"
-                  style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 400 }}
-                >
-                  {space.name}
-                </h3>
-                <p className="text-[#888] font-light leading-relaxed mb-6">{space.desc}</p>
-                <ul className="space-y-2">
-                  {space.features.map((f) => (
-                    <li key={f} className="flex items-center gap-3 text-sm text-[#666] font-light">
-                      <span className="text-[#b8960b]">—</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             ))}
           </div>
