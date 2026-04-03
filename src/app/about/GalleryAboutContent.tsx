@@ -168,7 +168,7 @@ export default function GalleryAboutContent() {
               <div><span className="text-[#b8960b]">13~15</span> — 이동식 칸막이</div>
               <div><span className="text-[#b8960b]">16~18</span> — 콘센트 위치</div>
             </div>
-            <div className="mt-12 space-y-8">
+            <div className="mt-20 space-y-8">
               <div>
                 <h3 className="text-white text-sm font-medium mb-4">이동식 칸막이 규격 (가로×세로 cm)</h3>
                 <div className="grid grid-cols-3 gap-3 text-xs text-[#888] font-light">
