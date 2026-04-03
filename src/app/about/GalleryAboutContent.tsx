@@ -156,9 +156,9 @@ export default function GalleryAboutContent() {
                 className="object-contain p-4 invert mix-blend-screen"
               />
               {/* Zone labels */}
-              <span className="absolute top-[22%] left-[28%] text-[10px] md:text-xs text-[#f87171] font-medium tracking-wider">Exhibition space</span>
-              <span className="absolute top-[48%] left-[18%] text-[10px] md:text-xs text-[#fbbf24] font-medium tracking-wider">Stage</span>
-              <span className="absolute top-[78%] left-[10%] text-[10px] md:text-xs text-[#67e8f9] font-medium tracking-wider">Reception</span>
+              <span className="absolute top-[15%] left-[20%] text-[10px] md:text-xs text-[#f87171] font-medium tracking-wider">Exhibition space</span>
+              <span className="absolute top-[38%] left-[13%] text-[10px] md:text-xs text-[#fbbf24] font-medium tracking-wider">Stage</span>
+              <span className="absolute top-[68%] left-[6%] text-[10px] md:text-xs text-[#67e8f9] font-medium tracking-wider">Reception</span>
             </div>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#888] font-light">
               <div><span className="text-[#b8960b]">1~5</span> — 조명 ON/OFF</div>
