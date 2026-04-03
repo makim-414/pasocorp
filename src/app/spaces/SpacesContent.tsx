@@ -129,15 +129,23 @@ export default function SpacesContent() {
             <div className="w-16 h-[3px] bg-white mx-auto mb-12" />
             <div className="space-y-8 text-[#aaa] font-light leading-relaxed text-sm md:text-base">
               <p>
-                PASO의 전시 공간 Paso Gallery Heritage는 성북동 초입에 위치한 현대적으로 개조된 한옥 갤러리로,
-                미술 애호가들에게 특별한 경험을 제공합니다.
+                Space by PASO는 파소의 첫 번째 전시 공간으로,<br />
+                성북동 초입의 성균관 유생 종가를 현대적으로 재건축한 전시 공간입니다.
               </p>
               <p>
-                이 공간은 프라이빗 프로그램을 중심으로 운영되며, 다양한 브랜드와의 협업을 통해
-                아트 살롱, 프라이빗 뷰잉, 컬렉터 대상 아트 포럼 등 차별화된 행사를 기획하고 있습니다.
+                파소는 지난 10여 년간 꾸준히 이어온 신진 작가 발굴과 지원의 철학을 담아,<br />
+                작가들에게 상업적 가능성을 실험하고 시장과 만날 수 있는 기회를 제공하였습니다.
               </p>
               <p>
-                이를 통해 예술과 브랜드가 교류하며 새로운 가치를 창출하고, 미술 애호가들에게 맞춤형 예술 경험을 선사합니다
+                현재 Space by PASO는 전시와 더불어 브랜드 협업 및 다양한 문화 행사를 유연하게 수용하는 기획 공간으로 운영됩니다.
+              </p>
+              <p>
+                파소는 미술 시장 전반의 다양한 영역에서 비즈니스를 전개하며,<br />
+                예술의 새로운 가능성을 모색하고 있습니다.
+              </p>
+              <p>
+                더 많은 정보는 파소의 공식 웹사이트에서 확인하실 수 있습니다.<br />
+                <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="text-[#b8960b] hover:text-white transition-colors">www.pasocorp.com</a>
               </p>
             </div>
           </motion.div>
