@@ -559,11 +559,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                     fill="none"
                     stroke="#4ade80"
                     strokeWidth="2"
-                  />
+                    strokeDasharray="1200"
+                    strokeDashoffset="1200"
+                  >
+                    <animate attributeName="stroke-dashoffset" from="1200" to="0" dur="2.5s" fill="freeze" begin="0.3s" />
+                  </path>
                   <path
                     d="M0,180 C50,175 100,170 150,160 C200,150 250,140 300,120 C350,100 380,90 400,70 C420,55 450,50 500,45 C550,40 600,60 650,50 C700,35 750,20 800,10 L800,200 L0,200 Z"
                     fill="url(#chartGrad)"
-                  />
+                    opacity="0"
+                  >
+                    <animate attributeName="opacity" from="0" to="1" dur="1s" fill="freeze" begin="2s" />
+                  </path>
                 </svg>
                 {/* Y-axis labels */}
                 <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-[10px] text-[#555] -ml-1">
