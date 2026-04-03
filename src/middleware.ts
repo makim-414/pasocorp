@@ -5,8 +5,11 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
   const pathname = request.nextUrl.pathname;
 
-  // Skip static files (images, etc.)
+  // Skip static files and API routes
   if (/\.(png|jpg|jpeg|gif|svg|webp|ico|css|js)$/i.test(pathname)) {
+    return NextResponse.next();
+  }
+  if (pathname.startsWith("/api/")) {
     return NextResponse.next();
   }
 

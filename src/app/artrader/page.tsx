@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { artists } from "@/lib/artists";
+import TrendingArtistsMarquee from "@/components/TrendingArtistsMarquee";
 
 export default function ArtraderHome() {
   const [query, setQuery] = useState("");
@@ -11,18 +12,42 @@ export default function ArtraderHome() {
     e.preventDefault();
     const q = query.trim();
     if (q) {
+      // Log search to Supabase
+      fetch("/api/search-log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ artistName: q }),
+      }).catch(() => {});
+
       router.push(`/artrader/search?q=${encodeURIComponent(q)}`);
+    }
+  };
+
+  const handleArtistClick = (name: string) => {
+    // Log click to Supabase
+    fetch("/api/search-log", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ artistName: name }),
+    }).catch(() => {});
+
+    // Find matching artist slug or search
+    const match = artists.find((a) => a.nameKo === name);
+    if (match) {
+      router.push(`/artrader/artist/${match.slug}`);
+    } else {
+      router.push(`/artrader/search?q=${encodeURIComponent(name)}`);
     }
   };
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-6">
       <div className="max-w-2xl w-full text-center">
-        <h1 className="text-4xl md:text-6xl font-light text-white mb-4" style={{ fontFamily: "var(--font-dutch)" }}>
-          <span className="text-[#4ade80] font-semibold">Art</span>rader
+        <h1 className="text-4xl md:text-6xl font-semibold text-white mb-4">
+          작품, 작가를 검색해보세요
         </h1>
         <p className="text-[#888] text-sm md:text-base mb-12">
-          글로벌 미술 거래 데이터베이스 &middot; 작가 검색 &middot; 시장 분석
+          아트레이더는 1,570만 건의 경매 데이터를 기반으로 신뢰할 수 있는 거래 정보를 제공합니다.
         </p>
 
         <form onSubmit={handleSearch} className="w-full">
@@ -31,13 +56,13 @@ export default function ArtraderHome() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="작가명을 입력하세요 (예: 이우환, 김환기)"
-              className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-6 py-4 text-base text-[#e8e8e8] placeholder-[#555] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
+              placeholder="김환기, 이우환, 제프 쿤스 ..."
+              className="w-full bg-transparent border border-[#333] rounded-full px-6 py-4 text-base text-[#e8e8e8] placeholder-[#555] focus:outline-none focus:border-[#555] transition-colors"
               autoFocus
             />
             <button
               type="submit"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#555] hover:text-[#4ade80] transition-colors"
+              className="absolute right-5 top-1/2 -translate-y-1/2 text-[#888] hover:text-[#4ade80] transition-colors"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="8" />
@@ -47,34 +72,14 @@ export default function ArtraderHome() {
           </div>
         </form>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { label: "거래 데이터", value: "15M+" },
-            { label: "분석 작가", value: "120K+" },
-            { label: "커버 경매사", value: "2,800+" },
-            { label: "리포트 발행", value: "5,000+" },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="text-2xl md:text-3xl font-light text-[#4ade80]" style={{ fontFamily: "var(--font-dutch)" }}>{s.value}</p>
-              <p className="mt-1 text-[10px] tracking-[0.15em] uppercase text-[#555]">{s.label}</p>
-            </div>
-          ))}
+        <div className="mt-12 text-left">
+          <p className="text-sm font-semibold text-white mb-4">지금 인기 있는 작가</p>
         </div>
+      </div>
 
-        <div className="mt-16">
-          <p className="text-xs text-[#555] uppercase tracking-widest mb-6">인기 작가</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {artists.slice(0, 6).map((artist) => (
-              <button
-                key={artist.slug}
-                onClick={() => router.push(`/artrader/artist/${artist.slug}`)}
-                className="px-4 py-2 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg text-sm text-[#888] hover:text-[#4ade80] hover:border-[#4ade80]/30 transition-all"
-              >
-                {artist.nameKo}
-              </button>
-            ))}
-          </div>
-        </div>
+      {/* Full-width marquee */}
+      <div className="w-screen mt-2">
+        <TrendingArtistsMarquee onArtistClick={handleArtistClick} />
       </div>
     </div>
   );
