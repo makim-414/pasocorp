@@ -50,6 +50,7 @@ function ArtraderNav() {
 
         <div className="hidden md:flex items-center gap-8 text-xs tracking-[0.08em] uppercase text-[#888] shrink-0">
           <a href="/" className="hover:text-[#4ade80] transition-colors">Home</a>
+          <a href="/about" className="hover:text-[#4ade80] transition-colors">소개</a>
           <a href="/mypage" className="hover:text-[#4ade80] transition-colors">마이페이지</a>
         </div>
       </div>
