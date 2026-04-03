@@ -180,6 +180,58 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
+      {/* Event Availability */}
+      <section className="py-24 md:py-32 bg-black">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp} className="mb-16">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Event Types</p>
+            <h2 className="text-3xl md:text-4xl text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>행사 유형 안내</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* 가능 */}
+            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
+              <div className="flex items-center gap-2 mb-6">
+                <span className="text-green-400 text-lg">&#10003;</span>
+                <h3 className="text-white text-sm font-medium">가능</h3>
+              </div>
+              <ul className="space-y-3 text-sm text-[#aaa] font-light">
+                <li>전시</li>
+                <li>브랜드 행사</li>
+                <li>세미나</li>
+                <li>리셉션</li>
+                <li>소규모 공연 / 음악회</li>
+                <li>기자간담회</li>
+                <li>강연 / 토크</li>
+              </ul>
+            </motion.div>
+            {/* 조건부 가능 */}
+            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
+              <div className="flex items-center gap-2 mb-6">
+                <span className="text-[#b8960b] text-lg">&#9888;</span>
+                <h3 className="text-white text-sm font-medium">조건부 가능</h3>
+              </div>
+              <ul className="space-y-3 text-sm text-[#aaa] font-light">
+                <li>팝업스토어 / 마켓 <span className="text-[#666] text-xs">(갤러리 측 사전 협의 필수)</span></li>
+                <li>미디어아트 / 영상 상영 <span className="text-[#666] text-xs">(추가 전력 소모 시 추가요금)</span></li>
+              </ul>
+            </motion.div>
+            {/* 불가능 */}
+            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
+              <div className="flex items-center gap-2 mb-6">
+                <span className="text-red-400 text-lg">&#10007;</span>
+                <h3 className="text-white text-sm font-medium">불가능</h3>
+              </div>
+              <ul className="space-y-3 text-sm text-[#aaa] font-light">
+                <li>돌잔치</li>
+                <li>연회 / 뷔페</li>
+                <li>케이터링 파티</li>
+                <li>웨딩</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Usage Guidelines */}
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
@@ -187,41 +239,93 @@ export default function GalleryAboutContent() {
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Guidelines</p>
             <h2 className="text-3xl md:text-4xl text-white font-light mb-12" style={{ fontFamily: "var(--font-dutch)" }}>이용 안내</h2>
             <div className="space-y-6 text-sm text-[#999] font-light leading-relaxed">
+              <p className="text-white text-xs tracking-[0.1em] uppercase mb-2">작품 설치</p>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>물건 운반 시 현관문 상단 버튼으로 문을 고정. 내부 원목 시설은 반드시 들어서 이동·설치해주세요.</p>
+                <p>벽걸이형 작품 설치 시 갤러리에서 제공하는 와이어를 사용하며, 부족 시 개인이 지참해야 합니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>간단한 음료 외 냄새가 심한 음식은 반입 금지. 꽃다발·화환은 대관 이용 직후 수거 필요.</p>
+                <p>부득이하게 타공을 진행해야 하는 경우 갤러리에서 제공하는 도구만 이용 가능하며 원상복구가 필요합니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
                 <p>전시 벽면 내외부 모든 목재 건축물에 못, 테이프, 압정 등의 사용을 금지합니다.</p>
               </div>
+
+              <p className="text-white text-xs tracking-[0.1em] uppercase mt-8 mb-2">운반</p>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>전시 중 발생하는 폐기물은 모두 직접 처리. 일반폐기물은 종량제 봉투, 재활용은 분리배출.</p>
+                <p>물건 운반 시 현관문 상단 버튼을 눌러 문을 고정해주세요. 잦은 사용 시 고장날 수 있으니 입퇴점 시 1회씩만 사용 부탁드립니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>꽃다발·화환 등 반입 가능하나, 대관 이용 직후 수거되어야 합니다.</p>
+                <p>내부 원목 시설(바닥 등)은 훼손 시 복구가 불가하므로 반드시 물건을 들어서 이동·설치해주세요.</p>
+              </div>
+
+              <p className="text-white text-xs tracking-[0.1em] uppercase mt-8 mb-2">반입금지 품목 및 청결</p>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>간단한 음료 외 국물이 있는 음식 등 냄새가 심한 음식은 반입을 금지합니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>모든 시설 훼손 시 반드시 복구해야 하며, 전시 중 발생하는 폐기물은 모두 직접 처리해주셔야 합니다.</p>
+                <p>꽃다발, 화환 등 반입 가능하나 대관 이용 직후 수거되어야 합니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>일반폐기물은 청소함 비치 종량제 봉투 이용. 재활용폐기물은 분리 후 갤러리 건너편 88회관 지하주차장 입구 오른쪽에 배출.</p>
+                <p>모든 시설에 대해 훼손 시 반드시 복구해야 하며 전시 중 발생하는 폐기물은 모두 처리해주셔야 합니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>퇴점 시 모든 냉온풍기 전원 종료 및 날개 닫힘 확인, 모든 조명 소등 부탁드립니다.</p>
+                <p>일반폐기물: 청소함에 비치된 종량제 봉투 이용 / 재활용폐기물: 분리 후 갤러리 건너편 88회관 지하주차장 입구 오른쪽에 배출</p>
+              </div>
+
+              <p className="text-white text-xs tracking-[0.1em] uppercase mt-8 mb-2">빔프로젝터 및 오디오</p>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>빔프로젝터는 개인 노트북에 HDMI 케이블을 통해 연결할 수 있습니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>문의사항이 있을 경우 담당자에게 연락해주시기 바랍니다. (010-6432-4471)</p>
+                <p>오디오는 블루투스 BT-AMP로 연결 가능하며 갤러리 내 스피커로 송출됩니다. 무선 마이크 2개 구비되어 있습니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>이외 소품(스크린 등)이 필요한 경우 별도 문의 바라며, 전력을 소모하는 조명이나 소품 사용 시 추가요금이 발생합니다.</p>
+              </div>
+
+              <p className="text-white text-xs tracking-[0.1em] uppercase mt-8 mb-2">제한 사항</p>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>모든 실내 공간은 금연구역입니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>대관 일정의 양도나 재판매를 금지합니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>대관 기간 중 물품 판매 시 갤러리측과 사전에 협의하여야 합니다.</p>
+              </div>
+
+              <p className="text-white text-xs tracking-[0.1em] uppercase mt-8 mb-2">퇴점 시 유의사항</p>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>5개의 모든 냉온풍기의 전원을 꺼주세요. 리모컨 1개로 모두 제어 가능합니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>냉온풍기 전원 종료 후 모든 날개가 닫혔는지 확인 부탁드립니다.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#b8960b] mt-0.5">—</span>
+                <p>모든 조명을 꺼주세요 (화장실 별도).</p>
+              </div>
+
+              <div className="mt-8 text-xs text-[#666]">
+                <p>문의사항이 있을 경우 담당자에게 연락해주시기 바랍니다.</p>
+                <p className="mt-1">담당자 연락처: 010-6432-4471</p>
               </div>
             </div>
           </motion.div>
