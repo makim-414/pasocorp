@@ -20,18 +20,6 @@ const galleryImages = [
   "/images/gallery/gallery-06.jpg",
 ];
 
-const spaces = [
-  {
-    name: "Light Room",
-    desc: "자연광이 풍부하게 들어오는 밝은 전시실. 회화, 드로잉, 사진 작품 전시에 최적화된 공간입니다.",
-    features: ["자연광 채광", "가변형 벽면", "회화 · 사진 전시 최적화"],
-  },
-  {
-    name: "Dark Room",
-    desc: "조도를 자유롭게 조절할 수 있는 어두운 톤의 전시실. 영상, 설치, 조각 작품에 적합합니다.",
-    features: ["조명 컨트롤", "영상 · 설치 전시 최적화", "독립 전원 시스템"],
-  },
-];
 
 export default function SpacesContent() {
   const [submitting, setSubmitting] = useState(false);
@@ -83,46 +71,31 @@ export default function SpacesContent() {
         </div>
       </section>
 
-      {/* ── Space Details ── */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="mb-16">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Exhibition Rooms</p>
+      {/* ── Private Programs ── */}
+      <section className="py-32 md:py-44 bg-black border-y border-[#1a1a1a]">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
+          <motion.div {...fadeUp}>
             <h2
-              className="text-3xl md:text-5xl text-white"
+              className="text-4xl md:text-6xl lg:text-7xl text-white mb-8"
               style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
             >
-              두 개의 전시실
+              Private Programs
             </h2>
+            <div className="w-16 h-[3px] bg-white mx-auto mb-12" />
+            <div className="space-y-8 text-[#aaa] font-light leading-relaxed text-sm md:text-base">
+              <p>
+                PASO의 전시 공간 Paso Gallery Heritage는 성북동 초입에 위치한 현대적으로 개조된 한옥 갤러리로,
+                미술 애호가들에게 특별한 경험을 제공합니다.
+              </p>
+              <p>
+                이 공간은 프라이빗 프로그램을 중심으로 운영되며, 다양한 브랜드와의 협업을 통해
+                아트 살롱, 프라이빗 뷰잉, 컬렉터 대상 아트 포럼 등 차별화된 행사를 기획하고 있습니다.
+              </p>
+              <p>
+                이를 통해 예술과 브랜드가 교류하며 새로운 가치를 창출하고, 미술 애호가들에게 맞춤형 예술 경험을 선사합니다
+              </p>
+            </div>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {spaces.map((space, i) => (
-              <motion.div
-                key={space.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="border border-[#1a1a1a] p-8 md:p-10"
-              >
-                <h3
-                  className="text-2xl md:text-3xl text-white mb-4"
-                  style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 400 }}
-                >
-                  {space.name}
-                </h3>
-                <p className="text-[#888] font-light leading-relaxed mb-6">{space.desc}</p>
-                <ul className="space-y-2">
-                  {space.features.map((f) => (
-                    <li key={f} className="flex items-center gap-3 text-sm text-[#666] font-light">
-                      <span className="text-[#b8960b]">—</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
