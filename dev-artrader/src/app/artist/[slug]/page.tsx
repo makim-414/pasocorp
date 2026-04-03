@@ -5,9 +5,11 @@ import Link from "next/link";
 import { getArtistBySlug, type ArtistAuctionRecord } from "@/lib/artists";
 import RelatedNews from "@/components/RelatedNews";
 import AuctionModal from "@/components/AuctionModal";
+import { useExchangeRate, convertToKRW } from "@/lib/use-exchange-rate";
 
 export default function ArtistPage() {
   const params = useParams();
+  const exchangeRate = useExchangeRate();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
   const [selectedAuction, setSelectedAuction] = useState<ArtistAuctionRecord | null>(null);
@@ -153,6 +155,10 @@ export default function ArtistPage() {
                   <div>
                     <p className="text-[10px] text-[#555] mb-0.5">{auction.date}</p>
                     <p className="text-lg font-semibold text-[#e8e8e8]">{auction.hammer}</p>
+                    {exchangeRate && (() => {
+                      const krw = convertToKRW(auction.hammer, exchangeRate);
+                      return krw ? <p className="text-[11px] text-[#666] mt-0.5">{krw}</p> : null;
+                    })()}
                   </div>
                   <span className="text-[10px] text-[#4ade80] bg-[#4ade80]/10 px-2 py-1 rounded">
                     {auction.auctionHouse}
