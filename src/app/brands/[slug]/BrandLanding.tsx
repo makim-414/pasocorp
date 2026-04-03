@@ -1388,7 +1388,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
             {targets.map((t, i) => (
               <motion.div key={t.label} {...stagger(i)} className="group">
                 <p className="text-[#b8960b] text-xs mb-3">{t.icon}</p>
-                <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{t.label}</h3>
+                <h3 className="text-lg text-white font-light mb-3">{t.label}</h3>
                 <p className="text-sm text-[#888] font-light leading-relaxed">{t.desc}</p>
                 <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
               </motion.div>
