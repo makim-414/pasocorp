@@ -1,13 +1,18 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Link from "next/link";
 import { searchArtists } from "@/lib/artists";
+import { incrementSearchCount } from "@/lib/search-counts";
 
 function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
   const results = searchArtists(query);
+
+  useEffect(() => {
+    results.forEach((artist) => incrementSearchCount(artist.slug));
+  }, [query]);
 
   return (
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
