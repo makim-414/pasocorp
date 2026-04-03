@@ -414,6 +414,67 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
     <>
       <BrandHero brand={brand} />
 
+      {/* ── Search & Trending Artists ── */}
+      <section className="bg-black py-20 md:py-28 border-b border-[#1a1a1a]">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
+          <motion.h2
+            {...fadeUp}
+            className="text-3xl md:text-5xl font-semibold text-white mb-4"
+          >
+            작품, 작가를 검색해보세요
+          </motion.h2>
+          <motion.p {...fadeUp} className="text-[#888] font-light mb-10">
+            아트레이더는 1,570만 건의 경매 데이터를 기반으로신뢰할 수 있는 거래 정보를 제공합니다.
+          </motion.p>
+          {/* Search bar */}
+          <motion.div {...fadeUp} className="relative max-w-[700px] mx-auto mb-12">
+            <div className="flex items-center border border-[#333] rounded-full px-6 py-4 bg-transparent hover:border-[#555] transition-colors">
+              <input
+                type="text"
+                placeholder="김환기, 이우환, 제프 쿤스 ..."
+                className="flex-1 bg-transparent text-white text-base outline-none placeholder:text-[#555]"
+                readOnly
+              />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </motion.div>
+          {/* Trending artists label */}
+          <motion.p {...fadeUp} className="text-left text-sm font-semibold text-white mb-4">
+            지금 인기 있는 작가
+          </motion.p>
+        </div>
+        {/* Marquee scrolling artist tags */}
+        <div className="relative overflow-hidden">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ x: { duration: 25, repeat: Infinity, ease: "linear" } }}
+            className="flex gap-3 w-max"
+          >
+            {[
+              "윤형근", "이우환", "이배", "천경자", "에디 마르티네즈", "우국원", "앤디 워홀",
+              "김환기", "박서보", "이중섭", "쿠사마 야요이", "데이비드 호크니", "게르하르트 리히터",
+              "장 미셸 바스키아", "키스 해링", "무라카미 다카시", "조지 콘도", "KAWS",
+              "윤형근", "이우환", "이배", "천경자", "에디 마르티네즈", "우국원", "앤디 워홀",
+              "김환기", "박서보", "이중섭", "쿠사마 야요이", "데이비드 호크니", "게르하르트 리히터",
+              "장 미셸 바스키아", "키스 해링", "무라카미 다카시", "조지 콘도", "KAWS",
+            ].map((name, i) => (
+              <span
+                key={`${name}-${i}`}
+                className="inline-block px-5 py-2.5 border border-[#333] rounded-full text-sm text-white whitespace-nowrap hover:border-[#4ade80] hover:text-[#4ade80] transition-colors cursor-pointer"
+              >
+                {name}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Stats bar */}
       <section className="bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
