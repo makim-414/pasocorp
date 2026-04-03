@@ -60,6 +60,7 @@ function PriceChange({ purchase, current }: { purchase: number; current: number 
 
 export default function MyPage() {
   const [showEditModal, setShowEditModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [editForm, setEditForm] = useState<UserInfo>({ ...mockUser });
 
@@ -77,13 +78,13 @@ export default function MyPage() {
 
       <h1 className="text-3xl font-light text-white/90 mb-10" style={{ fontFamily: "var(--font-noto-serif)" }}>마이페이지</h1>
 
-      {/* My Info - Summary */}
+      {/* My Info - Title + Edit button only */}
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 mb-10">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between">
           <h2 className="text-lg font-normal text-white/90">내 정보</h2>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => { setEditForm({ ...mockUser }); setShowEditModal(true); }}
+              onClick={() => { setEditForm({ ...mockUser }); setShowEditModal(true); setShowDeleteConfirm(false); }}
               className="inline-flex items-center gap-2 px-4 py-2 bg-[#111] border border-[#2a2a2a] rounded-lg text-sm text-[#888] hover:text-[#4ade80] hover:border-[#4ade80]/30 transition-all"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -96,11 +97,6 @@ export default function MyPage() {
             </button>
           </div>
         </div>
-        <p className="text-sm text-[#888]">
-          <span className="text-[#e8e8e8]">{mockUser.name}</span>
-          <span className="mx-2 text-[#333]">&middot;</span>
-          {mockUser.email}
-        </p>
       </div>
 
       {/* Purchase History */}
@@ -147,16 +143,16 @@ export default function MyPage() {
         </div>
       </div>
 
-      {/* Edit Modal */}
+      {/* Info / Edit Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={() => setShowEditModal(false)}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={() => { setShowEditModal(false); setIsEditing(false); }}>
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
           <div
             className="relative bg-[#0a0a0a] border border-[#2a2a2a] rounded-2xl w-full max-w-md p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              onClick={() => setShowEditModal(false)}
+              onClick={() => { setShowEditModal(false); setIsEditing(false); }}
               className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-[#111] border border-[#2a2a2a] text-[#888] hover:text-white transition-all"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -164,44 +160,72 @@ export default function MyPage() {
               </svg>
             </button>
 
-            <h2 className="text-lg font-normal text-white/90 mb-6">내 정보 수정</h2>
-
-            <div className="space-y-4 mb-6">
-              <div>
-                <label className="block text-xs text-[#888] mb-1.5">이름</label>
-                <input
-                  type="text"
-                  value={editForm.name}
-                  onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                  className="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-[#e8e8e8] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-[#888] mb-1.5">이메일</label>
-                <input
-                  type="email"
-                  value={editForm.email}
-                  onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
-                  className="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-[#e8e8e8] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-[#888] mb-1.5">전화번호</label>
-                <input
-                  type="tel"
-                  value={editForm.phone}
-                  onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
-                  className="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-[#e8e8e8] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
-                />
-              </div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-lg font-normal text-white/90">내 정보</h2>
+              {!isEditing && (
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="text-xs text-[#4ade80] hover:text-[#22c55e] transition-colors"
+                >
+                  편집
+                </button>
+              )}
             </div>
 
-            <button
-              onClick={() => setShowEditModal(false)}
-              className="w-full py-3 bg-[#4ade80] text-black font-semibold rounded-lg hover:bg-[#22c55e] transition-colors text-sm"
-            >
-              저장
-            </button>
+            {!isEditing ? (
+              /* View mode */
+              <div className="space-y-4 mb-6">
+                {[
+                  { label: "이름", value: mockUser.name },
+                  { label: "이메일", value: mockUser.email },
+                  { label: "전화번호", value: mockUser.phone },
+                ].map((row) => (
+                  <div key={row.label} className="flex items-center justify-between py-2 border-b border-[#1a1a1a]">
+                    <span className="text-sm text-[#888]">{row.label}</span>
+                    <span className="text-sm text-[#e8e8e8]">{row.value}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Edit mode */
+              <>
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <label className="block text-xs text-[#888] mb-1.5">이름</label>
+                    <input
+                      type="text"
+                      value={editForm.name}
+                      onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                      className="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-[#e8e8e8] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-[#888] mb-1.5">이메일</label>
+                    <input
+                      type="email"
+                      value={editForm.email}
+                      onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                      className="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-[#e8e8e8] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-[#888] mb-1.5">전화번호</label>
+                    <input
+                      type="tel"
+                      value={editForm.phone}
+                      onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
+                      className="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-[#e8e8e8] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
+                    />
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className="w-full py-3 bg-[#4ade80] text-black font-semibold rounded-lg hover:bg-[#22c55e] transition-colors text-sm"
+                >
+                  저장
+                </button>
+              </>
+            )}
 
             {/* Delete Account */}
             <div className="mt-8 pt-6 border-t border-[#1a1a1a]">
