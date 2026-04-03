@@ -13,7 +13,13 @@ export default function ArtistPage() {
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center">
           <p className="text-[#888] text-lg mb-4">작가를 찾을 수 없습니다</p>
-          <Link href="/" className="text-[#4ade80] text-sm hover:underline">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#111] border border-[#2a2a2a] rounded-lg text-sm text-[#888] hover:text-[#4ade80] hover:border-[#4ade80]/30 transition-all"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
             홈으로 돌아가기
           </Link>
         </div>
@@ -25,8 +31,14 @@ export default function ArtistPage() {
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
       {/* Header */}
       <div className="mb-10">
-        <Link href="/" className="text-xs text-[#555] hover:text-[#4ade80] transition-colors mb-4 inline-block">
-          &larr; 홈으로
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-[#111] border border-[#2a2a2a] rounded-lg text-sm text-[#888] hover:text-[#4ade80] hover:border-[#4ade80]/30 transition-all"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          뒤로가기
         </Link>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
