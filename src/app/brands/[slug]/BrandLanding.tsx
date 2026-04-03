@@ -455,6 +455,49 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
+      {/* ── Vision ── */}
+      <section className="bg-[#111] py-24 md:py-32">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+              아트를 금융 자산처럼<br />투명하게 거래하는생태계를 만들어요
+            </h2>
+            <p className="text-[#888] font-light leading-relaxed max-w-2xl mx-auto text-base md:text-lg">
+              아트레이더는 미술 시장의 흩어진 데이터를 정제해,<br className="hidden md:block" />
+              시세 예측과 안전한 거래를 돕는새로운 미술품 거래 환경을 만들어가고 있어요.
+            </p>
+          </motion.div>
+          {/* Seller - Artrader - Buyer diagram */}
+          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+            {/* Seller */}
+            <div className="flex flex-col gap-4 items-center">
+              <p className="text-[#4ade80] text-sm tracking-[0.15em] font-medium mb-2">Seller</p>
+              {["구매자의 구매이력", "유사 경매기록 데이터", "작품 인보이스"].map((item, i) => (
+                <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-xl px-8 py-4 text-center min-w-[220px]">
+                  <p className="text-white text-sm font-light">{item}</p>
+                </motion.div>
+              ))}
+            </div>
+            {/* Artrader logo */}
+            <div className="flex flex-col items-center gap-3 my-4 lg:my-0">
+              <div className="w-24 h-24 md:w-28 md:h-28 bg-[#111] border border-[#333] rounded-2xl flex flex-col items-center justify-center shadow-xl">
+                <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-dutch)" }}>A</span>
+              </div>
+              <p className="text-white text-sm font-medium tracking-wide">Artrader</p>
+            </div>
+            {/* Buyer */}
+            <div className="flex flex-col gap-4 items-center">
+              <p className="text-[#4ade80] text-sm tracking-[0.15em] font-medium mb-2">Buyer</p>
+              {["진품 보증서", "작품 상태 보고서", "소장 이력 (프로비넌스)"].map((item, i) => (
+                <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-xl px-8 py-4 text-center min-w-[220px]">
+                  <p className="text-white text-sm font-light">{item}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Solution Overview ── */}
       <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
