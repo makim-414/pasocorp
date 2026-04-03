@@ -44,6 +44,61 @@ export default function SpacesContent() {
         </div>
       </section>
 
+      {/* ── PASO Event Partner ── */}
+      <section className="py-28 md:py-36 bg-black border-b border-[#1a1a1a]">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
+          <motion.div {...fadeUp}>
+            <h2
+              className="text-3xl md:text-5xl text-white mb-3 tracking-tight"
+              style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 400 }}
+            >
+              PASO
+            </h2>
+            <p className="text-sm md:text-base text-[#888] mb-12" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif" }}>
+              Your Event Partner for Exhibition
+            </p>
+            <div className="space-y-8 text-[#aaa] font-light leading-relaxed text-xs md:text-sm">
+              <p>
+                파소 갤러리 헤리티지는 성북동 초입에 위치한 70년 전통의 종가를 모던하게 개조하여 운영하는 파소의 전시 공간입니다.
+              </p>
+              <p>
+                고유한 역사와 현대적 감각이 조화된 이 공간은 프라이빗하고 세련된 행사를 위한 최적의 장소로, 웨딩, VIP 이벤트, 기업 B2B 행사 등 다양한 형태의 행사에 활용 가능합니다.
+              </p>
+              <p>
+                파소 갤러리는 지난 10년간 신진 작가 공모전과 여러 아티스트 및 브랜드와의 협업을 통해 깊이 있는 전시 노하우를 구축해 왔습니다.<br />
+                또한, 작가들의 작업을 IP 형태로 제공하는 파소 에이전시와 미술 VIP 커뮤니티 운영을 통해 기업 고객과의 다양한 협력 경험을 갖추고 있습니다.
+              </p>
+              <p>
+                본 공간 소개서는 행사 기획사와의 협업을 통해 전시 공간에서 독창적이고 품격 있는 행사를 기획하실 수 있도록 제안드리기 위해 제작되었습니다.
+              </p>
+            </div>
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div>
+                <p className="text-white text-sm mb-2" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 500 }}>Paso Gallery</p>
+                <div className="text-[11px] text-[#666] font-light space-y-0.5">
+                  <p>전시 기획 및 미술품 판매</p>
+                  <p>작품 기반 제품 제작 (에디션, 판화 큐레이션)</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-white text-sm mb-2 font-semibold tracking-wide uppercase">PASO AGENCY</p>
+                <div className="text-[11px] text-[#666] font-light space-y-0.5">
+                  <p>B2B IP 프로젝트 (미가 커미션 작업)</p>
+                  <p>외부 전시 기획</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-white text-sm mb-2" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 500 }}>Paso Gallery<br /><span className="text-xs text-[#888]">Heritage</span></p>
+                <div className="text-[11px] text-[#666] font-light space-y-0.5">
+                  <p>기업행사 협력기획</p>
+                  <p>대관</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Space Info ── */}
       <section className="py-24 md:py-32 bg-[#111] border-b border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
