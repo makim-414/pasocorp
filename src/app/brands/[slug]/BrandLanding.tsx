@@ -607,7 +607,15 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                   <span key={y}>{y}</span>
                 ))}
               </div>
-              <ChartWithMotion />
+              <div className="relative">
+                <ChartWithMotion />
+                {/* Y-axis labels */}
+                <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-[10px] text-[#555] -ml-1">
+                  <span>6,000M</span>
+                  <span>4,000M</span>
+                  <span>2,000M</span>
+                </div>
+              </div>
             </div>
 
             {/* Stats grid */}
