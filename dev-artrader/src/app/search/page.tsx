@@ -2,7 +2,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import Link from "next/link";
-import { searchArtists } from "@/lib/artists";
+import { searchArtists, artists } from "@/lib/artists";
 import { incrementSearchCount } from "@/lib/search-counts";
 import SearchInput from "../../components/SearchInput";
 
@@ -42,9 +42,29 @@ function SearchResults() {
       </div>
 
       {results.length === 0 && (
-        <div className="text-center py-20">
-          <p className="text-[#555] text-lg mb-4">일치하는 작가를 찾을 수 없습니다</p>
-          <p className="text-[#444] text-sm">다른 검색어를 시도해 보세요</p>
+        <div className="py-10">
+          <div className="text-center mb-10">
+            <p className="text-[#555] text-lg mb-2">일치하는 작가를 찾을 수 없습니다</p>
+            <p className="text-[#444] text-sm">다른 검색어를 시도하거나, 아래 추천 작가를 확인해 보세요</p>
+          </div>
+          <p className="text-xs text-[#555] uppercase tracking-widest mb-4">추천 작가</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {artists.slice(0, 8).map((a) => (
+              <Link
+                key={a.slug}
+                href={`/artist/${a.slug}`}
+                className="flex items-center gap-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg px-4 py-3 hover:border-[#4ade80]/30 transition-all group"
+              >
+                <div className="w-8 h-8 bg-[#111] rounded-full flex items-center justify-center text-xs text-[#4ade80] font-semibold shrink-0">
+                  {a.nameKo[0]}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors truncate">{a.nameKo}</p>
+                  <p className="text-[10px] text-[#555] truncate">{a.nameEn}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       )}
 
