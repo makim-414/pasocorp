@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import { artists } from "@/lib/artists";
 import SearchInput from "@/components/artrader/SearchInput";
-import GlowingLogo from "@/components/artrader/GlowingLogo";
 
 const painPoints = [
   {
@@ -91,9 +90,6 @@ export default function ArtraderHome() {
       </div>
 
       <div className="max-w-2xl w-full text-center">
-        <div className="flex justify-center mb-6">
-          <GlowingLogo />
-        </div>
         <h1 className="text-4xl md:text-6xl font-light text-white mb-4" style={{ fontFamily: "var(--font-dutch)" }}>
           <span className="text-[#4ade80] font-semibold">Art</span>rader
         </h1>
