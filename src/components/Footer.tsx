@@ -158,7 +158,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-[#555]">
             <span>CEO 김민성</span>
             <span>사업자등록번호: 877-25-00849</span>
-            <span>+82 10-6432-4471</span>
+            <span>02-925-3631</span>
             <span>© PASO {new Date().getFullYear()}</span>
           </div>
         </div>
