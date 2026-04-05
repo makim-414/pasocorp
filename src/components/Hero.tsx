@@ -110,7 +110,7 @@ export default function Hero() {
             onClick={() => setShowContact(true)}
             className="px-6 py-2.5 bg-[#b8960b] text-black text-xs font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors"
           >
-            무료 상담 신청
+            문의하기
           </button>
           <a
             href="/#services"
@@ -205,7 +205,7 @@ export default function Hero() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-1">Consultation</p>
-                    <h2 className="text-xl md:text-2xl font-light text-white">무료 상담 신청</h2>
+                    <h2 className="text-xl md:text-2xl font-light text-white">문의하기</h2>
                   </div>
                   <button onClick={() => setShowContact(false)} className="text-[#555] hover:text-white transition-colors p-1">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
