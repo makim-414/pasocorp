@@ -155,10 +155,6 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 border-t border-[#1a1a1a] pt-6 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs text-[#555]">
-            <span className="block size-2 rounded-full bg-emerald-500" />
-            All systems normal.
-          </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-[#555]">
             <span>CEO 김민성</span>
             <span>사업자등록번호: 877-25-00849</span>
