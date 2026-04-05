@@ -58,7 +58,7 @@ export default function SearchInput({ variant = "nav", initialQuery = "" }: Sear
   const navigateToArtist = (artist: Artist) => {
     setShowSuggestions(false);
     setQuery(artist.nameKo);
-    router.push(`/artist/${artist.slug}`);
+    router.push(`/search?q=${encodeURIComponent(artist.nameKo)}`);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -73,12 +73,7 @@ export default function SearchInput({ variant = "nav", initialQuery = "" }: Sear
       return;
     }
 
-    const results = searchArtists(q);
-    if (results.length === 1) {
-      router.push(`/artist/${results[0].slug}`);
-    } else {
-      router.push(`/search?q=${encodeURIComponent(q)}`);
-    }
+    router.push(`/search?q=${encodeURIComponent(q)}`);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

@@ -443,6 +443,12 @@ function ChartWithMotion() {
           style={{ transition: "opacity 1s ease-out 2s" }}
         />
       </svg>
+      {/* Y-axis labels */}
+      <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-[10px] text-[#555] -ml-1 pointer-events-none">
+        <span>6,000M</span>
+        <span>4,000M</span>
+        <span>2,000M</span>
+      </div>
     </div>
   );
 }
