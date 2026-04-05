@@ -84,19 +84,18 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-4 md:mt-6 text-[10px] md:text-sm tracking-[0.08em] uppercase text-[#888] font-light"
+          className="mt-4 md:mt-6 text-sm md:text-lg tracking-tight text-[#ccc] font-light"
         >
-          Precision-based Art Strategy & Operation
+          Corporate Art Advisory & Collection Management
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-5 md:mt-8 text-base md:text-xl font-light text-[#e8e8e8] tracking-normal"
-          style={{ fontFamily: "var(--font-dutch)" }}
+          className="mt-5 md:mt-8 text-xs md:text-base font-light text-[#888] tracking-normal max-w-2xl mx-auto leading-relaxed"
         >
-          <TextGenerateEffect words="Art · Advisory & Data · IP · Space" />
+          <TextGenerateEffect words="증여·상속·법인세 절세부터 1,500만 건 거래 데이터 기반 작품 선별까지. PASO가 기업 컬렉션의 모든 단계를 설계합니다." />
         </motion.div>
 
         {/* Brand links */}
