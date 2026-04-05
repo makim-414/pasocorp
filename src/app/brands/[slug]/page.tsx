@@ -64,9 +64,9 @@ const brandsData: Record<string, {
       "/images/gallery/gallery-06.jpg",
     ],
     features: [
-      { title: "HINO salon", desc: "신진 작가 소개와 컬렉터 네트워킹을 위한 프라이빗 살롱 프로그램. (임의 작성)" },
-      { title: "VAKKI private viewing", desc: "주요 전시 오프닝 전 VIP 대상 프리뷰 및 작품 상담. (임의 작성)" },
-      { title: "SOHO preview", desc: "소규모 기획전과 아트 팝업을 위한 큐레이션 프로그램. (임의 작성)" },
+      { title: "HINO salon", desc: "" },
+      { title: "VAKKI private viewing", desc: "" },
+      { title: "SOHO preview", desc: "" },
       { title: "Global Network", desc: "해외 갤러리·작가·컬렉터 네트워크 연결" },
     ],
   },
