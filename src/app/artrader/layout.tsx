@@ -1,36 +1,33 @@
-"use client";
-import Link from "next/link";
-import SearchInput from "@/components/artrader/SearchInput";
+import type { Metadata } from "next";
+import ArtraderNav from "./ArtraderNav";
 
-function ArtraderNav() {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-[#1a1a1a]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-6">
-        <Link
-          href="/artrader"
-          className="text-[#e8e8e8] text-sm tracking-normal font-normal shrink-0"
-          style={{ fontFamily: "var(--font-dutch)" }}
-        >
-          <span className="text-[#4ade80] font-semibold">Art</span>rader
-        </Link>
-
-        <SearchInput variant="nav" />
-
-        <div className="hidden md:flex items-center gap-6 text-xs tracking-[0.08em] uppercase text-[#888] shrink-0">
-          <Link href="/artrader" className="hover:text-[#4ade80] transition-colors">홈</Link>
-          <Link href="/artrader/about-us" className="hover:text-[#4ade80] transition-colors">소개</Link>
-          <Link href="/artrader/favorites" className="hover:text-[#4ade80] transition-colors flex items-center gap-1">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </svg>
-            관심작품
-          </Link>
-          <Link href="/artrader/user" className="hover:text-[#4ade80] transition-colors">마이페이지</Link>
-        </div>
-      </div>
-    </nav>
-  );
-}
+export const metadata: Metadata = {
+  title: { default: "Artrader — 글로벌 미술 거래 데이터", template: "%s — Artrader" },
+  description:
+    "Artrader — 글로벌 미술 거래 데이터베이스. 작가 검색, 시세 분석, 안전한 거래 환경을 제공합니다.",
+  openGraph: {
+    title: "Artrader — Art Market Data",
+    description: "글로벌 미술 거래 데이터베이스. 작가 검색 · 시장 분석 · 안전한 거래.",
+    siteName: "Artrader",
+    type: "website",
+    url: "https://artrader.io",
+    images: [
+      {
+        url: "https://artrader.io/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Artrader",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Artrader — Art Market Data",
+    description: "글로벌 미술 거래 데이터베이스. 작가 검색 · 시장 분석 · 안전한 거래.",
+  },
+  metadataBase: new URL("https://artrader.io"),
+  alternates: { canonical: "https://artrader.io" },
+};
 
 export default function ArtraderLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -50,6 +50,7 @@ function ArtraderNav() {
 
         <div className="hidden md:flex items-center gap-6 text-xs tracking-[0.08em] uppercase text-[#888] shrink-0">
           <a href="/" className="hover:text-[#4ade80] transition-colors">홈</a>
+          <a href="/art-market" className="hover:text-[#4ade80] transition-colors">작품 마켓</a>
           <a href="/about" className="hover:text-[#4ade80] transition-colors">소개</a>
           <a href="/favorites" className="hover:text-[#4ade80] transition-colors flex items-center gap-1">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
