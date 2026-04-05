@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { artists } from "@/lib/artists";
 import SearchInput from "@/components/artrader/SearchInput";
+import { useExchangeRate, convertToKRW } from "@/lib/use-exchange-rate";
 
 const sampleArtworks = artists.flatMap((artist) =>
   artist.recentAuctions.map((auction, i) => ({
@@ -22,6 +23,7 @@ const sampleArtworks = artists.flatMap((artist) =>
 
 export default function ArtMarketPage() {
   const [query, setQuery] = useState("");
+  const exchangeRate = useExchangeRate();
 
   const filtered = query
     ? sampleArtworks.filter(
@@ -94,9 +96,15 @@ export default function ArtMarketPage() {
               </p>
               <p className="text-xs text-[#555] mb-3 truncate">{artwork.medium}</p>
               <div className="flex items-end justify-between">
-                <p className="text-lg font-semibold text-[#e8e8e8]">
-                  {artwork.price}
-                </p>
+                <div>
+                  <p className="text-lg font-semibold text-[#e8e8e8]">
+                    {artwork.price}
+                  </p>
+                  {exchangeRate && (() => {
+                    const krw = convertToKRW(artwork.price, exchangeRate);
+                    return krw ? <p className="text-[11px] text-[#666] mt-0.5">{krw}</p> : null;
+                  })()}
+                </div>
                 <span className="text-[10px] text-[#4ade80] bg-[#4ade80]/10 px-2 py-1 rounded">
                   {artwork.auctionHouse}
                 </span>
