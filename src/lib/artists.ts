@@ -6,6 +6,14 @@ export interface ArtistAuctionRecord {
   hammer: string;
   auctionHouse: string;
   date: string;
+  provenance?: string;
+  signature?: string;
+  frame?: string;
+  condition?: {
+    status: "양호" | "손상 확인됨";
+    details?: string;
+  };
+  edition?: string;
 }
 
 export interface Artist {

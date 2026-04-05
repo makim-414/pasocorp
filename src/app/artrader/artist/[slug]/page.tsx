@@ -1,15 +1,18 @@
 "use client";
+import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { getArtistBySlug } from "@/lib/artists";
+import { getArtistBySlug, type ArtistAuctionRecord } from "@/lib/artists";
 import ArtistCharts from "@/components/artrader/ArtistCharts";
 import HeartButton from "@/components/artrader/HeartButton";
+import AuctionModal from "@/components/artrader/AuctionModal";
 
 export default function ArtistPage() {
   const params = useParams();
   const router = useRouter();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
+  const [selectedAuction, setSelectedAuction] = useState<ArtistAuctionRecord | null>(null);
 
   if (!artist) {
     return (
@@ -109,42 +112,45 @@ export default function ArtistPage() {
       {/* Price trend & Hammer rate charts */}
       <ArtistCharts auctions={artist.recentAuctions} hammerRate={artist.stats.hammerRate} />
 
-      {/* Recent Auctions */}
-      <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-8">
-        <h2 className="text-lg font-semibold text-white mb-6">
-          최근 경매 기록
-        </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-[10px] uppercase tracking-wider text-[#555] border-b border-[#1a1a1a]">
-                <th className="text-left py-3 pr-4">작품명</th>
-                <th className="text-left py-3 pr-4">제작년도</th>
-                <th className="text-left py-3 pr-4">매체</th>
-                <th className="text-left py-3 pr-4">크기</th>
-                <th className="text-right py-3 pr-4">낙찰가</th>
-                <th className="text-left py-3 pr-4">경매사</th>
-                <th className="text-left py-3 pr-4">날짜</th>
-                <th className="text-center py-3 w-10"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {artist.recentAuctions.map((auction, i) => (
-                <tr key={i} className="border-b border-[#111] hover:bg-[#111] transition-colors">
-                  <td className="py-3 pr-4 text-[#e8e8e8] font-medium">{auction.title}</td>
-                  <td className="py-3 pr-4 text-[#888]">{auction.year}</td>
-                  <td className="py-3 pr-4 text-[#888] text-xs max-w-[200px] truncate">{auction.medium}</td>
-                  <td className="py-3 pr-4 text-[#888]">{auction.size}</td>
-                  <td className="py-3 pr-4 text-right text-[#4ade80] font-semibold whitespace-nowrap">{auction.hammer}</td>
-                  <td className="py-3 pr-4 text-[#888]">{auction.auctionHouse}</td>
-                  <td className="py-3 pr-4 text-[#888]">{auction.date}</td>
-                  <td className="py-3 text-center">
-                    <HeartButton artistSlug={slug} auctionIndex={i} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Recent Auctions - Card Layout (click to view + purchase) */}
+      <div className="mb-8">
+        <div className="border-t border-[#2a2a2a] pt-8 mb-6">
+          <h2 className="text-lg font-semibold text-white">유사 옥션 거래 기록</h2>
+          <p className="text-xs text-[#555] mt-1">작품을 클릭하면 상세 정보 및 구매 요청이 가능합니다</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {artist.recentAuctions.map((auction, i) => (
+            <button
+              key={i}
+              onClick={() => setSelectedAuction(auction)}
+              className="text-left bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-all cursor-pointer group"
+            >
+              <div className="relative w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+                <div className="absolute top-2 right-2 z-10">
+                  <HeartButton artistSlug={slug} auctionIndex={i} size={20} />
+                </div>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="group-hover:stroke-[#4ade80]/30 transition-colors">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
+              </div>
+              <div className="p-5">
+                <h3 className="text-base font-medium text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors mb-1">{auction.title}</h3>
+                <p className="text-xs text-[#666] mb-1">{artist.nameKo} | {auction.size}</p>
+                <p className="text-xs text-[#555] mb-4">{auction.medium}</p>
+                <div className="flex items-end justify-between">
+                  <div>
+                    <p className="text-[10px] text-[#555] mb-0.5">{auction.date}</p>
+                    <p className="text-lg font-semibold text-[#e8e8e8]">{auction.hammer}</p>
+                  </div>
+                  <span className="text-[10px] text-[#4ade80] bg-[#4ade80]/10 px-2 py-1 rounded">
+                    {auction.auctionHouse}
+                  </span>
+                </div>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
 
@@ -156,6 +162,16 @@ export default function ArtistPage() {
           </span>
         ))}
       </div>
+
+      {/* Auction Detail Modal */}
+      {selectedAuction && (
+        <AuctionModal
+          auction={selectedAuction}
+          allAuctions={artist.recentAuctions}
+          artistName={artist.nameKo}
+          onClose={() => setSelectedAuction(null)}
+        />
+      )}
     </div>
   );
 }
