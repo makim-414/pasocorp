@@ -798,7 +798,10 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    2. PASO ART CENTER — Museum / Full-bleed imagery
    ═══════════════════════════════════════════════════ */
-const artCenterGalleryImages = Array.from({ length: 18 }, (_, i) => `/images/paso-art-center-gallery/${i + 4}.jpg`);
+const artCenterGalleryImages = Array.from({ length: 18 }, (_, i) => {
+  const num = i + 4;
+  return `/images/paso-art-center-gallery/${num}${num === 22 ? '.png' : '.jpg'}`;
+});
 
 function ArtCenterLayout({ brand }: { brand: BrandData }) {
   const [openGallery, setOpenGallery] = useState<{ title: string; images: string[]; desc?: string } | null>(null);
@@ -1113,7 +1116,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               >
                 <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
                   <img
-                    src={brand.gallery[i % brand.gallery.length]}
+                    src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.jpg", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.jpg", "/images/soho-rising-artists.jpg"][i] || brand.gallery[i % brand.gallery.length]}
                     alt={f.title}
                     className="w-full h-full object-cover transition-all duration-700"
                   />
