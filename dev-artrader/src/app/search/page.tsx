@@ -1,9 +1,12 @@
 "use client";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
-import { searchArtists } from "@/lib/artists";
+import { searchArtists, artists, type ArtistAuctionRecord } from "@/lib/artists";
 import { incrementSearchCount } from "@/lib/search-counts";
+import AuctionModal from "@/components/AuctionModal";
+import HeartButton from "@/components/HeartButton";
+import { useExchangeRate, convertToKRW } from "@/lib/use-exchange-rate";
 import SearchInput from "../../components/SearchInput";
 
 function SearchResults() {
@@ -11,13 +14,13 @@ function SearchResults() {
   const router = useRouter();
   const query = searchParams.get("q") || "";
   const results = searchArtists(query);
+  const artist = results[0] ?? null;
+  const exchangeRate = useExchangeRate();
+  const [selectedAuction, setSelectedAuction] = useState<ArtistAuctionRecord | null>(null);
 
   useEffect(() => {
-    if (results.length === 1) {
-      router.replace(`/artist/${results[0].slug}`);
-    }
-    results.forEach((artist) => incrementSearchCount(artist.slug));
-  }, [query, results, router]);
+    results.forEach((a) => incrementSearchCount(a.slug));
+  }, [query, results]);
 
   return (
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
@@ -34,70 +37,93 @@ function SearchResults() {
         &ldquo;{query}&rdquo; 검색 결과
       </h1>
       <p className="text-sm text-[#555] mb-6">
-        {results.length > 0 ? `${results.length}명의 작가를 찾았습니다` : "검색 결과가 없습니다"}
+        {artist
+          ? `${artist.nameKo}의 작품 ${artist.recentAuctions.length}점`
+          : "검색 결과가 없습니다"}
       </p>
 
       <div className="mb-10 max-w-lg">
         <SearchInput variant="nav" initialQuery={query} />
       </div>
 
-      {results.length === 0 && (
-        <div className="text-center py-20">
-          <p className="text-[#555] text-lg mb-4">일치하는 작가를 찾을 수 없습니다</p>
-          <p className="text-[#444] text-sm">다른 검색어를 시도해 보세요</p>
+      {!artist && (
+        <div className="py-10">
+          <div className="text-center mb-10">
+            <p className="text-[#555] text-lg mb-2">일치하는 작가를 찾을 수 없습니다</p>
+            <p className="text-[#444] text-sm">다른 검색어를 시도하거나, 아래 추천 작가를 확인해 보세요</p>
+          </div>
+          <p className="text-xs text-[#555] uppercase tracking-widest mb-4">추천 작가</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {artists.slice(0, 8).map((a) => (
+              <Link
+                key={a.slug}
+                href={`/search?q=${encodeURIComponent(a.nameKo)}`}
+                className="flex items-center gap-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg px-4 py-3 hover:border-[#4ade80]/30 transition-all group"
+              >
+                <div className="w-8 h-8 bg-[#111] rounded-full flex items-center justify-center text-xs text-[#4ade80] font-semibold shrink-0">
+                  {a.nameKo[0]}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors truncate">{a.nameKo}</p>
+                  <p className="text-[10px] text-[#555] truncate">{a.nameEn}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {results.map((artist) => (
-          <Link
-            key={artist.slug}
-            href={`/artist/${artist.slug}`}
-            className="group block bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 hover:border-[#4ade80]/30 transition-all duration-300"
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h2 className="text-xl font-semibold text-white group-hover:text-[#4ade80] transition-colors">
-                  {artist.nameKo}
-                </h2>
-                <p className="text-sm text-[#555]">{artist.nameEn}</p>
+      {artist && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {artist.recentAuctions.map((auction, i) => (
+            <button
+              key={i}
+              onClick={() => setSelectedAuction(auction)}
+              className="text-left bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-all cursor-pointer group"
+            >
+              <div className="relative w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+                <div className="absolute top-2 right-2 z-10">
+                  <HeartButton artistSlug={artist.slug} auctionIndex={i} size={20} />
+                </div>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="group-hover:stroke-[#4ade80]/30 transition-colors">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
               </div>
-              <span className="text-[10px] uppercase tracking-wider text-[#4ade80] bg-[#4ade80]/10 px-2 py-1 rounded">
-                {artist.category}
-              </span>
-            </div>
+              <div className="p-5">
+                <h3 className="text-base font-medium text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors mb-1">{auction.title}</h3>
+                <p className="text-xs text-[#666] mb-1">
+                  {artist.nameKo} | {auction.size}
+                </p>
+                <p className="text-xs text-[#555] mb-4">{auction.medium}</p>
+                <div className="flex items-end justify-between">
+                  <div>
+                    <p className="text-[10px] text-[#555] mb-0.5">{auction.date}</p>
+                    <p className="text-lg font-semibold text-[#e8e8e8]">{auction.hammer}</p>
+                    {exchangeRate && (() => {
+                      const krw = convertToKRW(auction.hammer, exchangeRate);
+                      return krw ? <p className="text-[11px] text-[#666] mt-0.5">{krw}</p> : null;
+                    })()}
+                  </div>
+                  <span className="text-[10px] text-[#4ade80] bg-[#4ade80]/10 px-2 py-1 rounded">
+                    {auction.auctionHouse}
+                  </span>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
 
-            <p className="text-xs text-[#666] mb-4 line-clamp-2">{artist.bio}</p>
-
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="bg-[#111] rounded p-3">
-                <p className="text-[9px] text-[#555] uppercase tracking-wider">평균 거래가</p>
-                <p className="text-sm font-semibold text-[#e8e8e8] mt-1">{artist.stats.avgPrice}</p>
-              </div>
-              <div className="bg-[#111] rounded p-3">
-                <p className="text-[9px] text-[#555] uppercase tracking-wider">낙찰률</p>
-                <p className="text-sm font-semibold text-[#e8e8e8] mt-1">{artist.stats.hammerRate}</p>
-              </div>
-              <div className="bg-[#111] rounded p-3">
-                <p className="text-[9px] text-[#555] uppercase tracking-wider">총 거래</p>
-                <p className="text-sm font-semibold text-[#e8e8e8] mt-1">{artist.stats.totalTransactions.toLocaleString()}건</p>
-              </div>
-              <div className="bg-[#111] rounded p-3">
-                <p className="text-[9px] text-[#555] uppercase tracking-wider">연간 성장률</p>
-                <p className="text-sm font-semibold text-[#4ade80] mt-1">{artist.stats.annualGrowth}</p>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-1.5">
-              {artist.tags.map((tag) => (
-                <span key={tag} className="text-[10px] text-[#555] bg-[#111] px-2 py-0.5 rounded">
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          </Link>
-        ))}
-      </div>
+      {selectedAuction && artist && (
+        <AuctionModal
+          auction={selectedAuction}
+          allAuctions={artist.recentAuctions}
+          artistName={artist.nameKo}
+          onClose={() => setSelectedAuction(null)}
+        />
+      )}
     </div>
   );
 }

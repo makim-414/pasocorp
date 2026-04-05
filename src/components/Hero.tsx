@@ -23,6 +23,7 @@ export default function Hero() {
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
   const [hoveredBrand, setHoveredBrand] = useState<number | null>(null);
+  const [showContact, setShowContact] = useState(false);
 
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
@@ -84,19 +85,39 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-4 md:mt-6 text-[10px] md:text-sm tracking-[0.08em] uppercase text-[#888] font-light"
+          className="mt-4 md:mt-6 text-sm md:text-lg tracking-tight text-[#ccc] font-light"
         >
-          Precision-based Art Strategy & Operation
+          Corporate Art Advisory & Collection Management
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-5 md:mt-8 text-base md:text-xl font-light text-[#e8e8e8] tracking-normal"
-          style={{ fontFamily: "var(--font-dutch)" }}
+          className="mt-5 md:mt-8 text-xs md:text-base font-light text-[#888] tracking-normal max-w-2xl mx-auto leading-relaxed"
         >
-          <TextGenerateEffect words="Art · Advisory & Data · IP · Space" />
+          <TextGenerateEffect words="증여·상속·법인세 절세부터 1,500만 건 거래 데이터 기반 작품 선별까지. PASO가 기업 컬렉션의 모든 단계를 설계합니다." />
+        </motion.div>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.1 }}
+          className="mt-6 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
+        >
+          <button
+            onClick={() => setShowContact(true)}
+            className="px-6 py-2.5 bg-[#b8960b] text-black text-xs font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors"
+          >
+            문의하기
+          </button>
+          <a
+            href="/#services"
+            className="px-6 py-2.5 border border-[#333] text-[#888] text-xs tracking-wide rounded hover:border-[#555] hover:text-white transition-all"
+          >
+            서비스 살펴보기
+          </a>
         </motion.div>
 
         {/* Brand links */}
@@ -104,7 +125,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.8 }}
-          className="mt-10 md:mt-16 flex flex-wrap items-center justify-center gap-x-1.5 md:gap-x-2 gap-y-1.5 text-[9px] md:text-xs tracking-[0.1em] uppercase"
+          className="mt-6 md:mt-10 flex flex-wrap items-center justify-center gap-x-1.5 md:gap-x-2 gap-y-1.5 text-[9px] md:text-xs tracking-[0.1em] uppercase"
         >
           {brands.map((b, i, arr) => (
             <span key={b.name} className="flex items-center gap-1.5 md:gap-2">
@@ -160,6 +181,94 @@ export default function Hero() {
           className="w-px h-6 md:h-8 bg-gradient-to-b from-[#555] to-transparent"
         />
       </motion.div>
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {showContact && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center"
+            onClick={() => setShowContact(false)}
+          >
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative z-10 w-full h-full md:h-auto md:max-w-lg md:rounded-2xl bg-[#111] border border-[#1a1a1a] overflow-y-auto"
+            >
+              <div className="p-6 md:p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-1">Consultation</p>
+                    <h2 className="text-xl md:text-2xl font-light text-white">문의하기</h2>
+                  </div>
+                  <button onClick={() => setShowContact(false)} className="text-[#555] hover:text-white transition-colors p-1">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </div>
+                {/* TODO: mailto → Web3Forms API 전환 예정 (pasogallery-next 참고) */}
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const fd = new FormData(e.currentTarget);
+                    const subject = encodeURIComponent("PASO 무료 상담 신청");
+                    const body = encodeURIComponent(
+                      `이름: ${fd.get("name")}\n이메일: ${fd.get("email")}\n연락처: ${fd.get("phone")}\n소속: ${fd.get("company")}\n상담 유형: ${fd.get("consultType")}\n\n${fd.get("message")}`
+                    );
+                    window.open(`mailto:info@pasogallery.com?subject=${subject}&body=${body}`);
+                    setShowContact(false);
+                  }}
+                  className="space-y-5"
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
+                      <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
+                      <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
+                      <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">소속</label>
+                      <input name="company" type="text" placeholder="기관명 (개인은 생략 가능)" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">상담 유형</label>
+                    <select name="consultType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
+                      <option value="">선택해주세요</option>
+                      <option value="증여·상속 절세">증여·상속 절세</option>
+                      <option value="법인 미술품 비용처리">법인 미술품 비용처리</option>
+                      <option value="컬렉션 구축·리밸런싱">컬렉션 구축·리밸런싱</option>
+                      <option value="작품 가치 평가">작품 가치 평가</option>
+                      <option value="기타">기타</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">문의 내용</label>
+                    <textarea name="message" rows={3} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+                  </div>
+                  <button type="submit" className="w-full mt-2 py-3 bg-[#b8960b] text-black text-sm font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors">
+                    문의하기
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

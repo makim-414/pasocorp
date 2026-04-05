@@ -51,5 +51,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/brands/:path*", "/about/:path*", "/about-us", "/contact", "/solutions", "/spaces", "/artrader/:path*", "/search/:path*", "/artist/:path*"],
+  // _next 내부 리소스, api, 정적 파일(.확장자)을 제외한 모든 경로에서 실행.
+  // artrader.io / pasogallery.com / aboutpaso.com 호스트 분기가 전 경로에 적용되도록 하기 위함.
+  matcher: ["/((?!_next/|api/|.*\\.).*)"],
 };

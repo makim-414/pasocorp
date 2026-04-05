@@ -1,0 +1,29 @@
+"use client";
+import Link from "next/link";
+import SearchInput from "@/components/artrader/SearchInput";
+
+export default function ArtraderNav() {
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-[#1a1a1a]">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-6">
+        <Link
+          href="/artrader"
+          className="text-[#e8e8e8] text-sm tracking-normal font-normal shrink-0"
+          style={{ fontFamily: "var(--font-dutch)" }}
+        >
+          <span className="text-[#4ade80] font-semibold">Art</span>rader
+        </Link>
+
+        <SearchInput variant="nav" />
+
+        <div className="hidden md:flex items-center gap-6 text-xs tracking-[0.08em] uppercase text-[#888] shrink-0">
+          <Link href="/artrader" className="hover:text-[#4ade80] transition-colors">홈</Link>
+          <Link href="/artrader/art-market" className="hover:text-[#4ade80] transition-colors">작품 보기</Link>
+          <Link href="/artrader/purchase" className="hover:text-[#4ade80] transition-colors">구매하기</Link>
+          <Link href="/artrader/about-us" className="hover:text-[#4ade80] transition-colors">아트레이더 소개</Link>
+          <Link href="/artrader/user" className="hover:text-[#4ade80] transition-colors">마이페이지</Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
