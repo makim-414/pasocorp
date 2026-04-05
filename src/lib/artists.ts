@@ -6,15 +6,6 @@ export interface ArtistAuctionRecord {
   hammer: string;
   auctionHouse: string;
   date: string;
-  imageUrl?: string;
-  provenance?: string;
-  signature?: string;
-  frame?: string;
-  condition?: {
-    status: "양호" | "손상 확인됨";
-    details?: string;
-  };
-  edition?: string;
 }
 
 export interface Artist {
@@ -70,8 +61,8 @@ export const artists: Artist[] = [
     recentAuctions: [
       { title: "From Line No. 800152", year: 1980, medium: "Oil and mineral pigment on canvas", size: "218×291cm", hammer: "₩4,200,000,000", auctionHouse: "서울옥션", date: "2024.11" },
       { title: "Dialogue", year: 2018, medium: "Oil and mineral pigment on canvas", size: "162×130cm", hammer: "₩1,850,000,000", auctionHouse: "케이옥션", date: "2024.09" },
-      { title: "From Point No. 780217", year: 1978, medium: "Oil and mineral pigment on canvas", size: "182×227cm", hammer: "USD 2,250,000", auctionHouse: "Christie's Hong Kong", date: "2024.05" },
-      { title: "Relatum", year: 2015, medium: "Steel and stone", size: "130×180×45cm", hammer: "USD 670,000", auctionHouse: "Phillips New York", date: "2024.03" },
+      { title: "From Point No. 780217", year: 1978, medium: "Oil and mineral pigment on canvas", size: "182×227cm", hammer: "₩3,100,000,000", auctionHouse: "Christie's", date: "2024.05" },
+      { title: "Relatum", year: 2015, medium: "Steel and stone", size: "130×180×45cm", hammer: "₩920,000,000", auctionHouse: "필립스", date: "2024.03" },
       { title: "Correspondence", year: 2006, medium: "Oil and mineral pigment on canvas", size: "130×162cm", hammer: "₩780,000,000", auctionHouse: "서울옥션", date: "2023.12" },
     ],
     tags: ["모노하", "단색화", "현대미술", "추상"],
@@ -102,7 +93,7 @@ export const artists: Artist[] = [
       highestPrice: "₩13,160,000,000",
     },
     recentAuctions: [
-      { title: "05-IV-71 #200 (Universe)", year: 1971, medium: "Oil on cotton", size: "254×202cm", hammer: "USD 9,536,000", auctionHouse: "Christie's Hong Kong", date: "2019.11" },
+      { title: "05-IV-71 #200 (Universe)", year: 1971, medium: "Oil on cotton", size: "254×202cm", hammer: "₩13,160,000,000", auctionHouse: "Christie's", date: "2019.11" },
       { title: "Untitled 12-V-70 #172", year: 1970, medium: "Oil on cotton", size: "236×173cm", hammer: "₩8,500,000,000", auctionHouse: "서울옥션", date: "2024.06" },
       { title: "여인들과 항아리", year: 1950, medium: "Oil on canvas", size: "95×72cm", hammer: "₩4,700,000,000", auctionHouse: "케이옥션", date: "2024.03" },
     ],
@@ -135,7 +126,7 @@ export const artists: Artist[] = [
       highestPrice: "₩5,800,000,000",
     },
     recentAuctions: [
-      { title: "Ecriture No. 071220", year: 2007, medium: "Mixed media with Korean hanji paper on canvas", size: "195×130cm", hammer: "USD 2,320,000", auctionHouse: "Christie's Hong Kong", date: "2024.10" },
+      { title: "Ecriture No. 071220", year: 2007, medium: "Mixed media with Korean hanji paper on canvas", size: "195×130cm", hammer: "₩3,200,000,000", auctionHouse: "Christie's", date: "2024.10" },
       { title: "Ecriture(描法) No. 990505", year: 1999, medium: "Mixed media on canvas", size: "162×130cm", hammer: "₩1,450,000,000", auctionHouse: "서울옥션", date: "2024.06" },
     ],
     tags: ["단색화", "묘법", "현대미술", "추상"],
@@ -166,8 +157,8 @@ export const artists: Artist[] = [
       highestPrice: "₩10,490,000,000",
     },
     recentAuctions: [
-      { title: "Infinity Nets (TWOWQ)", year: 2005, medium: "Acrylic on canvas", size: "194×259cm", hammer: "USD 5,650,000", auctionHouse: "Christie's New York", date: "2024.11" },
-      { title: "Pumpkin", year: 2010, medium: "Acrylic on canvas", size: "130×130cm", hammer: "USD 1,670,000", auctionHouse: "Sotheby's Hong Kong", date: "2024.08" },
+      { title: "Infinity Nets (TWOWQ)", year: 2005, medium: "Acrylic on canvas", size: "194×259cm", hammer: "₩7,800,000,000", auctionHouse: "Christie's", date: "2024.11" },
+      { title: "Pumpkin", year: 2010, medium: "Acrylic on canvas", size: "130×130cm", hammer: "₩2,300,000,000", auctionHouse: "Sotheby's", date: "2024.08" },
     ],
     tags: ["팝아트", "설치미술", "현대미술", "도트"],
   },
@@ -229,7 +220,7 @@ export const artists: Artist[] = [
       highestPrice: "₩6,500,000,000",
     },
     recentAuctions: [
-      { title: "Wright Brothers", year: 1995, medium: "2 antique TV cabinets, 2 Samsung monitors, 1 laser disc player", size: "153×183×61cm", hammer: "USD 1,520,000", auctionHouse: "Christie's New York", date: "2024.09" },
+      { title: "Wright Brothers", year: 1995, medium: "2 antique TV cabinets, 2 Samsung monitors, 1 laser disc player", size: "153×183×61cm", hammer: "₩2,100,000,000", auctionHouse: "Christie's", date: "2024.09" },
     ],
     tags: ["미디어아트", "비디오아트", "설치미술", "플럭서스"],
   },
@@ -322,9 +313,9 @@ export const artists: Artist[] = [
       highestPrice: "₩2,400,000,000",
     },
     recentAuctions: [
-      { title: "Broom Life", year: 2019, medium: "Oil on linen", size: "172.7×139.7cm", hammer: "USD 1,300,000", auctionHouse: "Christie's New York", date: "2024.11" },
-      { title: "A Bit of Fun", year: 2018, medium: "Oil on linen", size: "182.9×152.4cm", hammer: "USD 870,000", auctionHouse: "Sotheby's New York", date: "2024.05" },
-      { title: "Medusa's Muse", year: 2020, medium: "Oil on linen", size: "152.4×121.9cm", hammer: "USD 690,000", auctionHouse: "Phillips London", date: "2024.03" },
+      { title: "Broom Life", year: 2019, medium: "Oil on linen", size: "172.7×139.7cm", hammer: "₩1,800,000,000", auctionHouse: "Christie's", date: "2024.11" },
+      { title: "A Bit of Fun", year: 2018, medium: "Oil on linen", size: "182.9×152.4cm", hammer: "₩1,200,000,000", auctionHouse: "Sotheby's", date: "2024.05" },
+      { title: "Medusa's Muse", year: 2020, medium: "Oil on linen", size: "152.4×121.9cm", hammer: "₩950,000,000", auctionHouse: "Phillips", date: "2024.03" },
     ],
     tags: ["페미니즘", "현대회화", "팝아트", "구상"],
   },
@@ -357,7 +348,7 @@ export const artists: Artist[] = [
     recentAuctions: [
       { title: "Issu du feu", year: 2021, medium: "Charcoal on canvas", size: "200×300cm", hammer: "₩2,800,000,000", auctionHouse: "서울옥션", date: "2024.11" },
       { title: "Landscape", year: 2019, medium: "Charcoal on canvas", size: "162×130cm", hammer: "₩1,450,000,000", auctionHouse: "케이옥션", date: "2024.06" },
-      { title: "Untitled", year: 2020, medium: "Charcoal on canvas", size: "130×97cm", hammer: "USD 490,000", auctionHouse: "Christie's Hong Kong", date: "2024.03" },
+      { title: "Untitled", year: 2020, medium: "Charcoal on canvas", size: "130×97cm", hammer: "₩680,000,000", auctionHouse: "Christie's", date: "2024.03" },
     ],
     tags: ["숯", "추상", "현대미술", "단색화"],
   },
@@ -402,7 +393,7 @@ export const artists: Artist[] = [
     ],
     stats: { avgPrice: "₩280,000,000", totalTransactions: 523, hammerRate: "70.1%", annualGrowth: "+11.3%", highestPrice: "₩3,800,000,000" },
     recentAuctions: [
-      { title: "Conjunction 21-35", year: 2021, medium: "Oil on hemp cloth", size: "200×300cm", hammer: "USD 1,740,000", auctionHouse: "Christie's Hong Kong", date: "2024.10" },
+      { title: "Conjunction 21-35", year: 2021, medium: "Oil on hemp cloth", size: "200×300cm", hammer: "₩2,400,000,000", auctionHouse: "Christie's", date: "2024.10" },
       { title: "Conjunction 19-08", year: 2019, medium: "Oil on hemp cloth", size: "162×130cm", hammer: "₩1,100,000,000", auctionHouse: "서울옥션", date: "2024.04" },
     ],
     tags: ["단색화", "접합", "배압법", "현대미술"],
@@ -424,7 +415,7 @@ export const artists: Artist[] = [
     ],
     stats: { avgPrice: "₩195,000,000", totalTransactions: 298, hammerRate: "76.3%", annualGrowth: "+19.5%", highestPrice: "₩2,600,000,000" },
     recentAuctions: [
-      { title: "Untitled", year: 1982, medium: "Korean paper", size: "162×130cm", hammer: "USD 1,160,000", auctionHouse: "Christie's Hong Kong", date: "2024.05" },
+      { title: "Untitled", year: 1982, medium: "Korean paper", size: "162×130cm", hammer: "₩1,600,000,000", auctionHouse: "Christie's", date: "2024.05" },
       { title: "Untitled", year: 1985, medium: "Korean paper", size: "130×97cm", hammer: "₩780,000,000", auctionHouse: "서울옥션", date: "2024.02" },
     ],
     tags: ["단색화", "한지", "현대미술", "추상"],
@@ -475,8 +466,8 @@ export const artists: Artist[] = [
     exhibitions: ["루이비통 재단 미술관 회고전, 파리 (2018)", "바비칸 센터 회고전, 런던 (2017)", "브루클린 미술관 회고전, 뉴욕 (2015)"],
     stats: { avgPrice: "₩18,500,000,000", totalTransactions: 2840, hammerRate: "81.3%", annualGrowth: "+8.9%", highestPrice: "₩130,000,000,000" },
     recentAuctions: [
-      { title: "El Gran Espectaculo (The Nile)", year: 1983, medium: "Acrylic on canvas", size: "172.7×358.1cm", hammer: "USD 54,340,000", auctionHouse: "Christie's New York", date: "2024.11" },
-      { title: "Untitled (Devil)", year: 1982, medium: "Oilstick on paper", size: "57.2×76.2cm", hammer: "USD 9,060,000", auctionHouse: "Sotheby's New York", date: "2024.05" },
+      { title: "El Gran Espectaculo (The Nile)", year: 1983, medium: "Acrylic on canvas", size: "172.7×358.1cm", hammer: "₩75,000,000,000", auctionHouse: "Christie's", date: "2024.11" },
+      { title: "Untitled (Devil)", year: 1982, medium: "Oilstick on paper", size: "57.2×76.2cm", hammer: "₩12,500,000,000", auctionHouse: "Sotheby's", date: "2024.05" },
     ],
     tags: ["네오표현주의", "그래피티", "현대미술", "스트리트아트"],
   },
@@ -492,8 +483,8 @@ export const artists: Artist[] = [
     exhibitions: ["메트로폴리탄 미술관 회고전, 뉴욕 (2020)", "테이트 모던 회고전, 런던 (2011)", "MoMA 회고전, 뉴욕 (2002)"],
     stats: { avgPrice: "₩12,800,000,000", totalTransactions: 3150, hammerRate: "76.8%", annualGrowth: "+6.4%", highestPrice: "₩53,000,000,000" },
     recentAuctions: [
-      { title: "Abstraktes Bild (649-2)", year: 1987, medium: "Oil on canvas", size: "200×200cm", hammer: "USD 27,530,000", auctionHouse: "Sotheby's London", date: "2024.10" },
-      { title: "Seestück (Seascape)", year: 1975, medium: "Oil on canvas", size: "200×200cm", hammer: "USD 13,400,000", auctionHouse: "Christie's London", date: "2024.05" },
+      { title: "Abstraktes Bild (649-2)", year: 1987, medium: "Oil on canvas", size: "200×200cm", hammer: "₩38,000,000,000", auctionHouse: "Sotheby's", date: "2024.10" },
+      { title: "Seestück (Seascape)", year: 1975, medium: "Oil on canvas", size: "200×200cm", hammer: "₩18,500,000,000", auctionHouse: "Christie's", date: "2024.05" },
     ],
     tags: ["추상", "포토리얼리즘", "현대미술", "독일미술"],
   },
@@ -509,8 +500,8 @@ export const artists: Artist[] = [
     exhibitions: ["테이트 브리튼 대규모 회고전, 런던 (2017)", "퐁피두 센터 회고전, 파리 (2017)", "메트로폴리탄 미술관, 뉴욕 (2017)"],
     stats: { avgPrice: "₩15,200,000,000", totalTransactions: 2650, hammerRate: "79.5%", annualGrowth: "+7.1%", highestPrice: "₩107,000,000,000" },
     recentAuctions: [
-      { title: "Nichols Canyon", year: 1980, medium: "Acrylic on canvas", size: "213.4×152.4cm", hammer: "USD 34,780,000", auctionHouse: "Phillips New York", date: "2024.11" },
-      { title: "Portrait of an Artist (Pool with Two Figures)", year: 1972, medium: "Acrylic on canvas", size: "214.5×304.8cm", hammer: "USD 77,530,000", auctionHouse: "Christie's New York", date: "2024.03" },
+      { title: "Nichols Canyon", year: 1980, medium: "Acrylic on canvas", size: "213.4×152.4cm", hammer: "₩48,000,000,000", auctionHouse: "Phillips", date: "2024.11" },
+      { title: "Portrait of an Artist (Pool with Two Figures)", year: 1972, medium: "Acrylic on canvas", size: "214.5×304.8cm", hammer: "₩107,000,000,000", auctionHouse: "Christie's", date: "2024.03" },
     ],
     tags: ["팝아트", "구상", "풍경화", "현대미술"],
   },
