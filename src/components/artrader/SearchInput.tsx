@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { searchArtists, artists, type Artist } from "@/lib/artists";
 
 interface SearchInputProps {
-  variant?: "hero" | "nav";
+  variant?: "hero" | "nav" | "market";
   initialQuery?: string;
 }
 
@@ -101,9 +101,22 @@ export default function SearchInput({ variant = "nav", initialQuery = "" }: Sear
   };
 
   const isHero = variant === "hero";
+  const isMarket = variant === "market";
+
+  const placeholder = isMarket
+    ? "작가의 작품 속에서 찾아보세요"
+    : isHero
+      ? "작가명을 입력하세요 (예: 이우환, 김환기)"
+      : "작가명, 작품명 검색...";
+
+  const inputClass = isMarket
+    ? "w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-full pl-7 pr-16 py-4 text-base text-[#e8e8e8] placeholder-[#666] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
+    : isHero
+      ? "w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-6 py-4 text-base text-[#e8e8e8] placeholder-[#555] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
+      : "w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2 text-sm text-[#e8e8e8] placeholder-[#555] focus:outline-none focus:border-[#4ade80]/50 transition-colors";
 
   return (
-    <div ref={wrapperRef} className={isHero ? "w-full" : "flex-1 max-w-md"}>
+    <div ref={wrapperRef} className={isHero || isMarket ? "w-full" : "flex-1 max-w-md"}>
       <form onSubmit={handleSubmit} className="relative">
         <input
           ref={inputRef}
@@ -114,24 +127,32 @@ export default function SearchInput({ variant = "nav", initialQuery = "" }: Sear
             if (suggestions.length > 0) setShowSuggestions(true);
           }}
           onKeyDown={handleKeyDown}
-          placeholder={isHero ? "작가명을 입력하세요 (예: 이우환, 김환기)" : "작가명, 작품명 검색..."}
-          className={
-            isHero
-              ? "w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-6 py-4 text-base text-[#e8e8e8] placeholder-[#555] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
-              : "w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2 text-sm text-[#e8e8e8] placeholder-[#555] focus:outline-none focus:border-[#4ade80]/50 transition-colors"
-          }
+          placeholder={placeholder}
+          className={inputClass}
           autoFocus={isHero}
           autoComplete="off"
         />
-        <button
-          type="submit"
-          className={`absolute top-1/2 -translate-y-1/2 text-[#555] hover:text-[#4ade80] transition-colors ${isHero ? "right-4" : "right-2"}`}
-        >
-          <svg width={isHero ? 22 : 18} height={isHero ? 22 : 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-        </button>
+        {isMarket ? (
+          <button
+            type="submit"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-[#111] border border-[#2a2a2a] text-[#888] hover:text-[#4ade80] hover:border-[#4ade80]/40 transition-colors"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className={`absolute top-1/2 -translate-y-1/2 text-[#555] hover:text-[#4ade80] transition-colors ${isHero ? "right-4" : "right-2"}`}
+          >
+            <svg width={isHero ? 22 : 18} height={isHero ? 22 : 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+        )}
 
         {showSuggestions && suggestions.length > 0 && (
           <div className="absolute top-full left-0 right-0 mt-1 bg-[#111] border border-[#2a2a2a] rounded-lg overflow-hidden z-50 shadow-xl shadow-black/50">

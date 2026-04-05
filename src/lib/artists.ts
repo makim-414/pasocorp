@@ -322,6 +322,7 @@ export const artists: Artist[] = [
       highestPrice: "₩2,400,000,000",
     },
     recentAuctions: [
+      { title: "Live Forever", year: 2021, medium: "Oil on linen", size: "26.7×26.7cm", hammer: "USD 480,000", auctionHouse: "Sotheby's New York", date: "2024.10" },
       { title: "Broom Life", year: 2019, medium: "Oil on linen", size: "172.7×139.7cm", hammer: "USD 1,300,000", auctionHouse: "Christie's New York", date: "2024.11" },
       { title: "A Bit of Fun", year: 2018, medium: "Oil on linen", size: "182.9×152.4cm", hammer: "USD 870,000", auctionHouse: "Sotheby's New York", date: "2024.05" },
       { title: "Medusa's Muse", year: 2020, medium: "Oil on linen", size: "152.4×121.9cm", hammer: "USD 690,000", auctionHouse: "Phillips London", date: "2024.03" },

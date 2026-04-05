@@ -35,20 +35,18 @@ export default function ArtMarketPage() {
 
   return (
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
-      {/* Search & Sell Button */}
-      <div className="mb-10">
-        <div className="max-w-2xl">
-          <SearchInput variant="hero" />
+      {/* Centered pill search */}
+      <div className="flex justify-center mb-8">
+        <div className="w-full max-w-xl">
+          <SearchInput variant="market" />
         </div>
       </div>
 
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="text-xl font-semibold text-white">
-          작품 ({filtered.length})
-        </h2>
+      {/* Sell button - right aligned */}
+      <div className="flex justify-end mb-10">
         <Link
           href="/artrader/sell"
-          className="px-6 py-3 bg-[#4ade80] text-black font-semibold rounded-full hover:bg-[#3bcc70] transition-colors text-sm"
+          className="px-8 py-3 bg-[#4ade80] text-black font-semibold rounded-full hover:bg-[#3bcc70] transition-colors text-sm shadow-lg shadow-[#4ade80]/10"
         >
           작품 판매하기
         </Link>
@@ -60,10 +58,10 @@ export default function ArtMarketPage() {
           <Link
             key={artwork.id}
             href={`/artrader/artist/${artwork.artistSlug}`}
-            className="group bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-colors"
+            className="group bg-[#0a0a0a] border border-[#1a1a1a] rounded-xl overflow-hidden hover:border-[#4ade80]/30 transition-colors"
           >
             {/* Thumbnail */}
-            <div className="w-full aspect-[4/3] bg-[#111] flex items-center justify-center overflow-hidden">
+            <div className="w-full aspect-square bg-[#111] flex items-center justify-center overflow-hidden">
               {artwork.imageUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -88,16 +86,16 @@ export default function ArtMarketPage() {
               )}
             </div>
             <div className="p-5">
-              <h3 className="text-base font-medium text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors mb-1 truncate">
+              <h3 className="text-base font-semibold text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors mb-1 truncate">
                 {artwork.title}
               </h3>
-              <p className="text-xs text-[#666] mb-1">
-                {artwork.artistNameKo} | {artwork.year}
+              <p className="text-xs text-[#888] mb-4">
+                {artwork.artistNameKo} | {artwork.size}
               </p>
-              <p className="text-xs text-[#555] mb-3 truncate">{artwork.medium}</p>
               <div className="flex items-end justify-between">
                 <div>
-                  <p className="text-lg font-semibold text-[#e8e8e8]">
+                  <p className="text-[10px] text-[#555] mb-0.5">{artwork.date}</p>
+                  <p className="text-base font-semibold text-[#e8e8e8]">
                     {artwork.price}
                   </p>
                   {exchangeRate && (() => {
