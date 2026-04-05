@@ -75,15 +75,24 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
           </svg>
         </button>
 
-        <div className="w-full aspect-[4/3] bg-[#111] flex items-center justify-center rounded-t-2xl">
-          <div className="text-center px-6">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="mx-auto mb-3">
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <path d="m21 15-5-5L5 21" />
-            </svg>
-            <p className="text-[#444] text-sm">작품 이미지</p>
-          </div>
+        <div className="relative w-full aspect-[4/3] bg-[#111] flex items-center justify-center rounded-t-2xl overflow-hidden">
+          {auction.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={auction.imageUrl}
+              alt={auction.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="text-center px-6">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="mx-auto mb-3">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              <p className="text-[#444] text-sm">작품 이미지</p>
+            </div>
+          )}
         </div>
 
         <div className="p-6 md:p-8">

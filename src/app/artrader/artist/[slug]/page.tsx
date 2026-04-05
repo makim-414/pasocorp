@@ -125,15 +125,24 @@ export default function ArtistPage() {
               onClick={() => setSelectedAuction(auction)}
               className="text-left bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-all cursor-pointer group"
             >
-              <div className="relative w-full aspect-[3/2] bg-[#111] flex items-center justify-center">
+              <div className="relative w-full aspect-[3/2] bg-[#111] flex items-center justify-center overflow-hidden">
                 <div className="absolute top-2 right-2 z-10">
                   <HeartButton artistSlug={slug} auctionIndex={i} size={20} />
                 </div>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="group-hover:stroke-[#4ade80]/30 transition-colors">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="m21 15-5-5L5 21" />
-                </svg>
+                {auction.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={auction.imageUrl}
+                    alt={auction.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1" className="group-hover:stroke-[#4ade80]/30 transition-colors">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="m21 15-5-5L5 21" />
+                  </svg>
+                )}
               </div>
               <div className="p-5">
                 <h3 className="text-base font-medium text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors mb-1">{auction.title}</h3>
