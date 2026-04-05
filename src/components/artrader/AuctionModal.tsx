@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import type { ArtistAuctionRecord } from "@/lib/artists";
+import { useExchangeRate, convertToKRW } from "@/lib/use-exchange-rate";
 
 interface Props {
   auction: ArtistAuctionRecord;
@@ -23,6 +24,8 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
   const [showPurchaseConfirm, setShowPurchaseConfirm] = useState(false);
   const [purchaseComplete, setPurchaseComplete] = useState(false);
   const [showConditionDetail, setShowConditionDetail] = useState(false);
+  const exchangeRate = useExchangeRate();
+  const krwPrice = exchangeRate ? convertToKRW(auction.hammer, exchangeRate) : null;
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -131,13 +134,18 @@ export default function AuctionModal({ auction, allAuctions, artistName, onClose
               { label: "크기", value: auction.size },
               { label: "경매사", value: auction.auctionHouse },
               { label: "경매일", value: auction.date },
-              { label: "가격", value: auction.hammer, highlight: true },
+              { label: "낙찰가", value: auction.hammer, highlight: true },
             ].map((row) => (
               <div key={row.label} className="flex items-center justify-between py-2 border-b border-[#1a1a1a]">
                 <span className="text-sm font-medium text-[#888]">{row.label}</span>
-                <span className={`text-sm ${row.highlight ? "text-[#4ade80] font-semibold text-base" : "text-[#e8e8e8]"}`}>
-                  {row.value}
-                </span>
+                <div className="text-right">
+                  <span className={`text-sm ${row.highlight ? "text-[#4ade80] font-semibold text-base" : "text-[#e8e8e8]"}`}>
+                    {row.value}
+                  </span>
+                  {row.highlight && krwPrice && (
+                    <p className="text-[11px] text-[#666] mt-0.5">{krwPrice}</p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
