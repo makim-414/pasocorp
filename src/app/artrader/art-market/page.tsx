@@ -16,7 +16,6 @@ const sampleArtworks = artists.flatMap((artist) =>
     price: auction.hammer,
     auctionHouse: auction.auctionHouse,
     date: auction.date,
-    imageUrl: auction.imageUrl,
   }))
 );
 
@@ -60,30 +59,21 @@ export default function ArtMarketPage() {
             href={`/artrader/artist/${artwork.artistSlug}`}
             className="group bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#4ade80]/30 transition-colors"
           >
-            {/* Thumbnail */}
-            <div className="w-full aspect-[4/3] bg-[#111] flex items-center justify-center overflow-hidden">
-              {artwork.imageUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={artwork.imageUrl}
-                  alt={artwork.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              ) : (
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#333"
-                  strokeWidth="1"
-                  className="group-hover:stroke-[#4ade80]/30 transition-colors"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="m21 15-5-5L5 21" />
-                </svg>
-              )}
+            {/* Thumbnail placeholder */}
+            <div className="w-full aspect-[4/3] bg-[#111] flex items-center justify-center">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#333"
+                strokeWidth="1"
+                className="group-hover:stroke-[#4ade80]/30 transition-colors"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
             </div>
             <div className="p-5">
               <h3 className="text-base font-medium text-[#e8e8e8] group-hover:text-[#4ade80] transition-colors mb-1 truncate">

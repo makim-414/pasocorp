@@ -113,9 +113,9 @@ const brandsData: Record<string, {
       { title: "미술품 절세 자문", desc: "증여·상속세 절세 전략, 법인 비용처리·감가상각 최적화, 세무 리스크 관리.", image: "/images/services/tax-advisory.jpg" },
       { title: "자산관리 & 평가", desc: "미술품 포트폴리오 구축, 시장가 기반 가치 평가, Private-Sale 거래 중개.", image: "/brands/artledger-consulting.jpg" },
       { title: "컬렉팅 자문", desc: "체계적 컬렉션 전략 수립, 작품 선별·매입 자문, 장기 자산 관리.", image: "/images/services/collecting-advisory.jpg" },
-      { title: "세금 & 법률 세미나", desc: "미술품 관련 세무·법률 이슈를 다루는 정기 세미나 프로그램." },
-      { title: "컬렉팅 강의", desc: "입문자부터 전문 컬렉터까지, 단계별 컬렉팅 교육 과정." },
-      { title: "전문가 네트워킹", desc: "세무사·변호사·큐레이터 등 전문가 초청 강연 및 네트워킹 이벤트." },
+      { title: "세금 & 법률 세미나", desc: "미술품 세무·법률 이슈를 다루는 정기 세미나" },
+      { title: "컬렉팅 강의", desc: "입문자부터 전문 컬렉터까지 단계별 교육 과정" },
+      { title: "전문가 네트워킹", desc: "전문가 초청 강연 및 네트워킹 이벤트 운영" },
     ],
   },
 };
