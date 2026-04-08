@@ -16,7 +16,7 @@ const solutions = [
     brand: "Artrader",
     slug: "artrader",
     title: "Data & Market Intelligence",
-    desc: "글로벌 경매·Private Sales 1,500만+ 거래 데이터. Artist Index, 시장 분석 리포트, 포트폴리오 트래커.",
+    desc: "글로벌 경매·Private Sales 1,500만+ 거래 데이터 기반 시장 분석 플랫폼.",
     color: "#b8960b",
     features: ["Artist Index 정량 리포트", "실시간 경매 데이터", "포트폴리오 가치 모니터링", "트렌드 예측 시그널"],
     image: "/brands/artrader-platform-hd.png",
@@ -74,7 +74,7 @@ export default function SolutionsContent() {
           >
             Integrated Art Solutions
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-lg text-[#888] font-light max-w-2xl">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xl text-[#ccc] font-light max-w-2xl">
             데이터 분석부터 자문, 전시, IP 라이선싱까지. 미술 생태계의 모든 가치 사슬을 하나로.
           </motion.p>
         </div>
@@ -92,11 +92,11 @@ export default function SolutionsContent() {
               <div className={i % 2 ? "lg:order-2" : ""}>
                 <p className="text-[10px] tracking-[0.2em] uppercase mb-3" style={{ color: s.color }}>{s.brand}</p>
                 <h2 className="text-2xl md:text-3xl font-light text-white mb-4" style={{ fontFamily: "var(--font-dutch)" }}>{s.title}</h2>
-                <p className="text-sm text-[#888] font-light leading-relaxed mb-6">{s.desc}</p>
+                <p className="text-base text-[#999] font-normal leading-relaxed mb-6">{s.desc}</p>
                 <ul className="space-y-2 mb-8">
                   {s.features.map((f) => (
-                    <li key={f} className="text-sm text-[#666] font-light flex items-center gap-3">
-                      <span className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: s.color }} />
+                    <li key={f} className="text-base text-[#ccc] font-normal flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: s.color }} />
                       {f}
                     </li>
                   ))}
