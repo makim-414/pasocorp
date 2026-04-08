@@ -21,7 +21,7 @@ export default function SpacesContent() {
       {/* ── Hero with Background Image ── */}
       <section className="relative h-[70vh] md:h-[80vh] flex items-end overflow-hidden">
         <Image
-          src="/images/gallery/Slide 16_9 - 1416.png"
+          src="/images/gallery/slide-hero.png"
           alt="Paso Gallery Heritage 외관"
           fill
           className="object-cover"
@@ -102,17 +102,27 @@ export default function SpacesContent() {
       {/* ── Space Info ── */}
       <section className="py-24 md:py-32 bg-[#111] border-b border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="max-w-xl">
-            <div className="w-12 h-[3px] bg-[#888] mb-6" />
-            <h2 className="text-2xl md:text-3xl text-white font-semibold mb-1">Space</h2>
-            <p className="text-[#aaa] text-sm mb-8">공간 소개</p>
-            <div className="space-y-2 text-sm text-[#999] font-light">
-              <p>주소지 : 서울특별시 종로구 성균관로 92</p>
-              <p>면적 : 약 231m², 70평</p>
-              <p>수용 인원 : 최대 50명</p>
-              <p>테이블 / 의자 : 간이 의자 약 20개 구비, 테이블 사용 가능</p>
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div {...fadeUp}>
+              <div className="w-12 h-[3px] bg-[#888] mb-6" />
+              <h2 className="text-2xl md:text-3xl text-white font-semibold mb-1">Space</h2>
+              <p className="text-[#aaa] text-sm mb-8">공간 소개</p>
+              <div className="space-y-2 text-sm text-[#999] font-light">
+                <p>주소지 : 서울특별시 종로구 성균관로 92</p>
+                <p>면적 : 약 231m², 70평</p>
+                <p>수용 인원 : 최대 50명</p>
+                <p>테이블 / 의자 : 간이 의자 약 20개 구비, 테이블 사용 가능</p>
+              </div>
+            </motion.div>
+            <motion.div {...fadeUp} className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src="/images/gallery/slide-hero.png"
+                alt="Space by PASO 내부"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -184,7 +194,7 @@ export default function SpacesContent() {
             <motion.div {...fadeUp}>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
               <h2
-                className="text-3xl md:text-5xl font-medium text-white mb-6"
+                className="text-2xl md:text-4xl font-medium text-white mb-6"
                 style={{ fontFamily: "var(--font-noto-serif)" }}
               >
                 공간 대관 문의

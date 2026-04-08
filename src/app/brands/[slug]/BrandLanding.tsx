@@ -364,22 +364,24 @@ function BrandHero({ brand }: { brand: BrandData }) {
       {!isArtrader && <div className="absolute inset-0 bg-black/60" />}
       {!isArtrader && <div className="absolute inset-0" style={{ background: `linear-gradient(to top, black 0%, black 15%, transparent 60%)` }} />}
       {!isArtrader && <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full">
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xs tracking-[0.15em] text-[#b8960b] mb-4">{brand.year}</motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-4xl md:text-7xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</motion.h1>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-4 text-lg text-[#ccc] font-light max-w-4xl whitespace-pre-line">{brand.desc}</motion.p>
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xs tracking-[0.15em] text-[#4ade80] mb-4">{brand.year}</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-5xl md:text-8xl font-bold text-white tracking-tight">{brand.name}</motion.h1>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-6 text-lg md:text-xl text-white/80 font-normal max-w-3xl leading-relaxed whitespace-pre-line">{brand.desc}</motion.p>
+        </div>
         {isArtrader && (
           <motion.a
             href="https://artrader.io"
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7 }}
-            className="inline-flex items-center gap-1.5 mt-6 px-5 py-2.5 border border-[#4ade80] text-[#4ade80] text-xs font-medium tracking-wide rounded hover:bg-[#4ade80] hover:text-black transition-all duration-300"
+            className="self-start shrink-0 inline-flex items-center gap-2 px-4 py-2 md:flex-col md:items-center md:justify-center md:w-32 md:h-32 md:px-0 md:py-0 md:self-end md:mb-2 bg-[#4ade80] text-black rounded-xl md:rounded-2xl hover:bg-[#3ecb6e] hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_30px_rgba(74,222,128,0.25)]"
           >
-            artrader.io 바로가기
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span className="text-[11px] font-bold tracking-wide md:mt-2 md:text-center md:leading-relaxed">아트레이더<br className="hidden md:inline" /> 바로가기</span>
           </motion.a>
         )}
       </div>
@@ -507,7 +509,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((s, i) => (
             <motion.div key={s.label} {...stagger(i)} className="text-center">
-              <p className="text-3xl md:text-4xl font-light text-[#b8960b]" style={{ fontFamily: "var(--font-dutch)" }}>
+              <p className="text-3xl md:text-4xl font-bold text-[#4ade80]">
                 <CountUp end={s.end} suffix={s.suffix} decimals={s.decimals} duration={2000} />
               </p>
               <p className="mt-2 text-[10px] tracking-[0.15em] uppercase text-[#555]">{s.label}</p>
@@ -517,39 +519,38 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Vision ── */}
-      <section className="bg-[#111] py-24 md:py-32">
+      <section className="bg-[#111] py-14 md:py-20">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
-              아트를 금융 자산처럼<br />투명하게 거래하는생태계를 만들어요
+          <motion.div {...fadeUp} className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight mb-4">
+              아트를 금융 자산처럼<br />투명하게 거래하는 생태계를 만들어요
             </h2>
-            <p className="text-[#888] font-light leading-relaxed max-w-2xl mx-auto text-base md:text-lg">
-              아트레이더는 미술 시장의 흩어진 데이터를 정제해,<br className="hidden md:block" />
-              시세 예측과 안전한 거래를 돕는새로운 미술품 거래 환경을 만들어가고 있어요.
+            <p className="text-[#888] font-light leading-relaxed max-w-2xl mx-auto text-base">
+              아트레이더는 미술 시장의 흩어진 데이터를 정제해, 시세 예측과 안전한 거래를 돕는 새로운 미술품 거래 환경을 만들어가고 있어요.
             </p>
           </motion.div>
           {/* Seller - Artrader - Buyer diagram */}
-          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10">
             {/* Seller */}
-            <div className="flex flex-col gap-4 items-center">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em] font-medium mb-2">Seller</p>
+            <div className="flex flex-col gap-2.5 items-center">
+              <p className="text-[#4ade80] text-xs tracking-[0.15em] font-medium mb-1">Seller</p>
               {["구매자의 구매이력", "유사 경매기록 데이터", "작품 인보이스"].map((item, i) => (
-                <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-xl px-8 py-4 text-center min-w-[220px]">
+                <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-lg px-6 py-2.5 text-center min-w-[200px]">
                   <p className="text-white text-sm font-light">{item}</p>
                 </motion.div>
               ))}
             </div>
             {/* Artrader logo */}
-            <div className="flex flex-col items-center gap-3 my-4 lg:my-0">
-              <div className="w-24 h-24 md:w-28 md:h-28 bg-[#111] border border-[#333] rounded-2xl flex items-center justify-center shadow-xl overflow-hidden">
+            <div className="flex flex-col items-center my-2 lg:my-0">
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-[#111] border border-[#333] rounded-2xl flex items-center justify-center shadow-xl overflow-hidden">
                 <img src="/brands/artrader-new.png" alt="Artrader" className="w-full h-full object-cover" />
               </div>
             </div>
             {/* Buyer */}
-            <div className="flex flex-col gap-4 items-center">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em] font-medium mb-2">Buyer</p>
+            <div className="flex flex-col gap-2.5 items-center">
+              <p className="text-[#4ade80] text-xs tracking-[0.15em] font-medium mb-1">Buyer</p>
               {["진품 보증서", "작품 상태 보고서", "소장 이력 (프로비넌스)"].map((item, i) => (
-                <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-xl px-8 py-4 text-center min-w-[220px]">
+                <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-lg px-6 py-2.5 text-center min-w-[200px]">
                   <p className="text-white text-sm font-light">{item}</p>
                 </motion.div>
               ))}
@@ -558,58 +559,59 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* ── Auction / PS Data ── */}
-      <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-hidden">
+      {/* ── Auction / PS Data + Artist Index (combined) ── */}
+      <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            <div className="flex flex-col gap-5">
+          {/* Header row */}
+          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-10">
+            <div className="flex flex-col gap-3">
               <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
-              <h3 className="text-3xl md:text-5xl font-light text-white leading-tight">
+              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
                 작품 검색부터 거래까지<br />아트레이더 하나로
               </h3>
-              <p className="text-[#888] font-light leading-relaxed text-lg max-w-xl">
+              <p className="text-[#888] font-light leading-relaxed text-base max-w-xl">
                 국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
               </p>
+              <a
+                href="https://artrader.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="self-start inline-flex items-center gap-2 mt-4 px-5 py-2.5 border border-[#4ade80] text-[#4ade80] text-sm font-medium tracking-wide rounded hover:bg-[#4ade80] hover:text-black transition-all duration-300"
+              >
+                직접 확인하기
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
             </div>
             {/* 3D Cube */}
             <motion.div {...fadeUp} className="relative shrink-0" style={{ perspective: "600px" }}>
-              <div className="relative w-48 h-48 md:w-56 md:h-56" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
-                <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(48px)" }}>
+              <div className="relative w-40 h-40 md:w-48 md:h-48" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
+                <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(40px)" }}>
                   <div className="flex flex-col items-center justify-center h-full p-4 text-center">
                     <p className="text-[10px] md:text-xs text-[#4ade80] tracking-wider leading-relaxed">글로벌 미술 거래<br />데이터베이스</p>
                   </div>
                 </div>
-                <div className="absolute inset-0 border border-[#4ade80]/30 bg-[#4ade80]/5" style={{ transform: "rotateY(90deg) translateZ(48px)" }}>
+                <div className="absolute inset-0 border border-[#4ade80]/30 bg-[#4ade80]/5" style={{ transform: "rotateY(90deg) translateZ(40px)" }}>
                   <div className="flex items-center justify-center h-full p-4 text-center">
                     <p className="text-[10px] md:text-xs text-[#4ade80]/70 tracking-wider leading-relaxed">미술품 시장·가치<br />분석 리서치</p>
                   </div>
                 </div>
-                <div className="absolute inset-0 border border-[#4ade80]/20 bg-[#4ade80]/15" style={{ transform: "rotateX(90deg) translateZ(48px)" }}>
+                <div className="absolute inset-0 border border-[#4ade80]/20 bg-[#4ade80]/15" style={{ transform: "rotateX(90deg) translateZ(40px)" }}>
                 </div>
               </div>
             </motion.div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* ── Artrader Artist Index ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          {/* Artist Index Chart */}
           <motion.div {...fadeUp}>
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>
-              Artrader Artist Index
-            </h3>
-
-            {/* Chart */}
-            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8 mb-10">
-              <div className="flex justify-between text-[10px] text-[#555] mb-4">
+            <h4 className="text-lg md:text-xl font-semibold text-white mb-4">Artrader Artist Index</h4>
+            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-4 md:p-6 mb-6">
+              <div className="flex justify-between text-[10px] text-[#555] mb-3">
                 {["'08", "'10", "'12", "'14", "'16", "'18", "'20", "'22", "'24"].map(y => (
                   <span key={y}>{y}</span>
                 ))}
               </div>
               <div className="relative">
                 <ChartWithMotion />
-                {/* Y-axis labels */}
                 <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-[10px] text-[#555] -ml-1">
                   <span>6,000M</span>
                   <span>4,000M</span>
@@ -619,15 +621,15 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             </div>
 
             {/* Stats grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {indexStats.map((s, i) => (
                 <motion.div
                   key={s.label}
                   {...stagger(i)}
-                  className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-4"
+                  className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-3"
                 >
-                  <p className="text-[10px] tracking-wider text-[#555] uppercase mb-2">{s.label}</p>
-                  <p className={`text-xl md:text-2xl font-semibold ${s.up ? "text-[#4ade80]" : "text-[#ef4444]"}`}>
+                  <p className="text-[10px] tracking-wider text-[#555] uppercase mb-1">{s.label}</p>
+                  <p className={`text-lg md:text-xl font-semibold ${s.up ? "text-[#4ade80]" : "text-[#ef4444]"}`}>
                     {s.up ? "▲" : "▼"} {s.value}%
                   </p>
                   <p className="text-[9px] text-[#444] mt-1">{s.sub}</p>
@@ -638,14 +640,14 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
-      {/* ── Artist Data Analytics ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Text */}
-            <div className="flex flex-col gap-5 order-2 lg:order-1">
+      {/* ── Artist Data Analytics + Art Sales Performance (combined) ── */}
+      <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-16">
+          {/* Artist Data Analytics */}
+          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col gap-4 order-2 lg:order-1">
               <p className="text-[#4ade80] text-sm tracking-[0.15em]">Artist data Analytics</p>
-              <h3 className="text-3xl md:text-4xl font-light text-white leading-tight">
+              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
                 검증된 데이터로<br />적정 가격 제시
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
@@ -653,28 +655,14 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 가격·유동성·경쟁작가 지수 비교
               </p>
             </div>
-            {/* Phones */}
             <div className="flex gap-6 justify-center items-start order-1 lg:order-2">
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 3.png"
-                alt="Artrader Fair Price"
-                className="w-40 md:w-52 object-contain drop-shadow-2xl"
-              />
-              <img
-                src="/brands/iPhone 14 Pro Max - Screen 4.png"
-                alt="Artrader Verification"
-                className="w-40 md:w-52 object-contain drop-shadow-2xl"
-              />
+              <img src="/brands/iPhone 14 Pro Max - Screen 3.png" alt="Artrader Fair Price" className="w-48 md:w-56 object-contain drop-shadow-2xl" />
+              <img src="/brands/iPhone 14 Pro Max - Screen 4.png" alt="Artrader Verification" className="w-48 md:w-56 object-contain drop-shadow-2xl" />
             </div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* ── Art Sales Performance ── */}
-      <section className="bg-black py-20 md:py-28 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Mini dashboard */}
+          {/* Art Sales Performance */}
+          <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
               <p className="text-xs text-[#555] uppercase tracking-wider mb-6">Sales Dashboard</p>
               <div className="grid grid-cols-2 gap-4 mb-6">
@@ -690,26 +678,19 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                   </div>
                 ))}
               </div>
-              {/* Mini bar chart */}
               <div className="flex items-end gap-1.5 h-20">
                 {[40, 55, 35, 70, 60, 80, 45, 90, 65, 75, 50, 85].map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-[#4ade80]/20 rounded-t hover:bg-[#4ade80]/40 transition-colors"
-                    style={{ height: `${h}%` }}
-                  />
+                  <div key={i} className="flex-1 bg-[#4ade80]/20 rounded-t hover:bg-[#4ade80]/40 transition-colors" style={{ height: `${h}%` }} />
                 ))}
               </div>
             </div>
-            {/* Text */}
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               <p className="text-[#4ade80] text-sm tracking-[0.15em]">Art Sales Performance</p>
-              <h3 className="text-3xl md:text-4xl font-light text-white leading-tight">
+              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
                 보조지표 대시보드<br />시각화
               </h3>
               <p className="text-[#888] font-light leading-relaxed max-w-lg">
-                호당가·도상별 판매 추이 등 보조지표
-                상승률·회전율 대시보드 시각화
+                호당가·도상별 판매 추이 등 보조지표 상승률·회전율 대시보드 시각화
               </p>
             </div>
           </motion.div>
@@ -717,17 +698,17 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Trust & Verification Cards ── */}
-      <section className="bg-[#0d1117] py-20 md:py-28 border-t border-[#1a1a1a]">
+      <section className="bg-[#0d1117] py-14 md:py-20 border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
+          <motion.div {...fadeUp} className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-normal text-white mb-3">
               안전한 거래를 보장해요
             </h2>
-            <p className="text-[#888] font-light leading-relaxed max-w-xl mx-auto">
+            <p className="text-sm text-[#888] font-light leading-relaxed max-w-xl mx-auto">
               모든 작품은 자료 기반으로 검수되고, 신뢰할 수 없는 매물은 등록이 제한됩니다.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
               {
                 title: "프로비넌스",
@@ -779,11 +760,11 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               <motion.div
                 key={card.title}
                 {...stagger(i)}
-                className="bg-[#161b22] border border-[#21262d] rounded-xl p-8 hover:border-[#4ade80]/30 transition-colors"
+                className="bg-[#161b22] border border-[#21262d] rounded-xl p-5 hover:border-[#4ade80]/30 transition-colors"
               >
-                <div className="mb-5">{card.icon}</div>
-                <h4 className="text-lg font-semibold text-white mb-2">{card.title}</h4>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{card.desc}</p>
+                <div className="mb-3">{card.icon}</div>
+                <h4 className="text-base font-semibold text-white mb-1.5">{card.title}</h4>
+                <p className="text-xs text-[#888] font-light leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -1428,7 +1409,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
                 <div className="overflow-hidden mb-6">
                   <img src={f.image || brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
-                <p className="text-sm tracking-[0.08em] uppercase text-white mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</p>
+                <p className="text-lg tracking-[0.08em] text-white mb-3 font-normal">{f.title}</p>
                 <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
@@ -1461,8 +1442,8 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
             {brand.features.slice(3, 6).map((f, i) => (
               <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors duration-500">
                 <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">0{i + 1}</p>
-                <h3 className="text-lg text-white font-light mb-3">{f.title}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
+                <h3 className="text-lg tracking-[0.08em] text-white font-normal mb-3">{f.title}</h3>
+                <p className="text-base text-[#888] font-light leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -1470,17 +1451,18 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* Target clients */}
-      <section className="py-24 md:py-32 bg-black">
+      <section className="py-24 md:py-32 bg-[#050505]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">For</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">누구를 위한 서비스인가</motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-4">
             {targets.map((t, i) => (
-              <motion.div key={t.label} {...stagger(i)} className="group">
-                <p className="text-[#b8960b] text-xs mb-3">{t.icon}</p>
-                <h3 className="text-lg text-white font-light mb-3">{t.label}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{t.desc}</p>
-                <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
+              <motion.div key={t.label} {...stagger(i)} className="group flex items-center gap-8 bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#b8960b]/30 rounded-lg p-8 md:p-10 transition-all duration-500">
+                <span className="text-4xl md:text-5xl font-light text-[#222] group-hover:text-[#b8960b] transition-colors duration-500">0{i + 1}</span>
+                <div className="flex-1">
+                  <h3 className="text-lg md:text-xl text-white font-normal mb-2">{t.label}</h3>
+                  <p className="text-base text-[#888] font-light leading-relaxed">{t.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
