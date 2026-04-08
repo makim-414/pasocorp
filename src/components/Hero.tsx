@@ -24,6 +24,7 @@ export default function Hero() {
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
   const [hoveredBrand, setHoveredBrand] = useState<number | null>(null);
   const [showContact, setShowContact] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
@@ -211,17 +212,28 @@ export default function Hero() {
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                   </button>
                 </div>
-                {/* TODO: mailto → Web3Forms API 전환 예정 (pasogallery-next 참고) */}
                 <form
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
+                    setFormStatus("sending");
                     const fd = new FormData(e.currentTarget);
-                    const subject = encodeURIComponent("PASO 무료 상담 신청");
-                    const body = encodeURIComponent(
-                      `이름: ${fd.get("name")}\n이메일: ${fd.get("email")}\n연락처: ${fd.get("phone")}\n소속: ${fd.get("company")}\n상담 유형: ${fd.get("consultType")}\n\n${fd.get("message")}`
-                    );
-                    window.open(`mailto:info@pasogallery.com?subject=${subject}&body=${body}`);
-                    setShowContact(false);
+                    fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+                    fd.append("subject", "PASO 무료 상담 신청");
+                    fd.append("from_name", "PASO 웹사이트");
+                    try {
+                      const res = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        body: fd,
+                      });
+                      if (res.ok) {
+                        setFormStatus("sent");
+                        setTimeout(() => { setShowContact(false); setFormStatus("idle"); }, 1500);
+                      } else {
+                        setFormStatus("error");
+                      }
+                    } catch {
+                      setFormStatus("error");
+                    }
                   }}
                   className="space-y-5"
                 >
@@ -260,8 +272,15 @@ export default function Hero() {
                     <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">문의 내용</label>
                     <textarea name="message" rows={3} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
                   </div>
-                  <button type="submit" className="w-full mt-2 py-3 bg-[#b8960b] text-black text-sm font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors">
-                    문의하기
+                  {formStatus === "error" && (
+                    <p className="text-red-400 text-xs">전송에 실패했습니다. 다시 시도해주세요.</p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={formStatus === "sending" || formStatus === "sent"}
+                    className="w-full mt-2 py-3 bg-[#b8960b] text-black text-sm font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {formStatus === "sending" ? "전송 중..." : formStatus === "sent" ? "문의가 접수되었습니다" : "문의하기"}
                   </button>
                 </form>
               </div>

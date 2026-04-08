@@ -59,7 +59,7 @@ function Counter({ value, label }: { value: string; label: string }) {
       transition={{ duration: 0.7 }}
       className="text-center"
     >
-      <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight text-white leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
+      <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight leading-tight" style={{ fontFamily: "var(--font-dutch)", color: "#C9A96E" }}>
         {prefix}{formatNumber(displayNum, decimals, hasCommas)}{suffix}
       </p>
       <p className="text-[9px] sm:text-[10px] tracking-[0.12em] uppercase text-[#555] mt-2 sm:mt-3 whitespace-pre-line leading-relaxed">{label}</p>

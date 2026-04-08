@@ -563,7 +563,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           {/* Header row */}
-          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-10">
+          <motion.div {...fadeUp} className="flex flex-col gap-6 mb-10">
             <div className="flex flex-col gap-3">
               <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
               <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
@@ -582,23 +582,6 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </a>
             </div>
-            {/* 3D Cube */}
-            <motion.div {...fadeUp} className="relative shrink-0" style={{ perspective: "600px" }}>
-              <div className="relative w-40 h-40 md:w-48 md:h-48" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
-                <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(40px)" }}>
-                  <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80] tracking-wider leading-relaxed">글로벌 미술 거래<br />데이터베이스</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 border border-[#4ade80]/30 bg-[#4ade80]/5" style={{ transform: "rotateY(90deg) translateZ(40px)" }}>
-                  <div className="flex items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80]/70 tracking-wider leading-relaxed">미술품 시장·가치<br />분석 리서치</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 border border-[#4ade80]/20 bg-[#4ade80]/15" style={{ transform: "rotateX(90deg) translateZ(40px)" }}>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Artist Index Chart */}
@@ -1495,14 +1478,29 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
 
             <motion.div {...fadeUp}>
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const subject = encodeURIComponent("Artledger Consulting 문의");
-                  const body = encodeURIComponent(
-                    `이름: ${formData.get("name")}\n이메일: ${formData.get("email")}\n연락처: ${formData.get("phone")}\n소속: ${formData.get("company")}\n상담 유형: ${formData.get("consultType")}\n\n${formData.get("message")}`
-                  );
-                  window.open(`mailto:info@pasogallery.com?subject=${subject}&body=${body}`);
+                  const btn = e.currentTarget.querySelector("button[type=submit]") as HTMLButtonElement;
+                  btn.disabled = true;
+                  btn.textContent = "전송 중...";
+                  const fd = new FormData(e.currentTarget);
+                  fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+                  fd.append("subject", "Artledger Consulting 문의");
+                  fd.append("from_name", "PASO 웹사이트");
+                  try {
+                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
+                    if (res.ok) {
+                      btn.textContent = "문의가 접수되었습니다";
+                      setTimeout(() => { btn.disabled = false; btn.textContent = "문의하기"; }, 2000);
+                      e.currentTarget.reset();
+                    } else {
+                      btn.textContent = "전송 실패 — 다시 시도해주세요";
+                      btn.disabled = false;
+                    }
+                  } catch {
+                    btn.textContent = "전송 실패 — 다시 시도해주세요";
+                    btn.disabled = false;
+                  }
                 }}
                 className="space-y-6"
               >
