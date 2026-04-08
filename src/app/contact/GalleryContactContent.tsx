@@ -115,14 +115,29 @@ export default function GalleryContactContent() {
 
             <motion.div {...fadeUp}>
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const subject = encodeURIComponent("공간 대관 문의");
-                  const body = encodeURIComponent(
-                    `이름: ${formData.get("name")}\n연락처: ${formData.get("phone")}\n대관 요청 희망일: ${formData.get("date")}\n행사 유형: ${formData.get("eventType")}\n\n${formData.get("message")}`
-                  );
-                  window.open(`mailto:info@pasogallery.com?subject=${subject}&body=${body}`);
+                  const btn = e.currentTarget.querySelector("button[type=submit]") as HTMLButtonElement;
+                  btn.disabled = true;
+                  btn.textContent = "전송 중...";
+                  const fd = new FormData(e.currentTarget);
+                  fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+                  fd.append("subject", "공간 대관 문의");
+                  fd.append("from_name", "PASO 웹사이트");
+                  try {
+                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
+                    if (res.ok) {
+                      btn.textContent = "문의가 접수되었습니다";
+                      setTimeout(() => { btn.disabled = false; btn.textContent = "문의하기"; }, 2000);
+                      e.currentTarget.reset();
+                    } else {
+                      btn.textContent = "전송 실패 — 다시 시도해주세요";
+                      btn.disabled = false;
+                    }
+                  } catch {
+                    btn.textContent = "전송 실패 — 다시 시도해주세요";
+                    btn.disabled = false;
+                  }
                 }}
                 className="space-y-6"
               >

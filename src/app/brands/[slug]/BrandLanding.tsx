@@ -558,36 +558,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
+
       {/* ── Auction / PS Data ── */}
       <section className="bg-black py-24 md:py-32 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            <div className="flex flex-col gap-5">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
-              <h3 className="text-3xl md:text-5xl font-light text-white leading-tight">
-                작품 검색부터 거래까지<br />아트레이더 하나로
-              </h3>
-              <p className="text-[#888] font-light leading-relaxed text-lg max-w-xl">
-                국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
-              </p>
-            </div>
-            {/* 3D Cube */}
-            <motion.div {...fadeUp} className="relative shrink-0" style={{ perspective: "600px" }}>
-              <div className="relative w-48 h-48 md:w-56 md:h-56" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
-                <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(48px)" }}>
-                  <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80] tracking-wider leading-relaxed">글로벌 미술 거래<br />데이터베이스</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 border border-[#4ade80]/30 bg-[#4ade80]/5" style={{ transform: "rotateY(90deg) translateZ(48px)" }}>
-                  <div className="flex items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80]/70 tracking-wider leading-relaxed">미술품 시장·가치<br />분석 리서치</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 border border-[#4ade80]/20 bg-[#4ade80]/15" style={{ transform: "rotateX(90deg) translateZ(48px)" }}>
-                </div>
-              </div>
-            </motion.div>
+          <motion.div {...fadeUp} className="flex flex-col gap-5">
+            <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
+            <h3 className="text-3xl md:text-5xl font-light text-white leading-tight">
+              작품 검색부터 거래까지<br />아트레이더 하나로
+            </h3>
+            <p className="text-[#888] font-light leading-relaxed text-lg max-w-xl">
+              국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
+            </p>
           </motion.div>
         </div>
       </section>
@@ -1510,14 +1492,29 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
 
             <motion.div {...fadeUp}>
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const subject = encodeURIComponent("Artledger Consulting 문의");
-                  const body = encodeURIComponent(
-                    `이름: ${formData.get("name")}\n이메일: ${formData.get("email")}\n연락처: ${formData.get("phone")}\n소속: ${formData.get("company")}\n상담 유형: ${formData.get("consultType")}\n\n${formData.get("message")}`
-                  );
-                  window.open(`mailto:info@pasogallery.com?subject=${subject}&body=${body}`);
+                  const btn = e.currentTarget.querySelector("button[type=submit]") as HTMLButtonElement;
+                  btn.disabled = true;
+                  btn.textContent = "전송 중...";
+                  const fd = new FormData(e.currentTarget);
+                  fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+                  fd.append("subject", "Artledger Consulting 문의");
+                  fd.append("from_name", "PASO 웹사이트");
+                  try {
+                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
+                    if (res.ok) {
+                      btn.textContent = "문의가 접수되었습니다";
+                      setTimeout(() => { btn.disabled = false; btn.textContent = "문의하기"; }, 2000);
+                      e.currentTarget.reset();
+                    } else {
+                      btn.textContent = "전송 실패 — 다시 시도해주세요";
+                      btn.disabled = false;
+                    }
+                  } catch {
+                    btn.textContent = "전송 실패 — 다시 시도해주세요";
+                    btn.disabled = false;
+                  }
                 }}
                 className="space-y-6"
               >
