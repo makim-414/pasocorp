@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motio
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import BackgroundBeams from "./BackgroundBeams";
-import TextGenerateEffect from "./TextGenerateEffect";
+
 import BlurInText from "./ui/blur-in-text";
 import WeArtHero from "./WeArtHero";
 
@@ -14,6 +14,14 @@ const brands = [
   { name: "Paso Agency", image: "/images/projects/twosome/twosome-5.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: true },
   { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af", href: "/brands/artledger-consulting", enabled: true },
   { name: "Art Center", image: "/images/whats-happening/preopening.png", color: "#a0522d", href: "/brands/paso-art-center", enabled: true },
+];
+
+const units = [
+  { name: "Paso Gallery", href: "https://pasogallery.com" },
+  { name: "Paso Agency", href: "/brands/paso-agency" },
+  { name: "Artrader", href: "/brands/artrader" },
+  { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
+  { name: "Paso Art Center", href: "/brands/paso-art-center" },
 ];
 
 export default function Hero() {
@@ -82,89 +90,47 @@ export default function Hero() {
           <BlurInText text="PASO" duration={1} characterDelay={0.08} />
         </h1>
 
+        {/* Tagline */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="mt-4 md:mt-6 text-sm md:text-lg tracking-tight text-[#ccc] font-light"
+          transition={{ duration: 1.4, delay: 0.7 }}
+          className="mt-4 md:mt-5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#4a4a4a] font-light"
         >
-          Corporate Art Advisory & Collection Management
+          Strategic Art Advisory
         </motion.p>
 
-        <motion.div
+        {/* Brand units — vertical editorial list */}
+        <motion.nav
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="mt-5 md:mt-8 text-xs md:text-base font-light text-[#888] tracking-normal max-w-2xl mx-auto leading-relaxed"
+          transition={{ duration: 1, delay: 1.0 }}
+          className="mt-12 md:mt-16 flex flex-col items-center gap-[10px] md:gap-3"
         >
-          <TextGenerateEffect words="증여·상속·법인세 절세부터 1,500만 건 거래 데이터 기반 작품 선별까지. PASO가 기업 컬렉션의 모든 단계를 설계합니다." />
-        </motion.div>
-
-        {/* CTA buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.1 }}
-          className="mt-6 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
-        >
-          <button
-            onClick={() => setShowContact(true)}
-            className="px-6 py-2.5 bg-[#b8960b] text-black text-xs font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors"
-          >
-            문의하기
-          </button>
-          <a
-            href="/#services"
-            className="px-6 py-2.5 border border-[#333] text-[#888] text-xs tracking-wide rounded hover:border-[#555] hover:text-white transition-all"
-          >
-            서비스 살펴보기
-          </a>
-        </motion.div>
-
-        {/* Brand links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.8 }}
-          className="mt-6 md:mt-10 flex flex-wrap items-center justify-center gap-x-1.5 md:gap-x-2 gap-y-1.5 text-[9px] md:text-xs tracking-[0.1em] uppercase"
-        >
-          {brands.map((b, i, arr) => (
-            <span key={b.name} className="flex items-center gap-1.5 md:gap-2">
-              {b.enabled ? (
-                <a
-                  href={b.href}
-                  target={b.href.startsWith("http") ? "_blank" : undefined}
-                  rel={b.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  onMouseEnter={() => setHoveredBrand(i)}
-                  onMouseLeave={() => setHoveredBrand(null)}
-                >
-                  <motion.span
-                    className="cursor-pointer transition-colors duration-300 relative py-1 px-0.5 inline-block"
-                    style={{ color: hoveredBrand === i ? b.color : "#555" }}
-                    whileHover={{ y: -2 }}
-                  >
-                    {b.name}
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-px"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: hoveredBrand === i ? 1 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      style={{ backgroundColor: b.color, transformOrigin: "left" }}
-                    />
-                  </motion.span>
-                </a>
-              ) : (
-                <span
-                  className="py-1 px-0.5 inline-block text-[#333] cursor-default"
-                  onMouseEnter={() => setHoveredBrand(i)}
-                  onMouseLeave={() => setHoveredBrand(null)}
-                >
-                  {b.name}
-                </span>
-              )}
-              {i < arr.length - 1 && <span className="text-[#2a2a2a]">|</span>}
-            </span>
+          {units.map((u) => (
+            <a
+              key={u.name}
+              href={u.href}
+              className="text-[13px] md:text-[15px] tracking-[0.12em] uppercase text-[#666] hover:text-[#b8960b] transition-colors duration-400 font-light"
+            >
+              {u.name}
+            </a>
           ))}
+        </motion.nav>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.4 }}
+          className="mt-12 md:mt-16"
+        >
+          <a
+            href="/contact"
+            className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b]/70 hover:text-[#b8960b] transition-colors duration-500"
+          >
+            Get in Touch →
+          </a>
         </motion.div>
       </div>
 

@@ -148,7 +148,6 @@ function TripleFeature() {
       <div className="text-center mb-10 sm:mb-12 md:mb-14">
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3 sm:mb-4">Now & Upcoming</motion.p>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-2 sm:mb-3 leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>What&apos;s Happening</h2>
-        <p className="text-xs sm:text-sm text-[#888]">Exhibitions, events, and community programmes</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {cards.map((card, i) => (
@@ -207,7 +206,7 @@ export function DynamicTop() {
                 {"Art as an Asset Class.\nStrategy as a Service."}
               </h2>
               <p className="text-sm text-[#888] leading-relaxed max-w-md">
-                PASO는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술품 거래 자문부터 갤러리 / 미술관 운영, 기업 컬렉션 자문과 미술 프로젝트 운용까지, 미술 생태계의 모든 것을 연결합니다.
+                데이터 기반 거래 자문, 갤러리·미술관 운영, 기업 컬렉션 자문, 미술 프로젝트 운용까지—미술 생태계의 모든 것을 연결합니다.
               </p>
             </motion.div>
           </div>
@@ -231,10 +230,10 @@ export function DynamicBottom() {
       {/* Stats bar */}
       <section className="border-y border-[#1a1a1a] bg-black">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          <Counter value="1,580만+" label={"보유 옥션 데이터"} />
-          <Counter value="90,000+" label={"국내 미술시장\n분석 데이터"} />
-          <Counter value="₩13.2B" label={"위탁 리밸런싱\n컬렉션 AUM"} />
-          <Counter value="2020" label={"설립 연도"} />
+          <Counter value="1,580만+" label={"Global Auction Records"} />
+          <Counter value="90,000+" label={"Domestic Market Data"} />
+          <Counter value="₩13.2B" label={"Collection AUM"} />
+          <Counter value="2020" label={"Established"} />
         </div>
       </section>
 

@@ -15,7 +15,7 @@ const brandsData: Record<string, {
     name: "Artrader",
     slug: "artrader",
     year: 2024,
-    desc: "해외 1,500만 건·국내 9만여 건의 정제된 옥션 데이터로 실거래가와 적정 매입가를 산출하는 미술품 2차 거래(Private Sales) 플랫폼이자 법인 컬렉션의 구축과 리밸런싱에 특화된 데이터베이스입니다.",
+    desc: "해외 1,500만 건·국내 9만여 건의 정제된 옥션 데이터로 실거래가와 적정 매입가를 산출하는 Artrader는, 미술품 2차 거래(Private Sales) 플랫폼이자 법인 컬렉션의 구축과 리밸런싱에 특화된 데이터베이스입니다.",
     longDesc: "해외 1,500만 건·국내 9만여 건의 정제된 옥션 데이터로 실거래가와 적정 매입가를 산출하는 Artrader는, 미술품 2차 거래(Private Sales) 플랫폼이자 법인 컬렉션의 구축과 리밸런싱에 특화된 데이터베이스입니다.",
     color: "#b8960b",
     image: "/brands/artrader-platform-hd.png",
@@ -87,7 +87,7 @@ const brandsData: Record<string, {
       "/images/projects/cu2.jpg",
       "/images/projects/cu-wine.jpg",
       "/Group 13499.png",
-      "/images/projects/hongdae-plusship/1.jpg",
+      "/images/projects/hongdae-plusship/chowoo-new.png",
     ],
     features: [
       { title: "장띵", desc: "CU 델라페 18종 X 장띵" },
