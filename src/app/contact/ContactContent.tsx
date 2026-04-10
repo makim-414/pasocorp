@@ -75,16 +75,14 @@ export default function ContactContent() {
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>How Can We Help?</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {inquiries.map((item, i) => (
-              <motion.a
+              <motion.div
                 key={item.title}
-                href="mailto:info@pasogallery.com"
                 {...stagger(i)}
-                className="block border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group"
+                className="border border-[#1a1a1a] p-8"
               >
-                <h3 className="text-lg text-white font-normal mb-2 group-hover:text-[#b8960b] transition-colors">{item.title}</h3>
+                <h3 className="text-lg text-white font-normal mb-2">{item.title}</h3>
                 <p className="text-sm text-[#888] font-light">{item.desc}</p>
-                <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </div>
