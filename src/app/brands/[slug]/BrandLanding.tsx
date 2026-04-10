@@ -822,7 +822,10 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 /* ═══════════════════════════════════════════════════
    2. PASO ART CENTER — Museum / Full-bleed imagery
    ═══════════════════════════════════════════════════ */
-const artCenterGalleryImages = Array.from({ length: 18 }, (_, i) => `/images/paso-art-center-gallery/${i + 4}.jpg`);
+const artCenterGalleryImages = Array.from({ length: 18 }, (_, i) => {
+  const num = i + 4;
+  return `/images/paso-art-center-gallery/${num}${num === 22 ? '.png' : '.jpg'}`;
+});
 
 function ArtCenterLayout({ brand }: { brand: BrandData }) {
   const [openGallery, setOpenGallery] = useState<{ title: string; images: string[]; desc?: string } | null>(null);
@@ -1535,14 +1538,29 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
 
             <motion.div {...fadeUp}>
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const subject = encodeURIComponent("Artledger Consulting 문의");
-                  const body = encodeURIComponent(
-                    `이름: ${formData.get("name")}\n이메일: ${formData.get("email")}\n연락처: ${formData.get("phone")}\n소속: ${formData.get("company")}\n상담 유형: ${formData.get("consultType")}\n\n${formData.get("message")}`
-                  );
-                  window.open(`mailto:info@pasogallery.com?subject=${subject}&body=${body}`);
+                  const btn = e.currentTarget.querySelector("button[type=submit]") as HTMLButtonElement;
+                  btn.disabled = true;
+                  btn.textContent = "전송 중...";
+                  const fd = new FormData(e.currentTarget);
+                  fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+                  fd.append("subject", "Artledger Consulting 문의");
+                  fd.append("from_name", "PASO 웹사이트");
+                  try {
+                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
+                    if (res.ok) {
+                      btn.textContent = "문의가 접수되었습니다";
+                      setTimeout(() => { btn.disabled = false; btn.textContent = "문의하기"; }, 2000);
+                      e.currentTarget.reset();
+                    } else {
+                      btn.textContent = "전송 실패 — 다시 시도해주세요";
+                      btn.disabled = false;
+                    }
+                  } catch {
+                    btn.textContent = "전송 실패 — 다시 시도해주세요";
+                    btn.disabled = false;
+                  }
                 }}
                 className="space-y-6"
               >

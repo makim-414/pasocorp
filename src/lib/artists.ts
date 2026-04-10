@@ -6,6 +6,8 @@ export interface ArtistAuctionRecord {
   hammer: string;
   auctionHouse: string;
   date: string;
+  condition?: { status: string };
+  imageUrl?: string;
 }
 
 export interface Artist {

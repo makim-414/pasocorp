@@ -31,6 +31,8 @@ export default function Hero() {
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
   const [hoveredBrand, setHoveredBrand] = useState<number | null>(null);
+  const [showContact, setShowContact] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
@@ -146,6 +148,112 @@ export default function Hero() {
           className="w-px h-6 md:h-8 bg-gradient-to-b from-[#555] to-transparent"
         />
       </motion.div>
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {showContact && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center"
+            onClick={() => setShowContact(false)}
+          >
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative z-10 w-full h-full md:h-auto md:max-w-lg md:rounded-2xl bg-[#111] border border-[#1a1a1a] overflow-y-auto"
+            >
+              <div className="p-6 md:p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-1">Consultation</p>
+                    <h2 className="text-xl md:text-2xl font-light text-white">문의하기</h2>
+                  </div>
+                  <button onClick={() => setShowContact(false)} className="text-[#555] hover:text-white transition-colors p-1">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </div>
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    setFormStatus("sending");
+                    const fd = new FormData(e.currentTarget);
+                    fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+                    fd.append("subject", "PASO 무료 상담 신청");
+                    fd.append("from_name", "PASO 웹사이트");
+                    try {
+                      const res = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        body: fd,
+                      });
+                      if (res.ok) {
+                        setFormStatus("sent");
+                        setTimeout(() => { setShowContact(false); setFormStatus("idle"); }, 1500);
+                      } else {
+                        setFormStatus("error");
+                      }
+                    } catch {
+                      setFormStatus("error");
+                    }
+                  }}
+                  className="space-y-5"
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
+                      <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
+                      <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
+                      <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">소속</label>
+                      <input name="company" type="text" placeholder="기관명 (개인은 생략 가능)" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">상담 유형</label>
+                    <select name="consultType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
+                      <option value="">선택해주세요</option>
+                      <option value="증여·상속 절세">증여·상속 절세</option>
+                      <option value="법인 미술품 비용처리">법인 미술품 비용처리</option>
+                      <option value="컬렉션 구축·리밸런싱">컬렉션 구축·리밸런싱</option>
+                      <option value="작품 가치 평가">작품 가치 평가</option>
+                      <option value="기타">기타</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">문의 내용</label>
+                    <textarea name="message" rows={3} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+                  </div>
+                  {formStatus === "error" && (
+                    <p className="text-red-400 text-xs">전송에 실패했습니다. 다시 시도해주세요.</p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={formStatus === "sending" || formStatus === "sent"}
+                    className="w-full mt-2 py-3 bg-[#b8960b] text-black text-sm font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {formStatus === "sending" ? "전송 중..." : formStatus === "sent" ? "문의가 접수되었습니다" : "문의하기"}
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
