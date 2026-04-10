@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motio
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import BackgroundBeams from "./BackgroundBeams";
-import TextGenerateEffect from "./TextGenerateEffect";
+
 import BlurInText from "./ui/blur-in-text";
 import WeArtHero from "./WeArtHero";
 
@@ -14,6 +14,14 @@ const brands = [
   { name: "Paso Agency", image: "/images/projects/twosome/twosome-5.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: true },
   { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af", href: "/brands/artledger-consulting", enabled: true },
   { name: "Art Center", image: "/images/whats-happening/preopening.png", color: "#a0522d", href: "/brands/paso-art-center", enabled: true },
+];
+
+const units = [
+  { name: "Paso Gallery", href: "https://pasogallery.com" },
+  { name: "Paso Agency", href: "/brands/paso-agency" },
+  { name: "Artrader", href: "/brands/artrader" },
+  { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
+  { name: "Paso Art Center", href: "/brands/paso-art-center" },
 ];
 
 export default function Hero() {
@@ -80,69 +88,47 @@ export default function Hero() {
           <BlurInText text="PASO" duration={1} characterDelay={0.08} />
         </h1>
 
+        {/* Tagline */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="mt-4 md:mt-6 text-[10px] md:text-sm tracking-[0.08em] uppercase text-[#888] font-light"
+          transition={{ duration: 1.4, delay: 0.7 }}
+          className="mt-4 md:mt-5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#4a4a4a] font-light"
         >
-          Precision-based Art Strategy & Operation
+          Strategic Art Advisory
         </motion.p>
 
-        <motion.div
+        {/* Brand units — vertical editorial list */}
+        <motion.nav
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="mt-5 md:mt-8 text-base md:text-xl font-light text-[#e8e8e8] tracking-normal"
-          style={{ fontFamily: "var(--font-dutch)" }}
+          transition={{ duration: 1, delay: 1.0 }}
+          className="mt-12 md:mt-16 flex flex-col items-center gap-[10px] md:gap-3"
         >
-          <TextGenerateEffect words="Art · Advisory & Data · IP · Space" />
-        </motion.div>
-
-        {/* Brand links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.8 }}
-          className="mt-10 md:mt-16 flex flex-wrap items-center justify-center gap-x-1.5 md:gap-x-2 gap-y-1.5 text-[9px] md:text-xs tracking-[0.1em] uppercase"
-        >
-          {brands.map((b, i, arr) => (
-            <span key={b.name} className="flex items-center gap-1.5 md:gap-2">
-              {b.enabled ? (
-                <a
-                  href={b.href}
-                  target={b.href.startsWith("http") ? "_blank" : undefined}
-                  rel={b.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  onMouseEnter={() => setHoveredBrand(i)}
-                  onMouseLeave={() => setHoveredBrand(null)}
-                >
-                  <motion.span
-                    className="cursor-pointer transition-colors duration-300 relative py-1 px-0.5 inline-block"
-                    style={{ color: hoveredBrand === i ? b.color : "#555" }}
-                    whileHover={{ y: -2 }}
-                  >
-                    {b.name}
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-px"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: hoveredBrand === i ? 1 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      style={{ backgroundColor: b.color, transformOrigin: "left" }}
-                    />
-                  </motion.span>
-                </a>
-              ) : (
-                <span
-                  className="py-1 px-0.5 inline-block text-[#333] cursor-default"
-                  onMouseEnter={() => setHoveredBrand(i)}
-                  onMouseLeave={() => setHoveredBrand(null)}
-                >
-                  {b.name}
-                </span>
-              )}
-              {i < arr.length - 1 && <span className="text-[#2a2a2a]">|</span>}
-            </span>
+          {units.map((u) => (
+            <a
+              key={u.name}
+              href={u.href}
+              className="text-[13px] md:text-[15px] tracking-[0.12em] uppercase text-[#666] hover:text-[#b8960b] transition-colors duration-400 font-light"
+            >
+              {u.name}
+            </a>
           ))}
+        </motion.nav>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.4 }}
+          className="mt-12 md:mt-16"
+        >
+          <a
+            href="/contact"
+            className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b]/70 hover:text-[#b8960b] transition-colors duration-500"
+          >
+            Get in Touch →
+          </a>
         </motion.div>
       </div>
 

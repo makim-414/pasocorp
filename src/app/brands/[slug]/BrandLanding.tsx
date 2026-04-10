@@ -366,9 +366,9 @@ function BrandHero({ brand }: { brand: BrandData }) {
       {!isArtrader && <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-xs tracking-[0.15em] text-[#4ade80] mb-4">{brand.year}</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-5xl md:text-8xl font-bold text-white tracking-tight">{brand.name}</motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-6 text-lg md:text-xl text-white/80 font-normal max-w-3xl leading-relaxed whitespace-pre-line">{brand.desc}</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className={`text-xs tracking-[0.15em] mb-4 ${isArtrader ? "text-[#4ade80]" : "text-[#b8960b]"}`}>{brand.year}</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className={isArtrader ? "text-5xl md:text-8xl font-bold text-white tracking-tight" : "text-4xl md:text-7xl font-light text-white"} style={isArtrader ? undefined : { fontFamily: "var(--font-dutch)" }}>{brand.name}</motion.h1>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className={isArtrader ? "mt-6 text-lg md:text-xl text-white/80 font-normal max-w-3xl leading-relaxed whitespace-pre-line" : "mt-4 text-lg text-[#ccc] font-light max-w-4xl whitespace-pre-line"}>{brand.desc}</motion.p>
         </div>
         {isArtrader && (
           <motion.a
@@ -389,16 +389,59 @@ function BrandHero({ brand }: { brand: BrandData }) {
   );
 }
 
-/* ─── CTA (shared) ─── */
+/* ─── CTA (shared, brand-aware) ─── */
+const brandCTAConfig: Record<string, { heading: string; desc: string; mailto: string; mainLabel: string; extUrl?: string; extLabel?: string; accent: string }> = {
+  artrader: {
+    heading: "Get in Touch",
+    desc: "컬렉션 분석, 데이터 문의, 작품 검토 요청 등 편하게 연락주세요.",
+    mailto: "mailto:contact@artrader.io",
+    mainLabel: "문의하기",
+    extUrl: "https://artrader.io",
+    extLabel: "Artrader.io",
+    accent: "#4ade80",
+  },
+  "artledger-consulting": {
+    heading: "Get in Touch",
+    desc: "미술품 절세, 법인 컬렉션 자문, 자산 관리 등 편하게 연락주세요.",
+    mailto: "mailto:contact@aboutpaso.com",
+    mainLabel: "자문 문의하기",
+    accent: "#b8960b",
+  },
+  default: {
+    heading: "Get in Touch",
+    desc: "프로젝트 문의, 협업 제안 등 편하게 연락주세요.",
+    mailto: "mailto:contact@aboutpaso.com",
+    mainLabel: "문의하기",
+    accent: "#b8960b",
+  },
+};
+
 function BrandCTA({ brand }: { brand: BrandData }) {
+  const config = brandCTAConfig[brand.slug] || brandCTAConfig.default;
   return (
-    <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
+    <section className="py-20 md:py-28 bg-black border-t border-[#1a1a1a]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-        <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>Get in Touch</motion.h2>
-        <motion.p {...fadeUp} className="text-[#888] font-light mb-10 max-w-md mx-auto">프로젝트 문의, 협업 제안, 또는 더 알고 싶은 내용이 있다면 연락주세요.</motion.p>
-        <motion.div {...fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="mailto:contact@artrader.io" className="inline-block px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.1em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">Contact Us</a>
-          <Link href="/#brands" className="inline-block px-8 py-3 border border-[#333] text-[#888] text-xs tracking-[0.1em] uppercase hover:border-[#555] hover:text-white transition-all duration-300">← All Brands</Link>
+        <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: config.accent }}>Contact</motion.p>
+        <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-5" style={{ fontFamily: "var(--font-dutch)" }}>{config.heading}</motion.h2>
+        <motion.p {...fadeUp} className="text-sm text-[#666] font-light mb-12 max-w-md mx-auto">{config.desc}</motion.p>
+        <motion.div {...fadeUp} className="flex flex-col items-center gap-6">
+          <a
+            href={config.mailto}
+            className="inline-block px-10 py-3.5 text-xs tracking-[0.15em] uppercase transition-all duration-300 border"
+            style={{
+              borderColor: config.accent,
+              color: config.accent,
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = config.accent; e.currentTarget.style.color = "#000"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = config.accent; }}
+          >
+            {config.mainLabel}
+          </a>
+          {config.extUrl && (
+            <a href={config.extUrl} target="_blank" rel="noopener noreferrer" className="text-[#555] hover:text-[#888] text-xs tracking-[0.1em] transition-colors duration-300">
+              {config.extLabel} ↗
+            </a>
+          )}
         </motion.div>
       </div>
     </section>
@@ -484,10 +527,10 @@ function CountUp({ end, suffix = "", duration = 2000, decimals = 0 }: { end: num
 
 function ArtraderLayout({ brand }: { brand: BrandData }) {
   const stats = [
-    { label: "거래 데이터", end: 15, suffix: "M+", decimals: 0 },
-    { label: "분석 작가", end: 120, suffix: "K+", decimals: 0 },
-    { label: "커버 경매사", end: 2800, suffix: "+", decimals: 0 },
-    { label: "리포트 발행", end: 5000, suffix: "+", decimals: 0 },
+    { label: "시세 판단의 기준", end: 15, suffix: "M+", decimals: 0 },
+    { label: "작가별 분석 가능", end: 120, suffix: "K+", decimals: 0 },
+    { label: "글로벌 경매사 커버", end: 2800, suffix: "+", decimals: 0 },
+    { label: "정량 리포트 발행", end: 5000, suffix: "+", decimals: 0 },
   ];
 
   const indexStats = [
@@ -523,10 +566,10 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight mb-4">
-              아트를 금융 자산처럼<br />투명하게 거래하는 생태계를 만들어요
+              데이터로 판단하고,<br />신뢰로 거래합니다
             </h2>
             <p className="text-[#888] font-light leading-relaxed max-w-2xl mx-auto text-base">
-              아트레이더는 미술 시장의 흩어진 데이터를 정제해, 시세 예측과 안전한 거래를 돕는 새로운 미술품 거래 환경을 만들어가고 있어요.
+              미술 시장의 흩어진 데이터를 정제하여 시세를 산출하고, 검증된 거래 환경을 제공합니다.
             </p>
           </motion.div>
           {/* Seller - Artrader - Buyer diagram */}
@@ -563,8 +606,8 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           {/* Header row */}
-          <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-10">
-            <div className="flex flex-col gap-3">
+          <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
+            <div className="flex flex-col gap-3 md:order-2 md:items-end md:text-right">
               <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
               <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
                 작품 검색부터 거래까지<br />아트레이더 하나로
@@ -576,14 +619,14 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 href="https://artrader.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="self-start inline-flex items-center gap-2 mt-4 px-5 py-2.5 border border-[#4ade80] text-[#4ade80] text-sm font-medium tracking-wide rounded hover:bg-[#4ade80] hover:text-black transition-all duration-300"
+                className="self-start md:self-end inline-flex items-center gap-2 mt-4 px-5 py-2.5 border border-[#4ade80] text-[#4ade80] text-sm font-medium tracking-wide rounded hover:bg-[#4ade80] hover:text-black transition-all duration-300"
               >
                 직접 확인하기
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </a>
             </div>
             {/* 3D Cube */}
-            <motion.div {...fadeUp} className="relative shrink-0" style={{ perspective: "600px" }}>
+            <motion.div {...fadeUp} className="relative shrink-0 md:order-1" style={{ perspective: "600px" }}>
               <div className="relative w-40 h-40 md:w-48 md:h-48" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
                 <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(40px)" }}>
                   <div className="flex flex-col items-center justify-center h-full p-4 text-center">
@@ -702,10 +745,10 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-normal text-white mb-3">
-              안전한 거래를 보장해요
+              거래 신뢰를 보장하는 구조
             </h2>
             <p className="text-sm text-[#888] font-light leading-relaxed max-w-xl mx-auto">
-              모든 작품은 자료 기반으로 검수되고, 신뢰할 수 없는 매물은 등록이 제한됩니다.
+              모든 작품은 자료 기반으로 검수되며, 검증되지 않은 매물은 등록이 제한됩니다.
             </p>
           </motion.div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -1318,7 +1361,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
                 onClick={hasGallery ? () => setOpenGallery(projectGalleries[i]) : undefined}
               >
                 <div className="aspect-[4/3] overflow-hidden rounded-t-xl">
-                  <img src={img} alt={`Project ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1" />
+                  <img src={img} alt={`Project ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1" style={i === 3 ? { objectPosition: 'center 35%' } : undefined} />
                 </div>
                 <div className="p-5">
                   {brand.features[i] && (
@@ -1420,8 +1463,8 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
           <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-10">Process</motion.p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-px">
             {["Review", "Valuation", "Strategy", "Execute"].map((step, i) => (
-              <motion.div key={step} {...stagger(i)} className="p-8 text-center relative">
-                <p className="text-5xl font-light text-[#444] mb-4" style={{ fontFamily: "var(--font-dutch)" }}>0{i + 1}</p>
+              <motion.div key={step} {...stagger(i)} className="group p-8 text-center relative cursor-default">
+                <p className="text-5xl font-light text-[#444] group-hover:text-[#b8960b] transition-colors duration-500 mb-4" style={{ fontFamily: "var(--font-dutch)" }}>0{i + 1}</p>
                 <p className="text-sm tracking-[0.1em] uppercase text-white">{step}</p>
                 {i < 3 && <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-8 h-px bg-[#333]" />}
               </motion.div>
@@ -1546,8 +1589,6 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
           </div>
         </div>
       </section>
-
-      <BrandCTA brand={brand} />
     </>
   );
 }

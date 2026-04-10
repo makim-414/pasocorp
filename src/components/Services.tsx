@@ -15,7 +15,7 @@ const FEATURES = [
     label: "Data & Intelligence",
     Icon: BarChart3,
     image: "/brands/artrader-new.png",
-    desc: "국내외 경매·Private Sales 등 1,500만 건 이상 거래 데이터. Artist Index, 종목분석서 스타일 정량 리포트.",
+    desc: "1,500만 건 경매 데이터 기반 시세 분석과 정량 리포트.",
     color: "#b8960b",
     href: "/brands/artrader",
   },
@@ -25,7 +25,7 @@ const FEATURES = [
     label: "Advisory & Tax",
     Icon: FileText,
     image: "/brands/artledger-consulting.jpg",
-    desc: "증여·상속, 법인 비용·감가, 컬렉션 관리. Review → Valuation → Strategy → Execute.",
+    desc: "미술품 절세, 법인 자산 관리, 컬렉션 리밸런싱 자문.",
     color: "#b8960b",
     href: "/brands/artledger-consulting",
   },
@@ -35,7 +35,7 @@ const FEATURES = [
     label: "Exhibition & Primary Market",
     Icon: Landmark,
     image: "/brands/paso-gallery.jpg",
-    desc: "국내 신진작가 공모전, 글로벌 이머징 작가 전시, 적정가 2차 시장 Top 30 작품 전시.",
+    desc: "신진 작가 전시, 블루칩 상설전, 아트 살롱 프로그램.",
     color: "#b8960b",
     href: "https://pasogallery.com",
   },
@@ -45,7 +45,7 @@ const FEATURES = [
     label: "IP & Brand Collaboration",
     Icon: Palette,
     image: "/images/projects/cu-dding/cu-3.jpg",
-    desc: "프랜차이즈 브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이·스트릿 아트 매입.",
+    desc: "브랜드 아트 프로젝트, IP 라이선싱, 공간 콜라보레이션.",
     color: "#b8960b",
     href: "/brands/paso-agency",
   },
@@ -103,7 +103,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-4"
         >
-          Capabilities
+          Services
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
@@ -113,7 +113,7 @@ export default function Services() {
           className="text-3xl md:text-5xl font-light text-white mb-16"
           style={{ fontFamily: "var(--font-dutch)" }}
         >
-          What We Do
+          How We Work
         </motion.h2>
 
         {/* carousel container */}

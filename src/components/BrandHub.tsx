@@ -10,6 +10,7 @@ const mainBrands = [
     slug: "paso-gallery",
     externalUrl: "https://pasogallery.com",
     year: 2021,
+    target: "For Collectors & Art Lovers",
     desc: "국내외 신진·라이징 작가를 엄선하여 소개하며, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다.",
     activity: "",
     image: "/brands/paso-gallery.png",
@@ -19,7 +20,8 @@ const mainBrands = [
     name: "PASO Art Center",
     slug: "paso-art-center",
     year: 2025,
-    desc: "해외 이머징 작가부터 국내 유망 작가까지, 전시와 아트토이 발행 등 IP 확장 프로젝트를 전개하며, 상설전에서는 Artrader 데이터로 엄선한 블루칩·옥션 상위권 작품 70여 점을 상시 만날 수 있습니다.",
+    target: "For Exhibitions & Community",
+    desc: "블루칩·옥션 상위권 작품 70여 점 상설전과 이머징 작가 IP 확장 프로젝트를 전개합니다.",
     activity: "2025 오픈 (with Mass C&G)",
     image: "/brands/paso-artcenter.jpg",
     color: "#a0522d",
@@ -28,7 +30,8 @@ const mainBrands = [
     name: "Artrader",
     slug: "artrader",
     year: 2024,
-    desc: "해외 1,500만 건·국내 9만여 건의 정제된 옥션 데이터로 실거래가와 적정 매입가를 산출하는 미술품 2차 거래(Private Sales) 플랫폼이자 법인 컬렉션의 구축과 리밸런싱에 특화된 데이터베이스입니다.",
+    target: "For Data-Driven Decisions",
+    desc: "1,500만 건 글로벌 옥션 데이터로 적정 매입가를 산출하는 미술품 거래 플랫폼이자 법인 컬렉션 데이터베이스.",
     activity: "1,500만+ 거래 데이터 실시간 분석",
     image: "/brands/artrader.jpg",
     color: "#b8960b",
@@ -40,8 +43,9 @@ const subBrands = [
     name: "Paso Agency",
     slug: "paso-agency",
     year: 2023,
-    desc: "기업이 미술 기반 IP로 최대의 브랜드 가치를 만들어내고, 작가의 IP가 성장 속에서도 온전히 보호받을 수 있도록—양측 모두에게 지속 가능한 구조를 설계합니다.",
-    activity: "신규: 프랜차이즈 아트 콜라보 프로젝트",
+    target: "For Brands & IP Partners",
+    desc: "브랜드와 작가 양측의 IP 가치를 지속 가능한 구조로 설계합니다.",
+    activity: "",
     image: "/images/projects/twosome/twosome-7.jpg",
     color: "#d4a574",
   },
@@ -49,8 +53,9 @@ const subBrands = [
     name: "Artledger Consulting",
     slug: "artledger-consulting",
     year: 2025,
-    desc: "매입 이후의 세금 처리, 절세 전략, 법인 컬렉션 운용 전반을 설계하고 자문합니다. 개인과 법인 모두, 거래의 전 과정을 전문적으로 지원합니다.",
-    activity: "신규 런칭: 법인 미술품 절세 패키지",
+    target: "For Tax & Asset Advisory",
+    desc: "미술품 절세, 법인 컬렉션 운용, 거래 전 과정을 전문적으로 자문합니다.",
+    activity: "",
     image: "/brands/artledger-consulting.jpg",
     color: "#9ca3af",
   },
@@ -117,9 +122,10 @@ export default function BrandHub() {
                 </div>
                 <div className="p-4 sm:p-6 md:p-8">
                   <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2 sm:mb-3">{brand.year}</p>
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-2 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-1.5 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
+                  <p className="text-[10px] tracking-[0.1em] uppercase text-[#666] mb-3">{brand.target}</p>
                   <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-3 sm:mb-4 line-clamp-3">{brand.desc}</p>
-                  <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>
+                  {brand.activity && <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>}
                   <div className="mt-3 sm:mt-4 w-0 group-hover:w-8 sm:group-hover:w-12 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
                 </div>
               </Link>
@@ -156,9 +162,10 @@ export default function BrandHub() {
                   </div>
                   <div className="p-4 sm:p-6 flex flex-col justify-center">
                     <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2">{brand.year}</p>
-                    <h3 className="text-base sm:text-lg font-light text-white mb-2 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
+                    <h3 className="text-base sm:text-lg font-light text-white mb-1 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
+                    <p className="text-[10px] tracking-[0.1em] uppercase text-[#666] mb-2">{brand.target}</p>
                     <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-2 line-clamp-3">{brand.desc}</p>
-                    <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>
+                    {brand.activity && <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>}
                     <div className="mt-3 w-0 group-hover:w-8 sm:group-hover:w-10 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
                   </div>
                 </div>

@@ -81,7 +81,7 @@ export default function ContactContent() {
                 {...stagger(i)}
                 className="block border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group"
               >
-                <h3 className="text-lg text-white font-light mb-2 group-hover:text-[#b8960b] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>{item.title}</h3>
+                <h3 className="text-lg text-white font-normal mb-2 group-hover:text-[#b8960b] transition-colors">{item.title}</h3>
                 <p className="text-sm text-[#888] font-light">{item.desc}</p>
                 <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
               </motion.a>
