@@ -823,7 +823,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
     desc: "",
   },
   "메이커스마크": {
-    images: ["/images/exhibitions/makers-mark/makers-mark-new.jpg", ...[1, 2, 5].map(i => `/images/exhibitions/makers-mark/makers-mark-${i}.jpg`)],
+    images: ["/images/exhibitions/makers-mark/makers-mark-new.jpg", ...[1, 2].map(i => `/images/exhibitions/makers-mark/makers-mark-${i}.jpg`)],
     desc: "",
   },
 };
