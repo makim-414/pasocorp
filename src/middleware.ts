@@ -10,8 +10,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // pasogallery.com → standalone brand site
-  if (hostname.includes("pasogallery.com")) {
+  // pasogallery.com (+ Vercel previews like pasogallery-next-*.vercel.app) → standalone brand site
+  if (hostname.includes("pasogallery.com") || hostname.includes("pasogallery-next") || hostname.includes("pasogallery-recovered")) {
     const url = request.nextUrl.clone();
     // Rewrite all paths to /brands/paso-gallery (single-brand site)
     if (pathname === "/") {
