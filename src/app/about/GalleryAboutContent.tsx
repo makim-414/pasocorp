@@ -108,6 +108,91 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
+      {/* Private & B2B */}
+      <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Paso Gallery</motion.p>
+          <motion.h2 {...fadeUp} className="text-3xl md:text-5xl lg:text-6xl text-white mb-6 font-light" style={{ fontFamily: "var(--font-dutch)" }}>
+            Private &amp; B2B
+          </motion.h2>
+          <motion.p {...fadeUp} className="text-sm md:text-base text-[#888] font-light leading-relaxed max-w-3xl mb-16">
+            쇼룸, VIP 이벤트로 활용할 수 있습니다. VIP 이벤트는 프로모팅할 제품을 효율적인 전시 / 트렁크쇼의 형식으로 구현합니다.
+          </motion.p>
+
+          {/* Brand Case Studies */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            {[
+              {
+                image: "/images/exhibitions/bno-patron/bno-patron-1.jpg",
+                label: "주류 브랜드 예시",
+                circles: ["VIP Event", "Product Promotion"],
+              },
+              {
+                image: "/images/exhibitions/bno-patron/bno-patron-4.jpg",
+                label: "가전 제품 브랜드 예시",
+                circles: ["VIP Event", "Product Promotion", "Showroom"],
+              },
+              {
+                image: "/images/exhibitions/makers-mark/makers-mark-1.jpg",
+                label: "제약 브랜드 예시",
+                circles: ["B2B"],
+              },
+            ].map((card, i) => (
+              <motion.div key={card.label} {...stagger(i)} className="flex flex-col">
+                <div className="relative aspect-[4/3] overflow-hidden mb-6">
+                  <img src={card.image} alt={card.label} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+                <p className="text-[11px] tracking-[0.15em] uppercase text-[#b8960b] mb-3">{card.label}</p>
+                <p className="text-xs text-[#666] font-light leading-relaxed mb-6">
+                  Time / Budget Management, Content Direction, Logistics, Installation, Sales, etc.
+                </p>
+                <div className="flex flex-wrap gap-3 mt-auto">
+                  {card.circles.map((circle) => (
+                    <div
+                      key={circle}
+                      className="w-24 h-24 md:w-28 md:h-28 rounded-full border border-[#2a2a2a] bg-[#1a1a1a]/60 flex items-center justify-center text-center px-2"
+                    >
+                      <span className="text-[10px] md:text-xs text-[#ccc] font-light leading-tight">{circle}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Process Timeline */}
+          <motion.div {...fadeUp} className="pt-12 border-t border-[#1a1a1a]">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-10">Process</p>
+            <div className="relative">
+              {/* Horizontal connecting line (desktop) */}
+              <div className="hidden lg:block absolute top-3 left-0 right-0 h-px bg-[#1a1a1a]" />
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4">
+                {[
+                  { title: "Purpose of Event", sub: "Setting Goals" },
+                  { title: "Target VIP Audience", sub: "잠재 VIP 관객 파악 및 프로모션 플래닝" },
+                  { title: "Exhibition Promotion", sub: "" },
+                  { title: "Exhibition Planning", sub: "" },
+                  { title: "Exhibition Execution", sub: "" },
+                ].map((step, i) => (
+                  <motion.div key={step.title} {...stagger(i)} className="relative flex flex-col items-start lg:items-center text-left lg:text-center">
+                    <div className="relative z-10 w-6 h-6 rounded-full bg-[#b8960b] mb-4 flex items-center justify-center">
+                      <span className="text-[10px] text-black font-medium">{i + 1}</span>
+                    </div>
+                    <h4 className="text-sm md:text-base text-white font-light mb-2" style={{ fontFamily: "var(--font-dutch)" }}>
+                      {step.title}
+                    </h4>
+                    {step.sub && (
+                      <p className="text-xs text-[#666] font-light leading-relaxed">{step.sub}</p>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Location Info */}
       <section className="bg-black border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
