@@ -502,6 +502,12 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       {/* ── EXHIBITIONS: Selected Works ── */}
       <section id="exhibitions" className="py-24 md:py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <motion.div {...fadeUp} className="mb-12 md:mb-16">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Selected Works</p>
+            <h2 className="text-3xl md:text-5xl font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>
+              Exhibitions
+            </h2>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {exhibitions.map((ex, i) => (
               <motion.div
