@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import LocaleToggle from "./LocaleToggle";
+import { useT } from "@/lib/i18n/LocaleContext";
 
 const brands = [
   { name: "Paso Gallery", href: "https://pasogallery.com" },
@@ -12,6 +14,7 @@ const brands = [
 ];
 
 export default function Navbar() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [brandsOpen, setBrandsOpen] = useState(false);
@@ -24,7 +27,7 @@ export default function Navbar() {
 
   return (
     <nav
-      aria-label="메인 내비게이션"
+      aria-label={t({ ko: "메인 내비게이션", en: "Main navigation" })}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
           ? "bg-black/60 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_30px_rgba(0,0,0,0.5)]"
@@ -38,14 +41,15 @@ export default function Navbar() {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-[#888]">
-          <Link href="/about" className="hover:text-[#b8960b] transition-colors duration-300">About</Link>
-          <Link href="/solutions" className="hover:text-[#b8960b] transition-colors duration-300">Solutions</Link>
+          <LocaleToggle />
+          <Link href="/about" className="hover:text-[#b8960b] transition-colors duration-300">{t({ ko: "About", en: "About" })}</Link>
+          <Link href="/solutions" className="hover:text-[#b8960b] transition-colors duration-300">{t({ ko: "Solutions", en: "Solutions" })}</Link>
           <div
             className="relative"
             onMouseEnter={() => setBrandsOpen(true)}
             onMouseLeave={() => setBrandsOpen(false)}
           >
-            <a href="/#brands" className="hover:text-[#b8960b] transition-colors duration-300 tracking-[0.08em] uppercase">Brands</a>
+            <a href="/#brands" className="hover:text-[#b8960b] transition-colors duration-300 tracking-[0.08em] uppercase">{t({ ko: "Brands", en: "Brands" })}</a>
             <AnimatePresence>
               {brandsOpen && (
                 <motion.div
@@ -69,12 +73,12 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
-          <Link href="/contact" className="hover:text-[#b8960b] transition-colors duration-300">Contact</Link>
+          <Link href="/contact" className="hover:text-[#b8960b] transition-colors duration-300">{t({ ko: "Contact", en: "Contact" })}</Link>
         </div>
 
         {/* Mobile hamburger */}
         <button
-          aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+          aria-label={menuOpen ? t({ ko: "메뉴 닫기", en: "Close menu" }) : t({ ko: "메뉴 열기", en: "Open menu" })}
           aria-expanded={menuOpen}
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -101,6 +105,9 @@ export default function Navbar() {
                 <Link key={b.name} href={b.href} {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8] pl-4 uppercase">{b.name}</Link>
               ))}
               <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">Contact</Link>
+              <div className="pt-3 border-t border-[#1a1a1a]">
+                <LocaleToggle />
+              </div>
             </div>
           </motion.div>
         )}

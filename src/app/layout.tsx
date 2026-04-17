@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import CookieConsent from "@/components/CookieConsent";
+import { LocaleProvider } from "@/lib/i18n/LocaleContext";
+import { getServerLocale } from "@/lib/i18n/server";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -87,9 +89,10 @@ const localBusinessJsonLd = {
   sameAs: ["https://www.instagram.com/pasoartcenter"],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getServerLocale();
   return (
-    <html lang="ko">
+    <html lang={locale}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -108,8 +111,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans bg-black text-[#e8e8e8]">
-        {children}
-        <CookieConsent />
+        <LocaleProvider initialLocale={locale}>
+          {children}
+          <CookieConsent />
+        </LocaleProvider>
       </body>
     </html>
   );
