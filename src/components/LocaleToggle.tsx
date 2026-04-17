@@ -6,7 +6,7 @@ export default function LocaleToggle({ className = "" }: { className?: string })
 
   return (
     <div
-      className={`flex items-center gap-1 text-[10px] tracking-[0.15em] uppercase text-[#888] ${className}`}
+      className={`flex items-center gap-2 text-xs tracking-[0.08em] uppercase ${className}`}
       role="group"
       aria-label="Language"
     >
@@ -14,19 +14,19 @@ export default function LocaleToggle({ className = "" }: { className?: string })
         type="button"
         onClick={() => setLocale("ko")}
         aria-pressed={locale === "ko"}
-        className={`px-2 py-1 transition-colors duration-300 ${
-          locale === "ko" ? "text-[#e8e8e8]" : "hover:text-[#b8960b]"
+        className={`transition-colors duration-300 ${
+          locale === "ko" ? "text-[#e8e8e8]" : "text-[#555] hover:text-[#b8960b]"
         }`}
       >
         KO
       </button>
-      <span className="text-[#333]">|</span>
+      <span className="text-[#333]">/</span>
       <button
         type="button"
         onClick={() => setLocale("en")}
         aria-pressed={locale === "en"}
-        className={`px-2 py-1 transition-colors duration-300 ${
-          locale === "en" ? "text-[#e8e8e8]" : "hover:text-[#b8960b]"
+        className={`transition-colors duration-300 ${
+          locale === "en" ? "text-[#e8e8e8]" : "text-[#555] hover:text-[#b8960b]"
         }`}
       >
         EN

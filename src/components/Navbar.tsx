@@ -41,6 +41,7 @@ export default function Navbar() {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-[#888]">
+          <LocaleToggle />
           <Link href="/about" className="hover:text-[#b8960b] transition-colors duration-300">{t({ ko: "About", en: "About" })}</Link>
           <Link href="/solutions" className="hover:text-[#b8960b] transition-colors duration-300">{t({ ko: "Solutions", en: "Solutions" })}</Link>
           <div
@@ -73,7 +74,6 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
           <Link href="/contact" className="hover:text-[#b8960b] transition-colors duration-300">{t({ ko: "Contact", en: "Contact" })}</Link>
-          <LocaleToggle />
         </div>
 
         {/* Mobile hamburger */}
