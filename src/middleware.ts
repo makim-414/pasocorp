@@ -5,8 +5,8 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
   const pathname = request.nextUrl.pathname;
 
-  // pasogallery.com → standalone brand site
-  if (hostname.includes("pasogallery.com")) {
+  // pasogallery.com (+ Vercel previews) → standalone brand site
+  if (hostname.includes("pasogallery.com") || hostname.includes("pasogallery-next") || hostname.includes("pasogallery-recovered")) {
     const url = request.nextUrl.clone();
     // Rewrite all paths to /brands/paso-gallery (single-brand site)
     if (pathname === "/") {
