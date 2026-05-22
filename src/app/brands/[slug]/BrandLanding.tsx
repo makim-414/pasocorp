@@ -1,6 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import NextImage from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
 
 /* ── Project detail gallery data ── */
@@ -116,14 +117,14 @@ function PhotoDetailLightbox({ images, initialIndex, onClose }: { images: string
       className="fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center"
       onClick={onClose}
     >
-      <button onClick={onClose} className="absolute top-6 right-6 z-10 text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
-      <div className="absolute top-6 left-6 z-10 text-sm text-[#888] font-light">{currentIndex + 1} / {images.length}</div>
+      <button onClick={onClose} className="absolute top-6 right-6 z-10 text-[#bbb] hover:text-white transition-colors text-3xl leading-none">&times;</button>
+      <div className="absolute top-6 left-6 z-10 text-sm text-[#bbb] font-medium">{currentIndex + 1} / {images.length}</div>
 
       {currentIndex > 0 && (
-        <button onClick={(e) => { e.stopPropagation(); goTo(currentIndex - 1, -1); }} className="absolute left-4 md:left-8 z-10 w-10 h-10 flex items-center justify-center text-[#888] hover:text-white transition-colors text-2xl">‹</button>
+        <button onClick={(e) => { e.stopPropagation(); goTo(currentIndex - 1, -1); }} className="absolute left-4 md:left-8 z-10 w-10 h-10 flex items-center justify-center text-[#bbb] hover:text-white transition-colors text-2xl">‹</button>
       )}
       {currentIndex < images.length - 1 && (
-        <button onClick={(e) => { e.stopPropagation(); goTo(currentIndex + 1, 1); }} className="absolute right-4 md:right-8 z-10 w-10 h-10 flex items-center justify-center text-[#888] hover:text-white transition-colors text-2xl">›</button>
+        <button onClick={(e) => { e.stopPropagation(); goTo(currentIndex + 1, 1); }} className="absolute right-4 md:right-8 z-10 w-10 h-10 flex items-center justify-center text-[#bbb] hover:text-white transition-colors text-2xl">›</button>
       )}
 
       <div
@@ -184,14 +185,11 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
       >
         <div className="w-full max-w-[1200px] px-6 py-16" onClick={(e) => e.stopPropagation()}>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-base md:text-xl font-light text-white tracking-wide">{gallery.title}</h2>
-            <button onClick={onClose} className="text-[#888] hover:text-white transition-colors text-3xl leading-none">&times;</button>
+            <h2 className="text-base md:text-xl font-medium text-white tracking-wide">{gallery.title}</h2>
+            <button onClick={onClose} className="text-[#bbb] hover:text-white transition-colors text-3xl leading-none">&times;</button>
           </div>
-          {gallery.artist && (
-            <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">참여작가 : {gallery.artist}</p>
-          )}
           {gallery.desc && (
-            <p className="text-sm text-[#999] font-light leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
+            <p className="text-sm text-[#999] font-medium leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
               {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
                 part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
               )}
@@ -212,7 +210,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
             const offset = gallery.images.length + (gallery.sections?.slice(0, sIdx).reduce((sum, s) => sum + s.images.length, 0) ?? 0);
             return (
               <div key={section.title} className="mt-16">
-                <h3 className="text-lg md:text-xl font-light text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
+                <h3 className="text-lg md:text-xl font-medium text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                   {section.images.map((src, i) => (
                     <div
@@ -286,7 +284,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
           <div className="absolute inset-0 bg-black" />
           {/* Green ambient glow */}
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 35% at 30% 62%, rgba(25,120,50,0.12) 0%, transparent 70%), radial-gradient(ellipse 100% 30% at 70% 58%, rgba(30,130,55,0.1) 0%, transparent 65%)" }} />
-          {/* SVG wave — lines morph smoothly */}
+          {/* SVG wave lines morph smoothly */}
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id="glo"><feGaussianBlur stdDeviation="2.5" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
@@ -299,7 +297,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
                 M0,490 C70,510 140,540 250,510 C360,470 420,430 520,460 C620,500 680,540 780,510 C880,470 940,440 1050,480 C1160,520 1220,540 1300,510 L1400,490;
                 M0,540 C70,520 140,490 250,460 C360,430 420,480 520,520 C620,560 680,490 780,440 C880,390 940,420 1050,470 C1160,520 1220,490 1300,460 L1400,480" />
             </path>
-            {/* === Main wave 1 — brightest === */}
+            {/* === Main wave 1 brightest === */}
             <path fill="none" stroke="#2ecc71" strokeWidth="1.8" opacity="0.75" filter="url(#glo)">
               <animate attributeName="d" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" values="
                 M0,560 C50,545 120,510 200,475 C280,440 340,410 420,380 C500,360 560,390 640,430 C720,470 780,510 860,530 C940,545 1000,530 1080,500 C1160,470 1220,450 1300,460 L1400,490;
@@ -313,7 +311,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
                 M0,508 C55,528 125,548 210,518 C295,478 350,448 435,428 C520,415 570,440 650,478 C730,518 790,545 870,528 C950,505 1010,480 1090,470 C1170,462 1230,488 1310,518 L1400,538;
                 M0,570 C55,550 125,515 210,480 C295,445 350,415 435,388 C520,370 570,398 650,440 C730,480 790,520 870,538 C950,550 1010,535 1090,508 C1170,478 1230,458 1310,468 L1400,498" />
             </path>
-            {/* === Main wave 3 — darker === */}
+            {/* === Main wave 3 darker === */}
             <path fill="none" stroke="#1e8c4a" strokeWidth="0.8" opacity="0.45">
               <animate attributeName="d" dur="7.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1" values="
                 M0,575 C60,555 130,520 220,488 C310,455 365,425 445,400 C525,380 580,408 660,448 C740,488 800,525 880,542 C960,555 1020,540 1100,515 C1180,488 1240,468 1320,478 L1400,505;
@@ -366,9 +364,9 @@ function BrandHero({ brand }: { brand: BrandData }) {
       {!isArtrader && <div className="absolute inset-0 opacity-25" style={{ background: `linear-gradient(to top, ${brand.color}50, transparent)` }} />}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-16 w-full flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className={`text-xs tracking-[0.15em] mb-4 ${isArtrader ? "text-[#4ade80]" : "text-[#b8960b]"}`}>{brand.year}</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className={isArtrader ? "text-5xl md:text-8xl font-bold text-white tracking-tight" : "text-4xl md:text-7xl font-light text-white"} style={isArtrader ? undefined : { fontFamily: "var(--font-dutch)" }}>{brand.name}</motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className={isArtrader ? "mt-6 text-lg md:text-xl text-white/80 font-normal max-w-3xl leading-relaxed whitespace-pre-line" : "mt-4 text-lg text-[#ccc] font-light max-w-4xl whitespace-pre-line"}>{brand.desc}</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className={`text-xs mb-4 ${isArtrader ? "text-[#4ade80]" : "text-[#b8960b]"}`}>{brand.year}</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className={isArtrader ? "text-5xl md:text-8xl font-bold text-white tracking-tight" : "text-4xl md:text-7xl font-medium text-white"} style={isArtrader ? undefined : { fontFamily: "var(--font-dutch)" }}>{brand.name}</motion.h1>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className={isArtrader ? "mt-6 text-lg md:text-xl text-white/80 font-normal max-w-3xl leading-relaxed whitespace-pre-line" : "mt-4 text-lg text-[#ccc] font-medium max-w-4xl whitespace-pre-line"}>{brand.desc}</motion.p>
         </div>
         {isArtrader && (
           <motion.a
@@ -393,7 +391,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
 const brandCTAConfig: Record<string, { heading: string; desc: string; mailto: string; mainLabel: string; extUrl?: string; extLabel?: string; accent: string }> = {
   artrader: {
     heading: "Get in Touch",
-    desc: "컬렉션 분석, 데이터 문의, 작품 검토 요청 등 편하게 연락주세요.",
+    desc: "컬렉션 분석, 데이터 문의, 작품 검토 요청 등 편하게 연락주세요",
     mailto: "mailto:contact@artrader.io",
     mainLabel: "문의하기",
     extUrl: "https://artrader.io",
@@ -402,14 +400,14 @@ const brandCTAConfig: Record<string, { heading: string; desc: string; mailto: st
   },
   "artledger-consulting": {
     heading: "Get in Touch",
-    desc: "미술품 절세, 법인 컬렉션 자문, 자산 관리 등 편하게 연락주세요.",
+    desc: "미술품 절세, 법인 컬렉션 자문, 자산 관리 등 편하게 연락주세요",
     mailto: "mailto:contact@aboutpaso.com",
     mainLabel: "자문 문의하기",
     accent: "#b8960b",
   },
   default: {
     heading: "Get in Touch",
-    desc: "프로젝트 문의, 협업 제안 등 편하게 연락주세요.",
+    desc: "프로젝트 문의, 협업 제안 등 편하게 연락주세요",
     mailto: "mailto:contact@aboutpaso.com",
     mainLabel: "문의하기",
     accent: "#b8960b",
@@ -421,13 +419,13 @@ function BrandCTA({ brand }: { brand: BrandData }) {
   return (
     <section className="py-20 md:py-28 bg-black border-t border-[#1a1a1a]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-        <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: config.accent }}>Contact</motion.p>
-        <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-5" style={{ fontFamily: "var(--font-dutch)" }}>{config.heading}</motion.h2>
-        <motion.p {...fadeUp} className="text-sm text-[#666] font-light mb-12 max-w-md mx-auto">{config.desc}</motion.p>
+        <motion.p {...fadeUp} className="text-[10px] uppercase mb-6" style={{ color: config.accent }}>Contact</motion.p>
+        <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-medium text-white mb-5" style={{ fontFamily: "var(--font-dutch)" }}>{config.heading}</motion.h2>
+        <motion.p {...fadeUp} className="text-sm text-[#666] font-medium mb-12 max-w-md mx-auto">{config.desc}</motion.p>
         <motion.div {...fadeUp} className="flex flex-col items-center gap-6">
           <a
             href={config.mailto}
-            className="inline-block px-10 py-3.5 text-xs tracking-[0.15em] uppercase transition-all duration-300 border"
+            className="inline-block px-10 py-3.5 text-xs uppercase transition-all duration-300 border"
             style={{
               borderColor: config.accent,
               color: config.accent,
@@ -438,7 +436,7 @@ function BrandCTA({ brand }: { brand: BrandData }) {
             {config.mainLabel}
           </a>
           {config.extUrl && (
-            <a href={config.extUrl} target="_blank" rel="noopener noreferrer" className="text-[#555] hover:text-[#888] text-xs tracking-[0.1em] transition-colors duration-300">
+            <a href={config.extUrl} target="_blank" rel="noopener noreferrer" className="text-[#555] hover:text-[#bbb] text-xs transition-colors duration-300">
               {config.extLabel} ↗
             </a>
           )}
@@ -449,7 +447,7 @@ function BrandCTA({ brand }: { brand: BrandData }) {
 }
 
 /* ═══════════════════════════════════════════════════
-   1. ARTRADER — SaaS / Dashboard feel
+   1. ARTRADER SaaS / Dashboard feel
    ═══════════════════════════════════════════════════ */
 function ChartWithMotion() {
   const [visible, setVisible] = useState(false);
@@ -555,7 +553,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               <p className="text-3xl md:text-4xl font-bold text-[#4ade80]">
                 <CountUp end={s.end} suffix={s.suffix} decimals={s.decimals} duration={2000} />
               </p>
-              <p className="mt-2 text-[10px] tracking-[0.15em] uppercase text-[#555]">{s.label}</p>
+              <p className="mt-2 text-[10px] uppercase text-[#555]">{s.label}</p>
             </motion.div>
           ))}
         </div>
@@ -568,7 +566,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight mb-4">
               데이터로 판단하고,<br />신뢰로 거래합니다
             </h2>
-            <p className="text-[#888] font-light leading-relaxed max-w-2xl mx-auto text-base">
+            <p className="text-[#bbb] font-medium leading-relaxed max-w-2xl mx-auto text-base">
               미술 시장의 흩어진 데이터를 정제하여 시세를 산출하고, 검증된 거래 환경을 제공합니다.
             </p>
           </motion.div>
@@ -576,10 +574,10 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           <motion.div {...fadeUp} className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10">
             {/* Seller */}
             <div className="flex flex-col gap-2.5 items-center">
-              <p className="text-[#4ade80] text-xs tracking-[0.15em] font-medium mb-1">Seller</p>
+              <p className="text-[#4ade80] text-xs font-medium mb-1">Seller</p>
               {["구매자의 구매이력", "유사 경매기록 데이터", "작품 인보이스"].map((item, i) => (
                 <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-lg px-6 py-2.5 text-center min-w-[200px]">
-                  <p className="text-white text-sm font-light">{item}</p>
+                  <p className="text-white text-sm font-medium">{item}</p>
                 </motion.div>
               ))}
             </div>
@@ -591,10 +589,10 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             </div>
             {/* Buyer */}
             <div className="flex flex-col gap-2.5 items-center">
-              <p className="text-[#4ade80] text-xs tracking-[0.15em] font-medium mb-1">Buyer</p>
+              <p className="text-[#4ade80] text-xs font-medium mb-1">Buyer</p>
               {["진품 보증서", "작품 상태 보고서", "소장 이력 (프로비넌스)"].map((item, i) => (
                 <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-lg px-6 py-2.5 text-center min-w-[200px]">
-                  <p className="text-white text-sm font-light">{item}</p>
+                  <p className="text-white text-sm font-medium">{item}</p>
                 </motion.div>
               ))}
             </div>
@@ -608,11 +606,11 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           {/* Header row */}
           <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
             <div className="flex flex-col gap-3 md:order-2 md:items-end md:text-right">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em]">Auction/PS Data</p>
+              <p className="text-[#4ade80] text-sm">Auction/PS Data</p>
               <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
                 작품 검색부터 거래까지<br />아트레이더 하나로
               </h3>
-              <p className="text-[#888] font-light leading-relaxed text-base max-w-xl">
+              <p className="text-[#bbb] font-medium leading-relaxed text-base max-w-xl">
                 국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
               </p>
               <a
@@ -689,11 +687,11 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           {/* Artist Data Analytics */}
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col gap-4 order-2 lg:order-1">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em]">Artist data Analytics</p>
+              <p className="text-[#4ade80] text-sm">Artist data Analytics</p>
               <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
                 검증된 데이터로<br />적정 가격 제시
               </h3>
-              <p className="text-[#888] font-light leading-relaxed max-w-lg">
+              <p className="text-[#bbb] font-medium leading-relaxed max-w-lg">
                 기업·개인 맞춤 종목분석서 형식의 작가 / 컬렉션 정량평가서
                 가격·유동성·경쟁작가 지수 비교
               </p>
@@ -728,11 +726,11 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <p className="text-[#4ade80] text-sm tracking-[0.15em]">Art Sales Performance</p>
+              <p className="text-[#4ade80] text-sm">Art Sales Performance</p>
               <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
                 보조지표 대시보드<br />시각화
               </h3>
-              <p className="text-[#888] font-light leading-relaxed max-w-lg">
+              <p className="text-[#bbb] font-medium leading-relaxed max-w-lg">
                 호당가·도상별 판매 추이 등 보조지표 상승률·회전율 대시보드 시각화
               </p>
             </div>
@@ -747,7 +745,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             <h2 className="text-2xl md:text-3xl font-normal text-white mb-3">
               거래 신뢰를 보장하는 구조
             </h2>
-            <p className="text-sm text-[#888] font-light leading-relaxed max-w-xl mx-auto">
+            <p className="text-sm text-[#bbb] font-medium leading-relaxed max-w-xl mx-auto">
               모든 작품은 자료 기반으로 검수되며, 검증되지 않은 매물은 등록이 제한됩니다.
             </p>
           </motion.div>
@@ -755,7 +753,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {[
               {
                 title: "프로비넌스",
-                desc: "소유·전시 이력이 명확한 기록만 수집합니다.",
+                desc: "소유·전시 이력이 명확한 기록만 수집합니다",
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -767,7 +765,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               },
               {
                 title: "손상 여부 확인",
-                desc: "작품 상태를 보여주는 실물 사진 자료만 등록됩니다.",
+                desc: "작품 상태를 보여주는 실물 사진 자료만 등록됩니다",
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -778,7 +776,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               },
               {
                 title: "가품 리스크 진단",
-                desc: "위험 신호가 있으면 전문 기관에 위탁 검증이 가능합니다.",
+                desc: "위험 신호가 있으면 전문 기관에 위탁 검증이 가능합니다",
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -789,7 +787,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               },
               {
                 title: "추가 거래 정보",
-                desc: "결제 방식 등 주요 거래 정보도 사전 확인할 수 있습니다.",
+                desc: "결제 방식 등 주요 거래 정보도 사전 확인할 수 있습니다",
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -807,7 +805,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               >
                 <div className="mb-3">{card.icon}</div>
                 <h4 className="text-base font-semibold text-white mb-1.5">{card.title}</h4>
-                <p className="text-xs text-[#888] font-light leading-relaxed">{card.desc}</p>
+                <p className="text-xs text-[#bbb] font-medium leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -820,7 +818,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 }
 
 /* ═══════════════════════════════════════════════════
-   2. PASO ART CENTER — Museum / Full-bleed imagery
+   2. PASO ART CENTER Museum / Full-bleed imagery
    ═══════════════════════════════════════════════════ */
 const artCenterGalleryImages = Array.from({ length: 18 }, (_, i) => {
   const num = i + 4;
@@ -834,13 +832,13 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
     <>
       <BrandHero brand={brand} />
 
-      {/* Full-bleed images — cinematic */}
+      {/* Full-bleed images cinematic */}
       {brand.gallery.map((img, i) => (
         <motion.section
           key={i}
           {...stagger(0)}
           className={`relative${i === 0 ? " cursor-pointer" : ""}`}
-          onClick={i === 0 ? () => setOpenGallery({ title: "Exhibition Space", images: artCenterGalleryImages, desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화." }) : undefined}
+          onClick={i === 0 ? () => setOpenGallery({ title: "Exhibition Space", images: artCenterGalleryImages, desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화" }) : undefined}
         >
           <div className="relative h-[60vh] md:h-[80vh] overflow-hidden">
             <img src={img} alt={`Space ${i + 1}`} className="w-full h-full object-cover" />
@@ -848,9 +846,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
           </div>
           {brand.features[i] && (
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent pt-24 pb-10">
-              <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-                <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-2">{brand.features[i].title}</p>
-                <p className="text-sm text-[#aaa] font-light max-w-md">{brand.features[i].desc}</p>
+              <div className="max-w-[1400px] mx-auto px-6 md:px-12">                <p className="text-sm text-[#d4d4d4] font-medium max-w-md">{brand.features[i].desc}</p>
               </div>
             </div>
           )}
@@ -871,8 +867,8 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
             { label: "Partner", value: "Mass C&G" },
           ].map((item, i) => (
             <motion.div key={item.label} {...stagger(i)} className="text-center">
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{item.label}</p>
-              <p className="text-lg text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{item.value}</p>
+              <p className="text-[10px] uppercase text-[#555] mb-3">{item.label}</p>
+              <p className="text-lg text-white font-medium" style={{ fontFamily: "var(--font-dutch)" }}>{item.value}</p>
             </motion.div>
           ))}
         </div>
@@ -884,7 +880,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
 }
 
 /* ═══════════════════════════════════════════════════
-   3. PASO GALLERY — Cinematic / Full-screen hero
+   3. PASO GALLERY Cinematic / Full-screen hero
    ═══════════════════════════════════════════════════ */
 /* ── Exhibition gallery data ── */
 const exhibitionGalleries: Record<string, { images: string[]; desc: string; sections?: { title: string; images: string[] }[] }> = {
@@ -894,23 +890,23 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "Intermission : 이다희 (Rising Artist Contest)": {
     images: [...Array.from({ length: 5 }, (_, i) => `/images/exhibitions/traces-of-light/traces-of-light-${i + 4}.jpg`), "/images/exhibitions/traces-of-light/intermission-new1.jpg", "/images/exhibitions/traces-of-light/intermission-new2.jpg", "/images/exhibitions/traces-of-light/intermission-add1.jpg", "/images/exhibitions/traces-of-light/intermission-add2.jpg"],
-    desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" — 바흐 평균율 제1권 자필 서문 중\n\n참고기사 : https://www.opengallery.co.kr/exhibition/3998/",
+    desc: "이다희 작가는 '음악번안시스템'을 완성하기 위해, 바흐의 음악을 시각화하는 평균율 프로젝트를 진행합니다. 이번 전시 <Intermission>은 바흐 평균율 후반부의 시작인 13번 전주곡을 주제로 하여 평균율 프로젝트의 '중간 지점'을 보여줍니다. 본 전시는 관객이 음악의 시각화 과정을 경험하고, 즐거움을 누리도록 설계되었습니다.\n\n\"음악 학습을 원하는 젊은 이들이 유용하게 사용하도록, 그리고 이 학습에 숙달한 사람들에게 즐거운 오락이 되도록 작곡했다.\" 바흐 평균율 제1권 자필 서문 중\n\n참고기사 : https://www.opengallery.co.kr/exhibition/3998/",
   },
-  "Paso Gallery x ARTIVIST.": {
+  "Paso Gallery x ARTIVIST": {
     images: [1,2,6,9,11,14,17,19,23,24,31,32,33,34,39,43,44,52,53].map(n => `/images/exhibitions/bno-patron/bno-patron-${n}.jpg`),
     desc: "Private Art Forum : 'PATRONS'\n\n파소 갤러리가 @artiv.ist 와 함께 'Guide to start a contemporary art collection' 을 주제로 영 컬렉터들을 위한 프라이빗 아트 포럼을 개최하였습니다.\n\nGuide to start a contemporary art collection의 주제로, 예술가와 미술 업계 전문가들이 함께 현대미술 컬렉션을 시작하는 방법, 작품 선택에 대한 팁, 그리고 예술 시장의 동향 및 미래 등의 주제를 다루었습니다.\n\nPanel :\n서진석 관장 (현 울산시립미술관 관장, 전 백남준 아트센터 관장) @jinsuksuh\n유진상 교수 (계원조형대 교수, 2012 미디어시티비엔날레 총감독, 광주비엔날레 평가위원)\n\nModerator :\n이정우 에디터 (전 널위한문화예술) @jjjw117\n\nSpecial Guest :\nWhisbe @whisbe",
   },
   "Intermission : 이다희 작가 기획전": {
     images: [1, 3, 4, 5, 6, 7, 8].map(i => `/images/exhibitions/traces-of-light/traces-of-light-${i}.jpg`),
-    desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다.",
+    desc: "이현우 작가의 빛과 색채를 주제로 한 미디어 설치전. 프로젝션 매핑과 스테인드글라스 효과를 활용하여 한옥 내부에 몰입적인 빛의 공간을 창조합니다. 전통 건축의 창호와 현대 미디어 아트의 만남이 만들어내는 시적인 풍경을 경험할 수 있습니다",
   },
   "Project ReDE Gallery": {
     images: [1,2,3,4,7,8,9].map(n => `/images/exhibitions/redegallery/redegallery-${n}.jpg`),
-    desc: "Starch Haus x Paso Gallery : Project ReDE Gallery\n\n작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다.\n\n하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다. 작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다.\n\n따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다.",
+    desc: "Starch Haus x Paso Gallery : Project ReDE Gallery\n\n작가님은 흔들리는 인간의 내면과 양가적인 감정의 자극들을 백업하고 삭제하며 뇌엽 절제술 같은 고찰적 장치로 레이어를 시각화시키는 작업을 이어오고 있습니다.\n\n백업하며 컴퓨터를 사용하다 보면 종종 발견하게 되는 \"Purge\"라는 기능이 있습니다. 데이터를 삭제한다는 점에서 \"Delete\" 기능과 유사해 보이지만, 엄밀히 정의하자면 \"Delete\"는 영구 삭제이고, \"Purge\"는 만에 하나의 경우를 대비하여 백업 데이터를 보관한다는 점에서 큰 차이가 있다고 선명하게 연결 지어 설명을 정의해 볼 수 있습니다.\n\n작가님은 종종 과거에 발생했던 사건들이 현재의 본인에게 끼치는 영향력이 두려워 기억의 일부를 컴퓨터 휴지통 비우듯 삭제하고 싶다는 꿈같은 상상을 종종 하십니다.\n\n하지만 이것은 과거의 경험을 끌어와 작업을 하기에는 제법 모순적인 발상일 것입니다. 작가님은 트라우마, 수치심, 부재 등 강박적으로 떠오르는 기억을 지우고 싶은 동시에 작업을 통해 영원히 백업해 두고 싶은 양가적인 감정의 대립관계를 깨닫고 있습니다.\n\n사랑에 빠진 사람들에게 보편적으로 나타나는 현상들에 대해서 자주 생각하십니다. 사랑에 빠진 사람들의 얼굴에는 화사함이 한껏 돌고 평소보다 매우 친절해지곤 합니다. 이런 일이 발생하는 이유는 그들이 무엇보다 지나치게 낙관적인 사람이 되기 때문입니다.\n\n자그마치 상대방이 자신을 자신과 동일한 방식과 경도로 사랑하고 있다고 착각하게 만들며 사랑은 관찰하려고 하면 보이지 않는 정신을 잉태하는듯한 풍경을 재구성하곤 합니다.\n\n믿음만이 사랑을 존재하게 하며 그것을 감각을 통해 증명하려는 시도는 무용하다 믿습니다.\n\n따라서 우리는 상대방의 마음을, 진심을, 사랑을 굳이 질문할 필요가 없다는 걸 느꼈습니다. 그것을 다른 행위를 통해 질량화할 필요도 없습니다. 모르는 게 약인 문제들 때문입니다",
   },
   "소호": {
     images: [],
-    desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
+    desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다",
     sections: [
       { title: "홍콩", images: Array.from({ length: 21 }, (_, i) => `/images/exhibitions/soho-hongkong/soho-hongkong-${i + 1}.jpg`) },
       { title: "소호프리뷰", images: Array.from({ length: 15 }, (_, i) => `/images/exhibitions/soho-preview/soho-preview-${i + 1}.jpg`) },
@@ -918,19 +914,19 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
   "Forest of Finity": {
     images: [8,9,10,15,16,17,18].map(n => `/images/exhibitions/forest-of-finity/forest-of-finity-${n}.jpg`),
-    desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다'\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.\n\n이지은 작가는 극과 극의 대비를 통해 가시적인 형상을 가로질러서 그 속의 숨은 뜻, 즉 외적인 형상만이 아닌 내면의 본질을 향한 깨달음을 드러내려고 합니다. 또한 본질적인 의미를 담아내기 위해 조각가로서 다양한 조형미를 통해 이를 전달하고 있지만, 이조차 역설적이며, 이런 상충한 면모들이 이지은 작가의 작업 전반에 중요한 요소들입니다.",
+    desc: "두 작가는 존재에 대해 고찰합니다.\n\n유한하고 불완전한 상태에 대한 두 작가의 깨달음은 빛(치유)과 아름다움을 정의하는 결과를 낳습니다.\n\n'불완전'하기에 '구원' 될 수 있으며,\n'유한'하기에 '더욱 아름답게 비춰진다'\n\n김선혁 작가는 자연에서 영감을 받아 창작하며 이를 고유한 미술 언어로 표현합니다. 작가의 의도는 어둠 속, 마르고 척박한 땅에 심어진 나무를 통해 포착됩니다. 살기 위해 조금씩 뿌리를 뻗어 내려가고 한 줄기의 빛을 바라보며 무한한 가능성을 소망하는 이 나무는 삶과 죽음을 대하는 겸허한 태도와 희망을 동시에 내포하고 있습니다.\n\n이지은 작가는 극과 극의 대비를 통해 가시적인 형상을 가로질러서 그 속의 숨은 뜻, 즉 외적인 형상만이 아닌 내면의 본질을 향한 깨달음을 드러내려고 합니다. 또한 본질적인 의미를 담아내기 위해 조각가로서 다양한 조형미를 통해 이를 전달하고 있지만, 이조차 역설적이며, 이런 상충한 면모들이 이지은 작가의 작업 전반에 중요한 요소들입니다",
   },
   "히노살롱": {
     images: [2,6,9,10,12,13,16,17,18,19,22,26,30,34].map(n => `/images/exhibitions/hino-salon/hino-salon-${n}.jpg`),
-    desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club.",
+    desc: "Diefrage Salon by Paso Private Art Club\n[노희영의 Selection : 모든 것에 대한 테이스트]\n\n브랜드전략가 노희영 고문의 설렉션과 테이스트에 대한 디프라게 프라이빗 살롱이 개최되었습니다.\n\nA private salon event was held to share insights on the selections by brand strategist HINO.\nThis exclusive gathering was conducted for members of the Diefrage Selective Members, in Paso Art Club",
   },
   "빠끼": {
     images: [...[1,2,3,9].map(n => `/images/exhibitions/bbakki/bbakki-${n}.jpg`), "/images/exhibitions/bbakki/KakaoTalk_Photo_2024-07-25-17-08-54 024.png", "/images/exhibitions/bbakki/KakaoTalk_Photo_2024-07-25-17-08-55 028 (2).png", "/images/exhibitions/bbakki/KakaoTalk_Photo_2024-07-25-17-08-55 029 (1).png"],
-    desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다.",
+    desc: "빠키는 설치, 퍼포먼스, 관객 참여형 작품 등 다양한 매체를 통해 작품 세계를 펼쳐왔다. 작가는 도형의 기본요소인 점, 선, 면, 형, 색채를 전면에 드러내는데, 이 요소들은 작가가 고안한 화면 안에서 생명력을 얻고 마치 무한한 우주의 궤도를 순환하는 행성처럼 생성과 소멸을 반복한다",
   },
   "소호프리뷰": {
     images: [...[12,14,2,3,6,8,11].map(n => `/images/exhibitions/soho-preview/soho-preview-${n}.jpg`), "/images/exhibitions/soho-preview/soho-preview-new.jpg", "/images/exhibitions/soho-preview/soho-preview-new2.jpg", "/images/exhibitions/soho-preview/soho-preview-new3.jpg"],
-    desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다.",
+    desc: "2024. 7월 홍콩 소호하우스에서 PASO가 선정한 세 명의 한국 신진 작가들을 선보였습니다.\n본 전시 이전, 한국에서 PASO 아트 클럽 멤버들을 위한 프리뷰가 파소 갤러리에서 진행되었습니다",
   },
   "화이자": {
     images: Array.from({ length: 7 }, (_, i) => `/images/exhibitions/hwaija/hwaija-${i + 1}.jpg`),
@@ -963,9 +959,9 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
   const exhibitions = [
     { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
-    { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-cover.jpg" },
+    { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-new1.jpg" },
     { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.jpg" },
-    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07.", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
+    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
   ];
 
   const clients = [
@@ -999,28 +995,27 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative z-10 text-center px-6">
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-10"
-          >
-            Since {brand.year}
-          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-8xl lg:text-9xl text-white tracking-tight text-thin-cross"
-            style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+            className="flex justify-center"
+            aria-label="Space by Paso"
           >
-            Space by PASO
+            <NextImage
+              src="/brands/space-by-paso-logo.png"
+              alt="Space by Paso"
+              width={1105}
+              height={133}
+              priority
+              className="w-[80vw] max-w-[900px] h-auto"
+            />
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-10 text-sm md:text-base text-[#aaa] font-light max-w-lg mx-auto"
+            className="mt-10 text-sm md:text-base text-[#d4d4d4] font-medium max-w-lg mx-auto"
           >
             Private Art Space for Thought Leaders
           </motion.p>
@@ -1030,10 +1025,10 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             transition={{ delay: 1.2 }}
             className="mt-14 flex gap-4 justify-center"
           >
-            <a href="#exhibitions" className="px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+            <a href="#exhibitions" className="px-8 py-3 border border-[#b8960b] text-[#b8960b] text-sm hover:bg-[#b8960b] hover:text-black transition-all duration-300">
               Exhibitions
             </a>
-            <a href="#space" className="px-8 py-3 border border-[#333] text-[#888] text-xs tracking-[0.15em] uppercase hover:border-[#555] hover:text-white transition-all duration-300">
+            <a href="#space" className="px-8 py-3 border border-[#333] text-[#bbb] text-sm hover:border-[#555] hover:text-white transition-all duration-300">
               Space
             </a>
           </motion.div>
@@ -1075,7 +1070,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── EXHIBITIONS: Selected Works ── */}
-      <section id="exhibitions" className="py-24 md:py-32 bg-black">
+      <section id="exhibitions" className="pt-44 md:pt-56 pb-24 md:pb-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {exhibitions.map((ex, i) => (
@@ -1100,9 +1095,9 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/70 to-transparent">
-                    <p className="text-[10px] tracking-[0.15em] uppercase text-[#b8960b] mb-2">{ex.date}</p>
-                    <h3 className="text-xl md:text-2xl text-white font-light" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
-                    <p className="text-xs text-[#aaa] font-light mt-1">{ex.artist}</p>
+                    <p className="text-[10px] text-white mb-2">{ex.date}</p>
+                    <h3 className="text-xl md:text-2xl text-white font-medium" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
+                    <p className="text-xs text-[#d4d4d4] font-medium mt-1">{ex.artist}</p>
                   </div>
                 </div>
               </motion.div>
@@ -1120,8 +1115,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Programs</p>
-            <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
+            <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
               Curated Programs
             </h2>
           </motion.div>
@@ -1145,10 +1139,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                     className="w-full h-full object-cover transition-all duration-700"
                   />
                 </div>
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] block mb-3">0{i + 1}</span>
-                <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
-                <div className="mt-4 w-0 group-hover:w-8 h-px bg-[#b8960b] transition-all duration-500" />
+                <h3 className="text-lg text-white font-medium mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
+                <p className="text-sm text-[#bbb] font-medium leading-relaxed">{f.desc}</p>
               </motion.div>
               );
             })}
@@ -1160,8 +1152,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Brand Collaborations</p>
-            <h2 className="text-3xl md:text-5xl font-light text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
+            <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
               Brand Projects
             </h2>
           </motion.div>
@@ -1170,7 +1161,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             {[
               { title: "Superbugs Campaign", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
               { title: "Maker's Mark Private Selection", image: "/images/exhibitions/makers-mark/makers-mark-1.jpg", galleryKey: "메이커스마크" },
-              { title: "Paso Gallery x ARTIVIST.", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST." },
+              { title: "Paso Gallery x ARTIVIST", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST" },
             ].map((card, i) => {
               const galleryData = exhibitionGalleries[card.galleryKey];
               return (
@@ -1188,10 +1179,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                       className="w-full h-full object-cover transition-all duration-700"
                     />
                   </div>
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] block mb-3">0{i + 4}</span>
-                  <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
-                  <div className="mt-4 w-0 group-hover:w-8 h-px bg-[#b8960b] transition-all duration-500" />
-                </motion.div>
+                  <h3 className="text-lg text-white font-medium mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                  </motion.div>
               );
             })}
           </div>
@@ -1203,20 +1192,19 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
               <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
                 공간 대관 문의
               </h2>
-              <p className="text-[#888] font-light leading-relaxed mb-8">
+              <p className="text-[#bbb] font-medium leading-relaxed mb-8">
                 서울 종로구에 위치한 한옥 갤러리에서 전시, 팝업, 프라이빗 이벤트를 진행해 보세요. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
               </p>
-              <div className="space-y-4 text-sm text-[#666] font-light">
+              <div className="space-y-4 text-sm text-[#666] font-medium">
                 <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <span className="text-[#b8960b] mt-0.5"> </span>
                   <p>전시, 팝업, 프라이빗 이벤트, 촬영 등 다양한 목적의 대관 가능</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <span className="text-[#b8960b] mt-0.5"> </span>
                   <p>전시 기획 및 설치 지원 서비스 제공</p>
                 </div>
               </div>
@@ -1254,27 +1242,27 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
-                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-xs text-[#555] block mb-2">이름</label>
+                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
-                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-xs text-[#555] block mb-2">이메일</label>
+                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
-                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-xs text-[#555] block mb-2">연락처</label>
+                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">대관 요청 희망일</label>
-                    <input name="date" type="date" min={new Date().toISOString().split("T")[0]} className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [color-scheme:dark]" />
+                    <label className="text-xs text-[#555] block mb-2">대관 요청 희망일</label>
+                    <input name="date" type="date" min={new Date().toISOString().split("T")[0]} className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors [color-scheme:dark]" />
                   </div>
                 </div>
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">행사 유형</label>
-                  <select name="eventType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
+                  <label className="text-xs text-[#555] block mb-2">행사 유형</label>
+                  <select name="eventType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors [&>option]:bg-[#111]">
                     <option value="">선택해주세요</option>
                     <option value="전시">전시</option>
                     <option value="팝업">팝업</option>
@@ -1284,17 +1272,17 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                   </select>
                 </div>
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">메시지</label>
-                  <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+                  <label className="text-xs text-[#555] block mb-2">메시지</label>
+                  <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
                 </div>
-                <button type="submit" disabled={submitting} className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button type="submit" disabled={submitting} className="mt-4 px-8 py-3 rounded-full bg-[#b8960b] text-black text-sm font-medium hover:opacity-85 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                   {submitting ? "전송 중..." : "문의하기"}
                 </button>
                 {submitStatus === "success" && (
-                  <p className="mt-4 text-sm text-green-400 font-light">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.</p>
+                  <p className="mt-4 text-sm text-green-400 font-medium">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.</p>
                 )}
                 {submitStatus === "error" && (
-                  <p className="mt-4 text-sm text-red-400 font-light">전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
+                  <p className="mt-4 text-sm text-red-400 font-medium">전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
                 )}
               </form>
             </motion.div>
@@ -1307,13 +1295,13 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
-            { label: "Hours", value: "Tue — Sat\n11:00 — 19:00" },
-            { label: "Contact", value: "makim@ironact.net\n+82 10-6432-4471" },
+            { label: "Hours", value: "By Appointment Only\nPrivate Viewings" },
+            { label: "Contact", value: "makhymgalvin@pasogallery.com\n+82 10-6432-4471" },
             { label: "Instagram", value: "@pasogallery" },
           ].map((info, i) => (
             <motion.div key={info.label} {...stagger(i)}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{info.label}</p>
-              <p className="text-sm text-[#aaa] font-light whitespace-pre-line">{info.value}</p>
+              <p className="text-xs text-[#555] mb-3">{info.label}</p>
+              <p className="text-sm text-[#d4d4d4] font-medium whitespace-pre-line">{info.value}</p>
             </motion.div>
           ))}
         </div>
@@ -1322,11 +1310,11 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       {/* ── 본사 바로가기 ── */}
       <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-6">PASO Corporation</motion.p>
+          <motion.p {...fadeUp} className="text-sm text-[#b8960b] mb-6">PASO Corporation</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-3xl font-normal text-white mb-6">본사 바로가기</motion.h2>
-          <motion.p {...fadeUp} className="text-sm md:text-base text-[#888] font-light mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
+          <motion.p {...fadeUp} className="text-sm md:text-base text-[#bbb] font-medium mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
           <motion.div {...fadeUp}>
-            <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border border-[#b8960b] text-[#b8960b] text-sm tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+            <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border border-[#b8960b] text-[#b8960b] text-sm hover:bg-[#b8960b] hover:text-black transition-all duration-300">
               PASO Corp
             </a>
           </motion.div>
@@ -1338,7 +1326,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 }
 
 /* ═══════════════════════════════════════════════════
-   4. PASO AGENCY — Playful / Colorful cards
+   4. PASO AGENCY Playful / Colorful cards
    ═══════════════════════════════════════════════════ */
 function AgencyLayout({ brand }: { brand: BrandData }) {
   const cardColors = ["#d4a574", "#e8b4b8", "#a8c5da", "#c4b896", "#b8a9c9", "#98c9a3"];
@@ -1349,9 +1337,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
 
       {/* Playful project cards */}
       <section className="pt-24 pb-16 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Projects</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>Creative Collaborations</motion.h2>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-medium text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>Creative Collaborations</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {brand.gallery.map((img, i) => {
               const hasGallery = i in projectGalleries;
@@ -1369,8 +1355,8 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
                 <div className="p-5">
                   {brand.features[i] && (
                     <>
-                      <span className="inline-block px-3 py-1 text-[10px] tracking-[0.1em] uppercase rounded-full mb-3 border" style={{ color: cardColors[i % cardColors.length], borderColor: `${cardColors[i % cardColors.length]}40` }}>{brand.features[i].title}</span>
-                      <p className="text-sm text-[#888] font-light">{brand.features[i].desc}</p>
+                      <span className="inline-block px-3 py-1 text-[10px] uppercase rounded-full mb-3 border" style={{ color: cardColors[i % cardColors.length], borderColor: `${cardColors[i % cardColors.length]}40` }}>{brand.features[i].title}</span>
+                      <p className="text-sm text-[#bbb] font-medium">{brand.features[i].desc}</p>
                     </>
                   )}
                 </div>
@@ -1416,7 +1402,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
             ].map((s, i) => (
               <motion.div key={s.title} {...stagger(i)} className="text-center p-8">
                 <span className="mb-5 block flex justify-center">{s.icon}</span>
-                <h3 className="text-base md:text-lg tracking-[0.08em] uppercase text-white font-medium">{s.title}</h3>
+                <h3 className="text-base md:text-lg uppercase text-white font-medium">{s.title}</h3>
               </motion.div>
             ))}
           </div>
@@ -1429,7 +1415,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
 }
 
 /* ═══════════════════════════════════════════════════
-   5. ARTLEDGER CONSULTING — Prestigious / Minimal
+   5. ARTLEDGER CONSULTING Prestigious / Minimal
    ═══════════════════════════════════════════════════ */
 function ConsultingLayout({ brand }: { brand: BrandData }) {
   const targets = [
@@ -1441,19 +1427,17 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
     <>
       <BrandHero brand={brand} />
 
-      {/* Services — 3 cards with curated images */}
+      {/* Services 3 cards with curated images */}
       <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Services</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">전문 자문 서비스</motion.h2>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">전문 자문 서비스</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
             {brand.features.slice(0, 3).map((f, i) => (
               <motion.div key={f.title} {...stagger(i)} className="bg-[#0a0a0a] p-8 md:p-10 group">
                 <div className="overflow-hidden mb-6">
                   <img src={f.image || brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
-                <p className="text-lg tracking-[0.08em] text-white mb-3 font-normal">{f.title}</p>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{f.desc}</p>
+                <p className="text-lg text-white mb-3 font-normal">{f.title}</p>
+                <p className="text-sm text-[#bbb] font-medium leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -1462,13 +1446,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
 
       {/* Process steps */}
       <section className="py-24 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-10">Process</motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-px">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <div className="grid grid-cols-1 md:grid-cols-4 gap-px">
             {["Review", "Valuation", "Strategy", "Execute"].map((step, i) => (
               <motion.div key={step} {...stagger(i)} className="group p-8 text-center relative cursor-default">
-                <p className="text-5xl font-light text-[#444] group-hover:text-[#b8960b] transition-colors duration-500 mb-4" style={{ fontFamily: "var(--font-dutch)" }}>0{i + 1}</p>
-                <p className="text-sm tracking-[0.1em] uppercase text-white">{step}</p>
+                <p className="text-5xl font-medium text-[#444] group-hover:text-[#b8960b] transition-colors duration-500 mb-4" style={{ fontFamily: "var(--font-dutch)" }}>0{i + 1}</p>
+                <p className="text-sm uppercase text-white">{step}</p>
                 {i < 3 && <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-8 h-px bg-[#333]" />}
               </motion.div>
             ))}
@@ -1478,15 +1460,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
 
       {/* Programs */}
       <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Programs</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">교육 & 네트워킹</motion.h2>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">교육 & 네트워킹</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {brand.features.slice(3, 6).map((f, i) => (
-              <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors duration-500">
-                <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">0{i + 1}</p>
-                <h3 className="text-lg tracking-[0.08em] text-white font-normal mb-3">{f.title}</h3>
-                <p className="text-base text-[#888] font-light leading-relaxed">{f.desc}</p>
+              <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors duration-500">                <h3 className="text-lg text-white font-normal mb-3">{f.title}</h3>
+                <p className="text-base text-[#bbb] font-medium leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -1495,16 +1473,14 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
 
       {/* Target clients */}
       <section className="py-24 md:py-32 bg-[#050505]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">For</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">누구를 위한 서비스인가</motion.h2>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">누구를 위한 서비스인가</motion.h2>
           <div className="flex flex-col gap-4">
             {targets.map((t, i) => (
               <motion.div key={t.label} {...stagger(i)} className="group flex items-center gap-8 bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#b8960b]/30 rounded-lg p-8 md:p-10 transition-all duration-500">
-                <span className="text-4xl md:text-5xl font-light text-[#222] group-hover:text-[#b8960b] transition-colors duration-500">0{i + 1}</span>
+                <span className="text-4xl md:text-5xl font-medium text-[#222] group-hover:text-[#b8960b] transition-colors duration-500">0{i + 1}</span>
                 <div className="flex-1">
                   <h3 className="text-lg md:text-xl text-white font-normal mb-2">{t.label}</h3>
-                  <p className="text-base text-[#888] font-light leading-relaxed">{t.desc}</p>
+                  <p className="text-base text-[#bbb] font-medium leading-relaxed">{t.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -1516,21 +1492,19 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <motion.div {...fadeUp}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Consulting</p>
-              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
+            <motion.div {...fadeUp}>              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
                 컨설팅 문의
               </h2>
-              <p className="text-[#888] font-light leading-relaxed mb-8">
+              <p className="text-[#bbb] font-medium leading-relaxed mb-8">
                 미술품 세무·자산관리 전문 컨설팅을 제공합니다. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
               </p>
-              <div className="space-y-4 text-sm text-[#666] font-light">
+              <div className="space-y-4 text-sm text-[#666] font-medium">
                 <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <span className="text-[#b8960b] mt-0.5"> </span>
                   <p>증여·상속, 법인 비용·감가, 컬렉션 관리 자문</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <span className="text-[#b8960b] mt-0.5"> </span>
                   <p>맞춤 절세 플랜 및 사후 관리</p>
                 </div>
               </div>
@@ -1554,11 +1528,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
                       setTimeout(() => { btn.disabled = false; btn.textContent = "문의하기"; }, 2000);
                       e.currentTarget.reset();
                     } else {
-                      btn.textContent = "전송 실패 — 다시 시도해주세요";
+                      btn.textContent = "전송 실패 다시 시도해주세요";
                       btn.disabled = false;
                     }
                   } catch {
-                    btn.textContent = "전송 실패 — 다시 시도해주세요";
+                    btn.textContent = "전송 실패 다시 시도해주세요";
                     btn.disabled = false;
                   }
                 }}
@@ -1566,27 +1540,27 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
-                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">이름</label>
+                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
-                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">이메일</label>
+                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
-                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">연락처</label>
+                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">소속</label>
-                    <input name="company" type="text" placeholder="기관명 (개인은 생략 가능)" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">소속</label>
+                    <input name="company" type="text" placeholder="기관명 (개인은 생략 가능)" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                 </div>
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">상담 유형</label>
-                  <select name="consultType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
+                  <label className="text-[10px] uppercase text-[#555] block mb-2">상담 유형</label>
+                  <select name="consultType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors [&>option]:bg-[#111]">
                     <option value="">선택해주세요</option>
                     <option value="증여·상속 절세">증여·상속 절세</option>
                     <option value="법인 미술품 비용처리">법인 미술품 비용처리</option>
@@ -1596,10 +1570,10 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
                   </select>
                 </div>
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">메시지</label>
-                  <textarea name="message" rows={4} placeholder="예: 보유 작품 수, 상담 희망 내용 등을 자유롭게 적어주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+                  <label className="text-[10px] uppercase text-[#555] block mb-2">메시지</label>
+                  <textarea name="message" rows={4} placeholder="예: 보유 작품 수, 상담 희망 내용 등을 자유롭게 적어주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
                 </div>
-                <button type="submit" className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+                <button type="submit" className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
                   문의하기
                 </button>
               </form>

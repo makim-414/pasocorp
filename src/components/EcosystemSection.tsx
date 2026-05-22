@@ -17,17 +17,13 @@ export default function EcosystemSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="text-center mb-8 md:mb-12"
-        >
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#b8960b] mb-4">
-            Ecosystem
-          </p>
-          <h2
-            className="text-3xl md:text-5xl font-light text-white mb-4 leading-tight"
+        >          <h2
+            className="text-3xl md:text-5xl font-medium text-white mb-4 leading-tight"
             style={{ fontFamily: "var(--font-dutch)" }}
           >
             PASO Integrated Ecosystem
           </h2>
-          <p className="text-sm md:text-base text-[#888] font-light">
+          <p className="text-sm md:text-base text-[#888] font-medium">
             갤러리를 중심으로, 데이터·자문·전시·IP가 하나로 연결됩니다.
           </p>
         </motion.div>
@@ -42,7 +38,8 @@ export default function EcosystemSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center text-xs md:text-sm text-[#888] font-light mt-8 md:mt-12 max-w-lg mx-auto leading-relaxed"
+          className="text-center text-xs md:text-sm text-[#888] font-medium mt-8 md:mt-12 mx-auto leading-relaxed whitespace-nowrap"
+          style={{ wordBreak: "keep-all" }}
         >
           Paso Gallery는 PASO 생태계의 핵심 브랜드로, 신진작가 발굴부터 시장 연결까지를 담당합니다.
         </motion.p>

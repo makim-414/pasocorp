@@ -11,6 +11,8 @@ const fadeUp = {
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 };
 
+const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
+
 
 export default function SpacesContent() {
   const [submitting, setSubmitting] = useState(false);
@@ -29,15 +31,13 @@ export default function SpacesContent() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
         <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-12 pb-16 md:pb-24">
-          <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Spaces</p>
-            <h1
-              className="text-4xl md:text-6xl text-white mb-4"
-              style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+          <motion.div {...fadeUp}>            <h1
+              className="text-3xl md:text-5xl font-medium text-white mb-4"
+              style={{ fontFamily: "var(--font-dutch)" }}
             >
               Space Introduction
             </h1>
-            <p className="text-[#aaa] font-light leading-relaxed max-w-2xl text-lg">
+            <p className="text-[#d4d4d4] font-medium leading-relaxed max-w-2xl text-lg" style={{ wordBreak: "keep-all" }}>
               서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다.
             </p>
           </motion.div>
@@ -48,16 +48,15 @@ export default function SpacesContent() {
       <section className="py-28 md:py-36 bg-black border-b border-[#1a1a1a]">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
-            <h2
-              className="text-3xl md:text-5xl text-white mb-3 tracking-tight"
-              style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 400 }}
-            >
-              PASO
-            </h2>
-            <p className="text-sm md:text-base text-[#888] mb-12" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif" }}>
+            <img
+              src="/images/logos/paso-logo.png"
+              alt="PASO"
+              className="h-12 md:h-16 w-auto mx-auto mb-4"
+            />
+            <p className="text-sm md:text-base text-[#bbb] mb-12" style={{ fontFamily: "var(--font-sans)" }}>
               Your Event Partner for Exhibition
             </p>
-            <div className="space-y-8 text-[#aaa] font-light leading-relaxed text-xs md:text-sm">
+            <div className="max-w-[680px] mx-auto space-y-6 text-left text-[#e5e5e5] font-normal text-base md:text-[17px]" style={{ wordBreak: "keep-all", overflowWrap: "break-word", lineHeight: 1.9 }}>
               <p>
                 파소 갤러리 헤리티지는 성북동 초입에 위치한 70년 전통의 종가를 모던하게 개조하여 운영하는 파소의 전시 공간입니다.
               </p>
@@ -65,8 +64,7 @@ export default function SpacesContent() {
                 고유한 역사와 현대적 감각이 조화된 이 공간은 프라이빗하고 세련된 행사를 위한 최적의 장소로, 웨딩, VIP 이벤트, 기업 B2B 행사 등 다양한 형태의 행사에 활용 가능합니다.
               </p>
               <p>
-                파소 갤러리는 지난 10년간 신진 작가 공모전과 여러 아티스트 및 브랜드와의 협업을 통해 깊이 있는 전시 노하우를 구축해 왔습니다.<br />
-                또한, 작가들의 작업을 IP 형태로 제공하는 파소 에이전시와 미술 VIP 커뮤니티 운영을 통해 기업 고객과의 다양한 협력 경험을 갖추고 있습니다.
+                파소 갤러리는 지난 10년간 신진 작가 공모전과 여러 아티스트 및 브랜드와의 협업을 통해 깊이 있는 전시 노하우를 구축해 왔습니다. 또한 작가들의 작업을 IP 형태로 제공하는 파소 에이전시와 미술 VIP 커뮤니티 운영을 통해 기업 고객과의 다양한 협력 경험을 갖추고 있습니다.
               </p>
               <p>
                 본 공간 소개서는 행사 기획사와의 협업을 통해 전시 공간에서 독창적이고 품격 있는 행사를 기획하실 수 있도록 제안드리기 위해 제작되었습니다.
@@ -74,22 +72,22 @@ export default function SpacesContent() {
             </div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
-                <p className="text-white text-sm mb-2" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 500 }}>Paso Gallery</p>
-                <div className="text-[11px] text-[#666] font-light space-y-0.5">
+                <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Paso Gallery</p>
+                <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
                   <p>전시 기획 및 미술품 판매</p>
                   <p>작품 기반 제품 제작 (에디션, 판화 큐레이션)</p>
                 </div>
               </div>
               <div>
-                <p className="text-white text-sm mb-2 font-semibold tracking-wide uppercase">PASO AGENCY</p>
-                <div className="text-[11px] text-[#666] font-light space-y-0.5">
+                <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Paso Agency</p>
+                <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
                   <p>B2B IP 프로젝트 (미가 커미션 작업)</p>
                   <p>외부 전시 기획</p>
                 </div>
               </div>
               <div>
-                <p className="text-white text-sm mb-2" style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 500 }}>Paso Gallery<br /><span className="text-xs text-[#888]">Heritage</span></p>
-                <div className="text-[11px] text-[#666] font-light space-y-0.5">
+                <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Paso Gallery<br /><span className="text-sm text-[#d4d4d4]" style={{ fontWeight: 400 }}>Heritage</span></p>
+                <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
                   <p>기업행사 협력기획</p>
                   <p>대관</p>
                 </div>
@@ -99,30 +97,34 @@ export default function SpacesContent() {
         </div>
       </section>
 
-      {/* ── Space Info ── */}
-      <section className="py-24 md:py-32 bg-[#111] border-b border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp}>
-              <div className="w-12 h-[3px] bg-[#888] mb-6" />
-              <h2 className="text-2xl md:text-3xl text-white font-semibold mb-1">Space</h2>
-              <p className="text-[#aaa] text-sm mb-8">공간 소개</p>
-              <div className="space-y-2 text-sm text-[#999] font-light">
-                <p>주소지 : 서울특별시 종로구 성균관로 92</p>
-                <p>면적 : 약 231m², 70평</p>
-                <p>수용 인원 : 최대 50명</p>
-                <p>테이블 / 의자 : 간이 의자 약 20개 구비, 테이블 사용 가능</p>
-              </div>
-            </motion.div>
-            <motion.div {...fadeUp} className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src="/images/gallery/slide-hero.png"
-                alt="Space by PASO 내부"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+      {/* ── Brochure Download ── */}
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
+        <div className="max-w-[700px] mx-auto px-6 md:px-12 text-center">
+          <motion.p {...fadeUp} className="text-xs text-[#bbb] uppercase mb-4">Brochure</motion.p>
+          <motion.h2 {...fadeUp} className="text-3xl md:text-4xl text-white mb-6" style={{ fontFamily: "var(--font-sans)", fontWeight: 500 }}>
+            공간 안내서
+          </motion.h2>
+          <motion.p {...fadeUp} className="text-[#d4d4d4] text-sm md:text-base mb-10" style={{ wordBreak: "keep-all", lineHeight: 1.85 }}>
+            대관 검토와 행사 기획에 필요한 공간 구성, 도면, 이용 안내가 담겨 있습니다.
+          </motion.p>
+          <motion.div {...fadeUp}>
+            <a
+              href="/docs/paso-gallery-brochure.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-7 py-3 rounded-full bg-[#b8960b] text-black text-sm font-medium hover:opacity-85 transition-all duration-300"
+            >
+              안내서 PDF 다운로드
+            </a>
+          </motion.div>
+
+          <motion.div {...fadeUp} className="mt-12 rounded-lg overflow-hidden border border-[#1a1a1a] bg-[#0a0a0a]">
+            <iframe
+              src="/docs/paso-gallery-brochure.pdf#view=FitH"
+              title="Paso Gallery 안내서 미리보기"
+              className="w-full h-[70vh] md:h-[85vh]"
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -131,13 +133,13 @@ export default function SpacesContent() {
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
             <h2
-              className="text-4xl md:text-6xl lg:text-7xl text-white mb-8"
-              style={{ fontFamily: "'Cormorant Garamond', var(--font-dutch), serif", fontWeight: 300, letterSpacing: "0.02em" }}
+              className="text-3xl md:text-5xl font-medium text-white mb-8"
+              style={{ fontFamily: "var(--font-dutch)" }}
             >
               Private Programs
             </h2>
             <div className="w-16 h-[3px] bg-white mx-auto mb-12" />
-            <div className="space-y-8 text-[#aaa] font-light leading-relaxed text-sm md:text-base">
+            <div className="space-y-8 text-[#d4d4d4] font-medium leading-relaxed text-sm md:text-base">
               <p>
                 Space by PASO는 파소의 첫 번째 전시 공간으로,<br />
                 성북동 초입의 성균관 유생 종가를 현대적으로 재건축한 전시 공간입니다.
@@ -168,7 +170,7 @@ export default function SpacesContent() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
-              { label: "Hours", value: "Tue — Sat\n11:00 — 19:00" },
+              { label: "Hours", value: "Tue Sat\n11:00 19:00" },
               { label: "Contact", value: "makim@ironact.net\n+82 10-6432-4471" },
               { label: "Instagram", value: "@pasogallery" },
             ].map((info, i) => (
@@ -179,8 +181,8 @@ export default function SpacesContent() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
-                <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{info.label}</p>
-                <p className="text-sm text-[#aaa] font-light whitespace-pre-line">{info.value}</p>
+                <p className="text-[10px] uppercase text-[#555] mb-3">{info.label}</p>
+                <p className="text-sm text-[#d4d4d4] font-medium whitespace-pre-line">{info.value}</p>
               </motion.div>
             ))}
           </div>
@@ -191,24 +193,22 @@ export default function SpacesContent() {
       <section id="rental" className="py-24 md:py-32 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <motion.div {...fadeUp}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
-              <h2
+            <motion.div {...fadeUp}>              <h2
                 className="text-2xl md:text-4xl font-medium text-white mb-6"
                 style={{ fontFamily: "var(--font-noto-serif)" }}
               >
                 공간 대관 문의
               </h2>
-              <p className="text-[#888] font-light leading-relaxed mb-8">
+              <p className="text-[#bbb] font-medium leading-relaxed mb-8">
                 서울 종로구에 위치한 한옥 갤러리에서 전시, 팝업, 프라이빗 이벤트를 진행해 보세요. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
               </p>
-              <div className="space-y-4 text-sm text-[#666] font-light">
+              <div className="space-y-4 text-sm text-[#666] font-medium">
                 <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <span className="text-[#b8960b] mt-0.5"> </span>
                   <p>전시, 팝업, 프라이빗 이벤트, 촬영 등 다양한 목적의 대관 가능</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
+                  <span className="text-[#b8960b] mt-0.5"> </span>
                   <p>전시 기획 및 설치 지원 서비스 제공</p>
                 </div>
               </div>
@@ -246,27 +246,27 @@ export default function SpacesContent() {
                 <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
-                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">이름</label>
+                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
-                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">이메일</label>
+                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
-                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">연락처</label>
+                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
                   </div>
                   <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">대관 요청 희망일</label>
-                    <input name="date" type="date" min={new Date().toISOString().split("T")[0]} className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [color-scheme:dark]" />
+                    <label className="text-[10px] uppercase text-[#555] block mb-2">대관 요청 희망일</label>
+                    <input name="date" type="date" min={new Date().toISOString().split("T")[0]} className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors [color-scheme:dark]" />
                   </div>
                 </div>
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">행사 유형</label>
-                  <select name="eventType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
+                  <label className="text-[10px] uppercase text-[#555] block mb-2">행사 유형</label>
+                  <select name="eventType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors [&>option]:bg-[#111]">
                     <option value="">선택해주세요</option>
                     <option value="전시">전시</option>
                     <option value="팝업">팝업</option>
@@ -276,17 +276,17 @@ export default function SpacesContent() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">메시지</label>
-                  <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+                  <label className="text-[10px] uppercase text-[#555] block mb-2">메시지</label>
+                  <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
                 </div>
-                <button type="submit" disabled={submitting} className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button type="submit" disabled={submitting} className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                   {submitting ? "전송 중..." : "문의하기"}
                 </button>
                 {submitStatus === "success" && (
-                  <p className="mt-4 text-sm text-green-400 font-light">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.</p>
+                  <p className="mt-4 text-sm text-green-400 font-medium">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.</p>
                 )}
                 {submitStatus === "error" && (
-                  <p className="mt-4 text-sm text-red-400 font-light">전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
+                  <p className="mt-4 text-sm text-red-400 font-medium">전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
                 )}
               </form>
             </motion.div>
