@@ -14,14 +14,14 @@ const fadeUp = {
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
 
 const team = [
-  { name: "Leadership", role: "CEO & Founder", desc: "미술 시장 데이터 분석 전문가. 금융·테크 배경으로 미술 자산화 전략을 설계합니다." },
-  { name: "Advisory Board", role: "세무·법률·큐레이션", desc: "세무사, 변호사, 큐레이터로 구성된 자문단이 전문 서비스를 지원합니다." },
+  { name: "Leadership", role: "CEO & Founder", desc: "미술 시장 데이터 분석 전문가. 금융·테크 배경으로 미술 자산화 전략을 설계합니다" },
+  { name: "Advisory Board", role: "세무·법률·큐레이션", desc: "세무사, 변호사, 큐레이터로 구성된 자문단이 전문 서비스를 지원합니다" },
 ];
 
 const values = [
-  { title: "Data-First", desc: "감이 아닌 데이터로. 1,500만 건 거래 데이터에 기반한 의사결정." },
-  { title: "Full Ecosystem", desc: "분석-자문-전시-유통-IP를 잇는 완결형 미술 생태계." },
-  { title: "Accessibility", desc: "미술을 소수의 전유물이 아닌, 모두가 접근 가능한 자산 클래스로." },
+  { title: "Data-First", desc: "감이 아닌 데이터로. 1,500만 건 거래 데이터에 기반한 의사결정" },
+  { title: "Full Ecosystem", desc: "분석-자문-전시-유통-IP를 잇는 완결형 미술 생태계" },
+  { title: "Accessibility", desc: "미술을 소수의 전유물이 아닌, 모두가 접근 가능한 자산 클래스로" },
 ];
 
 export default function AboutContent() {
@@ -43,7 +43,7 @@ export default function AboutContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-7xl font-light text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-medium text-white"
             style={{ fontFamily: "var(--font-dutch)" }}
           >
             About PASO
@@ -56,6 +56,32 @@ export default function AboutContent() {
           >
             Precision-based Art Strategy & Operation
           </motion.p>
+        </div>
+      </section>
+
+      {/* Showcase images */}
+      <section className="bg-black">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-12 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <motion.div {...fadeUp} className="relative aspect-[4/3] overflow-hidden rounded-sm">
+              <Image
+                src="/images/exhibitions/redegallery/redegallery-3.jpg"
+                alt="Project ReDE Gallery"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </motion.div>
+            <motion.div {...stagger(1)} className="relative aspect-[4/3] overflow-hidden rounded-sm">
+              <Image
+                src="/images/exhibitions/forest-of-finity/forest-of-finity-8.jpg"
+                alt="Forest of Finity"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -73,11 +99,22 @@ export default function AboutContent() {
       {/* Ecosystem */}
       <EcosystemSection />
 
+      {/* Wide showcase image */}
+      <section className="bg-black">
+        <motion.div {...fadeUp} className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden">
+          <Image
+            src="/images/exhibitions/traces-of-light/intermission-new1.jpg"
+            alt="Paso Gallery Hanok Exhibition Space"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+        </motion.div>
+      </section>
+
       {/* About Paso */}
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">About</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>About Paso</motion.h2>
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>About Paso</motion.h2>
 
           <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12 space-y-8">
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
@@ -98,9 +135,7 @@ export default function AboutContent() {
 
       {/* Values */}
       <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Values</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>What Drives Us</motion.h2>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>What Drives Us</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((v, i) => (
               <motion.div key={v.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors">
