@@ -1323,7 +1323,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
             { label: "Hours", value: "By Appointment Only\nPrivate Viewings" },
-            { label: "Contact", value: "makhymgalvin@pasogallery.com\n+82 10-6432-4471" },
+            { label: "Contact", value: "makim@pasogallery.com\n+82 10-6432-4471" },
             { label: "Instagram", value: "@pasogallery" },
           ].map((info, i) => (
             <motion.div key={info.label} {...stagger(i)}>
