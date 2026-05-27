@@ -59,9 +59,6 @@ export default function SpacesContent() {
               <p>
                 파소 갤러리는 지난 10년간 신진 작가 공모전과 여러 아티스트 및 브랜드와의 협업을 통해 깊이 있는 전시 노하우를 구축해 왔습니다. 또한 작가들의 작업을 IP 형태로 제공하는 파소 에이전시와 미술 VIP 커뮤니티 운영을 통해 기업 고객과의 다양한 협력 경험을 갖추고 있습니다.
               </p>
-              <p>
-                본 공간 소개서는 행사 기획사와의 협업을 통해 전시 공간에서 독창적이고 품격 있는 행사를 기획하실 수 있도록 제안드리기 위해 제작되었습니다.
-              </p>
             </div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
