@@ -17,7 +17,7 @@ const contacts = [
 ];
 
 const inquiries = [
-  { title: "전시 & 대관", desc: "갤러리 전시, 팝업, 이벤트 공간 대관 문의" },
+  { title: "전시 문의", desc: "갤러리 전시, 팝업, 이벤트 문의" },
   { title: "작가 협업", desc: "신진작가 공모, 레지던시, 전시 기획 협업" },
 ];
 
@@ -46,7 +46,7 @@ export default function GalleryContactContent() {
             Get in Touch
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-lg text-[#888] font-light max-w-xl">
-            전시 문의, 공간 대관, 작가 협업 등 파소 갤러리에 연락하세요.
+            전시 문의, 작가 협업 등 파소 갤러리에 연락하세요.
           </motion.p>
         </div>
       </section>
@@ -81,106 +81,6 @@ export default function GalleryContactContent() {
                 <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
               </motion.a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Inquiry Form */}
-      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <motion.div {...fadeUp}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Space Rental</p>
-              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6" style={{ fontFamily: "var(--font-noto-serif)" }}>
-                공간 대관 문의
-              </h2>
-              <p className="text-[#888] font-light leading-relaxed mb-8">
-                서울 종로구에 위치한 한옥 갤러리에서 전시, 팝업, 프라이빗 이벤트를 진행해 보세요. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
-              </p>
-              <div className="space-y-4 text-sm text-[#666] font-light">
-                <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
-                  <p>전시, 팝업, 프라이빗 이벤트, 촬영 등 다양한 목적의 대관 가능</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
-                  <p>Light Room · Dark Room 두 개의 전시실 운영</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5">—</span>
-                  <p>전시 기획 및 설치 지원 서비스 제공</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div {...fadeUp}>
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault();
-                  const btn = e.currentTarget.querySelector("button[type=submit]") as HTMLButtonElement;
-                  btn.disabled = true;
-                  btn.textContent = "전송 중...";
-                  const fd = new FormData(e.currentTarget);
-                  fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
-                  fd.append("subject", "공간 대관 문의");
-                  fd.append("from_name", "PASO 웹사이트");
-                  try {
-                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
-                    if (res.ok) {
-                      btn.textContent = "문의가 접수되었습니다";
-                      setTimeout(() => { btn.disabled = false; btn.textContent = "문의하기"; }, 2000);
-                      e.currentTarget.reset();
-                    } else {
-                      btn.textContent = "전송 실패 — 다시 시도해주세요";
-                      btn.disabled = false;
-                    }
-                  } catch {
-                    btn.textContent = "전송 실패 — 다시 시도해주세요";
-                    btn.disabled = false;
-                  }
-                }}
-                className="space-y-6"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이름</label>
-                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">이메일</label>
-                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">연락처</label>
-                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors placeholder:text-[#444]" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">대관 요청 희망일</label>
-                    <input name="date" type="date" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [color-scheme:dark]" />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">행사 유형</label>
-                  <select name="eventType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]">
-                    <option value="">선택해주세요</option>
-                    <option value="전시">전시</option>
-                    <option value="팝업">팝업</option>
-                    <option value="프라이빗 이벤트">프라이빗 이벤트</option>
-                    <option value="촬영">촬영</option>
-                    <option value="기타">기타</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">메시지</label>
-                  <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
-                </div>
-                <button type="submit" className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs tracking-[0.15em] uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300">
-                  문의하기
-                </button>
-              </form>
-            </motion.div>
           </div>
         </div>
       </section>

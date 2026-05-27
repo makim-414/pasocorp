@@ -90,59 +90,8 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
-      {/* Event Availability */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="mb-16">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Event Types</p>
-            <h2 className="text-3xl md:text-4xl text-white font-normal" style={{ fontFamily: "var(--font-noto-serif)" }}>행사 유형 안내</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 가능 */}
-            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-green-400 text-lg">&#10003;</span>
-                <h3 className="text-white text-sm font-medium">가능</h3>
-              </div>
-              <ul className="space-y-3 text-sm text-[#aaa] font-light">
-                <li>전시</li>
-                <li>브랜드 행사</li>
-                <li>세미나</li>
-                <li>리셉션</li>
-                <li>소규모 공연 / 음악회</li>
-                <li>기자간담회</li>
-                <li>강연 / 토크</li>
-              </ul>
-            </motion.div>
-            {/* 조건부 가능 */}
-            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-[#b8960b] text-lg">&#9888;</span>
-                <h3 className="text-white text-sm font-medium">조건부 가능</h3>
-              </div>
-              <ul className="space-y-3 text-sm text-[#aaa] font-light">
-                <li>팝업스토어 / 마켓 <span className="text-[#666] text-xs">(갤러리 측 사전 협의 필수)</span></li>
-                <li>미디어아트 / 영상 상영 <span className="text-[#666] text-xs">(추가 전력 소모 시 추가요금)</span></li>
-              </ul>
-            </motion.div>
-            {/* 불가능 */}
-            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-red-400 text-lg">&#10007;</span>
-                <h3 className="text-white text-sm font-medium">불가능</h3>
-              </div>
-              <ul className="space-y-3 text-sm text-[#aaa] font-light">
-                <li>돌잔치</li>
-                <li>연회 / 뷔페</li>
-                <li>케이터링 파티</li>
-                <li>웨딩</li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Floor Plan */}
+      {/* Floor Plan (hidden) */}
+      {false && (
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
@@ -202,8 +151,10 @@ export default function GalleryAboutContent() {
           </motion.div>
         </div>
       </section>
+      )}
 
-      {/* Usage Guidelines */}
+      {/* Usage Guidelines (hidden) */}
+      {false && (
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
@@ -241,7 +192,7 @@ export default function GalleryAboutContent() {
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>꽃다발, 화환 등 반입 가능하나 대관 이용 직후 수거되어야 합니다.</p>
+                <p>꽃다발, 화환 등 반입 가능하나 이용 직후 수거되어야 합니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
@@ -273,11 +224,11 @@ export default function GalleryAboutContent() {
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>대관 일정의 양도나 재판매를 금지합니다.</p>
+                <p>이용 일정의 양도나 재판매를 금지합니다.</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#b8960b] mt-0.5">—</span>
-                <p>대관 기간 중 물품 판매 시 갤러리측과 사전에 협의하여야 합니다.</p>
+                <p>이용 기간 중 물품 판매 시 갤러리측과 사전에 협의하여야 합니다.</p>
               </div>
 
               <p className="text-white text-xs tracking-[0.1em] uppercase mt-8 mb-2">퇴점 시 유의사항</p>
@@ -302,8 +253,10 @@ export default function GalleryAboutContent() {
           </motion.div>
         </div>
       </section>
+      )}
 
-      {/* Space Features */}
+      {/* Space Features (hidden) */}
+      {false && (
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="mb-16">
@@ -317,7 +270,7 @@ export default function GalleryAboutContent() {
               { title: "부대시설", icon: DoorOpen, desc: "창고, 청소도구함, 남여 화장실 구비. 창고 내부 용품은 사전 협의 품목에 한해 사용 가능." },
               { title: "공간 구성", icon: LayoutGrid, desc: "리셉션, 전시 공간, 무대 공간으로 구성. 가벽을 활용한 자유로운 공간 분리 및 병합 가능. 냉온풍기 5개 설치 (리모컨 1개로 전체 제어)." },
               { title: "주차 안내", icon: ParkingCircle, desc: "자체 주차장 미제공. 갤러리 건너편 올림픽 기념회관 유료 주차장 이용 가능." },
-              { title: "반입 & 금지사항", icon: Ban, desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 대관 일정 양도·재판매 금지. 대관 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
+              { title: "반입 & 금지사항", icon: Ban, desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 이용 일정 양도·재판매 금지. 이용 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
             ].map((item, i) => (
               <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] p-6">
                 <item.icon size={24} className="text-[#b8960b] mb-4" strokeWidth={1.5} />
@@ -328,13 +281,14 @@ export default function GalleryAboutContent() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Contact */}
       <section className="py-16 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Inquiry</p>
-            <p className="text-sm text-[#aaa] font-light mb-2">대관 문의</p>
+            <p className="text-sm text-[#aaa] font-light mb-2">문의</p>
             <p className="text-sm text-[#ccc] font-light">TEL. 010-6432-4471 &nbsp;|&nbsp; Email. info@pasogallery.com</p>
           </motion.div>
         </div>
