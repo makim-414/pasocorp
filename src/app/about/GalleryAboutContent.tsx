@@ -90,7 +90,8 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
-      {/* Floor Plan */}
+      {/* Floor Plan (hidden) */}
+      {false && (
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
@@ -150,8 +151,10 @@ export default function GalleryAboutContent() {
           </motion.div>
         </div>
       </section>
+      )}
 
-      {/* Usage Guidelines */}
+      {/* Usage Guidelines (hidden) */}
+      {false && (
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
@@ -250,8 +253,10 @@ export default function GalleryAboutContent() {
           </motion.div>
         </div>
       </section>
+      )}
 
-      {/* Space Features */}
+      {/* Space Features (hidden) */}
+      {false && (
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="mb-16">
