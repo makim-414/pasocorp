@@ -79,10 +79,10 @@ export default function SpacesContent() {
                 </div>
               </div>
               <div>
-                <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Paso Gallery<br /><span className="text-sm text-[#d4d4d4]" style={{ fontWeight: 400 }}>Heritage</span></p>
+                <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Artrader</p>
                 <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
-                  <p>기업행사 협력기획</p>
-                  <p>전시 기획</p>
+                  <p>미술품 데이터 분석 플랫폼</p>
+                  <p>옥션 데이터 · Artist Index</p>
                 </div>
               </div>
             </div>
@@ -90,7 +90,8 @@ export default function SpacesContent() {
         </div>
       </section>
 
-      {/* ── Brochure Download ── */}
+      {/* ── Brochure Download (hidden) ── */}
+      {false && (
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
         <div className="max-w-[700px] mx-auto px-6 md:px-12 text-center">
           <motion.p {...fadeUp} className="text-xs text-[#bbb] uppercase mb-4">Brochure</motion.p>
@@ -120,6 +121,7 @@ export default function SpacesContent() {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ── Private Programs ── */}
       <section className="py-32 md:py-44 bg-black border-y border-[#1a1a1a]">

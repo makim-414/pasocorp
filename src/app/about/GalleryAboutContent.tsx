@@ -90,58 +90,6 @@ export default function GalleryAboutContent() {
         </div>
       </section>
 
-      {/* Event Availability */}
-      <section className="py-24 md:py-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp} className="mb-16">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Event Types</p>
-            <h2 className="text-3xl md:text-4xl text-white font-normal" style={{ fontFamily: "var(--font-noto-serif)" }}>행사 유형 안내</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 가능 */}
-            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-green-400 text-lg">&#10003;</span>
-                <h3 className="text-white text-sm font-medium">가능</h3>
-              </div>
-              <ul className="space-y-3 text-sm text-[#aaa] font-light">
-                <li>전시</li>
-                <li>브랜드 행사</li>
-                <li>세미나</li>
-                <li>리셉션</li>
-                <li>소규모 공연 / 음악회</li>
-                <li>기자간담회</li>
-                <li>강연 / 토크</li>
-              </ul>
-            </motion.div>
-            {/* 조건부 가능 */}
-            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-[#b8960b] text-lg">&#9888;</span>
-                <h3 className="text-white text-sm font-medium">조건부 가능</h3>
-              </div>
-              <ul className="space-y-3 text-sm text-[#aaa] font-light">
-                <li>팝업스토어 / 마켓 <span className="text-[#666] text-xs">(갤러리 측 사전 협의 필수)</span></li>
-                <li>미디어아트 / 영상 상영 <span className="text-[#666] text-xs">(추가 전력 소모 시 추가요금)</span></li>
-              </ul>
-            </motion.div>
-            {/* 불가능 */}
-            <motion.div {...fadeUp} className="border border-[#1a1a1a] p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-red-400 text-lg">&#10007;</span>
-                <h3 className="text-white text-sm font-medium">불가능</h3>
-              </div>
-              <ul className="space-y-3 text-sm text-[#aaa] font-light">
-                <li>돌잔치</li>
-                <li>연회 / 뷔페</li>
-                <li>케이터링 파티</li>
-                <li>웨딩</li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Floor Plan */}
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
