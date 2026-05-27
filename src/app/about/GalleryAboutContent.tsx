@@ -281,6 +281,7 @@ export default function GalleryAboutContent() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Contact */}
       <section className="py-16 bg-[#0a0a0a] border-y border-[#1a1a1a]">
