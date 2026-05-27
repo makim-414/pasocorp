@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import NextImage from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
@@ -171,72 +171,114 @@ function PhotoDetailLightbox({ images, initialIndex, onClose }: { images: string
 }
 
 function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; images: string[]; desc?: string; artist?: string; sections?: { title: string; images: string[] }[] }; onClose: () => void }) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const allImages = [...gallery.images, ...(gallery.sections?.flatMap(s => s.images) ?? [])];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const thumbStripRef = useRef<HTMLDivElement>(null);
+
+  const goPrev = useCallback(() => setActiveIndex((i) => (i - 1 + allImages.length) % allImages.length), [allImages.length]);
+  const goNext = useCallback(() => setActiveIndex((i) => (i + 1) % allImages.length), [allImages.length]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") goPrev();
+      else if (e.key === "ArrowRight") goNext();
+      else if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [goPrev, goNext, onClose]);
+
+  // Auto-scroll thumbnail strip to keep active thumb visible
+  useEffect(() => {
+    const strip = thumbStripRef.current;
+    if (!strip) return;
+    const active = strip.children[activeIndex] as HTMLElement | undefined;
+    if (active) {
+      active.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+  }, [activeIndex]);
 
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
-        onClick={onClose}
-      >
-        <div className="w-full max-w-[1200px] px-6 py-16" onClick={(e) => e.stopPropagation()}>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-base md:text-xl font-medium text-white tracking-wide">{gallery.title}</h2>
-            <button onClick={onClose} className="text-[#bbb] hover:text-white transition-colors text-3xl leading-none">&times;</button>
-          </div>
-          {gallery.desc && (
-            <p className="text-sm text-[#999] font-medium leading-relaxed max-w-2xl mb-10 whitespace-pre-line">
-              {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
-                part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
-              )}
-            </p>
-          )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {gallery.images.map((src, i) => (
-              <div
-                key={src}
-                className="overflow-hidden rounded-xl cursor-pointer"
-                onClick={() => setLightboxIndex(i)}
-              >
-                <img src={src} alt={`${gallery.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
-              </div>
-            ))}
-          </div>
-          {gallery.sections?.map((section, sIdx) => {
-            const offset = gallery.images.length + (gallery.sections?.slice(0, sIdx).reduce((sum, s) => sum + s.images.length, 0) ?? 0);
-            return (
-              <div key={section.title} className="mt-16">
-                <h3 className="text-lg md:text-xl font-medium text-[#b8960b] mb-6 tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>{section.title}</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                  {section.images.map((src, i) => (
-                    <div
-                      key={src}
-                      className="overflow-hidden rounded-xl cursor-pointer"
-                      onClick={() => setLightboxIndex(offset + i)}
-                    >
-                      <img src={src} alt={`${section.title} ${i + 1}`} loading="lazy" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex flex-col"
+      onClick={onClose}
+    >
+      {/* Top bar */}
+      <div className="flex items-center justify-between px-6 md:px-10 py-5 shrink-0" onClick={(e) => e.stopPropagation()}>
+        <div className="min-w-0 flex items-baseline gap-4">
+          <h2 className="text-base md:text-lg font-medium text-white tracking-wide truncate" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
+          {gallery.artist && <p className="text-xs text-[#888] tracking-wide hidden sm:block">{gallery.artist}</p>}
         </div>
-      </motion.div>
-      <AnimatePresence>
-        {lightboxIndex !== null && (
-          <PhotoDetailLightbox
-            images={allImages}
-            initialIndex={lightboxIndex}
-            onClose={() => setLightboxIndex(null)}
+        <div className="flex items-center gap-6 shrink-0">
+          <p className="text-xs text-[#888] tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(allImages.length).padStart(2, "0")}</p>
+          <button onClick={onClose} className="text-[#bbb] hover:text-white transition-colors text-3xl leading-none" aria-label="Close">&times;</button>
+        </div>
+      </div>
+
+      {/* Main image area */}
+      <div className="flex-1 relative flex items-center justify-center px-4 md:px-16 min-h-0" onClick={(e) => e.stopPropagation()}>
+        {/* Prev */}
+        <button
+          onClick={goPrev}
+          className="absolute left-2 md:left-6 z-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-white/60 hover:text-white transition-colors text-3xl"
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={allImages[activeIndex]}
+            src={allImages[activeIndex]}
+            alt={`${gallery.title} ${activeIndex + 1}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="max-w-full max-h-[48vh] md:max-h-[52vh] object-contain"
           />
-        )}
-      </AnimatePresence>
-    </>
+        </AnimatePresence>
+        {/* Next */}
+        <button
+          onClick={goNext}
+          className="absolute right-2 md:right-6 z-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-white/60 hover:text-white transition-colors text-3xl"
+          aria-label="Next"
+        >
+          ›
+        </button>
+      </div>
+
+      {/* Description (if any) */}
+      {gallery.desc && (
+        <div className="px-6 md:px-10 pt-5 max-w-3xl mx-auto w-full shrink-0" onClick={(e) => e.stopPropagation()}>
+          <p className="text-xs md:text-sm text-[#bbb] leading-relaxed text-center line-clamp-4" style={{ wordBreak: "keep-all" }}>
+            {gallery.desc.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+              part.match(/^https?:\/\//) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#b8960b] underline hover:text-white transition-colors">{part}</a> : part
+            )}
+          </p>
+        </div>
+      )}
+
+      {/* Thumbnail strip */}
+      <div className="shrink-0 px-4 md:px-10 py-5 border-t border-[#1a1a1a]" onClick={(e) => e.stopPropagation()}>
+        <div ref={thumbStripRef} className="flex gap-2 overflow-x-auto scrollbar-hide pb-1" style={{ scrollbarWidth: "none" }}>
+          {allImages.map((src, i) => (
+            <button
+              key={src + i}
+              onClick={() => setActiveIndex(i)}
+              className={`relative shrink-0 w-20 h-14 md:w-24 md:h-16 overflow-hidden transition-all duration-300 ${
+                i === activeIndex ? "ring-2 ring-white opacity-100" : "opacity-40 hover:opacity-80"
+              }`}
+              aria-label={`Image ${i + 1}`}
+            >
+              <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -254,13 +296,54 @@ interface BrandData {
 }
 
 const fadeUp = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 60 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 };
 
-const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
+const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 1.2, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } });
+
+// DRAFT-style reveal: image curtains up from bottom
+const imageReveal = {
+  initial: { clipPath: "inset(100% 0 0 0)" },
+  whileInView: { clipPath: "inset(0% 0 0 0)" },
+  viewport: { once: true, margin: "-100px" },
+  transition: { duration: 1.4, ease: [0.85, 0, 0.15, 1] as [number, number, number, number] },
+};
+
+// DRAFT-style title line→text wipe (left to right)
+const textWipe = {
+  initial: { clipPath: "inset(0 100% 0 0)" },
+  whileInView: { clipPath: "inset(0 0% 0 0)" },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 1.2, delay: 0.2, ease: [0.85, 0, 0.15, 1] as [number, number, number, number] },
+};
+
+const textWipeStagger = (i: number) => ({
+  ...textWipe,
+  transition: { duration: 1.2, delay: 0.2 + i * 0.1, ease: [0.85, 0, 0.15, 1] as [number, number, number, number] },
+});
+
+// Scroll-driven focus: only the centered section is sharp/bright; others dim, blur & darken
+function FocusCard({ children, className = "", onClick, onMouseEnter }: { children: React.ReactNode; className?: string; onClick?: () => void; onMouseEnter?: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "center center", "end start"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], [0.35, 1, 1, 0.35]);
+  const filter = useTransform(
+    scrollYProgress,
+    [0, 0.35, 0.65, 1],
+    ["blur(10px) brightness(0.3)", "blur(0px) brightness(1)", "blur(0px) brightness(1)", "blur(10px) brightness(0.3)"]
+  );
+  return (
+    <motion.div ref={ref} style={{ opacity, filter }} className={className} onClick={onClick} onMouseEnter={onMouseEnter}>
+      {children}
+    </motion.div>
+  );
+}
 
 /* ─── HERO (shared) ─── */
 function BrandHero({ brand }: { brand: BrandData }) {
@@ -958,7 +1041,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   };
 
   const exhibitions = [
-    { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
+    { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-1.jpg" },
     { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-new1.jpg" },
     { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.jpg" },
     { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
@@ -1070,38 +1153,64 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── EXHIBITIONS: Selected Works ── */}
-      <section id="exhibitions" className="pt-44 md:pt-56 pb-24 md:pb-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {exhibitions.map((ex, i) => (
-              <motion.div
-                key={ex.title}
-                {...stagger(i)}
-                className="group relative overflow-hidden cursor-pointer"
-                onMouseEnter={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) preloadImages(gallery.images);
-                }}
-                onClick={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
-                }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={ex.image}
-                    alt={ex.title}
-                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/70 to-transparent">
-                    <p className="text-[10px] text-white mb-2">{ex.date}</p>
-                    <h3 className="text-xl md:text-2xl text-white font-medium" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
-                    <p className="text-xs text-[#d4d4d4] font-medium mt-1">{ex.artist}</p>
+      <section id="exhibitions" className="pt-44 md:pt-56 pb-44 md:pb-64 bg-black">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="mb-20 md:mb-28 max-w-2xl">
+            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>Exhibitions</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
+              한옥 공간에서 신진 작가들의 첫 개인전과 동시대 작가들의 실험적인 작업을 소개합니다. 전통 건축의 결과 작품이 만나는 자리에서 작가와 관객이 자연스럽게 마주하는 시간을 만들어 왔습니다.
+            </motion.p>
+          </div>
+
+          <div className="exhibition-snap flex flex-col gap-32 md:gap-48">
+            {exhibitions.map((ex, i) => {
+              return (
+                <FocusCard
+                  key={ex.title}
+                  className="group relative cursor-pointer"
+                  onMouseEnter={() => {
+                    const gallery = exhibitionGalleries[ex.title];
+                    if (gallery) preloadImages(gallery.images);
+                  }}
+                  onClick={() => {
+                    const gallery = exhibitionGalleries[ex.title];
+                    if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
+                  }}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                    className="relative aspect-[3/2] md:aspect-[16/9] overflow-hidden"
+                  >
+                    <img
+                      src={ex.image}
+                      alt={ex.title}
+                      className="w-full h-full object-cover object-[center_25%] transition-transform duration-[1.8s] ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-700" />
+                  </motion.div>
+                  {/* Caption below image — compact editorial */}
+                  <div className="mt-4 md:mt-6 flex items-baseline justify-between gap-6">
+                    <div className="flex items-baseline gap-6 flex-wrap">
+                      <h3
+                        className="text-base md:text-lg text-white font-medium leading-tight"
+                        style={{ fontFamily: "var(--font-dutch)" }}
+                      >
+                        {ex.title}
+                      </h3>
+                      <p className="text-xs text-[#999] font-medium tracking-wide whitespace-nowrap">
+                        {ex.artist}
+                      </p>
+                    </div>
+                    <p className="text-xs tracking-normal uppercase text-[#ccc] whitespace-nowrap shrink-0">
+                      {ex.date}
+                    </p>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </FocusCard>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1111,53 +1220,70 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         {openExhibition && <ProjectGalleryModal gallery={openExhibition} onClose={() => setOpenExhibition(null)} />}
       </AnimatePresence>
 
-      {/* ── PROGRAMS: What We Do ── */}
-      <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
-              Curated Programs
-            </h2>
-          </motion.div>
+      {/* ── PROGRAMS: What We Do (Asymmetric) ── */}
+      <section id="programs" className="py-32 md:py-44 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="mb-20 md:mb-28 max-w-2xl">
+            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>
+              Curated
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
+              파소 아트 클럽 멤버를 위한 프라이빗 살롱과 작가 토크입니다. 작은 규모로 모여 작품 너머의 맥락과 작가의 작업 과정을 가까이서 들여다보고, 컬렉터와 디렉터들의 솔직한 대화가 오갑니다.
+            </motion.p>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {brand.features.slice(0, 3).map((f, i) => {
               const programGalleryKey = ["히노살롱", "빠끼", "소호프리뷰"][i] as string | undefined;
               const galleryData = programGalleryKey ? exhibitionGalleries[programGalleryKey] : undefined;
               return (
-              <motion.div
+              <div
                 key={f.title}
-                {...stagger(i)}
-                className={`bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer" : ""}`}
+                className={`group ${galleryData ? "cursor-pointer" : ""}`}
                 onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                 onClick={galleryData ? () => setOpenExhibition({ title: f.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
               >
-                <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                  className="overflow-hidden aspect-[3/4] bg-[#0a0a0a]"
+                >
                   <img
                     src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.jpg", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.jpg", "/images/soho-rising-artists.jpg"][i] || brand.gallery[i % brand.gallery.length]}
                     alt={f.title}
-                    className="w-full h-full object-cover transition-all duration-700"
+                    className="w-full h-full object-cover transition-transform duration-[1.8s] ease-out group-hover:scale-110"
                   />
+                </motion.div>
+                <div className="mt-5 md:mt-6">
+                  <h3 className="text-lg md:text-xl text-white font-medium" style={{ fontFamily: "var(--font-dutch)" }}>
+                    {f.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-[#999] font-medium leading-relaxed mt-3 max-w-md">
+                    {f.desc}
+                  </p>
                 </div>
-                <h3 className="text-lg text-white font-medium mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
-                <p className="text-sm text-[#bbb] font-medium leading-relaxed">{f.desc}</p>
-              </motion.div>
+              </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* ── BRAND PROGRAMS: Collaborations ── */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div {...fadeUp}>
-            <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
+      {/* ── BRAND PROGRAMS: Collaborations (Asymmetric) ── */}
+      <section className="py-32 md:py-44 bg-[#0a0a0a] border-b border-[#1a1a1a]">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="mb-20 md:mb-28 max-w-2xl">
+            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>
               Brand Projects
-            </h2>
-          </motion.div>
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
+              브랜드와 작가가 함께 만드는 아트 콜라보레이션입니다. 캠페인 비주얼, 한정판 패키지, 공간 큐레이션까지 BCG, Pfizer, Bang & Olufsen, Maker's Mark 등과 작업해 왔으며, 짧게 끝나는 프로젝트보다 함께 오래 호흡할 수 있는 파트너십을 만들고자 합니다.
+            </motion.p>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {[
               { title: "Superbugs Campaign", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
               { title: "Maker's Mark Private Selection", image: "/images/exhibitions/makers-mark/makers-mark-1.jpg", galleryKey: "메이커스마크" },
@@ -1165,22 +1291,31 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             ].map((card, i) => {
               const galleryData = exhibitionGalleries[card.galleryKey];
               return (
-                <motion.div
+                <div
                   key={card.title}
-                  {...stagger(i)}
-                  className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer"
+                  className="group cursor-pointer"
                   onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                   onClick={galleryData ? () => setOpenExhibition({ title: card.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
                 >
-                  <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                    className="overflow-hidden aspect-[4/3] bg-[#0a0a0a]"
+                  >
                     <img
                       src={card.image}
                       alt={card.title}
-                      className="w-full h-full object-cover transition-all duration-700"
+                      className="w-full h-full object-cover transition-transform duration-[1.8s] ease-out group-hover:scale-110"
                     />
-                  </div>
-                  <h3 className="text-lg text-white font-medium mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
                   </motion.div>
+                  <div className="mt-5 md:mt-6">
+                    <h3 className="text-lg md:text-xl text-white font-medium" style={{ fontFamily: "var(--font-dutch)" }}>
+                      {card.title}
+                    </h3>
+                  </div>
+                </div>
               );
             })}
           </div>
