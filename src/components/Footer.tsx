@@ -53,11 +53,6 @@ const locations = [
     address: "서울 종로구 성균관로 92",
     detail: "한옥 빌딩",
   },
-  {
-    name: "Art Center",
-    address: "마곡중앙4로 66, 2층",
-    detail: "Seoul, Magok",
-  },
 ];
 
 export default function Footer() {

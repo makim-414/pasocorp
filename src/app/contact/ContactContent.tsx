@@ -14,7 +14,6 @@ const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay:
 const locations = [
   { name: "Office", address: "서울특별시 성북구 삼선교로23가길 72", detail: "인터블루 빌딩 1F-3F", mapQuery: "서울특별시 성북구 삼선교로23가길 72" },
   { name: "Gallery", address: "서울특별시 종로구 성균관로 92", detail: "한옥 빌딩", mapQuery: "서울특별시 종로구 성균관로 92" },
-  { name: "Art Center", address: "서울특별시 강서구 마곡중앙4로 66, 2층", detail: "with Mass C&G", mapQuery: "서울특별시 강서구 마곡중앙4로 66" },
 ];
 
 const contacts = [
