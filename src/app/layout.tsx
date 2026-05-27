@@ -62,7 +62,7 @@ const localBusinessJsonLd = {
   "@id": "https://pasocorp.com/#artcenter",
   name: "파소 아트센터(PASO Art Center)",
   alternateName: "파소 아트센터",
-  description: "파소 아트센터 서울 성북구. 전시, 대관, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간",
+  description: "파소 아트센터 서울 성북구. 전시, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간",
   url: "https://pasocorp.com",
   image: "https://pasocorp.com/logo.png",
   address: {

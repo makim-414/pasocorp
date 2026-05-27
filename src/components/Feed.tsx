@@ -207,7 +207,7 @@ function DarkCategories() {
     {
       title: "Spaces",
       subtitle: "Where art lives",
-      items: ["PASO Art Center", "PASO Gallery", "Gallery Rental", "Event Space", "Coworking"],
+      items: ["PASO Art Center", "PASO Gallery", "Event Space", "Coworking"],
       cta: "SEE ALL SPACES",
     },
     {

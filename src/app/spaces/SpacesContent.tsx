@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -11,13 +10,7 @@ const fadeUp = {
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 };
 
-const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
-
-
 export default function SpacesContent() {
-  const [submitting, setSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
-
   return (
     <main className="pt-16">
       {/* ── Hero with Background Image ── */}
@@ -89,7 +82,7 @@ export default function SpacesContent() {
                 <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Paso Gallery<br /><span className="text-sm text-[#d4d4d4]" style={{ fontWeight: 400 }}>Heritage</span></p>
                 <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
                   <p>기업행사 협력기획</p>
-                  <p>대관</p>
+                  <p>전시 기획</p>
                 </div>
               </div>
             </div>
@@ -105,7 +98,7 @@ export default function SpacesContent() {
             공간 안내서
           </motion.h2>
           <motion.p {...fadeUp} className="text-[#d4d4d4] text-sm md:text-base mb-10" style={{ wordBreak: "keep-all", lineHeight: 1.85 }}>
-            대관 검토와 행사 기획에 필요한 공간 구성, 도면, 이용 안내가 담겨 있습니다.
+            행사 기획에 필요한 공간 구성, 도면, 이용 안내가 담겨 있습니다.
           </motion.p>
           <motion.div {...fadeUp}>
             <a
@@ -189,110 +182,6 @@ export default function SpacesContent() {
         </div>
       </section>
 
-      {/* ── Space Rental Inquiry ── */}
-      <section id="rental" className="py-24 md:py-32 bg-[#0a0a0a] border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <motion.div {...fadeUp}>              <h2
-                className="text-2xl md:text-4xl font-medium text-white mb-6"
-                style={{ fontFamily: "var(--font-noto-serif)" }}
-              >
-                공간 대관 문의
-              </h2>
-              <p className="text-[#bbb] font-medium leading-relaxed mb-8">
-                서울 종로구에 위치한 한옥 갤러리에서 전시, 팝업, 프라이빗 이벤트를 진행해 보세요. 문의사항을 남겨주시면 담당자가 빠르게 연락드리겠습니다.
-              </p>
-              <div className="space-y-4 text-sm text-[#666] font-medium">
-                <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5"> </span>
-                  <p>전시, 팝업, 프라이빗 이벤트, 촬영 등 다양한 목적의 대관 가능</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-[#b8960b] mt-0.5"> </span>
-                  <p>전시 기획 및 설치 지원 서비스 제공</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div {...fadeUp}>
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault();
-                  setSubmitting(true);
-                  setSubmitStatus(null);
-                  const form = e.currentTarget;
-                  const formData = new FormData(form);
-                  formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "");
-                  formData.append("subject", "공간 대관 문의");
-                  formData.append("from_name", formData.get("name") as string);
-                  formData.append("replyto", formData.get("email") as string);
-                  try {
-                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
-                    const data = await res.json();
-                    if (data.success) {
-                      setSubmitStatus("success");
-                      form.reset();
-                    } else {
-                      setSubmitStatus("error");
-                    }
-                  } catch {
-                    setSubmitStatus("error");
-                  } finally {
-                    setSubmitting(false);
-                  }
-                }}
-                className="space-y-6"
-              >
-                <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] uppercase text-[#555] block mb-2">이름</label>
-                    <input name="name" required type="text" placeholder="홍길동" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] uppercase text-[#555] block mb-2">이메일</label>
-                    <input name="email" required type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[10px] uppercase text-[#555] block mb-2">연락처</label>
-                    <input name="phone" type="tel" placeholder="010-0000-0000" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors placeholder:text-[#444]" />
-                  </div>
-                  <div>
-                    <label className="text-[10px] uppercase text-[#555] block mb-2">대관 요청 희망일</label>
-                    <input name="date" type="date" min={new Date().toISOString().split("T")[0]} className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors [color-scheme:dark]" />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] uppercase text-[#555] block mb-2">행사 유형</label>
-                  <select name="eventType" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors [&>option]:bg-[#111]">
-                    <option value="">선택해주세요</option>
-                    <option value="전시">전시</option>
-                    <option value="팝업">팝업</option>
-                    <option value="프라이빗 이벤트">프라이빗 이벤트</option>
-                    <option value="촬영">촬영</option>
-                    <option value="기타">기타</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-[10px] uppercase text-[#555] block mb-2">메시지</label>
-                  <textarea name="message" rows={4} placeholder="문의 내용을 입력해주세요" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-medium py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
-                </div>
-                <button type="submit" disabled={submitting} className="mt-4 px-8 py-3 border border-[#b8960b] text-[#b8960b] text-xs uppercase hover:bg-[#b8960b] hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                  {submitting ? "전송 중..." : "문의하기"}
-                </button>
-                {submitStatus === "success" && (
-                  <p className="mt-4 text-sm text-green-400 font-medium">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.</p>
-                )}
-                {submitStatus === "error" && (
-                  <p className="mt-4 text-sm text-red-400 font-medium">전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
-                )}
-              </form>
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

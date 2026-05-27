@@ -52,7 +52,6 @@ export default function TermsPage() {
                 <li>컬렉션 관리 서비스</li>
                 <li>전시 기획 서비스</li>
                 <li>미술 시장 분석 서비스</li>
-                <li>공간 대관 서비스</li>
                 <li>기타 회사가 정하는 서비스</li>
               </ul>
             </section>
