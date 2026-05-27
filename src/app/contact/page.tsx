@@ -9,10 +9,10 @@ import { getSiteMode } from "@/lib/site-mode";
 
 export const metadata: Metadata = {
   title: "Contact — 파소(PASO)",
-  description: "프로젝트 문의, 협업 제안, 전시 대관. 파소(PASO)에 연락하세요.",
+  description: "프로젝트 문의, 협업 제안. 파소(PASO)에 연락하세요.",
   openGraph: {
     title: "Contact — 파소(PASO)",
-    description: "프로젝트 문의, 협업 제안, 전시 대관. 파소(PASO)에 연락하세요.",
+    description: "프로젝트 문의, 협업 제안. 파소(PASO)에 연락하세요.",
   },
 };
 

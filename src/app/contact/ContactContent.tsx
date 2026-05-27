@@ -23,7 +23,7 @@ const contacts = [
 ];
 
 const inquiries = [
-  { title: "전시 & 대관", desc: "갤러리 전시, 팝업, 이벤트 공간 대관 문의" },
+  { title: "전시 문의", desc: "갤러리 전시, 팝업, 이벤트 문의" },
   { title: "자문 서비스", desc: "미술품 절세, 자산관리, 컬렉팅 자문" },
   { title: "브랜드 협업", desc: "캐릭터 IP, 아트 프로젝트 콜라보레이션" },
   { title: "데이터 & 리포트", desc: "Artrader 플랫폼, Artist Index 구독" },

@@ -47,7 +47,6 @@ export const menuItems: MenuItem[] = [
     label: "Spaces",
     href: "#",
     children: [
-      { label: "Gallery Rental", href: "#" },
       { label: "Event Space", href: "#" },
       { label: "Coworking", href: "#" },
     ],
@@ -134,16 +133,6 @@ export const feedCards: CardItem[] = [
     date: "Mar 2026",
     tags: ["Workshop", "Community"],
     image: "https://images.unsplash.com/photo-1574182245530-967d9b3831af?w=1920&q=90",
-    href: "#",
-  },
-  {
-    id: "7",
-    title: "Gallery Space Rental",
-    description:
-      "전시, 팝업, 프라이빗 이벤트를 위한 갤러리 대관. 마곡의 문화 거점.",
-    date: "Available",
-    tags: ["Space"],
-    image: "https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=1920&q=90",
     href: "#",
   },
   {

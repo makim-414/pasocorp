@@ -37,7 +37,7 @@ const solutions = [
     title: "Exhibition & Community",
     desc: "적정가 2차 시장 Top 30 전시, 글로벌 이머징 작가 전시, 커뮤니티 프로그램",
     color: "#ffffff",
-    features: ["기획전 · 상설전", "아트 살롱 · 토크", "레지던시 프로그램", "공간 대관"],
+    features: ["기획전 · 상설전", "아트 살롱 · 토크", "레지던시 프로그램"],
     image: "/brands/paso-artcenter-building.jpg",
   },
   {

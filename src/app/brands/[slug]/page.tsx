@@ -130,7 +130,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!brand) return { title: "Brand Not Found — 파소(PASO)" };
   const seoOverrides: Record<string, { title: string; description: string }> = {
     artrader: { title: "Artrader | 파소 미술품 데이터 분석 플랫폼", description: "파소(PASO)의 Artrader — 국내외 경매 1,500만 건 데이터. Artist Index와 종목분석서로 미술 투자 의사결정." },
-    "paso-art-center": { title: "파소 아트센터 | 성북구 전시·대관·커뮤니티", description: "파소 아트센터(PASO Art Center) — 서울 성북구. 전시, 대관, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간." },
+    "paso-art-center": { title: "파소 아트센터 | 성북구 전시·커뮤니티", description: "파소 아트센터(PASO Art Center) — 서울 성북구. 전시, 아트살롱. 신진작가와 컬렉터의 커뮤니티 공간." },
     "artledger-consulting": { title: "Artledger | 파소 미술 자산 자문·절세 전략", description: "파소(PASO)의 Artledger — 미술품 증여·상속, 법인 감가, 컬렉션 리밸런싱. 미술 자산 전 생애 관리." },
     "paso-agency": { title: "파소 에이전시 | IP·브랜드 아트 콜라보", description: "파소 에이전시(PASO Agency) — 캐릭터 IP 라이선싱, 아트토이, 기업 아트 프로젝트 기획·운영." },
   };

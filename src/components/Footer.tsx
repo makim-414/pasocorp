@@ -25,7 +25,6 @@ const linksServices = [
       { title: "Exhibition Curation", href: "/solutions" },
       { title: "Market Analysis", href: "/solutions" },
       { title: "Art Investment", href: "/solutions" },
-      { title: "Space Rental", href: "/contact" },
     ],
   },
 ];
