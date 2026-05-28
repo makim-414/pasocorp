@@ -194,15 +194,12 @@ export default function Hero() {
                     e.preventDefault();
                     setFormStatus("sending");
                     const fd = new FormData(e.currentTarget);
-                    fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
                     fd.append("subject", "PASO 무료 상담 신청");
-                    fd.append("from_name", "PASO 웹사이트");
+                    fd.append("_source", "hero_consultation");
                     try {
-                      const res = await fetch("https://api.web3forms.com/submit", {
-                        method: "POST",
-                        body: fd,
-                      });
-                      if (res.ok) {
+                      const res = await fetch("/api/contact", { method: "POST", body: fd });
+                      const data = (await res.json().catch(() => ({}))) as { ok?: boolean };
+                      if (res.ok && data.ok) {
                         setFormStatus("sent");
                         setTimeout(() => { setShowContact(false); setFormStatus("idle"); }, 1500);
                       } else {

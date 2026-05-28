@@ -1427,19 +1427,20 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  const btn = e.currentTarget.querySelector("button[type=submit]") as HTMLButtonElement;
+                  const form = e.currentTarget;
+                  const btn = form.querySelector("button[type=submit]") as HTMLButtonElement;
                   btn.disabled = true;
                   btn.textContent = "전송 중...";
-                  const fd = new FormData(e.currentTarget);
-                  fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
-                  fd.append("subject", "Artledger Consulting 문의");
-                  fd.append("from_name", "PASO 웹사이트");
+                  const fd = new FormData(form);
+                  fd.append("subject", `${brand.name} 문의`);
+                  fd.append("_source", `brand_landing:${brand.slug}`);
                   try {
-                    const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
-                    if (res.ok) {
+                    const res = await fetch("/api/contact", { method: "POST", body: fd });
+                    const data = (await res.json().catch(() => ({}))) as { ok?: boolean };
+                    if (res.ok && data.ok) {
                       btn.textContent = "문의가 접수되었습니다";
                       setTimeout(() => { btn.disabled = false; btn.textContent = "문의하기"; }, 2000);
-                      e.currentTarget.reset();
+                      form.reset();
                     } else {
                       btn.textContent = "전송 실패 다시 시도해주세요";
                       btn.disabled = false;
