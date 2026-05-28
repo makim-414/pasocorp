@@ -73,18 +73,16 @@ export default function GalleryAboutContent() {
           <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12 space-y-8">
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-6">About Us</p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-              <strong className="text-white">Space by PASO</strong>는 성북동 초입에 위치한 80년 역사의 한옥 종가에 서양의 현대적 건축양식을 적용하여 재건축된 현대화 문화유산입니다.
+              <strong className="text-white">PASO Gallery</strong>는 서울을 기반으로 활동하는 현대미술 갤러리로, 지난 6여 년간 신진·라이징 작가 발굴과 전시 기획을 중심으로 성장해 왔습니다. 전시를 넘어 브랜드 협업, 프라이빗 컬렉팅 프로그램, 문화 프로젝트로 확장하며 동시대 미술과 시장을 잇는 새로운 갤러리 모델을 제안합니다.
             </p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-              브랜드 행사부터 세미나까지, 다양한 행사를 진행할 수 있는 복합 문화 공간으로 활용 가능합니다.
+              작가와 컬렉터, 브랜드와 문화가 유기적으로 연결되는 플랫폼을 지향하며, 신진 작가에게는 시장과 만나는 기회를, 컬렉터에게는 데이터와 큐레이션 기반의 새로운 컬렉팅 경험을 제공합니다.
             </p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-              간접 분리가 가능한 실평수 60평대 홀은 리셉션, 전시 공간, 무대 공간으로 이루어져 있으며,<br />
-              가벽으로 공간 분리 및 병합이 가능하고 무대 공간 기준 약 30명의 인원을 수용할 수 있습니다.
+              서울 종로구 성균관로에 위치한 한옥 전시 공간 <strong className="text-white">Space by PASO</strong>는 전통 건축과 동시대 미술이 결합된 독립 공간으로, 전시·팝업·브랜드 이벤트·프라이빗 프로그램 등 다양한 문화 프로젝트를 운영합니다.
             </p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-              파소는 지난 10여 년간 신진 작가 발굴과 지원의 철학을 담아 다양한 전시를 기획해왔으며,<br />
-              현재는 전시와 더불어 브랜드 협업 및 문화 행사를 유연하게 수용하는 기획 공간으로 운영됩니다.
+              PASO는 Artrader의 글로벌 옥션 데이터, Artledger Consulting의 자산 자문, PASO Agency의 IP·브랜드 협업으로 연결된 통합 미술 생태계 위에서, 미술을 감상을 넘어 전략적 자산 클래스로 확장해 갑니다.
             </p>
           </motion.div>
         </div>
@@ -299,7 +297,7 @@ export default function GalleryAboutContent() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
-            { label: "Hours", value: "Tue — Sat\n11:00 — 19:00" },
+            { label: "Hours", value: "Tue ~ Sat\n11:00 ~ 19:00" },
             { label: "Contact", value: "makim@ironact.net\n+82 10-6432-4471" },
             { label: "Instagram", value: "@pasogallery" },
           ].map((info, i) => (
