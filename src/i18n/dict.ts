@@ -259,16 +259,16 @@ export const dict: Dict = {
   },
   "spaces.event_partner.tagline": { en: "Your Event Partner for Exhibition", ko: "Your Event Partner for Exhibition" },
   "spaces.event_partner.p1": {
-    en: "Paso Gallery Heritage is PASO's exhibition space, a modernised 70-year-old head-family house at the entrance of Seongbuk-dong.",
-    ko: "파소 갤러리 헤리티지는 성북동 초입에 위치한 70년 전통의 종가를 모던하게 개조하여 운영하는 파소의 전시 공간입니다.",
+    en: "Paso Gallery is a contemporary art gallery housed in a modern reinterpretation of a 70-year-old hanok at the entrance of Seongbuk-dong, Seoul. Over the past six-plus years it has driven diverse, expansive art projects centred on emerging-artist discovery and global emerging-artist exhibitions.",
+    ko: "파소 갤러리는 서울 성북동 초입에 위치한 70년 전통 종가 한옥을 현대적으로 재해석한 현대미술 갤러리로, 지난 6여 년간 공모전에 의한 신진 작가 발굴과 글로벌 이머징 전시를 중심으로 다양한 확장적인 예술 프로젝트를 전개해왔습니다.",
   },
   "spaces.event_partner.p2": {
-    en: "Combining unique history with contemporary sensibility, it is an ideal venue for private and refined events — weddings, VIP gatherings, corporate B2B events, and more.",
-    ko: "고유한 역사와 현대적 감각이 조화된 이 공간은 프라이빗하고 세련된 행사를 위한 최적의 장소로, 웨딩, VIP 이벤트, 기업 B2B 행사 등 다양한 형태의 행사에 활용 가능합니다.",
+    en: "Beyond being a gallery, PASO has built an integrated art business spanning exhibitions, brand collaborations, art IP, and data-driven art advisory.",
+    ko: "파소는 단순한 갤러리를 넘어 전시, 브랜드 협업, 아트 IP, 데이터 기반 미술 자문까지 확장된 통합 아트 비즈니스를 구축하고 있습니다.",
   },
   "spaces.event_partner.p3": {
-    en: "Over the past decade Paso Gallery has built deep exhibition expertise through emerging-artist competitions and collaborations with artists and brands. Through PASO Agency, which supplies artists' work as IP, and through the art-VIP community, we have extensive experience working with corporate clients.",
-    ko: "파소 갤러리는 지난 10년간 신진 작가 공모전과 여러 아티스트 및 브랜드와의 협업을 통해 깊이 있는 전시 노하우를 구축해 왔습니다. 또한 작가들의 작업을 IP 형태로 제공하는 파소 에이전시와 미술 VIP 커뮤니티 운영을 통해 기업 고객과의 다양한 협력 경험을 갖추고 있습니다.",
+    en: "Through the art-data platform 'Artrader', brand–artist collaboration arm 'Paso Agency', and art-asset advisory, PASO extends art into both cultural content and a strategic asset class — connecting data, curation, space, and community to open new possibilities in the contemporary art market.",
+    ko: "또한 파소는 아트 데이터 플랫폼 'Artrader', 브랜드·작가 협업을 위한 'Paso Agency', 미술 자산 자문 서비스 등을 통해 예술을 문화 콘텐츠이자 전략적 자산으로 확장하고 있습니다. 데이터와 큐레이션, 공간과 커뮤니티를 연결하며 더 넓은 시장에서 동시대 미술 시장의 새로운 가능성을 만들어가고 있습니다.",
   },
   "spaces.role.gallery.l1": { en: "Exhibition curation & art sales", ko: "전시 기획 및 미술품 판매" },
   "spaces.role.gallery.l2": { en: "Artwork-based products (editions, print curation)", ko: "작품 기반 제품 제작 (에디션, 판화 큐레이션)" },
