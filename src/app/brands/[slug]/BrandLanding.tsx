@@ -1064,48 +1064,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         <style>{`@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
       </section>
 
-      {/* ── EXHIBITIONS: Selected Works ── */}
-      <section id="exhibitions" className="pt-44 md:pt-56 pb-24 md:pb-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {exhibitions.map((ex, i) => (
-              <motion.div
-                key={ex.title}
-                {...stagger(i)}
-                className="group relative overflow-hidden cursor-pointer"
-                onMouseEnter={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) preloadImages(gallery.images);
-                }}
-                onClick={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
-                }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={ex.image}
-                    alt={ex.title}
-                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/70 to-transparent">
-                    <p className="text-[10px] text-white mb-2">{ex.date}</p>
-                    <h3 className="text-xl md:text-2xl text-white font-medium" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
-                    <p className="text-xs text-[#d4d4d4] font-medium mt-1">{ex.artist}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Exhibition gallery modal */}
-      <AnimatePresence>
-        {openExhibition && <ProjectGalleryModal gallery={openExhibition} onClose={() => setOpenExhibition(null)} />}
-      </AnimatePresence>
-
       {/* ── PROGRAMS: What We Do ── */}
       <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -1181,6 +1139,48 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           </div>
         </div>
       </section>
+
+      {/* ── EXHIBITIONS: Selected Works ── */}
+      <section id="exhibitions" className="pt-44 md:pt-56 pb-24 md:pb-32 bg-black">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {exhibitions.map((ex, i) => (
+              <motion.div
+                key={ex.title}
+                {...stagger(i)}
+                className="group relative overflow-hidden cursor-pointer"
+                onMouseEnter={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) preloadImages(gallery.images);
+                }}
+                onClick={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
+                }}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={ex.image}
+                    alt={ex.title}
+                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/70 to-transparent">
+                    <p className="text-[10px] text-white mb-2">{ex.date}</p>
+                    <h3 className="text-xl md:text-2xl text-white font-medium" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
+                    <p className="text-xs text-[#d4d4d4] font-medium mt-1">{ex.artist}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Exhibition gallery modal */}
+      <AnimatePresence>
+        {openExhibition && <ProjectGalleryModal gallery={openExhibition} onClose={() => setOpenExhibition(null)} />}
+      </AnimatePresence>
 
       {/* ── LOCATION INFO ── */}
       <section className="bg-black border-t border-[#1a1a1a]">
