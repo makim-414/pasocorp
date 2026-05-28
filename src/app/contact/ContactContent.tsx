@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -11,42 +12,43 @@ const fadeUp = {
 
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
 
-const locations = [
-  { name: "Office", address: "서울특별시 성북구 삼선교로23가길 72", detail: "인터블루 빌딩 1F-3F", mapQuery: "서울특별시 성북구 삼선교로23가길 72" },
-  { name: "Gallery", address: "서울특별시 종로구 성균관로 92", detail: "한옥 빌딩", mapQuery: "서울특별시 종로구 성균관로 92" },
-];
-
-const contacts = [
-  { label: "Email", value: "info@pasogallery.com", href: "mailto:info@pasogallery.com" },
-  { label: "Phone", value: "+82 2-925-3631", href: "tel:+8229253631" },
-];
-
-const inquiries = [
-  { title: "전시 문의", desc: "갤러리 전시, 팝업, 이벤트 문의" },
-  { title: "자문 서비스", desc: "미술품 절세, 자산관리, 컬렉팅 자문" },
-  { title: "브랜드 협업", desc: "캐릭터 IP, 아트 프로젝트 콜라보레이션" },
-  { title: "데이터 & 리포트", desc: "Artrader 플랫폼, Artist Index 구독" },
-];
-
 export default function ContactContent() {
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  const { t, locale } = useLocale();
+
+  const locations = [
+    { name: locale === "en" ? "Office" : "Office", address: locale === "en" ? "72 Samseongyo-ro 23ga-gil, Seongbuk-gu, Seoul" : "서울특별시 성북구 삼선교로23가길 72", detail: locale === "en" ? "Interblue Bldg. 1F-3F" : "인터블루 빌딩 1F-3F", mapQuery: "서울특별시 성북구 삼선교로23가길 72" },
+    { name: locale === "en" ? "Gallery" : "Gallery", address: locale === "en" ? "92 Sungkyunkwan-ro, Jongno-gu, Seoul" : "서울특별시 종로구 성균관로 92", detail: locale === "en" ? "Hanok Building" : "한옥 빌딩", mapQuery: "서울특별시 종로구 성균관로 92" },
+  ];
+
+  const contacts = [
+    { label: t("contact.email"), value: "info@pasogallery.com", href: "mailto:info@pasogallery.com" },
+    { label: t("contact.phone"), value: "+82 2-925-3631", href: "tel:+8229253631" },
+  ];
+
+  const inquiries = [
+    { title: t("contact.inq.exhibition"), desc: t("contact.inq.exhibition_desc") },
+    { title: t("contact.inq.advisory"), desc: t("contact.inq.advisory_desc") },
+    { title: t("contact.inq.brand"), desc: t("contact.inq.brand_desc") },
+    { title: t("contact.inq.data"), desc: t("contact.inq.data_desc") },
+  ];
 
   return (
     <>
       {/* Hero */}
       <section className="pt-32 pb-20 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Contact</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("contact.tag")}</motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-light text-white mb-6"
             style={{ fontFamily: "var(--font-dutch)" }}
           >
-            Get in Touch
+            {t("contact.title")}
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-lg text-[#888] font-light max-w-xl">
-            프로젝트 문의, 협업 제안, 또는 더 알고 싶은 내용이 있다면 연락주세요.
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-lg text-[#888] font-light max-w-xl" style={{ wordBreak: "keep-all" }}>
+            {t("contact.lead")}
           </motion.p>
         </div>
       </section>
@@ -70,8 +72,8 @@ export default function ContactContent() {
       {/* Inquiry types */}
       <section className="py-24 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Inquiries</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>How Can We Help?</motion.h2>
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("contact.inquiries")}</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.how_help")}</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {inquiries.map((item, i) => (
               <motion.a
@@ -92,8 +94,8 @@ export default function ContactContent() {
       {/* Locations */}
       <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">Locations</motion.p>
-          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Find Us</motion.h2>
+          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("contact.location")}</motion.p>
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.find_us")}</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {locations.map((loc, i) => (
               <motion.div

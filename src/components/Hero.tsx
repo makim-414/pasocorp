@@ -7,6 +7,7 @@ import BackgroundBeams from "./BackgroundBeams";
 
 import BlurInText from "./ui/blur-in-text";
 import WeArtHero from "./WeArtHero";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 const brands = [
   { name: "Artrader.io", image: "/brands/artrader-new.png", gradient: "linear-gradient(135deg, #2ecc71 0%, #27ae60 30%, #5bbf9e 70%, #7ecfb3 100%)", color: "#2ecc71", href: "https://artrader.io", enabled: true },
@@ -33,6 +34,7 @@ export default function Hero() {
   const [hoveredBrand, setHoveredBrand] = useState<number | null>(null);
   const [showContact, setShowContact] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const { t, locale } = useLocale();
 
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
@@ -97,7 +99,16 @@ export default function Hero() {
           transition={{ duration: 1.4, delay: 0.7 }}
           className="mt-4 md:mt-5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#4a4a4a] font-light"
         >
-          Strategic Art Advisory
+          {t("hero.tag")}
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, delay: 0.9 }}
+          className="mt-6 md:mt-8 max-w-[640px] mx-auto text-sm md:text-base text-[#9a9a9a] font-light leading-relaxed px-4"
+          style={{ wordBreak: "keep-all" }}
+        >
+          {t("hero.subtitle")}
         </motion.p>
 
         {/* Brand units — vertical editorial list */}
@@ -129,7 +140,7 @@ export default function Hero() {
             href="/contact"
             className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b]/70 hover:text-[#b8960b] transition-colors duration-500"
           >
-            Get in Touch →
+            {t("hero.cta_get_in_touch")} →
           </a>
         </motion.div>
       </div>
@@ -141,7 +152,7 @@ export default function Hero() {
         transition={{ delay: 2.5 }}
         className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] tracking-[0.2em] uppercase text-[#555]">Scroll</span>
+        <span className="text-[10px] tracking-[0.2em] uppercase text-[#555]">{t("hero.scroll")}</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
