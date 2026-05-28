@@ -8,11 +8,11 @@ import GalleryAboutContent from "./GalleryAboutContent";
 import { getSiteMode } from "@/lib/site-mode";
 
 export const metadata: Metadata = {
-  title: "About — 파소(PASO)",
-  description: "파소(PASO)는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술 생태계를 구축합니다.",
+  title: "About — PASO",
+  description: "PASO — art as an asset class. Investment advisory, gallery operations, IP licensing, and proprietary auction data, founded by Min Sung Kim (Forbes 30 Under 30).",
   openGraph: {
-    title: "About — 파소(PASO)",
-    description: "파소(PASO) — Precision-based Art Strategy & Operation. 미술 생태계의 모든 것을 연결합니다.",
+    title: "About — PASO",
+    description: "Art as an asset class. PASO connects investment advisory, gallery operations, IP licensing, and 15.8M-record auction data.",
   },
 };
 

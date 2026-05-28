@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import EcosystemSection from "@/components/EcosystemSection";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 
 const fadeUp = {
@@ -25,6 +26,12 @@ const values = [
 ];
 
 export default function AboutContent() {
+  const { t, locale } = useLocale();
+  const missionCopy =
+    locale === "en"
+      ? "PASO treats art as an asset class and strategy as a service. From data-driven art transaction advisory to gallery and museum operations, corporate collection consulting, and art-project management — PASO connects every layer of the art ecosystem."
+      : "PASO는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술품 거래 자문부터 갤러리·미술관 운영, 기업 컬렉션 자문과 미술 프로젝트 운용까지, 미술 생태계의 모든 것을 연결합니다.";
+
   return (
     <>
       {/* Hero */}
@@ -46,15 +53,16 @@ export default function AboutContent() {
             className="text-5xl md:text-7xl lg:text-8xl font-medium text-white"
             style={{ fontFamily: "var(--font-dutch)" }}
           >
-            About PASO
+            {t("about.title")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             className="mt-4 text-lg text-[#888] font-light max-w-xl"
+            style={{ wordBreak: "keep-all" }}
           >
-            Precision-based Art Strategy & Operation
+            {t("about.lead")}
           </motion.p>
         </div>
       </section>
@@ -63,8 +71,8 @@ export default function AboutContent() {
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center">
-            <p className="text-base md:text-lg text-[#ccc] font-light leading-relaxed">
-              PASO는 미술을 자산으로, 전략을 서비스로. 데이터 기반 미술품 거래 자문부터 갤러리·미술관 운영, 기업 컬렉션 자문과 미술 프로젝트 운용까지, 미술 생태계의 모든 것을 연결합니다.
+            <p className="text-base md:text-lg text-[#ccc] font-light leading-relaxed" style={{ wordBreak: "keep-all" }}>
+              {missionCopy}
             </p>
           </motion.div>
         </div>
