@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 import SolutionsContent from "./SolutionsContent";
 
 export const metadata: Metadata = {
-  title: "Solutions — 파소(PASO)",
-  description: "데이터 분석, 자문, 전시, IP 라이선싱. 파소(PASO)의 통합 미술 솔루션.",
+  title: "Solutions — PASO",
+  description: "Data analytics, advisory, exhibitions, and IP licensing — PASO's integrated art solutions.",
   openGraph: {
-    title: "Solutions — 파소(PASO)",
-    description: "데이터 분석, 자문, 전시, IP 라이선싱. 파소(PASO)의 통합 미술 솔루션.",
+    title: "Solutions — PASO",
+    description: "Data analytics, advisory, exhibitions, and IP licensing — PASO's integrated art solutions.",
   },
 };
 

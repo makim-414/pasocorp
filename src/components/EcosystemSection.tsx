@@ -3,10 +3,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import FlywheelVisual from "./FlywheelVisual";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export default function EcosystemSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useLocale();
 
   return (
     <section ref={ref} className="bg-black border-t border-[#1a1a1a] py-16 md:py-24">
@@ -21,10 +23,10 @@ export default function EcosystemSection() {
             className="text-3xl md:text-5xl font-medium text-white mb-4 leading-tight"
             style={{ fontFamily: "var(--font-dutch)" }}
           >
-            PASO Integrated Ecosystem
+            {t("ecosystem.title")}
           </h2>
-          <p className="text-sm md:text-base text-[#888] font-medium">
-            갤러리를 중심으로, 데이터·자문·전시·IP가 하나로 연결됩니다.
+          <p className="text-sm md:text-base text-[#888] font-medium" style={{ wordBreak: "keep-all" }}>
+            {t("ecosystem.lead")}
           </p>
         </motion.div>
 
@@ -38,10 +40,10 @@ export default function EcosystemSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center text-xs md:text-sm text-[#888] font-medium mt-8 md:mt-12 mx-auto leading-relaxed whitespace-nowrap"
+          className="text-center text-xs md:text-sm text-[#888] font-medium mt-8 md:mt-12 mx-auto leading-relaxed"
           style={{ wordBreak: "keep-all" }}
         >
-          Paso Gallery는 PASO 생태계의 핵심 브랜드로, 신진작가 발굴부터 시장 연결까지를 담당합니다.
+          {t("ecosystem.note")}
         </motion.p>
       </div>
     </section>

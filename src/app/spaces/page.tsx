@@ -3,8 +3,8 @@ import StandaloneFooter from "@/components/StandaloneFooter";
 import SpacesContent from "./SpacesContent";
 
 export const metadata = {
-  title: "Spaces Paso Gallery",
-  description: "서울 종로구 한옥 갤러리. Light Room과 Dark Room, 두 개의 전시실이 서로 다른 분위기를 연출합니다",
+  title: "Spaces — Paso Gallery",
+  description: "A hanok gallery in Jongno-gu, Seoul. Two exhibition rooms — Light Room and Dark Room — each with its own atmosphere.",
 };
 
 export default async function SpacesPage() {

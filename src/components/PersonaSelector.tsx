@@ -1,36 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const personas = [
-  {
-    label: "Corporate",
-    title: "법인 미술 자산이 필요하신가요?",
-    desc: "증여·상속, 법인세 절감, 포트폴리오 구축",
-    links: [
-      { name: "Artrader", href: "/brands/artrader" },
-      { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
-    ],
-  },
-  {
-    label: "Brand",
-    title: "브랜드 × 아트 콜라보를 계획 중이신가요?",
-    desc: "캐릭터 IP, 팝업 전시, 브랜드 행사 공간",
-    links: [
-      { name: "Paso Agency", href: "/brands/paso-agency" },
-      { name: "Paso Gallery", href: "https://pasogallery.com" },
-    ],
-  },
-  {
-    label: "Collector",
-    title: "미술 시장에 진입하고 싶으신가요?",
-    desc: "1,500만 건 거래 데이터, 신진작가 컬렉션",
-    links: [
-      { name: "Artrader", href: "/brands/artrader" },
-      { name: "PASO Art Center", href: "/brands/paso-art-center" },
-    ],
-  },
-];
+import { useLocale } from "@/i18n/LocaleProvider";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -40,12 +11,42 @@ const fadeUp = {
 };
 
 export default function PersonaSelector() {
+  const { t } = useLocale();
+  const personas = [
+    {
+      label: "Corporate",
+      title: t("persona.corporate.title"),
+      desc: t("persona.corporate.desc"),
+      links: [
+        { name: "Artrader", href: "/brands/artrader" },
+        { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
+      ],
+    },
+    {
+      label: "Brand",
+      title: t("persona.brand.title"),
+      desc: t("persona.brand.desc"),
+      links: [
+        { name: "Paso Agency", href: "/brands/paso-agency" },
+        { name: "Paso Gallery", href: "https://pasogallery.com" },
+      ],
+    },
+    {
+      label: "Collector",
+      title: t("persona.collector.title"),
+      desc: t("persona.collector.desc"),
+      links: [
+        { name: "Artrader", href: "/brands/artrader" },
+        { name: "PASO Art Center", href: "/brands/paso-art-center" },
+      ],
+    },
+  ];
   return (
     <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <motion.div {...fadeUp} className="text-center mb-14">
-          <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">For You</p>
-          <h2 className="text-2xl md:text-4xl font-light text-white">어떤 도움이 필요하신가요?</h2>
+          <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("persona.tag")}</p>
+          <h2 className="text-2xl md:text-4xl font-light text-white" style={{ wordBreak: "keep-all" }}>{t("persona.title")}</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -59,8 +60,8 @@ export default function PersonaSelector() {
               className="group border border-[#1a1a1a] rounded-xl p-8 hover:border-[#b8960b]/50 transition-all duration-500 hover:-translate-y-1"
             >
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{p.label}</p>
-              <h3 className="text-lg text-white font-light mb-3 leading-snug">{p.title}</h3>
-              <p className="text-sm text-[#888] font-light mb-8">{p.desc}</p>
+              <h3 className="text-lg text-white font-light mb-3 leading-snug" style={{ wordBreak: "keep-all" }}>{p.title}</h3>
+              <p className="text-sm text-[#888] font-light mb-8" style={{ wordBreak: "keep-all" }}>{p.desc}</p>
               <div className="flex flex-col gap-2">
                 {p.links.map((link) => (
                   <Link

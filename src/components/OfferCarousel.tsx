@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight, Tag } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export interface Offer {
   id: string | number;
@@ -110,66 +111,65 @@ const OfferCarousel = React.forwardRef<HTMLDivElement, OfferCarouselProps>(
 );
 OfferCarousel.displayName = "OfferCarousel";
 
-// ─── PASO Offers Data ───
-const pasoOffers: Offer[] = [
-  {
-    id: 1,
-    imageSrc: "/brands/paso-gallery.png",
-    imageAlt: "Paso Gallery",
-    tag: "전시 · 갤러리",
-    title: "2025 신진작가 공모전",
-    description: "검증된 신진작가의 작품을 직접 만나보세요. 매년 엄선된 수상작을 전시합니다.",
-    brandLogoSrc: "/brands/paso-gallery.png",
-    brandName: "Paso Gallery",
-    href: "https://pasogallery.com",
-  },
-  {
-    id: 2,
-    imageSrc: "/brands/paso-artcenter-building.jpg",
-    imageAlt: "PASO Art Center",
-    tag: "아트센터 · 커뮤니티",
-    title: "마곡 프리오프닝 상설전",
-    description: "국내외 이머징 작가들의 작품 흐름을 한눈에. 아트 살롱과 인사이트 토크.",
-    brandLogoSrc: "/brands/paso-artcenter-building.jpg",
-    brandName: "PASO Art Center",
-    href: "/brands/paso-art-center",
-  },
-  {
-    id: 3,
-    imageSrc: "/brands/artrader-platform-hd.png",
-    imageAlt: "Artrader",
-    tag: "데이터 · 거래",
-    title: "1,500만 건 실거래가 분석",
-    description: "글로벌 옥션 데이터 기반, 적정 매입가와 시세를 실시간으로 확인하세요.",
-    brandLogoSrc: "/brands/artrader-platform-hd.png",
-    brandName: "Artrader",
-    href: "/brands/artrader",
-  },
-  {
-    id: 4,
-    imageSrc: "/brands/artledger-consulting.jpg",
-    imageAlt: "Artledger Consulting",
-    tag: "자문 · 절세",
-    title: "법인 미술품 절세 패키지",
-    description: "매입부터 세금 처리, Private Sale까지. 미술 자산 전략을 설계합니다.",
-    brandLogoSrc: "/brands/artledger-consulting.jpg",
-    brandName: "Artledger Consulting",
-    href: "/brands/artledger-consulting",
-  },
-  {
-    id: 5,
-    imageSrc: "/brands/paso-agency.jpg",
-    imageAlt: "Paso Agency",
-    tag: "IP · 브랜드",
-    title: "아트 콜라보 프로젝트",
-    description: "캐릭터 IP 라이센싱과 B2B 아트 프로젝트로 브랜드 가치를 높입니다.",
-    brandLogoSrc: "/brands/paso-agency.jpg",
-    brandName: "Paso Agency",
-    href: "/brands/paso-agency",
-  },
-];
-
 export default function PasoOfferCarousel() {
+  const { t } = useLocale();
+  const pasoOffers: Offer[] = [
+    {
+      id: 1,
+      imageSrc: "/brands/paso-gallery.png",
+      imageAlt: "Paso Gallery",
+      tag: t("offer.1.tag"),
+      title: t("offer.1.title"),
+      description: t("offer.1.desc"),
+      brandLogoSrc: "/brands/paso-gallery.png",
+      brandName: "Paso Gallery",
+      href: "https://pasogallery.com",
+    },
+    {
+      id: 2,
+      imageSrc: "/brands/paso-artcenter-building.jpg",
+      imageAlt: "PASO Art Center",
+      tag: t("offer.2.tag"),
+      title: t("offer.2.title"),
+      description: t("offer.2.desc"),
+      brandLogoSrc: "/brands/paso-artcenter-building.jpg",
+      brandName: "PASO Art Center",
+      href: "/brands/paso-art-center",
+    },
+    {
+      id: 3,
+      imageSrc: "/brands/artrader-platform-hd.png",
+      imageAlt: "Artrader",
+      tag: t("offer.3.tag"),
+      title: t("offer.3.title"),
+      description: t("offer.3.desc"),
+      brandLogoSrc: "/brands/artrader-platform-hd.png",
+      brandName: "Artrader",
+      href: "/brands/artrader",
+    },
+    {
+      id: 4,
+      imageSrc: "/brands/artledger-consulting.jpg",
+      imageAlt: "Artledger Consulting",
+      tag: t("offer.4.tag"),
+      title: t("offer.4.title"),
+      description: t("offer.4.desc"),
+      brandLogoSrc: "/brands/artledger-consulting.jpg",
+      brandName: "Artledger Consulting",
+      href: "/brands/artledger-consulting",
+    },
+    {
+      id: 5,
+      imageSrc: "/brands/paso-agency.jpg",
+      imageAlt: "Paso Agency",
+      tag: t("offer.5.tag"),
+      title: t("offer.5.title"),
+      description: t("offer.5.desc"),
+      brandLogoSrc: "/brands/paso-agency.jpg",
+      brandName: "Paso Agency",
+      href: "/brands/paso-agency",
+    },
+  ];
   return (
     <section className="py-20 md:py-28 bg-black border-t border-[#1a1a1a]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -179,13 +179,13 @@ export default function PasoOfferCarousel() {
           viewport={{ once: true }}
           className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4"
         >
-          What We Offer
+          {t("offer.tag")}
         </motion.p>
         <h2
           className="text-3xl md:text-4xl font-light text-white mb-12"
           style={{ fontFamily: "var(--font-dutch)" }}
         >
-          Explore Our Ecosystem
+          {t("offer.heading")}
         </h2>
         <OfferCarousel offers={pasoOffers} />
       </div>

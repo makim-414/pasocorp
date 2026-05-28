@@ -2,26 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-
-const brands = [
-  { id: "artrader", name: "Artrader", short: "데이터 · 분석", accent: "#22c55e", angle: -90 },
-  { id: "artledger", name: "Artledger", short: "자문 · 절세", accent: "#8b5cf6", angle: -18 },
-  { id: "artcenter", name: "Art Center", short: "전시 · 커뮤니티", accent: "#b8960b", angle: 54 },
-  { id: "gallery", name: "Gallery", short: "신진작가 · MD", accent: "#e0c097", angle: 126 },
-  { id: "agency", name: "Agency", short: "IP · 브랜드", accent: "#06b6d4", angle: 198 },
-];
-
-// Connections: from → to, with description
-const connections = [
-  { from: "artrader", to: "gallery", label: "시장 데이터 제공", color: "#22c55e" },
-  { from: "artrader", to: "artcenter", label: "가치 분석 보완", color: "#22c55e" },
-  { from: "agency", to: "artcenter", label: "IP 작가 전시 공급", color: "#06b6d4" },
-  { from: "agency", to: "gallery", label: "아트토이 콜라보", color: "#06b6d4" },
-  { from: "artledger", to: "artcenter", label: "고객 자산 자문", color: "#8b5cf6" },
-  { from: "artledger", to: "gallery", label: "컬렉터 인수 지원", color: "#8b5cf6" },
-  { from: "gallery", to: "artrader", label: "1차 시장 거래 데이터", color: "#e0c097" },
-  { from: "artcenter", to: "artrader", label: "2차 시장 매물 연결", color: "#b8960b" },
-];
+import { useLocale } from "@/i18n/LocaleProvider";
 
 function getPos(angle: number, r: number, cx: number, cy: number) {
   const rad = (angle * Math.PI) / 180;
@@ -33,6 +14,26 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const [hovered, setHovered] = useState<string | null>(null);
   const active = hovered ?? defaultActive ?? null;
+  const { t } = useLocale();
+
+  const brands = [
+    { id: "artrader", name: "Artrader", short: t("flywheel.artrader.short"), accent: "#22c55e", angle: -90 },
+    { id: "artledger", name: "Artledger", short: t("flywheel.artledger.short"), accent: "#8b5cf6", angle: -18 },
+    { id: "artcenter", name: "Art Center", short: t("flywheel.artcenter.short"), accent: "#b8960b", angle: 54 },
+    { id: "gallery", name: "Gallery", short: t("flywheel.gallery.short"), accent: "#e0c097", angle: 126 },
+    { id: "agency", name: "Agency", short: t("flywheel.agency.short"), accent: "#06b6d4", angle: 198 },
+  ];
+
+  const connections = [
+    { from: "artrader", to: "gallery", label: t("flywheel.conn.market_data"), color: "#22c55e" },
+    { from: "artrader", to: "artcenter", label: t("flywheel.conn.value_analysis"), color: "#22c55e" },
+    { from: "agency", to: "artcenter", label: t("flywheel.conn.ip_supply"), color: "#06b6d4" },
+    { from: "agency", to: "gallery", label: t("flywheel.conn.art_toy"), color: "#06b6d4" },
+    { from: "artledger", to: "artcenter", label: t("flywheel.conn.advisory"), color: "#8b5cf6" },
+    { from: "artledger", to: "gallery", label: t("flywheel.conn.collector_support"), color: "#8b5cf6" },
+    { from: "gallery", to: "artrader", label: t("flywheel.conn.primary_data"), color: "#e0c097" },
+    { from: "artcenter", to: "artrader", label: t("flywheel.conn.secondary_market"), color: "#b8960b" },
+  ];
 
   const R = 170;
   const CX = 230;
@@ -173,7 +174,7 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
             >
               <div className="bg-white/[0.03] border border-white/[0.08] backdrop-blur-md rounded-md px-4 py-2.5 min-w-[240px]">
                 <p className="text-[10px] tracking-[0.15em] uppercase mb-2 text-center" style={{ color: brandMap[hovered!]?.accent }}>
-                  {brandMap[hovered!]?.name} 시너지
+                  {brandMap[hovered!]?.name} {t("flywheel.synergy")}
                 </p>
                 <div className="space-y-1">
                   {activeConns.map((conn, i) => {

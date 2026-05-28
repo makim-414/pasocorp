@@ -1,50 +1,20 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import type React from "react";
-
-const previewData: Record<string, { image: string; title: string; subtitle: string; href: string }> = {
-  gallery: {
-    image: "/brands/paso-gallery.png",
-    title: "Paso Gallery",
-    subtitle: "신진작가 발굴 · 전시 · 아트 MD",
-    href: "https://pasogallery.com",
-  },
-  artcenter: {
-    image: "/brands/paso-artcenter-building.jpg",
-    title: "PASO Art Center",
-    subtitle: "상설전시 · 아트 살롱 · 커뮤니티",
-    href: "/brands/paso-art-center",
-  },
-  artrader: {
-    image: "/brands/artrader-platform-hd.png",
-    title: "Artrader",
-    subtitle: "1,500만+ 거래 데이터 기반 시세 분석",
-    href: "https://artrader.io",
-  },
-  artledger: {
-    image: "/brands/artledger-consulting.jpg",
-    title: "Artledger Consulting",
-    subtitle: "미술품 절세 · 법인 자문 · Private Sale",
-    href: "/brands/artledger-consulting",
-  },
-  agency: {
-    image: "/images/projects/twosome/twosome-5.jpg",
-    title: "Paso Agency",
-    subtitle: "캐릭터 IP · B2B 아트 프로젝트",
-    href: "/brands/paso-agency",
-  },
-};
+import { useLocale } from "@/i18n/LocaleProvider";
 
 function HoverLink({
   previewKey,
   children,
+  previewData,
   onHoverStart,
   onHoverMove,
   onHoverEnd,
 }: {
   previewKey: string;
   children: React.ReactNode;
+  previewData: Record<string, { image: string; title: string; subtitle: string; href: string }>;
   onHoverStart: (key: string, e: React.MouseEvent) => void;
   onHoverMove: (e: React.MouseEvent) => void;
   onHoverEnd: () => void;
@@ -94,17 +64,27 @@ function PreviewCard({
 }
 
 export default function HoverPreviewProcess() {
+  const { t, locale } = useLocale();
   const [activePreview, setActivePreview] = useState<{ image: string; title: string; subtitle: string } | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const previewData: Record<string, { image: string; title: string; subtitle: string; href: string }> = useMemo(() => ({
+    gallery: { image: "/brands/paso-gallery.png", title: "Paso Gallery", subtitle: t("hpp.gallery.subtitle"), href: "https://pasogallery.com" },
+    artcenter: { image: "/brands/paso-artcenter-building.jpg", title: "PASO Art Center", subtitle: t("hpp.artcenter.subtitle"), href: "/brands/paso-art-center" },
+    artrader: { image: "/brands/artrader-platform-hd.png", title: "Artrader", subtitle: t("hpp.artrader.subtitle"), href: "https://artrader.io" },
+    artledger: { image: "/brands/artledger-consulting.jpg", title: "Artledger Consulting", subtitle: t("hpp.artledger.subtitle"), href: "/brands/artledger-consulting" },
+    agency: { image: "/images/projects/twosome/twosome-5.jpg", title: "Paso Agency", subtitle: t("hpp.agency.subtitle"), href: "/brands/paso-agency" },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), [locale]);
 
   useEffect(() => {
     Object.values(previewData).forEach((data) => {
       const img = new Image();
       img.src = data.image;
     });
-  }, []);
+  }, [previewData]);
 
   const updatePosition = useCallback((e: React.MouseEvent) => {
     const cardWidth = 300;
@@ -134,6 +114,7 @@ export default function HoverPreviewProcess() {
 
   const linkProps = (key: string) => ({
     previewKey: key,
+    previewData,
     onHoverStart: handleHoverStart,
     onHoverMove: handleHoverMove,
     onHoverEnd: handleHoverEnd,
@@ -223,12 +204,25 @@ export default function HoverPreviewProcess() {
       `}</style>
       <div className="hp-process-section mt-8">
         <div className="hp-text-block">
-          <p>
-            <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink>에서 신진 작가를 발굴하고, <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>에서 블루칩 작품 70여 점을 상시 전시합니다.
-          </p>
-          <p>
-            <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>의 1,500만 건 옥션 데이터로 적정가를 산출하고, <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink>이 절세와 법인 컬렉션 운용을 자문합니다. <HoverLink {...linkProps("agency")}>PASO Agency</HoverLink>는 브랜드와 작가 양측의 IP 가치를 설계합니다.
-          </p>
+          {locale === "en" ? (
+            <>
+              <p>
+                We discover emerging artists at <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink> and present 70+ blue-chip works at <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>.
+              </p>
+              <p>
+                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink> calculates fair prices from 15M auction records, and <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink> advises on tax and corporate-collection strategy. <HoverLink {...linkProps("agency")}>PASO Agency</HoverLink> designs sustainable IP value for both brands and artists.
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink>에서 신진 작가를 발굴하고, <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>에서 블루칩 작품 70여 점을 상시 전시합니다.
+              </p>
+              <p>
+                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>의 1,500만 건 옥션 데이터로 적정가를 산출하고, <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink>이 절세와 법인 컬렉션 운용을 자문합니다. <HoverLink {...linkProps("agency")}>PASO Agency</HoverLink>는 브랜드와 작가 양측의 IP 가치를 설계합니다.
+              </p>
+            </>
+          )}
         </div>
       </div>
       <PreviewCard data={activePreview} position={position} isVisible={isVisible} cardRef={cardRef} />

@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import FlywheelVisual from "./FlywheelVisual";
 import HoverPreviewProcess from "./HoverPreviewProcess";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 /* ───── Animated counter with count-up ───── */
 function parseCounterValue(value: string): { prefix: string; number: number; suffix: string; decimals: number } {
@@ -135,10 +136,11 @@ function CinematicBlock({ image, title, subtitle }: { image: string; title: stri
 
 /* ───── Staggered triple feature ───── */
 function TripleFeature() {
+  const { t } = useLocale();
   const cards = [
-    { image: "/images/exhibitions/golden-reeds/golden-reeds-6.jpg", title: "Paso Private Sales", desc: "Paso Gallery의 프라이빗 세일", tall: false, href: "https://pasogallery.com" },
-    { image: "/images/whats-happening/preopening.png", title: "프리오프닝 상설전", desc: "PASO Art Center의 첫 전시", tall: true, href: "https://v.daum.net/v/20251103174751777" },
-    { image: "/images/whats-happening/magok-salon.png", title: "마곡 아트 살롱", desc: "월간 커뮤니티 아트 토크", tall: false, href: "/brands/paso-art-center" },
+    { image: "/images/exhibitions/golden-reeds/golden-reeds-6.jpg", title: t("dynamic.card.paso_private_sales.title"), desc: t("dynamic.card.paso_private_sales.desc"), tall: false, href: "https://pasogallery.com" },
+    { image: "/images/whats-happening/preopening.png", title: t("dynamic.card.preopening.title"), desc: t("dynamic.card.preopening.desc"), tall: true, href: "https://v.daum.net/v/20251103174751777" },
+    { image: "/images/whats-happening/magok-salon.png", title: t("dynamic.card.magok_salon.title"), desc: t("dynamic.card.magok_salon.desc"), tall: false, href: "/brands/paso-art-center" },
   ];
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -146,8 +148,8 @@ function TripleFeature() {
   return (
     <div ref={ref} className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
       <div className="text-center mb-10 sm:mb-12 md:mb-14">
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3 sm:mb-4">Now & Upcoming</motion.p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-2 sm:mb-3 leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>What&apos;s Happening</h2>
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3 sm:mb-4">{t("dynamic.now_upcoming")}</motion.p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-2 sm:mb-3 leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{t("dynamic.whats_happening")}</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {cards.map((card, i) => (
@@ -188,6 +190,7 @@ function TripleFeature() {
 
 /* ═══════════════ TOP SECTION (Above BrandHub) ═══════════════ */
 export function DynamicTop() {
+  const { t } = useLocale();
   return (
     <div className="bg-black relative z-10">
       {/* Flywheel + About intro */}
@@ -200,13 +203,13 @@ export function DynamicTop() {
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-8 h-px bg-[#555]" />
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b]">About PASO</span>
+                <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b]">{t("dynamic.about_paso")}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
                 {"Art as an Asset Class.\nStrategy as a Service."}
               </h2>
-              <p className="text-sm text-[#888] leading-relaxed max-w-md">
-                데이터 기반 거래 자문, 갤러리·미술관 운영, 기업 컬렉션 자문, 미술 프로젝트 운용까지—미술 생태계의 모든 것을 연결합니다.
+              <p className="text-sm text-[#888] leading-relaxed max-w-md" style={{ wordBreak: "keep-all" }}>
+                {t("dynamic.about_lead")}
               </p>
             </motion.div>
           </div>

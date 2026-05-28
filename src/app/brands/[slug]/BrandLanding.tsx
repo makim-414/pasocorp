@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import NextImage from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 /* ── Project detail gallery data ── */
 const projectGalleries: Record<number, { title: string; images: string[]; desc?: string; artist?: string }> = {
@@ -264,6 +265,7 @@ const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay:
 
 /* ─── HERO (shared) ─── */
 function BrandHero({ brand }: { brand: BrandData }) {
+  const { t } = useLocale();
   const images = brand.heroImages ?? [brand.image];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -379,7 +381,7 @@ function BrandHero({ brand }: { brand: BrandData }) {
             className="self-start shrink-0 inline-flex items-center gap-2 px-4 py-2 md:flex-col md:items-center md:justify-center md:w-32 md:h-32 md:px-0 md:py-0 md:self-end md:mb-2 bg-[#4ade80] text-black rounded-xl md:rounded-2xl hover:bg-[#3ecb6e] hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_30px_rgba(74,222,128,0.25)]"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            <span className="text-[11px] font-bold tracking-wide md:mt-2 md:text-center md:leading-relaxed">아트레이더<br className="hidden md:inline" /> 바로가기</span>
+            <span className="text-[11px] font-bold tracking-wide md:mt-2 md:text-center md:leading-relaxed" style={{ wordBreak: "keep-all" }}>{t("brandlanding.artrader.cta")}</span>
           </motion.a>
         )}
       </div>
@@ -388,33 +390,33 @@ function BrandHero({ brand }: { brand: BrandData }) {
 }
 
 /* ─── CTA (shared, brand-aware) ─── */
-const brandCTAConfig: Record<string, { heading: string; desc: string; mailto: string; mainLabel: string; extUrl?: string; extLabel?: string; accent: string }> = {
-  artrader: {
-    heading: "Get in Touch",
-    desc: "컬렉션 분석, 데이터 문의, 작품 검토 요청 등 편하게 연락주세요",
-    mailto: "mailto:contact@artrader.io",
-    mainLabel: "문의하기",
-    extUrl: "https://artrader.io",
-    extLabel: "Artrader.io",
-    accent: "#4ade80",
-  },
-  "artledger-consulting": {
-    heading: "Get in Touch",
-    desc: "미술품 절세, 법인 컬렉션 자문, 자산 관리 등 편하게 연락주세요",
-    mailto: "mailto:contact@aboutpaso.com",
-    mainLabel: "자문 문의하기",
-    accent: "#b8960b",
-  },
-  default: {
-    heading: "Get in Touch",
-    desc: "프로젝트 문의, 협업 제안 등 편하게 연락주세요",
-    mailto: "mailto:contact@aboutpaso.com",
-    mainLabel: "문의하기",
-    accent: "#b8960b",
-  },
-};
-
 function BrandCTA({ brand }: { brand: BrandData }) {
+  const { t } = useLocale();
+  const brandCTAConfig: Record<string, { heading: string; desc: string; mailto: string; mainLabel: string; extUrl?: string; extLabel?: string; accent: string }> = {
+    artrader: {
+      heading: "Get in Touch",
+      desc: t("brandlanding.contact.artrader.desc"),
+      mailto: "mailto:contact@artrader.io",
+      mainLabel: t("brandlanding.contact.artrader.main"),
+      extUrl: "https://artrader.io",
+      extLabel: "Artrader.io",
+      accent: "#4ade80",
+    },
+    "artledger-consulting": {
+      heading: "Get in Touch",
+      desc: t("brandlanding.contact.artledger.desc"),
+      mailto: "mailto:contact@aboutpaso.com",
+      mainLabel: t("brandlanding.contact.artledger.main"),
+      accent: "#b8960b",
+    },
+    default: {
+      heading: "Get in Touch",
+      desc: t("brandlanding.contact.generic.desc"),
+      mailto: "mailto:contact@aboutpaso.com",
+      mainLabel: t("brandlanding.contact.generic.main"),
+      accent: "#b8960b",
+    },
+  };
   const config = brandCTAConfig[brand.slug] || brandCTAConfig.default;
   return (
     <section className="py-20 md:py-28 bg-black border-t border-[#1a1a1a]">
@@ -524,21 +526,22 @@ function CountUp({ end, suffix = "", duration = 2000, decimals = 0 }: { end: num
 }
 
 function ArtraderLayout({ brand }: { brand: BrandData }) {
+  const { t, locale } = useLocale();
   const stats = [
-    { label: "시세 판단의 기준", end: 15, suffix: "M+", decimals: 0 },
-    { label: "작가별 분석 가능", end: 120, suffix: "K+", decimals: 0 },
-    { label: "글로벌 경매사 커버", end: 2800, suffix: "+", decimals: 0 },
-    { label: "정량 리포트 발행", end: 5000, suffix: "+", decimals: 0 },
+    { label: t("brandlanding.stats.benchmark"), end: 15, suffix: "M+", decimals: 0 },
+    { label: t("brandlanding.stats.artist_coverage"), end: 120, suffix: "K+", decimals: 0 },
+    { label: t("brandlanding.stats.auction_houses"), end: 2800, suffix: "+", decimals: 0 },
+    { label: locale === "en" ? "Quant. reports issued" : "정량 리포트 발행", end: 5000, suffix: "+", decimals: 0 },
   ];
 
   const indexStats = [
-    { label: "낙찰률", value: "15.4", up: true, sub: "직전 낙찰률 43.6%" },
-    { label: "연간 거래 수", value: "24.3", up: true, sub: "직전 거래 72건" },
-    { label: "평균 호가 상승률", value: "49.3", up: true, sub: "직전 호가 3,840,000원" },
-    { label: "20호 평균 호당가", value: "7.8", up: false, sub: "직전 평균가 4,180,000원" },
-    { label: "연간 성장률", value: "18.6", up: true, sub: "직전 성장 3.1%" },
-    { label: "최고가 작품", value: "16.4", up: false, sub: "직전 1999, 평면 시리즈 134,760,000원" },
-    { label: "20호 평균 상승률", value: "2.6", up: false, sub: "2023년 20호 시세 64,000,000원" },
+    { label: locale === "en" ? "Sell-through rate" : "낙찰률", value: "15.4", up: true, sub: locale === "en" ? "Prev. sell-through 43.6%" : "직전 낙찰률 43.6%" },
+    { label: locale === "en" ? "Annual transactions" : "연간 거래 수", value: "24.3", up: true, sub: locale === "en" ? "Prev. 72 transactions" : "직전 거래 72건" },
+    { label: t("brandlanding.metric.avg_bid_up"), value: "49.3", up: true, sub: t("brandlanding.metric.avg_bid_prev") },
+    { label: t("brandlanding.metric.size20_avg"), value: "7.8", up: false, sub: t("brandlanding.metric.size20_prev") },
+    { label: locale === "en" ? "Annual growth" : "연간 성장률", value: "18.6", up: true, sub: locale === "en" ? "Prev. growth 3.1%" : "직전 성장 3.1%" },
+    { label: t("brandlanding.metric.top_work"), value: "16.4", up: false, sub: t("brandlanding.metric.top_work_prev") },
+    { label: locale === "en" ? "Size-20 avg. growth" : "20호 평균 상승률", value: "2.6", up: false, sub: locale === "en" ? "2023 size-20 price ₩64,000,000" : "2023년 20호 시세 64,000,000원" },
   ];
 
   return (
@@ -563,11 +566,15 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       <section className="bg-[#111] py-14 md:py-20">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight mb-4">
-              데이터로 판단하고,<br />신뢰로 거래합니다
+            <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight mb-4" style={{ wordBreak: "keep-all" }}>
+              {locale === "en" ? (
+                <>Judge by data,<br />trade with trust</>
+              ) : (
+                <>데이터로 판단하고,<br />신뢰로 거래합니다</>
+              )}
             </h2>
-            <p className="text-[#bbb] font-medium leading-relaxed max-w-2xl mx-auto text-base">
-              미술 시장의 흩어진 데이터를 정제하여 시세를 산출하고, 검증된 거래 환경을 제공합니다.
+            <p className="text-[#bbb] font-medium leading-relaxed max-w-2xl mx-auto text-base" style={{ wordBreak: "keep-all" }}>
+              {t("brandlanding.section.judge.desc")}
             </p>
           </motion.div>
           {/* Seller - Artrader - Buyer diagram */}
@@ -575,7 +582,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Seller */}
             <div className="flex flex-col gap-2.5 items-center">
               <p className="text-[#4ade80] text-xs font-medium mb-1">Seller</p>
-              {["구매자의 구매이력", "유사 경매기록 데이터", "작품 인보이스"].map((item, i) => (
+              {[t("brandlanding.section.judge.item1"), t("brandlanding.section.judge.item2"), t("brandlanding.section.judge.item3")].map((item, i) => (
                 <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-lg px-6 py-2.5 text-center min-w-[200px]">
                   <p className="text-white text-sm font-medium">{item}</p>
                 </motion.div>
@@ -590,7 +597,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             {/* Buyer */}
             <div className="flex flex-col gap-2.5 items-center">
               <p className="text-[#4ade80] text-xs font-medium mb-1">Buyer</p>
-              {["진품 보증서", "작품 상태 보고서", "소장 이력 (프로비넌스)"].map((item, i) => (
+              {[t("brandlanding.section.judge.item4"), t("brandlanding.section.judge.item5"), t("brandlanding.section.judge.item6")].map((item, i) => (
                 <motion.div key={item} {...stagger(i)} className="bg-[#1a1a1a] border border-[#333] rounded-lg px-6 py-2.5 text-center min-w-[200px]">
                   <p className="text-white text-sm font-medium">{item}</p>
                 </motion.div>
@@ -607,11 +614,15 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
             <div className="flex flex-col gap-3 md:order-2 md:items-end md:text-right">
               <p className="text-[#4ade80] text-sm">Auction/PS Data</p>
-              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
-                작품 검색부터 거래까지<br />아트레이더 하나로
+              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight" style={{ wordBreak: "keep-all" }}>
+                {locale === "en" ? (
+                  <>From discovery to trade<br />— all in Artrader</>
+                ) : (
+                  <>작품 검색부터 거래까지<br />아트레이더 하나로</>
+                )}
               </h3>
-              <p className="text-[#bbb] font-medium leading-relaxed text-base max-w-xl">
-                국내·외 경매·Private Sales 등 1,500만 건 이상의 거래 데이터를 실시간 수집·정제·태깅하여 작품별로 해당 정보들을 조회 가능
+              <p className="text-[#bbb] font-medium leading-relaxed text-base max-w-xl" style={{ wordBreak: "keep-all" }}>
+                {t("brandlanding.section.search.desc")}
               </p>
               <a
                 href="https://artrader.io"
@@ -619,7 +630,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 rel="noopener noreferrer"
                 className="self-start md:self-end inline-flex items-center gap-2 mt-4 px-5 py-2.5 border border-[#4ade80] text-[#4ade80] text-sm font-medium tracking-wide rounded hover:bg-[#4ade80] hover:text-black transition-all duration-300"
               >
-                직접 확인하기
+                {locale === "en" ? "See it for yourself" : "직접 확인하기"}
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </a>
             </div>
@@ -628,12 +639,12 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               <div className="relative w-40 h-40 md:w-48 md:h-48" style={{ transformStyle: "preserve-3d", transform: "rotateX(-20deg) rotateY(30deg)" }}>
                 <div className="absolute inset-0 border border-[#4ade80]/40 bg-[#4ade80]/10 backdrop-blur-sm" style={{ transform: "translateZ(40px)" }}>
                   <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80] tracking-wider leading-relaxed">글로벌 미술 거래<br />데이터베이스</p>
+                    <p className="text-[10px] md:text-xs text-[#4ade80] tracking-wider leading-relaxed">{locale === "en" ? <>Global art trading<br />database</> : <>글로벌 미술 거래<br />데이터베이스</>}</p>
                   </div>
                 </div>
                 <div className="absolute inset-0 border border-[#4ade80]/30 bg-[#4ade80]/5" style={{ transform: "rotateY(90deg) translateZ(40px)" }}>
                   <div className="flex items-center justify-center h-full p-4 text-center">
-                    <p className="text-[10px] md:text-xs text-[#4ade80]/70 tracking-wider leading-relaxed">미술품 시장·가치<br />분석 리서치</p>
+                    <p className="text-[10px] md:text-xs text-[#4ade80]/70 tracking-wider leading-relaxed">{locale === "en" ? <>Market & valuation<br />research</> : <>미술품 시장·가치<br />분석 리서치</>}</p>
                   </div>
                 </div>
                 <div className="absolute inset-0 border border-[#4ade80]/20 bg-[#4ade80]/15" style={{ transform: "rotateX(90deg) translateZ(40px)" }}>
@@ -688,12 +699,17 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col gap-4 order-2 lg:order-1">
               <p className="text-[#4ade80] text-sm">Artist data Analytics</p>
-              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
-                검증된 데이터로<br />적정 가격 제시
+              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight" style={{ wordBreak: "keep-all" }}>
+                {locale === "en" ? (
+                  <>Verified data,<br />fair prices</>
+                ) : (
+                  <>검증된 데이터로<br />적정 가격 제시</>
+                )}
               </h3>
-              <p className="text-[#bbb] font-medium leading-relaxed max-w-lg">
-                기업·개인 맞춤 종목분석서 형식의 작가 / 컬렉션 정량평가서
-                가격·유동성·경쟁작가 지수 비교
+              <p className="text-[#bbb] font-medium leading-relaxed max-w-lg" style={{ wordBreak: "keep-all" }}>
+                {t("brandlanding.section.price.desc1")}
+                {" "}
+                {t("brandlanding.section.price.desc2")}
               </p>
             </div>
             <div className="flex gap-6 justify-center items-start order-1 lg:order-2">
@@ -708,10 +724,10 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
               <p className="text-xs text-[#555] uppercase tracking-wider mb-6">Sales Dashboard</p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
-                  { label: "호당가 추이", val: "+12.3%", up: true },
-                  { label: "회전율", val: "68.4%", up: true },
-                  { label: "도상별 거래", val: "1,247건", up: true },
-                  { label: "상승률", val: "+8.7%", up: true },
+                  { label: t("brandlanding.section.price.ho_label"), val: "+12.3%", up: true },
+                  { label: locale === "en" ? "Turnover" : "회전율", val: "68.4%", up: true },
+                  { label: locale === "en" ? "Trades by iconography" : "도상별 거래", val: locale === "en" ? "1,247" : "1,247건", up: true },
+                  { label: locale === "en" ? "Growth" : "상승률", val: "+8.7%", up: true },
                 ].map((d) => (
                   <div key={d.label} className="bg-[#111] rounded p-3">
                     <p className="text-[9px] text-[#555] uppercase">{d.label}</p>
@@ -727,11 +743,15 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
             </div>
             <div className="flex flex-col gap-4">
               <p className="text-[#4ade80] text-sm">Art Sales Performance</p>
-              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight">
-                보조지표 대시보드<br />시각화
+              <h3 className="text-3xl md:text-5xl font-normal text-white leading-tight" style={{ wordBreak: "keep-all" }}>
+                {locale === "en" ? (
+                  <>Auxiliary indicator<br />dashboard</>
+                ) : (
+                  <>보조지표 대시보드<br />시각화</>
+                )}
               </h3>
-              <p className="text-[#bbb] font-medium leading-relaxed max-w-lg">
-                호당가·도상별 판매 추이 등 보조지표 상승률·회전율 대시보드 시각화
+              <p className="text-[#bbb] font-medium leading-relaxed max-w-lg" style={{ wordBreak: "keep-all" }}>
+                {t("brandlanding.section.price.dashboard")}
               </p>
             </div>
           </motion.div>
@@ -742,18 +762,18 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       <section className="bg-[#0d1117] py-14 md:py-20 border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-normal text-white mb-3">
-              거래 신뢰를 보장하는 구조
+            <h2 className="text-2xl md:text-3xl font-normal text-white mb-3" style={{ wordBreak: "keep-all" }}>
+              {t("brandlanding.section.trust.title")}
             </h2>
-            <p className="text-sm text-[#bbb] font-medium leading-relaxed max-w-xl mx-auto">
-              모든 작품은 자료 기반으로 검수되며, 검증되지 않은 매물은 등록이 제한됩니다.
+            <p className="text-sm text-[#bbb] font-medium leading-relaxed max-w-xl mx-auto" style={{ wordBreak: "keep-all" }}>
+              {t("brandlanding.section.trust.desc")}
             </p>
           </motion.div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
               {
-                title: "프로비넌스",
-                desc: "소유·전시 이력이 명확한 기록만 수집합니다",
+                title: t("brandlanding.section.trust.t1"),
+                desc: t("brandlanding.section.trust.d1"),
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -764,8 +784,8 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 ),
               },
               {
-                title: "손상 여부 확인",
-                desc: "작품 상태를 보여주는 실물 사진 자료만 등록됩니다",
+                title: t("brandlanding.section.trust.t2"),
+                desc: t("brandlanding.section.trust.d2"),
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -775,8 +795,8 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 ),
               },
               {
-                title: "가품 리스크 진단",
-                desc: "위험 신호가 있으면 전문 기관에 위탁 검증이 가능합니다",
+                title: t("brandlanding.section.trust.t3"),
+                desc: t("brandlanding.section.trust.d3"),
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -786,8 +806,8 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 ),
               },
               {
-                title: "추가 거래 정보",
-                desc: "결제 방식 등 주요 거래 정보도 사전 확인할 수 있습니다",
+                title: t("brandlanding.section.trust.t4"),
+                desc: t("brandlanding.section.trust.d4"),
                 icon: (
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="23" stroke="#4ade80" strokeWidth="1.5" fill="none" />
@@ -826,6 +846,7 @@ const artCenterGalleryImages = Array.from({ length: 18 }, (_, i) => {
 });
 
 function ArtCenterLayout({ brand }: { brand: BrandData }) {
+  const { t } = useLocale();
   const [openGallery, setOpenGallery] = useState<{ title: string; images: string[]; desc?: string } | null>(null);
 
   return (
@@ -838,7 +859,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
           key={i}
           {...stagger(0)}
           className={`relative${i === 0 ? " cursor-pointer" : ""}`}
-          onClick={i === 0 ? () => setOpenGallery({ title: "Exhibition Space", images: artCenterGalleryImages, desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화" }) : undefined}
+          onClick={i === 0 ? () => setOpenGallery({ title: t("brandlanding.artcenter.exhibition_space.title"), images: artCenterGalleryImages, desc: t("brandlanding.artcenter.exhibition_space.desc") }) : undefined}
         >
           <div className="relative h-[60vh] md:h-[80vh] overflow-hidden">
             <img src={img} alt={`Space ${i + 1}`} className="w-full h-full object-cover" />

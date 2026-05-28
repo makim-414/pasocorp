@@ -3,68 +3,71 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-const mainBrands = [
-  {
-    name: "Paso Gallery",
-    slug: "paso-gallery",
-    externalUrl: "https://pasogallery.com",
-    year: 2021,
-    target: "For Collectors & Art Lovers",
-    desc: "국내외 신진·라이징 작가를 엄선하여 소개하며, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다.",
-    activity: "",
-    image: "/brands/paso-gallery.png",
-    color: "#1e3a5f",
-  },
-  {
-    name: "PASO Art Center",
-    slug: "paso-art-center",
-    year: 2025,
-    target: "For Exhibitions & Community",
-    desc: "블루칩·옥션 상위권 작품 70여 점 상설전과 이머징 작가 IP 확장 프로젝트를 전개합니다.",
-    activity: "2025 오픈 (with Mass C&G)",
-    image: "/brands/paso-artcenter.jpg",
-    color: "#a0522d",
-  },
-  {
-    name: "Artrader",
-    slug: "artrader",
-    year: 2024,
-    target: "For Data-Driven Decisions",
-    desc: "1,500만 건 글로벌 옥션 데이터로 적정 매입가를 산출하는 미술품 거래 플랫폼이자 법인 컬렉션 데이터베이스.",
-    activity: "1,500만+ 거래 데이터 실시간 분석",
-    image: "/brands/artrader.jpg",
-    color: "#b8960b",
-  },
-];
-
-const subBrands = [
-  {
-    name: "Paso Agency",
-    slug: "paso-agency",
-    year: 2023,
-    target: "For Brands & IP Partners",
-    desc: "브랜드와 작가 양측의 IP 가치를 지속 가능한 구조로 설계합니다.",
-    activity: "",
-    image: "/images/projects/twosome/twosome-7.jpg",
-    color: "#d4a574",
-  },
-  {
-    name: "Artledger Consulting",
-    slug: "artledger-consulting",
-    year: 2025,
-    target: "For Tax & Asset Advisory",
-    desc: "미술품 절세, 법인 컬렉션 운용, 거래 전 과정을 전문적으로 자문합니다.",
-    activity: "",
-    image: "/brands/artledger-consulting.jpg",
-    color: "#9ca3af",
-  },
-];
-
-const titleWords = "Five Brands, One Vision".split(" ");
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export default function BrandHub() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const { t } = useLocale();
+
+  const mainBrands = [
+    {
+      name: "Paso Gallery",
+      slug: "paso-gallery",
+      externalUrl: "https://pasogallery.com",
+      year: 2021,
+      target: t("brandhub.paso_gallery.target"),
+      desc: t("brandhub.paso_gallery.desc"),
+      activity: "",
+      image: "/brands/paso-gallery.png",
+      color: "#1e3a5f",
+    },
+    {
+      name: "PASO Art Center",
+      slug: "paso-art-center",
+      year: 2025,
+      target: t("brandhub.art_center.target"),
+      desc: t("brandhub.art_center.desc"),
+      activity: t("brandhub.art_center.activity"),
+      image: "/brands/paso-artcenter.jpg",
+      color: "#a0522d",
+    },
+    {
+      name: "Artrader",
+      slug: "artrader",
+      year: 2024,
+      target: t("brandhub.artrader.target"),
+      desc: t("brandhub.artrader.desc"),
+      activity: t("brandhub.artrader.activity"),
+      image: "/brands/artrader.jpg",
+      color: "#b8960b",
+    },
+  ];
+
+  const subBrands = [
+    {
+      name: "Paso Agency",
+      slug: "paso-agency",
+      year: 2023,
+      target: t("brandhub.agency.target"),
+      desc: t("brandhub.agency.desc"),
+      activity: "",
+      image: "/images/projects/twosome/twosome-7.jpg",
+      color: "#d4a574",
+    },
+    {
+      name: "Artledger Consulting",
+      slug: "artledger-consulting",
+      year: 2025,
+      target: t("brandhub.artledger.target"),
+      desc: t("brandhub.artledger.desc"),
+      activity: "",
+      image: "/brands/artledger-consulting.jpg",
+      color: "#9ca3af",
+    },
+  ];
+
+  const titleWords = t("brandhub.title").split(" ");
+
   return (
     <section id="brands" className="py-16 sm:py-24 md:py-32 lg:py-40 bg-black">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
@@ -74,7 +77,7 @@ export default function BrandHub() {
           viewport={{ once: true }}
           className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3 sm:mb-4"
         >
-          Our Brands
+          {t("brandhub.tag")}
         </motion.p>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-8 sm:mb-12 md:mb-16 leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
           {titleWords.map((word, i) => (
@@ -124,7 +127,7 @@ export default function BrandHub() {
                   <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2 sm:mb-3">{brand.year}</p>
                   <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-1.5 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
                   <p className="text-[10px] tracking-[0.1em] uppercase text-[#666] mb-3">{brand.target}</p>
-                  <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-3 sm:mb-4 line-clamp-3">{brand.desc}</p>
+                  <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-3 sm:mb-4 line-clamp-3" style={{ wordBreak: "keep-all" }}>{brand.desc}</p>
                   {brand.activity && <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>}
                   <div className="mt-3 sm:mt-4 w-0 group-hover:w-8 sm:group-hover:w-12 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
                 </div>
@@ -164,7 +167,7 @@ export default function BrandHub() {
                     <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2">{brand.year}</p>
                     <h3 className="text-base sm:text-lg font-light text-white mb-1 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
                     <p className="text-[10px] tracking-[0.1em] uppercase text-[#666] mb-2">{brand.target}</p>
-                    <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-2 line-clamp-3">{brand.desc}</p>
+                    <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-2 line-clamp-3" style={{ wordBreak: "keep-all" }}>{brand.desc}</p>
                     {brand.activity && <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>}
                     <div className="mt-3 w-0 group-hover:w-8 sm:group-hover:w-10 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
                   </div>

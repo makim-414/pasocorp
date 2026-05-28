@@ -6,50 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { BarChart3, FileText, Landmark, Palette } from "lucide-react";
-
-/* ───── data ───── */
-const FEATURES = [
-  {
-    id: "artrader",
-    tag: "ARTRADER",
-    label: "Data & Intelligence",
-    Icon: BarChart3,
-    image: "/brands/artrader-new.png",
-    desc: "1,500만 건 경매 데이터 기반 시세 분석과 정량 리포트.",
-    color: "#b8960b",
-    href: "/brands/artrader",
-  },
-  {
-    id: "artledger",
-    tag: "ARTLEDGER",
-    label: "Advisory & Tax",
-    Icon: FileText,
-    image: "/brands/artledger-consulting.jpg",
-    desc: "미술품 절세, 법인 자산 관리, 컬렉션 리밸런싱 자문.",
-    color: "#b8960b",
-    href: "/brands/artledger-consulting",
-  },
-  {
-    id: "gallery",
-    tag: "PASO GALLERY · ART CENTER",
-    label: "Exhibition & Primary Market",
-    Icon: Landmark,
-    image: "/brands/paso-gallery.jpg",
-    desc: "신진 작가 전시, 블루칩 상설전, 아트 살롱 프로그램.",
-    color: "#b8960b",
-    href: "https://pasogallery.com",
-  },
-  {
-    id: "agency",
-    tag: "PASO AGENCY",
-    label: "IP & Brand Collaboration",
-    Icon: Palette,
-    image: "/images/projects/cu-dding/cu-3.jpg",
-    desc: "브랜드 아트 프로젝트, IP 라이선싱, 공간 콜라보레이션.",
-    color: "#b8960b",
-    href: "/brands/paso-agency",
-  },
-];
+import { useLocale } from "@/i18n/LocaleProvider";
 
 const AUTO_PLAY_INTERVAL = 4000;
 const ITEM_HEIGHT = 70;
@@ -60,6 +17,49 @@ const wrap = (min: number, max: number, v: number) => {
 };
 
 export default function Services() {
+  const { t } = useLocale();
+  const FEATURES = [
+    {
+      id: "artrader",
+      tag: "ARTRADER",
+      label: "Data & Intelligence",
+      Icon: BarChart3,
+      image: "/brands/artrader-new.png",
+      desc: t("services.artrader.desc"),
+      color: "#b8960b",
+      href: "/brands/artrader",
+    },
+    {
+      id: "artledger",
+      tag: "ARTLEDGER",
+      label: "Advisory & Tax",
+      Icon: FileText,
+      image: "/brands/artledger-consulting.jpg",
+      desc: t("services.artledger.desc"),
+      color: "#b8960b",
+      href: "/brands/artledger-consulting",
+    },
+    {
+      id: "gallery",
+      tag: "PASO GALLERY · ART CENTER",
+      label: "Exhibition & Primary Market",
+      Icon: Landmark,
+      image: "/brands/paso-gallery.jpg",
+      desc: t("services.gallery.desc"),
+      color: "#b8960b",
+      href: "https://pasogallery.com",
+    },
+    {
+      id: "agency",
+      tag: "PASO AGENCY",
+      label: "IP & Brand Collaboration",
+      Icon: Palette,
+      image: "/images/projects/cu-dding/cu-3.jpg",
+      desc: t("services.agency.desc"),
+      color: "#b8960b",
+      href: "/brands/paso-agency",
+    },
+  ];
   const [step, setStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -103,7 +103,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-[10px] tracking-[0.3em] uppercase text-[#b8960b] mb-4"
         >
-          Services
+          {t("services.tag")}
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
@@ -113,7 +113,7 @@ export default function Services() {
           className="text-3xl md:text-5xl font-light text-white mb-16"
           style={{ fontFamily: "var(--font-dutch)" }}
         >
-          How We Work
+          {t("services.title")}
         </motion.h2>
 
         {/* carousel container */}

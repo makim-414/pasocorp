@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -11,13 +12,14 @@ const fadeUp = {
 };
 
 export default function SpacesContent() {
+  const { t } = useLocale();
   return (
     <main className="pt-16">
       {/* ── Hero with Background Image ── */}
       <section className="relative h-[70vh] md:h-[80vh] flex items-end overflow-hidden">
         <Image
           src="/images/gallery/slide-hero.png"
-          alt="Paso Gallery Heritage 외관"
+          alt="Paso Gallery Heritage"
           fill
           className="object-cover"
           priority
@@ -28,10 +30,10 @@ export default function SpacesContent() {
               className="text-3xl md:text-5xl font-medium text-white mb-4"
               style={{ fontFamily: "var(--font-dutch)" }}
             >
-              Space Introduction
+              {t("spaces.hero.title")}
             </h1>
             <p className="text-[#d4d4d4] font-medium leading-relaxed max-w-2xl text-lg" style={{ wordBreak: "keep-all" }}>
-              서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다.
+              {t("spaces.hero.lead")}
             </p>
           </motion.div>
         </div>
@@ -47,39 +49,33 @@ export default function SpacesContent() {
               className="h-12 md:h-16 w-auto mx-auto mb-4"
             />
             <p className="text-sm md:text-base text-[#bbb] mb-12" style={{ fontFamily: "var(--font-sans)" }}>
-              Your Event Partner for Exhibition
+              {t("spaces.event_partner.tagline")}
             </p>
             <div className="max-w-[680px] mx-auto space-y-6 text-left text-[#e5e5e5] font-normal text-base md:text-[17px]" style={{ wordBreak: "keep-all", overflowWrap: "break-word", lineHeight: 1.9 }}>
-              <p>
-                파소 갤러리 헤리티지는 성북동 초입에 위치한 70년 전통의 종가를 모던하게 개조하여 운영하는 파소의 전시 공간입니다.
-              </p>
-              <p>
-                고유한 역사와 현대적 감각이 조화된 이 공간은 프라이빗하고 세련된 행사를 위한 최적의 장소로, 웨딩, VIP 이벤트, 기업 B2B 행사 등 다양한 형태의 행사에 활용 가능합니다.
-              </p>
-              <p>
-                파소 갤러리는 지난 10년간 신진 작가 공모전과 여러 아티스트 및 브랜드와의 협업을 통해 깊이 있는 전시 노하우를 구축해 왔습니다. 또한 작가들의 작업을 IP 형태로 제공하는 파소 에이전시와 미술 VIP 커뮤니티 운영을 통해 기업 고객과의 다양한 협력 경험을 갖추고 있습니다.
-              </p>
+              <p>{t("spaces.event_partner.p1")}</p>
+              <p>{t("spaces.event_partner.p2")}</p>
+              <p>{t("spaces.event_partner.p3")}</p>
             </div>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Paso Gallery</p>
                 <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
-                  <p>전시 기획 및 미술품 판매</p>
-                  <p>작품 기반 제품 제작 (에디션, 판화 큐레이션)</p>
+                  <p>{t("spaces.role.gallery.l1")}</p>
+                  <p>{t("spaces.role.gallery.l2")}</p>
                 </div>
               </div>
               <div>
                 <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Paso Agency</p>
                 <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
-                  <p>B2B IP 프로젝트 (미가 커미션 작업)</p>
-                  <p>외부 전시 기획</p>
+                  <p>{t("spaces.role.agency.l1")}</p>
+                  <p>{t("spaces.role.agency.l2")}</p>
                 </div>
               </div>
               <div>
                 <p className="text-white text-xl mb-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 700 }}>Artrader</p>
                 <div className="text-[11px] text-[#bbb] font-normal space-y-0.5">
-                  <p>미술품 데이터 분석 플랫폼</p>
-                  <p>옥션 데이터 · Artist Index</p>
+                  <p>{t("spaces.role.artrader.l1")}</p>
+                  <p>{t("spaces.role.artrader.l2")}</p>
                 </div>
               </div>
             </div>
@@ -128,27 +124,25 @@ export default function SpacesContent() {
               className="text-3xl md:text-5xl font-medium text-white mb-8"
               style={{ fontFamily: "var(--font-dutch)" }}
             >
-              Private Programs
+              {t("spaces.private.title")}
             </h2>
             <div className="w-16 h-[3px] bg-white mx-auto mb-12" />
-            <div className="space-y-8 text-[#d4d4d4] font-medium leading-relaxed text-sm md:text-base">
+            <div className="space-y-8 text-[#d4d4d4] font-medium leading-relaxed text-sm md:text-base" style={{ wordBreak: "keep-all" }}>
               <p>
-                Space by PASO는 파소의 첫 번째 전시 공간으로,<br />
-                성북동 초입의 성균관 유생 종가를 현대적으로 재건축한 전시 공간입니다.
+                {t("spaces.private.p1.line1")}<br />
+                {t("spaces.private.p1.line2")}
               </p>
               <p>
-                파소는 지난 10여 년간 꾸준히 이어온 신진 작가 발굴과 지원의 철학을 담아,<br />
-                작가들에게 상업적 가능성을 실험하고 시장과 만날 수 있는 기회를 제공하였습니다.
+                {t("spaces.private.p2.line1")}<br />
+                {t("spaces.private.p2.line2")}
+              </p>
+              <p>{t("spaces.private.p3")}</p>
+              <p>
+                {t("spaces.private.p4.line1")}<br />
+                {t("spaces.private.p4.line2")}
               </p>
               <p>
-                현재 Space by PASO는 전시와 더불어 브랜드 협업 및 다양한 문화 행사를 유연하게 수용하는 기획 공간으로 운영됩니다.
-              </p>
-              <p>
-                파소는 미술 시장 전반의 다양한 영역에서 비즈니스를 전개하며,<br />
-                예술의 새로운 가능성을 모색하고 있습니다.
-              </p>
-              <p>
-                더 많은 정보는 파소의 공식 웹사이트에서 확인하실 수 있습니다.<br />
+                {t("spaces.private.p5.line1")}<br />
                 <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="text-[#b8960b] hover:text-white transition-colors">www.pasocorp.com</a>
               </p>
             </div>
