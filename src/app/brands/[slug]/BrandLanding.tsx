@@ -1037,10 +1037,10 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
   };
 
   const exhibitions = [
-    { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 - 10. 22", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
-    { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023.06.02 - 2023.06.15", image: "/images/exhibitions/traces-of-light/intermission-new1.jpg" },
-    { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022.08.31 ~ 2022.09.09", image: "/images/exhibitions/redegallery/redegallery-1.jpg" },
-    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06.24.- 2023.07.07", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
+    { title: "REBORN", artist: "Rom Sangkavatana", date: "2022. 10. 15 – 10. 22", venue: "Paso Gallery, Seoul", curator: "Curated by PASO", edition: "Solo Exhibition", image: "/images/exhibitions/reborn/reborn-cover.jpg" },
+    { title: "Intermission : 이다희 (Rising Artist Contest)", artist: "이다희", date: "2023. 06. 02 – 06. 15", venue: "Paso Gallery, Seoul", curator: "Curated by PASO", edition: "Rising Artist Contest", image: "/images/exhibitions/traces-of-light/intermission-new1.jpg" },
+    { title: "Project ReDE Gallery", artist: "Dirty Haerri", date: "2022. 08. 31 – 09. 09", venue: "Paso Gallery × Starch Haus", curator: "Curated with Starch Haus", edition: "Collaboration", image: "/images/exhibitions/redegallery/redegallery-1.jpg" },
+    { title: "Forest of Finity", artist: "Kim Sunhyuk, Lee Jieun", date: "2023. 06. 24 – 07. 07", venue: "Paso Gallery, Seoul", curator: "Curated by PASO", edition: "Two-person Exhibition", image: "/images/exhibitions/forest-of-finity/forest-of-finity-cover.jpg" },
   ];
 
   const clients = [
@@ -1104,7 +1104,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             transition={{ delay: 1.2 }}
             className="mt-14 flex gap-4 justify-center"
           >
-            <a href="#exhibitions" className="px-8 py-3 border border-[#b8960b] text-[#b8960b] text-sm hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+            <a href="#exhibitions" className="px-8 py-3 border border-white/40 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
               Exhibitions
             </a>
           </motion.div>
@@ -1119,7 +1119,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-10 bg-gradient-to-b from-[#b8960b] to-transparent"
+            className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent"
           />
         </motion.div>
       </section>
@@ -1169,26 +1169,30 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                   if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
                 }}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                  className="relative aspect-[3/2] md:aspect-[16/9] overflow-hidden"
-                >
-                  <img
-                    src={ex.image}
-                    alt={ex.title}
-                    className="w-full h-full object-cover object-[center_25%] transition-transform duration-[1.8s] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-700" />
-                </motion.div>
-                <div className="mt-4 md:mt-6 flex items-baseline justify-between gap-6">
-                  <div className="flex items-baseline gap-6 flex-wrap">
-                    <h3 className="text-base md:text-lg text-white font-medium leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
-                    <p className="text-xs text-[#999] font-medium tracking-wide whitespace-nowrap">{ex.artist}</p>
-                  </div>
-                  <p className="text-xs uppercase text-[#ccc] whitespace-nowrap shrink-0">{ex.date}</p>
+                {/* Pace-style hover lift wrapper (outer div so framer transforms don't conflict) */}
+                <div className="transition-[transform,box-shadow,filter] duration-500 ease-out will-change-transform group-hover:-translate-y-6 group-hover:[box-shadow:0_60px_120px_-30px_rgba(0,0,0,0.95),0_25px_50px_-15px_rgba(0,0,0,0.6)] group-hover:brightness-110">
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                    className="relative aspect-[3/2] md:aspect-[16/9] overflow-hidden"
+                  >
+                    <img
+                      src={ex.image}
+                      alt={ex.title}
+                      className="w-full h-full object-cover object-[center_25%] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.08]"
+                    />
+                  </motion.div>
+                </div>
+                <div className="mt-6 md:mt-8 transition-transform duration-500 ease-out group-hover:-translate-y-2" style={{ fontFamily: "var(--font-sans)" }}>
+                  <h3 className="text-lg md:text-xl text-white font-medium leading-tight tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>
+                    {ex.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-[#bbb] font-normal">{ex.artist}</p>
+                  <p className="mt-3 text-xs text-[#888] font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>
+                    {ex.date} · {ex.venue} · {ex.curator}
+                  </p>
                 </div>
               </FocusCard>
             ))}
@@ -1283,7 +1287,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
             { label: "Hours", value: "By Appointment Only\nPrivate Viewings" },
-            { label: "Contact", value: "makim@pasogallery.com\n+82 10-6432-4471" },
+            { label: "Contact", value: "info@pasogallery.com\n+1 2 925 3631" },
             { label: "Instagram", value: "@pasogallery" },
           ].map((info, i) => (
             <motion.div key={info.label} {...stagger(i)}>
@@ -1297,11 +1301,10 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       {/* ── 본사 바로가기 ── */}
       <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-          <motion.p {...fadeUp} className="text-sm text-[#b8960b] mb-6">PASO Corporation</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-3xl font-normal text-white mb-6">본사 바로가기</motion.h2>
           <motion.p {...fadeUp} className="text-sm md:text-base text-[#bbb] font-medium mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
           <motion.div {...fadeUp}>
-            <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border border-[#b8960b] text-[#b8960b] text-sm hover:bg-[#b8960b] hover:text-black transition-all duration-300">
+            <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border border-white/40 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
               PASO Corp
             </a>
           </motion.div>

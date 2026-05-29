@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StandaloneNav from "@/components/StandaloneNav";
+import SiteModeCookieSync from "@/components/SiteModeCookieSync";
 import StandaloneFooter from "@/components/StandaloneFooter";
 import BrandLanding from "./BrandLanding";
 import { getSiteMode } from "@/lib/site-mode";
@@ -51,8 +52,8 @@ const brandsData: Record<string, {
     name: "Paso Gallery",
     slug: "paso-gallery",
     year: 2021,
-    desc: "Art Meets Space — 한옥의 고유한 공간미와 동시대 미술이 만나는 곳. 브랜드 팝업, 프라이빗 이벤트, 아트 어드바이저리까지.",
-    longDesc: "서울 종로구 한옥 건축물에 자리한 PASO Gallery는, 전통 공간의 아름다움과 동시대 미술의 실험이 공존하는 독립 갤러리입니다. 브랜드 팝업, VIP 이벤트, 아트 어드바이저리 등 예술과 비즈니스를 잇는 프로그램을 운영합니다.",
+    desc: "Art Meets Space — 한옥의 고유한 공간미와 동시대 미술이 만나는 곳. 신진 작가 발굴부터 브랜드 협업까지.",
+    longDesc: "서울 종로구 한옥 건축물에 자리한 PASO Gallery는, 전통 공간의 아름다움과 동시대 미술의 실험이 공존하는 독립 갤러리입니다. 신진 작가 발굴, 큐레이션 전시, 브랜드 협업 등 예술과 시장을 잇는 프로그램을 운영합니다.",
     color: "#1e3a5f",
     image: "/brands/paso-gallery.png",
     gallery: [
@@ -128,20 +129,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const brand = brandsData[slug];
   if (!brand) return { title: "Brand Not Found — PASO" };
-  const seoOverrides: Record<string, { title: string; description: string }> = {
+  const seoOverrides: Record<string, { title: string; description: string; image?: string }> = {
     artrader: { title: "Artrader | PASO Art Market Data Platform", description: "PASO's Artrader — 15M+ global auction records. Artist Index and quantitative reports for art investment decisions." },
     "paso-art-center": { title: "PASO Art Center | Exhibitions & Community in Seongbuk-gu", description: "PASO Art Center — Seongbuk-gu, Seoul. Exhibitions, art salons, and a community space for emerging artists and collectors." },
     "artledger-consulting": { title: "Artledger | PASO Art Asset Advisory & Tax Strategy", description: "PASO's Artledger — art gift & inheritance, corporate depreciation, collection rebalancing. End-to-end art-asset management." },
     "paso-agency": { title: "PASO Agency | IP & Brand Art Collaborations", description: "PASO Agency — character IP licensing, art toys, corporate art projects, end-to-end planning and execution." },
+    "paso-gallery": { title: "Paso Gallery — Art Meets Space", description: "한옥의 고유한 공간미와 동시대 미술이 만나는 곳. 신진작가 발굴부터 브랜드 콜라보레이션까지.", image: "/brands/paso-gallery-og.jpg" },
   };
   const seo = seoOverrides[slug];
+  const ogImage = seo?.image ?? brand.image;
   return {
     title: seo?.title ?? `${brand.name} — PASO`,
     description: seo?.description ?? brand.longDesc,
     openGraph: {
       title: seo?.title ?? `${brand.name} — PASO`,
       description: seo?.description ?? brand.desc,
-      images: [{ url: brand.image, width: 1600, height: 900 }],
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.title ?? `${brand.name} — PASO`,
+      description: seo?.description ?? brand.desc,
+      images: [ogImage],
     },
   };
 }
@@ -166,7 +175,7 @@ const standaloneSiteConfig: Record<string, {
     address: "92, Seonggyungwan-ro, Jongno-gu",
     addressDetail: "Seoul, Hanok Building",
     instagram: "https://www.instagram.com/pasogallery",
-    accentColor: "#b8960b",
+    accentColor: "#e5e5e5",
   },
 };
 
@@ -183,16 +192,34 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
     );
   }
 
-  const standaloneConfig = standaloneSiteConfig[siteMode];
+  // Use standalone nav when on a standalone domain (siteMode) OR when slug matches a standalone site
+  // (so localhost/brands/paso-gallery also shows the Paso Gallery branded nav)
+  const slugToSiteMode: Record<string, string> = { "paso-gallery": "pasogallery" };
+  const standaloneConfig = standaloneSiteConfig[siteMode] ?? standaloneSiteConfig[slugToSiteMode[slug] ?? ""];
 
-  // Standalone brand site (e.g., pasogallery.com)
+  // Standalone brand site (e.g., pasogallery.com OR localhost/brands/paso-gallery)
   if (standaloneConfig) {
+    const slugSiteMode = slugToSiteMode[slug];
+    const isSlugBased = !standaloneSiteConfig[siteMode] && !!slugSiteMode;
+    // On the actual standalone domain, "/" is the home; on slug-based access (dev),
+    // home should be the slug page itself so the user stays inside the brand site
+    const homeHref = standaloneSiteConfig[siteMode] ? "/" : `/brands/${slug}`;
+    // On localhost (slug-based), rewrite /contact -> /gallery-contact so we don't
+    // collide with pasocorp's /contact page. On the real standalone domain the
+    // middleware can map /contact -> the gallery variant.
+    const onStandaloneDomain = !!standaloneSiteConfig[siteMode];
+    const navLinks = standaloneConfig.navLinks.map((link) =>
+      !onStandaloneDomain && link.href === "/contact"
+        ? { ...link, href: "/gallery-contact" }
+        : link
+    );
     return (
       <div className="bg-black min-h-screen">
+        {isSlugBased && <SiteModeCookieSync siteMode={slugSiteMode} />}
         <StandaloneNav
           siteName={standaloneConfig.siteName}
-          homeHref="/"
-          links={standaloneConfig.navLinks}
+          homeHref={homeHref}
+          links={navLinks}
           accentColor={standaloneConfig.accentColor}
         />
         <BrandLanding brand={brand} />

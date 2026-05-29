@@ -16,23 +16,24 @@ export default function SpacesContent() {
   return (
     <main className="pt-16">
       {/* ── Hero with Background Image ── */}
-      <section className="relative h-[70vh] md:h-[80vh] flex items-end overflow-hidden">
+      <section className="relative h-[85vh] md:h-screen flex items-end overflow-hidden">
         <Image
-          src="/images/gallery/slide-hero.png"
-          alt="Paso Gallery Heritage"
+          src="/images/about-space/img-024.jpg"
+          alt="Paso Gallery interior"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-        <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-12 pb-16 md:pb-24">
+        {/* Smooth bottom-fade so the hero blends into the next section */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
+        <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-12 pb-24 md:pb-32">
           <motion.div {...fadeUp}>            <h1
-              className="text-3xl md:text-5xl font-medium text-white mb-4"
+              className="text-4xl md:text-7xl font-light text-white mb-4"
               style={{ fontFamily: "var(--font-dutch)" }}
             >
               {t("spaces.hero.title")}
             </h1>
-            <p className="text-[#d4d4d4] font-medium leading-relaxed max-w-2xl text-lg" style={{ wordBreak: "keep-all" }}>
+            <p className="text-[#bbb] font-light leading-relaxed max-w-2xl text-lg" style={{ wordBreak: "keep-all" }}>
               {t("spaces.hero.lead")}
             </p>
           </motion.div>
@@ -83,29 +84,28 @@ export default function SpacesContent() {
         </div>
       </section>
 
-      {/* ── Brochure Download (hidden) ── */}
-      {false && (
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
-        <div className="max-w-[700px] mx-auto px-6 md:px-12 text-center">
-          <motion.p {...fadeUp} className="text-xs text-[#bbb] uppercase mb-4">Brochure</motion.p>
-          <motion.h2 {...fadeUp} className="text-3xl md:text-4xl text-white mb-6" style={{ fontFamily: "var(--font-sans)", fontWeight: 500 }}>
+      {/* ── Brochure Download ── */}
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
+          <motion.p {...fadeUp} className="text-xs text-[#bbb] uppercase tracking-wider mb-4">Brochure</motion.p>
+          <motion.h2 {...fadeUp} className="text-3xl md:text-4xl text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
             공간 안내서
           </motion.h2>
-          <motion.p {...fadeUp} className="text-[#d4d4d4] text-sm md:text-base mb-10" style={{ wordBreak: "keep-all", lineHeight: 1.85 }}>
-            행사 기획에 필요한 공간 구성, 도면, 이용 안내가 담겨 있습니다.
+          <motion.p {...fadeUp} className="text-[#bbb] text-sm md:text-base mb-10" style={{ wordBreak: "keep-all", lineHeight: 1.85 }}>
+            갤러리 공간 구성, 도면, 시설 안내가 담겨 있습니다.
           </motion.p>
           <motion.div {...fadeUp}>
             <a
               href="/docs/paso-gallery-brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-7 py-3 rounded-full bg-[#b8960b] text-black text-sm font-medium hover:opacity-85 transition-all duration-300"
+              className="inline-block px-7 py-3 rounded-full bg-white text-black text-sm font-medium hover:opacity-85 transition-all duration-300"
             >
               안내서 PDF 다운로드
             </a>
           </motion.div>
 
-          <motion.div {...fadeUp} className="mt-12 rounded-lg overflow-hidden border border-[#1a1a1a] bg-[#0a0a0a]">
+          <motion.div {...fadeUp} className="mt-12 overflow-hidden border border-[#1a1a1a] bg-[#0a0a0a]">
             <iframe
               src="/docs/paso-gallery-brochure.pdf#view=FitH"
               title="Paso Gallery 안내서 미리보기"
@@ -114,7 +114,6 @@ export default function SpacesContent() {
           </motion.div>
         </div>
       </section>
-      )}
 
       {/* ── Private Programs ── */}
       <section className="py-32 md:py-44 bg-black border-y border-[#1a1a1a]">
@@ -143,7 +142,7 @@ export default function SpacesContent() {
               </p>
               <p>
                 {t("spaces.private.p5.line1")}<br />
-                <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="text-[#b8960b] hover:text-white transition-colors">www.pasocorp.com</a>
+                <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="text-[#e5e5e5] hover:text-white transition-colors">www.pasocorp.com</a>
               </p>
             </div>
           </motion.div>
@@ -157,7 +156,7 @@ export default function SpacesContent() {
             {[
               { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
               { label: "Hours", value: "Tue Sat\n11:00 19:00" },
-              { label: "Contact", value: "makim@ironact.net\n+82 10-6432-4471" },
+              { label: "Contact", value: "info@pasogallery.com\n+1 2 925 3631" },
               { label: "Instagram", value: "@pasogallery" },
             ].map((info, i) => (
               <motion.div

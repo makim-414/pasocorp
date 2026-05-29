@@ -9,7 +9,7 @@ interface StandaloneNavProps {
   accentColor?: string;
 }
 
-export default function StandaloneNav({ siteName, homeHref, links = [], accentColor = "#b8960b" }: StandaloneNavProps) {
+export default function StandaloneNav({ siteName, homeHref, links = [], accentColor = "#e5e5e5" }: StandaloneNavProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

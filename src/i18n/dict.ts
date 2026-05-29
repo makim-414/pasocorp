@@ -68,7 +68,7 @@ export const dict: Dict = {
   "contact.inquiries": { en: "Inquiries", ko: "Inquiries" },
   "contact.how_help": { en: "How Can We Help?", ko: "How Can We Help?" },
   "contact.inq.exhibition": { en: "Exhibitions", ko: "전시 문의" },
-  "contact.inq.exhibition_desc": { en: "Gallery exhibitions, pop-ups, and events", ko: "갤러리 전시, 팝업, 이벤트 문의" },
+  "contact.inq.exhibition_desc": { en: "Gallery exhibitions and artist collaborations", ko: "갤러리 전시 및 작가 협업 문의" },
   "contact.inq.advisory": { en: "Advisory", ko: "자문 서비스" },
   "contact.inq.advisory_desc": { en: "Art tax planning, asset management, collection advisory", ko: "미술품 절세, 자산관리, 컬렉팅 자문" },
   "contact.inq.brand": { en: "Brand Partnerships", ko: "브랜드 협업" },
@@ -257,7 +257,7 @@ export const dict: Dict = {
     en: "A hanok gallery in Jongno-gu, Seoul. An independent exhibition space where contemporary art unfolds within the spatial character of traditional Korean architecture.",
     ko: "서울 종로구에 위치한 한옥 갤러리. 전통 건축의 고유한 공간미 위에 동시대 미술이 펼쳐지는 독립 전시 공간입니다.",
   },
-  "spaces.event_partner.tagline": { en: "Your Event Partner for Exhibition", ko: "Your Event Partner for Exhibition" },
+  "spaces.event_partner.tagline": { en: "Contemporary Art Gallery in a Seoul Hanok", ko: "한옥에 자리한 동시대 미술 갤러리" },
   "spaces.event_partner.p1": {
     en: "Paso Gallery is a contemporary art gallery housed in a modern reinterpretation of a 70-year-old hanok at the entrance of Seongbuk-dong, Seoul. Over the past six-plus years it has driven diverse, expansive art projects centred on emerging-artist discovery and global emerging-artist exhibitions.",
     ko: "파소 갤러리는 서울 성북동 초입에 위치한 70년 전통 종가 한옥을 현대적으로 재해석한 현대미술 갤러리로, 지난 6여 년간 공모전에 의한 신진 작가 발굴과 글로벌 이머징 전시를 중심으로 다양한 확장적인 예술 프로젝트를 전개해왔습니다.",
@@ -282,8 +282,8 @@ export const dict: Dict = {
   "spaces.private.p2.line1": { en: "Carrying PASO's decade-long commitment to discovering and supporting emerging artists,", ko: "파소는 지난 10여 년간 꾸준히 이어온 신진 작가 발굴과 지원의 철학을 담아," },
   "spaces.private.p2.line2": { en: "we offer artists opportunities to experiment with commercial viability and meet the market.", ko: "작가들에게 상업적 가능성을 실험하고 시장과 만날 수 있는 기회를 제공하였습니다." },
   "spaces.private.p3": {
-    en: "Today Space by PASO operates as a flexible venue for exhibitions, brand collaborations, and diverse cultural events.",
-    ko: "현재 Space by PASO는 전시와 더불어 브랜드 협업 및 다양한 문화 행사를 유연하게 수용하는 기획 공간으로 운영됩니다.",
+    en: "Today Space by PASO continues to operate as a curated space dedicated to exhibitions and artist collaborations.",
+    ko: "현재 Space by PASO는 전시와 작가 협업을 중심으로 운영되는 큐레이션 공간입니다.",
   },
   "spaces.private.p4.line1": { en: "PASO operates across many areas of the art market,", ko: "파소는 미술 시장 전반의 다양한 영역에서 비즈니스를 전개하며," },
   "spaces.private.p4.line2": { en: "exploring new possibilities for art.", ko: "예술의 새로운 가능성을 모색하고 있습니다." },

@@ -26,7 +26,7 @@ export default function StandaloneFooter({
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
           {/* Brand */}
           <div className="space-y-2">
-            <Link href={corpLink} target="_blank" className="text-white font-semibold tracking-tight text-lg hover:text-[#b8960b] transition-colors">PASO</Link>
+            <Link href={corpLink} target="_blank" className="text-white font-semibold tracking-tight text-lg hover:text-[#e5e5e5] transition-colors">PASO</Link>
             {address && (
               <div className="text-[#555] text-xs space-y-0.5">
                 <p>{address}</p>

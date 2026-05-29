@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StandaloneNav from "@/components/StandaloneNav";
@@ -31,7 +32,7 @@ export default async function AboutPage() {
             { label: "Team", href: "#team" },
             { label: "Contact", href: "/contact" },
           ]}
-          accentColor="#b8960b"
+          accentColor="#e5e5e5"
         />
         <AboutContent />
         <StandaloneFooter
@@ -44,20 +45,25 @@ export default async function AboutPage() {
     );
   }
 
-  // pasogallery.com → gallery-specific layout
+  // pasogallery.com (or localhost via cookie override) → gallery-specific layout
   if (siteMode === "pasogallery") {
+    // On real pasogallery.com domain we get header-based siteMode; on localhost the cookie
+    // override drives it, in which case home anchors should point back to the slug route
+    const onStandaloneDomain = (await headers()).get("x-site-mode") === "pasogallery";
+    const home = onStandaloneDomain ? "/" : "/brands/paso-gallery";
+    const contactHref = onStandaloneDomain ? "/contact" : "/gallery-contact";
     return (
       <div className="bg-black min-h-screen">
         <StandaloneNav
           siteName="Paso Gallery"
-          homeHref="/"
+          homeHref={home}
           links={[
-            { label: "Exhibitions", href: "/#exhibitions" },
-            { label: "Spaces", href: "/#space" },
+            { label: "Exhibitions", href: `${home === "/" ? "" : home}#exhibitions` },
+            { label: "Spaces", href: "/spaces" },
             { label: "About", href: "/about" },
-            { label: "Request", href: "/contact", isButton: true },
+            { label: "Request", href: contactHref, isButton: true },
           ]}
-          accentColor="#b8960b"
+          accentColor="#e5e5e5"
         />
         <GalleryAboutContent />
         <StandaloneFooter
@@ -65,6 +71,7 @@ export default async function AboutPage() {
           address="92, Seonggyungwan-ro, Jongno-gu"
           addressDetail="Seoul, Hanok Building"
           instagram="https://www.instagram.com/pasogallery"
+          email="info@pasogallery.com"
         />
       </div>
     );

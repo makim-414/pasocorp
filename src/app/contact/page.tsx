@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StandaloneNav from "@/components/StandaloneNav";
 import StandaloneFooter from "@/components/StandaloneFooter";
 import ContactContent from "./ContactContent";
 import GalleryContactContent from "./GalleryContactContent";
-import { getSiteMode } from "@/lib/site-mode";
 
 export const metadata: Metadata = {
   title: "Contact — 파소(PASO)",
@@ -17,21 +17,24 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const siteMode = await getSiteMode();
+  // Only render the gallery variant when on the REAL pasogallery.com domain
+  // (middleware sets x-site-mode header). On localhost, the gallery contact
+  // page lives at /gallery-contact — no cookie/site-mode fallback here.
+  const onStandaloneGalleryDomain = (await headers()).get("x-site-mode") === "pasogallery";
 
-  if (siteMode === "pasogallery") {
+  if (onStandaloneGalleryDomain) {
     return (
       <div className="bg-black min-h-screen">
         <StandaloneNav
           siteName="Paso Gallery"
           homeHref="/"
           links={[
-            { label: "Exhibitions", href: "#exhibitions" },
-            { label: "Spaces", href: "#space" },
+            { label: "Exhibitions", href: "/#exhibitions" },
+            { label: "Spaces", href: "/spaces" },
             { label: "About", href: "/about" },
             { label: "Request", href: "/contact", isButton: true },
           ]}
-          accentColor="#b8960b"
+          accentColor="#e5e5e5"
         />
         <GalleryContactContent />
         <StandaloneFooter
@@ -39,6 +42,7 @@ export default async function ContactPage() {
           address="92, Seonggyungwan-ro, Jongno-gu"
           addressDetail="Seoul, Hanok Building"
           instagram="https://www.instagram.com/pasogallery"
+          email="info@pasogallery.com"
         />
       </div>
     );

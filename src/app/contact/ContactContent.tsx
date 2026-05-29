@@ -38,7 +38,7 @@ export default function ContactContent() {
       {/* Hero */}
       <section className="pt-32 pb-20 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("contact.tag")}</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs uppercase text-[#b8960b] mb-4">{t("contact.tag")}</motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export default function ContactContent() {
         <div className="max-w-[800px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {contacts.map((c, i) => (
             <motion.div key={c.label} {...stagger(i)} className="text-center py-4">
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{c.label}</p>
+              <p className="text-xs uppercase text-[#555] mb-3">{c.label}</p>
               {c.href ? (
                 <a href={c.href} className="text-lg text-white font-light hover:text-[#b8960b] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>{c.value}</a>
               ) : (
@@ -72,7 +72,7 @@ export default function ContactContent() {
       {/* Inquiry types */}
       <section className="py-24 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("contact.inquiries")}</motion.p>
+          <motion.p {...fadeUp} className="text-xs uppercase text-[#b8960b] mb-4">{t("contact.inquiries")}</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.how_help")}</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {inquiries.map((item, i) => (
@@ -94,7 +94,7 @@ export default function ContactContent() {
       {/* Locations */}
       <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("contact.location")}</motion.p>
+          <motion.p {...fadeUp} className="text-xs uppercase text-[#b8960b] mb-4">{t("contact.location")}</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.find_us")}</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {locations.map((loc, i) => (
@@ -104,7 +104,7 @@ export default function ContactContent() {
                 onClick={() => setSelectedLocation(selectedLocation === loc.name ? null : loc.name)}
                 className={`border p-8 cursor-pointer transition-colors duration-300 ${selectedLocation === loc.name ? "border-[#b8960b]/50 bg-[#b8960b]/5" : "border-[#1a1a1a] hover:border-[#333]"}`}
               >
-                <p className="text-xs tracking-[0.15em] uppercase text-[#b8960b] mb-4">{loc.name}</p>
+                <p className="text-xs uppercase text-[#b8960b] mb-4">{loc.name}</p>
                 <p className="text-sm text-white font-light mb-1">{loc.address}</p>
                 <p className="text-sm text-[#555] font-light">{loc.detail}</p>
               </motion.div>
