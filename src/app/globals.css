@@ -90,3 +90,13 @@ a:focus-visible, button:focus-visible {
   font-synthesis: weight;
   -webkit-text-stroke: 0.2px rgba(255, 255, 255, 0.1);
 }
+
+/* Exhibition snap — each card softly catches the viewport center as user scrolls.
+   Stop: always means user can move only one card per scroll gesture. */
+html:has(.exhibition-snap) {
+  scroll-snap-type: y proximity;
+}
+.exhibition-snap > * {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
