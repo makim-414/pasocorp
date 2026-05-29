@@ -1145,6 +1145,57 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         <style>{`@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
       </section>
 
+      {/* ── EXHIBITIONS: Selected Works (full-width stacked + FocusCard) ── */}
+      <section id="exhibitions" className="pt-44 md:pt-56 pb-44 md:pb-64 bg-black">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="mb-20 md:mb-28 max-w-2xl">
+            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>Exhibitions</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
+              한옥 공간에서 신진 작가들의 첫 개인전과 동시대 작가들의 실험적인 작업을 소개합니다. 전통 건축의 결과 작품이 만나는 자리에서 작가와 관객이 자연스럽게 마주하는 시간을 만들어 왔습니다.
+            </motion.p>
+          </div>
+
+          <div className="exhibition-snap flex flex-col gap-32 md:gap-48">
+            {exhibitions.map((ex, i) => (
+              <FocusCard
+                key={ex.title}
+                className="group relative cursor-pointer"
+                onMouseEnter={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) preloadImages(gallery.images);
+                }}
+                onClick={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                  className="relative aspect-[3/2] md:aspect-[16/9] overflow-hidden"
+                >
+                  <img
+                    src={ex.image}
+                    alt={ex.title}
+                    className="w-full h-full object-cover object-[center_25%] transition-transform duration-[1.8s] ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-700" />
+                </motion.div>
+                <div className="mt-4 md:mt-6 flex items-baseline justify-between gap-6">
+                  <div className="flex items-baseline gap-6 flex-wrap">
+                    <h3 className="text-base md:text-lg text-white font-medium leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
+                    <p className="text-xs text-[#999] font-medium tracking-wide whitespace-nowrap">{ex.artist}</p>
+                  </div>
+                  <p className="text-xs uppercase text-[#ccc] whitespace-nowrap shrink-0">{ex.date}</p>
+                </div>
+              </FocusCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PROGRAMS: What We Do ── */}
       <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -1217,57 +1268,6 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                   </motion.div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── EXHIBITIONS: Selected Works (full-width stacked + FocusCard) ── */}
-      <section id="exhibitions" className="pt-44 md:pt-56 pb-44 md:pb-64 bg-black">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="mb-20 md:mb-28 max-w-2xl">
-            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>Exhibitions</motion.h2>
-            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
-              한옥 공간에서 신진 작가들의 첫 개인전과 동시대 작가들의 실험적인 작업을 소개합니다. 전통 건축의 결과 작품이 만나는 자리에서 작가와 관객이 자연스럽게 마주하는 시간을 만들어 왔습니다.
-            </motion.p>
-          </div>
-
-          <div className="exhibition-snap flex flex-col gap-32 md:gap-48">
-            {exhibitions.map((ex, i) => (
-              <FocusCard
-                key={ex.title}
-                className="group relative cursor-pointer"
-                onMouseEnter={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) preloadImages(gallery.images);
-                }}
-                onClick={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
-                }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                  className="relative aspect-[3/2] md:aspect-[16/9] overflow-hidden"
-                >
-                  <img
-                    src={ex.image}
-                    alt={ex.title}
-                    className="w-full h-full object-cover object-[center_25%] transition-transform duration-[1.8s] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-700" />
-                </motion.div>
-                <div className="mt-4 md:mt-6 flex items-baseline justify-between gap-6">
-                  <div className="flex items-baseline gap-6 flex-wrap">
-                    <h3 className="text-base md:text-lg text-white font-medium leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{ex.title}</h3>
-                    <p className="text-xs text-[#999] font-medium tracking-wide whitespace-nowrap">{ex.artist}</p>
-                  </div>
-                  <p className="text-xs uppercase text-[#ccc] whitespace-nowrap shrink-0">{ex.date}</p>
-                </div>
-              </FocusCard>
-            ))}
           </div>
         </div>
       </section>
