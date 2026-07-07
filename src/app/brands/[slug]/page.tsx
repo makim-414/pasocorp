@@ -65,9 +65,9 @@ const brandsData: Record<string, {
       "/images/gallery/gallery-06.jpg",
     ],
     features: [
-      { title: "HINO salon", desc: "" },
-      { title: "VAKKI private viewing", desc: "" },
-      { title: "SOHO preview", desc: "" },
+      { title: "HINO salon", desc: "작가와 컬렉터가 한 공간에서 만나는 살롱형 프라이빗 세션" },
+      { title: "VAKKI private viewing", desc: "작가 빠끼(VAKKI)의 작업 세계를 소개한 프라이빗 뷰잉" },
+      { title: "SOHO preview", desc: "Soho House와 함께한 라이징 아티스트 쇼케이스 프리뷰" },
       { title: "Global Network", desc: "해외 갤러리·작가·컬렉터 네트워크 연결" },
     ],
   },
@@ -138,6 +138,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
   const seo = seoOverrides[slug];
   const ogImage = seo?.image ?? brand.image;
+  // pasogallery.com is a standalone domain: keep its SEO on its own origin
+  // (the root layout otherwise forces canonical/og onto pasocorp.com)
+  if (slug === "paso-gallery" && seo) {
+    const image = "https://pasogallery.com/brands/paso-gallery-og.jpg";
+    return {
+      title: { absolute: seo.title },
+      description: seo.description,
+      alternates: { canonical: "https://pasogallery.com" },
+      openGraph: {
+        title: seo.title,
+        description: seo.description,
+        url: "https://pasogallery.com",
+        siteName: "Paso Gallery",
+        images: [{ url: image, width: 1200, height: 630 }],
+      },
+      twitter: { card: "summary_large_image", title: seo.title, description: seo.description, images: [image] },
+    };
+  }
   return {
     title: seo?.title ?? `${brand.name} — PASO`,
     description: seo?.description ?? brand.longDesc,
@@ -162,6 +180,7 @@ const standaloneSiteConfig: Record<string, {
   address: string;
   addressDetail: string;
   instagram: string;
+  email: string;
   accentColor: string;
 }> = {
   pasogallery: {
@@ -175,6 +194,7 @@ const standaloneSiteConfig: Record<string, {
     address: "92, Seonggyungwan-ro, Jongno-gu",
     addressDetail: "Seoul, Hanok Building",
     instagram: "https://www.instagram.com/pasogallery",
+    email: "info@pasogallery.com",
     accentColor: "#e5e5e5",
   },
 };
@@ -222,12 +242,13 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
           links={navLinks}
           accentColor={standaloneConfig.accentColor}
         />
-        <BrandLanding brand={brand} />
+        <BrandLanding brand={brand} contactHref={onStandaloneDomain ? "/contact" : "/gallery-contact"} />
         <StandaloneFooter
           siteName={standaloneConfig.siteName}
           address={standaloneConfig.address}
           addressDetail={standaloneConfig.addressDetail}
           instagram={standaloneConfig.instagram}
+          email={standaloneConfig.email}
         />
       </div>
     );

@@ -6,8 +6,9 @@ import SiteModeCookieSync from "@/components/SiteModeCookieSync";
 import GalleryContactContent from "../contact/GalleryContactContent";
 
 export const metadata: Metadata = {
-  title: "Contact — Paso Gallery",
+  title: { absolute: "Contact — Paso Gallery" },
   description: "전시 문의, 작가 협업 등 파소 갤러리에 연락하세요.",
+  alternates: { canonical: "https://pasogallery.com/contact" },
   openGraph: {
     title: "Contact — Paso Gallery",
     description: "전시 문의, 작가 협업 등 파소 갤러리에 연락하세요.",

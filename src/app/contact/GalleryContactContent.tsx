@@ -129,8 +129,8 @@ export default function GalleryContactContent() {
               </p>
               <p className="text-sm text-white font-light mt-1">
                 Tel.{" "}
-                <a href="tel:+12925363" className="hover:underline">
-                  +1 2 925 3631
+                <a href="tel:+8229253631" className="hover:underline">
+                  +82 2 925 3631
                 </a>
               </p>
             </div>

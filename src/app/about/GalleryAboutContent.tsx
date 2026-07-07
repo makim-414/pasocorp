@@ -247,7 +247,7 @@ export default function GalleryAboutContent() {
 
               <div className="mt-8 text-xs text-[#666]">
                 <p>문의사항이 있을 경우 담당자에게 연락해주시기 바랍니다.</p>
-                <p className="mt-1">담당자 연락처: +1 2 925 3631</p>
+                <p className="mt-1">담당자 연락처: +82 2 925 3631</p>
               </div>
             </div>
           </motion.div>
@@ -289,7 +289,7 @@ export default function GalleryAboutContent() {
           <motion.div {...fadeUp}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#e5e5e5] mb-4">Inquiry</p>
             <p className="text-sm text-[#aaa] font-light mb-2">문의</p>
-            <p className="text-sm text-[#ccc] font-light">TEL. +1 2 925 3631 &nbsp;|&nbsp; Email. info@pasogallery.com</p>
+            <p className="text-sm text-[#ccc] font-light">TEL. +82 2 925 3631 &nbsp;|&nbsp; Email. info@pasogallery.com</p>
           </motion.div>
         </div>
       </section>
@@ -300,12 +300,12 @@ export default function GalleryAboutContent() {
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
             { label: "Hours", value: "Tue ~ Sat\n11:00 ~ 19:00" },
-            { label: "Contact", value: "info@pasogallery.com\n+1 2 925 3631" },
+            { label: "Contact", value: "info@pasogallery.com\n+82 2 925 3631" },
             { label: "Instagram", value: "@pasogallery" },
           ].map((info, i) => (
             <motion.div key={info.label} {...stagger(i)}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{info.label}</p>
-              <p className="text-sm text-[#aaa] font-light whitespace-pre-line">{info.value}</p>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[#8a8a8a] mb-3">{info.label}</p>
+              <p className="text-sm text-[#c9c9c9] font-light whitespace-pre-line">{info.value}</p>
             </motion.div>
           ))}
         </div>
