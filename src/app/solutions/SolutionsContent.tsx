@@ -73,12 +73,12 @@ export default function SolutionsContent() {
             >
               {/* Image */}
               <div className={`lg:col-span-7 ${i % 2 ? "lg:order-2 lg:col-start-6" : ""}`}>
-                <div className="relative w-full bg-card aspect-[4/5] overflow-hidden">
+                <div className={`relative w-full bg-card overflow-hidden ${s.slug === "artrader" ? "aspect-[4/3]" : "aspect-[4/5]"}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full ${s.slug === "artrader" ? "object-contain p-6 md:p-10" : "object-cover"}`}
                   />
                 </div>
               </div>

@@ -74,9 +74,9 @@ function Counter({ value, label }: { value: string; label: string }) {
 function TripleFeature() {
   const { t } = useLocale();
   const cards = [
-    { image: "/images/exhibitions/golden-reeds/golden-reeds-6.jpg", title: t("dynamic.card.paso_private_sales.title"), desc: t("dynamic.card.paso_private_sales.desc"), tall: false, href: "https://pasogallery.com" },
-    { image: "/images/gallery/gallery-03.jpg", title: t("dynamic.card.frieze.title"), desc: t("dynamic.card.frieze.desc"), tall: true, href: "/spaces" },
-    { image: "/brands/artrader-new.png", title: t("dynamic.card.artrader_launch.title"), desc: t("dynamic.card.artrader_launch.desc"), tall: false, href: "https://artrader.io" },
+    { image: "/images/exhibitions/golden-reeds/golden-reeds-6.jpg", tag: "GALLERY", title: t("dynamic.card.paso_private_sales.title"), desc: t("dynamic.card.paso_private_sales.desc"), tall: false, href: "https://pasogallery.com" },
+    { image: "/images/gallery/gallery-03.jpg", tag: "SPACES · SEPT", title: t("dynamic.card.frieze.title"), desc: t("dynamic.card.frieze.desc"), tall: true, href: "/spaces" },
+    { image: "/brands/artrader-new.png", tag: "PLATFORM", title: t("dynamic.card.artrader_launch.title"), desc: t("dynamic.card.artrader_launch.desc"), tall: false, href: "https://artrader.io" },
   ];
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -106,6 +106,7 @@ function TripleFeature() {
                   </div>
                   <div className="mt-4 text-center">
                     <div className="w-px h-5 bg-[#333] mx-auto mb-3" />
+                    <p className="text-[9px] tracking-[0.25em] text-[#b8960b] mb-1.5">{card.tag}</p>
                     <h3 className="text-lg font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
                     <p className="text-xs text-muted mt-1">{card.desc}</p>
                   </div>

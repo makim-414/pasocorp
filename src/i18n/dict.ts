@@ -93,6 +93,11 @@ export const dict: Dict = {
   // Trust bar
   "trust.label": { en: "Selected Partners & Clients", ko: "함께해 온 파트너" },
 
+  // Exhibition strip
+  "exhibitions.tag": { en: "From the Gallery", ko: "From the Gallery" },
+  "exhibitions.title": { en: "Selected Exhibitions", ko: "지난 전시들" },
+  "exhibitions.cta": { en: "View all at Paso Gallery", ko: "Paso Gallery에서 전체 보기" },
+
   // Cookie consent
   "cookie.text": {
     en: "This website uses cookies for service improvement and usage analytics.",

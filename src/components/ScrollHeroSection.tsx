@@ -59,11 +59,8 @@ export default function ScrollHeroSection({
 
       <div className="scroll-hero-main">
         <div className="scroll-hero-main-content">
-          <p>
-            we help you grow.
-            <br />
-            <a href="/contact">Get in touch →</a>
-          </p>
+          <p>we help you grow.</p>
+          <a className="scroll-hero-cta" href="/contact">Get in touch →</a>
         </div>
       </div>
 
@@ -145,12 +142,14 @@ export default function ScrollHeroSection({
           position: sticky;
           top: calc(var(--scroll-start) - 0.5lh);
           margin: 0;
-          font-weight: 600;
+          font-family: var(--font-dutch);
+          font-weight: 400;
           color: white;
         }
 
         .scroll-hero-wrapper ul {
-          font-weight: 600;
+          font-family: var(--font-dutch);
+          font-weight: 400;
           list-style: none;
           padding: 0;
           margin: 0;
@@ -188,8 +187,8 @@ export default function ScrollHeroSection({
 
         @media (min-width: 768px) {
           .scroll-hero-main {
-            height: 90vh;
-            min-height: 550px;
+            height: 75vh;
+            min-height: 520px;
           }
         }
 
@@ -203,33 +202,42 @@ export default function ScrollHeroSection({
         }
 
         .scroll-hero-main-content {
-          --scroll-font-level: 4;
-          --scroll-font-size-min: 20;
           height: 100%;
           width: 100%;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
+          gap: 1.75rem;
         }
 
         .scroll-hero-main-content p {
           margin: 0;
-          font-weight: 600;
+          font-family: var(--font-dutch);
+          font-weight: 400;
           white-space: nowrap;
           color: black;
           text-align: center;
-          font-size: clamp(1.25rem, 2.6vw, 2.25rem);
-          line-height: 1.6;
+          font-size: clamp(1.75rem, 4vw, 3.5rem);
+          line-height: 1.3;
         }
 
-        .scroll-hero-main-content a {
+        .scroll-hero-cta {
+          display: inline-block;
           color: black;
           text-decoration: none;
-          text-underline-offset: 0.1lh;
+          font-size: clamp(0.75rem, 1vw, 0.85rem);
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          padding: 0.8em 2.2em;
+          border: 1px solid rgba(0, 0, 0, 0.55);
+          border-radius: 999px;
+          transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        .scroll-hero-main-content a:is(:hover, :focus-visible) {
-          text-decoration: underline;
+        .scroll-hero-cta:is(:hover, :focus-visible) {
+          background: black;
+          color: #b8960b;
         }
 
         /* View-timeline animation — scoped to wrapper - disabled on mobile for stability */

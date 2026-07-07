@@ -133,7 +133,7 @@ export default function Hero() {
         >
           <a
             href="/contact"
-            className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b]/70 hover:text-[#b8960b] transition-colors duration-500"
+            className="inline-block px-7 py-2.5 rounded-full border border-[#b8960b]/40 text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b] hover:bg-[#b8960b] hover:text-black transition-colors duration-500"
           >
             {t("hero.cta_get_in_touch")} →
           </a>
