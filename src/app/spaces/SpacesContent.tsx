@@ -94,23 +94,16 @@ export default function SpacesContent() {
           <motion.p {...fadeUp} className="text-[#bbb] text-sm md:text-base mb-10" style={{ wordBreak: "keep-all", lineHeight: 1.85 }}>
             갤러리 공간 구성, 도면, 시설 안내가 담겨 있습니다.
           </motion.p>
-          <motion.div {...fadeUp}>
+          <motion.div {...fadeUp} className="mx-auto max-w-[560px] border border-[#1e1e1e] bg-black px-8 py-10">
+            <p className="text-[11px] tracking-[0.2em] uppercase text-[#8a8a8a] mb-5">PDF · 공간 구성 · 도면 · 시설</p>
             <a
               href="/docs/paso-gallery-brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-7 py-3 rounded-full bg-white text-black text-sm font-medium hover:opacity-85 transition-all duration-300"
+              className="inline-block px-8 py-3.5 bg-white text-black text-sm font-medium hover:bg-[#e0e0e0] transition-colors duration-300"
             >
               안내서 PDF 다운로드
             </a>
-          </motion.div>
-
-          <motion.div {...fadeUp} className="mt-12 overflow-hidden border border-[#1a1a1a] bg-[#0a0a0a]">
-            <iframe
-              src="/docs/paso-gallery-brochure.pdf#view=FitH"
-              title="Paso Gallery 안내서 미리보기"
-              className="w-full h-[70vh] md:h-[85vh]"
-            />
           </motion.div>
         </div>
       </section>
@@ -155,8 +148,8 @@ export default function SpacesContent() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
-              { label: "Hours", value: "Tue Sat\n11:00 19:00" },
-              { label: "Contact", value: "info@pasogallery.com\n+1 2 925 3631" },
+              { label: "Hours", value: "Tue ~ Sat\n11:00 ~ 19:00" },
+              { label: "Contact", value: "info@pasogallery.com\n+82 2 925 3631" },
               { label: "Instagram", value: "@pasogallery" },
             ].map((info, i) => (
               <motion.div
@@ -166,7 +159,7 @@ export default function SpacesContent() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
-                <p className="text-[10px] uppercase text-[#555] mb-3">{info.label}</p>
+                <p className="text-[10px] tracking-[0.2em] uppercase text-[#8a8a8a] mb-3">{info.label}</p>
                 <p className="text-sm text-[#d4d4d4] font-medium whitespace-pre-line">{info.value}</p>
               </motion.div>
             ))}
