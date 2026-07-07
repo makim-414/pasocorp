@@ -8,14 +8,27 @@ import AboutContent from "./AboutContent";
 import GalleryAboutContent from "./GalleryAboutContent";
 import { getSiteMode } from "@/lib/site-mode";
 
-export const metadata: Metadata = {
-  title: "About — PASO",
-  description: "PASO — art as an asset class. Investment advisory, gallery operations, IP licensing, and proprietary auction data, founded by Min Sung Kim (Forbes 30 Under 30).",
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  // pasogallery.com renders the gallery about page: keep its SEO on its own origin
+  if ((await headers()).get("x-site-mode") === "pasogallery") {
+    const title = "About — Paso Gallery";
+    const description = "서울 종로 한옥 전시 공간에서 신진 작가 발굴과 브랜드 협업을 이어온 현대미술 갤러리, Paso Gallery를 소개합니다.";
+    return {
+      title: { absolute: title },
+      description,
+      alternates: { canonical: "https://pasogallery.com/about" },
+      openGraph: { title, description, url: "https://pasogallery.com/about" },
+    };
+  }
+  return {
     title: "About — PASO",
-    description: "Art as an asset class. PASO connects investment advisory, gallery operations, IP licensing, and 15.8M-record auction data.",
-  },
-};
+    description: "PASO — art as an asset class. Investment advisory, gallery operations, IP licensing, and proprietary auction data, founded by Min Sung Kim (Forbes 30 Under 30).",
+    openGraph: {
+      title: "About — PASO",
+      description: "Art as an asset class. PASO connects investment advisory, gallery operations, IP licensing, and 15.8M-record auction data.",
+    },
+  };
+}
 
 export default async function AboutPage() {
   const siteMode = await getSiteMode();

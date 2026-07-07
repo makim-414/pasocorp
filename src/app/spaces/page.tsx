@@ -4,10 +4,20 @@ import SpacesContent from "./SpacesContent";
 import SiteModeCookieSync from "@/components/SiteModeCookieSync";
 import { headers } from "next/headers";
 
-export const metadata = {
-  title: "Spaces — Paso Gallery",
-  description: "A hanok gallery in Jongno-gu, Seoul. Two exhibition rooms — Light Room and Dark Room — each with its own atmosphere.",
-};
+export async function generateMetadata() {
+  const title = "Spaces — Paso Gallery";
+  const description = "A hanok gallery in Jongno-gu, Seoul. Two exhibition rooms — Light Room and Dark Room — each with its own atmosphere.";
+  // pasogallery.com is a standalone domain: keep its SEO on its own origin
+  if ((await headers()).get("x-site-mode") === "pasogallery") {
+    return {
+      title: { absolute: title },
+      description,
+      alternates: { canonical: "https://pasogallery.com/spaces" },
+      openGraph: { title, description, url: "https://pasogallery.com/spaces" },
+    };
+  }
+  return { title: { absolute: title }, description };
+}
 
 export default async function SpacesPage() {
   // True only when the middleware (real pasogallery.com domain) set the header.
@@ -29,14 +39,14 @@ export default async function SpacesPage() {
     <div className="bg-black min-h-screen">
       {!onStandaloneDomain && <SiteModeCookieSync siteMode="pasogallery" />}
       <StandaloneNav
-        siteName="Pasogallery"
+        siteName="Paso Gallery"
         homeHref={homeHref}
         links={navLinks}
         accentColor="#e5e5e5"
       />
       <SpacesContent />
       <StandaloneFooter
-        siteName="Pasogallery"
+        siteName="Paso Gallery"
         address="92, Seonggyungwan-ro, Jongno-gu"
         addressDetail="Seoul, Hanok Building"
         instagram="https://www.instagram.com/pasogallery"

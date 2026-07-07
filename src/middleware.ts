@@ -13,6 +13,13 @@ export function middleware(request: NextRequest) {
   // pasogallery.com → standalone brand site
   if (hostname.includes("pasogallery.com")) {
     const url = request.nextUrl.clone();
+    // Legacy/shared URL: the standalone site has no /exhibitions route,
+    // exhibitions live on the home page (#exhibitions). Redirect instead of 404.
+    if (pathname === "/exhibitions" || pathname.startsWith("/exhibitions/")) {
+      url.pathname = "/";
+      url.hash = "exhibitions";
+      return NextResponse.redirect(url, 308);
+    }
     // Rewrite all paths to /brands/paso-gallery (single-brand site)
     if (pathname === "/") {
       url.pathname = "/brands/paso-gallery";
