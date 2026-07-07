@@ -18,21 +18,15 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
 
   const brands = [
     { id: "artrader", name: "Artrader", short: t("flywheel.artrader.short"), accent: "#22c55e", angle: -90 },
-    { id: "artledger", name: "Artledger", short: t("flywheel.artledger.short"), accent: "#8b5cf6", angle: -18 },
-    { id: "artcenter", name: "Art Center", short: t("flywheel.artcenter.short"), accent: "#b8960b", angle: 54 },
-    { id: "gallery", name: "Gallery", short: t("flywheel.gallery.short"), accent: "#e0c097", angle: 126 },
-    { id: "agency", name: "Agency", short: t("flywheel.agency.short"), accent: "#06b6d4", angle: 198 },
+    { id: "agency", name: "Agency", short: t("flywheel.agency.short"), accent: "#06b6d4", angle: 30 },
+    { id: "gallery", name: "Gallery", short: t("flywheel.gallery.short"), accent: "#e0c097", angle: 150 },
   ];
 
   const connections = [
     { from: "artrader", to: "gallery", label: t("flywheel.conn.market_data"), color: "#22c55e" },
-    { from: "artrader", to: "artcenter", label: t("flywheel.conn.value_analysis"), color: "#22c55e" },
-    { from: "agency", to: "artcenter", label: t("flywheel.conn.ip_supply"), color: "#06b6d4" },
-    { from: "agency", to: "gallery", label: t("flywheel.conn.art_toy"), color: "#06b6d4" },
-    { from: "artledger", to: "artcenter", label: t("flywheel.conn.advisory"), color: "#8b5cf6" },
-    { from: "artledger", to: "gallery", label: t("flywheel.conn.collector_support"), color: "#8b5cf6" },
+    { from: "artrader", to: "agency", label: t("flywheel.conn.value_analysis"), color: "#22c55e" },
+    { from: "agency", to: "gallery", label: t("flywheel.conn.ip_supply"), color: "#06b6d4" },
     { from: "gallery", to: "artrader", label: t("flywheel.conn.primary_data"), color: "#e0c097" },
-    { from: "artcenter", to: "artrader", label: t("flywheel.conn.secondary_market"), color: "#b8960b" },
   ];
 
   const R = 170;

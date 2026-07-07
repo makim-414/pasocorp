@@ -19,7 +19,7 @@ export default function PersonaSelector() {
       desc: t("persona.corporate.desc"),
       links: [
         { name: "Artrader", href: "/brands/artrader" },
-        { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
+        { name: "Contact", href: "/contact?topic=data" },
       ],
     },
     {
@@ -28,7 +28,7 @@ export default function PersonaSelector() {
       desc: t("persona.brand.desc"),
       links: [
         { name: "Paso Agency", href: "/brands/paso-agency" },
-        { name: "Paso Gallery", href: "https://pasogallery.com" },
+        { name: "Spaces", href: "/spaces" },
       ],
     },
     {
@@ -37,7 +37,7 @@ export default function PersonaSelector() {
       desc: t("persona.collector.desc"),
       links: [
         { name: "Artrader", href: "/brands/artrader" },
-        { name: "PASO Art Center", href: "/brands/paso-art-center" },
+        { name: "Paso Gallery", href: "https://pasogallery.com" },
       ],
     },
   ];

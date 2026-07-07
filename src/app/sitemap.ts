@@ -37,11 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/solutions`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/spaces`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/brands/artrader`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/brands/paso-art-center`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/brands/paso-gallery`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/brands/artledger-consulting`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/brands/paso-agency`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 }

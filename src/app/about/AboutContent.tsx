@@ -14,11 +14,6 @@ const fadeUp = {
 
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
 
-const team = [
-  { name: "Leadership", role: "CEO & Founder", desc: "미술 시장 데이터 분석 전문가. 금융·테크 배경으로 미술 자산화 전략을 설계합니다" },
-  { name: "Advisory Board", role: "세무·법률·큐레이션", desc: "세무사, 변호사, 큐레이터로 구성된 자문단이 전문 서비스를 지원합니다" },
-];
-
 const values = [
   { title: "Data-First", desc: "감이 아닌 데이터로. 1,500만 건 거래 데이터에 기반한 의사결정" },
   { title: "Full Ecosystem", desc: "분석-자문-전시-유통-IP를 잇는 완결형 미술 생태계" },
@@ -132,7 +127,7 @@ export default function AboutContent() {
               파소의 활동 범위는 B2C(기업과 개인)를 넘어 B2B(기업과 기업)과 B2G(기업과 정부) 분야로 확장하고 있습니다. 파소는 정부 기관과 협력하여 다양한 문화 활동이 집적된 지역을 미술과 문화 컨텐츠로 재생시켜, 생동감 넘치는 예술 공간으로 재단장하는 프로젝트들을 기획합니다.
             </p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
-              또한, 미술, 패션, 광고 등 문화계의 다양한 주요 협업사들과의 프로젝트를 조성하며, 기업의 ESG시급 운용 효율성을 높일 수 있는 영향력 있는 프로젝트들을 설계하는 것을 목표로 합니다.
+              또한, 미술, 패션, 광고 등 문화계의 다양한 주요 협업사들과의 프로젝트를 조성하며, 기업의 ESG 자금 운용 효율성을 높일 수 있는 영향력 있는 프로젝트들을 설계하는 것을 목표로 합니다.
             </p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
               현재 파소는 신진 작가를 지원하는 것을 넘어 문화 예술계와 기업 / 정부간 협력에서 중추적 역할을 하는 조직으로 성장하고 있습니다. 특히 문화 유산의 글로벌화 및 활성화와 예술계에서 지속 가능한 파트너십 구축에 주요 초점을 맞추어 문화 조직 발전에 앞장서고 있습니다.

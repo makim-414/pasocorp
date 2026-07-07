@@ -72,9 +72,7 @@ export default function HoverPreviewProcess() {
 
   const previewData: Record<string, { image: string; title: string; subtitle: string; href: string }> = useMemo(() => ({
     gallery: { image: "/brands/paso-gallery.png", title: "Paso Gallery", subtitle: t("hpp.gallery.subtitle"), href: "https://pasogallery.com" },
-    artcenter: { image: "/brands/paso-artcenter-building.jpg", title: "PASO Art Center", subtitle: t("hpp.artcenter.subtitle"), href: "/brands/paso-art-center" },
     artrader: { image: "/brands/artrader-platform-hd.png", title: "Artrader", subtitle: t("hpp.artrader.subtitle"), href: "https://artrader.io" },
-    artledger: { image: "/brands/artledger-consulting.jpg", title: "Artledger Consulting", subtitle: t("hpp.artledger.subtitle"), href: "/brands/artledger-consulting" },
     agency: { image: "/images/projects/twosome/twosome-5.jpg", title: "Paso Agency", subtitle: t("hpp.agency.subtitle"), href: "/brands/paso-agency" },
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }), [locale]);
@@ -207,19 +205,19 @@ export default function HoverPreviewProcess() {
           {locale === "en" ? (
             <>
               <p>
-                We discover emerging artists at <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink> and present 70+ blue-chip works at <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>.
+                We discover emerging artists at <HoverLink {...linkProps("gallery")}>Paso Gallery</HoverLink>, a Seoul hanok that also hosts private sales, events, and space rentals.
               </p>
               <p>
-                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink> calculates fair prices from 15M auction records, and <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink> advises on tax and corporate-collection strategy. <HoverLink {...linkProps("agency")}>PASO Agency</HoverLink> designs sustainable IP value for both brands and artists.
+                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink> calculates fair prices from 15M+ auction records and advises on tax and corporate-collection strategy. <HoverLink {...linkProps("agency")}>Paso Agency</HoverLink> designs sustainable IP value for both brands and artists.
               </p>
             </>
           ) : (
             <>
               <p>
-                <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink>에서 신진 작가를 발굴하고, <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>에서 블루칩 작품 70여 점을 상시 전시합니다.
+                <HoverLink {...linkProps("gallery")}>Paso Gallery</HoverLink>에서 신진 작가를 발굴합니다. 서울 한옥 공간에서 프라이빗 세일과 행사·전시 대관도 함께 운영합니다.
               </p>
               <p>
-                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>의 1,500만 건 옥션 데이터로 적정가를 산출하고, <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink>이 절세와 법인 컬렉션 운용을 자문합니다. <HoverLink {...linkProps("agency")}>PASO Agency</HoverLink>는 브랜드와 작가 양측의 IP 가치를 설계합니다.
+                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>의 1,500만 건 옥션 데이터로 적정가를 산출하고, 절세와 법인 컬렉션 운용을 자문합니다. <HoverLink {...linkProps("agency")}>Paso Agency</HoverLink>는 브랜드와 작가 양측의 IP 가치를 설계합니다.
               </p>
             </>
           )}

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/i18n/LocaleProvider";
 
@@ -12,9 +12,24 @@ const fadeUp = {
 
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
 
+const TOPIC_KEYS = ["exhibition", "spaces", "brand", "data"] as const;
+type TopicKey = (typeof TOPIC_KEYS)[number];
+
 export default function ContactContent() {
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  const [topic, setTopic] = useState<TopicKey | "">("");
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const { t, locale } = useLocale();
+
+  useEffect(() => {
+    const param = new URLSearchParams(window.location.search).get("topic");
+    if (param && (TOPIC_KEYS as readonly string[]).includes(param)) setTopic(param as TopicKey);
+  }, []);
+
+  const scrollToForm = (key: TopicKey) => {
+    setTopic(key);
+    document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const locations = [
     { name: locale === "en" ? "Office" : "Office", address: locale === "en" ? "72 Samseongyo-ro 23ga-gil, Seongbuk-gu, Seoul" : "서울특별시 성북구 삼선교로23가길 72", detail: locale === "en" ? "Interblue Bldg. 1F-3F" : "인터블루 빌딩 1F-3F", mapQuery: "서울특별시 성북구 삼선교로23가길 72" },
@@ -26,11 +41,11 @@ export default function ContactContent() {
     { label: t("contact.phone"), value: "+82 2-925-3631", href: "tel:+8229253631" },
   ];
 
-  const inquiries = [
-    { title: t("contact.inq.exhibition"), desc: t("contact.inq.exhibition_desc") },
-    { title: t("contact.inq.advisory"), desc: t("contact.inq.advisory_desc") },
-    { title: t("contact.inq.brand"), desc: t("contact.inq.brand_desc") },
-    { title: t("contact.inq.data"), desc: t("contact.inq.data_desc") },
+  const inquiries: { key: TopicKey; title: string; desc: string }[] = [
+    { key: "exhibition", title: t("contact.inq.exhibition"), desc: t("contact.inq.exhibition_desc") },
+    { key: "spaces", title: t("contact.inq.spaces"), desc: t("contact.inq.spaces_desc") },
+    { key: "brand", title: t("contact.inq.brand"), desc: t("contact.inq.brand_desc") },
+    { key: "data", title: t("contact.inq.data"), desc: t("contact.inq.data_desc") },
   ];
 
   return (
@@ -76,18 +91,93 @@ export default function ContactContent() {
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.how_help")}</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {inquiries.map((item, i) => (
-              <motion.a
-                key={item.title}
-                href="mailto:info@pasogallery.com"
+              <motion.button
+                key={item.key}
+                type="button"
+                onClick={() => scrollToForm(item.key)}
                 {...stagger(i)}
-                className="block border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group"
+                className="block w-full text-left border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group cursor-pointer"
               >
                 <h3 className="text-lg text-white font-normal mb-2 group-hover:text-[#b8960b] transition-colors">{item.title}</h3>
                 <p className="text-sm text-[#888] font-light">{item.desc}</p>
                 <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
-              </motion.a>
+              </motion.button>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Inquiry form */}
+      <section id="contact-form" className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a] scroll-mt-16">
+        <div className="max-w-[800px] mx-auto px-6 md:px-12">
+          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.form.title")}</motion.h2>
+          <motion.form
+            {...fadeUp}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setFormStatus("sending");
+              const fd = new FormData(e.currentTarget);
+              fd.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+              fd.append("subject", "PASO 웹사이트 문의");
+              fd.append("from_name", "PASO 웹사이트");
+              fd.append("_source", "contact_page");
+              try {
+                const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
+                const data = (await res.json().catch(() => ({ success: false }))) as { success?: boolean };
+                if (res.ok && data.success === true) {
+                  setFormStatus("sent");
+                } else {
+                  setFormStatus("error");
+                }
+              } catch {
+                setFormStatus("error");
+              }
+            }}
+            className="space-y-6"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="cf-name" className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">{t("contact.form.name")}</label>
+                <input id="cf-name" name="name" required type="text" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors" />
+              </div>
+              <div>
+                <label htmlFor="cf-email" className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">{t("contact.form.email")}</label>
+                <input id="cf-email" name="email" required type="email" className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="cf-topic" className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">{t("contact.form.topic")}</label>
+              <select
+                id="cf-topic"
+                name="topic"
+                required
+                value={topic}
+                onChange={(e) => setTopic(e.target.value as TopicKey | "")}
+                className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors [&>option]:bg-[#111]"
+              >
+                <option value="" disabled>{t("contact.form.topic_placeholder")}</option>
+                {inquiries.map((item) => (
+                  <option key={item.key} value={item.key}>{item.title}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="cf-message" className="text-[10px] tracking-[0.2em] uppercase text-[#555] block mb-2">{t("contact.form.message")}</label>
+              <textarea id="cf-message" name="message" required rows={4} placeholder={t("contact.form.message_placeholder")} className="w-full bg-transparent border-b border-[#333] focus:border-[#b8960b] text-white text-sm font-light py-3 outline-none transition-colors resize-none placeholder:text-[#444]" />
+            </div>
+            {formStatus === "error" && <p className="text-red-400 text-xs">{t("contact.form.error")}</p>}
+            {formStatus === "sent" ? (
+              <p className="text-[#b8960b] text-sm">{t("contact.form.sent")}</p>
+            ) : (
+              <button
+                type="submit"
+                disabled={formStatus === "sending"}
+                className="mt-2 px-10 py-3 bg-[#b8960b] text-black text-sm font-medium tracking-wide rounded hover:bg-[#a0820a] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {formStatus === "sending" ? t("contact.form.sending") : t("contact.form.submit")}
+              </button>
+            )}
+          </motion.form>
         </div>
       </section>
 

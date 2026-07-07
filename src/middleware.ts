@@ -10,6 +10,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // pasocorp.com/artrader (legacy embedded app) → artrader.io (single product surface)
+  if (hostname.includes("pasocorp.com") && (pathname === "/artrader" || pathname.startsWith("/artrader/"))) {
+    const rest = pathname.slice("/artrader".length) || "/";
+    return NextResponse.redirect(`https://artrader.io${rest}`, 301);
+  }
+
   // pasogallery.com → standalone brand site
   if (hostname.includes("pasogallery.com")) {
     const url = request.nextUrl.clone();

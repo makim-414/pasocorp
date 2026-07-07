@@ -14,11 +14,7 @@ const PASO_WORDS = [
   'Analyze Art.',
   'Curate Art.',
   'Exhibit Art.',
-  'Evaluate Art.',
   'Trade Art.',
-  'Consult Art.',
-  'Connect Art.',
-  'Invest Art.',
   'Grow Art.',
 ];
 
@@ -63,6 +59,11 @@ export default function ScrollHeroSection({
 
       <div className="scroll-hero-main">
         <div className="scroll-hero-main-content">
+          <p>
+            we help you grow.
+            <br />
+            <a href="/contact">Get in touch →</a>
+          </p>
         </div>
       </div>
 
@@ -187,8 +188,8 @@ export default function ScrollHeroSection({
 
         @media (min-width: 768px) {
           .scroll-hero-main {
-            height: 120vh;
-            min-height: 600px;
+            height: 90vh;
+            min-height: 550px;
           }
         }
 
@@ -217,6 +218,8 @@ export default function ScrollHeroSection({
           white-space: nowrap;
           color: black;
           text-align: center;
+          font-size: clamp(1.25rem, 2.6vw, 2.25rem);
+          line-height: 1.6;
         }
 
         .scroll-hero-main-content a {
@@ -242,18 +245,7 @@ export default function ScrollHeroSection({
               animation-timeline: --scroll-section;
               animation-range: entry 50%;
             }
-            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main-content p {
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              translate: -50% -50%;
-              z-index: 5;
-              animation: scrollHeroReveal both ease-in-out;
-              animation-timeline: --scroll-section;
-              animation-range: entry 50%;
-            }
           }
-          @keyframes scrollHeroReveal { from { opacity: 0; } to { opacity: 1; } }
           @keyframes scrollHeroGrow { to { scale: 1; border-radius: 0; } }
         }
 

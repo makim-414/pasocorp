@@ -5,19 +5,16 @@ import { ExternalLink, Instagram, Mail } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 const brandItems = [
-  { title: "Paso Gallery", href: "https://pasogallery.com" },
-  { title: "Paso Agency", href: "/brands/paso-agency" },
   { title: "Artrader", href: "/brands/artrader" },
-  { title: "Artledger Consulting", href: "/brands/artledger-consulting" },
-  { title: "PASO Art Center", href: "/brands/paso-art-center" },
+  { title: "Paso Agency", href: "/brands/paso-agency" },
+  { title: "Paso Gallery", href: "https://pasogallery.com" },
 ];
 
 const serviceItems = [
-  { title: "Art Advisory", href: "/solutions" },
-  { title: "Collection Management", href: "/solutions" },
-  { title: "Exhibition Curation", href: "/solutions" },
-  { title: "Market Analysis", href: "/solutions" },
-  { title: "Art Investment", href: "/solutions" },
+  { title: "Data & Market Intelligence", href: "/solutions#artrader" },
+  { title: "Art Asset Advisory", href: "/solutions#artrader" },
+  { title: "Exhibition & Spaces", href: "/solutions#paso-gallery" },
+  { title: "IP & Brand Collaboration", href: "/solutions#paso-agency" },
 ];
 
 export default function Footer() {
@@ -25,8 +22,8 @@ export default function Footer() {
 
   const companyItems = [
     { title: t("footer.about"), href: "/about" },
+    { title: t("footer.spaces"), href: "/spaces" },
     { title: t("footer.contact"), href: "/contact" },
-    { title: t("footer.careers"), href: "/contact" },
     { title: t("footer.terms"), href: "/terms" },
     { title: t("footer.privacy"), href: "/privacy" },
   ];
@@ -115,7 +112,7 @@ export default function Footer() {
               Instagram
             </Link>
             <Link
-              href="mailto:makim@ironact.net"
+              href="mailto:info@pasogallery.com"
               className="text-[#666] hover:text-[#999] flex gap-2 items-center duration-150"
             >
               <Mail size={14} />

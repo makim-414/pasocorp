@@ -15,18 +15,11 @@ export default function SolutionsContent() {
       image: "/brands/artrader-platform-hd.png",
     },
     {
-      brand: "Artledger Consulting",
-      slug: "artledger-consulting",
-      title: t("solutions.artledger.title"),
-      desc: t("solutions.artledger.desc"),
-      image: "/brands/artledger-consulting.jpg",
-    },
-    {
-      brand: "PASO Art Center",
-      slug: "paso-art-center",
-      title: t("solutions.artcenter.title"),
-      desc: t("solutions.artcenter.desc"),
-      image: "/brands/paso-artcenter-building.jpg",
+      brand: "Paso Agency",
+      slug: "paso-agency",
+      title: t("solutions.agency.title"),
+      desc: t("solutions.agency.desc"),
+      image: "/brands/paso-agency.jpg",
     },
     {
       brand: "Paso Gallery",
@@ -34,13 +27,6 @@ export default function SolutionsContent() {
       title: t("solutions.gallery.title"),
       desc: t("solutions.gallery.desc"),
       image: "/brands/paso-gallery.png",
-    },
-    {
-      brand: "Paso Agency",
-      slug: "paso-agency",
-      title: t("solutions.agency.title"),
-      desc: t("solutions.agency.desc"),
-      image: "/brands/paso-agency.jpg",
     },
   ];
 
@@ -53,7 +39,8 @@ export default function SolutionsContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight max-w-4xl text-white"
+            className="text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight max-w-4xl text-white"
+            style={{ fontFamily: "var(--font-dutch)" }}
           >
             {t("solutions.hero.title")}
           </motion.h1>
@@ -77,6 +64,7 @@ export default function SolutionsContent() {
           {solutions.map((s, i) => (
             <motion.article
               key={s.slug}
+              id={s.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}

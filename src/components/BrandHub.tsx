@@ -11,43 +11,21 @@ export default function BrandHub() {
 
   const mainBrands = [
     {
-      name: "Paso Gallery",
-      slug: "paso-gallery",
-      externalUrl: "https://pasogallery.com",
-      year: 2021,
-      target: t("brandhub.paso_gallery.target"),
-      desc: t("brandhub.paso_gallery.desc"),
-      activity: "",
-      image: "/brands/paso-gallery.png",
-      color: "#1e3a5f",
-    },
-    {
-      name: "PASO Art Center",
-      slug: "paso-art-center",
-      year: 2025,
-      target: t("brandhub.art_center.target"),
-      desc: t("brandhub.art_center.desc"),
-      activity: t("brandhub.art_center.activity"),
-      image: "/brands/paso-artcenter.jpg",
-      color: "#a0522d",
-    },
-    {
       name: "Artrader",
       slug: "artrader",
-      year: 2024,
+      externalUrl: "",
+      year: "2024",
       target: t("brandhub.artrader.target"),
       desc: t("brandhub.artrader.desc"),
       activity: t("brandhub.artrader.activity"),
       image: "/brands/artrader.jpg",
       color: "#b8960b",
     },
-  ];
-
-  const subBrands = [
     {
       name: "Paso Agency",
       slug: "paso-agency",
-      year: 2023,
+      externalUrl: "",
+      year: "2023",
       target: t("brandhub.agency.target"),
       desc: t("brandhub.agency.desc"),
       activity: "",
@@ -55,14 +33,15 @@ export default function BrandHub() {
       color: "#d4a574",
     },
     {
-      name: "Artledger Consulting",
-      slug: "artledger-consulting",
-      year: 2025,
-      target: t("brandhub.artledger.target"),
-      desc: t("brandhub.artledger.desc"),
+      name: "Paso Gallery",
+      slug: "paso-gallery",
+      externalUrl: "https://pasogallery.com",
+      year: "Since 2013",
+      target: t("brandhub.paso_gallery.target"),
+      desc: t("brandhub.paso_gallery.desc"),
       activity: "",
-      image: "/brands/artledger-consulting.jpg",
-      color: "#9ca3af",
+      image: "/brands/paso-gallery.png",
+      color: "#1e3a5f",
     },
   ];
 
@@ -94,8 +73,8 @@ export default function BrandHub() {
           ))}
         </h2>
 
-        {/* Bento: top row 3 large */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-6">
+        {/* Three brand cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {mainBrands.map((brand, i) => (
             <motion.div
               key={brand.slug}
@@ -136,46 +115,6 @@ export default function BrandHub() {
           ))}
         </div>
 
-        {/* Bento: bottom row 2 compact */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          {subBrands.map((brand, i) => (
-            <motion.div
-              key={brand.slug}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: (i + 3) * 0.1, duration: 0.5 }}
-            >
-              <Link
-                href={`/brands/${brand.slug}`}
-                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-[#333] ${hovered !== null && hovered !== i + 3 ? "md:blur-[2px] md:scale-[0.97] md:opacity-60" : ""}`}
-                onMouseEnter={() => setHovered(i + 3)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                <div className="flex flex-col md:flex-row">
-                  <div className="relative h-40 sm:h-48 md:h-auto md:w-2/5 overflow-hidden shrink-0">
-                    <Image
-                      src={brand.image}
-                      alt={brand.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 40vw"
-                    />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
-                  </div>
-                  <div className="p-4 sm:p-6 flex flex-col justify-center">
-                    <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2">{brand.year}</p>
-                    <h3 className="text-base sm:text-lg font-light text-white mb-1 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
-                    <p className="text-[10px] tracking-[0.1em] uppercase text-[#666] mb-2">{brand.target}</p>
-                    <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-2 line-clamp-3" style={{ wordBreak: "keep-all" }}>{brand.desc}</p>
-                    {brand.activity && <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>}
-                    <div className="mt-3 w-0 group-hover:w-8 sm:group-hover:w-10 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

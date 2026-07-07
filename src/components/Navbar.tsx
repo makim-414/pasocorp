@@ -6,11 +6,9 @@ import LocaleToggle from "@/components/LocaleToggle";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 const brands = [
-  { name: "Paso Gallery", href: "https://pasogallery.com" },
-  { name: "Paso Agency", href: "/brands/paso-agency" },
   { name: "Artrader", href: "/brands/artrader" },
-  { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
-  { name: "PASO Art Center", href: "/brands/paso-art-center" },
+  { name: "Paso Agency", href: "/brands/paso-agency" },
+  { name: "Paso Gallery", href: "https://pasogallery.com" },
 ];
 
 export default function Navbar() {
@@ -72,6 +70,7 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
+          <Link href="/spaces" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.spaces")}</Link>
           <Link href="/contact" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.contact")}</Link>
           <LocaleToggle />
         </div>
@@ -104,6 +103,7 @@ export default function Navbar() {
               {brands.map((b) => (
                 <Link key={b.name} href={b.href} {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8] pl-4 uppercase">{b.name}</Link>
               ))}
+              <Link href="/spaces" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.spaces")}</Link>
               <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.contact")}</Link>
               <div className="pt-2"><LocaleToggle /></div>
             </div>

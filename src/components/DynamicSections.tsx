@@ -1,12 +1,13 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import FlywheelVisual from "./FlywheelVisual";
 import HoverPreviewProcess from "./HoverPreviewProcess";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { STATS } from "@/lib/stats";
 
 /* ───── Animated counter with count-up ───── */
 function parseCounterValue(value: string): { prefix: string; number: number; suffix: string; decimals: number } {
@@ -68,79 +69,13 @@ function Counter({ value, label }: { value: string; label: string }) {
   );
 }
 
-/* ───── Parallax image ───── */
-function ParallaxImg({ src, alt, className }: { src: string; alt: string; className?: string }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
-  return (
-    <div ref={ref} className={`overflow-hidden ${className || ""}`}>
-      <motion.div style={{ y }} className="relative w-full h-full">
-        <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-      </motion.div>
-    </div>
-  );
-}
-
-/* ───── Split section ───── */
-function SplitSection({
-  tag, title, desc, image, reverse,
-}: {
-  tag: string; title: string; desc: string; image: string; reverse?: boolean;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  return (
-    <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-      <div className={reverse ? "lg:order-2" : ""}>
-        <ParallaxImg src={image} alt={title} className="aspect-[4/3] lg:aspect-auto lg:h-full min-h-[200px] sm:min-h-[250px] lg:min-h-[400px]" />
-      </div>
-      <div className={`flex flex-col justify-center px-4 sm:px-6 lg:px-12 xl:px-14 py-8 sm:py-12 lg:py-16 ${reverse ? "lg:order-1" : ""}`}>
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}>
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-px bg-[#555]" />
-            <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b]">{tag}</span>
-          </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-light leading-tight mb-4 sm:mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
-            {title}
-          </h2>
-          <p className="text-xs sm:text-sm text-[#888] leading-relaxed max-w-md">{desc}</p>
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
-/* ───── Cinematic block ───── */
-function CinematicBlock({ image, title, subtitle }: { image: string; title: string; subtitle: string }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const scale = useTransform(scrollYProgress, [0, 1], [1.12, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.6, 1, 1, 0.6]);
-  return (
-    <div ref={ref} className="relative overflow-hidden aspect-[16/9] md:aspect-[21/9] min-h-[300px] md:min-h-[500px]">
-      <motion.div style={{ scale, y }} className="absolute inset-0">
-        <Image src={image} alt={title} fill className="object-cover" sizes="100vw" />
-      </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70 flex items-center justify-center">
-        <motion.div style={{ opacity }} className="text-center px-6">
-          <h2 className="text-3xl md:text-6xl text-white font-light mb-4 tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>{title}</h2>
-          <div className="w-12 h-px bg-[#b8960b] mx-auto mb-4" />
-          <p className="text-white/50 text-sm tracking-wide">{subtitle}</p>
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
 /* ───── Staggered triple feature ───── */
 function TripleFeature() {
   const { t } = useLocale();
   const cards = [
     { image: "/images/exhibitions/golden-reeds/golden-reeds-6.jpg", title: t("dynamic.card.paso_private_sales.title"), desc: t("dynamic.card.paso_private_sales.desc"), tall: false, href: "https://pasogallery.com" },
-    { image: "/images/whats-happening/preopening.png", title: t("dynamic.card.preopening.title"), desc: t("dynamic.card.preopening.desc"), tall: true, href: "https://v.daum.net/v/20251103174751777" },
-    { image: "/images/whats-happening/magok-salon.png", title: t("dynamic.card.magok_salon.title"), desc: t("dynamic.card.magok_salon.desc"), tall: false, href: "/brands/paso-art-center" },
+    { image: "/images/gallery/gallery-03.jpg", title: t("dynamic.card.frieze.title"), desc: t("dynamic.card.frieze.desc"), tall: true, href: "/spaces" },
+    { image: "/brands/artrader-new.png", title: t("dynamic.card.artrader_launch.title"), desc: t("dynamic.card.artrader_launch.desc"), tall: false, href: "https://artrader.io" },
   ];
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -233,9 +168,9 @@ export function DynamicBottom() {
       {/* Stats bar */}
       <section className="border-y border-[#1a1a1a] bg-black">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 grid grid-cols-3 gap-6 sm:gap-8">
-          <Counter value="90,000+" label={"Domestic Market Data"} />
-          <Counter value="₩13.2B" label={"Collection AUM"} />
-          <Counter value="2020" label={"Established"} />
+          <Counter value={STATS.globalAuctionRecords} label={"Global Auction Records"} />
+          <Counter value={STATS.domesticRecords} label={"Domestic Market Data"} />
+          <Counter value={STATS.brandFoundedYear} label={`Founded\n(Registered ${STATS.registeredYear})`} />
         </div>
       </section>
 
