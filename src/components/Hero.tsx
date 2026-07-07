@@ -92,7 +92,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, delay: 0.7 }}
-          className="mt-4 md:mt-5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#4a4a4a] font-light"
+          className="mt-4 md:mt-5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#6a6a6a] font-light"
         >
           {t("hero.tag")}
         </motion.p>
@@ -117,7 +117,7 @@ export default function Hero() {
             <a
               key={u.name}
               href={u.href}
-              className="text-[13px] md:text-[15px] tracking-[0.12em] uppercase text-[#666] hover:text-[#b8960b] transition-colors duration-400 font-light"
+              className="text-[13px] md:text-[15px] tracking-[0.12em] uppercase text-[#8a8a8a] hover:text-[#b8960b] transition-colors duration-400 font-light"
             >
               {u.name}
             </a>
@@ -172,7 +172,7 @@ export default function Hero() {
               exit={{ opacity: 0, y: 20, scale: 0.97 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative z-10 w-full h-full md:h-auto md:max-w-lg md:rounded-2xl bg-[#111] border border-[#1a1a1a] overflow-y-auto"
+              className="relative z-10 w-full h-full md:h-auto md:max-w-lg md:rounded-2xl bg-[#111] border border-border overflow-y-auto"
             >
               <div className="p-6 md:p-10">
                 <div className="flex items-center justify-between mb-8">

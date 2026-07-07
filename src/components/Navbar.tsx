@@ -38,7 +38,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-[#888]">
+        <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-muted">
           <Link href="/about" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.about")}</Link>
           <Link href="/solutions" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.solutions")}</Link>
           <div
@@ -54,14 +54,14 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-[#0a0a0a] border border-[#1a1a1a] py-3 min-w-[200px]"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border py-3 min-w-[200px]"
                 >
                   {brands.map((b) => (
                     <Link
                       key={b.name}
                       href={b.href}
                       {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="block px-5 py-2 text-xs tracking-[0.1em] text-[#888] hover:text-[#e8e8e8] hover:bg-[#111] transition-colors uppercase"
+                      className="block px-5 py-2 text-xs tracking-[0.1em] text-muted hover:text-[#e8e8e8] hover:bg-[#111] transition-colors uppercase"
                     >
                       {b.name}
                     </Link>
@@ -95,9 +95,9 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0a0a0a] border-t border-[#1a1a1a] overflow-hidden"
+            className="md:hidden bg-card border-t border-border overflow-hidden"
           >
-            <div className="px-6 py-6 flex flex-col gap-4 text-xs tracking-[0.08em] uppercase text-[#888]">
+            <div className="px-6 py-6 flex flex-col gap-4 text-xs tracking-[0.08em] uppercase text-muted">
               <Link href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.about")}</Link>
               <Link href="/solutions" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.solutions")}</Link>
               {brands.map((b) => (

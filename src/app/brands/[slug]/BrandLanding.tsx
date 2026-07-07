@@ -211,10 +211,10 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
       <div className="flex items-center justify-between px-6 md:px-10 py-5 shrink-0" onClick={(e) => e.stopPropagation()}>
         <div className="min-w-0 flex items-baseline gap-4">
           <h2 className="text-base md:text-lg font-medium text-white tracking-wide truncate" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
-          {gallery.artist && <p className="text-xs text-[#888] tracking-wide hidden sm:block">{gallery.artist}</p>}
+          {gallery.artist && <p className="text-xs text-muted tracking-wide hidden sm:block">{gallery.artist}</p>}
         </div>
         <div className="flex items-center gap-6 shrink-0">
-          <p className="text-xs text-[#888] tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(allImages.length).padStart(2, "0")}</p>
+          <p className="text-xs text-muted tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(allImages.length).padStart(2, "0")}</p>
           <button onClick={onClose} className="text-[#bbb] hover:text-white transition-colors text-3xl leading-none" aria-label="Close">&times;</button>
         </div>
       </div>
@@ -261,7 +261,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
       )}
 
       {/* Thumbnail strip */}
-      <div className="shrink-0 px-4 md:px-10 py-5 border-t border-[#1a1a1a]" onClick={(e) => e.stopPropagation()}>
+      <div className="shrink-0 px-4 md:px-10 py-5 border-t border-border" onClick={(e) => e.stopPropagation()}>
         <div ref={thumbStripRef} className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
           {allImages.map((src, i) => (
             <button
@@ -479,7 +479,7 @@ function BrandCTA({ brand }: { brand: BrandData }) {
   };
   const config = brandCTAConfig[brand.slug] || brandCTAConfig.default;
   return (
-    <section className="py-20 md:py-28 bg-black border-t border-[#1a1a1a]">
+    <section className="py-20 md:py-28 bg-black border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
         <motion.p {...fadeUp} className="text-[10px] uppercase mb-6" style={{ color: config.accent }}>Contact</motion.p>
         <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-medium text-white mb-5" style={{ fontFamily: "var(--font-dutch)" }}>{config.heading}</motion.h2>
@@ -609,7 +609,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       <BrandHero brand={brand} />
 
       {/* Stats bar */}
-      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((s, i) => (
             <motion.div key={s.label} {...stagger(i)} className="text-center">
@@ -668,7 +668,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Auction / PS Data + Artist Index (combined) ── */}
-      <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a] overflow-hidden">
+      <section className="bg-black py-16 md:py-20 border-t border-border overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           {/* Header row */}
           <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
@@ -716,7 +716,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           {/* Artist Index Chart */}
           <motion.div {...fadeUp}>
             <h4 className="text-lg md:text-xl font-semibold text-white mb-4">Artrader Artist Index</h4>
-            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-4 md:p-6 mb-6">
+            <div className="bg-card border border-border rounded-lg p-4 md:p-6 mb-6">
               <div className="flex justify-between text-[10px] text-[#555] mb-3">
                 {["'08", "'10", "'12", "'14", "'16", "'18", "'20", "'22", "'24"].map(y => (
                   <span key={y}>{y}</span>
@@ -738,7 +738,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 <motion.div
                   key={s.label}
                   {...stagger(i)}
-                  className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-3"
+                  className="bg-card border border-border rounded-lg p-3"
                 >
                   <p className="text-[10px] tracking-wider text-[#555] uppercase mb-1">{s.label}</p>
                   <p className={`text-lg md:text-xl font-semibold ${s.up ? "text-[#4ade80]" : "text-[#ef4444]"}`}>
@@ -753,7 +753,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Artist Data Analytics + Art Sales Performance (combined) ── */}
-      <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a]">
+      <section className="bg-black py-16 md:py-20 border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-16">
           {/* Artist Data Analytics */}
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -780,7 +780,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 
           {/* Art Sales Performance */}
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
+            <div className="bg-card border border-border rounded-lg p-6 md:p-8">
               <p className="text-xs text-[#555] uppercase tracking-wider mb-6">Sales Dashboard</p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
@@ -819,7 +819,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Trust & Verification Cards ── */}
-      <section className="bg-[#0d1117] py-14 md:py-20 border-t border-[#1a1a1a]">
+      <section className="bg-[#0d1117] py-14 md:py-20 border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-normal text-white mb-3" style={{ wordBreak: "keep-all" }}>
@@ -940,7 +940,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
       </AnimatePresence>
 
       {/* Venue info */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a]">
+      <section className="py-24 md:py-32 bg-card">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
             { label: "Location", value: "Seoul, South Korea" },
@@ -1125,7 +1125,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── CLIENT LOGOS MARQUEE ── */}
-      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-5 overflow-hidden">
+      <section className="bg-card border-y border-border py-5 overflow-hidden">
         <div className="flex animate-[marquee_20s_linear_infinite] hover:[animation-play-state:paused]">
           {[0, 1].map((setIdx) => (
             <div key={setIdx} className="flex items-center shrink-0">
@@ -1190,7 +1190,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                     {ex.title}
                   </h3>
                   <p className="mt-2 text-sm text-[#bbb] font-normal">{ex.artist}</p>
-                  <p className="mt-3 text-xs text-[#888] font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>
+                  <p className="mt-3 text-xs text-muted font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>
                     {ex.date} · {ex.venue} · {ex.curator}
                   </p>
                 </div>
@@ -1201,7 +1201,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── PROGRAMS: What We Do ── */}
-      <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section id="programs" className="py-24 md:py-32 bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
@@ -1217,11 +1217,11 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               <motion.div
                 key={f.title}
                 {...stagger(i)}
-                className={`bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer" : ""}`}
+                className={`bg-card p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer" : ""}`}
                 onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                 onClick={galleryData ? () => setOpenExhibition({ title: f.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
               >
-                <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
+                <div className="mb-6 overflow-hidden aspect-square bg-card">
                   <img
                     src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.jpg", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.jpg", "/images/soho-rising-artists.jpg"][i] || brand.gallery[i % brand.gallery.length]}
                     alt={f.title}
@@ -1238,7 +1238,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── BRAND PROGRAMS: Collaborations ── */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
+      <section className="py-24 md:py-32 bg-card border-b border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
@@ -1257,11 +1257,11 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
                 <motion.div
                   key={card.title}
                   {...stagger(i)}
-                  className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer"
+                  className="bg-card p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer"
                   onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                   onClick={galleryData ? () => setOpenExhibition({ title: card.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
                 >
-                  <div className="mb-6 overflow-hidden aspect-square bg-[#0a0a0a]">
+                  <div className="mb-6 overflow-hidden aspect-square bg-card">
                     <img
                       src={card.image}
                       alt={card.title}
@@ -1282,7 +1282,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </AnimatePresence>
 
       {/* ── LOCATION INFO ── */}
-      <section className="bg-black border-t border-[#1a1a1a]">
+      <section className="bg-black border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
@@ -1299,7 +1299,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── 본사 바로가기 ── */}
-      <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
+      <section className="py-24 md:py-32 bg-black border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
           <motion.h2 {...fadeUp} className="text-2xl md:text-3xl font-normal text-white mb-6">본사 바로가기</motion.h2>
           <motion.p {...fadeUp} className="text-sm md:text-base text-[#bbb] font-medium mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
@@ -1363,7 +1363,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
       </AnimatePresence>
 
       {/* Services row */}
-      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+      <section className="py-24 bg-card border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -1418,11 +1418,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       <BrandHero brand={brand} />
 
       {/* Services 3 cards with curated images */}
-      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-24 bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">전문 자문 서비스</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
             {brand.features.slice(0, 3).map((f, i) => (
-              <motion.div key={f.title} {...stagger(i)} className="bg-[#0a0a0a] p-8 md:p-10 group">
+              <motion.div key={f.title} {...stagger(i)} className="bg-card p-8 md:p-10 group">
                 <div className="overflow-hidden mb-6">
                   <img src={f.image || brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
@@ -1449,11 +1449,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* Programs */}
-      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-24 bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">교육 & 네트워킹</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {brand.features.slice(3, 6).map((f, i) => (
-              <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors duration-500">                <h3 className="text-lg text-white font-normal mb-3">{f.title}</h3>
+              <motion.div key={f.title} {...stagger(i)} className="border border-border p-8 hover:border-[#333] transition-colors duration-500">                <h3 className="text-lg text-white font-normal mb-3">{f.title}</h3>
                 <p className="text-base text-[#bbb] font-medium leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
@@ -1466,7 +1466,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">누구를 위한 서비스인가</motion.h2>
           <div className="flex flex-col gap-4">
             {targets.map((t, i) => (
-              <motion.div key={t.label} {...stagger(i)} className="group flex items-center gap-8 bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#b8960b]/30 rounded-lg p-8 md:p-10 transition-all duration-500">
+              <motion.div key={t.label} {...stagger(i)} className="group flex items-center gap-8 bg-card border border-border hover:border-[#b8960b]/30 rounded-lg p-8 md:p-10 transition-all duration-500">
                 <span className="text-4xl md:text-5xl font-medium text-[#222] group-hover:text-[#b8960b] transition-colors duration-500">0{i + 1}</span>
                 <div className="flex-1">
                   <h3 className="text-lg md:text-xl text-white font-normal mb-2">{t.label}</h3>
@@ -1479,7 +1479,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* Consulting Inquiry Form */}
-      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+      <section className="py-24 bg-card border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">

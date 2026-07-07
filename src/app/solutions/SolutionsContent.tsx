@@ -56,7 +56,7 @@ export default function SolutionsContent() {
         </div>
       </section>
 
-      <div className="border-t border-[#1a1a1a]" />
+      <div className="border-t border-border" />
 
       {/* Solutions list — Pace-style editorial cards on dark bg */}
       <section className="py-20 md:py-28 px-6 md:px-12">
@@ -73,7 +73,7 @@ export default function SolutionsContent() {
             >
               {/* Image */}
               <div className={`lg:col-span-7 ${i % 2 ? "lg:order-2 lg:col-start-6" : ""}`}>
-                <div className="relative w-full bg-[#0a0a0a] aspect-[4/5] overflow-hidden">
+                <div className="relative w-full bg-card aspect-[4/5] overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={s.image}

@@ -127,7 +127,7 @@ export default function HoverPreviewProcess() {
         .hp-text-block {
           font-size: clamp(1.1rem, 2.5vw, 1.5rem);
           line-height: 1.8;
-          color: #888;
+          color: #9a9a9a;
           font-weight: 300;
           letter-spacing: -0.01em;
           max-width: 900px;

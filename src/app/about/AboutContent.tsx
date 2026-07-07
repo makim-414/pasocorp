@@ -54,7 +54,7 @@ export default function AboutContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-4 text-lg text-[#888] font-light max-w-xl"
+            className="mt-4 text-lg text-muted font-light max-w-xl"
             style={{ wordBreak: "keep-all" }}
           >
             {t("about.lead")}
@@ -116,7 +116,7 @@ export default function AboutContent() {
       </section>
 
       {/* About Paso */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-24 md:py-32 bg-card border-y border-border">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>About Paso</motion.h2>
 
           <motion.div {...fadeUp} className="border-l-2 border-[#b8960b] pl-8 md:pl-12 space-y-8">
@@ -137,13 +137,13 @@ export default function AboutContent() {
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-24 bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>What Drives Us</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((v, i) => (
-              <motion.div key={v.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors">
+              <motion.div key={v.title} {...stagger(i)} className="border border-border p-8 hover:border-[#333] transition-colors">
                 <h3 className="text-lg text-white font-light mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{v.title}</h3>
-                <p className="text-sm text-[#888] font-light leading-relaxed">{v.desc}</p>
+                <p className="text-sm text-muted font-light leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
           </div>

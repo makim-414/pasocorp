@@ -42,7 +42,7 @@ export default function PersonaSelector() {
     },
   ];
   return (
-    <section className="py-24 md:py-32 bg-black border-t border-[#1a1a1a]">
+    <section className="py-20 md:py-24 bg-black border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <motion.div {...fadeUp} className="text-center mb-14">
           <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{t("persona.tag")}</p>
@@ -57,18 +57,18 @@ export default function PersonaSelector() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group border border-[#1a1a1a] rounded-xl p-8 hover:border-[#b8960b]/50 transition-all duration-500 hover:-translate-y-1"
+              className="group border border-border rounded-xl p-8 hover:border-[#b8960b]/50 transition-all duration-500 hover:-translate-y-1"
             >
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-4">{p.label}</p>
               <h3 className="text-lg text-white font-light mb-3 leading-snug" style={{ wordBreak: "keep-all" }}>{p.title}</h3>
-              <p className="text-sm text-[#888] font-light mb-8" style={{ wordBreak: "keep-all" }}>{p.desc}</p>
+              <p className="text-sm text-muted font-light mb-8" style={{ wordBreak: "keep-all" }}>{p.desc}</p>
               <div className="flex flex-col gap-2">
                 {p.links.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
-                    className="flex items-center justify-between text-sm text-[#ccc] font-light py-2 border-b border-[#1a1a1a] group-hover:border-[#333] transition-colors hover:text-[#b8960b]"
+                    className="flex items-center justify-between text-sm text-[#ccc] font-light py-2 border-b border-border group-hover:border-[#333] transition-colors hover:text-[#b8960b]"
                   >
                     {link.name}
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="opacity-40"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>

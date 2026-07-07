@@ -41,7 +41,7 @@ export default function SpacesContent() {
       </section>
 
       {/* ── PASO Event Partner ── */}
-      <section className="py-28 md:py-36 bg-black border-b border-[#1a1a1a]">
+      <section className="py-28 md:py-36 bg-black border-b border-border">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
             <img
@@ -85,7 +85,7 @@ export default function SpacesContent() {
       </section>
 
       {/* ── Brochure Download ── */}
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-24 md:py-32 bg-card border-y border-border">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.p {...fadeUp} className="text-xs text-[#bbb] uppercase tracking-wider mb-4">Brochure</motion.p>
           <motion.h2 {...fadeUp} className="text-3xl md:text-4xl text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
@@ -105,7 +105,7 @@ export default function SpacesContent() {
             </a>
           </motion.div>
 
-          <motion.div {...fadeUp} className="mt-12 overflow-hidden border border-[#1a1a1a] bg-[#0a0a0a]">
+          <motion.div {...fadeUp} className="mt-12 overflow-hidden border border-border bg-card">
             <iframe
               src="/docs/paso-gallery-brochure.pdf#view=FitH"
               title="Paso Gallery 안내서 미리보기"
@@ -116,7 +116,7 @@ export default function SpacesContent() {
       </section>
 
       {/* ── Private Programs ── */}
-      <section className="py-32 md:py-44 bg-black border-y border-[#1a1a1a]">
+      <section className="py-32 md:py-44 bg-black border-y border-border">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
             <h2

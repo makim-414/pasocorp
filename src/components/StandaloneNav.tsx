@@ -36,7 +36,7 @@ export default function StandaloneNav({ siteName, homeHref, links = [], accentCo
         </Link>
 
         {links.length > 0 && (
-          <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-[#888]">
+          <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-muted">
             {links.map((link) =>
               link.isButton ? (
                 <Link

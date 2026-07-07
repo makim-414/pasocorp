@@ -46,7 +46,7 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
           {/* Orbit ring */}
           <motion.circle
             cx={CX} cy={CY} r={R}
-            fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="1"
+            fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1"
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
           />
@@ -67,10 +67,10 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
                 <motion.path
                   d={`M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`}
                   fill="none"
-                  strokeWidth={isHighlighted ? 1.5 : 0.3}
+                  strokeWidth={isHighlighted ? 1.5 : 0.6}
                   animate={{
-                    stroke: isHighlighted ? conn.color : "rgba(255,255,255,0.06)",
-                    opacity: active ? (isHighlighted ? 0.7 : 0.03) : 0.08,
+                    stroke: isHighlighted ? conn.color : "rgba(255,255,255,0.16)",
+                    opacity: active ? (isHighlighted ? 0.7 : 0.08) : 0.2,
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -106,8 +106,8 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
           className="absolute"
           style={{ left: `${((CX - 40) / SIZE) * 100}%`, top: `${((CY - 40) / SIZE) * 100}%`, width: `${(80 / SIZE) * 100}%`, height: `${(80 / SIZE) * 100}%` }}
         >
-          <div className="w-full h-full rounded-full border border-[#b8960b]/20 bg-[#b8960b]/5 flex items-center justify-center">
-            <span className="text-sm tracking-[0.25em] text-[#b8960b]/80 font-light">PASO</span>
+          <div className="w-full h-full rounded-full border border-[#b8960b]/40 bg-[#b8960b]/10 flex items-center justify-center">
+            <span className="text-sm tracking-[0.25em] text-[#b8960b] font-light">PASO</span>
           </div>
         </motion.div>
 
@@ -134,7 +134,7 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
               <motion.div
                 animate={{
                   scale: isActive ? 1.18 : 1,
-                  borderColor: isActive ? `${brand.accent}40` : dimmed ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.07)",
+                  borderColor: isActive ? `${brand.accent}40` : dimmed ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.16)",
                   backgroundColor: isActive ? `${brand.accent}0D` : "rgba(0,0,0,0.6)",
                   opacity: dimmed ? 0.3 : 1,
                   boxShadow: isActive
@@ -145,11 +145,11 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
                 className="w-full h-full rounded-full border flex flex-col items-center justify-center backdrop-blur-sm"
               >
                 <motion.div
-                  animate={{ backgroundColor: isActive || isConnected ? brand.accent : "rgba(255,255,255,0.15)" }}
+                  animate={{ backgroundColor: isActive || isConnected ? brand.accent : "rgba(255,255,255,0.3)" }}
                   className="w-1.5 h-1.5 rounded-full mb-1"
                 />
-                <span className="text-[11px] text-white/70 text-center leading-tight font-light">{brand.name}</span>
-                <span className="text-[9px] text-white/30 text-center mt-0.5">{brand.short}</span>
+                <span className="text-[11px] text-white/90 text-center leading-tight font-light">{brand.name}</span>
+                <span className="text-[9px] text-white/55 text-center mt-0.5">{brand.short}</span>
               </motion.div>
             </motion.div>
           );
@@ -193,7 +193,7 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: 1.2 }}
-        className="mt-2 text-[9px] tracking-[0.2em] uppercase text-[#b8960b]/40"
+        className="mt-2 text-[9px] tracking-[0.2em] uppercase text-[#b8960b]/70"
       >
         PASO Integrated Ecosystem
       </motion.p>

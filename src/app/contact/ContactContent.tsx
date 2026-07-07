@@ -62,14 +62,14 @@ export default function ContactContent() {
           >
             {t("contact.title")}
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-lg text-[#888] font-light max-w-xl" style={{ wordBreak: "keep-all" }}>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-lg text-muted font-light max-w-xl" style={{ wordBreak: "keep-all" }}>
             {t("contact.lead")}
           </motion.p>
         </div>
       </section>
 
       {/* Contact info */}
-      <section className="py-16 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-16 bg-card border-y border-border">
         <div className="max-w-[800px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {contacts.map((c, i) => (
             <motion.div key={c.label} {...stagger(i)} className="text-center py-4">
@@ -96,10 +96,10 @@ export default function ContactContent() {
                 type="button"
                 onClick={() => scrollToForm(item.key)}
                 {...stagger(i)}
-                className="block w-full text-left border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors group cursor-pointer"
+                className="block w-full text-left border border-border p-8 hover:border-[#333] transition-colors group cursor-pointer"
               >
                 <h3 className="text-lg text-white font-normal mb-2 group-hover:text-[#b8960b] transition-colors">{item.title}</h3>
-                <p className="text-sm text-[#888] font-light">{item.desc}</p>
+                <p className="text-sm text-muted font-light">{item.desc}</p>
                 <div className="mt-4 w-0 group-hover:w-10 h-px bg-[#b8960b] transition-all duration-500" />
               </motion.button>
             ))}
@@ -108,7 +108,7 @@ export default function ContactContent() {
       </section>
 
       {/* Inquiry form */}
-      <section id="contact-form" className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a] scroll-mt-16">
+      <section id="contact-form" className="py-24 bg-card border-t border-border scroll-mt-16">
         <div className="max-w-[800px] mx-auto px-6 md:px-12">
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-12" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.form.title")}</motion.h2>
           <motion.form
@@ -182,7 +182,7 @@ export default function ContactContent() {
       </section>
 
       {/* Locations */}
-      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+      <section className="py-24 bg-card border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.p {...fadeUp} className="text-xs uppercase text-[#b8960b] mb-4">{t("contact.location")}</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>{t("contact.find_us")}</motion.h2>
@@ -192,7 +192,7 @@ export default function ContactContent() {
                 key={loc.name}
                 {...stagger(i)}
                 onClick={() => setSelectedLocation(selectedLocation === loc.name ? null : loc.name)}
-                className={`border p-8 cursor-pointer transition-colors duration-300 ${selectedLocation === loc.name ? "border-[#b8960b]/50 bg-[#b8960b]/5" : "border-[#1a1a1a] hover:border-[#333]"}`}
+                className={`border p-8 cursor-pointer transition-colors duration-300 ${selectedLocation === loc.name ? "border-[#b8960b]/50 bg-[#b8960b]/5" : "border-border hover:border-[#333]"}`}
               >
                 <p className="text-xs uppercase text-[#b8960b] mb-4">{loc.name}</p>
                 <p className="text-sm text-white font-light mb-1">{loc.address}</p>
@@ -210,7 +210,7 @@ export default function ContactContent() {
                 transition={{ duration: 0.4 }}
                 className="overflow-hidden mt-8"
               >
-                <div className="border border-[#1a1a1a] rounded-lg overflow-hidden">
+                <div className="border border-border rounded-lg overflow-hidden">
                   <iframe
                     src={`https://maps.google.com/maps?q=${encodeURIComponent(locations.find((l) => l.name === selectedLocation)?.mapQuery || "")}&output=embed&hl=ko`}
                     width="100%"

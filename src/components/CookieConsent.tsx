@@ -49,7 +49,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={decline}
-            className="rounded-lg border border-[#333] px-5 py-2 text-sm font-medium text-[#888] hover:text-white hover:border-[#555] duration-150"
+            className="rounded-lg border border-[#333] px-5 py-2 text-sm font-medium text-muted hover:text-white hover:border-[#555] duration-150"
           >
             {t("cookie.decline")}
           </button>

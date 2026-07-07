@@ -90,6 +90,9 @@ export const dict: Dict = {
   "contact.form.sent": { en: "Your inquiry has been received.", ko: "문의가 접수되었습니다" },
   "contact.form.error": { en: "Something went wrong. Please try again.", ko: "전송에 실패했습니다. 다시 시도해주세요." },
 
+  // Trust bar
+  "trust.label": { en: "Selected Partners & Clients", ko: "함께해 온 파트너" },
+
   // Cookie consent
   "cookie.text": {
     en: "This website uses cookies for service improvement and usage analytics.",

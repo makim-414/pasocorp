@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FlywheelVisual from "./FlywheelVisual";
 import HoverPreviewProcess from "./HoverPreviewProcess";
+import TrustBar from "./TrustBar";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { STATS } from "@/lib/stats";
 
@@ -61,10 +62,10 @@ function Counter({ value, label }: { value: string; label: string }) {
       transition={{ duration: 0.7 }}
       className="text-center"
     >
-      <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight leading-tight" style={{ fontFamily: "var(--font-dutch)", color: "#C9A96E" }}>
+      <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight leading-tight" style={{ fontFamily: "var(--font-dutch)", color: "var(--color-gold-bright)" }}>
         {prefix}{formatNumber(displayNum, decimals, hasCommas)}{suffix}
       </p>
-      <p className="text-[9px] sm:text-[10px] tracking-[0.12em] uppercase text-[#555] mt-2 sm:mt-3 whitespace-pre-line leading-relaxed">{label}</p>
+      <p className="text-[9px] sm:text-[10px] tracking-[0.12em] uppercase text-[#777] mt-2 sm:mt-3 whitespace-pre-line leading-relaxed">{label}</p>
     </motion.div>
   );
 }
@@ -81,7 +82,7 @@ function TripleFeature() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <div ref={ref} className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24 lg:py-32">
+    <div ref={ref} className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24">
       <div className="text-center mb-10 sm:mb-12 md:mb-14">
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b] mb-3 sm:mb-4">{t("dynamic.now_upcoming")}</motion.p>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-2 sm:mb-3 leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{t("dynamic.whats_happening")}</h2>
@@ -100,13 +101,13 @@ function TripleFeature() {
                 <>
                   <div className={`relative overflow-hidden group/card ${card.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
                     <Image src={card.image} alt={card.title} fill className="object-cover group-hover/card:object-contain transition-all duration-[1.2s] ease-out group-hover/card:scale-100" sizes="33vw" />
-                    <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/5 transition-colors duration-700" />
+                    <div className="absolute inset-0 bg-black/10 group-hover/card:bg-transparent transition-colors duration-700" />
                     <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
                   <div className="mt-4 text-center">
                     <div className="w-px h-5 bg-[#333] mx-auto mb-3" />
                     <h3 className="text-lg font-light text-white" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
-                    <p className="text-xs text-[#888] mt-1">{card.desc}</p>
+                    <p className="text-xs text-muted mt-1">{card.desc}</p>
                   </div>
                 </>
               );
@@ -129,7 +130,7 @@ export function DynamicTop() {
   return (
     <div className="bg-black relative z-10">
       {/* Flywheel + About intro */}
-      <section id="about" className="border-t border-[#1a1a1a]">
+      <section id="about" className="border-t border-border">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
           <div className="min-h-[350px] md:min-h-[450px]">
             <FlywheelVisual />
@@ -143,7 +144,7 @@ export function DynamicTop() {
               <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
                 {"Art as an Asset Class.\nStrategy as a Service."}
               </h2>
-              <p className="text-sm text-[#888] leading-relaxed max-w-md" style={{ wordBreak: "keep-all" }}>
+              <p className="text-sm text-muted leading-relaxed max-w-md" style={{ wordBreak: "keep-all" }}>
                 {t("dynamic.about_lead")}
               </p>
             </motion.div>
@@ -152,7 +153,7 @@ export function DynamicTop() {
       </section>
 
       {/* Hover Preview Process — full width, below About */}
-      <section className="border-t border-[#1a1a1a]">
+      <section className="border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-20 md:py-28 flex items-center justify-center">
           <HoverPreviewProcess />
         </div>
@@ -166,7 +167,7 @@ export function DynamicBottom() {
   return (
     <div className="bg-black">
       {/* Stats bar */}
-      <section className="border-y border-[#1a1a1a] bg-black">
+      <section className="border-y border-border bg-black">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 grid grid-cols-3 gap-6 sm:gap-8">
           <Counter value={STATS.globalAuctionRecords} label={"Global Auction Records"} />
           <Counter value={STATS.domesticRecords} label={"Domestic Market Data"} />
@@ -174,8 +175,11 @@ export function DynamicBottom() {
         </div>
       </section>
 
+      {/* Evidence belt: client & partner logos */}
+      <TrustBar />
+
       {/* Staggered triple feature — moved right after stats */}
-      <section className="border-t border-[#1a1a1a]">
+      <section className="border-t border-border">
         <TripleFeature />
       </section>
 

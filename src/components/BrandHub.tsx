@@ -48,7 +48,7 @@ export default function BrandHub() {
   const titleWords = t("brandhub.title").split(" ");
 
   return (
-    <section id="brands" className="py-16 sm:py-24 md:py-32 lg:py-40 bg-black">
+    <section id="brands" className="py-16 sm:py-20 md:py-24 lg:py-28 bg-black">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <motion.p
           initial={{ opacity: 0 }}
@@ -86,7 +86,7 @@ export default function BrandHub() {
               <Link
                 href={brand.externalUrl || `/brands/${brand.slug}`}
                 {...(brand.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className={`group block relative bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-all duration-500 hover:border-white/[0.08] hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] ${hovered !== null && hovered !== i ? "md:blur-[2px] md:scale-[0.97] md:opacity-60" : ""}`}
+                className={`group block relative bg-card border border-border overflow-hidden transition-all duration-500 hover:border-white/[0.08] hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] ${hovered !== null && hovered !== i ? "md:blur-[2px] md:scale-[0.97] md:opacity-60" : ""}`}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
               >
@@ -98,15 +98,15 @@ export default function BrandHub() {
                     className="object-cover transition-all duration-[1.2s] ease-out group-hover:scale-[1.08]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/25 transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-700" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700" style={{ background: `linear-gradient(135deg, ${brand.color}40, transparent)` }} />
-                  <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 md:h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 md:h-24 bg-gradient-to-t from-card to-transparent" />
                 </div>
                 <div className="p-4 sm:p-6 md:p-8">
                   <p className="text-xs tracking-[0.15em] text-[#b8960b] mb-2 sm:mb-3">{brand.year}</p>
                   <h3 className="text-lg sm:text-xl md:text-2xl font-light text-white mb-1.5 group-hover:text-[#e8e8e8] transition-colors leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>{brand.name}</h3>
-                  <p className="text-[10px] tracking-[0.1em] uppercase text-[#666] mb-3">{brand.target}</p>
-                  <p className="text-xs sm:text-sm text-[#888] font-light leading-relaxed mb-3 sm:mb-4 line-clamp-3" style={{ wordBreak: "keep-all" }}>{brand.desc}</p>
+                  <p className="text-[10px] tracking-[0.1em] uppercase text-[#8a8a8a] mb-3">{brand.target}</p>
+                  <p className="text-xs sm:text-sm text-muted font-light leading-relaxed mb-3 sm:mb-4 line-clamp-3" style={{ wordBreak: "keep-all" }}>{brand.desc}</p>
                   {brand.activity && <p className="text-xs text-[#555] font-light tracking-wide line-clamp-2">{brand.activity}</p>}
                   <div className="mt-3 sm:mt-4 w-0 group-hover:w-8 sm:group-hover:w-12 h-px transition-all duration-500" style={{ backgroundColor: brand.color }} />
                 </div>

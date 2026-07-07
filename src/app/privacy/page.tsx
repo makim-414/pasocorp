@@ -48,17 +48,17 @@ export default function PrivacyPage() {
                     </tr>
                   </thead>
                   <tbody className="text-[#aaa]">
-                    <tr className="border-b border-[#1a1a1a]">
+                    <tr className="border-b border-border">
                       <td className="py-2 pr-4">문의 접수</td>
                       <td className="py-2 pr-4">이름, 이메일, 전화번호, 문의 내용</td>
                       <td className="py-2">웹 양식</td>
                     </tr>
-                    <tr className="border-b border-[#1a1a1a]">
+                    <tr className="border-b border-border">
                       <td className="py-2 pr-4">뉴스레터</td>
                       <td className="py-2 pr-4">이메일</td>
                       <td className="py-2">구독 신청</td>
                     </tr>
-                    <tr className="border-b border-[#1a1a1a]">
+                    <tr className="border-b border-border">
                       <td className="py-2 pr-4">자동 수집</td>
                       <td className="py-2 pr-4">IP 주소, 쿠키, 방문 기록, 접속 환경</td>
                       <td className="py-2">자동 생성</td>
@@ -148,7 +148,7 @@ export default function PrivacyPage() {
               </div>
             </section>
 
-            <section className="border-t border-[#1a1a1a] pt-8">
+            <section className="border-t border-border pt-8">
               <p className="text-[#666]">
                 본 방침에 대한 문의사항은{" "}
                 <Link href="/contact" className="text-white underline underline-offset-4 hover:text-[#b8960b] duration-150">
