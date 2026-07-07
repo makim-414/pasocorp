@@ -87,7 +87,7 @@ export default function SpacesContent() {
       {/* ── Brochure Download ── */}
       <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
-          <motion.p {...fadeUp} className="text-xs text-[#bbb] uppercase tracking-wider mb-4">Brochure</motion.p>
+          <motion.p {...fadeUp} className="text-xs text-[#bbb] mb-4">Brochure</motion.p>
           <motion.h2 {...fadeUp} className="text-3xl md:text-4xl text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
             공간 안내서
           </motion.h2>
@@ -95,7 +95,7 @@ export default function SpacesContent() {
             갤러리 공간 구성, 도면, 시설 안내가 담겨 있습니다.
           </motion.p>
           <motion.div {...fadeUp} className="mx-auto max-w-[560px] border border-[#1e1e1e] bg-black px-8 py-10">
-            <p className="text-[11px] tracking-[0.2em] uppercase text-[#8a8a8a] mb-5">PDF · 공간 구성 · 도면 · 시설</p>
+            <p className="text-xs text-[#8a8a8a] mb-5">PDF · 공간 구성 · 도면 · 시설</p>
             <a
               href="/docs/paso-gallery-brochure.pdf"
               target="_blank"
@@ -159,7 +159,7 @@ export default function SpacesContent() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
-                <p className="text-[10px] tracking-[0.2em] uppercase text-[#8a8a8a] mb-3">{info.label}</p>
+                <p className="text-xs text-[#8a8a8a] mb-3">{info.label}</p>
                 <p className="text-sm text-[#d4d4d4] font-medium whitespace-pre-line">{info.value}</p>
               </motion.div>
             ))}

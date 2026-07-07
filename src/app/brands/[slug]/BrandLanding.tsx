@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import NextImage from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
@@ -302,28 +302,6 @@ const fadeUp = {
 };
 
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
-
-// Scroll-driven focus: only the centered section is sharp/bright; others dim, blur & darken
-function FocusCard({ children, className = "", onClick, onMouseEnter }: { children: React.ReactNode; className?: string; onClick?: () => void; onMouseEnter?: () => void }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center", "end start"],
-  });
-  // Keep the cinematic focus subtle: off-center works must stay readable
-  // (a gallery site where the art is invisible defeats itself)
-  const opacity = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], [0.55, 1, 1, 0.55]);
-  const filter = useTransform(
-    scrollYProgress,
-    [0, 0.35, 0.65, 1],
-    ["blur(3px) brightness(0.7)", "blur(0px) brightness(1)", "blur(0px) brightness(1)", "blur(3px) brightness(0.7)"]
-  );
-  return (
-    <motion.div ref={ref} style={{ opacity, filter }} className={className} onClick={onClick} onMouseEnter={onMouseEnter}>
-      {children}
-    </motion.div>
-  );
-}
 
 /* ─── HERO (shared) ─── */
 function BrandHero({ brand }: { brand: BrandData }) {
@@ -1151,67 +1129,6 @@ function GalleryLayout({ brand, contactHref = "/contact" }: { brand: BrandData; 
         <style>{`@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
       </section>
 
-      {/* ── EXHIBITIONS: Selected Works (full-width stacked + FocusCard) ── */}
-      <section id="exhibitions" className="pt-28 md:pt-36 pb-28 md:pb-40 bg-black">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="mb-20 md:mb-28 max-w-2xl">
-            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>Exhibitions</motion.h2>
-            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
-              한옥 공간에서 신진 작가들의 첫 개인전과 동시대 작가들의 실험적인 작업을 소개합니다. 전통 건축의 결과 작품이 만나는 자리에서 작가와 관객이 자연스럽게 마주하는 시간을 만들어 왔습니다.
-            </motion.p>
-          </div>
-
-          <div className="exhibition-snap flex flex-col gap-20 md:gap-28">
-            {exhibitions.map((ex, i) => (
-              <FocusCard
-                key={ex.title}
-                className="group relative cursor-pointer"
-                onMouseEnter={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) preloadImages(gallery.images);
-                }}
-                onClick={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
-                }}
-              >
-                {/* Pace-style hover lift wrapper (outer div so framer transforms don't conflict) */}
-                <div className="transition-[transform,box-shadow,filter] duration-500 ease-out will-change-transform group-hover:-translate-y-6 group-hover:[box-shadow:0_60px_120px_-30px_rgba(0,0,0,0.95),0_25px_50px_-15px_rgba(0,0,0,0.6)] group-hover:brightness-110">
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                    className="relative aspect-[3/2] md:aspect-[16/9] overflow-hidden"
-                  >
-                    <img
-                      src={ex.image}
-                      alt={ex.title}
-                      className="w-full h-full object-cover object-[center_25%] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.08]"
-                    />
-                  </motion.div>
-                </div>
-                <div className="mt-6 md:mt-8 flex items-baseline gap-4 md:gap-6 transition-transform duration-500 ease-out group-hover:-translate-y-2" style={{ fontFamily: "var(--font-sans)" }}>
-                  <span className="text-xs text-[#777] tabular-nums shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl md:text-2xl text-white font-medium leading-tight tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>
-                      {ex.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-[#c9c9c9] font-normal">{ex.artist}</p>
-                    <p className="mt-2.5 text-xs text-[#9a9a9a] font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>
-                      {ex.date} · {ex.venue} · {ex.curator}
-                    </p>
-                  </div>
-                  <span className="ml-auto hidden md:inline text-[11px] tracking-[0.18em] uppercase text-[#777] group-hover:text-white transition-colors duration-300 shrink-0">
-                    View Gallery →
-                  </span>
-                </div>
-              </FocusCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── PROGRAMS: What We Do ── */}
       <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -1247,13 +1164,78 @@ function GalleryLayout({ brand, contactHref = "/contact" }: { brand: BrandData; 
                 <h3 className="text-lg text-white font-medium mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
                 <p className="text-sm text-[#c9c9c9] font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>{f.desc}</p>
                 {galleryData && (
-                  <p className="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#8a8a8a] group-hover:text-white transition-colors duration-300">
-                    View Gallery →
+                  <p className="mt-5 text-xs text-[#8a8a8a] group-hover:text-white transition-colors duration-300">
+                    View gallery →
                   </p>
                 )}
               </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── EXHIBITIONS: Selected Works (2-col grid) ── */}
+      <section id="exhibitions" className="pt-24 md:pt-28 pb-24 md:pb-28 bg-black">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="mb-12 md:mb-16 max-w-2xl">
+            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>Exhibitions</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
+              한옥 공간에서 신진 작가들의 첫 개인전과 동시대 작가들의 실험적인 작업을 소개합니다. 전통 건축의 결과 작품이 만나는 자리에서 작가와 관객이 자연스럽게 마주하는 시간을 만들어 왔습니다.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 md:gap-y-14">
+            {exhibitions.map((ex, i) => (
+              <motion.div
+                key={ex.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.7, delay: (i % 2) * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                role="button"
+                tabIndex={0}
+                className="group relative cursor-pointer focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/40"
+                onMouseEnter={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) preloadImages(gallery.images);
+                }}
+                onClick={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    const gallery = exhibitionGalleries[ex.title];
+                    if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
+                  }
+                }}
+              >
+                <div className="relative aspect-[3/2] overflow-hidden">
+                  <img
+                    src={ex.image}
+                    alt={ex.title}
+                    className="w-full h-full object-cover object-[center_25%] transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="mt-5 flex items-baseline gap-3 md:gap-4" style={{ fontFamily: "var(--font-sans)" }}>
+                  <span className="text-xs text-[#777] tabular-nums shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="min-w-0">
+                    <h3 className="text-lg md:text-xl text-white font-medium leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
+                      {ex.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-[#c9c9c9] font-normal">{ex.artist}</p>
+                    <p className="mt-1.5 text-xs text-[#9a9a9a] font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>
+                      {ex.date} · {ex.venue} · {ex.curator}
+                    </p>
+                  </div>
+                  <span className="ml-auto hidden md:inline text-xs text-[#8a8a8a] group-hover:text-white transition-colors duration-300 shrink-0">
+                    View gallery →
+                  </span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -1294,10 +1276,10 @@ function GalleryLayout({ brand, contactHref = "/contact" }: { brand: BrandData; 
                     />
                   </div>
                   <h3 className="text-lg text-white font-medium mb-1.5" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
-                  <p className="text-xs tracking-[0.08em] uppercase text-[#9a9a9a]">{card.partner}</p>
+                  <p className="text-xs text-[#9a9a9a]">{card.partner}</p>
                   {galleryData && (
-                    <p className="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#8a8a8a] group-hover:text-white transition-colors duration-300">
-                      View Gallery →
+                    <p className="mt-5 text-xs text-[#8a8a8a] group-hover:text-white transition-colors duration-300">
+                      View gallery →
                     </p>
                   )}
                 </motion.div>
@@ -1327,7 +1309,7 @@ function GalleryLayout({ brand, contactHref = "/contact" }: { brand: BrandData; 
                 { label: "Instagram", value: "@pasogallery", href: "https://www.instagram.com/pasogallery" },
               ] as { label: string; value: string; href?: string }[]).map((info, i) => (
                 <motion.div key={info.label} {...stagger(i)}>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-[#8a8a8a] mb-3">{info.label}</p>
+                  <p className="text-xs text-[#8a8a8a] mb-3">{info.label}</p>
                   {info.href ? (
                     <a href={info.href} target="_blank" rel="noopener noreferrer" className="text-sm text-[#d4d4d4] font-medium hover:text-white transition-colors">
                       {info.value}

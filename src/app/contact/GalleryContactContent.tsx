@@ -33,7 +33,7 @@ export default function GalleryContactContent() {
       {/* Hero */}
       <section className="pt-32 pb-20 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs uppercase text-[#e5e5e5] mb-4">Contact</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs text-[#e5e5e5] mb-4">Contact</motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export default function GalleryContactContent() {
         <div className="max-w-[800px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {contacts.map((c, i) => (
             <motion.div key={c.label} {...stagger(i)} className="text-center py-4">
-              <p className="text-xs uppercase text-[#555] mb-3">{c.label}</p>
+              <p className="text-xs text-[#8a8a8a] mb-3">{c.label}</p>
               <a href={c.href} className="text-lg text-white font-light hover:text-[#e5e5e5] transition-colors" style={{ fontFamily: "var(--font-dutch)" }}>{c.value}</a>
             </motion.div>
           ))}
@@ -63,7 +63,7 @@ export default function GalleryContactContent() {
       {/* Inquiry types */}
       <section className="py-24 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-xs uppercase text-[#e5e5e5] mb-4">Inquiries</motion.p>
+          <motion.p {...fadeUp} className="text-xs text-[#e5e5e5] mb-4">Inquiries</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>How Can We Help?</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {inquiries.map((item, i) => (
@@ -85,7 +85,7 @@ export default function GalleryContactContent() {
       {/* Location */}
       <section className="py-24 bg-black border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.p {...fadeUp} className="text-xs uppercase text-[#e5e5e5] mb-4">Location</motion.p>
+          <motion.p {...fadeUp} className="text-xs text-[#e5e5e5] mb-4">Location</motion.p>
           <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-light text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>Find Us</motion.h2>
 
           {/* Embedded map */}
@@ -106,7 +106,7 @@ export default function GalleryContactContent() {
           <motion.div {...fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
             {/* Address */}
             <div>
-              <p className="text-xs uppercase text-[#e5e5e5] mb-3">Seoul</p>
+              <p className="text-xs text-[#e5e5e5] mb-3">Seoul</p>
               <p className="text-sm text-white font-light leading-relaxed">
                 [03066] 서울특별시 종로구 성균관로 92
               </p>
@@ -120,7 +120,7 @@ export default function GalleryContactContent() {
 
             {/* Contact */}
             <div>
-              <p className="text-xs uppercase text-[#e5e5e5] mb-3">Contact</p>
+              <p className="text-xs text-[#e5e5e5] mb-3">Contact</p>
               <p className="text-sm text-white font-light">
                 E-mail.{" "}
                 <a href="mailto:info@pasogallery.com" className="hover:underline">
