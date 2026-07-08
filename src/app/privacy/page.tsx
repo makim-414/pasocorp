@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "개인정보처리방침",
   description: "PASO Corp 개인정보처리방침",
+  alternates: { canonical: "/privacy" },
+  robots: { index: true, follow: true },
 };
 
 export default function PrivacyPage() {

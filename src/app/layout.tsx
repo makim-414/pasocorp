@@ -37,15 +37,30 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "파소(PASO Corp)",
-  alternateName: "파소",
+  alternateName: ["파소", "PASO"],
   url: "https://pasocorp.com",
   logo: "https://pasocorp.com/logo.png",
-  sameAs: ["https://www.instagram.com/pasoartcenter"],
+  foundingDate: "2013",
+  founder: { "@type": "Person", name: "Min Sung Kim" },
+  sameAs: [
+    "https://www.instagram.com/pasogallery",
+    "https://www.instagram.com/pasoartcenter",
+    "https://artrader.io",
+    "https://pasogallery.com",
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
     email: "info@pasogallery.com",
+    telephone: "+82-2-925-3631",
   },
+  subOrganization: [
+    { "@type": "Organization", name: "Paso Gallery", url: "https://pasogallery.com" },
+    { "@type": "Organization", name: "Paso Agency", url: "https://pasocorp.com/brands/paso-agency" },
+    { "@type": "Organization", name: "Artrader", url: "https://artrader.io" },
+    { "@type": "Organization", name: "Artledger Consulting", url: "https://pasocorp.com/brands/artledger-consulting" },
+    { "@type": "Organization", name: "PASO Art Center", url: "https://pasocorp.com/brands/paso-art-center" },
+  ],
   description: "파소(PASO) — 데이터 기반 미술 자산 전략. 미술품 투자 자문, 갤러리 운영, 아트 컨설팅.",
 };
 

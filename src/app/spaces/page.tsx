@@ -8,7 +8,14 @@ import { headers } from "next/headers";
 
 export const metadata = {
   title: "Spaces — PASO",
-  description: "A hanok gallery in Jongno-gu, Seoul. Exhibition rooms and private-event rentals in a traditional Korean space.",
+  description: "A hanok gallery in Jongno-gu, Seoul. Exhibition rooms and private-event rentals in a traditional Korean space at 92 Sungkyunkwan-ro.",
+  alternates: { canonical: "/spaces" },
+  openGraph: {
+    title: "Spaces — PASO",
+    description: "A hanok gallery in Jongno-gu, Seoul. Exhibition rooms and private-event rentals.",
+    url: "https://pasocorp.com/spaces",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
 };
 
 export default async function SpacesPage() {

@@ -14,14 +14,6 @@ const FBOParticlesScene = dynamic(() => import("./fx/fbo-particles-scene"), {
   loading: () => <div className="absolute inset-0 bg-black" />,
 });
 
-const units = [
-  { name: "Paso Gallery", href: "https://pasogallery.com" },
-  { name: "Paso Agency", href: "/brands/paso-agency" },
-  { name: "Artrader", href: "/brands/artrader" },
-  { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
-  { name: "Paso Art Center", href: "/brands/paso-art-center" },
-];
-
 function Beat({
   progress,
   window: [a, b, c, d],
@@ -94,14 +86,22 @@ export default function ScrollStory() {
           )}
         </div>
 
-        {/* Beat 0 — hero */}
+        {/* Beat 0 — hero. Legibility scrim sits between the particle field and
+            the copy so the centre text reads cleanly over the dense cluster. */}
         <motion.div
           style={{ opacity: heroOpacity, y: heroY }}
           className="absolute inset-0 flex flex-col items-center justify-center"
         >
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 42% at 50% 52%, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 45%, transparent 75%)",
+            }}
+          />
           <div className="relative z-10 text-center px-4 w-full max-w-screen-lg mx-auto">
             <h1
-              className="text-[clamp(3rem,10vw,10rem)] font-normal tracking-normal text-white leading-none"
+              className="text-[clamp(3rem,10vw,10rem)] font-normal tracking-normal text-white leading-none [text-shadow:0_2px_40px_rgba(0,0,0,0.6)]"
               style={{ fontFamily: "var(--font-dutch)" }}
             >
               <BlurInText text="PASO" duration={1} characterDelay={0.08} />
@@ -110,48 +110,32 @@ export default function ScrollStory() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.7 }}
-              className="mt-4 md:mt-5 flex justify-center"
+              className="mt-5 md:mt-6 flex justify-center"
             >
               <TextScramble
                 auto
                 text={t("hero.tag")}
-                className="text-[10px] md:text-[11px] text-[#8a8a8a] font-light"
+                className="text-[10px] md:text-[11px] text-[#b8960b] font-light"
               />
             </motion.div>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.9 }}
-              className="mt-6 md:mt-8 max-w-[640px] mx-auto text-sm md:text-base text-[#9a9a9a] font-light leading-relaxed px-4"
+              className="mt-6 md:mt-8 max-w-[600px] mx-auto text-sm md:text-base text-[#cfcfcf] font-light leading-relaxed px-4 [text-shadow:0_1px_20px_rgba(0,0,0,0.9)]"
               style={{ wordBreak: "keep-all" }}
             >
               {t("hero.subtitle")}
             </motion.p>
-            <motion.nav
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.0 }}
-              className="mt-10 md:mt-14 flex flex-col items-center gap-[10px] md:gap-3"
-            >
-              {units.map((u) => (
-                <a
-                  key={u.name}
-                  href={u.href}
-                  className="text-[13px] md:text-[15px] tracking-[0.12em] uppercase text-[#8a8a8a] hover:text-[#b8960b] transition-colors duration-400 font-light"
-                >
-                  {u.name}
-                </a>
-              ))}
-            </motion.nav>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.4 }}
-              className="mt-10 md:mt-14"
+              transition={{ duration: 1, delay: 1.3 }}
+              className="mt-9 md:mt-12"
             >
               <a
                 href="/contact"
-                className="inline-block px-7 py-2.5 rounded-full border border-[#b8960b]/40 text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b] hover:bg-[#b8960b] hover:text-black transition-colors duration-500"
+                className="inline-block px-8 py-3 rounded-full border border-[#b8960b]/50 bg-black/30 backdrop-blur-sm text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b] hover:bg-[#b8960b] hover:text-black transition-colors duration-500"
               >
                 {t("hero.cta_get_in_touch")} →
               </a>

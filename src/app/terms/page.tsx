@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "이용약관",
   description: "PASO Corp 서비스 이용약관",
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
 };
 
 export default function TermsPage() {

@@ -142,9 +142,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: seo?.title ?? `${brand.name} — PASO`,
     description: seo?.description ?? brand.longDesc,
+    alternates: { canonical: `/brands/${slug}` },
     openGraph: {
       title: seo?.title ?? `${brand.name} — PASO`,
       description: seo?.description ?? brand.desc,
+      url: `https://pasocorp.com/brands/${slug}`,
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
@@ -153,6 +155,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: seo?.description ?? brand.desc,
       images: [ogImage],
     },
+  };
+}
+
+function breadcrumbJsonLd(brand: { name: string; slug: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "PASO", item: "https://pasocorp.com" },
+      { "@type": "ListItem", position: 2, name: "Brands", item: "https://pasocorp.com/#brands" },
+      { "@type": "ListItem", position: 3, name: brand.name, item: `https://pasocorp.com/brands/${brand.slug}` },
+    ],
   };
 }
 
@@ -231,6 +245,10 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   // Default: pasocorp.com layout
   return (
     <div className="bg-black min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(brand)) }}
+      />
       <Navbar />
       <BrandLanding brand={brand} />
       <Footer />
