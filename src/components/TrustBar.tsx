@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Marquee from "./fx/Marquee";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 // White-on-transparent marks from /public/logos. Heights are tuned per mark so
@@ -20,8 +21,8 @@ const logos = [
 export default function TrustBar() {
   const { t } = useLocale();
   return (
-    <section className="bg-black border-t border-border">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-14 md:py-16">
+    <section className="bg-black py-14 md:py-16">
+      <div className="mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -30,25 +31,20 @@ export default function TrustBar() {
         >
           {t("trust.label")}
         </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14"
-        >
+        <Marquee speed={45} className="w-full">
           {logos.map((logo) => (
-            <Image
-              key={logo.name}
-              src={logo.src}
-              alt={logo.name}
-              width={Math.round(logo.h * 4)}
-              height={logo.h}
-              className="w-auto grayscale opacity-45 hover:opacity-90 transition-opacity duration-500"
-              style={{ height: logo.h, maxWidth: 140, objectFit: "contain" }}
-            />
+            <div key={logo.name} className="flex items-center justify-center px-8 md:px-12 shrink-0">
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                width={Math.round(logo.h * 4)}
+                height={logo.h}
+                className="w-auto grayscale opacity-45 hover:opacity-90 transition-opacity duration-500"
+                style={{ height: logo.h, maxWidth: 150, objectFit: "contain" }}
+              />
+            </div>
           ))}
-        </motion.div>
+        </Marquee>
       </div>
     </section>
   );

@@ -3,7 +3,6 @@ import ScrollStory from "@/components/ScrollStory";
 import { DynamicTop, DynamicBottom } from "@/components/DynamicSections";
 import BrandHub from "@/components/BrandHub";
 import PersonaSelector from "@/components/PersonaSelector";
-import Services from "@/components/Services";
 import ExhibitionStrip from "@/components/ExhibitionStrip";
 import Footer from "@/components/Footer";
 import CorpJsonLd from "@/components/CorpJsonLd";
@@ -19,7 +18,6 @@ export default function Home() {
         <PersonaSelector />
         <BrandHub />
         <DynamicBottom />
-        <Services />
         <ExhibitionStrip />
       </main>
       <Footer />

@@ -26,6 +26,13 @@
   --color-gold-bright: #c9a96e;
 }
 
+/* Infinite marquee — children are duplicated in the component, so a -50%
+   translate loops seamlessly (DS Marquee convention). */
+@keyframes pasoMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 * { box-sizing: border-box; }
 
 html {

@@ -73,22 +73,30 @@ export function DynamicTop() {
   const { t } = useLocale();
   return (
     <div className="bg-black relative z-10">
-      {/* Flywheel + About intro */}
-      <section id="about" className="border-t border-border">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          <div className="min-h-[350px] md:min-h-[450px]">
+      {/* Flywheel + About intro — flows straight out of the particle story above:
+          no hard divider, and a gold glow at the seam that continues the
+          particle-wordmark's gold so the eye reads it as the particles settling
+          into the ecosystem's PASO core. */}
+      <section id="about" className="relative overflow-hidden pt-8 md:pt-10 pb-16 md:pb-24">
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-72 md:h-96 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 55% 100% at 50% 0%, rgba(184,150,11,0.13) 0%, rgba(184,150,11,0.04) 45%, transparent 72%)" }}
+        />
+        <div className="relative max-w-[1500px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div className="min-h-[480px] md:min-h-[620px] order-2 md:order-1">
             <FlywheelVisual />
           </div>
-          <div className="flex flex-col justify-center px-6 md:px-14 py-12 md:py-16">
+          <div className="flex flex-col justify-center py-8 md:py-16 order-1 md:order-2">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-8 h-px bg-[#555]" />
                 <span className="text-[10px] tracking-[0.2em] uppercase text-[#b8960b]">{t("dynamic.about_paso")}</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-5 whitespace-pre-line text-white" style={{ fontFamily: "var(--font-dutch)" }}>
                 {"Art as an Asset Class.\nStrategy as a Service."}
               </h2>
-              <p className="text-sm text-muted leading-relaxed max-w-md" style={{ wordBreak: "keep-all" }}>
+              <p className="text-sm md:text-base text-muted leading-relaxed max-w-md" style={{ wordBreak: "keep-all" }}>
                 {t("dynamic.about_lead")}
               </p>
             </motion.div>
@@ -96,7 +104,11 @@ export function DynamicTop() {
         </div>
       </section>
 
-      {/* Hover Preview Process — full width, below About */}
+      {/* Evidence belt: partner & client logos, sliding — sits between the
+          ecosystem map and the process narrative. */}
+      <TrustBar />
+
+      {/* Hover Preview Process — full width, below the partner belt */}
       <section className="border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-20 md:py-28 flex items-center justify-center">
           <HoverPreviewProcess />
@@ -118,9 +130,6 @@ export function DynamicBottom() {
           <Counter value={STATS.brandFoundedYear} label={`Founded\n(Registered ${STATS.registeredYear})`} />
         </div>
       </section>
-
-      {/* Evidence belt: client & partner logos */}
-      <TrustBar />
     </div>
   );
 }

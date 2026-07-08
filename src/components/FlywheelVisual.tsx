@@ -31,8 +31,8 @@ const CONNECTIONS = [
 ];
 
 // Orbit geometry (design-box units; the box scales responsively)
-const RX = 185;
-const RY = 74;
+const RX = 250;
+const RY = 108;
 const SPEED = 0.22; // radians / second
 
 function OrbitNode({
@@ -77,21 +77,21 @@ function OrbitNode({
       onMouseLeave={onLeave}
     >
       <div
-        className="w-[104px] h-[104px] rounded-full border flex flex-col items-center justify-center backdrop-blur-sm transition-[border-color,box-shadow,background-color] duration-300"
+        className="w-[128px] h-[128px] rounded-full border flex flex-col items-center justify-center backdrop-blur-sm transition-[border-color,box-shadow,background-color] duration-300"
         style={{
           borderColor: active ? `${node.accent}66` : "rgba(255,255,255,0.16)",
           backgroundColor: active ? `${node.accent}14` : "rgba(0,0,0,0.65)",
           boxShadow: active
-            ? `0 0 24px ${node.accent}40, 0 0 48px ${node.accent}1f`
-            : "0 8px 24px rgba(0,0,0,0.5)",
+            ? `0 0 28px ${node.accent}40, 0 0 56px ${node.accent}1f`
+            : "0 8px 28px rgba(0,0,0,0.5)",
         }}
       >
         <div
-          className="w-1.5 h-1.5 rounded-full mb-1"
+          className="w-1.5 h-1.5 rounded-full mb-1.5"
           style={{ backgroundColor: active ? node.accent : "rgba(255,255,255,0.3)" }}
         />
-        <span className="text-[11px] text-white/90 text-center leading-tight font-light">{node.name}</span>
-        <span className="text-[9px] text-white/55 text-center mt-0.5">{shortLabel}</span>
+        <span className="text-[13px] md:text-sm text-white/90 text-center leading-tight font-light">{node.name}</span>
+        <span className="text-[10px] text-white/55 text-center mt-1">{shortLabel}</span>
       </div>
     </motion.div>
   );
@@ -124,8 +124,8 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
     : [];
 
   return (
-    <div className="bg-black p-4 md:p-8 min-h-[420px] md:min-h-[520px] flex flex-col items-center justify-center">
-      <div className="relative w-full max-w-[500px] mx-auto" style={{ aspectRatio: "5/3.4", perspective: 1100 }}>
+    <div className="bg-black p-4 md:p-8 min-h-[500px] md:min-h-[640px] flex flex-col items-center justify-center">
+      <div className="relative w-full max-w-[700px] mx-auto" style={{ aspectRatio: "5/3.2", perspective: 1200 }}>
         {/* Orbital plane rings */}
         <div
           className="absolute left-1/2 top-1/2 rounded-[50%] border border-[#b8960b]/25"
@@ -148,18 +148,18 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
 
         {/* Core */}
         <motion.div
-          className="absolute left-1/2 top-1/2 w-[92px] h-[92px] rounded-full border flex items-center justify-center"
+          className="absolute left-1/2 top-1/2 w-[120px] h-[120px] rounded-full border flex items-center justify-center"
           style={{ translateX: "-50%", translateY: "-50%", zIndex: 10, borderColor: "rgba(184,150,11,0.45)", backgroundColor: "rgba(184,150,11,0.08)" }}
           animate={{
             boxShadow: [
-              "0 0 24px rgba(184,150,11,0.18), 0 0 64px rgba(184,150,11,0.08)",
-              "0 0 36px rgba(184,150,11,0.32), 0 0 90px rgba(184,150,11,0.14)",
-              "0 0 24px rgba(184,150,11,0.18), 0 0 64px rgba(184,150,11,0.08)",
+              "0 0 30px rgba(184,150,11,0.20), 0 0 80px rgba(184,150,11,0.09)",
+              "0 0 46px rgba(184,150,11,0.34), 0 0 120px rgba(184,150,11,0.16)",
+              "0 0 30px rgba(184,150,11,0.20), 0 0 80px rgba(184,150,11,0.09)",
             ],
           }}
           transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-sm tracking-[0.25em] text-[#b8960b] font-light">PASO</span>
+          <span className="text-base tracking-[0.25em] text-[#b8960b] font-light">PASO</span>
         </motion.div>
 
         {/* Orbiting brand nodes */}
