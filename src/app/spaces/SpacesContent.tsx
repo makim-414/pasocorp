@@ -41,7 +41,7 @@ export default function SpacesContent() {
       </section>
 
       {/* ── PASO Event Partner ── */}
-      <section className="py-28 md:py-36 bg-black border-b border-border">
+      <section className="py-28 md:py-36 bg-black border-b border-[#1a1a1a]">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
             <img
@@ -85,38 +85,31 @@ export default function SpacesContent() {
       </section>
 
       {/* ── Brochure Download ── */}
-      <section className="py-24 md:py-32 bg-card border-y border-border">
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
-          <motion.p {...fadeUp} className="text-xs text-[#bbb] uppercase tracking-wider mb-4">Brochure</motion.p>
+          <motion.p {...fadeUp} className="text-xs text-[#bbb] mb-4">Brochure</motion.p>
           <motion.h2 {...fadeUp} className="text-3xl md:text-4xl text-white mb-6" style={{ fontFamily: "var(--font-dutch)" }}>
             공간 안내서
           </motion.h2>
           <motion.p {...fadeUp} className="text-[#bbb] text-sm md:text-base mb-10" style={{ wordBreak: "keep-all", lineHeight: 1.85 }}>
             갤러리 공간 구성, 도면, 시설 안내가 담겨 있습니다.
           </motion.p>
-          <motion.div {...fadeUp}>
+          <motion.div {...fadeUp} className="mx-auto max-w-[560px] border border-[#1e1e1e] bg-black px-8 py-10">
+            <p className="text-xs text-[#8a8a8a] mb-5">PDF · 공간 구성 · 도면 · 시설</p>
             <a
               href="/docs/paso-gallery-brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-7 py-3 rounded-full bg-white text-black text-sm font-medium hover:opacity-85 transition-all duration-300"
+              className="inline-block px-8 py-3.5 bg-white text-black text-sm font-medium hover:bg-[#e0e0e0] transition-colors duration-300"
             >
               안내서 PDF 다운로드
             </a>
-          </motion.div>
-
-          <motion.div {...fadeUp} className="mt-12 overflow-hidden border border-border bg-card">
-            <iframe
-              src="/docs/paso-gallery-brochure.pdf#view=FitH"
-              title="Paso Gallery 안내서 미리보기"
-              className="w-full h-[70vh] md:h-[85vh]"
-            />
           </motion.div>
         </div>
       </section>
 
       {/* ── Private Programs ── */}
-      <section className="py-32 md:py-44 bg-black border-y border-border">
+      <section className="py-32 md:py-44 bg-black border-y border-[#1a1a1a]">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
             <h2
@@ -155,8 +148,8 @@ export default function SpacesContent() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
-              { label: "Hours", value: "Tue Sat\n11:00 19:00" },
-              { label: "Contact", value: "info@pasogallery.com\n+1 2 925 3631" },
+              { label: "Hours", value: "Tue ~ Sat\n11:00 ~ 19:00" },
+              { label: "Contact", value: "info@pasogallery.com\n+82 2 925 3631" },
               { label: "Instagram", value: "@pasogallery" },
             ].map((info, i) => (
               <motion.div
@@ -166,7 +159,7 @@ export default function SpacesContent() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
-                <p className="text-[10px] uppercase text-[#555] mb-3">{info.label}</p>
+                <p className="text-xs text-[#8a8a8a] mb-3">{info.label}</p>
                 <p className="text-sm text-[#d4d4d4] font-medium whitespace-pre-line">{info.value}</p>
               </motion.div>
             ))}

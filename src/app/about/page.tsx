@@ -6,20 +6,38 @@ import StandaloneNav from "@/components/StandaloneNav";
 import StandaloneFooter from "@/components/StandaloneFooter";
 import AboutContent from "./AboutContent";
 import GalleryAboutContent from "./GalleryAboutContent";
+import CorpJsonLd from "@/components/CorpJsonLd";
+import GalleryJsonLd from "@/components/GalleryJsonLd";
 import { getSiteMode } from "@/lib/site-mode";
 
-export const metadata: Metadata = {
-  title: "About — PASO",
-  description: "PASO — art as an asset class. Investment advisory, gallery operations, IP licensing, and proprietary auction data. Began as an open call in 2013, registered in 2020 by Min Sung Kim (Forbes 30 Under 30).",
-  alternates: { canonical: "/about" },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  // pasogallery.com renders the gallery about page: keep its SEO on its own origin
+  if ((await headers()).get("x-site-mode") === "pasogallery") {
+    const title = "About — Paso Gallery";
+    const description = "서울 종로 한옥 전시 공간에서 신진 작가 발굴과 브랜드 협업을 이어온 현대미술 갤러리, Paso Gallery를 소개합니다.";
+    const image = "https://pasogallery.com/brands/paso-gallery-og.jpg";
+    return {
+      title: { absolute: title },
+      description,
+      keywords: ["Paso Gallery", "파소갤러리", "파소 갤러리 소개", "종로 한옥 갤러리", "현대미술 갤러리", "신진작가 발굴", "브랜드 협업"],
+      alternates: { canonical: "https://pasogallery.com/about" },
+      openGraph: { title, description, url: "https://pasogallery.com/about", siteName: "Paso Gallery", type: "website", locale: "ko_KR", images: [{ url: image, width: 1200, height: 630 }] },
+      twitter: { card: "summary_large_image", title, description, images: [image] },
+    };
+  }
+  return {
     title: "About — PASO",
-    description: "Art as an asset class. PASO connects investment advisory, gallery operations, IP licensing, and 15M+ record auction data.",
-    url: "https://pasocorp.com/about",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
-  },
-  twitter: { card: "summary_large_image", title: "About — PASO", images: ["/og-image.jpg"] },
-};
+    description: "PASO — art as an asset class. Investment advisory, gallery operations, IP licensing, and proprietary auction data. Began as an open call in 2013, registered in 2020 by Min Sung Kim (Forbes 30 Under 30).",
+    alternates: { canonical: "/about" },
+    openGraph: {
+      title: "About — PASO",
+      description: "Art as an asset class. PASO connects investment advisory, gallery operations, IP licensing, and 15M+ record auction data.",
+      url: "https://pasocorp.com/about",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    },
+    twitter: { card: "summary_large_image", title: "About — PASO", images: ["/og-image.jpg"] },
+  };
+}
 
 export default async function AboutPage() {
   const siteMode = await getSiteMode();
@@ -28,6 +46,7 @@ export default async function AboutPage() {
   if (siteMode === "aboutpaso") {
     return (
       <div className="bg-black min-h-screen">
+        <CorpJsonLd />
         <StandaloneNav
           siteName="About PASO"
           homeHref="/"
@@ -58,6 +77,7 @@ export default async function AboutPage() {
     const contactHref = onStandaloneDomain ? "/contact" : "/gallery-contact";
     return (
       <div className="bg-black min-h-screen">
+        <GalleryJsonLd />
         <StandaloneNav
           siteName="Paso Gallery"
           homeHref={home}

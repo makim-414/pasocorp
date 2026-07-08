@@ -6,10 +6,12 @@ import PersonaSelector from "@/components/PersonaSelector";
 import Services from "@/components/Services";
 import ExhibitionStrip from "@/components/ExhibitionStrip";
 import Footer from "@/components/Footer";
+import CorpJsonLd from "@/components/CorpJsonLd";
 
 export default function Home() {
   return (
     <div className="bg-black">
+      <CorpJsonLd />
       <Navbar />
       <main>
         <ScrollStory />

@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import NextImage from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
@@ -211,10 +211,10 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
       <div className="flex items-center justify-between px-6 md:px-10 py-5 shrink-0" onClick={(e) => e.stopPropagation()}>
         <div className="min-w-0 flex items-baseline gap-4">
           <h2 className="text-base md:text-lg font-medium text-white tracking-wide truncate" style={{ fontFamily: "var(--font-dutch)" }}>{gallery.title}</h2>
-          {gallery.artist && <p className="text-xs text-muted tracking-wide hidden sm:block">{gallery.artist}</p>}
+          {gallery.artist && <p className="text-xs text-[#888] tracking-wide hidden sm:block">{gallery.artist}</p>}
         </div>
         <div className="flex items-center gap-6 shrink-0">
-          <p className="text-xs text-muted tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(allImages.length).padStart(2, "0")}</p>
+          <p className="text-xs text-[#888] tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(allImages.length).padStart(2, "0")}</p>
           <button onClick={onClose} className="text-[#bbb] hover:text-white transition-colors text-3xl leading-none" aria-label="Close">&times;</button>
         </div>
       </div>
@@ -261,7 +261,7 @@ function ProjectGalleryModal({ gallery, onClose }: { gallery: { title: string; i
       )}
 
       {/* Thumbnail strip */}
-      <div className="shrink-0 px-4 md:px-10 py-5 border-t border-border" onClick={(e) => e.stopPropagation()}>
+      <div className="shrink-0 px-4 md:px-10 py-5 border-t border-[#1a1a1a]" onClick={(e) => e.stopPropagation()}>
         <div ref={thumbStripRef} className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
           {allImages.map((src, i) => (
             <button
@@ -302,26 +302,6 @@ const fadeUp = {
 };
 
 const stagger = (i: number) => ({ ...fadeUp, transition: { duration: 0.6, delay: i * 0.1 } });
-
-// Scroll-driven focus: only the centered section is sharp/bright; others dim, blur & darken
-function FocusCard({ children, className = "", onClick, onMouseEnter }: { children: React.ReactNode; className?: string; onClick?: () => void; onMouseEnter?: () => void }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center", "end start"],
-  });
-  const opacity = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], [0.35, 1, 1, 0.35]);
-  const filter = useTransform(
-    scrollYProgress,
-    [0, 0.35, 0.65, 1],
-    ["blur(10px) brightness(0.3)", "blur(0px) brightness(1)", "blur(0px) brightness(1)", "blur(10px) brightness(0.3)"]
-  );
-  return (
-    <motion.div ref={ref} style={{ opacity, filter }} className={className} onClick={onClick} onMouseEnter={onMouseEnter}>
-      {children}
-    </motion.div>
-  );
-}
 
 /* ─── HERO (shared) ─── */
 function BrandHero({ brand }: { brand: BrandData }) {
@@ -479,7 +459,7 @@ function BrandCTA({ brand }: { brand: BrandData }) {
   };
   const config = brandCTAConfig[brand.slug] || brandCTAConfig.default;
   return (
-    <section className="py-20 md:py-28 bg-black border-t border-border">
+    <section className="py-20 md:py-28 bg-black border-t border-[#1a1a1a]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
         <motion.p {...fadeUp} className="text-[10px] uppercase mb-6" style={{ color: config.accent }}>Contact</motion.p>
         <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-medium text-white mb-5" style={{ fontFamily: "var(--font-dutch)" }}>{config.heading}</motion.h2>
@@ -609,7 +589,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       <BrandHero brand={brand} />
 
       {/* Stats bar */}
-      <section className="bg-card border-y border-border">
+      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((s, i) => (
             <motion.div key={s.label} {...stagger(i)} className="text-center">
@@ -668,7 +648,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Auction / PS Data + Artist Index (combined) ── */}
-      <section className="bg-black py-16 md:py-20 border-t border-border overflow-hidden">
+      <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           {/* Header row */}
           <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
@@ -716,7 +696,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
           {/* Artist Index Chart */}
           <motion.div {...fadeUp}>
             <h4 className="text-lg md:text-xl font-semibold text-white mb-4">Artrader Artist Index</h4>
-            <div className="bg-card border border-border rounded-lg p-4 md:p-6 mb-6">
+            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-4 md:p-6 mb-6">
               <div className="flex justify-between text-[10px] text-[#555] mb-3">
                 {["'08", "'10", "'12", "'14", "'16", "'18", "'20", "'22", "'24"].map(y => (
                   <span key={y}>{y}</span>
@@ -738,7 +718,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
                 <motion.div
                   key={s.label}
                   {...stagger(i)}
-                  className="bg-card border border-border rounded-lg p-3"
+                  className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-3"
                 >
                   <p className="text-[10px] tracking-wider text-[#555] uppercase mb-1">{s.label}</p>
                   <p className={`text-lg md:text-xl font-semibold ${s.up ? "text-[#4ade80]" : "text-[#ef4444]"}`}>
@@ -753,7 +733,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Artist Data Analytics + Art Sales Performance (combined) ── */}
-      <section className="bg-black py-16 md:py-20 border-t border-border">
+      <section className="bg-black py-16 md:py-20 border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-16">
           {/* Artist Data Analytics */}
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -780,7 +760,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
 
           {/* Art Sales Performance */}
           <motion.div {...fadeUp} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-card border border-border rounded-lg p-6 md:p-8">
+            <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg p-6 md:p-8">
               <p className="text-xs text-[#555] uppercase tracking-wider mb-6">Sales Dashboard</p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
@@ -819,7 +799,7 @@ function ArtraderLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── Trust & Verification Cards ── */}
-      <section className="bg-[#0d1117] py-14 md:py-20 border-t border-border">
+      <section className="bg-[#0d1117] py-14 md:py-20 border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-normal text-white mb-3" style={{ wordBreak: "keep-all" }}>
@@ -940,7 +920,7 @@ function ArtCenterLayout({ brand }: { brand: BrandData }) {
       </AnimatePresence>
 
       {/* Venue info */}
-      <section className="py-24 md:py-32 bg-card">
+      <section className="py-24 md:py-32 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
             { label: "Location", value: "Seoul, South Korea" },
@@ -1019,7 +999,7 @@ const exhibitionGalleries: Record<string, { images: string[]; desc: string; sect
   },
 };
 
-function GalleryLayout({ brand }: { brand: BrandData }) {
+function GalleryLayout({ brand, contactHref = "/contact" }: { brand: BrandData; contactHref?: string }) {
   const [openExhibition, setOpenExhibition] = useState<{ title: string; images: string[]; desc: string; artist?: string; sections?: { title: string; images: string[] }[] } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -1079,11 +1059,12 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex justify-center"
-            aria-label="Space by Paso"
           >
+            <span className="sr-only">Space by Paso</span>
             <NextImage
               src="/brands/space-by-paso-logo.png"
-              alt="Space by Paso"
+              alt=""
+              aria-hidden
               width={1105}
               height={133}
               priority
@@ -1102,8 +1083,11 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="mt-14 flex gap-4 justify-center"
+            className="mt-14 flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
+            <Link href={contactHref} className="px-8 py-3 bg-white text-black text-sm font-medium hover:bg-[#e0e0e0] transition-all duration-300">
+              Request Private Viewing
+            </Link>
             <a href="#exhibitions" className="px-8 py-3 border border-white/40 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
               Exhibitions
             </a>
@@ -1125,7 +1109,7 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* ── CLIENT LOGOS MARQUEE ── */}
-      <section className="bg-card border-y border-border py-5 overflow-hidden">
+      <section className="bg-[#0a0a0a] border-y border-[#1a1a1a] py-5 overflow-hidden">
         <div className="flex animate-[marquee_20s_linear_infinite] hover:[animation-play-state:paused]">
           {[0, 1].map((setIdx) => (
             <div key={setIdx} className="flex items-center shrink-0">
@@ -1145,63 +1129,8 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         <style>{`@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
       </section>
 
-      {/* ── EXHIBITIONS: Selected Works (full-width stacked + FocusCard) ── */}
-      <section id="exhibitions" className="pt-44 md:pt-56 pb-44 md:pb-64 bg-black">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="mb-20 md:mb-28 max-w-2xl">
-            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>Exhibitions</motion.h2>
-            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
-              한옥 공간에서 신진 작가들의 첫 개인전과 동시대 작가들의 실험적인 작업을 소개합니다. 전통 건축의 결과 작품이 만나는 자리에서 작가와 관객이 자연스럽게 마주하는 시간을 만들어 왔습니다.
-            </motion.p>
-          </div>
-
-          <div className="exhibition-snap flex flex-col gap-32 md:gap-48">
-            {exhibitions.map((ex, i) => (
-              <FocusCard
-                key={ex.title}
-                className="group relative cursor-pointer"
-                onMouseEnter={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) preloadImages(gallery.images);
-                }}
-                onClick={() => {
-                  const gallery = exhibitionGalleries[ex.title];
-                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
-                }}
-              >
-                {/* Pace-style hover lift wrapper (outer div so framer transforms don't conflict) */}
-                <div className="transition-[transform,box-shadow,filter] duration-500 ease-out will-change-transform group-hover:-translate-y-6 group-hover:[box-shadow:0_60px_120px_-30px_rgba(0,0,0,0.95),0_25px_50px_-15px_rgba(0,0,0,0.6)] group-hover:brightness-110">
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 1.0, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                    className="relative aspect-[3/2] md:aspect-[16/9] overflow-hidden"
-                  >
-                    <img
-                      src={ex.image}
-                      alt={ex.title}
-                      className="w-full h-full object-cover object-[center_25%] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.08]"
-                    />
-                  </motion.div>
-                </div>
-                <div className="mt-6 md:mt-8 transition-transform duration-500 ease-out group-hover:-translate-y-2" style={{ fontFamily: "var(--font-sans)" }}>
-                  <h3 className="text-lg md:text-xl text-white font-medium leading-tight tracking-wide" style={{ fontFamily: "var(--font-dutch)" }}>
-                    {ex.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-[#bbb] font-normal">{ex.artist}</p>
-                  <p className="mt-3 text-xs text-muted font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>
-                    {ex.date} · {ex.venue} · {ex.curator}
-                  </p>
-                </div>
-              </FocusCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── PROGRAMS: What We Do ── */}
-      <section id="programs" className="py-24 md:py-32 bg-card border-y border-border">
+      <section id="programs" className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
@@ -1217,19 +1146,28 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
               <motion.div
                 key={f.title}
                 {...stagger(i)}
-                className={`bg-card p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer" : ""}`}
+                role={galleryData ? "button" : undefined}
+                tabIndex={galleryData ? 0 : undefined}
+                onKeyDown={galleryData ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpenExhibition({ title: f.title, images: galleryData.images, desc: galleryData.desc }); } } : undefined}
+                className={`bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 ${galleryData ? "cursor-pointer focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/40" : ""}`}
                 onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                 onClick={galleryData ? () => setOpenExhibition({ title: f.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
               >
-                <div className="mb-6 overflow-hidden aspect-square bg-card">
+                <div className="mb-6 overflow-hidden aspect-[4/3] bg-[#0a0a0a]">
                   <img
                     src={["/images/KakaoTalk_Photo_2026-03-25-17-47-36.jpg", "/images/KakaoTalk_Photo_2026-03-25-17-47-49.jpg", "/images/soho-rising-artists.jpg"][i] || brand.gallery[i % brand.gallery.length]}
                     alt={f.title}
-                    className="w-full h-full object-cover transition-all duration-700"
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale-[35%] group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700"
                   />
                 </div>
                 <h3 className="text-lg text-white font-medium mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{f.title}</h3>
-                <p className="text-sm text-[#bbb] font-medium leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-[#c9c9c9] font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>{f.desc}</p>
+                {galleryData && (
+                  <p className="mt-5 text-xs text-[#8a8a8a] group-hover:text-white transition-colors duration-300">
+                    View gallery →
+                  </p>
+                )}
               </motion.div>
               );
             })}
@@ -1237,8 +1175,73 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         </div>
       </section>
 
+      {/* ── EXHIBITIONS: Selected Works (2-col grid) ── */}
+      <section id="exhibitions" className="pt-24 md:pt-28 pb-24 md:pb-28 bg-black">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="mb-12 md:mb-16 max-w-2xl">
+            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight" style={{ fontFamily: "var(--font-dutch)" }}>Exhibitions</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }} className="mt-6 text-sm md:text-base text-[#999] leading-relaxed" style={{ wordBreak: "keep-all" }}>
+              한옥 공간에서 신진 작가들의 첫 개인전과 동시대 작가들의 실험적인 작업을 소개합니다. 전통 건축의 결과 작품이 만나는 자리에서 작가와 관객이 자연스럽게 마주하는 시간을 만들어 왔습니다.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 md:gap-y-14">
+            {exhibitions.map((ex, i) => (
+              <motion.div
+                key={ex.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.7, delay: (i % 2) * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                role="button"
+                tabIndex={0}
+                className="group relative cursor-pointer focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/40"
+                onMouseEnter={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) preloadImages(gallery.images);
+                }}
+                onClick={() => {
+                  const gallery = exhibitionGalleries[ex.title];
+                  if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    const gallery = exhibitionGalleries[ex.title];
+                    if (gallery) setOpenExhibition({ title: ex.title, images: gallery.images, desc: gallery.desc, artist: ex.artist, sections: gallery.sections });
+                  }
+                }}
+              >
+                <div className="relative aspect-[3/2] overflow-hidden">
+                  <img
+                    src={ex.image}
+                    alt={ex.title}
+                    className="w-full h-full object-cover object-[center_25%] transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="mt-5 flex items-baseline gap-3 md:gap-4" style={{ fontFamily: "var(--font-sans)" }}>
+                  <span className="text-xs text-[#777] tabular-nums shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="min-w-0">
+                    <h3 className="text-lg md:text-xl text-white font-medium leading-tight" style={{ fontFamily: "var(--font-dutch)" }}>
+                      {ex.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-[#c9c9c9] font-normal">{ex.artist}</p>
+                    <p className="mt-1.5 text-xs text-[#9a9a9a] font-normal leading-relaxed" style={{ wordBreak: "keep-all" }}>
+                      {ex.date} · {ex.venue} · {ex.curator}
+                    </p>
+                  </div>
+                  <span className="ml-auto hidden md:inline text-xs text-[#8a8a8a] group-hover:text-white transition-colors duration-300 shrink-0">
+                    View gallery →
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── BRAND PROGRAMS: Collaborations ── */}
-      <section className="py-24 md:py-32 bg-card border-b border-border">
+      <section className="py-24 md:py-32 bg-[#0a0a0a] border-b border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-5xl font-medium text-white mb-16" style={{ fontFamily: "var(--font-dutch)" }}>
@@ -1248,28 +1251,38 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a]">
             {[
-              { title: "Superbugs Campaign", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
-              { title: "Maker's Mark Private Selection", image: "/images/exhibitions/makers-mark/makers-mark-1.jpg", galleryKey: "메이커스마크" },
-              { title: "Paso Gallery x ARTIVIST", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST" },
+              { title: "Superbugs Campaign", partner: "Pfizer", image: "/images/exhibitions/hwaija/hwaija-cover.jpg", galleryKey: "화이자" },
+              { title: "Maker's Mark Private Selection", partner: "Maker's Mark", image: "/images/exhibitions/makers-mark/makers-mark-1.jpg", galleryKey: "메이커스마크" },
+              { title: "Paso Gallery x ARTIVIST", partner: "Bang & Olufsen · Patrón", image: "/images/exhibitions/bno-patron/bno-patron-cover.jpg", galleryKey: "Paso Gallery x ARTIVIST" },
             ].map((card, i) => {
               const galleryData = exhibitionGalleries[card.galleryKey];
               return (
                 <motion.div
                   key={card.title}
                   {...stagger(i)}
-                  className="bg-card p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer"
+                  role={galleryData ? "button" : undefined}
+                  tabIndex={galleryData ? 0 : undefined}
+                  onKeyDown={galleryData ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpenExhibition({ title: card.title, images: galleryData.images, desc: galleryData.desc }); } } : undefined}
+                  className="bg-[#0a0a0a] p-8 md:p-10 group hover:bg-[#111] transition-colors duration-500 cursor-pointer focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/40"
                   onMouseEnter={galleryData ? () => preloadImages(galleryData.images) : undefined}
                   onClick={galleryData ? () => setOpenExhibition({ title: card.title, images: galleryData.images, desc: galleryData.desc }) : undefined}
                 >
-                  <div className="mb-6 overflow-hidden aspect-square bg-card">
+                  <div className="mb-6 overflow-hidden aspect-[4/3] bg-[#0a0a0a]">
                     <img
                       src={card.image}
                       alt={card.title}
-                      className="w-full h-full object-cover transition-all duration-700"
+                      loading="lazy"
+                      className="w-full h-full object-cover grayscale-[35%] group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700"
                     />
                   </div>
-                  <h3 className="text-lg text-white font-medium mb-3" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
-                  </motion.div>
+                  <h3 className="text-lg text-white font-medium mb-1.5" style={{ fontFamily: "var(--font-dutch)" }}>{card.title}</h3>
+                  <p className="text-xs text-[#9a9a9a]">{card.partner}</p>
+                  {galleryData && (
+                    <p className="mt-5 text-xs text-[#8a8a8a] group-hover:text-white transition-colors duration-300">
+                      View gallery →
+                    </p>
+                  )}
+                </motion.div>
               );
             })}
           </div>
@@ -1281,33 +1294,41 @@ function GalleryLayout({ brand }: { brand: BrandData }) {
         {openExhibition && <ProjectGalleryModal gallery={openExhibition} onClose={() => setOpenExhibition(null)} />}
       </AnimatePresence>
 
-      {/* ── LOCATION INFO ── */}
-      <section className="bg-black border-t border-border">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
-          {[
-            { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
-            { label: "Hours", value: "By Appointment Only\nPrivate Viewings" },
-            { label: "Contact", value: "info@pasogallery.com\n+1 2 925 3631" },
-            { label: "Instagram", value: "@pasogallery" },
-          ].map((info, i) => (
-            <motion.div key={info.label} {...stagger(i)}>
-              <p className="text-xs text-[#555] mb-3">{info.label}</p>
-              <p className="text-sm text-[#d4d4d4] font-medium whitespace-pre-line">{info.value}</p>
+      {/* ── VISIT & REQUEST ── */}
+      <section id="visit" className="bg-black border-t border-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-32">
+          <motion.h2 {...fadeUp} className="text-3xl md:text-5xl font-medium text-white mb-14" style={{ fontFamily: "var(--font-dutch)" }}>
+            Visit
+          </motion.h2>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-14 lg:gap-20 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+              {([
+                { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
+                { label: "Hours", value: "By Appointment Only\nPrivate Viewings" },
+                { label: "Contact", value: "info@pasogallery.com\n+82 2 925 3631" },
+                { label: "Instagram", value: "@pasogallery", href: "https://www.instagram.com/pasogallery" },
+              ] as { label: string; value: string; href?: string }[]).map((info, i) => (
+                <motion.div key={info.label} {...stagger(i)}>
+                  <p className="text-xs text-[#8a8a8a] mb-3">{info.label}</p>
+                  {info.href ? (
+                    <a href={info.href} target="_blank" rel="noopener noreferrer" className="text-sm text-[#d4d4d4] font-medium hover:text-white transition-colors">
+                      {info.value}
+                    </a>
+                  ) : (
+                    <p className="text-sm text-[#d4d4d4] font-medium whitespace-pre-line">{info.value}</p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+            <motion.div {...fadeUp} className="lg:text-right">
+              <p className="text-sm text-[#9a9a9a] font-normal leading-relaxed mb-6 max-w-xs lg:ml-auto" style={{ wordBreak: "keep-all" }}>
+                프라이빗 뷰잉과 대관은 사전 신청으로 운영됩니다.
+              </p>
+              <Link href={contactHref} className="inline-block px-10 py-4 bg-white text-black text-sm font-medium hover:bg-[#e0e0e0] transition-colors duration-300">
+                Request Private Viewing
+              </Link>
             </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── 본사 바로가기 ── */}
-      <section className="py-24 md:py-32 bg-black border-t border-border">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-          <motion.h2 {...fadeUp} className="text-2xl md:text-3xl font-normal text-white mb-6">본사 바로가기</motion.h2>
-          <motion.p {...fadeUp} className="text-sm md:text-base text-[#bbb] font-medium mb-10">PASO Corp의 전체 사업 영역과 서비스를 확인하세요.</motion.p>
-          <motion.div {...fadeUp}>
-            <a href="https://pasocorp.com" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border border-white/40 text-white text-sm hover:bg-white hover:text-black transition-all duration-300">
-              PASO Corp
-            </a>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1363,7 +1384,7 @@ function AgencyLayout({ brand }: { brand: BrandData }) {
       </AnimatePresence>
 
       {/* Services row */}
-      <section className="py-24 bg-card border-t border-border">
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -1418,11 +1439,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       <BrandHero brand={brand} />
 
       {/* Services 3 cards with curated images */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">전문 자문 서비스</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
             {brand.features.slice(0, 3).map((f, i) => (
-              <motion.div key={f.title} {...stagger(i)} className="bg-card p-8 md:p-10 group">
+              <motion.div key={f.title} {...stagger(i)} className="bg-[#0a0a0a] p-8 md:p-10 group">
                 <div className="overflow-hidden mb-6">
                   <img src={f.image || brand.gallery[i % brand.gallery.length]} alt={f.title} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
@@ -1449,11 +1470,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* Programs */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">교육 & 네트워킹</motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {brand.features.slice(3, 6).map((f, i) => (
-              <motion.div key={f.title} {...stagger(i)} className="border border-border p-8 hover:border-[#333] transition-colors duration-500">                <h3 className="text-lg text-white font-normal mb-3">{f.title}</h3>
+              <motion.div key={f.title} {...stagger(i)} className="border border-[#1a1a1a] p-8 hover:border-[#333] transition-colors duration-500">                <h3 className="text-lg text-white font-normal mb-3">{f.title}</h3>
                 <p className="text-base text-[#bbb] font-medium leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
@@ -1466,7 +1487,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">          <motion.h2 {...fadeUp} className="text-2xl md:text-4xl font-normal text-white mb-14">누구를 위한 서비스인가</motion.h2>
           <div className="flex flex-col gap-4">
             {targets.map((t, i) => (
-              <motion.div key={t.label} {...stagger(i)} className="group flex items-center gap-8 bg-card border border-border hover:border-[#b8960b]/30 rounded-lg p-8 md:p-10 transition-all duration-500">
+              <motion.div key={t.label} {...stagger(i)} className="group flex items-center gap-8 bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#b8960b]/30 rounded-lg p-8 md:p-10 transition-all duration-500">
                 <span className="text-4xl md:text-5xl font-medium text-[#222] group-hover:text-[#b8960b] transition-colors duration-500">0{i + 1}</span>
                 <div className="flex-1">
                   <h3 className="text-lg md:text-xl text-white font-normal mb-2">{t.label}</h3>
@@ -1479,7 +1500,7 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
       </section>
 
       {/* Consulting Inquiry Form */}
-      <section className="py-24 bg-card border-t border-border">
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeUp}>              <h2 className="text-3xl md:text-5xl font-medium text-white mb-6">
@@ -1581,11 +1602,11 @@ function ConsultingLayout({ brand }: { brand: BrandData }) {
 }
 
 /* ─── Router ─── */
-export default function BrandLanding({ brand }: { brand: BrandData }) {
+export default function BrandLanding({ brand, contactHref = "/contact" }: { brand: BrandData; contactHref?: string }) {
   switch (brand.slug) {
     case "artrader": return <ArtraderLayout brand={brand} />;
     case "paso-art-center": return <ArtCenterLayout brand={brand} />;
-    case "paso-gallery": return <GalleryLayout brand={brand} />;
+    case "paso-gallery": return <GalleryLayout brand={brand} contactHref={contactHref} />;
     case "paso-agency": return <AgencyLayout brand={brand} />;
     case "artledger-consulting": return <ConsultingLayout brand={brand} />;
     default: return <ArtraderLayout brand={brand} />;

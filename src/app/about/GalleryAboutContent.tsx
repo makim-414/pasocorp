@@ -73,7 +73,7 @@ export default function GalleryAboutContent() {
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="border-l-2 border-[#e5e5e5] pl-8 md:pl-12 space-y-8">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#e5e5e5] mb-6">About Us</p>
+            <p className="text-xs text-[#e5e5e5] mb-6">About Us</p>
             <p className="text-sm md:text-base text-[#ccc] font-light leading-relaxed">
               <strong className="text-white">PASO Gallery</strong>는 서울을 기반으로 활동하는 현대미술 갤러리로, 지난 6여 년간 신진·라이징 작가 발굴과 전시 기획을 중심으로 성장해 왔습니다. 전시를 넘어 브랜드 협업, 프라이빗 컬렉팅 프로그램, 문화 프로젝트로 확장하며 동시대 미술과 시장을 잇는 새로운 갤러리 모델을 제안합니다.
             </p>
@@ -95,7 +95,7 @@ export default function GalleryAboutContent() {
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#e5e5e5] mb-4">Floor Plan</p>
+            <p className="text-xs text-[#e5e5e5] mb-4">Floor Plan</p>
             <h2 className="text-3xl md:text-4xl text-white font-normal mb-12" style={{ fontFamily: "var(--font-noto-serif)" }}>공간 도면</h2>
             <div className="relative w-full aspect-square max-w-[600px] mx-auto overflow-hidden">
               <Image
@@ -158,7 +158,7 @@ export default function GalleryAboutContent() {
       <section className="py-24 md:py-32 bg-black">
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#e5e5e5] mb-4">Guidelines</p>
+            <p className="text-xs text-[#e5e5e5] mb-4">Guidelines</p>
             <h2 className="text-3xl md:text-4xl text-white font-normal mb-12" style={{ fontFamily: "var(--font-noto-serif)" }}>이용 안내</h2>
             <div className="space-y-6 text-sm text-[#999] font-light leading-relaxed">
               <p className="text-white text-xs tracking-[0.1em] uppercase mb-2">작품 설치</p>
@@ -247,7 +247,7 @@ export default function GalleryAboutContent() {
 
               <div className="mt-8 text-xs text-[#666]">
                 <p>문의사항이 있을 경우 담당자에게 연락해주시기 바랍니다.</p>
-                <p className="mt-1">담당자 연락처: +1 2 925 3631</p>
+                <p className="mt-1">담당자 연락처: +82 2 925 3631</p>
               </div>
             </div>
           </motion.div>
@@ -260,7 +260,7 @@ export default function GalleryAboutContent() {
       <section className="py-24 md:py-32 bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="mb-16">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#e5e5e5] mb-4">Facilities</p>
+            <p className="text-xs text-[#e5e5e5] mb-4">Facilities</p>
             <h2 className="text-3xl md:text-4xl text-white font-normal" style={{ fontFamily: "var(--font-noto-serif)" }}>공간 시설 안내</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -287,9 +287,9 @@ export default function GalleryAboutContent() {
       <section className="py-16 bg-card border-y border-border">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#e5e5e5] mb-4">Inquiry</p>
+            <p className="text-xs text-[#e5e5e5] mb-4">Inquiry</p>
             <p className="text-sm text-[#aaa] font-light mb-2">문의</p>
-            <p className="text-sm text-[#ccc] font-light">TEL. +1 2 925 3631 &nbsp;|&nbsp; Email. info@pasogallery.com</p>
+            <p className="text-sm text-[#ccc] font-light">TEL. +82 2 925 3631 &nbsp;|&nbsp; Email. info@pasogallery.com</p>
           </motion.div>
         </div>
       </section>
@@ -300,12 +300,12 @@ export default function GalleryAboutContent() {
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },
             { label: "Hours", value: "Tue ~ Sat\n11:00 ~ 19:00" },
-            { label: "Contact", value: "info@pasogallery.com\n+1 2 925 3631" },
+            { label: "Contact", value: "info@pasogallery.com\n+82 2 925 3631" },
             { label: "Instagram", value: "@pasogallery" },
           ].map((info, i) => (
             <motion.div key={info.label} {...stagger(i)}>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#555] mb-3">{info.label}</p>
-              <p className="text-sm text-[#aaa] font-light whitespace-pre-line">{info.value}</p>
+              <p className="text-xs text-[#8a8a8a] mb-3">{info.label}</p>
+              <p className="text-sm text-[#c9c9c9] font-light whitespace-pre-line">{info.value}</p>
             </motion.div>
           ))}
         </div>
