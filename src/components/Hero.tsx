@@ -1,21 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import BackgroundBeams from "./BackgroundBeams";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 
 import BlurInText from "./ui/blur-in-text";
-import WeArtHero from "./WeArtHero";
+import { FBOParticlesBg } from "./fx/fbo-particles-bg";
+import { TextScramble } from "./fx/text-scramble";
 import { useLocale } from "@/i18n/LocaleProvider";
-
-const brands = [
-  { name: "Artrader.io", image: "/brands/artrader-new.png", gradient: "linear-gradient(135deg, #2ecc71 0%, #27ae60 30%, #5bbf9e 70%, #7ecfb3 100%)", color: "#2ecc71", href: "https://artrader.io", enabled: true },
-  { name: "Paso Gallery", image: "/images/gallery/gallery-06.jpg", color: "#1e3a5f", href: "https://pasogallery.com", enabled: true },
-  { name: "Paso Agency", image: "/images/projects/twosome/twosome-5.jpg", color: "#d4a574", href: "/brands/paso-agency", enabled: true },
-  { name: "Artledger", image: "/brands/artledger-consulting.jpg", color: "#9ca3af", href: "/brands/artledger-consulting", enabled: true },
-  { name: "Art Center", image: "/images/whats-happening/preopening.png", color: "#a0522d", href: "/brands/paso-art-center", enabled: true },
-];
 
 const units = [
   { name: "Paso Gallery", href: "https://pasogallery.com" },
@@ -27,62 +18,17 @@ const units = [
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  const [hoveredBrand, setHoveredBrand] = useState<number | null>(null);
   const [showContact, setShowContact] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const { t, locale } = useLocale();
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        mouseX.set(e.clientX - rect.left);
-        mouseY.set(e.clientY - rect.top);
-      }
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, [mouseX, mouseY]);
 
   return (
     <section
       ref={ref}
       className="relative h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black"
     >
-      {/* Background brand images — crossfade on hover */}
-      <AnimatePresence>
-        {hoveredBrand !== null && (
-          <motion.div
-            key={hoveredBrand}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 0.35, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.02 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute inset-0 z-0"
-          >
-            {brands[hoveredBrand].gradient ? (
-              <div className="absolute inset-0" style={{ background: brands[hoveredBrand].gradient }} />
-            ) : (
-              <Image
-                src={brands[hoveredBrand].image}
-                alt={brands[hoveredBrand].name}
-                fill
-                className="object-cover"
-                sizes="100vw"
-                priority={false}
-              />
-            )}
-            <div className="absolute inset-0 bg-black/40" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <BackgroundBeams />
-      <Spotlight springX={springX} springY={springY} />
+      {/* IRONACT DS FBO particle field — gold curl-noise, morphs into the PASO wordmark */}
+      <FBOParticlesBg />
 
       <div className="relative z-10 text-center px-4 w-full max-w-screen-lg mx-auto">
         <h1
@@ -92,15 +38,19 @@ export default function Hero() {
           <BlurInText text="PASO" duration={1} characterDelay={0.08} />
         </h1>
 
-        {/* Tagline */}
-        <motion.p
+        {/* Tagline — DS scramble treatment */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, delay: 0.7 }}
-          className="mt-4 md:mt-5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#4a4a4a] font-light"
+          className="mt-4 md:mt-5 flex justify-center"
         >
-          {t("hero.tag")}
-        </motion.p>
+          <TextScramble
+            auto
+            text={t("hero.tag")}
+            className="text-[10px] md:text-[11px] text-[#8a8a8a] font-light"
+          />
+        </motion.div>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -122,7 +72,7 @@ export default function Hero() {
             <a
               key={u.name}
               href={u.href}
-              className="text-[13px] md:text-[15px] tracking-[0.12em] uppercase text-[#666] hover:text-[#b8960b] transition-colors duration-400 font-light"
+              className="text-[13px] md:text-[15px] tracking-[0.12em] uppercase text-[#8a8a8a] hover:text-[#b8960b] transition-colors duration-400 font-light"
             >
               {u.name}
             </a>
@@ -138,7 +88,7 @@ export default function Hero() {
         >
           <a
             href="/contact"
-            className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b]/70 hover:text-[#b8960b] transition-colors duration-500"
+            className="inline-block px-7 py-2.5 rounded-full border border-[#b8960b]/40 text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#b8960b] hover:bg-[#b8960b] hover:text-black transition-colors duration-500"
           >
             {t("hero.cta_get_in_touch")} →
           </a>
@@ -177,7 +127,7 @@ export default function Hero() {
               exit={{ opacity: 0, y: 20, scale: 0.97 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative z-10 w-full h-full md:h-auto md:max-w-lg md:rounded-2xl bg-[#111] border border-[#1a1a1a] overflow-y-auto"
+              className="relative z-10 w-full h-full md:h-auto md:max-w-lg md:rounded-2xl bg-[#111] border border-border overflow-y-auto"
             >
               <div className="p-6 md:p-10">
                 <div className="flex items-center justify-between mb-8">
@@ -267,19 +217,5 @@ export default function Hero() {
         )}
       </AnimatePresence>
     </section>
-  );
-}
-
-function Spotlight({ springX, springY }: { springX: ReturnType<typeof useSpring>; springY: ReturnType<typeof useSpring> }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const unsubX = springX.on("change", (x: number) => { if (ref.current) ref.current.style.setProperty("--spotlight-x", `${x}px`); });
-    const unsubY = springY.on("change", (y: number) => { if (ref.current) ref.current.style.setProperty("--spotlight-y", `${y}px`); });
-    return () => { unsubX(); unsubY(); };
-  }, [springX, springY]);
-  return (
-    <div ref={ref} className="pointer-events-none absolute inset-0 z-[1]" style={{
-      background: "radial-gradient(500px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(184, 150, 11, 0.18), rgba(184, 150, 11, 0.05) 40%, transparent 70%)",
-    }} />
   );
 }

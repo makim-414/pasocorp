@@ -41,8 +41,8 @@ export default function Services() {
     },
     {
       id: "gallery",
-      tag: "PASO GALLERY · ART CENTER",
-      label: "Exhibition & Primary Market",
+      tag: "PASO GALLERY · SPACES",
+      label: "Exhibition & Spaces",
       Icon: Landmark,
       image: "/brands/paso-gallery.jpg",
       desc: t("services.gallery.desc"),
@@ -94,7 +94,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-32 md:py-40 bg-black">
+    <section id="services" className="py-20 md:py-28 bg-black">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* header */}
         <motion.p
@@ -119,10 +119,10 @@ export default function Services() {
         {/* carousel container */}
         <div className="relative overflow-hidden rounded-2xl md:rounded-3xl flex flex-col lg:flex-row min-h-[550px] lg:min-h-[500px] border border-white/[0.06]">
           {/* left panel — labels */}
-          <div className="w-full lg:w-[40%] min-h-[300px] lg:h-auto relative z-30 flex flex-col items-start justify-center overflow-hidden px-8 md:px-16 lg:pl-16 bg-[#0a0a0a]">
+          <div className="w-full lg:w-[40%] min-h-[300px] lg:h-auto relative z-30 flex flex-col items-start justify-center overflow-hidden px-8 md:px-16 lg:pl-16 bg-card">
             {/* fade edges */}
-            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-40 pointer-events-none" />
-            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-40 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-card via-card/80 to-transparent z-40 pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-card via-card/80 to-transparent z-40 pointer-events-none" />
 
             <div className="relative w-full h-full flex items-center justify-center lg:justify-start z-20">
               {FEATURES.map((feature, index) => {
@@ -204,7 +204,7 @@ export default function Services() {
                       damping: 25,
                       mass: 0.8,
                     }}
-                    className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden border border-white/[0.08] bg-[#0a0a0a] origin-center"
+                    className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden border border-white/[0.08] bg-card origin-center"
                     style={{
                       pointerEvents: isActive ? "auto" : "none",
                     }}

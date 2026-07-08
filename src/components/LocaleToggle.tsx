@@ -12,7 +12,7 @@ export default function LocaleToggle({ className = "" }: { className?: string })
       type="button"
       aria-label={t("locale.aria")}
       onClick={() => setLocale(next)}
-      className={`text-xs tracking-[0.08em] uppercase text-[#888] hover:text-[#b8960b] transition-colors duration-300 ${className}`}
+      className={`text-xs tracking-[0.08em] uppercase text-muted hover:text-[#b8960b] transition-colors duration-300 ${className}`}
     >
       {label}
     </button>

@@ -129,7 +129,7 @@ export default function HoverPreviewProcess() {
         .hp-text-block {
           font-size: clamp(1.1rem, 2.5vw, 1.5rem);
           line-height: 1.8;
-          color: #888;
+          color: #9a9a9a;
           font-weight: 300;
           letter-spacing: -0.01em;
           max-width: 900px;
@@ -207,19 +207,19 @@ export default function HoverPreviewProcess() {
           {locale === "en" ? (
             <>
               <p>
-                We discover emerging artists at <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink> and present 70+ blue-chip works at <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>.
+                We discover emerging artists at <HoverLink {...linkProps("gallery")}>Paso Gallery</HoverLink>, a Seoul hanok that also hosts private sales and rentals, and present 70+ blue-chip works at <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>.
               </p>
               <p>
-                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink> calculates fair prices from 15M auction records, and <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink> advises on tax and corporate-collection strategy. <HoverLink {...linkProps("agency")}>PASO Agency</HoverLink> designs sustainable IP value for both brands and artists.
+                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink> calculates fair prices from 15M+ auction records, and <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink> advises on tax and corporate-collection strategy. <HoverLink {...linkProps("agency")}>Paso Agency</HoverLink> designs sustainable IP value for both brands and artists.
               </p>
             </>
           ) : (
             <>
               <p>
-                <HoverLink {...linkProps("gallery")}>PASO Gallery</HoverLink>에서 신진 작가를 발굴하고, <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>에서 블루칩 작품 70여 점을 상시 전시합니다.
+                <HoverLink {...linkProps("gallery")}>Paso Gallery</HoverLink>에서 신진 작가를 발굴하고(프라이빗 세일·공간 대관 운영), <HoverLink {...linkProps("artcenter")}>PASO Art Center</HoverLink>에서 블루칩 작품 70여 점을 상시 전시합니다.
               </p>
               <p>
-                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>의 1,500만 건 옥션 데이터로 적정가를 산출하고, <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink>이 절세와 법인 컬렉션 운용을 자문합니다. <HoverLink {...linkProps("agency")}>PASO Agency</HoverLink>는 브랜드와 작가 양측의 IP 가치를 설계합니다.
+                <HoverLink {...linkProps("artrader")}>Artrader</HoverLink>의 1,500만 건 옥션 데이터로 적정가를 산출하고, <HoverLink {...linkProps("artledger")}>Artledger Consulting</HoverLink>이 절세와 법인 컬렉션 운용을 자문합니다. <HoverLink {...linkProps("agency")}>Paso Agency</HoverLink>는 브랜드와 작가 양측의 IP 가치를 설계합니다.
               </p>
             </>
           )}

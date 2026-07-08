@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import LocaleToggle from "@/components/LocaleToggle";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -18,6 +18,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [brandsOpen, setBrandsOpen] = useState(false);
   const { t } = useLocale();
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.4 });
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -34,13 +36,18 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
+      {/* Scroll progress hairline */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-px origin-left bg-gradient-to-r from-[#b8960b] via-[#c9a96e] to-[#b8960b]"
+        style={{ scaleX: progress }}
+      />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
         <a href="https://pasocorp.com" className="text-[#e8e8e8] text-sm tracking-normal font-normal" style={{ fontFamily: "var(--font-dutch)" }}>
           PASO
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-[#888]">
+        <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.08em] uppercase text-muted">
           <Link href="/about" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.about")}</Link>
           <Link href="/solutions" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.solutions")}</Link>
           <div
@@ -56,14 +63,14 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-[#0a0a0a] border border-[#1a1a1a] py-3 min-w-[200px]"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border py-3 min-w-[200px]"
                 >
                   {brands.map((b) => (
                     <Link
                       key={b.name}
                       href={b.href}
                       {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="block px-5 py-2 text-xs tracking-[0.1em] text-[#888] hover:text-[#e8e8e8] hover:bg-[#111] transition-colors uppercase"
+                      className="block px-5 py-2 text-xs tracking-[0.1em] text-muted hover:text-[#e8e8e8] hover:bg-[#111] transition-colors uppercase"
                     >
                       {b.name}
                     </Link>
@@ -72,6 +79,7 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
+          <Link href="/spaces" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.spaces")}</Link>
           <Link href="/contact" className="hover:text-[#b8960b] transition-colors duration-300">{t("nav.contact")}</Link>
           <LocaleToggle />
         </div>
@@ -96,14 +104,15 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0a0a0a] border-t border-[#1a1a1a] overflow-hidden"
+            className="md:hidden bg-card border-t border-border overflow-hidden"
           >
-            <div className="px-6 py-6 flex flex-col gap-4 text-xs tracking-[0.08em] uppercase text-[#888]">
+            <div className="px-6 py-6 flex flex-col gap-4 text-xs tracking-[0.08em] uppercase text-muted">
               <Link href="/about" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.about")}</Link>
               <Link href="/solutions" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.solutions")}</Link>
               {brands.map((b) => (
                 <Link key={b.name} href={b.href} {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8] pl-4 uppercase">{b.name}</Link>
               ))}
+              <Link href="/spaces" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.spaces")}</Link>
               <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-[#e8e8e8]">{t("nav.contact")}</Link>
               <div className="pt-2"><LocaleToggle /></div>
             </div>

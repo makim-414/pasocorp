@@ -5,11 +5,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: { default: "PASO — Art as an Asset Class", template: "%s — PASO" },
-  description: "Data-driven art investment advisory, gallery operations, and art consulting. 15.8M auction records powering art valuation, IP licensing, and corporate art programs.",
-  keywords: ["PASO", "Paso Gallery", "Paso Agency", "Artrader", "Artledger", "PASO Art Center", "art investment", "art advisory", "art valuation", "art IP licensing", "Korean contemporary art", "Min Sung Kim", "파소", "파소갤러리", "미술품 투자", "아트 컨설팅"],
+  description: "Data-driven art investment advisory, gallery operations, and art consulting. 15M+ auction records powering art valuation, IP licensing, and corporate art programs.",
+  keywords: ["PASO", "Paso Gallery", "Paso Agency", "Artrader", "art investment", "art advisory", "art valuation", "art IP licensing", "Korean contemporary art", "Min Sung Kim", "파소", "파소갤러리", "미술품 투자", "아트 컨설팅"],
   openGraph: {
     title: "PASO — Art as an Asset Class",
-    description: "Data-driven art investment advisory, gallery operations, IP licensing, and corporate collection consulting. 15.8M auction records · Forbes 30 Under 30.",
+    description: "Data-driven art investment advisory, gallery operations, IP licensing, and corporate collection consulting. 15M+ auction records · Forbes 30 Under 30.",
     siteName: "PASO",
     type: "website",
     locale: "en_US",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "PASO — Art as an Asset Class",
-    description: "Data-driven art investment advisory, gallery operations, and IP licensing. 15.8M auction records.",
+    description: "Data-driven art investment advisory, gallery operations, and IP licensing. 15M+ auction records.",
     images: ["https://pasocorp.com/og-image.jpg"],
   },
   metadataBase: new URL("https://pasocorp.com"),
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet" />
       </head>
       <body className="font-sans bg-black text-[#e8e8e8]">
         <LocaleProvider>

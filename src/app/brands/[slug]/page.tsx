@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StandaloneNav from "@/components/StandaloneNav";
@@ -22,9 +23,9 @@ const brandsData: Record<string, {
     color: "#b8960b",
     image: "/brands/artrader-platform-hd.png",
     gallery: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=90",
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&q=90",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=90",
+      "/brands/artrader-search-screen.png",
+      "/brands/artrader-platform.jpg",
+      "/brands/artrader-hero-bg.png",
     ],
     features: [
       { title: "Artist Index", desc: "작가별 시장 가치 변동, 거래 빈도, 낙찰가 추이를 한눈에. 종목분석서 스타일의 정량 리포트." },
@@ -89,7 +90,7 @@ const brandsData: Record<string, {
       "/images/projects/cu2.jpg",
       "/images/projects/cu-wine.jpg",
       "/Group 13499.png",
-      "/images/projects/hongdae-plusship/chowoo-new.png",
+      "/images/projects/hongdae-flagship/1.jpg",
     ],
     features: [
       { title: "장띵", desc: "CU 델라페 18종 X 장띵" },
@@ -107,9 +108,9 @@ const brandsData: Record<string, {
     color: "#9ca3af",
     image: "/brands/artledger-consulting.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1920&q=90",
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&q=90",
-      "https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=1920&q=90",
+      "/images/services/tax-advisory.jpg",
+      "/brands/artledger-consulting.jpg",
+      "/images/services/collecting-advisory.jpg",
     ],
     features: [
       { title: "미술품 절세 자문", desc: "증여·상속세 절세 전략, 법인 비용처리·감가상각 최적화, 세무 리스크 관리.", image: "/images/services/tax-advisory.jpg" },
@@ -132,7 +133,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!brand) return { title: "Brand Not Found — PASO" };
   const seoOverrides: Record<string, { title: string; description: string; image?: string }> = {
     artrader: { title: "Artrader | PASO Art Market Data Platform", description: "PASO's Artrader — 15M+ global auction records. Artist Index and quantitative reports for art investment decisions." },
-    "paso-art-center": { title: "PASO Art Center | Exhibitions & Community in Seongbuk-gu", description: "PASO Art Center — Seongbuk-gu, Seoul. Exhibitions, art salons, and a community space for emerging artists and collectors." },
+    "paso-art-center": { title: "PASO Art Center | Exhibitions & Community", description: "PASO Art Center — exhibitions, art salons, and a community space for emerging artists and collectors." },
     "artledger-consulting": { title: "Artledger | PASO Art Asset Advisory & Tax Strategy", description: "PASO's Artledger — art gift & inheritance, corporate depreciation, collection rebalancing. End-to-end art-asset management." },
     "paso-agency": { title: "PASO Agency | IP & Brand Art Collaborations", description: "PASO Agency — character IP licensing, art toys, corporate art projects, end-to-end planning and execution." },
     "paso-gallery": { title: "Paso Gallery — Art Meets Space", description: "한옥의 고유한 공간미와 동시대 미술이 만나는 곳. 신진작가 발굴부터 브랜드 콜라보레이션까지.", image: "/brands/paso-gallery-og.jpg" },
@@ -161,9 +162,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: seo?.title ?? `${brand.name} — PASO`,
     description: seo?.description ?? brand.longDesc,
+    alternates: { canonical: `/brands/${slug}` },
     openGraph: {
       title: seo?.title ?? `${brand.name} — PASO`,
       description: seo?.description ?? brand.desc,
+      url: `https://pasocorp.com/brands/${slug}`,
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
@@ -172,6 +175,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: seo?.description ?? brand.desc,
       images: [ogImage],
     },
+  };
+}
+
+function breadcrumbJsonLd(brand: { name: string; slug: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "PASO", item: "https://pasocorp.com" },
+      { "@type": "ListItem", position: 2, name: "Brands", item: "https://pasocorp.com/#brands" },
+      { "@type": "ListItem", position: 3, name: brand.name, item: `https://pasocorp.com/brands/${brand.slug}` },
+    ],
   };
 }
 
@@ -206,13 +221,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const brand = brandsData[slug];
   const siteMode = await getSiteMode();
 
-  if (!brand) {
-    return (
-      <div className="bg-black min-h-screen flex items-center justify-center">
-        <p className="text-[#888]">Brand not found</p>
-      </div>
-    );
-  }
+  if (!brand) notFound();
 
   // Use standalone nav when on a standalone domain (siteMode) OR when slug matches a standalone site
   // (so localhost/brands/paso-gallery also shows the Paso Gallery branded nav)
@@ -260,6 +269,10 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   // Default: pasocorp.com layout
   return (
     <div className="bg-black min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(brand)) }}
+      />
       <Navbar />
       <BrandLanding brand={brand} />
       <Footer />

@@ -25,11 +25,15 @@ export async function generateMetadata(): Promise<Metadata> {
   }
   return {
     title: "Contact — 파소(PASO)",
-    description: "프로젝트 문의, 협업 제안. 파소(PASO)에 연락하세요.",
+    description: "전시, 대관, 브랜드 협업, 데이터 문의. 파소(PASO)에 연락하세요.",
+    alternates: { canonical: "/contact" },
     openGraph: {
       title: "Contact — 파소(PASO)",
-      description: "프로젝트 문의, 협업 제안. 파소(PASO)에 연락하세요.",
+      description: "전시, 대관, 브랜드 협업, 데이터 문의. 파소(PASO)에 연락하세요.",
+      url: "https://pasocorp.com/contact",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     },
+    twitter: { card: "summary_large_image", title: "Contact — 파소(PASO)", images: ["/og-image.jpg"] },
   };
 }
 

@@ -11,7 +11,7 @@ export default function EcosystemSection() {
   const { t } = useLocale();
 
   return (
-    <section ref={ref} className="bg-black border-t border-[#1a1a1a] py-16 md:py-24">
+    <section ref={ref} className="bg-black border-t border-border py-16 md:py-24">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div
@@ -25,7 +25,7 @@ export default function EcosystemSection() {
           >
             {t("ecosystem.title")}
           </h2>
-          <p className="text-sm md:text-base text-[#888] font-medium" style={{ wordBreak: "keep-all" }}>
+          <p className="text-sm md:text-base text-muted font-medium" style={{ wordBreak: "keep-all" }}>
             {t("ecosystem.lead")}
           </p>
         </motion.div>
@@ -40,7 +40,7 @@ export default function EcosystemSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center text-xs md:text-sm text-[#888] font-medium mt-8 md:mt-12 mx-auto leading-relaxed"
+          className="text-center text-xs md:text-sm text-muted font-medium mt-8 md:mt-12 mx-auto leading-relaxed"
           style={{ wordBreak: "keep-all" }}
         >
           {t("ecosystem.note")}

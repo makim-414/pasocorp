@@ -53,7 +53,8 @@ export default function SolutionsContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight max-w-4xl text-white"
+            className="text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight max-w-4xl text-white"
+            style={{ fontFamily: "var(--font-dutch)" }}
           >
             {t("solutions.hero.title")}
           </motion.h1>
@@ -69,7 +70,7 @@ export default function SolutionsContent() {
         </div>
       </section>
 
-      <div className="border-t border-[#1a1a1a]" />
+      <div className="border-t border-border" />
 
       {/* Solutions list — Pace-style editorial cards on dark bg */}
       <section className="py-20 md:py-28 px-6 md:px-12">
@@ -77,6 +78,7 @@ export default function SolutionsContent() {
           {solutions.map((s, i) => (
             <motion.article
               key={s.slug}
+              id={s.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -85,12 +87,12 @@ export default function SolutionsContent() {
             >
               {/* Image */}
               <div className={`lg:col-span-7 ${i % 2 ? "lg:order-2 lg:col-start-6" : ""}`}>
-                <div className="relative w-full bg-[#0a0a0a] aspect-[4/5] overflow-hidden">
+                <div className={`relative w-full bg-card overflow-hidden ${s.slug === "artrader" ? "aspect-[4/3]" : "aspect-[4/5]"}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full ${s.slug === "artrader" ? "object-contain p-6 md:p-10" : "object-cover"}`}
                   />
                 </div>
               </div>

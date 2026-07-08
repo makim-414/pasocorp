@@ -50,7 +50,7 @@ export default function GalleryAboutContent() {
       </section>
 
       {/* Space Gallery */}
-      <section className="py-16 md:py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-16 md:py-24 bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
@@ -109,7 +109,7 @@ export default function GalleryAboutContent() {
               <span className="absolute top-[42%] left-[40%] -translate-x-1/2 text-[10px] md:text-xs text-[#fbbf24] font-medium tracking-wider">Stage</span>
               <span className="absolute top-[75%] left-[25%] -translate-x-1/2 text-[10px] md:text-xs text-[#67e8f9] font-medium tracking-wider">Reception</span>
             </div>
-            <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#888] font-light">
+            <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-4 text-xs text-muted font-light">
               <div><span className="text-[#e5e5e5]">1~5</span> — 조명 ON/OFF</div>
               <div><span className="text-[#e5e5e5]">6</span> — 전체 조명 ON/OFF</div>
               <div><span className="text-[#e5e5e5]">7-1~7-5, 8</span> — 유리창 (와이어 설치 가능)</div>
@@ -120,28 +120,28 @@ export default function GalleryAboutContent() {
             <div className="mt-20 space-y-8">
               <div>
                 <h3 className="text-white text-sm font-medium mb-4">이동식 칸막이 규격 (가로×세로 cm)</h3>
-                <div className="grid grid-cols-3 gap-3 text-xs text-[#888] font-light">
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">A</span> — 230×210</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">B</span> — 250×200</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">C</span> — 244×180</div>
+                <div className="grid grid-cols-3 gap-3 text-xs text-muted font-light">
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">A</span> — 230×210</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">B</span> — 250×200</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">C</span> — 244×180</div>
                 </div>
               </div>
               <div>
                 <h3 className="text-white text-sm font-medium mb-4">유리창 규격 (가로×세로 cm) — M 제외, 와이어 이용 작품 설치 가능</h3>
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 text-xs text-[#888] font-light">
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">D</span> — 173×155</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">E</span> — 140×155</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">F</span> — 140×155</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">G</span> — 72×130</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">H</span> — 170×150</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">I</span> — 160×150</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">J</span> — 70×150</div>
-                  <div className="border border-[#1a1a1a] p-3"><span className="text-[#e5e5e5]">K, L</span> — 110×-</div>
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 text-xs text-muted font-light">
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">D</span> — 173×155</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">E</span> — 140×155</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">F</span> — 140×155</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">G</span> — 72×130</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">H</span> — 170×150</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">I</span> — 160×150</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">J</span> — 70×150</div>
+                  <div className="border border-border p-3"><span className="text-[#e5e5e5]">K, L</span> — 110×-</div>
                 </div>
               </div>
               <div>
                 <h3 className="text-white text-sm font-medium mb-4">벽면별 설치 방법</h3>
-                <div className="space-y-2 text-xs text-[#888] font-light">
+                <div className="space-y-2 text-xs text-muted font-light">
                   <p><span className="text-[#e5e5e5]">—</span> 와이어 이용 벽 (특수한 경우 실못 이용)</p>
                   <p><span className="text-[#e5e5e5]">—</span> 실못 이용 작품 설치 가능 벽</p>
                   <p className="text-[#666] mt-2">* 벽에 따라 가능한 설치 방법이 상이합니다. 상세 사항은 도면을 참고해주세요.</p>
@@ -257,7 +257,7 @@ export default function GalleryAboutContent() {
 
       {/* Space Features (hidden) */}
       {false && (
-      <section className="py-24 md:py-32 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-24 md:py-32 bg-card border-y border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="mb-16">
             <p className="text-xs text-[#e5e5e5] mb-4">Facilities</p>
@@ -272,10 +272,10 @@ export default function GalleryAboutContent() {
               { title: "주차 안내", icon: ParkingCircle, desc: "자체 주차장 미제공. 갤러리 건너편 올림픽 기념회관 유료 주차장 이용 가능." },
               { title: "반입 & 금지사항", icon: Ban, desc: "모든 실내 공간 금연. 간단한 음료 외 냄새 심한 음식 반입 금지. 이용 일정 양도·재판매 금지. 이용 기간 중 물품 판매 시 갤러리측 사전 협의 필요." },
             ].map((item, i) => (
-              <motion.div key={item.title} {...stagger(i)} className="border border-[#1a1a1a] p-6">
+              <motion.div key={item.title} {...stagger(i)} className="border border-border p-6">
                 <item.icon size={24} className="text-[#e5e5e5] mb-4" strokeWidth={1.5} />
                 <h3 className="text-white text-sm font-medium mb-3">{item.title}</h3>
-                <p className="text-[#888] text-xs font-light leading-relaxed">{item.desc}</p>
+                <p className="text-muted text-xs font-light leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -284,7 +284,7 @@ export default function GalleryAboutContent() {
       )}
 
       {/* Contact */}
-      <section className="py-16 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+      <section className="py-16 bg-card border-y border-border">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
           <motion.div {...fadeUp}>
             <p className="text-xs text-[#e5e5e5] mb-4">Inquiry</p>
@@ -295,7 +295,7 @@ export default function GalleryAboutContent() {
       </section>
 
       {/* Location Info */}
-      <section className="bg-black border-t border-[#1a1a1a]">
+      <section className="bg-black border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
             { label: "Location", value: "92, Seonggyungwan-ro\nJongno-gu, Seoul" },

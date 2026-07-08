@@ -13,11 +13,10 @@ const brandItems = [
 ];
 
 const serviceItems = [
-  { title: "Art Advisory", href: "/solutions" },
-  { title: "Collection Management", href: "/solutions" },
-  { title: "Exhibition Curation", href: "/solutions" },
-  { title: "Market Analysis", href: "/solutions" },
-  { title: "Art Investment", href: "/solutions" },
+  { title: "Data & Market Intelligence", href: "/solutions#artrader" },
+  { title: "Art Asset Advisory", href: "/solutions#artrader" },
+  { title: "Exhibition & Spaces", href: "/solutions#paso-gallery" },
+  { title: "IP & Brand Collaboration", href: "/solutions#paso-agency" },
 ];
 
 export default function Footer() {
@@ -25,8 +24,8 @@ export default function Footer() {
 
   const companyItems = [
     { title: t("footer.about"), href: "/about" },
+    { title: t("footer.spaces"), href: "/spaces" },
     { title: t("footer.contact"), href: "/contact" },
-    { title: t("footer.careers"), href: "/contact" },
     { title: t("footer.terms"), href: "/terms" },
     { title: t("footer.privacy"), href: "/privacy" },
   ];
@@ -37,7 +36,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-[#1a1a1a] bg-[#0a0a0a] py-16">
+    <footer className="border-t border-border bg-card py-16">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         {/* Links Grid */}
         <div className="grid gap-14 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
@@ -49,7 +48,7 @@ export default function Footer() {
                 key={i}
                 href={item.href}
                 {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="text-[#666] hover:text-[#999] block duration-150"
+                className="text-[#8a8a8a] hover:text-[#ccc] block duration-150"
               >
                 {item.title}
               </Link>
@@ -57,7 +56,7 @@ export default function Footer() {
             <Link
               href="https://artrader.io"
               target="_blank"
-              className="text-[#666] hover:text-[#999] flex gap-1 items-center text-sm duration-150"
+              className="text-[#8a8a8a] hover:text-[#ccc] flex gap-1 items-center text-sm duration-150"
             >
               Artrader.io
               <ExternalLink size={14} />
@@ -71,7 +70,7 @@ export default function Footer() {
               <Link
                 key={i}
                 href={item.href}
-                className="text-[#666] hover:text-[#999] block duration-150"
+                className="text-[#8a8a8a] hover:text-[#ccc] block duration-150"
               >
                 {item.title}
               </Link>
@@ -85,7 +84,7 @@ export default function Footer() {
               <Link
                 key={i}
                 href={item.href}
-                className="text-[#666] hover:text-[#999] block duration-150"
+                className="text-[#8a8a8a] hover:text-[#ccc] block duration-150"
               >
                 {item.title}
               </Link>
@@ -97,8 +96,8 @@ export default function Footer() {
             <span className="block font-medium text-white">{t("footer.locations")}</span>
             {locations.map((loc, i) => (
               <div key={i} className="space-y-0.5">
-                <span className="text-[#666] block text-xs uppercase tracking-wider">{loc.name}</span>
-                <span className="text-[#555] block text-xs">{loc.address}</span>
+                <span className="text-[#8a8a8a] block text-xs uppercase tracking-wider">{loc.name}</span>
+                <span className="text-[#777] block text-xs">{loc.address}</span>
               </div>
             ))}
           </div>
@@ -109,14 +108,14 @@ export default function Footer() {
             <Link
               href="https://www.instagram.com/pasoartcenter"
               target="_blank"
-              className="text-[#666] hover:text-[#999] flex gap-2 items-center duration-150"
+              className="text-[#8a8a8a] hover:text-[#ccc] flex gap-2 items-center duration-150"
             >
               <Instagram size={14} />
               Instagram
             </Link>
             <Link
-              href="mailto:makim@ironact.net"
-              className="text-[#666] hover:text-[#999] flex gap-2 items-center duration-150"
+              href="mailto:info@pasogallery.com"
+              className="text-[#8a8a8a] hover:text-[#ccc] flex gap-2 items-center duration-150"
             >
               <Mail size={14} />
               Email
@@ -128,8 +127,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 border-t border-[#1a1a1a] pt-6 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-[#555]">
+        <div className="mt-14 border-t border-border pt-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-[#777]">
             <span>{t("footer.ceo")}</span>
             <span>{t("footer.biz_no")}</span>
             <span>{t("footer.phone")}</span>

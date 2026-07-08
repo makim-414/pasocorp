@@ -27,11 +27,15 @@ export async function generateMetadata(): Promise<Metadata> {
   }
   return {
     title: "About — PASO",
-    description: "PASO — art as an asset class. Investment advisory, gallery operations, IP licensing, and proprietary auction data, founded by Min Sung Kim (Forbes 30 Under 30).",
+    description: "PASO — art as an asset class. Investment advisory, gallery operations, IP licensing, and proprietary auction data. Began as an open call in 2013, registered in 2020 by Min Sung Kim (Forbes 30 Under 30).",
+    alternates: { canonical: "/about" },
     openGraph: {
       title: "About — PASO",
-      description: "Art as an asset class. PASO connects investment advisory, gallery operations, IP licensing, and 15.8M-record auction data.",
+      description: "Art as an asset class. PASO connects investment advisory, gallery operations, IP licensing, and 15M+ record auction data.",
+      url: "https://pasocorp.com/about",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     },
+    twitter: { card: "summary_large_image", title: "About — PASO", images: ["/og-image.jpg"] },
   };
 }
 

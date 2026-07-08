@@ -11,6 +11,7 @@ export const dict: Dict = {
   "nav.about": { en: "About", ko: "About" },
   "nav.solutions": { en: "Solutions", ko: "Solutions" },
   "nav.brands": { en: "Brands", ko: "Brands" },
+  "nav.spaces": { en: "Spaces", ko: "Spaces" },
   "nav.contact": { en: "Contact", ko: "Contact" },
   "nav.menu_open": { en: "Open menu", ko: "메뉴 열기" },
   "nav.menu_close": { en: "Close menu", ko: "메뉴 닫기" },
@@ -19,8 +20,8 @@ export const dict: Dict = {
   // Hero / homepage
   "hero.tag": { en: "Strategic Art Advisory", ko: "데이터 기반 미술 자산 전략" },
   "hero.subtitle": {
-    en: "Data-driven art investment, gallery operations, and IP licensing — powered by 15.8M auction records.",
-    ko: "1,580만 건 데이터로 미술품 투자 자문, 갤러리 운영, IP 라이선싱을 연결합니다.",
+    en: "Data-driven art investment, gallery operations, and IP licensing, powered by 15M+ auction records.",
+    ko: "1,500만 건 데이터로 미술품 투자 자문, 갤러리 운영, IP 라이선싱을 연결합니다.",
   },
   "hero.cta_get_in_touch": { en: "Get in Touch", ko: "문의하기" },
   "hero.scroll": { en: "Scroll", ko: "Scroll" },
@@ -38,7 +39,7 @@ export const dict: Dict = {
   "footer.gallery_addr": { en: "92 Sungkyunkwan-ro, Jongno-gu, Seoul", ko: "서울 종로구 성균관로 92" },
   "footer.about": { en: "About", ko: "About" },
   "footer.contact": { en: "Contact", ko: "Contact" },
-  "footer.careers": { en: "Careers", ko: "Careers" },
+  "footer.spaces": { en: "Spaces", ko: "공간 대관" },
   "footer.terms": { en: "Terms", ko: "이용약관" },
   "footer.privacy": { en: "Privacy", ko: "개인정보처리방침" },
   "footer.copyright": { en: "© PASO 2026", ko: "© PASO 2026" },
@@ -50,8 +51,8 @@ export const dict: Dict = {
   "about.tag": { en: "About PASO", ko: "About" },
   "about.title": { en: "Art as an Asset Class", ko: "Art as an Asset Class" },
   "about.lead": {
-    en: "PASO is a Seoul-based art group connecting investment advisory, gallery operations, IP licensing, and proprietary auction data. Founded in 2020 by Min Sung Kim — Forbes 30 Under 30.",
-    ko: "파소는 데이터 기반 미술 자산 전략을 제공하는 서울 기반의 아트 그룹입니다. 투자 자문, 갤러리 운영, IP 라이선싱, 옥션 데이터를 하나로 연결합니다. 2020년 설립, 창업자 김민성(Forbes 30 Under 30).",
+    en: "PASO is a Seoul-based art group connecting investment advisory, gallery operations, IP licensing, and proprietary auction data. Began as an emerging-artist open call in 2013, registered as a company in 2020. Founded by Min Sung Kim (Forbes 30 Under 30).",
+    ko: "파소는 데이터 기반 미술 자산 전략을 제공하는 서울 기반의 아트 그룹입니다. 투자 자문, 갤러리 운영, IP 라이선싱, 옥션 데이터를 하나로 연결합니다. 2013년 신진작가 공모전으로 시작해 2020년 사업자 등록. 창업자 김민성(Forbes 30 Under 30).",
   },
 
   // Contact
@@ -69,12 +70,59 @@ export const dict: Dict = {
   "contact.how_help": { en: "How Can We Help?", ko: "How Can We Help?" },
   "contact.inq.exhibition": { en: "Exhibitions", ko: "전시 문의" },
   "contact.inq.exhibition_desc": { en: "Gallery exhibitions and artist collaborations", ko: "갤러리 전시 및 작가 협업 문의" },
-  "contact.inq.advisory": { en: "Advisory", ko: "자문 서비스" },
-  "contact.inq.advisory_desc": { en: "Art tax planning, asset management, collection advisory", ko: "미술품 절세, 자산관리, 컬렉팅 자문" },
+  "contact.inq.spaces": { en: "Spaces & Rental", ko: "공간 대관" },
+  "contact.inq.spaces_desc": { en: "Hanok gallery rental for private events and exhibitions", ko: "한옥 갤러리 프라이빗 행사·전시 대관" },
   "contact.inq.brand": { en: "Brand Partnerships", ko: "브랜드 협업" },
   "contact.inq.brand_desc": { en: "Character IP, art project collaborations", ko: "캐릭터 IP, 아트 프로젝트 콜라보레이션" },
-  "contact.inq.data": { en: "Data & Reports", ko: "데이터 & 리포트" },
-  "contact.inq.data_desc": { en: "Artrader platform, Artist Index subscription", ko: "Artrader 플랫폼, Artist Index 구독" },
+  "contact.inq.data": { en: "Data & Advisory", ko: "데이터 & 자문" },
+  "contact.inq.data_desc": { en: "Artrader platform, valuation reports, art-asset advisory", ko: "Artrader 플랫폼, 정량 리포트, 미술 자산 자문" },
+
+  // Contact form
+  "contact.form.title": { en: "Send an Inquiry", ko: "문의 보내기" },
+  "contact.form.name": { en: "Name", ko: "이름" },
+  "contact.form.email": { en: "Email", ko: "이메일" },
+  "contact.form.topic": { en: "Topic", ko: "문의 유형" },
+  "contact.form.topic_placeholder": { en: "Select a topic", ko: "유형을 선택해주세요" },
+  "contact.form.message": { en: "Message", ko: "문의 내용" },
+  "contact.form.message_placeholder": { en: "Tell us about your inquiry", ko: "문의 내용을 입력해주세요" },
+  "contact.form.submit": { en: "Send Inquiry", ko: "문의하기" },
+  "contact.form.sending": { en: "Sending...", ko: "전송 중..." },
+  "contact.form.sent": { en: "Your inquiry has been received.", ko: "문의가 접수되었습니다" },
+  "contact.form.error": { en: "Something went wrong. Please try again.", ko: "전송에 실패했습니다. 다시 시도해주세요." },
+
+  // Scroll story beats
+  "story.find.title": { en: "We find art.", ko: "We find art." },
+  "story.find.body": {
+    en: "Emerging artists discovered through open calls and hanok exhibitions since 2013. The gallery is where everything begins.",
+    ko: "2013년부터 공모전과 한옥 전시로 신진 작가를 발굴해 왔습니다. 갤러리는 모든 것이 시작되는 곳입니다.",
+  },
+  "story.analyze.title": { en: "We analyze art.", ko: "We analyze art." },
+  "story.analyze.body": {
+    en: "Fifteen million auction records refined into fair-market prices, artist indices, and quantitative reports.",
+    ko: "1,500만 건의 옥션 데이터를 정제해 적정가와 Artist Index, 정량 리포트를 만듭니다.",
+  },
+  "story.grow.title": { en: "We grow art.", ko: "We grow art." },
+  "story.grow.body": {
+    en: "Gallery, agency, data, advisory, and exhibitions: five brands compounding into one ecosystem that treats art as an asset class.",
+    ko: "갤러리, 에이전시, 데이터, 자문, 전시. 다섯 브랜드가 하나의 생태계로 맞물려 예술을 자산으로 키웁니다.",
+  },
+
+  // Trust bar
+  "trust.label": { en: "Selected Partners & Clients", ko: "함께해 온 파트너" },
+
+  // Exhibition strip
+  "exhibitions.tag": { en: "From the Gallery", ko: "From the Gallery" },
+  "exhibitions.title": { en: "Selected Exhibitions", ko: "지난 전시들" },
+  "exhibitions.cta": { en: "View all at Paso Gallery", ko: "Paso Gallery에서 전체 보기" },
+
+  // Cookie consent
+  "cookie.text": {
+    en: "This website uses cookies for service improvement and usage analytics.",
+    ko: "이 웹사이트는 서비스 개선 및 이용 통계 분석을 위해 쿠키를 사용합니다.",
+  },
+  "cookie.privacy": { en: "Privacy Policy", ko: "개인정보처리방침" },
+  "cookie.accept": { en: "Accept", ko: "동의" },
+  "cookie.decline": { en: "Decline", ko: "거부" },
 
   // Locale toggle
   "locale.switch_to_en": { en: "한국어", ko: "한국어" },
@@ -84,17 +132,21 @@ export const dict: Dict = {
   // BrandHub
   "brandhub.tag": { en: "Our Brands", ko: "Our Brands" },
   "brandhub.title": { en: "Five Brands, One Vision", ko: "Five Brands, One Vision" },
-  "brandhub.paso_gallery.target": { en: "For Collectors & Art Lovers", ko: "컬렉터와 예술 애호가를 위해" },
-  "brandhub.paso_gallery.desc": {
-    en: "Curating emerging and rising artists from Korea and abroad, with private programmes guiding young collectors through their first acquisitions.",
-    ko: "국내외 신진·라이징 작가를 엄선하여 소개하며, 영 컬렉터를 위한 프라이빗 프로그램을 통해 컬렉팅의 첫 걸음을 함께합니다.",
-  },
   "brandhub.art_center.target": { en: "For Exhibitions & Community", ko: "전시와 커뮤니티를 위해" },
   "brandhub.art_center.desc": {
     en: "A standing exhibition of 70+ blue-chip and top-auction works alongside emerging-artist IP expansion projects.",
     ko: "블루칩·옥션 상위권 작품 70여 점 상설전과 이머징 작가 IP 확장 프로젝트를 전개합니다.",
   },
-  "brandhub.art_center.activity": { en: "Opens 2025 (with Mass C&G)", ko: "2025 오픈 (with Mass C&G)" },
+  "brandhub.artledger.target": { en: "For Tax & Asset Advisory", ko: "세무 및 자산 자문을 위해" },
+  "brandhub.artledger.desc": {
+    en: "Expert advisory across art tax planning, corporate collection management, and the full transaction lifecycle.",
+    ko: "미술품 절세, 법인 컬렉션 운용, 거래 전 과정을 전문적으로 자문합니다.",
+  },
+  "brandhub.paso_gallery.target": { en: "For Collectors & Spaces", ko: "컬렉터와 공간을 위해" },
+  "brandhub.paso_gallery.desc": {
+    en: "Curating emerging and rising artists from a Seoul hanok, with private sales programmes and the space open for events and rentals.",
+    ko: "서울 한옥에서 국내외 신진·라이징 작가를 엄선해 소개하고 프라이빗 세일을 운영하며, 공간은 행사·전시 대관으로도 열려 있습니다.",
+  },
   "brandhub.artrader.target": { en: "For Data-Driven Decisions", ko: "데이터 기반 의사결정을 위해" },
   "brandhub.artrader.desc": {
     en: "An art trading platform and corporate-collection database that calculates fair-market acquisition prices from 15M+ global auction records.",
@@ -103,13 +155,8 @@ export const dict: Dict = {
   "brandhub.artrader.activity": { en: "Real-time analysis on 15M+ transactions", ko: "1,500만+ 거래 데이터 실시간 분석" },
   "brandhub.agency.target": { en: "For Brands & IP Partners", ko: "브랜드와 IP 파트너를 위해" },
   "brandhub.agency.desc": {
-    en: "We design sustainable IP structures that protect both brand and artist value.",
-    ko: "브랜드와 작가 양측의 IP 가치를 지속 가능한 구조로 설계합니다.",
-  },
-  "brandhub.artledger.target": { en: "For Tax & Asset Advisory", ko: "세무 및 자산 자문을 위해" },
-  "brandhub.artledger.desc": {
-    en: "Expert advisory across art tax planning, corporate collection management, and the full transaction lifecycle.",
-    ko: "미술품 절세, 법인 컬렉션 운용, 거래 전 과정을 전문적으로 자문합니다.",
+    en: "We design sustainable IP structures that protect both brand and artist value, proven in collaborations with major retail brands.",
+    ko: "대형 유통 브랜드와의 콜라보로 검증된, 브랜드와 작가 양측의 IP 가치를 지키는 지속 가능한 구조를 설계합니다.",
   },
 
   // Services
@@ -124,8 +171,8 @@ export const dict: Dict = {
     ko: "미술품 절세, 법인 자산 관리, 컬렉션 리밸런싱 자문.",
   },
   "services.gallery.desc": {
-    en: "Emerging-artist exhibitions, blue-chip standing shows, and art salon programmes.",
-    ko: "신진 작가 전시, 블루칩 상설전, 아트 살롱 프로그램.",
+    en: "Emerging-artist exhibitions, private sales, and hanok space rentals.",
+    ko: "신진 작가 전시, 프라이빗 세일, 한옥 공간 대관.",
   },
   "services.agency.desc": {
     en: "Brand art projects, IP licensing, and spatial collaborations.",
@@ -145,8 +192,8 @@ export const dict: Dict = {
   // Ecosystem
   "ecosystem.title": { en: "PASO Integrated Ecosystem", ko: "PASO Integrated Ecosystem" },
   "ecosystem.lead": {
-    en: "Anchored by the gallery — data, advisory, exhibitions, and IP all connect through one ecosystem.",
-    ko: "갤러리를 중심으로, 데이터·자문·전시·IP가 하나로 연결됩니다.",
+    en: "Anchored by the gallery: data, exhibitions, and IP all connect through one ecosystem.",
+    ko: "갤러리를 중심으로, 데이터·전시·IP가 하나로 연결됩니다.",
   },
   "ecosystem.note": {
     en: "Paso Gallery is the core brand of the PASO ecosystem, responsible for everything from emerging-artist discovery to market connection.",
@@ -157,7 +204,7 @@ export const dict: Dict = {
   "flywheel.artrader.short": { en: "Data · Analytics", ko: "데이터 · 분석" },
   "flywheel.artledger.short": { en: "Advisory · Tax", ko: "자문 · 절세" },
   "flywheel.artcenter.short": { en: "Exhibition · Community", ko: "전시 · 커뮤니티" },
-  "flywheel.gallery.short": { en: "Emerging · MD", ko: "신진작가 · MD" },
+  "flywheel.gallery.short": { en: "Exhibition · Spaces", ko: "전시 · 공간" },
   "flywheel.agency.short": { en: "IP · Brand", ko: "IP · 브랜드" },
   "flywheel.synergy": { en: "Synergy", ko: "시너지" },
   "flywheel.conn.market_data": { en: "Market data provision", ko: "시장 데이터 제공" },
@@ -170,19 +217,11 @@ export const dict: Dict = {
   "flywheel.conn.secondary_market": { en: "Secondary-market sourcing", ko: "2차 시장 매물 연결" },
 
   // HoverPreviewProcess
-  "hpp.gallery.subtitle": { en: "Emerging artists · Exhibitions · Art MD", ko: "신진작가 발굴 · 전시 · 아트 MD" },
+  "hpp.gallery.subtitle": { en: "Emerging artists · Private sales · Spaces", ko: "신진작가 발굴 · 프라이빗 세일 · 공간 대관" },
   "hpp.artcenter.subtitle": { en: "Standing exhibitions · Art salons · Community", ko: "상설전시 · 아트 살롱 · 커뮤니티" },
   "hpp.artrader.subtitle": { en: "Market analysis on 15M+ transactions", ko: "1,500만+ 거래 데이터 기반 시세 분석" },
   "hpp.artledger.subtitle": { en: "Art tax · Corporate advisory · Private Sale", ko: "미술품 절세 · 법인 자문 · Private Sale" },
   "hpp.agency.subtitle": { en: "Character IP · B2B art projects", ko: "캐릭터 IP · B2B 아트 프로젝트" },
-  "hpp.line1": {
-    en: "We discover emerging artists at {gallery} and present 70+ blue-chip works at {artcenter}.",
-    ko: "{gallery}에서 신진 작가를 발굴하고, {artcenter}에서 블루칩 작품 70여 점을 상시 전시합니다.",
-  },
-  "hpp.line2": {
-    en: "{artrader} calculates fair prices from 15M auction records, and {artledger} advises on tax and corporate-collection strategy. {agency} designs sustainable IP value for both brands and artists.",
-    ko: "{artrader}의 1,500만 건 옥션 데이터로 적정가를 산출하고, {artledger}이 절세와 법인 컬렉션 운용을 자문합니다. {agency}는 브랜드와 작가 양측의 IP 가치를 설계합니다.",
-  },
 
   // DynamicSections (Top + Bottom)
   "dynamic.about_paso": { en: "About PASO", ko: "About PASO" },
@@ -194,10 +233,10 @@ export const dict: Dict = {
   "dynamic.whats_happening": { en: "What's Happening", ko: "What's Happening" },
   "dynamic.card.paso_private_sales.title": { en: "Paso Private Sales", ko: "Paso Private Sales" },
   "dynamic.card.paso_private_sales.desc": { en: "Private sales by Paso Gallery", ko: "Paso Gallery의 프라이빗 세일" },
-  "dynamic.card.preopening.title": { en: "Pre-Opening Standing Show", ko: "프리오프닝 상설전" },
-  "dynamic.card.preopening.desc": { en: "PASO Art Center's debut exhibition", ko: "PASO Art Center의 첫 전시" },
-  "dynamic.card.magok_salon.title": { en: "Magok Art Salon", ko: "마곡 아트 살롱" },
-  "dynamic.card.magok_salon.desc": { en: "Monthly community art talks", ko: "월간 커뮤니티 아트 토크" },
+  "dynamic.card.frieze.title": { en: "Frieze Week at the Hanok", ko: "프리즈 위크 한옥 대관" },
+  "dynamic.card.frieze.desc": { en: "Private events and exhibitions this September", ko: "9월 프리즈 서울 주간 프라이빗 행사·전시 대관" },
+  "dynamic.card.artrader_launch.title": { en: "Artrader Official Launch", ko: "Artrader 정식 런칭" },
+  "dynamic.card.artrader_launch.desc": { en: "The art market data platform goes live", ko: "미술 시장 데이터 플랫폼 정식 오픈" },
 
   // Solutions page
   "solutions.hero.title": { en: "Integrated Art Solutions", ko: "Integrated Art Solutions" },
@@ -211,36 +250,21 @@ export const dict: Dict = {
     en: "Market analysis platform built on 15M+ global auction and private-sale transactions.",
     ko: "글로벌 경매·Private Sales 1,500만+ 거래 데이터 기반 시장 분석 플랫폼",
   },
-  "solutions.artrader.f1": { en: "Artist Index quantitative reports", ko: "Artist Index 정량 리포트" },
-  "solutions.artrader.f2": { en: "Real-time auction data", ko: "실시간 경매 데이터" },
-  "solutions.artrader.f3": { en: "Portfolio valuation monitoring", ko: "포트폴리오 가치 모니터링" },
-  "solutions.artrader.f4": { en: "Trend prediction signals", ko: "트렌드 예측 시그널" },
   "solutions.artledger.title": { en: "Advisory & Tax Strategy", ko: "Advisory & Tax Strategy" },
   "solutions.artledger.desc": {
     en: "Art gift & inheritance tax planning, corporate expense handling, valuation, and systematic collection advisory.",
     ko: "미술품 증여·상속 절세, 법인 비용처리, 자산 가치 평가, 체계적 컬렉팅 자문",
   },
-  "solutions.artledger.f1": { en: "Tax strategy planning", ko: "절세 전략 수립" },
-  "solutions.artledger.f2": { en: "Art valuation", ko: "미술품 가치 평가" },
-  "solutions.artledger.f3": { en: "Collection portfolio building", ko: "컬렉션 포트폴리오 구축" },
-  "solutions.artledger.f4": { en: "Seminar & lecture programmes", ko: "세미나·강연 프로그램" },
   "solutions.artcenter.title": { en: "Exhibition & Community", ko: "Exhibition & Community" },
   "solutions.artcenter.desc": {
     en: "Top-30 fair-priced secondary-market exhibitions, global emerging-artist shows, and community programmes.",
     ko: "적정가 2차 시장 Top 30 전시, 글로벌 이머징 작가 전시, 커뮤니티 프로그램",
   },
-  "solutions.artcenter.f1": { en: "Curated & standing exhibitions", ko: "기획전 · 상설전" },
-  "solutions.artcenter.f2": { en: "Art salon · talks", ko: "아트 살롱 · 토크" },
-  "solutions.artcenter.f3": { en: "Residency programmes", ko: "레지던시 프로그램" },
-  "solutions.gallery.title": { en: "Emerging Artists & MD", ko: "Emerging Artists & MD" },
+  "solutions.gallery.title": { en: "Exhibition & Spaces", ko: "Exhibition & Spaces" },
   "solutions.gallery.desc": {
-    en: "Korean emerging-artist competitions and awarded-work exhibitions, plus an art-based MD brand.",
-    ko: "국내 신진작가 공모전·수상작 전시, 아트 기반 MD 브랜드 운영",
+    en: "Emerging-artist competitions and exhibitions in a Seoul hanok gallery, with private sales and the space open for events and rentals.",
+    ko: "서울 한옥 갤러리에서의 신진작가 공모전과 전시, 프라이빗 세일. 공간은 행사·전시 대관으로도 운영됩니다.",
   },
-  "solutions.gallery.f1": { en: "Emerging-artist competition", ko: "신진작가 공모전" },
-  "solutions.gallery.f2": { en: "Award-winning exhibitions", ko: "수상작 전시" },
-  "solutions.gallery.f3": { en: "Art MD collection", ko: "아트 MD 컬렉션" },
-  "solutions.gallery.f4": { en: "Artist residency", ko: "작가 레지던시" },
   "solutions.agency.title": { en: "IP & Brand Collaboration", ko: "IP & Brand Collaboration" },
   "solutions.agency.desc": {
     en: "Character IP licensing, franchise art collaborations, art toys and street-art.",
@@ -292,52 +316,6 @@ export const dict: Dict = {
   "spaces.hours.label": { en: "Hours", ko: "Hours" },
   "spaces.contact.label": { en: "Contact", ko: "Contact" },
   "spaces.instagram.label": { en: "Instagram", ko: "Instagram" },
-
-  // OfferCarousel
-  "offer.tag": { en: "What We Offer", ko: "What We Offer" },
-  "offer.heading": { en: "Explore Our Ecosystem", ko: "Explore Our Ecosystem" },
-  "offer.1.tag": { en: "Exhibitions · Gallery", ko: "전시 · 갤러리" },
-  "offer.1.title": { en: "2025 Emerging Artist Open Call", ko: "2025 신진작가 공모전" },
-  "offer.1.desc": { en: "Discover verified emerging artists. Selected winning works on view every year.", ko: "검증된 신진작가의 작품을 직접 만나보세요. 매년 엄선된 수상작을 전시합니다." },
-  "offer.2.tag": { en: "Art Center · Community", ko: "아트센터 · 커뮤니티" },
-  "offer.2.title": { en: "Magok Pre-Opening Standing Show", ko: "마곡 프리오프닝 상설전" },
-  "offer.2.desc": { en: "Trace the work of emerging artists worldwide. Art salons and insight talks.", ko: "국내외 이머징 작가들의 작품 흐름을 한눈에. 아트 살롱과 인사이트 토크." },
-  "offer.3.tag": { en: "Data · Trading", ko: "데이터 · 거래" },
-  "offer.3.title": { en: "Analysis of 15M+ Live Transactions", ko: "1,500만 건 실거래가 분석" },
-  "offer.3.desc": { en: "Check fair-market acquisition prices and live values built on global auction data.", ko: "글로벌 옥션 데이터 기반, 적정 매입가와 시세를 실시간으로 확인하세요." },
-  "offer.4.tag": { en: "Advisory · Tax", ko: "자문 · 절세" },
-  "offer.4.title": { en: "Corporate Art Tax Package", ko: "법인 미술품 절세 패키지" },
-  "offer.4.desc": { en: "From acquisition to tax filing and Private Sale — we design your full art-asset strategy.", ko: "매입부터 세금 처리, Private Sale까지. 미술 자산 전략을 설계합니다." },
-  "offer.5.tag": { en: "IP · Brand", ko: "IP · 브랜드" },
-  "offer.5.title": { en: "Art Collaboration Projects", ko: "아트 콜라보 프로젝트" },
-  "offer.5.desc": { en: "Elevate brand value through character IP licensing and B2B art projects.", ko: "캐릭터 IP 라이센싱과 B2B 아트 프로젝트로 브랜드 가치를 높입니다." },
-
-  // BrandTabs
-  "brandtabs.artrader.subtitle": { en: "Data-Driven Art Trading", ko: "Data-Driven Art Trading" },
-  "brandtabs.artrader.content": {
-    en: "A global art-trading database with 15.8M+ records. Artist Index and quantitative reports.",
-    ko: "글로벌 미술 거래 데이터베이스 1,580만+ 건. Artist Index, 종목분석서 스타일 정량 리포트.",
-  },
-  "brandtabs.artledger.subtitle": { en: "Advisory & Tax Strategy", ko: "Advisory & Tax Strategy" },
-  "brandtabs.artledger.content": {
-    en: "Gift & inheritance, corporate expense & depreciation, collection management — across the full life cycle of art assets.",
-    ko: "증여·상속, 법인 비용·감가, 컬렉션 관리. 미술 자산의 전 생애를 함께합니다.",
-  },
-  "brandtabs.gallery.subtitle": { en: "Primary Art Market", ko: "Primary Art Market" },
-  "brandtabs.gallery.content": {
-    en: "Korean emerging-artist competitions and global emerging-artist exhibitions. The frontier of art.",
-    ko: "국내 신진작가 공모전, 글로벌 이머징 작가 전시. 예술의 최전선.",
-  },
-  "brandtabs.agency.subtitle": { en: "IP & Brand Collaboration", ko: "IP & Brand Collaboration" },
-  "brandtabs.agency.content": {
-    en: "Brand art projects, character IP licensing, and art toys.",
-    ko: "브랜드 아트 프로젝트, 캐릭터 IP 라이선싱, 아트토이.",
-  },
-  "brandtabs.artcenter.subtitle": { en: "Cultural Hub, Magok", ko: "Cultural Hub, Magok" },
-  "brandtabs.artcenter.content": {
-    en: "A new cultural anchor in Magok. Exhibitions, seminars, community.",
-    ko: "마곡의 새로운 문화 거점. 전시, 세미나, 커뮤니티.",
-  },
 
   // BrandLanding (selected high-visibility strings)
   "brandlanding.contact.artrader.desc": {

@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "이용약관",
   description: "PASO Corp 서비스 이용약관",
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
 };
 
 export default function TermsPage() {
@@ -103,7 +105,7 @@ export default function TermsPage() {
               </ol>
             </section>
 
-            <section className="border-t border-[#1a1a1a] pt-8">
+            <section className="border-t border-border pt-8">
               <p className="text-[#666]">
                 본 약관에 대한 문의사항은{" "}
                 <Link href="/contact" className="text-white underline underline-offset-4 hover:text-[#b8960b] duration-150">

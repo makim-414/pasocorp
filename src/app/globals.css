@@ -7,26 +7,23 @@
   font-display: swap;
 }
 
-@theme inline {
-  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
-
-  @keyframes cell-ripple {
-    0% { opacity: 0.4; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.4; }
-  }
-}
-
 @theme {
-  --font-dutch: "Dutch801", Georgia, serif;
+  /* Display serif: Dutch801 for Latin, Noto Serif KR fills Korean glyphs */
+  --font-dutch: "Dutch801", "Noto Serif KR", Georgia, serif;
   --font-noto-serif: "Noto Serif KR", Georgia, serif;
+  /* Surfaces: black base with a stepped scale so cards/borders read on dark */
   --color-bg: #000000;
-  --color-fg: #e8e8e8;
-  --color-muted: #888888;
-  --color-accent: #b8960b;
   --color-card: #0a0a0a;
-  --color-border: #1a1a1a;
+  --color-surface: #101010;
+  --color-border: #232323;
+  /* Text */
+  --color-fg: #e8e8e8;
+  --color-muted: #9a9a9a;
+  /* Gold: #b8960b is the identity gold; #c9a96e is the bright variant for
+     large numerals/labels that would go muddy at display sizes */
+  --color-accent: #b8960b;
   --color-gold: #b8960b;
+  --color-gold-bright: #c9a96e;
 }
 
 * { box-sizing: border-box; }

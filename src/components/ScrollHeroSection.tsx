@@ -14,11 +14,7 @@ const PASO_WORDS = [
   'Analyze Art.',
   'Curate Art.',
   'Exhibit Art.',
-  'Evaluate Art.',
   'Trade Art.',
-  'Consult Art.',
-  'Connect Art.',
-  'Invest Art.',
   'Grow Art.',
 ];
 
@@ -60,11 +56,6 @@ export default function ScrollHeroSection({
           </ul>
         </section>
       </header>
-
-      <div className="scroll-hero-main">
-        <div className="scroll-hero-main-content">
-        </div>
-      </div>
 
       <style jsx global>{`
         .scroll-hero-wrapper {
@@ -144,12 +135,14 @@ export default function ScrollHeroSection({
           position: sticky;
           top: calc(var(--scroll-start) - 0.5lh);
           margin: 0;
-          font-weight: 600;
+          font-family: var(--font-dutch);
+          font-weight: 400;
           color: white;
         }
 
         .scroll-hero-wrapper ul {
-          font-weight: 600;
+          font-family: var(--font-dutch);
+          font-weight: 400;
           list-style: none;
           padding: 0;
           margin: 0;
@@ -174,87 +167,6 @@ export default function ScrollHeroSection({
             background-clip: text;
             color: transparent;
           }
-        }
-
-        /* Bottom gold section — contained within wrapper */
-        .scroll-hero-main {
-          width: 100%;
-          height: 80vh;
-          min-height: 500px;
-          position: relative;
-          color: black;
-        }
-
-        @media (min-width: 768px) {
-          .scroll-hero-main {
-            height: 120vh;
-            min-height: 600px;
-          }
-        }
-
-        .scroll-hero-main::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          z-index: -1;
-          background: #b8960b;
-          border-radius: 1rem 1rem 0 0;
-        }
-
-        .scroll-hero-main-content {
-          --scroll-font-level: 4;
-          --scroll-font-size-min: 20;
-          height: 100%;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .scroll-hero-main-content p {
-          margin: 0;
-          font-weight: 600;
-          white-space: nowrap;
-          color: black;
-          text-align: center;
-        }
-
-        .scroll-hero-main-content a {
-          color: black;
-          text-decoration: none;
-          text-underline-offset: 0.1lh;
-        }
-
-        .scroll-hero-main-content a:is(:hover, :focus-visible) {
-          text-decoration: underline;
-        }
-
-        /* View-timeline animation — scoped to wrapper - disabled on mobile for stability */
-        @supports (animation-timeline: view()) {
-          @media (min-width: 768px) {
-            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main {
-              view-timeline: --scroll-section;
-            }
-            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main::before {
-              transform-origin: 50% 100%;
-              scale: 0.9;
-              animation: scrollHeroGrow both ease-in-out;
-              animation-timeline: --scroll-section;
-              animation-range: entry 50%;
-            }
-            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main-content p {
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              translate: -50% -50%;
-              z-index: 5;
-              animation: scrollHeroReveal both ease-in-out;
-              animation-timeline: --scroll-section;
-              animation-range: entry 50%;
-            }
-          }
-          @keyframes scrollHeroReveal { from { opacity: 0; } to { opacity: 1; } }
-          @keyframes scrollHeroGrow { to { scale: 1; border-radius: 0; } }
         }
 
         /* Grid background */
