@@ -2,6 +2,7 @@ import StandaloneNav from "@/components/StandaloneNav";
 import StandaloneFooter from "@/components/StandaloneFooter";
 import SpacesContent from "./SpacesContent";
 import SiteModeCookieSync from "@/components/SiteModeCookieSync";
+import GalleryJsonLd from "@/components/GalleryJsonLd";
 import { headers } from "next/headers";
 
 export async function generateMetadata() {
@@ -9,11 +10,14 @@ export async function generateMetadata() {
   const description = "A hanok gallery in Jongno-gu, Seoul. Two exhibition rooms — Light Room and Dark Room — each with its own atmosphere.";
   // pasogallery.com is a standalone domain: keep its SEO on its own origin
   if ((await headers()).get("x-site-mode") === "pasogallery") {
+    const image = "https://pasogallery.com/brands/paso-gallery-og.jpg";
     return {
       title: { absolute: title },
       description,
+      keywords: ["Paso Gallery", "파소갤러리", "종로 한옥 갤러리", "Space by PASO", "전시 공간 대관", "갤러리 대관", "서울 전시 공간"],
       alternates: { canonical: "https://pasogallery.com/spaces" },
-      openGraph: { title, description, url: "https://pasogallery.com/spaces" },
+      openGraph: { title, description, url: "https://pasogallery.com/spaces", siteName: "Paso Gallery", type: "website", locale: "ko_KR", images: [{ url: image, width: 1200, height: 630 }] },
+      twitter: { card: "summary_large_image", title, description, images: [image] },
     };
   }
   return { title: { absolute: title }, description };
@@ -37,6 +41,7 @@ export default async function SpacesPage() {
 
   return (
     <div className="bg-black min-h-screen">
+      <GalleryJsonLd />
       {!onStandaloneDomain && <SiteModeCookieSync siteMode="pasogallery" />}
       <StandaloneNav
         siteName="Paso Gallery"

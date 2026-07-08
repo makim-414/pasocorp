@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import StandaloneNav from "@/components/StandaloneNav";
 import SiteModeCookieSync from "@/components/SiteModeCookieSync";
 import StandaloneFooter from "@/components/StandaloneFooter";
+import GalleryJsonLd from "@/components/GalleryJsonLd";
 import BrandLanding from "./BrandLanding";
 import { getSiteMode } from "@/lib/site-mode";
 
@@ -145,6 +146,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: { absolute: seo.title },
       description: seo.description,
+      keywords: ["Paso Gallery", "파소갤러리", "파소 갤러리", "종로 갤러리", "한옥 갤러리", "서울 갤러리", "현대미술 갤러리", "신진작가", "전시 대관", "Space by PASO"],
       alternates: { canonical: "https://pasogallery.com" },
       openGraph: {
         title: seo.title,
@@ -235,6 +237,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
     );
     return (
       <div className="bg-black min-h-screen">
+        {slug === "paso-gallery" && <GalleryJsonLd />}
         {isSlugBased && <SiteModeCookieSync siteMode={slugSiteMode} />}
         <StandaloneNav
           siteName={standaloneConfig.siteName}

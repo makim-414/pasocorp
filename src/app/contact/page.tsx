@@ -6,17 +6,21 @@ import StandaloneNav from "@/components/StandaloneNav";
 import StandaloneFooter from "@/components/StandaloneFooter";
 import ContactContent from "./ContactContent";
 import GalleryContactContent from "./GalleryContactContent";
+import GalleryJsonLd from "@/components/GalleryJsonLd";
 
 export async function generateMetadata(): Promise<Metadata> {
   // pasogallery.com renders the gallery contact page: keep its SEO on its own origin
   if ((await headers()).get("x-site-mode") === "pasogallery") {
     const title = "Contact — Paso Gallery";
     const description = "전시, 대관, 협업 문의. Paso Gallery에 연락하세요.";
+    const image = "https://pasogallery.com/brands/paso-gallery-og.jpg";
     return {
       title: { absolute: title },
       description,
+      keywords: ["Paso Gallery", "파소갤러리", "갤러리 문의", "전시 대관 문의", "작가 협업", "종로 갤러리 연락처"],
       alternates: { canonical: "https://pasogallery.com/contact" },
-      openGraph: { title, description, url: "https://pasogallery.com/contact" },
+      openGraph: { title, description, url: "https://pasogallery.com/contact", siteName: "Paso Gallery", type: "website", locale: "ko_KR", images: [{ url: image, width: 1200, height: 630 }] },
+      twitter: { card: "summary_large_image", title, description, images: [image] },
     };
   }
   return {
@@ -38,6 +42,7 @@ export default async function ContactPage() {
   if (onStandaloneGalleryDomain) {
     return (
       <div className="bg-black min-h-screen">
+        <GalleryJsonLd />
         <StandaloneNav
           siteName="Paso Gallery"
           homeHref="/"

@@ -6,10 +6,12 @@ import BrandHub from "@/components/BrandHub";
 import PersonaSelector from "@/components/PersonaSelector";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
+import CorpJsonLd from "@/components/CorpJsonLd";
 
 export default function Home() {
   return (
     <div className="bg-black">
+      <CorpJsonLd />
       <Navbar />
       <main>
         <Hero />
