@@ -145,8 +145,8 @@ export default function PrivacyPage() {
                 <p><strong className="text-white">개인정보 보호책임자</strong></p>
                 <p>성명: 김민성</p>
                 <p>직위: 대표이사</p>
-                <p>연락처: +82 10-6432-4471</p>
-                <p>이메일: makim@ironact.net</p>
+                <p>연락처: +82 2 925 3631</p>
+                <p>이메일: info@pasogallery.com</p>
               </div>
             </section>
 
