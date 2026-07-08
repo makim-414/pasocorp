@@ -17,7 +17,7 @@ export default function StandaloneFooter({
   address,
   addressDetail,
   instagram,
-  email = "makim@ironact.net",
+  email = "info@pasogallery.com",
   corpLink = "https://pasocorp.com",
 }: StandaloneFooterProps) {
   return (
