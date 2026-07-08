@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { BarChart3, Landmark, Palette } from "lucide-react";
+import { BarChart3, FileText, Landmark, Palette } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 const AUTO_PLAY_INTERVAL = 4000;
@@ -28,6 +28,16 @@ export default function Services() {
       desc: t("services.artrader.desc"),
       color: "#b8960b",
       href: "/brands/artrader",
+    },
+    {
+      id: "artledger",
+      tag: "ARTLEDGER",
+      label: "Advisory & Tax",
+      Icon: FileText,
+      image: "/brands/artledger-consulting.jpg",
+      desc: t("services.artledger.desc"),
+      color: "#b8960b",
+      href: "/brands/artledger-consulting",
     },
     {
       id: "gallery",

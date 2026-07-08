@@ -1,161 +1,182 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useAnimationFrame, useMotionValue, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { useLocale } from "@/i18n/LocaleProvider";
 
-function getPos(angle: number, r: number, cx: number, cy: number) {
-  const rad = (angle * Math.PI) / 180;
-  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+/**
+ * PASO ecosystem as a dimensional orbital map: five brand nodes orbit the
+ * PASO core on a tilted elliptical plane. Depth is expressed through scale,
+ * opacity, and z-order as nodes pass in front of / behind the core.
+ * Hovering a node pauses the orbit and reveals its synergy links.
+ */
+
+const NODES = [
+  { id: "gallery", name: "Gallery", accent: "#e0c097", phase: 0 },
+  { id: "artcenter", name: "Art Center", accent: "#a0522d", phase: (Math.PI * 2) / 5 },
+  { id: "artrader", name: "Artrader", accent: "#22c55e", phase: (Math.PI * 4) / 5 },
+  { id: "artledger", name: "Artledger", accent: "#8b5cf6", phase: (Math.PI * 6) / 5 },
+  { id: "agency", name: "Agency", accent: "#06b6d4", phase: (Math.PI * 8) / 5 },
+];
+
+const CONNECTIONS = [
+  { from: "artrader", to: "gallery", key: "flywheel.conn.market_data" },
+  { from: "artrader", to: "artcenter", key: "flywheel.conn.value_analysis" },
+  { from: "agency", to: "artcenter", key: "flywheel.conn.ip_supply" },
+  { from: "agency", to: "gallery", key: "flywheel.conn.art_toy" },
+  { from: "artledger", to: "artcenter", key: "flywheel.conn.advisory" },
+  { from: "artledger", to: "gallery", key: "flywheel.conn.collector_support" },
+  { from: "gallery", to: "artrader", key: "flywheel.conn.primary_data" },
+  { from: "artcenter", to: "artrader", key: "flywheel.conn.secondary_market" },
+];
+
+// Orbit geometry (design-box units; the box scales responsively)
+const RX = 185;
+const RY = 74;
+const SPEED = 0.22; // radians / second
+
+function OrbitNode({
+  node,
+  angleRef,
+  active,
+  anyActive,
+  onEnter,
+  onLeave,
+  shortLabel,
+}: {
+  node: (typeof NODES)[number];
+  angleRef: React.MutableRefObject<number>;
+  active: boolean;
+  anyActive: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+  shortLabel: string;
+}) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const scale = useMotionValue(1);
+  const opacity = useMotionValue(1);
+  const zIndex = useMotionValue(10);
+
+  useAnimationFrame(() => {
+    const a = angleRef.current + node.phase;
+    const sin = Math.sin(a);
+    x.set(Math.cos(a) * RX);
+    y.set(sin * RY);
+    const depth = (sin + 1) / 2; // 0 = far, 1 = near
+    scale.set(0.78 + depth * 0.38);
+    opacity.set(anyActive && !active ? 0.35 : 0.55 + depth * 0.45);
+    zIndex.set(sin > 0 ? 20 : 5);
+  });
+
+  return (
+    <motion.div
+      className="absolute left-1/2 top-1/2 cursor-pointer"
+      style={{ x, y, scale, opacity, zIndex, translateX: "-50%", translateY: "-50%" }}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+    >
+      <div
+        className="w-[104px] h-[104px] rounded-full border flex flex-col items-center justify-center backdrop-blur-sm transition-[border-color,box-shadow,background-color] duration-300"
+        style={{
+          borderColor: active ? `${node.accent}66` : "rgba(255,255,255,0.16)",
+          backgroundColor: active ? `${node.accent}14` : "rgba(0,0,0,0.65)",
+          boxShadow: active
+            ? `0 0 24px ${node.accent}40, 0 0 48px ${node.accent}1f`
+            : "0 8px 24px rgba(0,0,0,0.5)",
+        }}
+      >
+        <div
+          className="w-1.5 h-1.5 rounded-full mb-1"
+          style={{ backgroundColor: active ? node.accent : "rgba(255,255,255,0.3)" }}
+        />
+        <span className="text-[11px] text-white/90 text-center leading-tight font-light">{node.name}</span>
+        <span className="text-[9px] text-white/55 text-center mt-0.5">{shortLabel}</span>
+      </div>
+    </motion.div>
+  );
 }
 
 export default function FlywheelVisual({ defaultActive }: { defaultActive?: string } = {}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
   const [hovered, setHovered] = useState<string | null>(null);
   const active = hovered ?? defaultActive ?? null;
+  const angleRef = useRef(-Math.PI / 2);
+  const pausedRef = useRef(false);
   const { t } = useLocale();
 
-  const brands = [
-    { id: "artrader", name: "Artrader", short: t("flywheel.artrader.short"), accent: "#22c55e", angle: -90 },
-    { id: "agency", name: "Agency", short: t("flywheel.agency.short"), accent: "#06b6d4", angle: 30 },
-    { id: "gallery", name: "Gallery", short: t("flywheel.gallery.short"), accent: "#e0c097", angle: 150 },
-  ];
+  pausedRef.current = hovered !== null;
 
-  const connections = [
-    { from: "artrader", to: "gallery", label: t("flywheel.conn.market_data"), color: "#22c55e" },
-    { from: "artrader", to: "agency", label: t("flywheel.conn.value_analysis"), color: "#22c55e" },
-    { from: "agency", to: "gallery", label: t("flywheel.conn.ip_supply"), color: "#06b6d4" },
-    { from: "gallery", to: "artrader", label: t("flywheel.conn.primary_data"), color: "#e0c097" },
-  ];
+  useAnimationFrame((_, delta) => {
+    if (!pausedRef.current) angleRef.current += (delta / 1000) * SPEED;
+  });
 
-  const R = 170;
-  const CX = 230;
-  const CY = 230;
-  const SIZE = 460;
-
-  const brandMap = Object.fromEntries(brands.map((b) => [b.id, b]));
+  const shortLabels: Record<string, string> = {
+    gallery: t("flywheel.gallery.short"),
+    artcenter: t("flywheel.artcenter.short"),
+    artrader: t("flywheel.artrader.short"),
+    artledger: t("flywheel.artledger.short"),
+    agency: t("flywheel.agency.short"),
+  };
+  const nodeNames = Object.fromEntries(NODES.map((n) => [n.id, n.name]));
+  const nodeAccents = Object.fromEntries(NODES.map((n) => [n.id, n.accent]));
   const activeConns = active
-    ? connections.filter((c) => c.from === active || c.to === active)
+    ? CONNECTIONS.filter((c) => c.from === active || c.to === active)
     : [];
 
   return (
-    <div ref={ref} className="bg-black p-4 md:p-8 min-h-[420px] md:min-h-[520px] flex flex-col items-center justify-center">
-      <div className="relative w-full max-w-[460px] mx-auto" style={{ aspectRatio: "1/1" }}>
-        <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${SIZE} ${SIZE}`}>
-          {/* Orbit ring */}
-          <motion.circle
-            cx={CX} cy={CY} r={R}
-            fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1"
-            initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8 }}
-          />
+    <div className="bg-black p-4 md:p-8 min-h-[420px] md:min-h-[520px] flex flex-col items-center justify-center">
+      <div className="relative w-full max-w-[500px] mx-auto" style={{ aspectRatio: "5/3.4", perspective: 1100 }}>
+        {/* Orbital plane rings */}
+        <div
+          className="absolute left-1/2 top-1/2 rounded-[50%] border border-[#b8960b]/25"
+          style={{ width: RX * 2 + 30, height: RY * 2 + 14, transform: "translate(-50%, -50%)" }}
+        />
+        <div
+          className="absolute left-1/2 top-1/2 rounded-[50%] border border-dashed border-white/[0.08]"
+          style={{ width: RX * 2 + 90, height: RY * 2 + 44, transform: "translate(-50%, -50%)" }}
+        />
+        {/* Plane glow */}
+        <div
+          className="absolute left-1/2 top-1/2 rounded-[50%] pointer-events-none"
+          style={{
+            width: RX * 2 + 30,
+            height: RY * 2 + 14,
+            transform: "translate(-50%, -50%)",
+            background: "radial-gradient(ellipse at center, rgba(184,150,11,0.10) 0%, transparent 65%)",
+          }}
+        />
 
-          {/* All connections (dim) */}
-          {connections.map((conn, i) => {
-            const from = getPos(brandMap[conn.from].angle, R, CX, CY);
-            const to = getPos(brandMap[conn.to].angle, R, CX, CY);
-            const isHighlighted = active && (conn.from === active || conn.to === active);
-            const isFromActive = conn.from === active;
-
-            // Curved path via center offset
-            const mx = (from.x + to.x) / 2 + (CX - (from.x + to.x) / 2) * 0.3;
-            const my = (from.y + to.y) / 2 + (CY - (from.y + to.y) / 2) * 0.3;
-
-            return (
-              <g key={`${conn.from}-${conn.to}-${i}`}>
-                <motion.path
-                  d={`M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`}
-                  fill="none"
-                  strokeWidth={isHighlighted ? 1.5 : 0.6}
-                  animate={{
-                    stroke: isHighlighted ? conn.color : "rgba(255,255,255,0.16)",
-                    opacity: active ? (isHighlighted ? 0.7 : 0.08) : 0.2,
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                {/* Animated flow dot */}
-                {isHighlighted && (
-                  <motion.circle
-                    r="3"
-                    fill={conn.color}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 1, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  >
-                    <animateMotion
-                      dur="2s"
-                      repeatCount="indefinite"
-                      path={isFromActive
-                        ? `M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`
-                        : `M ${to.x} ${to.y} Q ${mx} ${my} ${from.x} ${from.y}`
-                      }
-                    />
-                  </motion.circle>
-                )}
-              </g>
-            );
-          })}
-        </svg>
-
-        {/* Center PASO node */}
+        {/* Core */}
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="absolute"
-          style={{ left: `${((CX - 40) / SIZE) * 100}%`, top: `${((CY - 40) / SIZE) * 100}%`, width: `${(80 / SIZE) * 100}%`, height: `${(80 / SIZE) * 100}%` }}
+          className="absolute left-1/2 top-1/2 w-[92px] h-[92px] rounded-full border flex items-center justify-center"
+          style={{ translateX: "-50%", translateY: "-50%", zIndex: 10, borderColor: "rgba(184,150,11,0.45)", backgroundColor: "rgba(184,150,11,0.08)" }}
+          animate={{
+            boxShadow: [
+              "0 0 24px rgba(184,150,11,0.18), 0 0 64px rgba(184,150,11,0.08)",
+              "0 0 36px rgba(184,150,11,0.32), 0 0 90px rgba(184,150,11,0.14)",
+              "0 0 24px rgba(184,150,11,0.18), 0 0 64px rgba(184,150,11,0.08)",
+            ],
+          }}
+          transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-full h-full rounded-full border border-[#b8960b]/40 bg-[#b8960b]/10 flex items-center justify-center">
-            <span className="text-sm tracking-[0.25em] text-[#b8960b] font-light">PASO</span>
-          </div>
+          <span className="text-sm tracking-[0.25em] text-[#b8960b] font-light">PASO</span>
         </motion.div>
 
-        {/* Brand nodes */}
-        {brands.map((brand, i) => {
-          const pos = getPos(brand.angle, R, CX, CY);
-          const isActive = active === brand.id;
-          const isConnected = active ? connections.some(
-            (c) => (c.from === active && c.to === brand.id) || (c.to === active && c.from === brand.id)
-          ) : false;
-          const dimmed = active !== null && !isActive && !isConnected;
+        {/* Orbiting brand nodes */}
+        {NODES.map((node) => (
+          <OrbitNode
+            key={node.id}
+            node={node}
+            angleRef={angleRef}
+            active={active === node.id}
+            anyActive={active !== null}
+            onEnter={() => setHovered(node.id)}
+            onLeave={() => setHovered(null)}
+            shortLabel={shortLabels[node.id]}
+          />
+        ))}
 
-          return (
-            <motion.div
-              key={brand.id}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.08 + 0.5 }}
-              className="absolute cursor-pointer"
-              style={{ left: `${((pos.x - 52) / SIZE) * 100}%`, top: `${((pos.y - 52) / SIZE) * 100}%`, width: `${(104 / SIZE) * 100}%`, height: `${(104 / SIZE) * 100}%` }}
-              onMouseEnter={() => setHovered(brand.id)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <motion.div
-                animate={{
-                  scale: isActive ? 1.18 : 1,
-                  borderColor: isActive ? `${brand.accent}40` : dimmed ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.16)",
-                  backgroundColor: isActive ? `${brand.accent}0D` : "rgba(0,0,0,0.6)",
-                  opacity: dimmed ? 0.3 : 1,
-                  boxShadow: isActive
-                    ? `0 0 20px ${brand.accent}30, 0 0 40px ${brand.accent}15, inset 0 0 15px ${brand.accent}10`
-                    : "0 0 0px transparent",
-                }}
-                transition={{ duration: 0.4 }}
-                className="w-full h-full rounded-full border flex flex-col items-center justify-center backdrop-blur-sm"
-              >
-                <motion.div
-                  animate={{ backgroundColor: isActive || isConnected ? brand.accent : "rgba(255,255,255,0.3)" }}
-                  className="w-1.5 h-1.5 rounded-full mb-1"
-                />
-                <span className="text-[11px] text-white/90 text-center leading-tight font-light">{brand.name}</span>
-                <span className="text-[9px] text-white/55 text-center mt-0.5">{brand.short}</span>
-              </motion.div>
-            </motion.div>
-          );
-        })}
-
-        {/* Connection labels tooltip — only on hover */}
+        {/* Synergy tooltip */}
         <AnimatePresence>
           {hovered && activeConns.length > 0 && (
             <motion.div
@@ -163,22 +184,22 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
-              style={{ bottom: -16 }}
+              className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-30"
+              style={{ bottom: -24 }}
             >
-              <div className="bg-white/[0.03] border border-white/[0.08] backdrop-blur-md rounded-md px-4 py-2.5 min-w-[240px]">
-                <p className="text-[10px] tracking-[0.15em] uppercase mb-2 text-center" style={{ color: brandMap[hovered!]?.accent }}>
-                  {brandMap[hovered!]?.name} {t("flywheel.synergy")}
+              <div className="bg-black/80 border border-white/[0.12] backdrop-blur-md rounded-md px-4 py-2.5 min-w-[250px]">
+                <p className="text-[10px] tracking-[0.15em] uppercase mb-2 text-center" style={{ color: nodeAccents[hovered] }}>
+                  {nodeNames[hovered]} {t("flywheel.synergy")}
                 </p>
                 <div className="space-y-1">
                   {activeConns.map((conn, i) => {
                     const target = conn.from === hovered ? conn.to : conn.from;
                     const direction = conn.from === hovered ? "→" : "←";
                     return (
-                      <p key={i} className="text-[10px] text-white/50 font-light">
-                        <span className="text-white/30">{direction}</span>{" "}
-                        <span style={{ color: brandMap[target]?.accent }}>{brandMap[target]?.name}</span>{" "}
-                        {conn.label}
+                      <p key={i} className="text-[10px] text-white/60 font-light">
+                        <span className="text-white/35">{direction}</span>{" "}
+                        <span style={{ color: nodeAccents[target] }}>{nodeNames[target]}</span>{" "}
+                        {t(conn.key)}
                       </p>
                     );
                   })}
@@ -189,14 +210,9 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
         </AnimatePresence>
       </div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ delay: 1.2 }}
-        className="mt-2 text-[9px] tracking-[0.2em] uppercase text-[#b8960b]/70"
-      >
+      <p className="mt-6 text-[9px] tracking-[0.2em] uppercase text-[#b8960b]/70">
         PASO Integrated Ecosystem
-      </motion.p>
+      </p>
     </div>
   );
 }

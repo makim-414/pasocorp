@@ -15,11 +15,18 @@ export default function SolutionsContent() {
       image: "/brands/artrader-platform-hd.png",
     },
     {
-      brand: "Paso Agency",
-      slug: "paso-agency",
-      title: t("solutions.agency.title"),
-      desc: t("solutions.agency.desc"),
-      image: "/brands/paso-agency.jpg",
+      brand: "Artledger Consulting",
+      slug: "artledger-consulting",
+      title: t("solutions.artledger.title"),
+      desc: t("solutions.artledger.desc"),
+      image: "/brands/artledger-consulting.jpg",
+    },
+    {
+      brand: "PASO Art Center",
+      slug: "paso-art-center",
+      title: t("solutions.artcenter.title"),
+      desc: t("solutions.artcenter.desc"),
+      image: "/brands/paso-artcenter-building.jpg",
     },
     {
       brand: "Paso Gallery",
@@ -27,6 +34,13 @@ export default function SolutionsContent() {
       title: t("solutions.gallery.title"),
       desc: t("solutions.gallery.desc"),
       image: "/brands/paso-gallery.png",
+    },
+    {
+      brand: "Paso Agency",
+      slug: "paso-agency",
+      title: t("solutions.agency.title"),
+      desc: t("solutions.agency.desc"),
+      image: "/brands/paso-agency.jpg",
     },
   ];
 

@@ -5,9 +5,11 @@ import { ExternalLink, Instagram, Mail } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 const brandItems = [
-  { title: "Artrader", href: "/brands/artrader" },
-  { title: "Paso Agency", href: "/brands/paso-agency" },
   { title: "Paso Gallery", href: "https://pasogallery.com" },
+  { title: "Paso Agency", href: "/brands/paso-agency" },
+  { title: "Artrader", href: "/brands/artrader" },
+  { title: "Artledger Consulting", href: "/brands/artledger-consulting" },
+  { title: "PASO Art Center", href: "/brands/paso-art-center" },
 ];
 
 const serviceItems = [

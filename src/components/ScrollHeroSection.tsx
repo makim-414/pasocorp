@@ -57,13 +57,6 @@ export default function ScrollHeroSection({
         </section>
       </header>
 
-      <div className="scroll-hero-main">
-        <div className="scroll-hero-main-content">
-          <p>we help you grow.</p>
-          <a className="scroll-hero-cta" href="/contact">Get in touch →</a>
-        </div>
-      </div>
-
       <style jsx global>{`
         .scroll-hero-wrapper {
           --scroll-start: 45vh;
@@ -174,87 +167,6 @@ export default function ScrollHeroSection({
             background-clip: text;
             color: transparent;
           }
-        }
-
-        /* Bottom gold section — contained within wrapper */
-        .scroll-hero-main {
-          width: 100%;
-          height: 80vh;
-          min-height: 500px;
-          position: relative;
-          color: black;
-        }
-
-        @media (min-width: 768px) {
-          .scroll-hero-main {
-            height: 75vh;
-            min-height: 520px;
-          }
-        }
-
-        .scroll-hero-main::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          z-index: -1;
-          background: #b8960b;
-          border-radius: 1rem 1rem 0 0;
-        }
-
-        .scroll-hero-main-content {
-          height: 100%;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 1.75rem;
-        }
-
-        .scroll-hero-main-content p {
-          margin: 0;
-          font-family: var(--font-dutch);
-          font-weight: 400;
-          white-space: nowrap;
-          color: black;
-          text-align: center;
-          font-size: clamp(1.75rem, 4vw, 3.5rem);
-          line-height: 1.3;
-        }
-
-        .scroll-hero-cta {
-          display: inline-block;
-          color: black;
-          text-decoration: none;
-          font-size: clamp(0.75rem, 1vw, 0.85rem);
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          padding: 0.8em 2.2em;
-          border: 1px solid rgba(0, 0, 0, 0.55);
-          border-radius: 999px;
-          transition: background-color 0.4s ease, color 0.4s ease;
-        }
-
-        .scroll-hero-cta:is(:hover, :focus-visible) {
-          background: black;
-          color: #b8960b;
-        }
-
-        /* View-timeline animation — scoped to wrapper - disabled on mobile for stability */
-        @supports (animation-timeline: view()) {
-          @media (min-width: 768px) {
-            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main {
-              view-timeline: --scroll-section;
-            }
-            .scroll-hero-wrapper[data-animate='true'] .scroll-hero-main::before {
-              transform-origin: 50% 100%;
-              scale: 0.9;
-              animation: scrollHeroGrow both ease-in-out;
-              animation-timeline: --scroll-section;
-              animation-range: entry 50%;
-            }
-          }
-          @keyframes scrollHeroGrow { to { scale: 1; border-radius: 0; } }
         }
 
         /* Grid background */

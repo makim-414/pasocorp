@@ -19,7 +19,7 @@ export default function PersonaSelector() {
       desc: t("persona.corporate.desc"),
       links: [
         { name: "Artrader", href: "/brands/artrader" },
-        { name: "Contact", href: "/contact?topic=data" },
+        { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
       ],
     },
     {
@@ -37,7 +37,7 @@ export default function PersonaSelector() {
       desc: t("persona.collector.desc"),
       links: [
         { name: "Artrader", href: "/brands/artrader" },
-        { name: "Paso Gallery", href: "https://pasogallery.com" },
+        { name: "PASO Art Center", href: "/brands/paso-art-center" },
       ],
     },
   ];

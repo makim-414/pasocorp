@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import ScrollHeroSection from "@/components/ScrollHeroSection";
+import ScrollStory from "@/components/ScrollStory";
 import { DynamicTop, DynamicBottom } from "@/components/DynamicSections";
 import BrandHub from "@/components/BrandHub";
 import PersonaSelector from "@/components/PersonaSelector";
@@ -13,8 +12,7 @@ export default function Home() {
     <div className="bg-black">
       <Navbar />
       <main>
-        <Hero />
-        <ScrollHeroSection />
+        <ScrollStory />
         <DynamicTop />
         <PersonaSelector />
         <BrandHub />

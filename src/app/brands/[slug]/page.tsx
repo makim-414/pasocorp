@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound, permanentRedirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StandaloneNav from "@/components/StandaloneNav";
@@ -30,6 +30,23 @@ const brandsData: Record<string, {
       { title: "Artist Index", desc: "작가별 시장 가치 변동, 거래 빈도, 낙찰가 추이를 한눈에. 종목분석서 스타일의 정량 리포트." },
       { title: "Market Analytics", desc: "글로벌 경매 데이터 실시간 수집·분석. 트렌드 예측과 시장 인사이트." },
       { title: "Portfolio Tracker", desc: "보유 작품의 시장 가치를 실시간 모니터링. 매도 타이밍 시그널 제공." },
+    ],
+  },
+  "paso-art-center": {
+    name: "PASO Art Center",
+    slug: "paso-art-center",
+    year: 2025,
+    desc: "해외 이머징 작가부터 국내 유망 작가까지, 전시와 아트토이 발행 등 IP 확장 프로젝트를 전개하며, 상설전에서는 Artrader 데이터로 엄선한 블루칩·옥션 상위권 작품 70여 점을 상시 만날 수 있습니다.",
+    longDesc: "해외 이머징 작가부터 국내 유망 작가까지, PASO Art Center는 전시와 아트토이 발행 등 IP 확장 프로젝트를 전개하며, 상설전에서는 Artrader 데이터로 엄선한 블루칩·옥션 상위권 작품 70여 점을 상시 만날 수 있습니다.",
+    color: "#a0522d",
+    image: "/brands/paso-artcenter-building.jpg",
+    gallery: [
+      "/images/whats-happening/preopening.png",
+      "/images/paso-art-center-secondary.png",
+    ],
+    features: [
+      { title: "Exhibition Space", desc: "대형 전시를 위한 유연한 공간 구성. 자연광과 인공조명의 조화." },
+      { title: "Secondary Market", desc: "적정가 2차 시장 Top 30 작품을 큐레이션하여 전시·판매." },
     ],
   },
   "paso-gallery": {
@@ -81,13 +98,28 @@ const brandsData: Record<string, {
       { title: "CHOWOO", desc: "CHOWOO 홍대 플래그쉽 스토어" },
     ],
   },
-};
-
-// Folded/retired brand surfaces (strategy 2026-07): Artledger absorbed into Artrader,
-// Magok Art Center closed. Keep old URLs alive via permanent redirects.
-const retiredSlugRedirects: Record<string, string> = {
-  "artledger-consulting": "/brands/artrader",
-  "paso-art-center": "/brands/paso-gallery",
+  "artledger-consulting": {
+    name: "Artledger Consulting",
+    slug: "artledger-consulting",
+    year: 2025,
+    desc: "매입 이후의 세금 처리, 절세 전략, 법인 컬렉션 운용 전반을 설계하고 자문합니다. 개인과 법인 모두, 거래의 전 과정을 전문적으로 지원합니다.",
+    longDesc: "매입 이후의 세금 처리, 절세 전략, 법인 컬렉션 운용 전반은 Artledger Consulting이 설계하고 자문합니다. 개인과 법인 모두, 거래의 전 과정을 전문적으로 지원합니다.",
+    color: "#9ca3af",
+    image: "/brands/artledger-consulting.jpg",
+    gallery: [
+      "/images/services/tax-advisory.jpg",
+      "/brands/artledger-consulting.jpg",
+      "/images/services/collecting-advisory.jpg",
+    ],
+    features: [
+      { title: "미술품 절세 자문", desc: "증여·상속세 절세 전략, 법인 비용처리·감가상각 최적화, 세무 리스크 관리.", image: "/images/services/tax-advisory.jpg" },
+      { title: "자산관리 & 평가", desc: "미술품 포트폴리오 구축, 시장가 기반 가치 평가, Private-Sale 거래 중개.", image: "/brands/artledger-consulting.jpg" },
+      { title: "컬렉팅 자문", desc: "체계적 컬렉션 전략 수립, 작품 선별·매입 자문, 장기 자산 관리.", image: "/images/services/collecting-advisory.jpg" },
+      { title: "세금 & 법률 세미나", desc: "미술품 세무·법률 이슈를 다루는 정기 세미나" },
+      { title: "컬렉팅 강의", desc: "입문자부터 전문 컬렉터까지 단계별 교육 과정" },
+      { title: "전문가 네트워킹", desc: "전문가 초청 강연 및 네트워킹 이벤트 운영" },
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -99,7 +131,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const brand = brandsData[slug];
   if (!brand) return { title: "Brand Not Found — PASO" };
   const seoOverrides: Record<string, { title: string; description: string; image?: string }> = {
-    artrader: { title: "Artrader | PASO Art Market Data Platform", description: "PASO's Artrader — 15M+ global auction records. Artist Index, quantitative reports, and art-asset advisory for investment decisions." },
+    artrader: { title: "Artrader | PASO Art Market Data Platform", description: "PASO's Artrader — 15M+ global auction records. Artist Index and quantitative reports for art investment decisions." },
+    "paso-art-center": { title: "PASO Art Center | Exhibitions & Community", description: "PASO Art Center — exhibitions, art salons, and a community space for emerging artists and collectors." },
+    "artledger-consulting": { title: "Artledger | PASO Art Asset Advisory & Tax Strategy", description: "PASO's Artledger — art gift & inheritance, corporate depreciation, collection rebalancing. End-to-end art-asset management." },
     "paso-agency": { title: "PASO Agency | IP & Brand Art Collaborations", description: "PASO Agency — character IP licensing, art toys, corporate art projects, end-to-end planning and execution." },
     "paso-gallery": { title: "Paso Gallery — Art Meets Space", description: "한옥의 고유한 공간미와 동시대 미술이 만나는 곳. 신진작가 발굴부터 브랜드 콜라보레이션까지.", image: "/brands/paso-gallery-og.jpg" },
   };
@@ -148,7 +182,6 @@ const standaloneSiteConfig: Record<string, {
 
 export default async function BrandPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  if (retiredSlugRedirects[slug]) permanentRedirect(retiredSlugRedirects[slug]);
   const brand = brandsData[slug];
   const siteMode = await getSiteMode();
 

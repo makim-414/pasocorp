@@ -90,6 +90,23 @@ export const dict: Dict = {
   "contact.form.sent": { en: "Your inquiry has been received.", ko: "문의가 접수되었습니다" },
   "contact.form.error": { en: "Something went wrong. Please try again.", ko: "전송에 실패했습니다. 다시 시도해주세요." },
 
+  // Scroll story beats
+  "story.find.title": { en: "We find art.", ko: "We find art." },
+  "story.find.body": {
+    en: "Emerging artists discovered through open calls and hanok exhibitions since 2013. The gallery is where everything begins.",
+    ko: "2013년부터 공모전과 한옥 전시로 신진 작가를 발굴해 왔습니다. 갤러리는 모든 것이 시작되는 곳입니다.",
+  },
+  "story.analyze.title": { en: "We analyze art.", ko: "We analyze art." },
+  "story.analyze.body": {
+    en: "Fifteen million auction records refined into fair-market prices, artist indices, and quantitative reports.",
+    ko: "1,500만 건의 옥션 데이터를 정제해 적정가와 Artist Index, 정량 리포트를 만듭니다.",
+  },
+  "story.grow.title": { en: "We grow art.", ko: "We grow art." },
+  "story.grow.body": {
+    en: "Gallery, agency, data, advisory, and exhibitions: five brands compounding into one ecosystem that treats art as an asset class.",
+    ko: "갤러리, 에이전시, 데이터, 자문, 전시. 다섯 브랜드가 하나의 생태계로 맞물려 예술을 자산으로 키웁니다.",
+  },
+
   // Trust bar
   "trust.label": { en: "Selected Partners & Clients", ko: "함께해 온 파트너" },
 
@@ -114,7 +131,17 @@ export const dict: Dict = {
 
   // BrandHub
   "brandhub.tag": { en: "Our Brands", ko: "Our Brands" },
-  "brandhub.title": { en: "Three Brands, One Vision", ko: "Three Brands, One Vision" },
+  "brandhub.title": { en: "Five Brands, One Vision", ko: "Five Brands, One Vision" },
+  "brandhub.art_center.target": { en: "For Exhibitions & Community", ko: "전시와 커뮤니티를 위해" },
+  "brandhub.art_center.desc": {
+    en: "A standing exhibition of 70+ blue-chip and top-auction works alongside emerging-artist IP expansion projects.",
+    ko: "블루칩·옥션 상위권 작품 70여 점 상설전과 이머징 작가 IP 확장 프로젝트를 전개합니다.",
+  },
+  "brandhub.artledger.target": { en: "For Tax & Asset Advisory", ko: "세무 및 자산 자문을 위해" },
+  "brandhub.artledger.desc": {
+    en: "Expert advisory across art tax planning, corporate collection management, and the full transaction lifecycle.",
+    ko: "미술품 절세, 법인 컬렉션 운용, 거래 전 과정을 전문적으로 자문합니다.",
+  },
   "brandhub.paso_gallery.target": { en: "For Collectors & Spaces", ko: "컬렉터와 공간을 위해" },
   "brandhub.paso_gallery.desc": {
     en: "Curating emerging and rising artists from a Seoul hanok, with private sales programmes and the space open for events and rentals.",
@@ -122,8 +149,8 @@ export const dict: Dict = {
   },
   "brandhub.artrader.target": { en: "For Data-Driven Decisions", ko: "데이터 기반 의사결정을 위해" },
   "brandhub.artrader.desc": {
-    en: "An art trading platform and corporate-collection database that calculates fair-market acquisition prices from 15M+ global auction records, with valuation and art-asset advisory.",
-    ko: "1,500만 건 글로벌 옥션 데이터로 적정 매입가를 산출하는 미술품 거래 플랫폼. 정량 평가와 미술 자산 자문까지 제공합니다.",
+    en: "An art trading platform and corporate-collection database that calculates fair-market acquisition prices from 15M+ global auction records.",
+    ko: "1,500만 건 글로벌 옥션 데이터로 적정 매입가를 산출하는 미술품 거래 플랫폼이자 법인 컬렉션 데이터베이스.",
   },
   "brandhub.artrader.activity": { en: "Real-time analysis on 15M+ transactions", ko: "1,500만+ 거래 데이터 실시간 분석" },
   "brandhub.agency.target": { en: "For Brands & IP Partners", ko: "브랜드와 IP 파트너를 위해" },
@@ -136,8 +163,12 @@ export const dict: Dict = {
   "services.tag": { en: "Services", ko: "Services" },
   "services.title": { en: "How We Work", ko: "How We Work" },
   "services.artrader.desc": {
-    en: "Market analysis, valuation reports, and art-asset advisory built on 15M+ auction records.",
-    ko: "1,500만 건 경매 데이터 기반 시세 분석, 정량 리포트, 미술 자산 자문.",
+    en: "Market analysis and quantitative reports built on 15M+ auction records.",
+    ko: "1,500만 건 경매 데이터 기반 시세 분석과 정량 리포트.",
+  },
+  "services.artledger.desc": {
+    en: "Art tax advisory, corporate asset management, and collection rebalancing.",
+    ko: "미술품 절세, 법인 자산 관리, 컬렉션 리밸런싱 자문.",
   },
   "services.gallery.desc": {
     en: "Emerging-artist exhibitions, private sales, and hanok space rentals.",
@@ -170,18 +201,26 @@ export const dict: Dict = {
   },
 
   // Flywheel brand short labels
-  "flywheel.artrader.short": { en: "Data · Advisory", ko: "데이터 · 자문" },
+  "flywheel.artrader.short": { en: "Data · Analytics", ko: "데이터 · 분석" },
+  "flywheel.artledger.short": { en: "Advisory · Tax", ko: "자문 · 절세" },
+  "flywheel.artcenter.short": { en: "Exhibition · Community", ko: "전시 · 커뮤니티" },
   "flywheel.gallery.short": { en: "Exhibition · Spaces", ko: "전시 · 공간" },
   "flywheel.agency.short": { en: "IP · Brand", ko: "IP · 브랜드" },
   "flywheel.synergy": { en: "Synergy", ko: "시너지" },
   "flywheel.conn.market_data": { en: "Market data provision", ko: "시장 데이터 제공" },
-  "flywheel.conn.value_analysis": { en: "IP valuation support", ko: "IP 가치 분석 지원" },
+  "flywheel.conn.value_analysis": { en: "Valuation support", ko: "가치 분석 보완" },
   "flywheel.conn.ip_supply": { en: "IP artist exhibition supply", ko: "IP 작가 전시 공급" },
+  "flywheel.conn.art_toy": { en: "Art toy collaboration", ko: "아트토이 콜라보" },
+  "flywheel.conn.advisory": { en: "Client asset advisory", ko: "고객 자산 자문" },
+  "flywheel.conn.collector_support": { en: "Collector acquisition support", ko: "컬렉터 인수 지원" },
   "flywheel.conn.primary_data": { en: "Primary-market transaction data", ko: "1차 시장 거래 데이터" },
+  "flywheel.conn.secondary_market": { en: "Secondary-market sourcing", ko: "2차 시장 매물 연결" },
 
   // HoverPreviewProcess
   "hpp.gallery.subtitle": { en: "Emerging artists · Private sales · Spaces", ko: "신진작가 발굴 · 프라이빗 세일 · 공간 대관" },
-  "hpp.artrader.subtitle": { en: "Market analysis & advisory on 15M+ transactions", ko: "1,500만+ 거래 데이터 시세 분석 · 자산 자문" },
+  "hpp.artcenter.subtitle": { en: "Standing exhibitions · Art salons · Community", ko: "상설전시 · 아트 살롱 · 커뮤니티" },
+  "hpp.artrader.subtitle": { en: "Market analysis on 15M+ transactions", ko: "1,500만+ 거래 데이터 기반 시세 분석" },
+  "hpp.artledger.subtitle": { en: "Art tax · Corporate advisory · Private Sale", ko: "미술품 절세 · 법인 자문 · Private Sale" },
   "hpp.agency.subtitle": { en: "Character IP · B2B art projects", ko: "캐릭터 IP · B2B 아트 프로젝트" },
 
   // DynamicSections (Top + Bottom)
@@ -208,8 +247,18 @@ export const dict: Dict = {
   "solutions.learn_more": { en: "Learn More", ko: "Learn More" },
   "solutions.artrader.title": { en: "Data & Market Intelligence", ko: "Data & Market Intelligence" },
   "solutions.artrader.desc": {
-    en: "Market analysis platform built on 15M+ global auction and private-sale transactions, with valuation reports and art-asset advisory for corporates and collectors.",
-    ko: "글로벌 경매·Private Sales 1,500만+ 거래 데이터 기반 시장 분석 플랫폼. 법인·컬렉터를 위한 정량 리포트와 미술 자산 자문까지 제공합니다.",
+    en: "Market analysis platform built on 15M+ global auction and private-sale transactions.",
+    ko: "글로벌 경매·Private Sales 1,500만+ 거래 데이터 기반 시장 분석 플랫폼",
+  },
+  "solutions.artledger.title": { en: "Advisory & Tax Strategy", ko: "Advisory & Tax Strategy" },
+  "solutions.artledger.desc": {
+    en: "Art gift & inheritance tax planning, corporate expense handling, valuation, and systematic collection advisory.",
+    ko: "미술품 증여·상속 절세, 법인 비용처리, 자산 가치 평가, 체계적 컬렉팅 자문",
+  },
+  "solutions.artcenter.title": { en: "Exhibition & Community", ko: "Exhibition & Community" },
+  "solutions.artcenter.desc": {
+    en: "Top-30 fair-priced secondary-market exhibitions, global emerging-artist shows, and community programmes.",
+    ko: "적정가 2차 시장 Top 30 전시, 글로벌 이머징 작가 전시, 커뮤니티 프로그램",
   },
   "solutions.gallery.title": { en: "Exhibition & Spaces", ko: "Exhibition & Spaces" },
   "solutions.gallery.desc": {

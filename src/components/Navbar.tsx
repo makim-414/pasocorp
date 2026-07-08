@@ -1,14 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import LocaleToggle from "@/components/LocaleToggle";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 const brands = [
-  { name: "Artrader", href: "/brands/artrader" },
-  { name: "Paso Agency", href: "/brands/paso-agency" },
   { name: "Paso Gallery", href: "https://pasogallery.com" },
+  { name: "Paso Agency", href: "/brands/paso-agency" },
+  { name: "Artrader", href: "/brands/artrader" },
+  { name: "Artledger Consulting", href: "/brands/artledger-consulting" },
+  { name: "PASO Art Center", href: "/brands/paso-art-center" },
 ];
 
 export default function Navbar() {
@@ -16,6 +18,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [brandsOpen, setBrandsOpen] = useState(false);
   const { t } = useLocale();
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.4 });
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -32,6 +36,11 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
+      {/* Scroll progress hairline */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-px origin-left bg-gradient-to-r from-[#b8960b] via-[#c9a96e] to-[#b8960b]"
+        style={{ scaleX: progress }}
+      />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
         <a href="https://pasocorp.com" className="text-[#e8e8e8] text-sm tracking-normal font-normal" style={{ fontFamily: "var(--font-dutch)" }}>
           PASO
