@@ -4,6 +4,7 @@ import StandaloneNav from "@/components/StandaloneNav";
 import StandaloneFooter from "@/components/StandaloneFooter";
 import SiteModeCookieSync from "@/components/SiteModeCookieSync";
 import GalleryContactContent from "../contact/GalleryContactContent";
+import GalleryJsonLd from "@/components/GalleryJsonLd";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact — Paso Gallery" },
@@ -12,6 +13,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact — Paso Gallery",
     description: "전시 문의, 작가 협업 등 파소 갤러리에 연락하세요.",
+    url: "https://pasogallery.com/contact",
+    siteName: "Paso Gallery",
+    images: [{ url: "https://pasogallery.com/brands/paso-gallery-og.jpg", width: 1200, height: 630 }],
   },
 };
 
@@ -24,6 +28,7 @@ export default async function GalleryContactPage() {
 
   return (
     <div className="bg-black min-h-screen">
+      <GalleryJsonLd />
       {!onStandaloneDomain && <SiteModeCookieSync siteMode="pasogallery" />}
       <StandaloneNav
         siteName="Paso Gallery"
