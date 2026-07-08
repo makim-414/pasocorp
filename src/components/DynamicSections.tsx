@@ -104,7 +104,11 @@ export function DynamicTop() {
         </div>
       </section>
 
-      {/* Hover Preview Process — full width, below About */}
+      {/* Evidence belt: partner & client logos, sliding — sits between the
+          ecosystem map and the process narrative. */}
+      <TrustBar />
+
+      {/* Hover Preview Process — full width, below the partner belt */}
       <section className="border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-20 md:py-28 flex items-center justify-center">
           <HoverPreviewProcess />
@@ -126,9 +130,6 @@ export function DynamicBottom() {
           <Counter value={STATS.brandFoundedYear} label={`Founded\n(Registered ${STATS.registeredYear})`} />
         </div>
       </section>
-
-      {/* Evidence belt: client & partner logos */}
-      <TrustBar />
     </div>
   );
 }
