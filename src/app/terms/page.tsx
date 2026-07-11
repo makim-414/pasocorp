@@ -114,7 +114,7 @@ export default function TermsPage() {
                 를 통해 연락해 주시기 바랍니다.
               </p>
               <p className="text-[#555] mt-4">
-                주식회사 파소 | 사업자등록번호: 877-25-00849 | 대표: 김민성
+                주식회사 파소 | 사업자등록번호: 274-01-02305 | 대표: 김민성
               </p>
             </section>
           </div>

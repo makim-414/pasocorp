@@ -44,7 +44,7 @@ export const dict: Dict = {
   "footer.privacy": { en: "Privacy", ko: "개인정보처리방침" },
   "footer.copyright": { en: "© PASO 2026", ko: "© PASO 2026" },
   "footer.ceo": { en: "CEO Min Sung Kim", ko: "CEO 김민성" },
-  "footer.biz_no": { en: "Business No. 877-25-00849", ko: "사업자등록번호: 877-25-00849" },
+  "footer.biz_no": { en: "Business No. 274-01-02305", ko: "사업자등록번호: 274-01-02305" },
   "footer.phone": { en: "+82 2-925-3631", ko: "02-925-3631" },
 
   // About
