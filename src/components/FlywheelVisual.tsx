@@ -124,7 +124,7 @@ export default function FlywheelVisual({ defaultActive }: { defaultActive?: stri
     : [];
 
   return (
-    <div className="bg-black p-4 md:p-8 min-h-[500px] md:min-h-[640px] flex flex-col items-center justify-center">
+    <div className="p-4 md:p-8 min-h-[500px] md:min-h-[640px] flex flex-col items-center justify-center">
       <div className="relative w-full max-w-[700px] mx-auto" style={{ aspectRatio: "5/3.2", perspective: 1200 }}>
         {/* Orbital plane rings */}
         <div

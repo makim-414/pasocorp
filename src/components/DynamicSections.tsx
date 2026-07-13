@@ -80,8 +80,8 @@ export function DynamicTop() {
       <section id="about" className="relative overflow-hidden pt-8 md:pt-10 pb-16 md:pb-24">
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-72 md:h-96 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 55% 100% at 50% 0%, rgba(184,150,11,0.13) 0%, rgba(184,150,11,0.04) 45%, transparent 72%)" }}
+          className="absolute inset-x-0 top-0 h-80 md:h-[28rem] pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 100% at 50% -10%, rgba(184,150,11,0.09) 0%, rgba(184,150,11,0.03) 50%, transparent 78%)" }}
         />
         <div className="relative max-w-[1500px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div className="min-h-[480px] md:min-h-[620px] order-2 md:order-1">
