@@ -20,8 +20,8 @@ export const dict: Dict = {
   // Hero / homepage
   "hero.tag": { en: "Strategic Art Advisory", ko: "데이터 기반 미술 자산 전략" },
   "hero.subtitle": {
-    en: "Data-driven art investment, gallery operations, and IP licensing, powered by 15M+ auction records.",
-    ko: "1,500만 건 데이터로 미술품 투자 자문, 갤러리 운영, IP 라이선싱을 연결합니다.",
+    en: "Art investment advisory, gallery operations, and IP licensing — run directly on 15M+ auction records.",
+    ko: "1,500만 건 데이터로 미술품 투자 자문, 갤러리 운영, IP 라이선싱을 직접 운용합니다.",
   },
   "hero.cta_get_in_touch": { en: "Get in Touch", ko: "문의하기" },
   "hero.scroll": { en: "Scroll", ko: "Scroll" },

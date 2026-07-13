@@ -15,10 +15,10 @@ export default function Home() {
       <main>
         <ScrollStory />
         <DynamicTop />
-        <PersonaSelector />
         <BrandHub />
         <DynamicBottom />
         <ExhibitionStrip />
+        <PersonaSelector />
       </main>
       <Footer />
     </div>

@@ -398,7 +398,9 @@ function FBOParticles({
   phase?: FBOPhase;
   scrollDrive?: ScrollDriveRef;
 }) {
-  const size = 128;
+  // 96² = ~9.2k particles (down from 128²/16.4k) — noticeably lighter on
+  // fill-rate during the scroll choreography with no visible density loss.
+  const size = 96;
   const points = useRef<THREE.Points>(null!);
   const simulationMaterialRef = useRef<SimulationMaterial>(null!);
 
@@ -670,11 +672,11 @@ export default function FBOParticlesScene({
 }) {
   return (
     <Canvas
-      // Cap DPR at 1.5 — on 2x Retina the canvas would otherwise render
+      // Cap DPR at 1.25 — on 2x Retina the canvas would otherwise render
       // at native 2x, quadrupling fill-rate cost for additive-blended
       // points. Invisible to the eye for a particle backdrop, but the
       // single biggest perf win against hero-scroll jank.
-      dpr={[1, 1.5]}
+      dpr={[1, 1.25]}
       camera={{ position: [1.5, 1.5, 2.5] }}
       gl={{
         antialias: false, // additive-blended points are already smooth; MSAA is wasted cost
